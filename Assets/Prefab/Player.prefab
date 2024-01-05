@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6328120428649999558}
   - component: {fileID: 6328120428649999559}
+  - component: {fileID: 471582550580749124}
+  - component: {fileID: 3941844833393866871}
+  - component: {fileID: 7196206443877755358}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -73,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -476633045, guid: 5b498c75b489f2e4693f5a896a192f6a, type: 3}
+  m_Sprite: {fileID: 1016093401, guid: 5b498c75b489f2e4693f5a896a192f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +87,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &471582550580749124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328120428649999553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 94a648dd449da7545a79f1078266c6e3, type: 3}
+--- !u!95 &3941844833393866871
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328120428649999553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52915e0f13c8353409bb785524594355, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7196206443877755358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328120428649999553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 389354833
 --- !u!1 &6328120429235382895
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +268,6 @@ GameObject:
   - component: {fileID: 6328120429896446895}
   - component: {fileID: 6328120429896446892}
   - component: {fileID: 6328120429896446880}
-  - component: {fileID: 6328120429896446893}
   - component: {fileID: 6328120429896446882}
   - component: {fileID: 6328120429896446881}
   - component: {fileID: 9179673714289012239}
@@ -240,7 +292,7 @@ Transform:
   m_Children:
   - {fileID: 6328120429556896885}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2145510011
 MonoBehaviour:
@@ -356,7 +408,7 @@ MonoBehaviour:
     m_ActionId: 54451065-a762-4dff-b3e9-ddcc41e55457
     m_ActionName: OverWorld/Disconnect[/DualSenseGamepadHID/select,/Keyboard/backspace]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: ControllerControls
   m_DefaultActionMap: OverWorld
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -385,26 +437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be959d5c11a33874fb6596291d9853f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &6328120429896446893
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328120429896446888}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 305342496e6a5584481f934e6c985d43, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  anim: {fileID: 3941844833393866871}
+  animationDeadZone: 0
 --- !u!50 &6328120429896446882
 Rigidbody2D:
   serializedVersion: 4
@@ -418,8 +452,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1000
+  m_AngularDrag: 1000
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: c9c51a66a3ca5814fb3f1306deab93f0, type: 2}
   m_Interpolate: 0

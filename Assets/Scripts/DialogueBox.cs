@@ -192,7 +192,7 @@ public class DialogueBox : MonoBehaviour
         while(duration < apparitionTime)
         {
             group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
-            duration += Time.fixedUnscaledDeltaTime;
+            duration += Time.deltaTime;
             yield return null;
         }
             group.alpha = target;
