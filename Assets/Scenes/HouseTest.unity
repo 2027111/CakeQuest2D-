@@ -5311,6 +5311,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4659476406715409033, guid: b3781390e67e8354e95e2cdf05d8a9d4, type: 3}
+      propertyPath: facing
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659476406715409033, guid: b3781390e67e8354e95e2cdf05d8a9d4, type: 3}
       propertyPath: playerPositionOnLoad.y
       value: 1.5
       objectReference: {fileID: 0}

@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 8532248538276063809}
   - component: {fileID: 8532248538276063810}
   - component: {fileID: 8532248538276063811}
+  - component: {fileID: 6393111097336211545}
   m_Layer: 3
   m_Name: NPC
   m_TagString: NPC
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a60d92748e7584f9dd056001416c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   canInteract: 0
 --- !u!114 &2430433989948180661
 MonoBehaviour:
@@ -295,6 +297,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  contactEvent:
+    m_PersistentCalls:
+      m_Calls: []
   InteractionIndicator: {fileID: 134502412}
 --- !u!114 &8532248538276063811
 MonoBehaviour:
@@ -312,7 +317,28 @@ MonoBehaviour:
   - portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
     talkername: Jimi
     line: La honte il jog
+  started: 0
   player: {fileID: 0}
+--- !u!95 &6393111097336211545
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430433989948180660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3798817109286531886
 GameObject:
   m_ObjectHideFlags: 0

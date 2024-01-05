@@ -39,5 +39,9 @@ public class Patrolling : MonoBehaviour
         return wayPoints[0];
     }
 
+    public Transform GetCurrentWayPoint()
+    {
+        return wayPoints[wayPointsIndex];
+    }
 
 }

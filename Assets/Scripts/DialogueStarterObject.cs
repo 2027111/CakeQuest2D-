@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueStarterObject : MonoBehaviour
 {
     public LineInfo[] dialogueLines;
-
+    public bool started = false;
     public Character player;
 
 
@@ -16,15 +16,18 @@ public class DialogueStarterObject : MonoBehaviour
     }
     public virtual void DialogueAction()
     {
-        if (!DialogueBox.Singleton.IsActive())
+        if (!started)
         {
-            DialogueBox.Singleton.StartDialogue(dialogueLines, player.gameObject, gameObject);
+            started = true;
+            DialogueBox.Singleton.StartDialogue(dialogueLines, DialogueOver, player.gameObject, gameObject);
         }
     }
 
     public virtual void DialogueOver()
     {
-
+        started = false;
+        Debug.Log("Dialogue Over");
+        player.ChangeState(new PlayerControlsBehaviour());
     }
 
 }

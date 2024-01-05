@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8c7baa4112da499e7b63230b44c76, type: 3}
   m_Name: PlayerInfoStorage
   m_EditorClassIdentifier: 
-  nextRoomInfo: {fileID: 0}
-  nextPosition: {x: 0, y: 0}
-  forceNewInfo: 0
+  sceneName: Plaine Caramel
+  nextRoomInfo: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
+  nextPosition: {x: 3.5, y: 1.5}
+  facing: 3
+  forceNextChange: 1

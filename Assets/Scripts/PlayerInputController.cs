@@ -31,11 +31,25 @@ public class PlayerInputController : MonoBehaviour
         }
     }
 
+    public void OnPause(InputAction.CallbackContext callback)
+    {
+        // Check if the interaction is a press (button down)
+        if (callback.started)
+        {
+            Pause();
+
+        }
+    }
+
+    private void Pause()
+    {
+        PauseManager.Singleton?.OnPausePressed();
+    }
+
     void Interact()
     {
         // Implement your interaction logic here
         // For example, interact with an object in the game world.
         pm.InteractPressed();
-        Debug.Log("Interacting!");
     }
 }

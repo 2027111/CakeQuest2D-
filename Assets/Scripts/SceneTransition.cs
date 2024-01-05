@@ -10,21 +10,14 @@ public class SceneTransition : MonoBehaviour
     public string sceneToLoadName;
     public Vector2 playerPositionOnLoad;
     public RoomInfo roomOnLoadInfo;
-    public GameObject fadeInPanel;
-    public GameObject fadeOutPanel;
+    public Direction facing;
     Character player;
 
-    public float minimumFadeTime = 1f;
-    public static float DestroyTime = 1.4f;
 
 
     private void Awake()
     {
-        if(fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, DestroyTime);
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,43 +30,16 @@ public class SceneTransition : MonoBehaviour
             PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
             if (storage)
             {
+                storage.infoStorage.sceneName = sceneToLoadName;
                 storage.infoStorage.nextPosition = playerPositionOnLoad;
                 storage.infoStorage.nextRoomInfo = roomOnLoadInfo;
-                storage.infoStorage.forceNewInfo = true;
+                storage.infoStorage.facing = facing;
             }
-            StartCoroutine(FadeCoroutine());
+            storage.MoveToScene();
             //SceneManager.LoadScene(sceneToLoadName);
 
         }
     }
 
-    public IEnumerator FadeCoroutine()
-    {
-        if (fadeOutPanel != null)
-        {
-            Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
-        }
-        yield return new WaitForSeconds(minimumFadeTime);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneToLoadName);
 
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
-        }
-
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, DestroyTime);
-        }
-
-
-
-        yield return null;
-
-
-
-
-
-    }
 }

@@ -24,7 +24,7 @@ public class PatrollingBehaviour: CharacterBehaviour
         }
 
 
-        currentTarget = patrolling.GetStartingWayPoint();
+        currentTarget = patrolling.GetCurrentWayPoint();
 
     }
 

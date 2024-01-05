@@ -9,13 +9,17 @@ public class Character : MonoBehaviour
 
     CharacterBehaviour playerBehaviour;
     Movement playerMovement;
+    public Inventory inventory;
     public bool canInteract = false;
     public event Action OnInteractEvent;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         playerMovement = GetComponent<Movement>();
+    }
+    void Start()
+    {
         ChangeState(new PlayerControlsBehaviour());
     }
 
@@ -28,10 +32,65 @@ public class Character : MonoBehaviour
         
     }
 
+    public void AddToInventory(Item content, int amount = 1)
+    {
+        if (inventory)
+        {
+            if(content.itemName == "pesso")
+            {
+                inventory.AddMoney(amount);
+            }
+            else
+            {
+                for(int i = 0; i < amount; i++)
+                {
+                    inventory.items.Add(content);
+                }
+            }
+        }
+    }
+
+    public bool HasObject(Item content, int amount = 1)
+    {
+        List<Item> occurrences = inventory.items.FindAll(x => x == content);
+        if (occurrences.Count < amount)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+
+    public int AmountObject(Item content)
+    {
+        List<Item> occurrences = inventory.items.FindAll(x => x == content);
+        return occurrences.Count;
+        
+    }
+    public bool RemoveFromInventory(Item content, int amount = 1)
+    {
+
+        List<Item> occurrences = inventory.items.FindAll(x => x == content);
+        if(occurrences.Count < amount)
+        {
+            return false;
+        }
+        for (int i = 0; i < amount; i++)
+        {
+            inventory.items.Remove(content);
+        }
+        return true; ;
+    }
+
     public void LookToward(Vector2 direction)
     {
         playerMovement.LookAt(direction);
     }
+
+
 
     public void LookAt(GameObject target)
     {

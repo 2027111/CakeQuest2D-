@@ -9,7 +9,39 @@ using System;
     public Sprite portrait;
     public string talkername;
     public string line;
+
+
+    public LineInfo()
+    {
+        portrait = null;
+        talkername = "";
+        line = "";
+    }
 }
+
+
+
+
+
+public class DialogueContent
+{
+    public LineInfo[] lines;
+    public GameObject player;
+    public GameObject originObject;
+
+
+
+    public DialogueContent(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null)
+    {
+        this.lines = lines;
+        this.player = playerObject;
+        this.originObject = originObject;
+    }
+}
+
+
+
+
 public class DialogueBox : MonoBehaviour
 {
     private static DialogueBox _singleton;
@@ -32,23 +64,26 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-
+    public Action OnDialogueOverAction;
 
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
     [SerializeField] TMP_Text nameText;
     [SerializeField] Image portraitImage;
-    [SerializeField] float apparitionTime = .4f;
+    [SerializeField] [Range(0.1f, 1)] float apparitionTime = .4f;
     [SerializeField] [Range(0.1f, 1)] float textSpeed = 0.5f;
     bool isShowing;
     bool active;
-    LineInfo[] currentDialogue;
+    DialogueContent currentDialogue;
+    List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0;
     Coroutine showBoxCoroutine;
     Coroutine setTextCoroutine;
 
     Character player = null;
-    DialogueStarterObject starterObject;
+    //DialogueStarterObject starterObject;
+    [SerializeField] private GameObject nameTextContainer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,33 +96,59 @@ public class DialogueBox : MonoBehaviour
 
     public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null)
     {
+        DialogueContent newDialogue = new DialogueContent(lines, playerObject, originObject);
 
-        dialogueText.text = "";
-        StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
-        if (playerObject == null)
+        if(lines.Length > 0)
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        }
-        else
-        {
+            if (active)
+            {
+                Debug.Log("Added Dialogue");
+                dialogueWaitingLine.Add(newDialogue);
+            }
+            else
+            {
+                dialogueText.text = "";
+                SetupLine(lines[0]);
+                StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
+                if (playerObject == null)
+                {
+                    player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+                }
+                else
+                {
 
-            player = playerObject.GetComponent<Character>();
-        }
+                    player = playerObject.GetComponent<Character>();
+                }
 
-        if (originObject)
-        {
-            starterObject = originObject.GetComponent<DialogueStarterObject>();
-        }
+                
 
-        player.ChangeState(new InteractingBehaviour());
-        player.OnInteractEvent += Interact;
-        if (originObject)
-        {
-            player.LookAt(originObject);
+                player.ChangeState(new InteractingBehaviour());
+                player.OnInteractEvent += Interact;
+                if (originObject)
+                {
+                    player.LookAt(originObject);
+                }
+                currentDialogue = newDialogue;
+                dialogueIndex = 0;
+                active = true;
+            }
         }
-        currentDialogue = lines;
-        dialogueIndex = 0;
-        active = true;
+        
+    }
+
+    public void StartDialogue(LineInfo[] lines, Action callback, GameObject playerObject = null, GameObject originObject = null)
+    {
+        OnDialogueOverAction = callback;
+        StartDialogue(lines, playerObject, originObject);
+    }
+
+    public void SetupLine(LineInfo line)
+    {
+        portraitImage.gameObject.SetActive(line.portrait != null);
+        portraitImage.sprite = line.portrait;
+        nameTextContainer.SetActive(!string.IsNullOrEmpty(line.talkername));
+        nameText.text = string.IsNullOrEmpty(line.talkername) ? "" : line.talkername;
+
     }
 
     public void Interact()
@@ -97,11 +158,31 @@ public class DialogueBox : MonoBehaviour
 
         if (active)
         {
-            if (dialogueIndex >= currentDialogue.Length)
-            {
-                ResetBox();
-                Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
-            }
+            if (dialogueIndex >= currentDialogue.lines.Length)
+                {
+
+                    if(dialogueWaitingLine.Count > 0)
+                    {
+                        currentDialogue = dialogueWaitingLine[0];
+                        dialogueWaitingLine.RemoveAt(0);
+                        dialogueIndex = 0;
+                        NextLine();
+                    }
+                    else
+                    {
+                        if (player)
+                        {
+                            player.OnInteractEvent -= Interact;
+                            player = null;
+                        }
+                        Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+                    }
+
+
+
+
+
+                }
             else
             {
                 if (isShowing)
@@ -115,44 +196,47 @@ public class DialogueBox : MonoBehaviour
 
             }
         }
-        else
-        {
-            StartDialogue(new string[] { "I like pedophiles and kids", "stop using such terminology it is unnacceptable" });
-        }
         }
     }
-
-    private void StartDialogue(string[] vs)
+    public void StartDialogue(string[] vs, Action callback, GameObject playerObject = null, GameObject originObject = null)
     {
         LineInfo[] lines = new LineInfo[vs.Length];
+
+        for (int i = 0; i < vs.Length; i++)
+        {
+            lines[i] = new LineInfo();
+            lines[i].portrait = null;
+            lines[i].talkername = null;
+            lines[i].line = vs[i];
+        }
+
+        StartDialogue(lines, callback, playerObject, originObject);
+    }
+    public void StartDialogue(string[] vs, GameObject playerObject = null, GameObject originObject = null)
+    {
+        LineInfo[] lines = new LineInfo[vs.Length];
+        
         for(int i = 0; i < vs.Length; i++)
         {
+            lines[i] = new LineInfo();
             lines[i].portrait = null;
             lines[i].talkername = null;
             lines[i].line  = vs[i];
         }
 
-        StartDialogue(lines);
+        StartDialogue(lines, playerObject, originObject);
     }
 
     private void NextLine()
     {
-        DialogueText(currentDialogue[dialogueIndex]);
+        DialogueText(currentDialogue.lines[dialogueIndex]);
     }
 
     private void ResetBox()
     {
-        if (player)
-        {
-            player.ChangeState(new PlayerControlsBehaviour());
-            player.OnInteractEvent -= Interact;
-            player = null;
-        }
+       
 
-        if (starterObject)
-        {
-            starterObject.DialogueOver();
-        }
+        
         dialogueIndex = 0;
         dialogueText.text = "";
         active = false;
@@ -171,8 +255,7 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
-            portraitImage.sprite = line.portrait;
-            nameText.text = string.IsNullOrEmpty(line.talkername)?"":line.talkername;
+            SetupLine(line);
             setTextCoroutine = StartCoroutine(GraduallySetText(line.line));
         }
 
@@ -183,6 +266,9 @@ public class DialogueBox : MonoBehaviour
     }
     IEnumerator ShowDialogueBoxAlpha(bool show)
     {
+
+        
+
         if(isShowing != show)
         {
 
@@ -198,11 +284,19 @@ public class DialogueBox : MonoBehaviour
             group.alpha = target;
             isShowing = show;
         }
+        yield return new WaitForSeconds(apparitionTime);
         if (isShowing)
         {
             NextLine();
         }
-        yield return null;
+        else
+        {
+
+           ResetBox();
+           OnDialogueOverAction?.Invoke();
+            
+        }
+        yield return new WaitForSeconds(.02f);
     }
 
     IEnumerator GraduallySetText(string text)

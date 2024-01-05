@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 
-public enum Room1to2Orientation
+public enum Direction
 {
     Left,
     Right,
@@ -25,7 +25,7 @@ public class RoomMove : MonoBehaviour
 
     [SerializeField] RoomInfo room1;
     [SerializeField] RoomInfo room2;
-    public Room1to2Orientation Room1ToRoom2 = Room1to2Orientation.Right;
+    public Direction Room1ToRoom2 = Direction.Right;
     private CameraMovement camMove;
 
 
@@ -51,29 +51,29 @@ public class RoomMove : MonoBehaviour
             camMove.SetNewRoom(newRoom);
 
 
-            other.GetComponent<Movement>().SetPosition(other.transform.position + GetPlayerChange() * vectorFactor);
-            other.GetComponent<Movement>().LookAt(GetPlayerChange());
+            other.GetComponent<Movement>().SetPosition(other.transform.position + DirectionToVector(Room1ToRoom2) * vectorFactor);
+            other.GetComponent<Movement>().LookAt(DirectionToVector(Room1ToRoom2));
 
         }
     }
 
-    public Vector3 GetPlayerChange()
+    public static Vector3 DirectionToVector(Direction dir)
     {
         Vector3 change = Vector3.zero;
-        switch (Room1ToRoom2)
+        switch (dir)
         {
-            case Room1to2Orientation.Right:
+            case Direction.Right:
                 change = Vector2.right;
                 break;
-            case Room1to2Orientation.Left:
+            case Direction.Left:
                 change = Vector2.left;
 
                 break;
-            case Room1to2Orientation.Bottom:
+            case Direction.Bottom:
                 change = Vector2.down;
 
                 break;
-            case Room1to2Orientation.Top:
+            case Direction.Top:
                 change = Vector2.up;
 
                 break;
@@ -87,4 +87,7 @@ public class RoomMove : MonoBehaviour
     {
         
     }
+
+
+
 }

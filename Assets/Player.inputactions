@@ -24,9 +24,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Disconnect",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "54451065-a762-4dff-b3e9-ddcc41e55457",
+                    "id": "fd48a1f2-c182-456f-bb5f-866cdcb7e40a",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -124,23 +124,23 @@
                 },
                 {
                     "name": "",
-                    "id": "b4ccaeb3-8c94-4f0d-9282-f1dcfe41e9b7",
-                    "path": "<Gamepad>/select",
+                    "id": "e5308ee1-9054-4d06-b37d-66cea8a0c845",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "ControllerControls",
-                    "action": "Disconnect",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "b32069ad-8425-471c-a02a-4c784af2eb64",
-                    "path": "<Keyboard>/backspace",
+                    "id": "a7fce4f0-d38e-4802-817b-9c1730b3a744",
+                    "path": "<Keyboard>/enter",
                     "interactions": "",
                     "processors": "",
                     "groups": "PlayerControls",
-                    "action": "Disconnect",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

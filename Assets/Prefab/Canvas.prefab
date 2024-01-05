@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1483.5115, y: 288.9207}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!225 &683195659870482504
@@ -203,8 +203,9 @@ MonoBehaviour:
   dialogueText: {fileID: 683195660062454325}
   nameText: {fileID: 683195659932647475}
   portraitImage: {fileID: 683195660694413645}
-  apparitionTime: 0.4
-  textSpeed: 0.5
+  apparitionTime: 0.2
+  textSpeed: 1
+  nameTextContainer: {fileID: 683195660804671114}
 --- !u!1 &683195659932647485
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +757,7 @@ RectTransform:
   - {fileID: 683195660542329657}
   - {fileID: 683195659870482505}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

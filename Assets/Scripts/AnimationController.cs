@@ -11,13 +11,14 @@ public class AnimationController : MonoBehaviour
     bool isMoving = false;
     [SerializeField] float animationDeadZone = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+
         pm = GetComponent<Movement>();
         //anim = GetComponent<Animator>();
         pm.LookAtEvent += LookAt;
     }
+
 
     // Update is called once per frame
     void Update()

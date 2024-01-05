@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1016093401, guid: 5b498c75b489f2e4693f5a896a192f6a, type: 3}
+  m_Sprite: {fileID: -476633045, guid: 5b498c75b489f2e4693f5a896a192f6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 0
-  m_SpriteHash: 389354833
+  m_SpriteHash: 0
 --- !u!1 &6328120429235382895
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 6328120429896446882}
   - component: {fileID: 6328120429896446881}
   - component: {fileID: 9179673714289012239}
+  - component: {fileID: 1800461113}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -306,6 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a60d92748e7584f9dd056001416c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 47442913f1c69464d8911fe99d55e74c, type: 2}
   canInteract: 0
 --- !u!114 &6328120429896446889
 MonoBehaviour:
@@ -393,10 +395,10 @@ MonoBehaviour:
     m_ActionName: OverWorld/Interact
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328120429896446889}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnLeaveGame
-        m_Mode: 1
+      - m_Target: {fileID: 6328120429896446892}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -405,8 +407,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 54451065-a762-4dff-b3e9-ddcc41e55457
-    m_ActionName: OverWorld/Disconnect[/DualSenseGamepadHID/select,/Keyboard/backspace]
+    m_ActionId: fd48a1f2-c182-456f-bb5f-866cdcb7e40a
+    m_ActionName: OverWorld/Pause[/DualSenseGamepadHID/start,/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: ControllerControls
   m_DefaultActionMap: OverWorld
@@ -490,3 +492,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   character: {fileID: 2145510011}
+  fadeInPanel: {fileID: 6367813579642875718, guid: 1062c311f77a4a44fb35f0fd291e0a29, type: 3}
+  fadeOutPanel: {fileID: 6367813579642875718, guid: b3fbf853a41f21e46977c243df4aa1c8, type: 3}
+  minimumFadeTime: 1
+--- !u!95 &1800461113
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328120429896446888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
