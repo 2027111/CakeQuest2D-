@@ -4921,10 +4921,10 @@ TextureImporter:
         serializedVersion: 2
         x: 160
         y: 192
-        width: 16
+        width: 32
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4937,36 +4937,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Inner_230
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 192
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41af5e7d1a5d674469f876b33823ec59
-      internalID: 1707898376
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Inner_231
       rect:
         serializedVersion: 2
         x: 192
         y: 192
-        width: 16
+        width: 32
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4974,27 +4953,6 @@ TextureImporter:
       bones: []
       spriteID: 57ce3c4b9653bbc4a992c325619f8828
       internalID: 229888556
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Inner_232
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 192
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c68f6ad1b20371d49a0e6f0ab2807f25
-      internalID: 1119089521
       vertices: []
       indices: 
       edges: []
@@ -5799,11 +5757,11 @@ TextureImporter:
       Inner_229: -736048606
       Inner_154: -2121154667
       Inner_38: 53523657
-      Inner_13: -1289102466
+      Inner_53: -722695622
       Inner_31: 700462409
       Inner_56: 1644213660
       Inner_250: 1730744486
-      Inner_53: -722695622
+      Inner_13: -1289102466
       Inner_247: -309738785
       Inner_151: 1553611353
       Inner_14: 1317644019

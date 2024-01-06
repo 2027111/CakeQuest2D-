@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7993561500512630952}
   - component: {fileID: 7993561500512630954}
   - component: {fileID: 7993561500512630955}
+  - component: {fileID: 7993561500217237385}
+  - component: {fileID: 7993561500217237384}
   m_Layer: 0
   m_Name: ChestAA
   m_TagString: Untagged
@@ -36,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 7993561500705895488}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7993561500512630956
 SpriteRenderer:
@@ -174,10 +176,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97652d9f72f839943ac55987b7756a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueLines: []
+  dialogueLines:
+  - portrait: {fileID: 0}
+    talkername: 
+    line: "Vous avez trouv\xE9 {amount} {content.itemName}"
+  started: 0
   player: {fileID: 0}
   content: {fileID: 11400000, guid: 8e62f30cff686774e9fed7bb3cc26f6c, type: 2}
+  amount: 5
+  OnlyOnce: 1
   isOpen: 0
+  locked: 1
+  lockRequirement: {fileID: 11400000, guid: 8e62f30cff686774e9fed7bb3cc26f6c, type: 2}
+  requirementAmount: 2
+  consumesRequirement: 0
+  LockedLines:
+  - portrait: {fileID: 0}
+    talkername: 
+    line: "Le coffre est verouill\xE9..."
+  - portrait: {fileID: 0}
+    talkername: 
+    line: "Vous n'avez pas les item n\xE9c\xE9ssaires...( {requirementAmount} {content.itemName})"
+  SuccessLines:
+  - portrait: {fileID: 0}
+    talkername: 
+    line: Le coffre c'est ouvert!
   storedOpen: {fileID: 11400000, guid: e1d0360c86dfc144a99faa13f905b220, type: 2}
 --- !u!114 &7993561500512630955
 MonoBehaviour:
@@ -206,7 +229,43 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  contactEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  contactEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   InteractionIndicator: {fileID: 7993561500705895493}
+--- !u!114 &7993561500217237385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993561500512630958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 259702089
+--- !u!114 &7993561500217237384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993561500512630958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: 006ee85f27cf3ea4b8d869bf293cf46c, type: 3}
 --- !u!1 &7993561500705895493
 GameObject:
   m_ObjectHideFlags: 0

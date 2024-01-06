@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4659476406715409047}
   - component: {fileID: 4659476406715409032}
   - component: {fileID: 4659476406715409033}
+  - component: {fileID: 4471432746096728691}
   m_Layer: 0
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4659476406715409032
 BoxCollider2D:
@@ -74,6 +75,35 @@ MonoBehaviour:
   sceneToLoadName: Plaine Caramel
   playerPositionOnLoad: {x: 3.5, y: 2.2}
   roomOnLoadInfo: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
-  fadeInPanel: {fileID: 6367813579642875718, guid: 1062c311f77a4a44fb35f0fd291e0a29, type: 3}
-  fadeOutPanel: {fileID: 6367813579642875718, guid: b3fbf853a41f21e46977c243df4aa1c8, type: 3}
-  minimumFadeTime: 0.33
+  facing: 0
+--- !u!114 &4471432746096728691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659476406715409034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354e2062a08401b4aa715417bea5f23e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  contactEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4659476406715409033}
+        m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
+        m_MethodName: TransitionScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  InteractionIndicator: {fileID: 0}

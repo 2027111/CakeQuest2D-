@@ -11,6 +11,8 @@ public enum ItemType
 
 }
 [CreateAssetMenu]
+
+[System.Serializable]
 public class Item : ScriptableObject
 {
     public string itemName;

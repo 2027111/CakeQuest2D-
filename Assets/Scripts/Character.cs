@@ -20,7 +20,7 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        ChangeState(new PlayerControlsBehaviour());
+        TogglePlayableState(); 
     }
 
 
@@ -133,9 +133,28 @@ public class Character : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         playerBehaviour.Handle();
     }
 
 
+
+    public void TogglePlayableState()
+    {
+        if (GetComponent<PlayerInputController>())
+        {
+            ChangeState(new PlayerControlsBehaviour());
+
+        }
+        else
+        {
+
+            ChangeState(new PatrollingBehaviour());
+
+        }
+    }
+    public void ToggleCutsceneState()
+    {
+
+        ChangeState(new NothingBehaviour());
+    }
 }

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8c7baa4112da499e7b63230b44c76, type: 3}
   m_Name: PlayerInfoStorage
   m_EditorClassIdentifier: 
-  sceneName: Plaine Caramel
-  nextRoomInfo: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
-  nextPosition: {x: 3.5, y: 1.5}
-  facing: 3
-  forceNextChange: 1
+  sceneName: MaisonJimi
+  nextRoomInfo: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
+  nextPosition: {x: 14.337574, y: 4.928615}
+  facing: 2
+  forceNextChange: 0

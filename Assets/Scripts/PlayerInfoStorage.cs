@@ -77,6 +77,23 @@ public class PlayerInfoStorage : MonoBehaviour
         
     }
 
+    public void SetNewInformationToFile()
+    {
+        infoStorage.nextPosition = transform.position;
+        infoStorage.nextRoomInfo = Camera.main.GetComponent<CameraMovement>().currentRoomInfo;
+        infoStorage.sceneName = SceneManager.GetActiveScene().name;
+    }
+
+    public void SetNewPosition(Vector2 newPos)
+    {
+        infoStorage.nextPosition = newPos;
+    }
+
+    public void SetNewRoom(RoomInfo newRoom)
+    {
+        infoStorage.nextRoomInfo = newRoom;
+    }
+
     public IEnumerator FadeCoroutine()
     {
         if (fadeOutPanel != null)

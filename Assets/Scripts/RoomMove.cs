@@ -27,6 +27,7 @@ public class RoomMove : MonoBehaviour
     [SerializeField] RoomInfo room2;
     public Direction Room1ToRoom2 = Direction.Right;
     private CameraMovement camMove;
+    Character player;
 
 
 
@@ -35,27 +36,27 @@ public class RoomMove : MonoBehaviour
     void Start()
     {
         camMove = Camera.main.GetComponent<CameraMovement>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+
     }
 
 
-
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public void MoveToNextRoom()
     {
+        RoomInfo newRoom = room2 == camMove.currentRoomInfo ? room1 : room2;
 
-
-        RoomInfo newRoom = room2 == camMove.currentRoomInfo? room1:room2;
         float vectorFactor = room2 == camMove.currentRoomInfo ? 1 : -1;
-        if (other.CompareTag("Player"))
-        {
-            camMove.SetNewRoom(newRoom);
+        Vector2 newPos = player.transform.position + DirectionToVector(Room1ToRoom2) * vectorFactor;
+        camMove.SetNewRoom(newRoom);
 
+        player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
+        player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
+        player.GetComponent<Movement>().SetPosition(newPos);
+        player.GetComponent<Movement>().LookAt(DirectionToVector(Room1ToRoom2));
 
-            other.GetComponent<Movement>().SetPosition(other.transform.position + DirectionToVector(Room1ToRoom2) * vectorFactor);
-            other.GetComponent<Movement>().LookAt(DirectionToVector(Room1ToRoom2));
-
-        }
+        
     }
+
 
     public static Vector3 DirectionToVector(Direction dir)
     {

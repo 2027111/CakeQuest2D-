@@ -5,8 +5,9 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
 
-
+    
     [SerializeField] Animator anim;
+    private bool Animate = true;
     Movement pm;
     bool isMoving = false;
     [SerializeField] float animationDeadZone = 0;
@@ -20,31 +21,44 @@ public class AnimationController : MonoBehaviour
     }
 
 
+    public void ToggleAnimator(bool on)
+    {
+        Animate = on;
+    }
+
     // Update is called once per frame
     void Update()
     {
-
-        if (anim)
+        if (Animate)
         {
-            isMoving = pm.GetInput().magnitude > animationDeadZone;
-            anim.SetBool("IsMoving", isMoving);
-            if (isMoving)
+
+            if (anim)
             {
-                anim.SetFloat("HorizontalMov", pm.GetInput().x);
-                anim.SetFloat("VerticalMov", pm.GetInput().y);
+                isMoving = pm.GetInput().magnitude > animationDeadZone;
+                anim.SetBool("IsMoving", isMoving);
+                if (isMoving)
+                {
+                    anim.SetFloat("HorizontalMov", pm.GetInput().x);
+                    anim.SetFloat("VerticalMov", pm.GetInput().y);
+                }
             }
         }
-        
+
     }
 
 
     public void LookAt(Vector2 direction)
-    {
-        if (anim)
         {
-        anim.SetFloat("HorizontalMov", direction.x);
-        anim.SetFloat("VerticalMov", direction.y);
+            if (Animate)
+            {
+
+                if (anim)
+                {
+                    anim.SetFloat("HorizontalMov", direction.x);
+                    anim.SetFloat("VerticalMov", direction.y);
+                }
+
+            }
         }
-    }
 
 }

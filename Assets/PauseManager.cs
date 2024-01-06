@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseManager : MonoBehaviour
 {
@@ -53,6 +54,20 @@ public class PauseManager : MonoBehaviour
         {
             Singleton.OnPausePressed(false);
         }
+    }
+
+    public void Save()
+    {
+
+        PlayerInfoStorage playerInfoStorage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>();
+        playerInfoStorage.SetNewInformationToFile();
+
+        GameSaveManager.Singleton.SaveScriptables();
+    }
+
+    public void ReturnToTitle()
+    {
+        SceneManager.LoadScene("StartMenuScene");
     }
     
 }

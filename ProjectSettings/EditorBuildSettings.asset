@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartMenuScene.unity
+    guid: 1f1e90308f275b5418efaf580a1f438f
+  - enabled: 1
+    path: Assets/Scenes/MaisonJimi.unity
+    guid: cad3039990172ea409811fe909fcedce
+  - enabled: 1
     path: Assets/Scenes/Plaine Caramel.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1

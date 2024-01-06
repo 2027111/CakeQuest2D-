@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class TreasureChest : DialogueStarterObject
 {
     public Item content;
     [SerializeField] int amount = 1;
+    public bool OnlyOnce = true;
     public bool isOpen;
     public bool locked;
     public Item lockRequirement;
     public int requirementAmount = 1;
     public bool consumesRequirement;
+    public LineInfo[] LockedLines;
+    public LineInfo[] SuccessLines;
     public BoolValue storedOpen;
     Animator anim;
 
@@ -25,13 +30,16 @@ public class TreasureChest : DialogueStarterObject
 
     }
 
-    private void CheckOpen()
+    protected void CheckOpen()
     {
         if (isOpen)
         {
-            anim.SetBool("Opened", isOpen);
+            if (anim)
+            {
+                anim?.SetBool("Opened", isOpen);
+            }
             Interactable inter = GetComponent<Interactable>();
-            if (inter)
+            if (inter && OnlyOnce) 
             {
                 inter.Disable();
             }
@@ -42,57 +50,74 @@ public class TreasureChest : DialogueStarterObject
     {
         if (!started)
         {
-        started = true;
-        string[] vs;
-        if (locked)
-        {
-            Action temp = DialogueOver;
-            if (player.HasObject(lockRequirement, requirementAmount))
+            LineInfo[] Lines = dialogueLines;
+            started = true;
+            if (locked)
             {
-
-
-                vs = new string[] { $"Le coffre est verouillé...", $"Mais vous avez le nombre de {content.itemName} nécéssaire! ({requirementAmount})"};
-               
-                if (consumesRequirement)
+                Action callback = DialogueOver;
+                if (CheckRequirement())
                 {
-                    player.RemoveFromInventory(lockRequirement, requirementAmount);
+
+
+                    Lines = SuccessLines;
+               
+                    if (consumesRequirement)
+                        {
+                        player.RemoveFromInventory(lockRequirement, requirementAmount);
+                        }
+                    Unlock();
+                    callback = RequirementMetEvent;
                 }
-                locked = false;
-                temp = OpenChest;
-            }
-            else
-            {
-                vs = new string[] { $"Le coffre est verouillé...", $"Vous n'avez pas le nombre de {content.itemName} nécéssaire... ({player.AmountObject(lockRequirement)}/{requirementAmount})" };
-            }
-            DialogueBox.Singleton.StartDialogue(vs, temp, player.gameObject, gameObject);
+                else
+                {
+                    Lines = LockedLines;
+                }
+                DialogueBox.Singleton.StartDialogue(Lines, callback, player.gameObject, gameObject);
 
             }
             else
             {
-                OpenChest();
+                RequirementMetEvent();
             }
-
-
-
-        
-
-
 
 
         }
 
     }
-    public void OpenChest()
+
+
+    public void Unlock()
     {
+
+        locked = false;
+    }
+
+    public void StartDialogue()
+    {
+
+    }
+
+
+    public bool CheckRequirement()
+    {
+        return player.HasObject(lockRequirement, requirementAmount);
+    }
+    public void RequirementMetEvent()
+    {
+            LineInfo[] Lines = dialogueLines;
             string[] vs;
             vs = new string[] { $"Vous avez trouvé {amount} {content.itemName + (amount > 1 ? "s" : "")}" };
             isOpen = true;
             storedOpen.RuntimeValue = true;
             player.AddToInventory(content, amount);
-            anim.SetTrigger("Open");
+            if (anim)
+            {
+
+                anim.SetTrigger("Open");
+            }
             CheckOpen();
             Action temp = DialogueOver;
-            DialogueBox.Singleton.StartDialogue(vs, temp, player.gameObject, gameObject);
+            DialogueBox.Singleton.StartDialogue(Lines, temp, player.gameObject, gameObject);
 
         
     }

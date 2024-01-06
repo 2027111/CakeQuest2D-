@@ -10,10 +10,8 @@ public class Interactable : MonoBehaviour
 
     public UnityEvent interactionEvent;
     public UnityEvent contactEvent;
+    public UnityEvent contactEndEvent;
 
-
-
-    
     GameObject player;
 
     [SerializeField] GameObject InteractionIndicator;
@@ -29,16 +27,15 @@ public class Interactable : MonoBehaviour
         interactionEvent?.Invoke();
     }
 
-    public void ContactInvoke()
-    {
-        contactEvent?.Invoke();
-    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
             player = collision.gameObject;
+
+            ManageContactEvent(contactEvent);
             ManageInteraction(player, true);
             ContextClue(true);
         }
@@ -59,11 +56,12 @@ public class Interactable : MonoBehaviour
             }
         }
     }
-    public void ManageContact()
+
+    public void ManageContactEvent(UnityEvent currentevent)
     {
-        if(contactEvent.GetPersistentEventCount() > 0)
+        if (currentevent.GetPersistentEventCount() > 0)
         {
-            ContactInvoke();
+            currentevent?.Invoke();
         }
     }
 
@@ -72,6 +70,7 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             ManageInteraction(player, false);
+            ManageContactEvent(contactEndEvent);
             ContextClue(false);
             
             player = null;

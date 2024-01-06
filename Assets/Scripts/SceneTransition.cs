@@ -14,32 +14,27 @@ public class SceneTransition : MonoBehaviour
     Character player;
 
 
-
-    private void Awake()
+    private void Start()
     {
-        
+
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void TransitionScene()
     {
-        if (other.CompareTag("Player"))
+        player.ChangeState(new CharacterBehaviour());
+        PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
+        if (storage)
         {
-            
-            player = other.GetComponent<Character>();
-            player.ChangeState(new CharacterBehaviour());
-            PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
-            if (storage)
-            {
-                storage.infoStorage.sceneName = sceneToLoadName;
-                storage.infoStorage.nextPosition = playerPositionOnLoad;
-                storage.infoStorage.nextRoomInfo = roomOnLoadInfo;
-                storage.infoStorage.facing = facing;
-            }
-            storage.MoveToScene();
-            //SceneManager.LoadScene(sceneToLoadName);
-
+            storage.infoStorage.sceneName = sceneToLoadName;
+            storage.infoStorage.nextPosition = playerPositionOnLoad;
+            storage.infoStorage.nextRoomInfo = roomOnLoadInfo;
+            storage.infoStorage.facing = facing;
         }
+        storage.MoveToScene();
+        //SceneManager.LoadScene(sceneToLoadName);
     }
+
 
 
 }
