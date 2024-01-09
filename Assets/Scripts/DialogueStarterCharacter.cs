@@ -29,10 +29,8 @@ public class DialogueStarterCharacter : DialogueStarterObject
 
     public override void DialogueOver()
     {
-        base.DialogueOver();
         // Change the state back to the original default behavior
         character.ChangeState(Activator.CreateInstance(defaultBehaviourType) as CharacterBehaviour);
-
-        Debug.Log(defaultBehaviourType);
+        base.DialogueOver();
     }
 }

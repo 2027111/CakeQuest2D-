@@ -177,30 +177,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - portrait: {fileID: 0}
-    talkername: 
-    line: "Vous avez trouv\xE9 {amount} {content.itemName}"
+  - {fileID: 11400000, guid: 991b0919b2e944242b0101c65fb4e4f0, type: 2}
   started: 0
   player: {fileID: 0}
-  content: {fileID: 11400000, guid: 8e62f30cff686774e9fed7bb3cc26f6c, type: 2}
+  content: {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
   amount: 5
   OnlyOnce: 1
   isOpen: 0
-  locked: 1
-  lockRequirement: {fileID: 11400000, guid: 8e62f30cff686774e9fed7bb3cc26f6c, type: 2}
-  requirementAmount: 2
+  locked: 0
+  lockRequirement: {fileID: 0}
+  requirementAmount: 0
   consumesRequirement: 0
   LockedLines:
-  - portrait: {fileID: 0}
-    talkername: 
-    line: "Le coffre est verouill\xE9..."
-  - portrait: {fileID: 0}
-    talkername: 
-    line: "Vous n'avez pas les item n\xE9c\xE9ssaires...( {requirementAmount} {content.itemName})"
+  - {fileID: 11400000, guid: 5dc4c659f04fe494485db85e546e7b64, type: 2}
   SuccessLines:
-  - portrait: {fileID: 0}
-    talkername: 
-    line: Le coffre c'est ouvert!
+  - {fileID: 11400000, guid: 863073cce39a68f44ae1229bb8fe815b, type: 2}
   storedOpen: {fileID: 11400000, guid: e1d0360c86dfc144a99faa13f905b220, type: 2}
 --- !u!114 &7993561500512630955
 MonoBehaviour:

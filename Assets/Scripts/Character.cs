@@ -9,9 +9,10 @@ public class Character : MonoBehaviour
 
     CharacterBehaviour playerBehaviour;
     Movement playerMovement;
-    public Inventory inventory;
+    public CharacterInventory inventory;
     public bool canInteract = false;
     public event Action OnInteractEvent;
+    public Party heroParty;
 
     // Start is called before the first frame update
     private void Awake()
@@ -32,57 +33,31 @@ public class Character : MonoBehaviour
         
     }
 
-    public void AddToInventory(Item content, int amount = 1)
+    public void AddToInventory(InventoryItem content, int amount = 1)
     {
         if (inventory)
         {
-            if(content.itemName == "pesso")
-            {
-                inventory.AddMoney(amount);
-            }
-            else
-            {
-                for(int i = 0; i < amount; i++)
-                {
-                    inventory.items.Add(content);
-                }
-            }
+            inventory.AddToInventory(content, amount);
         }
     }
 
-    public bool HasObject(Item content, int amount = 1)
+    public bool HasObject(InventoryItem content, int amount = 1)
     {
-        List<Item> occurrences = inventory.items.FindAll(x => x == content);
-        if (occurrences.Count < amount)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
+
+        return inventory.HasObject(content, amount);
     }
 
 
-    public int AmountObject(Item content)
+    public int AmountObject(InventoryItem content)
     {
-        List<Item> occurrences = inventory.items.FindAll(x => x == content);
-        return occurrences.Count;
+        return inventory.AmountObject(content);
         
     }
-    public bool RemoveFromInventory(Item content, int amount = 1)
+    public bool RemoveFromInventory(InventoryItem content, int amount = 1)
     {
 
-        List<Item> occurrences = inventory.items.FindAll(x => x == content);
-        if(occurrences.Count < amount)
-        {
-            return false;
-        }
-        for (int i = 0; i < amount; i++)
-        {
-            inventory.items.Remove(content);
-        }
-        return true; ;
+
+        return inventory.RemoveFromInventory(content, amount);
     }
 
     public void LookToward(Vector2 direction)

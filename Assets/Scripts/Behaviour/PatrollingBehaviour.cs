@@ -18,13 +18,17 @@ public class PatrollingBehaviour: CharacterBehaviour
     {
         base.OnEnter(player);
         patrolling = player.GetComponent<Patrolling>();
-        if (!patrolling)
+        if (patrolling)
         {
+            currentTarget = patrolling.GetCurrentWayPoint();
+        }
+        else
+        {
+
             player.ChangeState(new NothingBehaviour());
         }
 
 
-        currentTarget = patrolling.GetCurrentWayPoint();
 
     }
 

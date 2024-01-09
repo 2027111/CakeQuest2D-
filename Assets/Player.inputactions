@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SecondAct",
+                    "type": "Button",
+                    "id": "fd732e6d-a5a5-431a-b91a-feb45755ddf5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -136,11 +145,33 @@
                 {
                     "name": "",
                     "id": "a7fce4f0-d38e-4802-817b-9c1730b3a744",
-                    "path": "<Keyboard>/enter",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "PlayerControls",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5f6a8c0-6216-4f7e-a226-40d53f947460",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PlayerControls",
+                    "action": "SecondAct",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bdb25d9e-7811-47b9-94b9-98bb745a97ee",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ControllerControls",
+                    "action": "SecondAct",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

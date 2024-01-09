@@ -7,12 +7,20 @@ using UnityEngine;
 
 public class TreasureChest : DialogueStarterObject
 {
-    public Item content;
-    [SerializeField] int amount = 1;
+
+
+
+
+
+
+
+
+    public InventoryItem content;
+    public int amount = 1;
     public bool OnlyOnce = true;
     public bool isOpen;
     public bool locked;
-    public Item lockRequirement;
+    public InventoryItem lockRequirement;
     public int requirementAmount = 1;
     public bool consumesRequirement;
     public LineInfo[] LockedLines;
@@ -32,7 +40,7 @@ public class TreasureChest : DialogueStarterObject
 
     protected void CheckOpen()
     {
-        if (isOpen)
+        if (isOpen || content == null)
         {
             if (anim)
             {
@@ -48,6 +56,13 @@ public class TreasureChest : DialogueStarterObject
 
     public override void DialogueAction()
     {
+
+        if(dialogueLines.Length > 0)
+        {
+
+
+
+
         if (!started)
         {
             LineInfo[] Lines = dialogueLines;
@@ -72,7 +87,7 @@ public class TreasureChest : DialogueStarterObject
                 {
                     Lines = LockedLines;
                 }
-                DialogueBox.Singleton.StartDialogue(Lines, callback, player.gameObject, gameObject);
+                DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, Lines), callback, player.gameObject, gameObject);
 
             }
             else
@@ -81,7 +96,9 @@ public class TreasureChest : DialogueStarterObject
             }
 
 
+            }
         }
+
 
     }
 
@@ -105,8 +122,6 @@ public class TreasureChest : DialogueStarterObject
     public void RequirementMetEvent()
     {
             LineInfo[] Lines = dialogueLines;
-            string[] vs;
-            vs = new string[] { $"Vous avez trouvé {amount} {content.itemName + (amount > 1 ? "s" : "")}" };
             isOpen = true;
             storedOpen.RuntimeValue = true;
             player.AddToInventory(content, amount);
@@ -116,10 +131,11 @@ public class TreasureChest : DialogueStarterObject
                 anim.SetTrigger("Open");
             }
             CheckOpen();
-            Action temp = DialogueOver;
-            DialogueBox.Singleton.StartDialogue(Lines, temp, player.gameObject, gameObject);
+            Action temp = DialogueOver; 
+            DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, Lines), DialogueOver, player.gameObject, gameObject);
 
-        
+
+
     }
 
     public override void DialogueOver()

@@ -146,7 +146,7 @@ Transform:
   - {fileID: 6713030783894939603}
   - {fileID: 134502415}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8695336453385115700
 MonoBehaviour:
@@ -300,6 +300,9 @@ MonoBehaviour:
   contactEvent:
     m_PersistentCalls:
       m_Calls: []
+  contactEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   InteractionIndicator: {fileID: 134502412}
 --- !u!114 &8532248538276063811
 MonoBehaviour:
@@ -314,11 +317,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueLines:
-  - portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
-    talkername: Jimi
-    line: La honte il jog
+  - {fileID: 0}
   started: 0
   player: {fileID: 0}
+  ThisbattleInfo: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}
+  currentBattleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
 --- !u!95 &6393111097336211545
 Animator:
   serializedVersion: 4

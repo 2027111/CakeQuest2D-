@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9f8c7baa4112da499e7b63230b44c76, type: 3}
   m_Name: PlayerInfoStorage
   m_EditorClassIdentifier: 
-  sceneName: MaisonJimi
-  nextRoomInfo: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
-  nextPosition: {x: 14.337574, y: 4.928615}
+  sceneName: HouseTest
+  nextRoomInfo: {fileID: 11400000, guid: f03f58389c3abb843998b95a3f14e04a, type: 2}
+  nextPosition: {x: 0, y: -4}
   facing: 2
   forceNextChange: 0

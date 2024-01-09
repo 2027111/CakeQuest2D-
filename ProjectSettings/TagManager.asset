@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - NPC
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -12,13 +14,13 @@ TagManager:
   - Water
   - UI
   - Objects
+  - Ground
+  - Invincible
+  - BattleCharacter
+  - Projectile
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Dead
   - 
   - 
   - 

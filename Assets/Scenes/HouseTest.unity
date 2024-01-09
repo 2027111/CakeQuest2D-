@@ -3540,8 +3540,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1161719099, guid: b251175dc50c5fa4eaaeb380020c2f9b, type: 3}
       propertyPath: dialogueLines.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1161719099, guid: b251175dc50c5fa4eaaeb380020c2f9b, type: 3}
+      propertyPath: dialogueLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b6c4505a56130804fbe33536b07741ab, type: 2}
     - target: {fileID: 1161719099, guid: b251175dc50c5fa4eaaeb380020c2f9b, type: 3}
       propertyPath: dialogueLines.Array.data[0].line
       value: Oh sweet! an Apple watch.
@@ -5310,6 +5314,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1115370200, guid: 307d433fe481b9548ba3095db8af5bc1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115370200, guid: 307d433fe481b9548ba3095db8af5bc1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5974590969075240403, guid: 307d433fe481b9548ba3095db8af5bc1, type: 3}
       propertyPath: m_Pivot.x
       value: 0

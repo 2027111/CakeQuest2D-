@@ -36,6 +36,7 @@ public class PlayerInputController : MonoBehaviour
         // Check if the interaction is a press (button down)
         if (callback.started)
         {
+            Debug.Log("Pause");
             Pause();
 
         }

@@ -4,38 +4,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-[Serializable] public class LineInfo
+
+
+
+public enum GameState
 {
-    public Sprite portrait;
-    public string talkername;
-    public string line;
-
-
-    public LineInfo()
-    {
-        portrait = null;
-        talkername = "";
-        line = "";
-    }
+    Overworld,
+    BattleScene
 }
 
 
 
 
 
+
+[Serializable]
 public class DialogueContent
 {
     public LineInfo[] lines;
-    public GameObject player;
-    public GameObject originObject;
 
 
 
-    public DialogueContent(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null)
+    public DialogueContent(LineInfo[] lines)
     {
         this.lines = lines;
-        this.player = playerObject;
-        this.originObject = originObject;
     }
 }
 
@@ -65,7 +57,7 @@ public class DialogueBox : MonoBehaviour
     }
 
     public Action OnDialogueOverAction;
-
+    GameState currentState = GameState.Overworld;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
     [SerializeField] TMP_Text nameText;
@@ -80,7 +72,7 @@ public class DialogueBox : MonoBehaviour
     Coroutine showBoxCoroutine;
     Coroutine setTextCoroutine;
 
-    Character player = null;
+    GameObject player = null;
     //DialogueStarterObject starterObject;
     [SerializeField] private GameObject nameTextContainer;
 
@@ -94,9 +86,10 @@ public class DialogueBox : MonoBehaviour
 
 
 
-    public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null)
+    public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        DialogueContent newDialogue = new DialogueContent(lines, playerObject, originObject);
+        currentState = state;
+        DialogueContent newDialogue = new DialogueContent(lines);
 
         if(lines.Length > 0)
         {
@@ -110,24 +103,40 @@ public class DialogueBox : MonoBehaviour
                 dialogueText.text = "";
                 SetupLine(lines[0]);
                 StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
+
                 if (playerObject == null)
                 {
-                    player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
+                    player = GameObject.FindGameObjectWithTag("Player");
                 }
                 else
                 {
 
-                    player = playerObject.GetComponent<Character>();
+                    player = playerObject;
                 }
-
+                if (currentState == GameState.Overworld)
+                {
+                   
+                    if (player)
+                    {
+                        player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
+                        player.GetComponent<Character>().OnInteractEvent += Interact;
+                        if (originObject)
+                        {
+                            player.GetComponent<Character>().LookAt(originObject);
+                        }
+                    }
+                }
+                else if(currentState == GameState.BattleScene)
+                {
+                    if (player)
+                    {
+                        player.GetComponent<StateMachine>().SetNextState(new EntranceState());
+                        player.GetComponent<BattleCharacter>().OnAttackPressed += Interact;
+                    }
+                }
                 
 
-                player.ChangeState(new InteractingBehaviour());
-                player.OnInteractEvent += Interact;
-                if (originObject)
-                {
-                    player.LookAt(originObject);
-                }
+                
                 currentDialogue = newDialogue;
                 dialogueIndex = 0;
                 active = true;
@@ -136,10 +145,10 @@ public class DialogueBox : MonoBehaviour
         
     }
 
-    public void StartDialogue(LineInfo[] lines, Action callback, GameObject playerObject = null, GameObject originObject = null)
+    public void StartDialogue(LineInfo[] lines, Action callback,GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
         OnDialogueOverAction = callback;
-        StartDialogue(lines, playerObject, originObject);
+        StartDialogue(lines, playerObject, originObject, state);
     }
 
     public void SetupLine(LineInfo line)
@@ -161,21 +170,15 @@ public class DialogueBox : MonoBehaviour
             if (dialogueIndex >= currentDialogue.lines.Length)
                 {
 
-                    if(dialogueWaitingLine.Count > 0)
+                    if (dialogueWaitingLine.Count > 0)
                     {
-                        currentDialogue = dialogueWaitingLine[0];
-                        dialogueWaitingLine.RemoveAt(0);
-                        dialogueIndex = 0;
-                        NextLine();
+                        StartNextDialogueWaiting();
                     }
                     else
                     {
-                        if (player)
-                        {
-                            player.OnInteractEvent -= Interact;
-                            player = null;
-                        }
+                        EndDialogue();
                         Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+
                     }
 
 
@@ -197,6 +200,35 @@ public class DialogueBox : MonoBehaviour
             }
         }
         }
+    }
+    public void StartNextDialogueWaiting()
+    {
+        currentDialogue = dialogueWaitingLine[0];
+        dialogueWaitingLine.RemoveAt(0);
+        dialogueIndex = 0;
+        NextLine();
+    }
+
+    public void EndDialogue()
+    {
+        if (player)
+        {
+            if (currentState == GameState.Overworld)
+            {
+
+                player.GetComponent<Character>().OnInteractEvent -= Interact;
+
+            }
+        }
+        else if (currentState == GameState.BattleScene)
+        {
+            player.GetComponent<BattleCharacter>().OnAttackPressed -= Interact;
+
+
+
+            player = null;
+        }
+
     }
     public void StartDialogue(string[] vs, Action callback, GameObject playerObject = null, GameObject originObject = null)
     {
@@ -263,6 +295,14 @@ public class DialogueBox : MonoBehaviour
     public bool IsActive()
     {
         return active;
+    }
+
+    public void ForceStop()
+    {
+        EndDialogue();
+        ResetBox();
+        isShowing = false;
+        group.alpha = 0;
     }
     IEnumerator ShowDialogueBoxAlpha(bool show)
     {

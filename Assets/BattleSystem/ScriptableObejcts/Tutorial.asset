@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ba8b5bd428cb846b40ff5177f10bdf, type: 3}
+  m_Name: Tutorial
+  m_EditorClassIdentifier: 
+  BattleMusic: {fileID: 8300000, guid: f92a4982bec7e764d98a41430911c16f, type: 3}
+  CutsceneToPlay: {fileID: 11400000, guid: f9d6cbe23f7a42743a4cef6c4bf3b4b8, type: 2}
+  CutsceneForDialogue: {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}

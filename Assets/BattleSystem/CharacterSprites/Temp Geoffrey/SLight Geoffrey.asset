@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd12fd4d04f3b764a9589acca4042b8c, type: 3}
+  m_Name: SLight Geoffrey
+  m_EditorClassIdentifier: 
+  conserveVelocity: 0
+  animationName: 
+  animation: {fileID: 7400000, guid: 9e95208d216425f408f3aa5ff71c6700, type: 2}
+  attackType: 0
+  attackProperties: 0
+  attackPlacement: 2
+  durationInFrames: 8
+  startOpenFrame: 3
+  manaCost: 13
+  hitboxes: []
+  prefabs:
+  - AttackPrefab: {fileID: 3122504944675684838, guid: 4d098db6d82ebdf4b995c533acfee01f, type: 3}
+    DefaultSpawnPosition: {x: 1, y: 1, z: 0}
+    frame: 3
+    durationInFrame: 10
+  forceEvents: []

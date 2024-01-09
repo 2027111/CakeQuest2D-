@@ -17,7 +17,7 @@ public class PlayerInfoStorage : MonoBehaviour
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
 
-
+    
 
 
 
@@ -34,45 +34,63 @@ public class PlayerInfoStorage : MonoBehaviour
                 MoveToScene();
             }
         }
+        if (fadeInPanel != null)
+        {
+            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+            Destroy(panel, DestroyTime);
+        }
+    }
+
+
+    public void GoToBattleScene()
+    {
+        SetNewInformationToFile();
+        infoStorage.forceNextChange = true;
+        StartCoroutine(FadeCoroutine("BattleScene"));
+
     }
 
     public void MoveToScene()
     {
+
+
+
+        if (DialogueBox.Singleton)
+        {
+            if (DialogueBox.Singleton.IsActive())
+            {
+                DialogueBox.Singleton.ForceStop();
+            }
+        }
         if (infoStorage)
         {
 
             if (infoStorage.sceneName != SceneManager.GetActiveScene().name)
             {
                 infoStorage.forceNextChange = true;
-                StartCoroutine(FadeCoroutine());
+                StartCoroutine(FadeCoroutine(infoStorage.sceneName));
             }
             else
             {
+                if (fadeInPanel != null)
+                {
+                    GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
+                    Destroy(panel, DestroyTime);
+                }
+
                 if (infoStorage.nextRoomInfo != Camera.main.GetComponent<CameraMovement>().GetCurrentRoom())
                 {
                     Camera.main.GetComponent<CameraMovement>().SetNewRoom(infoStorage.nextRoomInfo);
-                }
-                else
-                {
-
-
-
-                
-                    if (fadeInPanel != null)
-                    {
-                        GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-                        Destroy(panel, DestroyTime);
-                    }
                 }
 
                 character.SetPosition(infoStorage.nextPosition);
                 Camera.main.GetComponent<CameraMovement>().ForceToTarget();
 
                 infoStorage.forceNextChange = false;
+
+                character.LookToward(RoomMove.DirectionToVector(infoStorage.facing));
+
             }
-
-            character.LookToward(RoomMove.DirectionToVector(infoStorage.facing));
-
         }
         
     }
@@ -94,14 +112,16 @@ public class PlayerInfoStorage : MonoBehaviour
         infoStorage.nextRoomInfo = newRoom;
     }
 
-    public IEnumerator FadeCoroutine()
+    public IEnumerator FadeCoroutine(string scene)
     {
+
+        GetComponent<Character>().ChangeState(new NothingBehaviour());
         if (fadeOutPanel != null)
         {
             Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
         }
         yield return new WaitForSeconds(minimumFadeTime);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(infoStorage.sceneName);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
 
         while (!asyncOperation.isDone)
         {

@@ -24,6 +24,11 @@ public class AnimationController : MonoBehaviour
     public void ToggleAnimator(bool on)
     {
         Animate = on;
+        if (!Animate)
+        {
+            isMoving = false;
+            anim.SetBool("IsMoving", isMoving);
+        }
     }
 
     // Update is called once per frame
