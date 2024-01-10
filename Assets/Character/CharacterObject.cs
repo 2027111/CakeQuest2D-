@@ -5,13 +5,11 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-public class CharacterObject : ScriptableObject
+public class CharacterObject : YourScriptableObject
 {
 
 
-    public string characterName;
-    public Sprite[] portraits;
-
+    public CharacterData characterData;
 
     public int Health;
     public int MaxHealth;
@@ -27,8 +25,6 @@ public class CharacterObject : ScriptableObject
     public int Armor;
     public int BaseArmor;
 
-    public string HealthName;
-    public string ManaName;
 
 
     public List<AttackData> AttackList = new List<AttackData>();

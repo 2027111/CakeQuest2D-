@@ -38,7 +38,7 @@ public class GameSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = $"{Application.persistentDataPath}+/SaveFiles/";
+        path = $"{Application.persistentDataPath}/SaveFiles/";
         CreateSavePath();
     }
  

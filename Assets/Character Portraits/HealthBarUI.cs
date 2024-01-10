@@ -18,10 +18,10 @@ public class HealthBarUI : MonoBehaviour
         characterReference = character;
         characterReference.OnHealthChange += healthBar.SetFillAmount;
         characterReference.OnManaChange += manaBar.SetFillAmount;
-        portraitImage.sprite = characterReference.portraits[0];
-        healthBar.SetBarName(characterReference.HealthName);
-        manaBar.SetBarName(characterReference.ManaName);
-        usernametext.text = $"{characterReference.characterName}";
+        portraitImage.sprite = characterReference.characterData.portraits[0];
+        healthBar.SetBarName(characterReference.characterData.HealthName);
+        manaBar.SetBarName(characterReference.characterData.ManaName);
+        usernametext.text = $"{characterReference.characterData.characterName}";
 
 
 

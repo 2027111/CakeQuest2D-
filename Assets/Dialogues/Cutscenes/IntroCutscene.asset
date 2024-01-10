@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IntroCutscene
   m_EditorClassIdentifier: 
   RuntimeValue: 0
-  repeats: 1
+  repeats: 0
   dialogueContents:
   - lines:
     - {fileID: 11400000, guid: ce21c4aa76742154da02e377b2ef9d58, type: 2}

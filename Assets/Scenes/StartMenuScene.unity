@@ -296,7 +296,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -66.6}
-  m_SizeDelta: {x: 206.7511, y: 59.4173}
+  m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101206276
 MonoBehaviour:
@@ -598,8 +598,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4ad519988878118479e5a07260885eaf, type: 2}
+  m_sharedMaterial: {fileID: -4338355397666175267, guid: 4ad519988878118479e5a07260885eaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -721,6 +721,10 @@ PrefabInstance:
     - target: {fileID: 2590909896058287530, guid: aea2fdfa76b74da438485c75b314705a, type: 3}
       propertyPath: m_Name
       value: GameSaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590909896058287531, guid: aea2fdfa76b74da438485c75b314705a, type: 3}
+      propertyPath: path
+      value: C:/Users/adamr/AppData/LocalLow/R_Inc/Cake Quest/Save_Files
       objectReference: {fileID: 0}
     - target: {fileID: 2590909896058287531, guid: aea2fdfa76b74da438485c75b314705a, type: 3}
       propertyPath: objectsToSave.Array.size
@@ -892,141 +896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!1 &929003571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 929003572}
-  - component: {fileID: 929003574}
-  - component: {fileID: 929003573}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &929003572
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929003571}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1482502492}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &929003573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929003571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Save Current Language Files
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4ad519988878118479e5a07260885eaf, type: 2}
-  m_sharedMaterial: {fileID: -4338355397666175267, guid: 4ad519988878118479e5a07260885eaf, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 37.3
-  m_fontSizeBase: 37.3
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &929003574
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929003571}
-  m_CullTransparentMesh: 1
 --- !u!1 &938373453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,7 +1264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0.3}
-  m_SizeDelta: {x: 206.7511, y: 59.4173}
+  m_SizeDelta: {x: 240, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149734334
 MonoBehaviour:
@@ -1656,6 +1525,7 @@ GameObject:
   - component: {fileID: 1211635002}
   - component: {fileID: 1211635001}
   - component: {fileID: 1211635005}
+  - component: {fileID: 1211635006}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1742,7 +1612,6 @@ RectTransform:
   - {fileID: 1149734333}
   - {fileID: 101206275}
   - {fileID: 2067529978}
-  - {fileID: 1482502492}
   - {fileID: 2086586175}
   - {fileID: 1215089928}
   m_Father: {fileID: 0}
@@ -1775,6 +1644,45 @@ MonoBehaviour:
   firstScene: MaisonJimi
   firstRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}
   languageDropdown: {fileID: 2086586176}
+--- !u!114 &1211635006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211635000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2436b86302d132b4faf6277d14606ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextObjects:
+    keys:
+    - newGame
+    - continueGame
+    - leaveGame
+    - settings
+    - inventory
+    - pause
+    - use
+    - returnToTitle
+    - resume
+    values:
+    - Value:
+      - {fileID: 1596417387}
+    - Value:
+      - {fileID: 938373455}
+    - Value:
+      - {fileID: 1931827826}
+    - Value:
+      - {fileID: 2002980726}
+    - Value: []
+    - Value: []
+    - Value: []
+    - Value: []
+    - Value: []
+    - Value: []
+  menuName: {fileID: 11400000, guid: 76cc4d87545cf3b4cb5b732724205675, type: 2}
 --- !u!1 &1215089927
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,7 +1721,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 56.116, y: -132.5}
-  m_SizeDelta: {x: 94.5197, y: 33.5437}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1215089929
 MonoBehaviour:
@@ -2031,140 +1939,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240856575}
-  m_CullTransparentMesh: 1
---- !u!1 &1482502491
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1482502492}
-  - component: {fileID: 1482502495}
-  - component: {fileID: 1482502494}
-  - component: {fileID: 1482502493}
-  m_Layer: 5
-  m_Name: SaveScriptsButton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1482502492
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482502491}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 929003572}
-  m_Father: {fileID: 1211635004}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 564.2, y: -207.96}
-  m_SizeDelta: {x: 274.1465, y: 33.5437}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1482502493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482502491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 0.8, b: 0.5803922, a: 1}
-    m_HighlightedColor: {r: 1, g: 0.504717, b: 0.68791825, a: 1}
-    m_PressedColor: {r: 0.7169812, g: 0.36863655, b: 0.49581, a: 1}
-    m_SelectedColor: {r: 1, g: 0.5058824, b: 0.6862745, a: 1}
-    m_DisabledColor: {r: 0.6132076, g: 0.6132076, b: 0.6132076, a: 0.42745098}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1482502494}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1805011554}
-        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: SaveScriptables
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1482502494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482502491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 009f924435e71954396cf2522638a8fd, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1482502495
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482502491}
   m_CullTransparentMesh: 1
 --- !u!1 &1511747127
 GameObject:
@@ -2697,7 +2471,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425cedf9d0250994c912c3e08f2958da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectsToSave:
+  - {fileID: 11400000, guid: 490bd274c7c5f9a4794e5cd1f5fdffff, type: 2}
+  - {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
+  - {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}
+  - {fileID: 11400000, guid: bf128a74d299a05438313721f1da3a17, type: 2}
+  - {fileID: 11400000, guid: df7fbc675dbd5354891b3dd46b224981, type: 2}
+  - {fileID: 11400000, guid: e1d0360c86dfc144a99faa13f905b220, type: 2}
+  - {fileID: 11400000, guid: 3c4fbf3ec1fe8fd47a6b63826282419a, type: 2}
+  - {fileID: 11400000, guid: 2aea47402aa764a42ab69917954688b0, type: 2}
+  - {fileID: 11400000, guid: bf7f4c6879e1e854c959ce1cb23d2ff2, type: 2}
+  - {fileID: 11400000, guid: 13a0dfbe416d90d45b21274f7e295add, type: 2}
+  - {fileID: 11400000, guid: c873756f74129534cbe5991b830481d9, type: 2}
   objectsToTranslate:
+  - {fileID: 11400000, guid: 76cc4d87545cf3b4cb5b732724205675, type: 2}
   - {fileID: 11400000, guid: 5dc4c659f04fe494485db85e546e7b64, type: 2}
   - {fileID: 11400000, guid: 991b0919b2e944242b0101c65fb4e4f0, type: 2}
   - {fileID: 11400000, guid: 863073cce39a68f44ae1229bb8fe815b, type: 2}
@@ -2710,13 +2497,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c975daf8cfcae8e479c914d9bbaebf17, type: 2}
   - {fileID: 11400000, guid: 4401c2c3a508c28429e9afe96e8daead, type: 2}
   - {fileID: 11400000, guid: cfd7d18dd88e299499554bf5af0e65bb, type: 2}
-  - {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
-  - {fileID: 11400000, guid: bf7f4c6879e1e854c959ce1cb23d2ff2, type: 2}
-  - {fileID: 11400000, guid: 13a0dfbe416d90d45b21274f7e295add, type: 2}
-  currentLanguage: 0
-  path: 
+  - {fileID: 11400000, guid: 243c15b623e95714ab713ac8670411d5, type: 2}
+  - {fileID: 11400000, guid: f0cff09441ade6d4185cab78748b939a, type: 2}
+  - {fileID: 11400000, guid: 003fa69a0f3a05a41b95b6155174863e, type: 2}
+  currentLanguage: {fileID: 11400000, guid: 490bd274c7c5f9a4794e5cd1f5fdffff, type: 2}
+  path: C:/Users/adamr/AppData/LocalLow/R_Inc/Cake Quest
   extension: json
   OnLanguageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSaveFileLoaded:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &1805011555
@@ -3119,7 +2909,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -56.116, y: -132.5}
-  m_SizeDelta: {x: 94.5197, y: 33.5437}
+  m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067529979
 MonoBehaviour:

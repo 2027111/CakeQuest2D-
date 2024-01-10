@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83578cbc0501d3445a1e9b01b580a5f9, type: 3}
   m_Name: TempEnemy
   m_EditorClassIdentifier: 
-  characterName: Bitch
-  portraits:
-  - {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
-  - {fileID: 21300000, guid: 7dbb33a3e03bea447bf5690852e622ef, type: 3}
+  characterData: {fileID: 11400000, guid: f0cff09441ade6d4185cab78748b939a, type: 2}
   Health: 200
   MaxHealth: 200
   Mana: 1173
@@ -25,8 +22,6 @@ MonoBehaviour:
   isDead: 0
   Armor: 0
   BaseArmor: 0
-  HealthName: Vitality
-  ManaName: Energy
   AttackList:
   - {fileID: 11400000, guid: 899ad845d87d19342bd44511444b4c09, type: 2}
   - {fileID: 11400000, guid: 6268675abbc159644b60fb09b87a7219, type: 2}

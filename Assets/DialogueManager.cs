@@ -5,20 +5,25 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using System;
 
-public enum Language
+public enum SaveFiles
 {
-    Français,
-    English,
+    saveFile,
+    translation
 }
+
+
 
 public class DialogueManager : MonoBehaviour
 {
     private static DialogueManager _singleton;
 
+    public List<YourScriptableObject> objectsToSave = new List<YourScriptableObject>();
+    public List<YourScriptableObject> objectsToTranslate = new List<YourScriptableObject>();
 
 
-    public List<ScriptableObject> objectsToTranslate;
+
 
 
 
@@ -42,19 +47,8 @@ public class DialogueManager : MonoBehaviour
     }
 
 
-    public void OnLanguageDropdownValueChanged(int value)
-    {
-        // Handle the dropdown value changed event
-        // You can access the selected enum value using the dropdown's value property
-        currentLanguage = (Language)value;
-        OnChangeLanguage();
-    }
 
-
-
-
-
-    public Language currentLanguage = Language.Français;
+    public LanguageObject currentLanguage;
 
     public string path;
     public string extension = "json";
@@ -62,11 +56,33 @@ public class DialogueManager : MonoBehaviour
 
 
     public UnityEvent OnLanguageChanged;
+    public UnityEvent OnSaveFileLoaded;
 
 
 
+    private void OnValidate()
+    {
 
+        path = $"{Application.persistentDataPath}";
+    }
 
+    public void OnLanguageDropdownValueChanged(int value)
+    {
+        // Handle the dropdown value changed event
+        // You can access the selected enum value using the dropdown's value property
+        SetLanguage(value);
+        OnChangeLanguage();
+    }
+
+    public Language GetLanguage()
+    {
+        return currentLanguage.GetLanguage();
+    }
+
+    public void SetLanguage(int value)
+    {
+        currentLanguage.SetLanguage((Language)value);
+    }
 
     private void Awake()
     {
@@ -76,18 +92,25 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = $"{Application.persistentDataPath}/Dialogues";
         CreateSavePath();
+        LoadSaveFile();
+        LoadLanguage();
     }
 
-    private void CreateSavePath()
+    public void CreateSavePath()
     {
-        // Check if the directory exists, if not, create it
-        if (!Directory.Exists(path))
+        foreach (var value in Enum.GetValues(typeof(SaveFiles)))
         {
-            Directory.CreateDirectory(path);
+            string enumValueName = value.ToString();
+
+            // Check if the directory exists, if not, create it
+            if (!Directory.Exists(GetPath(enumValueName)))
+            {
+                Directory.CreateDirectory(GetPath(enumValueName));
+            }
         }
     }
+
 
     private void OnDisable()
     {
@@ -97,61 +120,117 @@ public class DialogueManager : MonoBehaviour
 
     public void OnChangeLanguage()
     {
-        LoadScriptables();
+        LoadLanguage();
     }
 
 
 
-    public string GetPath()
+    public string GetPath(string whattosave)
     {
-        return path + string.Format("/{0}_dialogues.{1}", currentLanguage, extension);
+        return path + string.Format("/{0}", whattosave);
+    }
+
+    public string GetFilePath(string whattosave)
+    {
+        return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? GetLanguage() + "_" : ""));
     }
 
 
-    public void SaveScriptables()
+    public void SaveGame()
     {
-        List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
-
-        foreach (ScriptableObject obj in objectsToTranslate)
-        {
-            // Create a ScriptableObjectDTO instance for serialization
-            ScriptableObjectDTO scriptableObjectDTO = new ScriptableObjectDTO(obj);
-            dtoList.Add(scriptableObjectDTO);
-        }
-
-        string filePath = GetPath(); // Use a specific name for the file
-
-        // Serialize the entire List<ScriptableObjectDTO> using JsonUtility
-        var json = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList });
-        File.WriteAllText(filePath, json);
+        SaveScriptables(SaveFiles.saveFile);
+    }
+    public void SaveDialogue()
+    {
+        SaveScriptables(SaveFiles.translation);
     }
 
-    public void LoadScriptables()
+    public void LoadLanguage()
     {
-        string filePath = GetPath(); // Use the same specific name for the file
 
-        if (File.Exists(filePath))
-        {
-            var json = File.ReadAllText(filePath);
-            ScriptableObjectListWrapper listWrapper = JsonUtility.FromJson<ScriptableObjectListWrapper>(json);
-
-            List<ScriptableObjectDTO> dtoList = listWrapper.objects;
-
-            // Apply data to the ScriptableObjects
-            for (int i = 0; i < Mathf.Min(dtoList.Count, objectsToTranslate.Count); i++)
-            {
-                ScriptableObject obj = objectsToTranslate[i];
-                ScriptableObjectDTO scriptableObjectDTO = dtoList[i];
-                scriptableObjectDTO.ApplyData(obj);
-
-            }
-        }
+        LoadScriptables(SaveFiles.translation);
 
         OnLanguageChanged?.Invoke();
     }
 
 
+    public void LoadSaveFile()
+    {
+        LoadScriptables(SaveFiles.saveFile);
 
+        OnSaveFileLoaded?.Invoke();
+
+    }
+
+    public void SaveEverything()
+    {
+
+
+
+        SaveScriptables(SaveFiles.saveFile);
+        SaveScriptables(SaveFiles.translation);
+    }
+
+
+    public void SaveScriptables(SaveFiles listName)
+    {
+        List<YourScriptableObject> list;
+
+        list = GetListMatch(listName);
+        string filePath = GetFilePath(listName.ToString());
+
+            List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
+
+            foreach (YourScriptableObject obj in list)
+            {
+                ScriptableObjectDTO scriptableObjectDTO = new ScriptableObjectDTO(obj, obj.Id);
+                dtoList.Add(scriptableObjectDTO);
+            }
+
+            var json = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
+            File.WriteAllText(filePath, json);
+        
+    }
+
+    public void LoadScriptables(SaveFiles listName)
+    {
+        List<YourScriptableObject> list;
+            list = GetListMatch(listName);
+            string filePath = GetFilePath(listName.ToString());
+
+            if (File.Exists(filePath))
+            {
+                var json = File.ReadAllText(filePath);
+                ScriptableObjectListWrapper listWrapper = JsonUtility.FromJson<ScriptableObjectListWrapper>(json);
+
+                List<ScriptableObjectDTO> dtoList = listWrapper.objects;
+
+                foreach (YourScriptableObject obj in list)
+            {
+                Debug.Log(obj.Id.ToString());
+                ScriptableObjectDTO scriptableObjectDTO = dtoList.Find(dto => dto.Id == ((YourScriptableObject)obj).Id.ToString());
+
+                // Find the corresponding DTO using the unique identifier
+                if (scriptableObjectDTO != null)
+                    {
+                        // Apply data to the ScriptableObject
+                        scriptableObjectDTO.ApplyData(obj);
+                    }
+                }
+            }
+        }
+    
+
+
+    private List<YourScriptableObject> GetListMatch(SaveFiles listName)
+    {
+        switch (listName)
+        {
+            case SaveFiles.translation:
+                return objectsToTranslate;
+            case SaveFiles.saveFile:
+                return objectsToSave;
+            default: return null;
+        }
+    }
 }
-
-

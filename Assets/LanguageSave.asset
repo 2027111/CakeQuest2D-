@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540c7f276e93ea347bd5be0c7f87d0a9, type: 3}
-  m_Name: SGT Cutscene
+  m_Script: {fileID: 11500000, guid: 3f548b3848f96f345a08e1e1a6a3d808, type: 3}
+  m_Name: LanguageSave
   m_EditorClassIdentifier: 
-  RuntimeValue: 0
-  repeats: 0
-  dialogueContents:
-  - lines:
-    - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
-  dialogueIndex: 0
+  language: 0

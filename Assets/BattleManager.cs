@@ -338,7 +338,7 @@ public class BattleManager : MonoBehaviour
         CharacterGameObject.GetComponent<BattleCharacter>().SetAnimatorController(characterObject.animationController);
         CharacterGameObject.GetComponent<BattleCharacter>().alm.SetAttackList(characterObject.AttackList);
         CharacterGameObject.GetComponent<TeamComponent>().teamIndex = index;
-        CharacterGameObject.name = characterObject.characterName;
+        CharacterGameObject.name = characterObject.characterData.characterName;
         characters.Add(CharacterGameObject);
 
 
