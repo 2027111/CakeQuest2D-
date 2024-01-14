@@ -77,6 +77,15 @@ public class StateMachine : MonoBehaviour
         ((MeleeBaseState)nextState).OnEnter(this, data); 
     }
 
+
+    private void SetState(State nextState, SpellData data)
+    {
+        CurrentState?.OnExit();
+        CurrentState = nextState;
+        Debug.Log(data == null);
+        ((SpellCastingState)nextState).OnEnter(this, data);
+    }
+
     public void SetNextStateToMain()
     {
         if (GetComponent<TeamComponent>().teamIndex == TeamIndex.Enemy)
@@ -102,13 +111,23 @@ public class StateMachine : MonoBehaviour
         {
             if(data != null)
             {
-                if (typeof(MeleeBaseState).IsAssignableFrom(_newState.GetType()));
+                if (data.GetType() == typeof(SpellData))
                 {
-                    SetState(_newState, data);
+                    SetState(new SpellCastingState(), (SpellData)data);
+
                 }
+                else if (data.GetType() == typeof(AttackData))
+                {
+                    if (typeof(MeleeBaseState).IsAssignableFrom(_newState.GetType()))
+                    {
+                        SetState(_newState, data);
+                    }
+                }
+
             }
         }
     }
+
 
 
 }

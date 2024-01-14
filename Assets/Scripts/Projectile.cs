@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
     bool On = true;
     Rigidbody2D rb2D;
     BoxCollider2D hitbox;
-        
+    bool DestroyOnContact;    
 
     private void Start()
     {
@@ -87,7 +87,10 @@ public class Projectile : MonoBehaviour
                                 Entity entity = collidersToDamage[i].GetComponent<Entity>();
                                 entity.TakeDamage(damage, Owner.GetComponent<Entity>());
                                 entity.OnDamageTaken?.Invoke(-damage, Owner);
-                                Destroy(gameObject);
+                                    if (DestroyOnContact)
+                                    {
+                                        Destroy(gameObject);
+                                    }
                             }
                             Debug.Log(collidersToDamage[i].name + " -> Enemy has taken Damage");
                             collidersDamaged.Add(collidersToDamage[i]);

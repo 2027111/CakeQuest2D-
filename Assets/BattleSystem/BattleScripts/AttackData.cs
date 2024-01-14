@@ -6,13 +6,7 @@ using UnityEngine;
 
 
 
-public enum AttackType
-{
-    Melee,
-    Projectile,
-    Spell,
-    TargetSpell,
-}
+
 
 
 public enum AttackProperties
@@ -28,8 +22,6 @@ public class AttackData : ScriptableObject
     public bool conserveVelocity;
     public string animationName;
     public AnimationClip animation;
-    public AttackType attackType = AttackType.Melee;
-    public AttackProperties attackProperties = AttackProperties.None;
     public AttackPlacement attackPlacement = AttackPlacement.NONE;
     public float durationInFrames;
     public int startOpenFrame;
@@ -45,7 +37,7 @@ public class AttackData : ScriptableObject
     {
         foreach(HitBoxInfo hitBoxInfo in hitboxes)
         {
-            if (hitBoxInfo.frame >= frame- hitBoxInfo.durationInFrame && hitBoxInfo.frame <= frame)
+            if (hitBoxInfo.frame + hitBoxInfo.durationInFrame > frame  && hitBoxInfo.frame <= frame)
             {
                 return hitBoxInfo;
             } 

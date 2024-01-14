@@ -43,7 +43,7 @@ public class MeleeBaseState : State
             stateMachine.SetNextStateToMain();
 
         }
-        else
+        else if(data.GetType() == typeof(AttackData))
         {
 
             collidersDamaged = new List<Collider2D>();

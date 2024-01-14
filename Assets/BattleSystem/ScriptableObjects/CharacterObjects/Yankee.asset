@@ -29,4 +29,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4cec5cfe09c0f534286602306541e93c, type: 2}
   - {fileID: 11400000, guid: 29b5eed7ae864a242a81fd4d9f8c7cd2, type: 2}
   - {fileID: 11400000, guid: c39dfd8557fcc9f4bbe8e1d86fda84b6, type: 2}
+  - {fileID: 11400000, guid: e399c1780eb5204429e766c8430f2e94, type: 2}
   animationController: {fileID: 22100000, guid: 93fa3eb9cf68de94a94b211020e9b6ae, type: 2}
