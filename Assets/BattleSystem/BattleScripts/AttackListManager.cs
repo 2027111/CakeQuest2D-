@@ -8,9 +8,9 @@ public enum AttackPlacement
     NLIGHT,
     SLIGHT,
     DLIGHT,
-    NAIR,
-    SAIR,
-    DAIR,
+    NSPECIAL,
+    SSPECIAL,
+    DSPECIAL,
 }
 public class AttackListManager : MonoBehaviour
 {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStorageObject", menuName = "ScriptableObjects/PlayerStorageObject", order = 1)]
 [System.Serializable]
-public class PlayerStorage : YourScriptableObject
+public class PlayerStorage : ScriptableObject
 {
     [Header("Runtime")]
     public string sceneName = "Main";

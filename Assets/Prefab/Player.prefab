@@ -323,8 +323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c787cbeebde9f54299b0e5ae631dba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 9
+  moveSpeed: 5
   rb2D: {fileID: 6328120429896446882}
+  runFactor: 1
   movementInput: {x: 0, y: 0}
 --- !u!114 &6328120429896446895
 MonoBehaviour:
@@ -411,6 +412,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fd48a1f2-c182-456f-bb5f-866cdcb7e40a
     m_ActionName: OverWorld/Pause[/DualSenseGamepadHID/start,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6328120429896446892}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: OnRun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fd732e6d-a5a5-431a-b91a-feb45755ddf5
+    m_ActionName: OverWorld/SecondAct[/Mouse/rightButton,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b9b07790-e223-43c9-b3b5-1d6d67906887
+    m_ActionName: BattleScene/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualSenseGamepadHID/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1fa46c09-db15-4fc9-8a6a-e98010b95726
+    m_ActionName: BattleScene/Pause[/DualSenseGamepadHID/start,/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 78a482fe-cf59-4398-a4c7-16e0a89fdb55
+    m_ActionName: BattleScene/Attack[/Mouse/leftButton,/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 436912d1-0b20-4305-aaaa-cf6b243909b0
+    m_ActionName: BattleScene/Arte[/Mouse/rightButton,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 25004ea6-e51c-4e15-9c37-e09eafa07740
+    m_ActionName: BattleScene/Jump[/Keyboard/space,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: ControllerControls
   m_DefaultActionMap: OverWorld
@@ -459,7 +496,7 @@ Rigidbody2D:
   m_LinearDrag: 1000
   m_AngularDrag: 1000
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: c9c51a66a3ca5814fb3f1306deab93f0, type: 2}
+  m_Material: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
@@ -473,13 +510,13 @@ CircleCollider2D:
   m_GameObject: {fileID: 6328120429896446888}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
+  m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!114 &9179673714289012239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,8 +531,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   character: {fileID: 2145510011}
-  fadeInPanel: {fileID: 6367813579642875718, guid: 1062c311f77a4a44fb35f0fd291e0a29, type: 3}
-  fadeOutPanel: {fileID: 6367813579642875718, guid: b3fbf853a41f21e46977c243df4aa1c8, type: 3}
   minimumFadeTime: 1
 --- !u!95 &1800461113
 Animator:

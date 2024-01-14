@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Kitchen
   m_EditorClassIdentifier: 
   roomName: Kitchen
-  minCameraOffset: {x: 8, y: 0}
+  minCameraOffset: {x: 6, y: 0}
   maxCameraOffset: {x: 11, y: 0}

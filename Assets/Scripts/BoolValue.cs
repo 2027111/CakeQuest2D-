@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
 [System.Serializable]
-public class BoolValue : YourScriptableObject
+public class BoolValue : ScriptableObject
 {
 
 

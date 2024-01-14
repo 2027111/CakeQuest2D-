@@ -17,6 +17,7 @@ public class IdleCombatState : State
         
         cc.ResetMovement();
         cc.OnAttackPressed += DoAttack;
+        cc.OnSpecialPressed += DoSpecial;
         cc.OnJumpPressed += DoJump;
     }
 
@@ -25,6 +26,7 @@ public class IdleCombatState : State
     {
         base.OnExit();
         cc.OnAttackPressed -= DoAttack;
+        cc.OnSpecialPressed -= DoSpecial;
         cc.OnJumpPressed -= DoJump;
         animator.SetFloat("MovementSpeed", 0);
     }
@@ -115,7 +117,16 @@ public class IdleCombatState : State
         }
     }
 
- 
+
+    public void DoSpecial()
+    {
+        Debug.Log("Special Input");
+        if (cc.canMove && cc.canAttack && cc.GetCurrentAttack(true) && cc.entity.CheckManaCost(cc.GetCurrentAttack(true)))
+        {
+            stateMachine.SetNextState(new MeleeBaseState(), cc.GetCurrentAttack(true));
+        }
+    }
+
 
 
     void RigidbodyDrag(float x)

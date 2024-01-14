@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
-
-
+using UnityEngine.Events;
 
 public enum GameState
 {
@@ -22,12 +21,20 @@ public enum GameState
 public class DialogueContent
 {
     public LineInfo[] lines;
-
+    public Dialogue dialogue;
+    public bool choice = false;
 
 
     public DialogueContent(LineInfo[] lines)
     {
         this.lines = lines;
+    }
+
+    public DialogueContent(Dialogue dialogue)
+    {
+        this.dialogue = dialogue;
+        this.lines = dialogue.dialogueLines;
+        this.choice = dialogue.EndInChoice;
     }
 }
 
@@ -56,10 +63,12 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    public Action OnDialogueOverAction;
+    public UnityEvent OnDialogueOverAction;
     GameState currentState = GameState.Overworld;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
+    [SerializeField] GameObject choiceBox;
+    [SerializeField] GameObject choicePrefab;
     [SerializeField] TMP_Text nameText;
     [SerializeField] Image portraitImage;
     [SerializeField] [Range(0.1f, 1)] float apparitionTime = .4f;
@@ -67,6 +76,8 @@ public class DialogueBox : MonoBehaviour
     bool isShowing;
     bool active;
     DialogueContent currentDialogue;
+
+    private Button LastButton;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0;
     Coroutine showBoxCoroutine;
@@ -84,7 +95,14 @@ public class DialogueBox : MonoBehaviour
         dialogueIndex = 0;
     }
 
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ClearChoiceBox();
+            FillChoiceBox(3);
+        }
+    }
 
     public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
@@ -119,7 +137,7 @@ public class DialogueBox : MonoBehaviour
                     if (player)
                     {
                         player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
-                        player.GetComponent<Character>().OnInteractEvent += Interact;
+                        AddInteractEventToPlayer(true);
                         if (originObject)
                         {
                             player.GetComponent<Character>().LookAt(originObject);
@@ -131,7 +149,7 @@ public class DialogueBox : MonoBehaviour
                     if (player)
                     {
                         player.GetComponent<StateMachine>().SetNextState(new EntranceState());
-                        player.GetComponent<BattleCharacter>().OnAttackPressed += Interact;
+                        AddInteractEventToPlayer(true);
                     }
                 }
                 
@@ -144,10 +162,69 @@ public class DialogueBox : MonoBehaviour
         }
         
     }
-
-    public void StartDialogue(LineInfo[] lines, Action callback,GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
+    public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        OnDialogueOverAction = callback;
+
+        OnDialogueOverAction = dialogue.OnOverEvent;
+        currentState = state;
+        DialogueContent newDialogue = new DialogueContent(dialogue);
+
+        if (newDialogue.dialogue.dialogueLines.Length > 0)
+        {
+            if (active)
+            {
+                Debug.Log("Added Dialogue");
+                dialogueWaitingLine.Add(newDialogue);
+            }
+            else
+            {
+                Debug.Log("Starting Dialogue");
+                dialogueText.text = "";
+                SetupLine(newDialogue.dialogue.dialogueLines[0]);
+                StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
+
+                if (playerObject == null)
+                {
+                    player = GameObject.FindGameObjectWithTag("Player");
+                }
+                else
+                {
+
+                    player = playerObject;
+                }
+                if (currentState == GameState.Overworld)
+                {
+
+                    if (player)
+                    {
+                        player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
+                        AddInteractEventToPlayer(true);
+                        if (originObject)
+                        {
+                            player.GetComponent<Character>().LookAt(originObject);
+                        }
+                    }
+                }
+                else if (currentState == GameState.BattleScene)
+                {
+                    if (player)
+                    {
+                        player.GetComponent<StateMachine>().SetNextState(new EntranceState());
+                        AddInteractEventToPlayer(true);
+                    }
+                }
+
+
+
+                currentDialogue = newDialogue;
+                dialogueIndex = 0;
+                active = true;
+            }
+        }
+    }
+    public void StartDialogue(LineInfo[] lines, UnityAction callback,GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
+    {
+        OnDialogueOverAction.AddListener(callback);
         StartDialogue(lines, playerObject, originObject, state);
     }
 
@@ -159,6 +236,105 @@ public class DialogueBox : MonoBehaviour
         nameText.text = string.IsNullOrEmpty(line.talkername) ? "" : line.talkername;
 
     }
+    public void DoChoice(int i)
+    {
+
+        
+        currentDialogue.choice = false;
+        ClearChoiceBox();
+
+        choiceBox.SetActive(false);
+        if (currentDialogue.dialogue != null)
+        {
+
+            dialogueWaitingLine.Add(new DialogueContent(currentDialogue.dialogue.choices.dialogues[i]));
+        }
+        Interact();
+    }
+
+    private void FillChoiceBox(ChoiceDialogue choices)
+    {
+
+        ClearChoiceBox();
+        AddInteractEventToPlayer(false);
+        choiceBox.SetActive(true);
+        for (int i = 0; i < choices.dialogueLines.Length; i++)
+        {
+            int number = i;
+            Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
+            obj.GetComponent<TMP_Text>().text = choices.dialogueLines[i];
+            obj.onClick.AddListener(delegate { DoChoice(number); } );
+            obj.interactable = true;
+            obj.Select();
+
+            if (LastButton != null)
+            {
+                Navigation lastNav = LastButton.GetComponent<Button>().navigation;
+                lastNav.mode = Navigation.Mode.Explicit;
+                lastNav.selectOnDown = obj;
+
+                Navigation customNav = new Navigation();
+                customNav.mode = Navigation.Mode.Explicit;
+                customNav.selectOnUp = obj;
+
+
+
+
+
+
+                LastButton.GetComponent<Button>().navigation = lastNav;
+                obj.navigation = customNav;
+            }
+            LastButton = obj;
+
+        }
+        LastButton = null;
+    }
+    public void FillChoiceBox(int amount)
+    {
+        for(int i = 0; i < amount; i++)
+        {
+            Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
+            obj.onClick.AddListener(DebugTest);
+            obj.interactable = true;
+            obj.Select();
+
+            if (LastButton != null)
+            {
+                Navigation lastNav = LastButton.GetComponent<Button>().navigation;
+                lastNav.mode = Navigation.Mode.Explicit;
+                lastNav.selectOnDown = obj;
+
+                Navigation customNav = new Navigation();
+                customNav.mode = Navigation.Mode.Explicit;
+                customNav.selectOnUp = obj;
+               
+
+
+
+
+
+                LastButton.GetComponent<Button>().navigation = lastNav;
+                obj.navigation = customNav;
+            }
+            LastButton = obj;
+
+        }
+        LastButton = null;
+    }
+
+    public void DebugTest()
+    {
+        Debug.Log("Button clicked");
+    }
+    public void ClearChoiceBox()
+    {
+        foreach(Transform child in choiceBox.transform) {
+            Destroy(child.gameObject);
+
+        }
+        choiceBox.SetActive(false);
+    }
 
     public void Interact()
     {
@@ -168,14 +344,32 @@ public class DialogueBox : MonoBehaviour
         if (active)
         {
             if (dialogueIndex >= currentDialogue.lines.Length)
-                {
+             {
 
                     if (dialogueWaitingLine.Count > 0)
                     {
                         StartNextDialogueWaiting();
+
+
+
+
+
                     }
                     else
                     {
+
+                        if (currentDialogue.dialogue != null)
+                        {
+                            if (currentDialogue.choice)
+                            {
+
+                                FillChoiceBox(currentDialogue.dialogue.choices);
+                                choiceBox.SetActive(true);
+                                return;
+                            }
+                        }
+
+
                         EndDialogue();
                         Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
 
@@ -201,6 +395,8 @@ public class DialogueBox : MonoBehaviour
         }
         }
     }
+
+
     public void StartNextDialogueWaiting()
     {
         currentDialogue = dialogueWaitingLine[0];
@@ -213,54 +409,55 @@ public class DialogueBox : MonoBehaviour
     {
         if (player)
         {
+            AddInteractEventToPlayer(false);
+        }
+
+    }
+
+
+
+    public void AddInteractEventToPlayer(bool addOrRemove)
+    {
+        if (addOrRemove)
+        {
             if (currentState == GameState.Overworld)
             {
+                Character characterComponent = player.GetComponent<Character>();
+                bool contains = characterComponent.InteractContains(Interact);
+                if (characterComponent != null && !contains)
+                {
+                    characterComponent.OnInteractEvent += Interact;
+                }
+            }
+            else if (currentState == GameState.BattleScene)
+            {
+                BattleCharacter battleCharacterComponent = player.GetComponent<BattleCharacter>();
 
-                player.GetComponent<Character>().OnInteractEvent -= Interact;
-
+                bool contains = battleCharacterComponent.AttackContains(Interact);
+                if (battleCharacterComponent != null && !contains)
+                {
+                    battleCharacterComponent.OnAttackPressed += Interact;
+                }
             }
         }
-        else if (currentState == GameState.BattleScene)
+        else
         {
-            player.GetComponent<BattleCharacter>().OnAttackPressed -= Interact;
-
-
-
-            player = null;
+            if (currentState == GameState.Overworld)
+            {
+                player.GetComponent<Character>().OnInteractEvent -= Interact;
+            }
+            else if (currentState == GameState.BattleScene)
+            {
+                player.GetComponent<BattleCharacter>().OnAttackPressed -= Interact;
+            }
         }
-
     }
-    public void StartDialogue(string[] vs, Action callback, GameObject playerObject = null, GameObject originObject = null)
-    {
-        LineInfo[] lines = new LineInfo[vs.Length];
 
-        for (int i = 0; i < vs.Length; i++)
-        {
-            lines[i] = new LineInfo();
-            lines[i].portrait = null;
-            lines[i].talkername = null;
-            lines[i].line = vs[i];
-        }
 
-        StartDialogue(lines, callback, playerObject, originObject);
-    }
-    public void StartDialogue(string[] vs, GameObject playerObject = null, GameObject originObject = null)
-    {
-        LineInfo[] lines = new LineInfo[vs.Length];
-        
-        for(int i = 0; i < vs.Length; i++)
-        {
-            lines[i] = new LineInfo();
-            lines[i].portrait = null;
-            lines[i].talkername = null;
-            lines[i].line  = vs[i];
-        }
-
-        StartDialogue(lines, playerObject, originObject);
-    }
 
     private void NextLine()
     {
+        AddInteractEventToPlayer(true);
         DialogueText(currentDialogue.lines[dialogueIndex]);
     }
 
@@ -299,6 +496,7 @@ public class DialogueBox : MonoBehaviour
 
     public void ForceStop()
     {
+        ClearChoiceBox();
         EndDialogue();
         ResetBox();
         isShowing = false;
@@ -306,10 +504,11 @@ public class DialogueBox : MonoBehaviour
     }
     IEnumerator ShowDialogueBoxAlpha(bool show)
     {
+        ClearChoiceBox();
 
-        
 
-        if(isShowing != show)
+
+        if (isShowing != show)
         {
 
         float target = show ? 1 : 0;
@@ -327,7 +526,10 @@ public class DialogueBox : MonoBehaviour
         yield return new WaitForSeconds(apparitionTime);
         if (isShowing)
         {
-            NextLine();
+            if(currentDialogue != null)
+            {
+                NextLine();
+            }
         }
         else
         {

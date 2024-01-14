@@ -2,13 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
-
-public class TreasureChest : DialogueStarterObject
+public class TreasureChest : NewDialogueStarterObject
 {
-
-
 
 
 
@@ -38,13 +36,15 @@ public class TreasureChest : DialogueStarterObject
 
     }
 
+
     protected void CheckOpen()
     {
         if (isOpen || content == null)
         {
             if (anim)
             {
-                anim?.SetBool("Opened", isOpen);
+                anim.SetBool("Opened", isOpen);
+                anim.SetTrigger((isOpen ? "Open" : "Close"));
             }
             Interactable inter = GetComponent<Interactable>();
             if (inter && OnlyOnce) 
@@ -57,7 +57,7 @@ public class TreasureChest : DialogueStarterObject
     public override void DialogueAction()
     {
 
-        if(dialogueLines.Length > 0)
+        if(CheckLines())
         {
 
 
@@ -65,11 +65,13 @@ public class TreasureChest : DialogueStarterObject
 
         if (!started)
         {
-            LineInfo[] Lines = dialogueLines;
+            LineInfo[] Lines = dialogue.dialogueLines;
             started = true;
+
+            Dialogue newDialogue = new Dialogue(dialogue);
             if (locked)
             {
-                Action callback = DialogueOver;
+                UnityAction callback = DialogueOver;
                 if (CheckRequirement())
                 {
 
@@ -87,7 +89,10 @@ public class TreasureChest : DialogueStarterObject
                 {
                     Lines = LockedLines;
                 }
-                DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, Lines), callback, player.gameObject, gameObject);
+                newDialogue.dialogueLines = GetFormattedLines(this, Lines);
+                newDialogue.OnOverEvent.RemoveAllListeners();
+                newDialogue.OnOverEvent.AddListener(callback);
+                DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
 
             }
             else
@@ -121,18 +126,22 @@ public class TreasureChest : DialogueStarterObject
     }
     public void RequirementMetEvent()
     {
-            LineInfo[] Lines = dialogueLines;
-            isOpen = true;
-            storedOpen.RuntimeValue = true;
-            player.AddToInventory(content, amount);
-            if (anim)
-            {
+        isOpen = true;
+        storedOpen.RuntimeValue = true;
+        player.AddToInventory(content, amount);
+        if (anim)
+        {
 
-                anim.SetTrigger("Open");
-            }
-            CheckOpen();
-            Action temp = DialogueOver; 
-            DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, Lines), DialogueOver, player.gameObject, gameObject);
+            anim.SetTrigger("Open");
+        }
+        CheckOpen();
+        Dialogue newDialogue = new Dialogue(dialogue);
+        LineInfo[] Lines = newDialogue.dialogueLines;
+        Debug.Log(Lines.Length);
+        newDialogue.dialogueLines = GetFormattedLines(this, Lines);
+        newDialogue.OnOverEvent.RemoveAllListeners();
+        newDialogue.OnOverEvent.AddListener(DialogueOver);
+        DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
 
 
 
@@ -140,6 +149,7 @@ public class TreasureChest : DialogueStarterObject
 
     public override void DialogueOver()
     {
+        Debug.Log("Lol");
         base.DialogueOver();
     }
 

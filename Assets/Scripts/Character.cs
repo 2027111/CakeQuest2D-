@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -21,11 +22,16 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        TogglePlayableState(); 
+        TogglePlayableState();
+        FadeScreen.Singleton?.OnFadingStart.AddListener(delegate { ChangeState(new NothingBehaviour()); });
     }
 
 
+    private void OnDisable()
+    {
 
+        FadeScreen.Singleton?.OnFadingStart.RemoveListener(delegate { ChangeState(new NothingBehaviour()); });
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,6 +66,11 @@ public class Character : MonoBehaviour
         return inventory.RemoveFromInventory(content, amount);
     }
 
+    public void Run(bool running)
+    {
+        playerMovement.Run(running);
+    }
+
     public void LookToward(Vector2 direction)
     {
         playerMovement.LookAt(direction);
@@ -82,6 +93,11 @@ public class Character : MonoBehaviour
 
 
         playerMovement?.SetPosition(newPosition);
+    }
+
+    public string GetState()
+    {
+        return GetCurrentBehaviour().GetType().ToString();
     }
 
     public void ChangeState(CharacterBehaviour newBehaviour)
@@ -131,5 +147,14 @@ public class Character : MonoBehaviour
     {
 
         ChangeState(new NothingBehaviour());
+    }
+
+    public bool InteractContains(Action interact)
+    {
+        if (OnInteractEvent == null)
+        {
+            return false;
+        }
+        return OnInteractEvent.GetInvocationList().Contains(interact);
     }
 }

@@ -46,6 +46,7 @@ public class InputManager : Controller
     {
         if (context.performed)
         {
+            Debug.Log("Pressed attack key");
             OnAttackPressed?.Invoke();
         }
         if (context.canceled)
@@ -54,5 +55,20 @@ public class InputManager : Controller
         }
         attack = context.action.triggered;
     }
+
+    public void OnSpecial(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Pressed special key");
+            OnSpecialPressed?.Invoke();
+        }
+        if (context.canceled)
+        {
+            OnSpecialRelease?.Invoke();
+        }
+        attack = context.action.triggered;
+    }
+
 
 }

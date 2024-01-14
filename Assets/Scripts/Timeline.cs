@@ -72,13 +72,7 @@ public class Timeline: MonoBehaviour
     }
     public void CheckPlay()
     {
-        if (storagePlay)
-        {
-            if (storagePlay.RuntimeValue)
-            {
-                DeleteCutscene();
-            }
-        }
+        
     }
 
 

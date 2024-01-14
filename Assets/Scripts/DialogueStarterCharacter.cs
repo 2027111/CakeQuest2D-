@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueStarterCharacter : DialogueStarterObject
+public class DialogueStarterCharacter : NewDialogueStarterObject
 {
 
     Type defaultBehaviourType;
@@ -31,6 +31,7 @@ public class DialogueStarterCharacter : DialogueStarterObject
     {
         // Change the state back to the original default behavior
         character.ChangeState(Activator.CreateInstance(defaultBehaviourType) as CharacterBehaviour);
+        Debug.Log("Test");
         base.DialogueOver();
     }
 }

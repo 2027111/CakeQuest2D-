@@ -13,8 +13,10 @@ public abstract class Controller : MonoBehaviour
 
     public delegate void EventHandler();
     public EventHandler OnJumpPressed;
-    public EventHandler OnAttackPressed;
     public EventHandler OnJumpRelease;
+    public EventHandler OnSpecialPressed;
+    public EventHandler OnSpecialRelease;
+    public EventHandler OnAttackPressed;
     public EventHandler OnAttackRelease;
     public delegate void MovementHandler(Vector2 movement);
     public MovementHandler OnMovement;
@@ -25,6 +27,11 @@ public abstract class Controller : MonoBehaviour
     }
 
     public void Disable()
+    {
+        canControl = false;
+    }
+
+    public void Enable()
     {
         canControl = false;
     }

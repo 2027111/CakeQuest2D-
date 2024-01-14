@@ -71,7 +71,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount, Entity attacker = null)
+    public void TakeDamage(int amount, Entity attacker = null, HitBoxInfo hitbox = null)
     {
         lastAttacker = attacker;
         if (characterObject.Health - amount >= 0)
@@ -96,7 +96,7 @@ public class Entity : MonoBehaviour
             {
             damageChain += amount;
 
-            if(damageChain >= 50)
+            if(damageChain >= 23333333)
             {
 
                     stateMachine?.SetNextState(new KnockedDownState());
@@ -105,14 +105,48 @@ public class Entity : MonoBehaviour
             }
             else
             {
+                    if (hitbox != null)
+                    {
+                        impulse = hitbox.knockbackVector;
+                        impulse *= hitbox.knockbackForce;
+                    }
+                    else
+                    {
+                        impulse.x *= Random.Range(1, 4);
+                        impulse += 2 * Vector2.up;
+                    }
 
-                impulse.x *= Random.Range(1, 4);
-                impulse += 2 * Vector2.up;
-                    
+                    if (hitbox == null)
+                    {
 
-                    stateMachine?.SetNextState(new HurtState());
 
-            }
+
+
+                        stateMachine?.SetNextState(new HurtState());
+                        
+                    }
+                    else
+                    {
+                        if (hitbox.stuns)
+                        {
+                            stateMachine?.SetNextState(new HurtState(hitbox.stunTime));
+                        }
+                        else
+                        {
+
+                            stateMachine?.SetNextState(new HurtState());
+                        }
+                    }
+
+
+                }
+
+
+                if (attacker)
+                {
+                    impulse.x *= attacker.GetComponent<BattleCharacter>().GetFacing();
+                }
+                rb.velocity = Vector3.zero;
                 rb?.AddForce(impulse, ForceMode2D.Impulse);
             }
             else
@@ -125,8 +159,14 @@ public class Entity : MonoBehaviour
 
     }
 
+   
+
     public bool CheckManaCost(AttackData attackData)
     {
+        if(attackData == null)
+        {
+            return false;
+        }
         return characterObject.Mana > attackData.manaCost;
     }
 

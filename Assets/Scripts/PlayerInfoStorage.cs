@@ -10,10 +10,9 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public PlayerStorage infoStorage;
     [SerializeField] Character character;
+    private CameraMovement camMove;
 
 
-    public GameObject fadeInPanel;
-    public GameObject fadeOutPanel;
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
 
@@ -24,7 +23,8 @@ public class PlayerInfoStorage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        camMove = Camera.main.GetComponent<CameraMovement>();
+
         character = GetComponent<Character>();
 
         if (infoStorage)
@@ -34,10 +34,9 @@ public class PlayerInfoStorage : MonoBehaviour
                 MoveToScene();
             }
         }
-        if (fadeInPanel != null)
+        if (!FadeScreen.fading)
         {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, DestroyTime);
+            FadeScreen.StartTransition(false, Color.black, .5f);
         }
     }
 
@@ -45,8 +44,9 @@ public class PlayerInfoStorage : MonoBehaviour
     public void GoToBattleScene()
     {
         SetNewInformationToFile();
+        GameSaveManager.Singleton?.SaveGame();
         infoStorage.forceNextChange = true;
-        StartCoroutine(FadeCoroutine("BattleScene"));
+        FadeScreen.MoveToScene("BattleScene");
 
     }
 
@@ -68,20 +68,15 @@ public class PlayerInfoStorage : MonoBehaviour
             if (infoStorage.sceneName != SceneManager.GetActiveScene().name)
             {
                 infoStorage.forceNextChange = true;
-                StartCoroutine(FadeCoroutine(infoStorage.sceneName));
+                FadeScreen.MoveToScene(infoStorage.sceneName);
             }
             else
             {
-                if (fadeInPanel != null)
+                if (!FadeScreen.fading)
                 {
-                    GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-                    Destroy(panel, DestroyTime);
+                    FadeScreen.StartTransition(false, Color.black, .5f);
                 }
 
-                if (infoStorage.nextRoomInfo != Camera.main.GetComponent<CameraMovement>().GetCurrentRoom())
-                {
-                    Camera.main.GetComponent<CameraMovement>().SetNewRoom(infoStorage.nextRoomInfo);
-                }
 
                 character.SetPosition(infoStorage.nextPosition);
                 Camera.main.GetComponent<CameraMovement>().ForceToTarget();
@@ -95,11 +90,15 @@ public class PlayerInfoStorage : MonoBehaviour
         
     }
 
+    public RoomInfo GetCurrentRoomInfo()
+    {
+        return infoStorage.nextRoomInfo;
+    }
+
     public void SetNewInformationToFile()
     {
-        infoStorage.nextPosition = transform.position;
-        infoStorage.nextRoomInfo = Camera.main.GetComponent<CameraMovement>().currentRoomInfo;
         infoStorage.sceneName = SceneManager.GetActiveScene().name;
+        infoStorage.nextPosition = transform.position;
     }
 
     public void SetNewPosition(Vector2 newPos)
@@ -109,38 +108,15 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void SetNewRoom(RoomInfo newRoom)
     {
-        infoStorage.nextRoomInfo = newRoom;
+        infoStorage.nextRoomInfo.SetValue(newRoom);
+        RoomTitleCard.ShowTitle(infoStorage.nextRoomInfo.roomName);
     }
 
-    public IEnumerator FadeCoroutine(string scene)
+
+
+    public void MoveToHomeScreenScene()
     {
 
-        GetComponent<Character>().ChangeState(new NothingBehaviour());
-        if (fadeOutPanel != null)
-        {
-            Instantiate(fadeOutPanel, Vector3.zero, Quaternion.identity);
-        }
-        yield return new WaitForSeconds(minimumFadeTime);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
-        }
-
-        if (fadeInPanel != null)
-        {
-            GameObject panel = Instantiate(fadeInPanel, Vector3.zero, Quaternion.identity) as GameObject;
-            Destroy(panel, DestroyTime);
-        }
-
-
-
-        yield return null;
-
-
-
-
-
+        FadeScreen.MoveToScene("StartMenuScene");
     }
 }

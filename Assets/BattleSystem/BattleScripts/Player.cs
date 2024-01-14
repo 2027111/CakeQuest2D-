@@ -19,10 +19,10 @@ public class Player : MonoBehaviour
         SetController(inputManager);
     }
 
-    public void SetController(Controller aIController)
+    public void SetController(Controller controller)
     {
         character = GetComponent<BattleCharacter>();
-        inputManager = aIController;
+        inputManager = controller;
         SubscribeToInputEvents();
     }
 
@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
             inputManager.OnMovement += character.SetMove;
             inputManager.OnAttackPressed += character.OnAttackPress;
             inputManager.OnAttackRelease += character.OnAttackLetGo;
+            inputManager.OnSpecialPressed += character.OnSpecialPress;
+            inputManager.OnSpecialRelease += character.OnSpecialLetGo;
             inputManager.OnJumpPressed += character.OnJumpPress;
             inputManager.OnJumpRelease += character.OnJumpLetGo;
         }
@@ -54,6 +56,8 @@ public class Player : MonoBehaviour
             inputManager.OnMovement -= character.SetMove;
             inputManager.OnAttackPressed -= character.OnAttackPress;
             inputManager.OnAttackRelease -= character.OnAttackLetGo;
+            inputManager.OnSpecialPressed -= character.OnSpecialPress;
+            inputManager.OnSpecialRelease -= character.OnSpecialLetGo;
             inputManager.OnJumpPressed -= character.OnJumpPress;
             inputManager.OnJumpRelease -= character.OnJumpLetGo;
         }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RoomInfo", menuName = "ScriptableObjects/RoomInfo", order = 1)]
@@ -35,5 +36,12 @@ public class RoomInfo : ScriptableObject
     public override int GetHashCode()
     {
         return base.GetHashCode();
+    }
+
+    public void SetValue(RoomInfo newRoom)
+    {
+        roomName = newRoom.roomName;
+        minCameraOffset = newRoom.minCameraOffset;
+        maxCameraOffset = newRoom.maxCameraOffset;
     }
 }

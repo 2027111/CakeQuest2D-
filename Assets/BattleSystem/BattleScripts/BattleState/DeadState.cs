@@ -11,9 +11,7 @@ public class DeadState : State
         base.OnEnter(_stateMachine);
         cc.canMove = false;
         cc.rb.velocity = Vector3.zero;
-        cc.hurtbox.enabled = false;
         cc.GetComponent<Entity>().characterObject.isDead = true;
-        cc.rb.isKinematic = true;
         cc.gameObject.layer = 13;
         animator.SetTrigger("Dead");
     }
@@ -25,8 +23,6 @@ public class DeadState : State
     {
         base.OnExit();
         cc.canMove = true;
-        cc.rb.isKinematic = false;
-        cc.hurtbox.enabled = true;
         cc.gameObject.layer = 9;
         animator.Rebind();
         animator.Update(0);

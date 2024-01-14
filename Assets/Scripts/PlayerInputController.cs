@@ -42,6 +42,20 @@ public class PlayerInputController : MonoBehaviour
         }
     }
 
+    public void OnRun(InputAction.CallbackContext callback)
+    {
+        // Check if the interaction is a press (button down)
+        if (callback.started)
+        {
+            pm.Run(true);
+
+        }
+        else if (callback.canceled)
+        {
+            pm.Run(false);
+        }
+    }
+
     private void Pause()
     {
         PauseManager.Singleton?.OnPausePressed();

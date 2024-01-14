@@ -34,6 +34,9 @@ public class AttackData : ScriptableObject
     public float durationInFrames;
     public int startOpenFrame;
     public int manaCost;
+    public GameObject HitEffect;
+    public AudioClip SoundEffect;
+    public AudioClip VoiceLine;
     public List<HitBoxInfo> hitboxes;
     public List<PrefabInfo> prefabs;
     public List<ForceEvents> forceEvents;
@@ -42,13 +45,34 @@ public class AttackData : ScriptableObject
     {
         foreach(HitBoxInfo hitBoxInfo in hitboxes)
         {
-            if (hitBoxInfo.frame >= frame-durationInFrames && hitBoxInfo.frame <= frame)
+            if (hitBoxInfo.frame >= frame- hitBoxInfo.durationInFrame && hitBoxInfo.frame <= frame)
             {
                 return hitBoxInfo;
             } 
         }
         return null;
     }
+
+    public void SpawnHitEffect(Vector3 position)
+    {
+        if (HitEffect)
+        {
+        Destroy(Instantiate(HitEffect, position, Quaternion.identity), 2f);
+
+        }
+    }
+
+
+    public AudioClip GetVoiceLine()
+    {
+        return VoiceLine;
+    }
+    public AudioClip GetSoundEffect()
+    {
+        return SoundEffect;
+    }
+
+
 
     public ForceEvents GetForceEventsByFrame(int frame)
     {
@@ -62,7 +86,7 @@ public class AttackData : ScriptableObject
         return null;
     }
 
-    internal PrefabInfo GetPrefabByFrame(int frame)
+    public PrefabInfo GetPrefabByFrame(int frame)
     {
         foreach (PrefabInfo prefab in prefabs)
         {

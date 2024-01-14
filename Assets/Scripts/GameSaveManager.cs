@@ -3,14 +3,31 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Events;
+using System;
+
+public enum SaveFiles
+{
+    saveFile,
+    translation
+}
+
+
 
 public class GameSaveManager : MonoBehaviour
 {
     private static GameSaveManager _singleton;
 
-
-
     public List<ScriptableObject> objectsToSave = new List<ScriptableObject>();
+    public List<ScriptableObject> objectsToTranslate = new List<ScriptableObject>();
+
+
+
+
+
+
+
     public static GameSaveManager Singleton
     {
         get => _singleton;
@@ -29,7 +46,20 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
+
+
+    public LanguageObject currentLanguage;
+
     public string path;
+    public string extension = "json";
+
+
+
+    public UnityEvent OnLanguageChanged;
+    public UnityEvent OnSaveFileLoaded;
+
+
+
     private void Awake()
     {
         Singleton = this;
@@ -38,62 +68,219 @@ public class GameSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = $"{Application.persistentDataPath}/SaveFiles/";
         CreateSavePath();
+        LoadSaveFile();
+        LoadLanguage();
     }
- 
-    private void CreateSavePath()
+
+    public void CreateSavePath()
     {
-        // Check if the directory exists, if not, create it
-        if (!Directory.Exists(path))
+
+        InitializePath();
+        foreach (var value in Enum.GetValues(typeof(SaveFiles)))
         {
-            Directory.CreateDirectory(path);
+            string enumValueName = value.ToString();
+
+            // Check if the directory exists, if not, create it
+            if (!Directory.Exists(GetPath(enumValueName)))
+            {
+                Directory.CreateDirectory(GetPath(enumValueName));
+            }
         }
     }
 
 
+    private void OnValidate()
+    {
+        InitializePath();
+    }
+
+    public void OnLanguageDropdownValueChanged(int value)
+    {
+        // Handle the dropdown value changed event
+        // You can access the selected enum value using the dropdown's value property
+        SetLanguage(value);
+        OnChangeLanguage();
+    }
+
+
+    public void InitializePath()
+    {
+
+        path = $"{Application.persistentDataPath}";
+    }
+
+    public Language GetLanguage()
+    {
+        return currentLanguage.GetLanguage();
+    }
+
+    public void SetLanguage(int value)
+    {
+        currentLanguage.SetLanguage((Language)value);
+    }
 
     private void OnDisable()
     {
-        SaveScriptables();
     }
 
 
-    public void ResetScriptables()
+
+    public void OnChangeLanguage()
     {
-        for (int i = 0; i < objectsToSave.Count; i++)
-        {
-            if (File.Exists(path + string.Format("/{0}.dat", i)))
+
+        SaveGame();
+        LoadLanguage();
+    }
+
+
+
+    public string GetPath(string whattosave)
+    {
+        return path + string.Format("/{0}", whattosave);
+    }
+
+    public string GetFilePath(string whattosave)
+    {
+        return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? GetLanguage() + "_" : ""));
+    }
+
+
+    public void SaveGame()
+    {
+        SaveScriptables(SaveFiles.saveFile);
+    }
+    public void SaveDialogue()
+    {
+        SaveScriptables(SaveFiles.translation);
+    }
+
+    public void LoadLanguage()
+    {
+
+        LoadScriptables(SaveFiles.translation);
+
+        OnLanguageChanged?.Invoke();
+    }
+
+
+    public void LoadSaveFile()
+    {
+        LoadScriptables(SaveFiles.saveFile);
+
+        OnSaveFileLoaded?.Invoke();
+
+    }
+
+    public void SaveEverything()
+    {
+
+
+
+        SaveScriptables(SaveFiles.saveFile);
+        SaveScriptables(SaveFiles.translation);
+    }
+
+
+
+    public void SaveScriptables(SaveFiles listName)
+    {
+        List<ScriptableObject> list;
+
+        list = GetListMatch(listName);
+        string filePath = GetFilePath(listName.ToString());
+        List<ScriptableObjectDTO> dtoList = GetCurrentDTOList(list);
+        var json = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
+        File.WriteAllText(filePath, json);
+        
+    }
+
+
+
+    public void LoadScriptables(SaveFiles listName)
+    {
+        List<ScriptableObject> list;
+            list = GetListMatch(listName);
+            List<ScriptableObjectDTO> dtoList = ReadSaveFile(listName);
+            if (dtoList != null)
             {
-                File.Delete(path + string.Format("/{0}.dat", i));
+                ApplyToScriptableObjects(dtoList, list);
             }
         }
-    }
-
-    public void SaveScriptables()
+    public void ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<ScriptableObject> list)
     {
-        for(int i = 0; i < objectsToSave.Count; i++)
+        foreach (ScriptableObject obj in list)
         {
-            FileStream file = File.Create(path + string.Format("/{0}.dat", i));
-            BinaryFormatter binary = new BinaryFormatter();
-            var json = JsonUtility.ToJson(objectsToSave[i]);
-            binary.Serialize(file, json);
-            file.Close();
+            ApplyToScriptableObjects(dtoList, obj);
         }
     }
 
-    public void LoadScriptables()
+    public void ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
     {
-        for (int i = 0; i < objectsToSave.Count; i++)
-        {
-            if(File.Exists(Application.persistentDataPath + string.Format("/{0}.dat", i)))
+            ScriptableObject yourObj = obj;
+            if (yourObj != null)
             {
-                FileStream file = File.Open(path + string.Format("/{0}.dat", i), FileMode.Open);
-                BinaryFormatter binary = new BinaryFormatter();
-                JsonUtility.FromJsonOverwrite((string)binary.Deserialize(file), objectsToSave[i]);
-                file.Close();
+
+                ScriptableObjectDTO scriptableObjectDTO = dtoList.Find(dto => dto.HashCode == yourObj.GetHashCode());
+
+
+                // Find the corresponding DTO using the unique identifier
+                if (scriptableObjectDTO != null)
+                {
+                    // Apply data to the ScriptableObject
+                    scriptableObjectDTO.ApplyData(yourObj);
+                }
             }
+        
+    }
+
+
+
+
+    public List<ScriptableObjectDTO> GetCurrentDTOList(List<ScriptableObject> list)
+    {
+
+        
+        List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            ScriptableObjectDTO scriptableObjectDTO = new ScriptableObjectDTO(list[i]);
+            dtoList.Add(scriptableObjectDTO);
+        }
+
+        return dtoList;
+    }
+
+    public List<ScriptableObjectDTO> ReadSaveFile(SaveFiles path)
+    {
+
+        string filePath = GetFilePath(path.ToString());
+
+        if (File.Exists(filePath))
+        {
+            var json = File.ReadAllText(filePath);
+            ScriptableObjectListWrapper listWrapper = JsonUtility.FromJson<ScriptableObjectListWrapper>(json);
+
+            List<ScriptableObjectDTO> dtoList = listWrapper.objects;
+            return dtoList;
+        }
+
+        return null;
+    }
+
+
+
+
+    private List<ScriptableObject> GetListMatch(SaveFiles listName)
+    {
+        switch (listName)
+        {
+            case SaveFiles.translation:
+                return objectsToTranslate;
+            case SaveFiles.saveFile:
+                return objectsToSave;
+            default: return null;
         }
     }
-    
 }

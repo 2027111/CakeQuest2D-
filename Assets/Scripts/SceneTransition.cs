@@ -28,13 +28,25 @@ public class SceneTransition : MonoBehaviour
         {
             storage.infoStorage.sceneName = sceneToLoadName;
             storage.infoStorage.nextPosition = playerPositionOnLoad;
-            storage.infoStorage.nextRoomInfo = roomOnLoadInfo;
             storage.infoStorage.facing = facing;
         }
+        FadeScreen.Singleton?.OnFadingMid.AddListener(OnTransitionHalf);
         storage.MoveToScene();
         //SceneManager.LoadScene(sceneToLoadName);
     }
 
+
+
+
+    public void OnTransitionHalf()
+    {
+        PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
+        storage.infoStorage.nextRoomInfo.SetValue(roomOnLoadInfo);
+
+
+        FadeScreen.Singleton?.OnFadingMid.RemoveListener(OnTransitionHalf);
+
+    }
 
 
 }

@@ -84,11 +84,8 @@ public class PauseManager : MonoBehaviour
     {
         if (canPause)
         {
-            Debug.Log("Pause");
             isPaused = !isPaused;
-            pausePanel.SetActive(isPaused);
-            Time.timeScale = isPaused ? 0f : 1;
-            if (isPaused) { OnPause?.Invoke(); }
+            OnPausePressed(isPaused);
         }
     }
 
@@ -116,12 +113,17 @@ public class PauseManager : MonoBehaviour
     {
         PlayerInfoStorage playerInfoStorage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>();
         playerInfoStorage.SetNewInformationToFile();
-
-        GameSaveManager.Singleton?.SaveScriptables();
+        GameSaveManager.Singleton?.SaveGame();
     }
 
     public void ReturnToTitle()
     {
-        SceneManager.LoadScene("StartMenuScene");
+        PlayerInfoStorage playerInfoStorage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>();
+        OnPausePressed(false);
+        playerInfoStorage.MoveToHomeScreenScene();
     }
+
+
+
+
 }

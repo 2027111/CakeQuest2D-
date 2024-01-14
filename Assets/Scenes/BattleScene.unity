@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7650343}
   - component: {fileID: 7650342}
   - component: {fileID: 7650341}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,10 +358,9 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 1672981738}
   EnemySpawnPoint: {fileID: 1980056458}
   audioSource: {fileID: 443016057}
+  debug: 1
   BattlePrefab: {fileID: 1396658446781485327, guid: ece13eef636610149a16c978aa1d7af5, type: 3}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
-  fadeInPanel: {fileID: 6367813579642875718, guid: 1062c311f77a4a44fb35f0fd291e0a29, type: 3}
-  fadeOutPanel: {fileID: 6367813579642875718, guid: b3fbf853a41f21e46977c243df4aa1c8, type: 3}
   minimumFadeTime: 1
   Selected: {fileID: 0}
 --- !u!4 &443016056
@@ -387,14 +386,14 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443016054}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 52d6496ccd06eca4b9b652ee0df7f018, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f92a4982bec7e764d98a41430911c16f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4c34911cc6a44ad4eade359b8a026d52, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -598,7 +597,7 @@ GameObject:
   - component: {fileID: 802766068}
   - component: {fileID: 802766067}
   - component: {fileID: 802766066}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,7 +760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804574977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37, y: -1.4699998, z: -3.1321745}
+  m_LocalPosition: {x: -0.37, y: -2.8699994, z: -3.1321745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -819,11 +818,11 @@ MonoBehaviour:
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 4.91
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.958
+  m_ScreenY: 0.818
   m_CameraDistance: 3
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
@@ -935,7 +934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112847793}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.37, y: -1.4699998, z: -3.1321745}
+  m_LocalPosition: {x: -0.37, y: -2.8699994, z: -3.1321745}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

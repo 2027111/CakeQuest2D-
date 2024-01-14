@@ -29,6 +29,7 @@ public class MeleeBaseState : State
         collidersDamaged = new List<Collider2D>();
         forceEvents = new List<ForceEvents>();
         hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
+        cc.gameObject.layer = 9;
         animator.SetBool("IsAttacking", true);
         animator.SetTrigger("Attack");
     }
@@ -36,34 +37,60 @@ public class MeleeBaseState : State
     public void OnEnter(StateMachine _stateMachine, AttackData data)
     {
         base.OnEnter(_stateMachine);
-        collidersDamaged = new List<Collider2D>();
-        hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
-        currentData = data;
-        duration = currentData.animation.length;
-        framerate = currentData.animation.frameRate;
-        cc.attackPlacement = currentData.attackPlacement;
-        animator.SetFloat("Weapon.Active", 0);
-        animator.SetFloat("AttackWindow.Open", 0);
-        if (!currentData.conserveVelocity)
+
+        if (!data)
         {
-            cc.rb.velocity = Vector3.zero;
+            stateMachine.SetNextStateToMain();
+
         }
-        animator.SetBool("IsAttacking", true);
+        else
+        {
+
+            collidersDamaged = new List<Collider2D>();
+            hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
+            currentData = data;
+            duration = currentData.animation.length;
+            framerate = currentData.animation.frameRate;
+            cc.attackPlacement = currentData.attackPlacement;
+            animator.SetFloat("Weapon.Active", 0);
+            animator.SetFloat("AttackWindow.Open", 0);
+            PlaySFXs();
+            if (!currentData.conserveVelocity)
+            {
+                cc.rb.velocity = Vector3.zero;
+            }
+            animator.SetBool("IsAttacking", true);
 
 
-        cc.entity.AddToMana(-currentData.manaCost);
+            cc.entity.AddToMana(-currentData.manaCost);
 
 
-        ApplyAttackAnimationOverride();
-
-
-
+            ApplyAttackAnimationOverride();
 
 
 
 
-        animator.SetTrigger("Attack");
+
+
+
+            animator.SetTrigger("Attack");
+        }
+
     }
+
+    private void PlaySFXs()
+    {
+
+        if (currentData.SoundEffect)
+        {
+            cc.PlaySFX(currentData.SoundEffect);
+        }
+        if (currentData.VoiceLine)
+        {
+            cc.PlayVoiceclip(currentData.VoiceLine);
+        }
+    }
+
     private void ApplyAttackAnimationOverride()
     {
         originalController = new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -87,6 +114,7 @@ public class MeleeBaseState : State
         filter.layerMask = stateMachine.hitboxMask;
         filter.useLayerMask = true;
         int colliderCount = Physics2D.OverlapCollider(hitCollider, filter, collidersToDamage);
+        Vector2 firstPosition = stateMachine.transform.position;
         for (int i = 0; i < colliderCount; i++)
         {
             if (collidersToDamage[i].gameObject != cc.GetComponent<Collider2D>().gameObject)
@@ -101,13 +129,19 @@ public class MeleeBaseState : State
 
                         if (collidersToDamage[i].GetComponent<Entity>())
                         {
-                            int damage = Random.Range(4, 12);
+                            int damage = stateMachine.GetComponent<Entity>().characterObject.AttackDamage + Random.Range(-5, 5);
                             Entity entity = collidersToDamage[i].GetComponent<Entity>();
-                                entity.TakeDamage(damage, stateMachine.GetComponent<Entity>());
+                                entity.TakeDamage(damage, stateMachine.GetComponent<Entity>(), currentHitBox);
                                 entity.OnDamageTaken?.Invoke(-damage, stateMachine.GetComponent<BattleCharacter>());
                         }
-                        Debug.Log(collidersToDamage[i].name + " -> Enemy has taken Damage");
-                        hasHit = true;
+                            Debug.Log(collidersToDamage[i].name + " -> Enemy has taken Damage");
+
+                            if (!hasHit)
+                            {
+                                firstPosition = collidersToDamage[i].transform.position + Vector3.up;
+                                currentData.SpawnHitEffect(firstPosition);
+                            }
+                            hasHit = true;
                         collidersDamaged.Add(collidersToDamage[i]);
                         }
                     }
@@ -118,7 +152,6 @@ public class MeleeBaseState : State
     public override void OnExit()
     {
         base.OnExit();
-
         animator.runtimeAnimatorController = cc.GetController();
         animator.SetBool("IsAttacking", false);
         animator.SetFloat("Weapon.Active", 0);
@@ -131,6 +164,9 @@ public class MeleeBaseState : State
             cc.CooldownAttack(.3f);
         }
     }
+
+
+
 
     public override void OnFixedUpdate()
     {
@@ -192,6 +228,7 @@ public class MeleeBaseState : State
                     {
                         if (currentHitBox.resetCollisions && currentHitBox.IsFirstFrame(frame))
                         {
+                            Debug.Log("Reset Collisions");
                             collidersDamaged = new List<Collider2D>();
                         }
                         animator.SetFloat("Weapon.Active", 1);
@@ -241,7 +278,7 @@ public class MeleeBaseState : State
             {
                 if (animator.GetFloat("AttackWindow.Open") == 0)
                 {
-                    cc.OnAttackPressed += DoAttack;
+                    //cc.OnAttackPressed += DoAttack;
                     animator.SetFloat("AttackWindow.Open", 1);
                 }
             }

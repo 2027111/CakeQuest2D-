@@ -2,7 +2,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-public class LineInfo : YourScriptableObject
+public class LineInfo : ScriptableObject
 {
     public Sprite portrait;
     public string talkername;

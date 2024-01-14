@@ -21,6 +21,9 @@ MonoBehaviour:
   durationInFrames: 8
   startOpenFrame: 3
   manaCost: 13
+  HitEffect: {fileID: 0}
+  SoundEffect: {fileID: 8300000, guid: 60f9efe3d97bc8f47bea1af7f7093d41, type: 3}
+  VoiceLine: {fileID: 0}
   hitboxes: []
   prefabs:
   - AttackPrefab: {fileID: 3122504944675684838, guid: 4d098db6d82ebdf4b995c533acfee01f, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 
 [CreateAssetMenu]
 [System.Serializable]
-public class CharacterObject : YourScriptableObject
+public class CharacterObject : ScriptableObject
 {
 
 
@@ -25,7 +25,9 @@ public class CharacterObject : YourScriptableObject
     public int Armor;
     public int BaseArmor;
 
-
+    public Vector2 colliderOffset = Vector2.zero;
+    public Vector2 colliderSize = Vector2.one;
+    public Vector2 feetPosition = Vector2.zero;
 
     public List<AttackData> AttackList = new List<AttackData>();
 
@@ -40,5 +42,7 @@ public class CharacterObject : YourScriptableObject
         isDead = false;
         Health = MaxHealth;
         Mana = MaxMana;
+        Armor = BaseArmor;
+
     }
 }

@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 
     public float moveSpeed = 5;
     public Rigidbody2D rb2D;
+    public float runFactor = 1f;
 
     public event Action<Vector2> LookAtEvent;
     public Vector2 movementInput = Vector2.zero;
@@ -47,10 +48,11 @@ public class Movement : MonoBehaviour
     public void MoveCharacter()
     {
 
-        rb2D.MovePosition(rb2D.position + (movementInput * moveSpeed * Time.deltaTime));
+        rb2D.MovePosition(rb2D.position + (movementInput * moveSpeed * runFactor * Time.deltaTime));
     }
 
-
-
-
+    public void Run(bool running)
+    {
+        runFactor = running ? 1.8f : 1;
+    }
 }

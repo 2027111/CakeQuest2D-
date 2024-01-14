@@ -17,7 +17,7 @@ public class Collision : MonoBehaviour
     [Header("Collision")]
 
     public float collisionRadius = 0.25f;
-    public Vector2 bottomOffset, rightOffset, leftOffset;
+    public Vector2 bottomOffset;
     private Color debugCollisionColor = Color.red;
 
     // Start is called before the first frame update

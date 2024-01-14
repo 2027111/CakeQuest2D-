@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 
 [System.Serializable]
-public class FloatValue : YourScriptableObject
+public class FloatValue : ScriptableObject
 {
 
 

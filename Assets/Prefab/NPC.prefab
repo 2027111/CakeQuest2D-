@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   canInteract: 0
+  heroParty: {fileID: 0}
 --- !u!114 &2430433989948180661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 3
   rb2D: {fileID: 2430433989948180670}
+  runFactor: 1
   movementInput: {x: 0, y: 0}
 --- !u!114 &2430433989948180668
 MonoBehaviour:
@@ -221,7 +223,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2430433989948180660}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -253,7 +255,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2430433989948180660}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 9c497a4ce1f356b448c0dd3eca091d35, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -320,8 +322,9 @@ MonoBehaviour:
   - {fileID: 0}
   started: 0
   player: {fileID: 0}
-  ThisbattleInfo: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}
-  currentBattleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
+  OnDialogueOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &6393111097336211545
 Animator:
   serializedVersion: 4

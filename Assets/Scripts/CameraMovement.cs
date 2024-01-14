@@ -19,6 +19,13 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        currentRoomInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>().infoStorage.nextRoomInfo;
+
+        Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+
+        transform.position = targetPos;
+
     }
 
     // Update is called once per frame
@@ -48,12 +55,5 @@ public class CameraMovement : MonoBehaviour
         transform.position = targetPos;
     }
 
-    public void SetNewRoom(RoomInfo newRoom)
-    {
-        currentRoomInfo = newRoom;
-        if (currentRoomInfo)
-        {
-            RoomTitleCard.ShowTitle(currentRoomInfo.roomName);
-        }
-    }
+    
 }

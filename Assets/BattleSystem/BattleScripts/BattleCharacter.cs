@@ -3,11 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
-
-
-
-
+using System.Linq;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -22,9 +18,11 @@ public class BattleCharacter : MonoBehaviour
     public delegate void MovementHandler(Vector2 movement);
     [Header("Inputs")]
     public EventHandler OnJumpPressed;
-    public EventHandler OnAttackPressed;
     public EventHandler OnJumpRelease;
+    public EventHandler OnAttackPressed;
     public EventHandler OnAttackRelease;
+    public EventHandler OnSpecialPressed;
+    public EventHandler OnSpecialRelease;
     public MovementHandler OnMovement;
     public bool jump;
     public bool attack;
@@ -59,6 +57,7 @@ public class BattleCharacter : MonoBehaviour
     [Space]
     [SerializeField] public Collider2D hitbox;
     [SerializeField] public Collider2D hurtbox;
+    [SerializeField] public Collider2D pushbox;
     [SerializeField] public Animator animator;
     [SerializeField] public GameObject Graphics;
     [SerializeField] public CinemachineVirtualCamera virtualCamera;
@@ -70,6 +69,8 @@ public class BattleCharacter : MonoBehaviour
 
     [SerializeField] public AttackListManager alm;
     [SerializeField] public Entity entity;
+    [SerializeField] public AudioSource voiceSource;
+    [SerializeField] public AudioSource sfxSource;
 
     [SerializeField] public SpriteRenderer characterSprite;
 
@@ -85,6 +86,28 @@ public class BattleCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    }
+
+
+
+    public void PlaySFX(AudioClip audioclip)
+    {
+
+        PlayAudioClip(sfxSource, audioclip);
+    }
+
+
+    public void PlayVoiceclip(AudioClip audioclip)
+    {
+        PlayAudioClip(voiceSource, audioclip);
+    }
+
+
+
+    public void PlayAudioClip(AudioSource audiosource, AudioClip audioClip)
+    {
+        audiosource.clip = audioClip;
+        audiosource.Play();
     }
 
 
@@ -120,6 +143,12 @@ public class BattleCharacter : MonoBehaviour
         }
 
     }
+
+    public float GetFacing()
+    {
+        return Graphics.transform.localScale.x;
+    }
+
     public AnimatorOverrideController GetController()
     {
         return entity.characterObject.animationController ? entity.characterObject.animationController : new AnimatorOverrideController(animator.runtimeAnimatorController);
@@ -135,7 +164,17 @@ public class BattleCharacter : MonoBehaviour
         OnAttackPressed?.Invoke();
         attack = true;
     }
+    public void OnSpecialPress()
+    {
+        OnSpecialPressed?.Invoke();
+        attack = true;
+    }
 
+    public void OnSpecialLetGo()
+    {
+        OnSpecialRelease?.Invoke();
+        attack = false;
+    }
 
     public void OnJumpLetGo()
     {
@@ -189,28 +228,29 @@ public class BattleCharacter : MonoBehaviour
         StartCoroutine(AttackCooldown(time));
     }
 
-    public AttackData GetCurrentAttack()
+    public AttackData GetCurrentAttack(bool special = false)
     {
         AttackPlacement ap = AttackPlacement.NONE;
             float x = direction.x;
             float y = direction.y;
                 if (Mathf.Abs(x) > 0.2f)
                 {
-                    ap = AttackPlacement.SLIGHT;
+                    ap = special? AttackPlacement.SSPECIAL: AttackPlacement.SLIGHT;
                 }
                 else if (y < -0.2f)
                 {
-                    ap = AttackPlacement.DLIGHT;
+                    ap = special ? AttackPlacement.DSPECIAL : AttackPlacement.DLIGHT;
 
                 }
                 else
                 {
-                    ap = AttackPlacement.NLIGHT;
+                    ap = special ? AttackPlacement.NSPECIAL : AttackPlacement.NLIGHT;
 
                 }
-            
         return GetAttack(ap);
     }
+
+
 
     public void Walk(Vector2 dir)
     {
@@ -231,6 +271,7 @@ public class BattleCharacter : MonoBehaviour
 
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.velocity += dir * jumpForce;
+        animator.SetTrigger("Jump");
     }
 
     public void SetHitBox(bool turnOn, Vector2? size = null, Vector2? offset = null)
@@ -326,10 +367,30 @@ public class BattleCharacter : MonoBehaviour
         
     }
 
+    public void SetColliderInformation(CharacterObject characterObject)
+    {
+        coll.bottomOffset = characterObject.feetPosition;
+        hurtbox.offset= characterObject.colliderOffset;
+        (hurtbox as BoxCollider2D).size = characterObject.colliderSize;
+        pushbox.offset = characterObject.colliderOffset;
+        (pushbox as BoxCollider2D).size = characterObject.colliderSize;
+    }
+
+
+
     public IEnumerator AttackCooldown(float time)
     {
         canAttack = false;
         yield return new WaitForSeconds(time);
         canAttack = true;
+    }
+
+    public bool AttackContains(Action interact)
+    {
+        if(OnAttackPressed == null)
+        {
+            return false;
+        }
+        return OnAttackPressed.GetInvocationList().Contains(interact);
     }
 }

@@ -15,14 +15,20 @@ MonoBehaviour:
   conserveVelocity: 0
   animationName: Attack1
   animation: {fileID: 7400000, guid: 64641b7e5f3068941b32f7f58227a70b, type: 2}
+  attackType: 2
+  attackProperties: 0
   attackPlacement: 1
   durationInFrames: 5
   startOpenFrame: 5
+  manaCost: 0
+  HitEffect: {fileID: 0}
+  SoundEffect: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
+  VoiceLine: {fileID: 0}
   hitboxes:
   - offset: {x: 0.71963, y: 0.94832}
     size: {x: 1.5001, y: 1.3232}
     frame: 3
     resetCollisions: 0
     durationInFrame: 1
+  prefabs: []
   forceEvents: []
-  attackType: 2

@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using System;
+
+
 
 public class DialogueStarterObject : MonoBehaviour
 {
@@ -41,8 +44,28 @@ public class DialogueStarterObject : MonoBehaviour
     }
     public virtual void DialogueRequest()
     {
-        DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, dialogueLines), DialogueOver, player.gameObject, gameObject);
+        if (CheckLines())
+        {
+            DialogueBox.Singleton.StartDialogue(GetFormattedLines(this, dialogueLines), DialogueOver, player.gameObject, gameObject);
+        }
+        else
+        {
+            DialogueOver();
+        }
     }
+
+    private bool CheckLines()
+    {
+        foreach (LineInfo line in dialogueLines)
+        {
+            if (line == null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public virtual void DialogueOver()
     {
         started = false;

@@ -18,6 +18,11 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         InitDropdown();
+
+        if (UICanvas.Singleton)
+        {
+            Destroy(UICanvas.Singleton.gameObject);
+        }
     }
     private void InitDropdown()
     {
@@ -37,7 +42,7 @@ public class MainMenu : MonoBehaviour
         // Add the options to the dropdown
         languageDropdown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
 
-        languageDropdown.onValueChanged.AddListener(DialogueManager.Singleton.OnLanguageDropdownValueChanged);
+        languageDropdown.onValueChanged.AddListener(GameSaveManager.Singleton.OnLanguageDropdownValueChanged);
     }
 
    
@@ -46,8 +51,10 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Debug.Log("Test");
+        Debug.Log(FadeScreen.fading);
         playerSave.sceneName = firstScene;
-        playerSave.nextRoomInfo = firstRoom;
+        playerSave.nextRoomInfo.SetValue(firstRoom);
         playerSave.forceNextChange = true;
         OnNewGame?.Invoke();
         GoToGame();
@@ -64,10 +71,40 @@ public class MainMenu : MonoBehaviour
     public void GoToGame()
     {
         playerSave.forceNextChange = true;
-        SceneManager.LoadScene(playerSave.sceneName);
+        StartCoroutine(FadeCoroutine(playerSave.sceneName));
     }
     public void QuitToDesktop()
     {
         Application.Quit();
+    }
+
+
+
+    public IEnumerator FadeCoroutine(string scene)
+    {
+
+        if (!FadeScreen.fading)
+        {
+            FadeScreen.StartTransition(true, Color.black, .5f);
+        }
+        yield return new WaitForSeconds(.5f);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
+
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
+
+        if (!FadeScreen.fading)
+        {
+            FadeScreen.StartTransition(false, Color.black, .5f);
+        }
+
+        yield return null;
+
+
+
+
+
     }
 }

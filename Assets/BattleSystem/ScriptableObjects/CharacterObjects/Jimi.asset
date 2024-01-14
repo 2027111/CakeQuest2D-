@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83578cbc0501d3445a1e9b01b580a5f9, type: 3}
+  m_Name: Jimi
+  m_EditorClassIdentifier: 
+  characterData: {fileID: 11400000, guid: 243c15b623e95714ab713ac8670411d5, type: 2}
+  Health: 3211
+  MaxHealth: 6000
+  Mana: 9
+  MaxMana: 100
+  AttackDamage: 20
+  ManaDamage: 10
+  isDead: 0
+  Armor: 0
+  BaseArmor: 0
+  colliderOffset: {x: 0.025, y: 0.8}
+  colliderSize: {x: 0.85, y: 1.25}
+  feetPosition: {x: 0.05, y: 0.18}
+  AttackList:
+  - {fileID: 11400000, guid: 8388d095ecc8a6e4285b40bc23042e6f, type: 2}
+  - {fileID: 11400000, guid: 8fe11174bea6c81448a7b1d4f51ec8ad, type: 2}
+  - {fileID: 11400000, guid: c39dfd8557fcc9f4bbe8e1d86fda84b6, type: 2}
+  animationController: {fileID: 22100000, guid: b80ae5f7b70bfda4989b1dcb724aaf8f, type: 2}
