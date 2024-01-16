@@ -7,12 +7,14 @@ using UnityEngine;
 public class ScriptableObjectDTO
 {
     public string typeName; // To store the type name
+    public string objectName; // To store the scriptable object name
     public string jsonData; // To store the serialized JSON data
     public int HashCode; // To store the unique identifier
 
     public ScriptableObjectDTO(ScriptableObject scriptableObject)
     {
         typeName = scriptableObject.GetType().FullName;
+        objectName = scriptableObject.name;
         jsonData = JsonUtility.ToJson(scriptableObject);
         HashCode = scriptableObject.GetHashCode();
     }

@@ -15,8 +15,6 @@ MonoBehaviour:
   conserveVelocity: 0
   animationName: Attack1
   animation: {fileID: 7400000, guid: 0b8df8f29a9940d4a8183981fa3eba1b, type: 2}
-  attackType: 0
-  attackProperties: 0
   attackPlacement: 5
   durationInFrames: 44
   startOpenFrame: 35
@@ -35,7 +33,7 @@ MonoBehaviour:
     stuns: 1
     stunTime: 30
   - offset: {x: 0.2, y: 0.75}
-    size: {x: 1.15, y: 0.45}
+    size: {x: 1.5, y: 1.4}
     frame: 33
     resetCollisions: 1
     durationInFrame: 3

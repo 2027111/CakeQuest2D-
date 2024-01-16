@@ -65,6 +65,10 @@ public class NewDialogueStarterObject : MonoBehaviour
                 DialogueRequest();
             }
         }
+        else
+        {
+            OnDialogueOverEvent.Invoke();
+        }
     }
     public virtual void DialogueRequest()
     {

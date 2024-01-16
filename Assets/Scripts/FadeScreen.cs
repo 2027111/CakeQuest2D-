@@ -13,6 +13,7 @@ public class FadeScreen : MonoBehaviour
 
     public static bool fading = false;
     public static bool fadeOn = false;
+    public static bool movingScene = false;
     private static FadeScreen _singleton;
 
     private float fadeTime = .3f;
@@ -46,8 +47,8 @@ public class FadeScreen : MonoBehaviour
     }
     private void Start()
     {
-        fadeOn = true;
-        StartTransition(false, 0);
+        //fadeOn = true;
+        //StartTransition(false, 0);
     }
     public static void MoveToScene(string sceneName, Color transitionColor, float fadeTime = -1)
     {
@@ -59,9 +60,12 @@ public class FadeScreen : MonoBehaviour
 
     public static void MoveToScene(string sceneName,float fadeTime = -1)
     {
+        if (!movingScene)
+        {
 
         Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
         Singleton?.FadeToScene(sceneName);
+        }
     }
 
     private void FadeToScene(string sceneName)
@@ -103,7 +107,7 @@ public class FadeScreen : MonoBehaviour
     {
 
 
-
+        movingScene = true;
         OnFadingStart?.Invoke();
         if (!FadeScreen.fading)
         {
@@ -125,6 +129,7 @@ public class FadeScreen : MonoBehaviour
         }
 
         OnFadingEnd?.Invoke();
+        movingScene = false;
         yield return null;
 
 
@@ -133,8 +138,11 @@ public class FadeScreen : MonoBehaviour
 
     }
 
+
+
     public IEnumerator StartFadeAnimation(bool on)
     {
+        Debug.Log("Test");
         float time = 0f;
         float start = on?0:1;
         float target = on?1:0;

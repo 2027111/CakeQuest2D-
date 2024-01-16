@@ -15,8 +15,6 @@ MonoBehaviour:
   conserveVelocity: 0
   animationName: Attack1
   animation: {fileID: 7400000, guid: 2a94060a3e4382e4f96f86689c764472, type: 2}
-  attackType: 0
-  attackProperties: 0
   attackPlacement: 1
   durationInFrames: 15
   startOpenFrame: 5
@@ -26,9 +24,13 @@ MonoBehaviour:
   VoiceLine: {fileID: 0}
   hitboxes:
   - offset: {x: 0.71963, y: 0.94832}
-    size: {x: 1.5001, y: 1.3232}
+    size: {x: 1.5001, y: 1.9}
     frame: 5
     resetCollisions: 0
     durationInFrame: 4
+    knockbackVector: {x: 1, y: 0}
+    knockbackForce: 1
+    stuns: 0
+    stunTime: -1
   prefabs: []
   forceEvents: []

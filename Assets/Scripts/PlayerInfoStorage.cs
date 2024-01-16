@@ -16,7 +16,7 @@ public class PlayerInfoStorage : MonoBehaviour
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
 
-    
+
 
 
 
@@ -34,9 +34,12 @@ public class PlayerInfoStorage : MonoBehaviour
                 MoveToScene();
             }
         }
-        if (!FadeScreen.fading)
+        else
         {
-            FadeScreen.StartTransition(false, Color.black, .5f);
+            if (!FadeScreen.movingScene)
+            {
+                FadeScreen.StartTransition(false, Color.black, .5f);
+            }
         }
     }
 
@@ -72,7 +75,7 @@ public class PlayerInfoStorage : MonoBehaviour
             }
             else
             {
-                if (!FadeScreen.fading)
+                if (!FadeScreen.movingScene)
                 {
                     FadeScreen.StartTransition(false, Color.black, .5f);
                 }

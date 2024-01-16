@@ -15,24 +15,14 @@ public class LineInfo : ScriptableObject
         this.line = line;
     }
 
-    public LineInfo(LineInfoDTO dto)
-    {
-        this.portrait = dto.portrait;
-        this.talkername = dto.talkername;
-        this.line = dto.line;
-    }
+
     public LineInfo()
     {
         portrait = null;
         talkername = "";
         line = "";
     }
-    public void SetData(LineInfoDTO dto)
-    {
-
-        this.talkername = dto.talkername;
-        this.line = dto.line;
-    }
+    
 
 }
 

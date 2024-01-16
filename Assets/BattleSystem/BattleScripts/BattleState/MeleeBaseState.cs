@@ -17,7 +17,7 @@ public class MeleeBaseState : State
     protected float framerate = 12;
     protected int lastFrame = -1;
     protected Collider2D hitCollider;
-    private List<Collider2D> collidersDamaged;
+    private List<GameObject> collidersDamaged;
     private List<ForceEvents> forceEvents = new List<ForceEvents>();
     protected AttackData nextData;
     AnimatorOverrideController originalController;
@@ -26,7 +26,7 @@ public class MeleeBaseState : State
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
-        collidersDamaged = new List<Collider2D>();
+        collidersDamaged = new List<GameObject>();
         forceEvents = new List<ForceEvents>();
         hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
         cc.gameObject.layer = 9;
@@ -46,7 +46,7 @@ public class MeleeBaseState : State
         else if(data.GetType() == typeof(AttackData))
         {
 
-            collidersDamaged = new List<Collider2D>();
+            collidersDamaged = new List<GameObject>();
             hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
             currentData = data;
             duration = currentData.animation.length;
@@ -119,7 +119,7 @@ public class MeleeBaseState : State
         {
             if (collidersToDamage[i].gameObject != cc.GetComponent<Collider2D>().gameObject)
             {
-                if (!collidersDamaged.Contains(collidersToDamage[i]))
+                if (!collidersDamaged.Contains(collidersToDamage[i].gameObject))
                 {
                     TeamComponent hitTeamComponent = collidersToDamage[i].GetComponent<TeamComponent>();
                     if (hitTeamComponent)
@@ -142,7 +142,7 @@ public class MeleeBaseState : State
                                 currentData.SpawnHitEffect(firstPosition);
                             }
                             hasHit = true;
-                        collidersDamaged.Add(collidersToDamage[i]);
+                        collidersDamaged.Add(collidersToDamage[i].gameObject);
                         }
                     }
                 }
@@ -158,7 +158,7 @@ public class MeleeBaseState : State
         animator.SetFloat("AttackWindow.Open", 0);
         cc.SetHitBox(false);
         cc.attackPlacement = AttackPlacement.NONE;
-        collidersDamaged = new List<Collider2D>();
+        collidersDamaged = new List<GameObject>();
         if (!hasHit)
         {
             cc.CooldownAttack(.3f);
@@ -229,7 +229,7 @@ public class MeleeBaseState : State
                         if (currentHitBox.resetCollisions && currentHitBox.IsFirstFrame(frame))
                         {
                             Debug.Log("Reset Collisions");
-                            collidersDamaged = new List<Collider2D>();
+                            collidersDamaged = new List<GameObject>();
                         }
                         animator.SetFloat("Weapon.Active", 1);
                         cc.SetHitBox(true, currentHitBox);

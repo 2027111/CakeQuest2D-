@@ -96,12 +96,13 @@ public class Entity : MonoBehaviour
             {
             damageChain += amount;
 
-            if(damageChain >= 23333333)
+            if(damageChain >= ((characterObject.MaxHealth / 3)))
             {
 
                     stateMachine?.SetNextState(new KnockedDownState());
                     impulse.x *= Random.Range(8, 11);
                 impulse = new Vector2(impulse.x, impulse.y);
+                    damageChain = 0;
             }
             else
             {

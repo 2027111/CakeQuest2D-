@@ -17,11 +17,11 @@ public class Projectile : MonoBehaviour
     public bool constantVelocity = false;
     public bool gravity = false;
     public BattleCharacter Owner;
-    private List<Collider2D> collidersDamaged = new List<Collider2D>();
+    private List<GameObject> collidersDamaged = new List<GameObject>();
     bool On = true;
     Rigidbody2D rb2D;
     BoxCollider2D hitbox;
-    bool DestroyOnContact;    
+    public bool DestroyOnContact;    
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
         hitbox = GetComponent<BoxCollider2D>();
         GetComponent<SpriteRenderer>().flipX = direction == -1 ? true : false;
         rb2D.gravityScale = gravity ? 1 : 0;
-        collidersDamaged = new List<Collider2D>();
+        collidersDamaged = new List<GameObject>();
         Destroy(gameObject, duration);
     }
 
@@ -73,7 +73,7 @@ public class Projectile : MonoBehaviour
         {
             if (collidersToDamage[i].gameObject != Owner.GetComponent<Collider2D>().gameObject)
             {
-                if (!collidersDamaged.Contains(collidersToDamage[i]))
+                if (!collidersDamaged.Contains(collidersToDamage[i].gameObject))
                 {
                     TeamComponent hitTeamComponent = collidersToDamage[i].GetComponent<TeamComponent>();
                     if (hitTeamComponent)
@@ -93,7 +93,7 @@ public class Projectile : MonoBehaviour
                                     }
                             }
                             Debug.Log(collidersToDamage[i].name + " -> Enemy has taken Damage");
-                            collidersDamaged.Add(collidersToDamage[i]);
+                            collidersDamaged.Add(collidersToDamage[i].gameObject);
                         }
                     }
                 }

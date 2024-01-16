@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c27fedd0d1a0224791c7fe841b74b30, type: 3}
-  m_Name: LineAAB 1
+  m_Name: Intro_Jimi_001
   m_EditorClassIdentifier: 
   portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
   talkername: ???
-  line: "Merde... J'vais devoir en faire moi m\xEAme."
+  line: "J'ai besoin de manger la v\xE9rit\xE9... J'pense il reste du gateau non?"

@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HeroKnight_Attack1
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -271,6 +271,7 @@ AnimationClip:
       typeID: 61
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 3868649507
       attribute: 1872933342
@@ -278,6 +279,7 @@ AnimationClip:
       typeID: 61
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 3868649507
       attribute: 4197328169
@@ -285,6 +287,7 @@ AnimationClip:
       typeID: 61
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 3868649507
       attribute: 2368279999
@@ -292,6 +295,7 @@ AnimationClip:
       typeID: 61
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 3809116014
@@ -299,6 +303,7 @@ AnimationClip:
       typeID: 95
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 2284209785
@@ -306,6 +311,7 @@ AnimationClip:
       typeID: 95
       customType: 0
       isPPtrCurve: 0
+      isIntCurve: 0
     - serializedVersion: 2
       path: 0
       attribute: 0
@@ -313,6 +319,7 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
     pptrCurveMapping:
     - {fileID: 21300036, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
     - {fileID: 21300038, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}

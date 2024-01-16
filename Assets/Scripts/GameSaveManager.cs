@@ -161,6 +161,8 @@ public class GameSaveManager : MonoBehaviour
         LoadScriptables(SaveFiles.translation);
 
         OnLanguageChanged?.Invoke();
+
+        SaveScriptables(SaveFiles.translation);
     }
 
 
@@ -221,7 +223,7 @@ public class GameSaveManager : MonoBehaviour
             if (yourObj != null)
             {
 
-                ScriptableObjectDTO scriptableObjectDTO = dtoList.Find(dto => dto.HashCode == yourObj.GetHashCode());
+                ScriptableObjectDTO scriptableObjectDTO = GetMatchingObject(dtoList, obj);
 
 
                 // Find the corresponding DTO using the unique identifier
@@ -232,6 +234,22 @@ public class GameSaveManager : MonoBehaviour
                 }
             }
         
+    }
+
+
+    public ScriptableObjectDTO GetMatchingObject(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
+    {
+        foreach(ScriptableObjectDTO sodto in dtoList)
+        {
+            if(sodto.typeName == obj.GetType().Name)
+            {
+                if(sodto.objectName == obj.name || sodto.HashCode == obj.GetHashCode())
+                {
+                    return sodto;
+                }
+            }
+        }
+        return null;
     }
 
 

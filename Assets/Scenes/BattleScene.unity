@@ -358,7 +358,7 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 1672981738}
   EnemySpawnPoint: {fileID: 1980056458}
   audioSource: {fileID: 443016057}
-  debug: 1
+  debug: 0
   BattlePrefab: {fileID: 1396658446781485327, guid: ece13eef636610149a16c978aa1d7af5, type: 3}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   minimumFadeTime: 1
@@ -386,7 +386,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443016054}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 52d6496ccd06eca4b9b652ee0df7f018, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4c34911cc6a44ad4eade359b8a026d52, type: 3}

@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c27fedd0d1a0224791c7fe841b74b30, type: 3}
-  m_Name: LineAAA 2
+  m_Name: Intro_Jimi_002
   m_EditorClassIdentifier: 
-  portrait: {fileID: 21300000, guid: 3db81e2e8145b1c4fae8fd1393fdd76d, type: 3}
-  talkername: Yankee
-  line: "Ensuite utilise P pour faire des attaques normales et O pour faire des attaques
-    sp\xE9cifiques."
+  portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
+  talkername: ???
+  line: "Merde... J'vais devoir en faire moi m\xEAme."

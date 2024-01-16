@@ -107,6 +107,7 @@ MonoBehaviour:
   constantVelocity: 0
   gravity: 0
   Owner: {fileID: 0}
+  DestroyOnContact: 1
 --- !u!50 &3122504944675684840
 Rigidbody2D:
   serializedVersion: 4
