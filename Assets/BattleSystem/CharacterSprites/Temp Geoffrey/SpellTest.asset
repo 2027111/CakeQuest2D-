@@ -29,4 +29,4 @@ MonoBehaviour:
   castingTime: 5
   spellDuration: 5
   SpellPrefab: {fileID: 3122504944675684838, guid: 4d098db6d82ebdf4b995c533acfee01f, type: 3}
-  SpellChargePrefab: {fileID: 0}
+  SpellChargePrefab: {fileID: 3373514802855454057, guid: e787efae7ce24bc45a041f69eaa9f4d1, type: 3}

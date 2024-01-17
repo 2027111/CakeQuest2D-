@@ -7,6 +7,8 @@ public class SpellCastingState : MeleeBaseState
     new SpellData currentSData;
     bool casting;
     GameObject SpellCastingObject;
+    GameObject SpellObject;
+    GameObject Target;
     public SpellCastingState() : base()
     {
     }
@@ -37,6 +39,32 @@ public class SpellCastingState : MeleeBaseState
                 }
             }
 
+        }
+
+    }
+    public void SpawnSpell(SpellData data)
+    {
+        if (SpellObject == null)
+        {
+            if (data)
+            {
+                if (data.SpellPrefab)
+                {
+                    SpellObject = Object.Instantiate(data.SpellPrefab, stateMachine.transform);
+                }
+            }
+
+        }
+
+    }
+
+
+
+    public void UnspawnSpell()
+    {
+        if (SpellObject != null)
+        {
+            GameObject.Destroy(SpellObject);
         }
 
     }
