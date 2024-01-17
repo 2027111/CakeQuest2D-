@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpellCastingState : MeleeBaseState
 {
-    new SpellData currentSData;
+    SpellData currentSData;
     bool casting;
     GameObject SpellCastingObject;
     GameObject SpellObject;
@@ -16,6 +16,8 @@ public class SpellCastingState : MeleeBaseState
     public void OnEnter(StateMachine _stateMachine, SpellData spellData)
     {
         base.OnEnter(_stateMachine);
+
+
         currentSData = spellData;
         animator.SetTrigger("Casting");
         casting = true;
@@ -27,7 +29,7 @@ public class SpellCastingState : MeleeBaseState
 
 
 
-    public void SpawnParticleCharge(SpellData data)
+    private void SpawnParticleCharge(SpellData data)
     {
         if(SpellCastingObject == null)
         {
@@ -42,7 +44,7 @@ public class SpellCastingState : MeleeBaseState
         }
 
     }
-    public void SpawnSpell(SpellData data)
+    private void SpawnSpell(SpellData data)
     {
         if (SpellObject == null)
         {
@@ -50,7 +52,9 @@ public class SpellCastingState : MeleeBaseState
             {
                 if (data.SpellPrefab)
                 {
-                    SpellObject = Object.Instantiate(data.SpellPrefab, stateMachine.transform);
+                    Transform spawnTarget = GetTargetSpawn(data);
+
+                    SpellObject = Object.Instantiate(data.SpellPrefab, spawnTarget.position, Quaternion.identity);
                 }
             }
 
@@ -58,9 +62,20 @@ public class SpellCastingState : MeleeBaseState
 
     }
 
+    private Transform GetTargetSpawn(SpellData data)
+    {
+        switch (data.spawnBehaviour)
+        {
+            case SpawnBehaviour.SpawnOnTarget:
+                return Target.transform;
+            case SpawnBehaviour.SpawnOnCaster:
+                return stateMachine.transform;
+            default:
+                return stateMachine.transform;
+        }
+    }
 
-
-    public void UnspawnSpell()
+    private void UnspawnSpell()
     {
         if (SpellObject != null)
         {
@@ -70,7 +85,7 @@ public class SpellCastingState : MeleeBaseState
     }
 
 
-    public void UnspawnParticleCharge()
+    private void UnspawnParticleCharge()
     {
 
         if (SpellCastingObject != null)
@@ -90,6 +105,7 @@ public class SpellCastingState : MeleeBaseState
                 animator.SetTrigger("DoneCasting");
                 casting = false;
                 UnspawnParticleCharge();
+                SpawnSpell(currentSData);
             }
 
             
@@ -106,6 +122,7 @@ public class SpellCastingState : MeleeBaseState
     {
         base.OnExit();
         animator.SetTrigger("SpellOver");
+        UnspawnSpell();
 
     }
 
