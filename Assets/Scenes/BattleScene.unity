@@ -358,7 +358,7 @@ MonoBehaviour:
   PlayerSpawnPoint: {fileID: 1672981738}
   EnemySpawnPoint: {fileID: 1980056458}
   audioSource: {fileID: 443016057}
-  debug: 0
+  debug: 1
   BattlePrefab: {fileID: 1396658446781485327, guid: ece13eef636610149a16c978aa1d7af5, type: 3}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   minimumFadeTime: 1

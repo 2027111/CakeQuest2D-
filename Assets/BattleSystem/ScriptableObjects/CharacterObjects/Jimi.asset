@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Jimi
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 243c15b623e95714ab713ac8670411d5, type: 2}
-  Health: 204
+  Health: 6000
   MaxHealth: 6000
   Mana: 7
   MaxMana: 410
@@ -29,4 +29,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8388d095ecc8a6e4285b40bc23042e6f, type: 2}
   - {fileID: 11400000, guid: 8fe11174bea6c81448a7b1d4f51ec8ad, type: 2}
   - {fileID: 11400000, guid: c39dfd8557fcc9f4bbe8e1d86fda84b6, type: 2}
+  - {fileID: 11400000, guid: e399c1780eb5204429e766c8430f2e94, type: 2}
   animationController: {fileID: 22100000, guid: b80ae5f7b70bfda4989b1dcb724aaf8f, type: 2}

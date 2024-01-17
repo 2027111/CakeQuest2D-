@@ -6,6 +6,7 @@ public class SpellCastingState : MeleeBaseState
 {
     new SpellData currentSData;
     bool casting;
+    GameObject SpellCastingObject;
     public SpellCastingState() : base()
     {
     }
@@ -16,7 +17,7 @@ public class SpellCastingState : MeleeBaseState
         currentSData = spellData;
         animator.SetTrigger("Casting");
         casting = true;
-
+        SpawnParticleCharge(currentSData);
         Debug.Log(currentSData.spellDuration);
 
     }
@@ -24,7 +25,31 @@ public class SpellCastingState : MeleeBaseState
 
 
 
+    public void SpawnParticleCharge(SpellData data)
+    {
+        if(SpellCastingObject == null)
+        {
+            if (data)
+            {
+                if (data.SpellChargePrefab)
+                {
+                    SpellCastingObject = Object.Instantiate(data.SpellChargePrefab, stateMachine.transform);
+                }
+            }
 
+        }
+
+    }
+
+
+    public void UnspawnParticleCharge()
+    {
+
+        if (SpellCastingObject != null)
+        {
+            GameObject.Destroy(SpellCastingObject);
+        }
+     }
     public override void OnUpdate()
     {
 
@@ -36,6 +61,7 @@ public class SpellCastingState : MeleeBaseState
 
                 animator.SetTrigger("DoneCasting");
                 casting = false;
+                UnspawnParticleCharge();
             }
 
             

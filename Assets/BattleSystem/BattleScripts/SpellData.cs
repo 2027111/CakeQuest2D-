@@ -19,6 +19,7 @@ public class SpellData : AttackData
     public AttackProperties attackProperties = AttackProperties.EnemyTarget;
     public float castingTime = 5;
     public float spellDuration = 5;
-
+    public GameObject SpellPrefab;
+    public GameObject SpellChargePrefab;
     
 }
