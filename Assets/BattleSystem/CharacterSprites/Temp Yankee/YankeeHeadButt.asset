@@ -13,22 +13,29 @@ MonoBehaviour:
   m_Name: YankeeHeadButt
   m_EditorClassIdentifier: 
   conserveVelocity: 1
-  animationName: Attack1
-  animation: {fileID: 7400000, guid: 22e21e11380f858458c1987f5c241ab2, type: 2}
-  attackType: 0
-  attackProperties: 0
+  grounded: 0
   attackPlacement: 2
+  manaCost: 0
+  HitEffect: []
+  SoundEffect:
+  - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  - {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  VoiceLine: []
+  animationName: Attack1
+  nextMovePart: {fileID: 11400000, guid: c39dfd8557fcc9f4bbe8e1d86fda84b6, type: 2}
+  animation: {fileID: 7400000, guid: 22e21e11380f858458c1987f5c241ab2, type: 2}
   durationInFrames: 23
   startOpenFrame: 4
-  manaCost: 0
-  HitEffect: {fileID: 0}
-  SoundEffect: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
-  VoiceLine: {fileID: 0}
   hitboxes:
   - offset: {x: 0.6, y: 0.8}
     size: {x: 1.3, y: 0.7}
     frame: 10
     resetCollisions: 0
     durationInFrame: 4
+    knockbackVector: {x: 1, y: 0}
+    knockbackForce: 1
+    stuns: 0
+    stunTime: -1
   prefabs: []
   forceEvents: []

@@ -14,16 +14,16 @@ public enum AttackPlacement
 }
 public class AttackListManager : MonoBehaviour
 {
-    public List<AttackData> AttackList = new List<AttackData>();
+    public List<MoveData> AttackList = new List<MoveData>();
 
 
-    public AttackData GetAttackMatching(AttackPlacement placement)
+    public MoveData GetAttackMatching(AttackPlacement placement)
     {
         if(AttackList.Count < 0)
         {
             return null;
         }
-        foreach(AttackData data in AttackList)
+        foreach(MoveData data in AttackList)
         {
             if(data.attackPlacement == placement)
             {
@@ -33,7 +33,7 @@ public class AttackListManager : MonoBehaviour
         return null;
     }
 
-    public void SetAttackList(List<AttackData> attackList)
+    public void SetAttackList(List<MoveData> attackList)
     {
         if (attackList.Count > 0)
         {

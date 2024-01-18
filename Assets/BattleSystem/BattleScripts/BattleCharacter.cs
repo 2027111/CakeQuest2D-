@@ -228,7 +228,7 @@ public class BattleCharacter : MonoBehaviour
         StartCoroutine(AttackCooldown(time));
     }
 
-    public AttackData GetCurrentAttack(bool special = false)
+    public MoveData GetCurrentAttack(bool special = false)
     {
         AttackPlacement ap = AttackPlacement.NONE;
             float x = direction.x;
@@ -312,11 +312,11 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
-    public AttackData GetAttack()
+    public MoveData GetAttack()
     {
         return alm.AttackList[UnityEngine.Random.Range(0, alm.AttackList.Count)];
     }
-    public AttackData GetAttack(AttackPlacement ap)
+    public MoveData GetAttack(AttackPlacement ap)
     {
         return alm.GetAttackMatching(ap);
     }

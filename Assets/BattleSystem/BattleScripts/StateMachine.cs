@@ -105,7 +105,7 @@ public class StateMachine : MonoBehaviour
             SetState(_newState);
         }
     }
-    public void SetNextState(State _newState, AttackData data)
+    public void SetNextState(State _newState, MoveData data)
     {
         if (_newState != null)
         {
@@ -113,15 +113,14 @@ public class StateMachine : MonoBehaviour
             {
                 if (data.GetType() == typeof(SpellData))
                 {
-                    SetState(new SpellCastingState(), (SpellData)data);
+                        SetState(new SpellCastingState(), (SpellData)data);
+                    
 
                 }
                 else if (data.GetType() == typeof(AttackData))
                 {
-                    if (typeof(MeleeBaseState).IsAssignableFrom(_newState.GetType()))
-                    {
-                        SetState(_newState, data);
-                    }
+                        SetState(new MeleeBaseState(), (AttackData)data);
+                   
                 }
 
             }

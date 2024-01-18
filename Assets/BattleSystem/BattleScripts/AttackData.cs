@@ -9,26 +9,15 @@ using UnityEngine;
 
 
 
-public enum AttackProperties
-{
-    None,
-    FriendlyTarget,
-    EnemyTarget
-}
 [CreateAssetMenu(fileName = "New AttackData", menuName = "AttackData")]
 [Serializable]
-public class AttackData : ScriptableObject
+public class AttackData : MoveData
 {
-    public bool conserveVelocity;
     public string animationName;
+    public MoveData nextMovePart;
     public AnimationClip animation;
-    public AttackPlacement attackPlacement = AttackPlacement.NONE;
     public float durationInFrames;
     public int startOpenFrame;
-    public int manaCost;
-    public GameObject HitEffect;
-    public AudioClip SoundEffect;
-    public AudioClip VoiceLine;
     public List<HitBoxInfo> hitboxes;
     public List<PrefabInfo> prefabs;
     public List<ForceEvents> forceEvents;
@@ -44,26 +33,6 @@ public class AttackData : ScriptableObject
         }
         return null;
     }
-
-    public void SpawnHitEffect(Vector3 position)
-    {
-        if (HitEffect)
-        {
-        Destroy(Instantiate(HitEffect, position, Quaternion.identity), 2f);
-
-        }
-    }
-
-
-    public AudioClip GetVoiceLine()
-    {
-        return VoiceLine;
-    }
-    public AudioClip GetSoundEffect()
-    {
-        return SoundEffect;
-    }
-
 
 
     public ForceEvents GetForceEventsByFrame(int frame)

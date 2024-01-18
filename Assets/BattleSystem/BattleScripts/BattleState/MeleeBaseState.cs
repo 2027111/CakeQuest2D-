@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeBaseState : State
+public class MeleeBaseState : AttackState
 {
     public float duration;
     protected bool shouldCombo;
     protected int attackIndex;
     private float attackPressedTimer = 0;
+    private float attackBetweener = 0.3f;
+    private bool AttackWindowOpen = false;
     protected bool hasHit = false;
-    protected bool conserveVelocity = false;
-    protected AttackData currentData;
     protected HitBoxInfo currentHitBox;
     protected PrefabInfo currentPrefab;
     protected int frame = 0;
@@ -19,50 +19,25 @@ public class MeleeBaseState : State
     protected Collider2D hitCollider;
     private List<GameObject> collidersDamaged;
     private List<ForceEvents> forceEvents = new List<ForceEvents>();
-    protected AttackData nextData;
+    protected MoveData nextData;
     AnimatorOverrideController originalController;
     AnimationClip originalClip;
 
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
-        collidersDamaged = new List<GameObject>();
-        forceEvents = new List<ForceEvents>();
-        hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
-        cc.gameObject.layer = 9;
-        animator.SetBool("IsAttacking", true);
-        animator.SetTrigger("Attack");
     }
 
     public void OnEnter(StateMachine _stateMachine, AttackData data)
     {
-        base.OnEnter(_stateMachine);
-
-        if (!data)
-        {
-            stateMachine.SetNextStateToMain();
-
-        }
-        else if(data.GetType() == typeof(AttackData))
-        {
+        base.OnEnter(_stateMachine, data);
 
             collidersDamaged = new List<GameObject>();
+            forceEvents = new List<ForceEvents>();
             hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
-            currentData = data;
-            duration = currentData.animation.length;
-            framerate = currentData.animation.frameRate;
-            cc.attackPlacement = currentData.attackPlacement;
-            animator.SetFloat("Weapon.Active", 0);
-            animator.SetFloat("AttackWindow.Open", 0);
-            PlaySFXs();
-            if (!currentData.conserveVelocity)
-            {
-                cc.rb.velocity = Vector3.zero;
-            }
+            cc.gameObject.layer = 9;
+            SetCurrentData();
             animator.SetBool("IsAttacking", true);
-
-
-            cc.entity.AddToMana(-currentData.manaCost);
 
 
             ApplyAttackAnimationOverride();
@@ -74,22 +49,18 @@ public class MeleeBaseState : State
 
 
             animator.SetTrigger("Attack");
-        }
+        
 
     }
 
-    private void PlaySFXs()
+    public void SetCurrentData()
     {
-
-        if (currentData.SoundEffect)
-        {
-            cc.PlaySFX(currentData.SoundEffect);
-        }
-        if (currentData.VoiceLine)
-        {
-            cc.PlayVoiceclip(currentData.VoiceLine);
-        }
+        duration = ((AttackData)currentData).animation.length;
+        framerate = ((AttackData)currentData).animation.frameRate;
+        cc.attackPlacement = currentData.attackPlacement;
     }
+
+
 
     private void ApplyAttackAnimationOverride()
     {
@@ -100,7 +71,7 @@ public class MeleeBaseState : State
             if (a.name == "Attack_Temp")
             {
                 originalClip = a;
-                anims.Add(new KeyValuePair<AnimationClip, AnimationClip>(a, currentData.animation));
+                anims.Add(new KeyValuePair<AnimationClip, AnimationClip>(a, ((AttackData)currentData).animation));
             }
         }
         originalController.ApplyOverrides(anims);
@@ -141,7 +112,12 @@ public class MeleeBaseState : State
                                 firstPosition = collidersToDamage[i].transform.position + Vector3.up;
                                 currentData.SpawnHitEffect(firstPosition);
                             }
-                            hasHit = true;
+                            if(hasHit == false)
+                            {
+
+                                hasHit = true;
+                                cc.OnAttackPressed += DoAttack;
+                            }
                         collidersDamaged.Add(collidersToDamage[i].gameObject);
                         }
                     }
@@ -154,18 +130,62 @@ public class MeleeBaseState : State
         base.OnExit();
         animator.runtimeAnimatorController = cc.GetController();
         animator.SetBool("IsAttacking", false);
-        animator.SetFloat("Weapon.Active", 0);
-        animator.SetFloat("AttackWindow.Open", 0);
+        AttackWindowOpen = false;
         cc.SetHitBox(false);
         cc.attackPlacement = AttackPlacement.NONE;
         collidersDamaged = new List<GameObject>();
+
+        if (hasHit)
+        {
+            cc.OnAttackPressed -= DoAttack;
+        }
         if (!hasHit)
         {
-            cc.CooldownAttack(.3f);
+            cc.CooldownAttack(.8f);
         }
     }
 
+    public override void DoMoveset(bool special = false)
+    {
+        Debug.Log(cc.attackPlacement);
+        if (!nextData)
+        {
 
+        if(cc.attackPlacement == currentData.attackPlacement)
+        {
+            if (((AttackData)currentData).nextMovePart)
+            {
+                nextData = ((AttackData)currentData).nextMovePart;
+            }
+        }
+        else
+        {
+
+
+
+            MoveData nextMove = cc.GetCurrentAttack(special);
+            if(nextMove.GetType() == typeof(AttackData))
+            {
+    
+                if (cc.canMove && cc.canAttack && nextMove && cc.entity.CheckManaCost(nextMove))
+               {
+                   if (nextMove.grounded && !cc.groundTouch)
+                    {
+                        return;
+                    }
+    
+                   nextData = nextMove;
+                }
+            }
+            }
+        }
+        attackPressedTimer = attackBetweener;
+
+        if (nextData)
+        {
+            Debug.Log($"{nextData.name} {nextData.attackPlacement}");
+        }
+    }
 
 
     public override void OnFixedUpdate()
@@ -173,14 +193,7 @@ public class MeleeBaseState : State
         base.OnFixedUpdate();
     }
 
-    public void DoAttack()
-    {
-        if (cc.canMove && cc.canAttack && cc.entity.CheckManaCost(cc.GetCurrentAttack()) && currentData != cc.GetCurrentAttack())
-        {
-            attackPressedTimer = 2;
-            nextData = cc.GetCurrentAttack();
-        }
-    }
+
 
     public override void OnLateUpdate()
     {
@@ -219,9 +232,9 @@ public class MeleeBaseState : State
         frame = GetCurrentAnimFrame();
         if (currentData)
         {
-            if (currentData.hitboxes.Count > 0)
+            if (((AttackData)currentData).hitboxes.Count > 0)
             {
-                currentHitBox = currentData.GetHitBoxByFrame(frame);
+                currentHitBox = ((AttackData)currentData).GetHitBoxByFrame(frame);
                 if (currentHitBox != null)
                 {
                     if (frame > lastFrame)
@@ -231,15 +244,14 @@ public class MeleeBaseState : State
                             Debug.Log("Reset Collisions");
                             collidersDamaged = new List<GameObject>();
                         }
-                        animator.SetFloat("Weapon.Active", 1);
                         cc.SetHitBox(true, currentHitBox);
                         Attack();
                     }
                 }
             }
-            if (currentData.prefabs.Count > 0)
+            if (((AttackData)currentData).prefabs.Count > 0)
             {
-                currentPrefab = currentData.GetPrefabByFrame(frame);
+                currentPrefab = ((AttackData)currentData).GetPrefabByFrame(frame);
                 if (currentPrefab != null)
                 {
                     if (frame > lastFrame)
@@ -255,9 +267,9 @@ public class MeleeBaseState : State
                     }
                 }
             }
-            if (currentData.forceEvents.Count > 0)
+            if (((AttackData)currentData).forceEvents.Count > 0)
             {
-                ForceEvents force = currentData.GetForceEventsByFrame(frame);
+                ForceEvents force = ((AttackData)currentData).GetForceEventsByFrame(frame);
                 if (force != null && frame > lastFrame)
                 {
                     if (!forceEvents.Contains(force))
@@ -274,20 +286,19 @@ public class MeleeBaseState : State
                 }
             }
 
-            if (frame >= currentData.startOpenFrame && hasHit)
+            if (frame >= ((AttackData)currentData).startOpenFrame && hasHit)
             {
-                if (animator.GetFloat("AttackWindow.Open") == 0)
+                if (!AttackWindowOpen)
                 {
-                    //cc.OnAttackPressed += DoAttack;
-                    animator.SetFloat("AttackWindow.Open", 1);
+                    AttackWindowOpen = true;
                 }
             }
         }
 
-        if (attackPressedTimer > 0 && animator.GetFloat("AttackWindow.Open") > 0 && nextData)
+        if (attackPressedTimer > 0 &&  AttackWindowOpen && nextData)
         {
             Debug.Log(attackPressedTimer + " " + nextData);
-            stateMachine.SetNextState(new MeleeBaseState(), nextData);
+            stateMachine.SetNextState(new AttackState(), nextData);
         }
 
         attackPressedTimer -= Time.deltaTime;

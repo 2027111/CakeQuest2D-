@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Yankee
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 003fa69a0f3a05a41b95b6155174863e, type: 2}
-  Health: 600
+  Health: 540
   MaxHealth: 600
-  Mana: 100
+  Mana: 4
   MaxMana: 100
   AttackDamage: 20
   ManaDamage: 14

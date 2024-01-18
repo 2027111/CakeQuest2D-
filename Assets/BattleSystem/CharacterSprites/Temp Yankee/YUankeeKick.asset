@@ -13,15 +13,20 @@ MonoBehaviour:
   m_Name: YUankeeKick
   m_EditorClassIdentifier: 
   conserveVelocity: 0
-  animationName: Attack1
-  animation: {fileID: 7400000, guid: 2a94060a3e4382e4f96f86689c764472, type: 2}
+  grounded: 0
   attackPlacement: 1
+  manaCost: 0
+  HitEffect: []
+  SoundEffect:
+  - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
+  - {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+  VoiceLine: []
+  animationName: Attack1
+  nextMovePart: {fileID: 11400000, guid: 4cec5cfe09c0f534286602306541e93c, type: 2}
+  animation: {fileID: 7400000, guid: 2a94060a3e4382e4f96f86689c764472, type: 2}
   durationInFrames: 15
   startOpenFrame: 5
-  manaCost: 0
-  HitEffect: {fileID: 0}
-  SoundEffect: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
-  VoiceLine: {fileID: 0}
   hitboxes:
   - offset: {x: 0.71963, y: 0.94832}
     size: {x: 1.5001, y: 1.9}

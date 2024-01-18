@@ -162,7 +162,7 @@ public class Entity : MonoBehaviour
 
    
 
-    public bool CheckManaCost(AttackData attackData)
+    public bool CheckManaCost(MoveData attackData)
     {
         if(attackData == null)
         {

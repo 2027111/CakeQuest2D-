@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour
 
         if(Owner == null)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         Collider2D[] collidersToDamage = new Collider2D[15];
         ContactFilter2D filter = new ContactFilter2D();
@@ -112,7 +112,7 @@ public class Projectile : MonoBehaviour
         direction = (int)x;
     }
 
-    public void SetDuration(int duration)
+    public void SetDuration(float duration)
     {
         this.duration = duration;
     }

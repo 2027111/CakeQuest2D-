@@ -108,24 +108,7 @@ public class IdleCombatState : State
     }
 
 
-    public void DoAttack()
-    {
-        Debug.Log("Attack Input");
-        if (cc.canMove && cc.canAttack && cc.GetCurrentAttack() && cc.entity.CheckManaCost(cc.GetCurrentAttack()))
-        {
-            stateMachine.SetNextState(new MeleeBaseState(), cc.GetCurrentAttack());
-        }
-    }
 
-
-    public void DoSpecial()
-    {
-        Debug.Log("Special Input");
-        if (cc.canMove && cc.canAttack && cc.GetCurrentAttack(true) && cc.entity.CheckManaCost(cc.GetCurrentAttack(true)))
-        {
-            stateMachine.SetNextState(new MeleeBaseState(), cc.GetCurrentAttack(true));
-        }
-    }
 
 
 

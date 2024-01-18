@@ -39,12 +39,43 @@ public abstract class State
 
     }
 
+
+    public virtual void DoAttack()
+    {
+        Debug.Log("Attack Input");
+        DoMoveset();
+    }
+
+
+    public virtual void DoSpecial()
+    {
+        Debug.Log("Special Input");
+        DoMoveset(true);
+    }
+
+    public virtual void DoMoveset(bool special = false)
+    {
+        MoveData nextMove = cc.GetCurrentAttack(special);
+
+        if (cc.canMove && cc.canAttack && nextMove && cc.entity.CheckManaCost(nextMove))
+        {
+            if (nextMove.grounded && !cc.groundTouch)
+            {
+                return;
+            }
+
+            stateMachine.SetNextState(new AttackState(), nextMove);
+        }
+    }
+
+
+
     public virtual void OnAttackInput()
     {
-        AttackData attackData = cc.GetCurrentAttack();
+        MoveData attackData = cc.GetCurrentAttack();
         if(attackData && cc.canAttack)
         {
-            stateMachine.SetNextState(new MeleeBaseState(), attackData);
+            stateMachine.SetNextState(new AttackState(), attackData);
         }
     }
 }

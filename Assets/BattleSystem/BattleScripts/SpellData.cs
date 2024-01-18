@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum AttackProperties
+{
+    None,
+    FriendlyTarget,
+    EnemyTarget
+}
 public enum SpawnBehaviour
 {
     SpawnOnCaster,
@@ -15,7 +20,7 @@ public enum SpawnBehaviour
 
 
 
-public class SpellData : AttackData
+public class SpellData : MoveData
 {
 
 
@@ -23,8 +28,9 @@ public class SpellData : AttackData
     public AttackProperties attackProperties = AttackProperties.EnemyTarget;
     public float castingTime = 5;
     public float spellDuration = 3;
+    public float SpellIntermissionTime = .2f;
     public SpawnBehaviour spawnBehaviour = SpawnBehaviour.SpawnOnCaster;
-    public GameObject SpellPrefab;
+    public List<GameObject> SpellPrefabs;
     public GameObject SpellChargePrefab;
     
 }

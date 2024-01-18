@@ -46,7 +46,6 @@ public class InputManager : Controller
     {
         if (context.performed)
         {
-            Debug.Log("Pressed attack key");
             OnAttackPressed?.Invoke();
         }
         if (context.canceled)
@@ -60,7 +59,6 @@ public class InputManager : Controller
     {
         if (context.performed)
         {
-            Debug.Log("Pressed special key");
             OnSpecialPressed?.Invoke();
         }
         if (context.canceled)

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Jimi
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: 243c15b623e95714ab713ac8670411d5, type: 2}
-  Health: 6000
+  Health: 5857
   MaxHealth: 6000
-  Mana: 7
-  MaxMana: 410
-  AttackDamage: 20
-  ManaDamage: 10
+  Mana: 4000
+  MaxMana: 4000
+  AttackDamage: 40
+  ManaDamage: 40
   isDead: 0
   Armor: 0
   BaseArmor: 0

@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellCastingState : MeleeBaseState
+public class SpellCastingState : AttackState
 {
-    SpellData currentSData;
     bool casting;
     GameObject SpellCastingObject;
-    GameObject SpellObject;
+    List<GameObject> SpellObjects = new List<GameObject>();
     GameObject Target;
     public SpellCastingState() : base()
     {
@@ -15,14 +14,16 @@ public class SpellCastingState : MeleeBaseState
 
     public void OnEnter(StateMachine _stateMachine, SpellData spellData)
     {
-        base.OnEnter(_stateMachine);
+        base.OnEnter(_stateMachine, spellData);
 
 
-        currentSData = spellData;
+        currentData = spellData;
         animator.SetTrigger("Casting");
         casting = true;
-        SpawnParticleCharge(currentSData);
-        Debug.Log(currentSData.spellDuration);
+        SpawnParticleCharge((SpellData)currentData);
+        DebugGetTarget();
+        cc.entity.AddToMana(-currentData.manaCost);
+        Debug.Log(Target.name);
 
     }
 
@@ -44,47 +45,86 @@ public class SpellCastingState : MeleeBaseState
         }
 
     }
-    private void SpawnSpell(SpellData data)
+    IEnumerator SpawnSpell(SpellData data)
     {
-        if (SpellObject == null)
+        if (data)
         {
-            if (data)
+            if (data.SpellPrefabs.Count > 0)
             {
-                if (data.SpellPrefab)
+                foreach (GameObject spellPrefab in data.SpellPrefabs)
                 {
-                    Transform spawnTarget = GetTargetSpawn(data);
-
-                    SpellObject = Object.Instantiate(data.SpellPrefab, spawnTarget.position, Quaternion.identity);
+                    Vector3 spawnPosition = GetTargetSpawn(data);
+                    GameObject SpellObject = GameObject.Instantiate(spellPrefab, spawnPosition, Quaternion.identity);
+                    SpellObject.GetComponent<Projectile>().SetDirection(cc.GetFacing());
+                    SpellObject.GetComponent<Projectile>().SetDuration(data.spellDuration);
+                    SpellObject.GetComponent<Projectile>().SetOwner(cc);
+                    SpellObjects.Add(SpellObject);
+                    yield return new WaitForSecondsRealtime(data.SpellIntermissionTime);
                 }
             }
 
-        }
 
+        }
     }
 
-    private Transform GetTargetSpawn(SpellData data)
+    private Vector3 GetCharacterFlipSide()
     {
+        Vector3 vector = Vector3.one;
+        vector.x = cc.GetFacing();
+        return vector;
+    }
+
+    private Vector3 GetTargetSpawn(SpellData data)
+    {
+        Vector3 randomize = data.SpellPrefabs.Count > 0?new Vector3(Random.Range(-1.1f, 1.1f), Random.Range(0f, 1.1f), 0):Vector3.zero;
+        Vector3 position = Vector3.zero;
         switch (data.spawnBehaviour)
         {
             case SpawnBehaviour.SpawnOnTarget:
-                return Target.transform;
+                position =  Target.transform.position ;
+                break;
             case SpawnBehaviour.SpawnOnCaster:
-                return stateMachine.transform;
+                position =  stateMachine.transform.position;
+                break;
             default:
-                return stateMachine.transform;
+                position =  stateMachine.transform.position;
+                break;
         }
+
+        return position + randomize;
     }
 
     private void UnspawnSpell()
     {
-        if (SpellObject != null)
+        if (SpellObjects.Count > 0)
         {
-            GameObject.Destroy(SpellObject);
+
+            foreach (GameObject SpellObject in SpellObjects)
+            {
+                if (SpellObject != null)
+                {
+                    GameObject.Destroy(SpellObject);
+                }
+            }
         }
 
     }
 
+    public void DebugGetTarget()
+    {
+        BattleCharacter[] bcs = GameObject.FindObjectsOfType<BattleCharacter>();
+        foreach(BattleCharacter bc in bcs)
+        {
+            if (bc != cc && (bc.GetComponent<TeamComponent>().teamIndex != cc.GetComponent<TeamComponent>().teamIndex))
+            {
+                Target = bc.gameObject;
+                break;
+            }
+        }
+        
 
+
+    }
     private void UnspawnParticleCharge()
     {
 
@@ -96,23 +136,22 @@ public class SpellCastingState : MeleeBaseState
     public override void OnUpdate()
     {
 
-        if (fixedtime > currentSData.castingTime)
+        if (fixedtime > ((SpellData)currentData).castingTime)
         {
-            Debug.Log("Spell Over");
             if (casting)
             {
 
                 animator.SetTrigger("DoneCasting");
                 casting = false;
+                stateMachine.StartCoroutine(SpawnSpell(((SpellData)currentData)));
                 UnspawnParticleCharge();
-                SpawnSpell(currentSData);
             }
 
             
 
         }
 
-        if (fixedtime > currentSData.castingTime + currentSData.spellDuration)
+        if (fixedtime > ((SpellData)currentData).castingTime + ((SpellData)currentData).spellDuration + (((SpellData)currentData).SpellIntermissionTime * ((SpellData)currentData).SpellPrefabs.Count))
         {
             stateMachine.SetNextStateToMain();
         }
@@ -123,6 +162,7 @@ public class SpellCastingState : MeleeBaseState
         base.OnExit();
         animator.SetTrigger("SpellOver");
         UnspawnSpell();
+        UnspawnParticleCharge();
 
     }
 
