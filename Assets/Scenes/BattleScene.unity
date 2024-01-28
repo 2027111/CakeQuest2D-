@@ -350,15 +350,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeroParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}
   EnemyParty: {fileID: 11400000, guid: 3434bc1c84a395a4c80eef0b16d21c66, type: 2}
+  Canvas: {fileID: 1288850828}
   battleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
   CharacterUIPrefab: {fileID: 5815274650652010946, guid: 896cb424a60632643961fc846f3830f6, type: 3}
+  MoveIndicatorPrefab: {fileID: 1162468161956767632, guid: e72e726b2d6263647b595f34d34c5589, type: 3}
+  MoveIndicator: {fileID: 0}
   HealthUIContainer: {fileID: 1297303813}
   targetGroup: {fileID: 2072188240}
   director: {fileID: 2094778769}
   PlayerSpawnPoint: {fileID: 1672981738}
   EnemySpawnPoint: {fileID: 1980056458}
   audioSource: {fileID: 443016057}
-  debug: 1
+  debug: 0
   BattlePrefab: {fileID: 1396658446781485327, guid: ece13eef636610149a16c978aa1d7af5, type: 3}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   minimumFadeTime: 1

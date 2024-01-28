@@ -20,13 +20,17 @@ public class HurtState : MeleeBaseState
         animator.SetTrigger("Hurt");
 
 
-
+        AudioClip HurtClip = stateMachine.GetComponent<Entity>().characterObject.GetHurtVoiceClip();
+        PlayHurtClip(HurtClip);
         stateMachine.GetComponent<Effector2D>().enabled = false;
         //stateMachine.StartCoroutine(HitPause());
     }
 
 
-
+    public void PlayHurtClip(AudioClip HurtClip)
+    {
+        cc.PlayVoiceclip(HurtClip);
+    }
 
 
     public override void OnUpdate()

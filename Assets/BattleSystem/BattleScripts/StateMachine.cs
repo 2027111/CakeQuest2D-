@@ -19,18 +19,18 @@ public class StateMachine : MonoBehaviour
             SetNextState(new EntranceState());
         }
     }
-  /*  private void OnValidate()
-    {
-        if(CurrentState == null)
-        {
-            SetNextStateToMain();
-        }
-    }*/
+    /*  private void OnValidate()
+      {
+          if(CurrentState == null)
+          {
+              SetNextStateToMain();
+          }
+      }*/
 
     // Update is called once per frame
     void Update()
     {
-        if(nextState != null)
+        if (nextState != null)
         {
             SetState(nextState);
         }
@@ -67,14 +67,14 @@ public class StateMachine : MonoBehaviour
     {
         CurrentState?.OnExit();
         CurrentState = nextState;
-        nextState.OnEnter(this); 
+        nextState.OnEnter(this);
     }
 
     private void SetState(State nextState, AttackData data)
     {
         CurrentState?.OnExit();
         CurrentState = nextState;
-        ((MeleeBaseState)nextState).OnEnter(this, data); 
+        ((MeleeBaseState)nextState).OnEnter(this, data);
     }
 
 
@@ -100,7 +100,7 @@ public class StateMachine : MonoBehaviour
 
     public void SetNextState(State _newState)
     {
-        if(_newState != null)
+        if (_newState != null)
         {
             SetState(_newState);
         }
@@ -109,21 +109,30 @@ public class StateMachine : MonoBehaviour
     {
         if (_newState != null)
         {
-            if(data != null)
+            if (data != null)
             {
                 if (data.GetType() == typeof(SpellData))
                 {
-                        SetState(new SpellCastingState(), (SpellData)data);
-                    
+                    SetState(new SpellCastingState(), (SpellData)data);
+
 
                 }
                 else if (data.GetType() == typeof(AttackData))
                 {
-                        SetState(new MeleeBaseState(), (AttackData)data);
-                   
+                    SetState(new MeleeBaseState(), (AttackData)data);
+
                 }
 
             }
+        }
+    }
+
+    public void SetLayerRecursively(int layerMask, GameObject transform)
+    {
+        transform.layer = layerMask;
+        foreach (Transform child in transform.transform)
+        {
+            SetLayerRecursively(layerMask, child.gameObject);
         }
     }
 

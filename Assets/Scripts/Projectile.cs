@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
 
 
     public static List<Projectile> projectilesSpawned = new List<Projectile>();
+    public float TimeUntilVelocity = .4f;
+    bool VelocityOn = false;
     public Vector2 initialVelocity;
     public int Damage = 10;
     Vector2 newVelocity;
@@ -21,13 +24,29 @@ public class Projectile : MonoBehaviour
     bool On = true;
     Rigidbody2D rb2D;
     BoxCollider2D hitbox;
-    public bool DestroyOnContact;    
+    public bool DestroyOnContact;
+    public UnityEvent OnHit;
+    Transform target;
+
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
+    }
 
     private void Start()
     {
         projectilesSpawned.Add(this);
-        newVelocity = initialVelocity;
-        newVelocity.x *= direction;
+        if (TimeUntilVelocity <= 0)
+        {
+            SetVelocity();
+        }
+        else
+        {
+            VelocityOn = false;
+            newVelocity = Vector2.zero;
+        }
+        newVelocity *= initialVelocity.magnitude;
         rb2D = GetComponent<Rigidbody2D>();
         rb2D.AddForce(newVelocity);
         hitbox = GetComponent<BoxCollider2D>();
@@ -37,16 +56,55 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject, duration);
     }
 
-
+    public void SetVelocity()
+    {
+        
+            if (target)
+            {
+                newVelocity = (target.position - transform.position).normalized;
+            }
+            else
+            {
+                newVelocity = initialVelocity.normalized;
+                newVelocity.x *= direction;
+            }
+        
+        newVelocity *= initialVelocity.magnitude;
+        VelocityOn = true;
+    }
 
     public void Update()
     {
-        if (constantVelocity)
+        if(!VelocityOn)
         {
-
-            rb2D.AddForce(newVelocity * Time.deltaTime);
+            TimeUntilVelocity -= Time.deltaTime;
+            if(TimeUntilVelocity <= 0)
+            {
+                SetVelocity();
+            }
+            return;
         }
-        Attack();
+            if (target)
+            {
+                newVelocity = Vector3.Slerp(newVelocity.normalized, (target.position - transform.position).normalized, Time.deltaTime * 25);
+                newVelocity *= initialVelocity.magnitude;
+                rb2D.AddForce(newVelocity * Time.deltaTime);
+            }
+            else
+            {
+
+                if (constantVelocity)
+                {
+
+                    rb2D.AddForce(newVelocity * Time.deltaTime);
+                }
+            }
+
+            //transform.rotation = Quaternion.Euler(newVelocity);
+            Attack();
+        
+
+        
     }
     private void OnDestroy()
     {
@@ -87,6 +145,7 @@ public class Projectile : MonoBehaviour
                                 Entity entity = collidersToDamage[i].GetComponent<Entity>();
                                 entity.TakeDamage(damage, Owner.GetComponent<Entity>());
                                 entity.OnDamageTaken?.Invoke(-damage, Owner);
+                                    OnHit?.Invoke();
                                     if (DestroyOnContact)
                                     {
                                         Destroy(gameObject);

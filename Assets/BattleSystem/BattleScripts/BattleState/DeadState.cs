@@ -12,7 +12,8 @@ public class DeadState : State
         cc.canMove = false;
         cc.rb.velocity = Vector3.zero;
         cc.GetComponent<Entity>().characterObject.isDead = true;
-        cc.gameObject.layer = 13;
+        cc.GetComponent<Effector2D>().enabled = false;
+        stateMachine.SetLayerRecursively(13, stateMachine.gameObject);
         animator.SetTrigger("Dead");
     }
 
@@ -23,7 +24,8 @@ public class DeadState : State
     {
         base.OnExit();
         cc.canMove = true;
-        cc.gameObject.layer = 9;
+        stateMachine.SetLayerRecursively(9, stateMachine.gameObject);
+        cc.GetComponent<Effector2D>().enabled = true;
         animator.Rebind();
         animator.Update(0);
     }

@@ -10,7 +10,7 @@ public class AttackState : State
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
-        cc.gameObject.layer = 9;
+        stateMachine.SetLayerRecursively(9, stateMachine.gameObject);
     }
 
     public void OnEnter(StateMachine _stateMachine, MoveData data)
@@ -24,10 +24,9 @@ public class AttackState : State
         }
         else
         {
-
+            
             currentData = data;
             cc.attackPlacement = currentData.attackPlacement;
-            PlaySFXs();
             if (!currentData.conserveVelocity)
             {
                 cc.rb.velocity = Vector3.zero;
@@ -36,8 +35,15 @@ public class AttackState : State
         }
 
     }
-
-    private void PlaySFXs()
+    public void SpawnAttackName()
+    {
+        if(currentData.attackType == AttackType.Special)
+        {
+            MoveSetInfos msi = new MoveSetInfos(currentData, stateMachine.GetComponent<Entity>().characterObject.characterData);
+            BattleManager.Singleton.SpawnMoveIndicator(msi);
+        }
+    }
+    public void PlaySFXs()
     {
 
         if (currentData.GetSoundEffect())

@@ -11,7 +11,6 @@ public class GetUpState : MeleeBaseState
 
         
         base.OnEnter(_stateMachine);
-        Debug.Log("KNOCKED GETING UP");
         
         float x = cc.direction.x;
         if (x > 0)

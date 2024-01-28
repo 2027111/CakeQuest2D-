@@ -12,23 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd12fd4d04f3b764a9589acca4042b8c, type: 3}
   m_Name: Attack2
   m_EditorClassIdentifier: 
+  MoveName: Attack
   conserveVelocity: 1
-  animationName: Attack1
-  animation: {fileID: 7400000, guid: 1468e1e8102bd2547998efa7dafac0e5, type: 2}
-  attackType: 0
-  attackProperties: 0
+  grounded: 0
   attackPlacement: 2
+  attackType: 0
+  manaCost: 0
+  HitEffect: []
+  SoundEffect: []
+  VoiceLine: []
+  animationName: Attack1
+  nextMovePart: {fileID: 0}
+  animation: {fileID: 7400000, guid: 1468e1e8102bd2547998efa7dafac0e5, type: 2}
   durationInFrames: 5
   startOpenFrame: 4
-  manaCost: 0
-  HitEffect: {fileID: 0}
-  SoundEffect: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
-  VoiceLine: {fileID: 0}
   hitboxes:
   - offset: {x: 0.6, y: 0.8}
     size: {x: 1.3, y: 0.7}
     frame: 2
     resetCollisions: 0
     durationInFrame: 1
+    knockbackVector: {x: 1, y: 0}
+    knockbackForce: 1
+    stuns: 0
+    stunTime: -1
   prefabs: []
   forceEvents: []

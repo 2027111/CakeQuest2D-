@@ -32,5 +32,27 @@ public class SpellData : MoveData
     public SpawnBehaviour spawnBehaviour = SpawnBehaviour.SpawnOnCaster;
     public List<GameObject> SpellPrefabs;
     public GameObject SpellChargePrefab;
-    
+    public AudioClip ChargeSFX;
+    public AudioClip ChargeVoiceLine;
+    public Vector2 XpositionOffsetRange = Vector2.zero;
+    public Vector2 YpositionOffsetRange = Vector2.zero;
+    public float rotationOffset = 0;
+
+
+
+    public AudioClip GetChargeEffect()
+    {
+        if (ChargeSFX)
+        {
+            return ChargeSFX;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public AudioClip GetChargeVoiceline()
+    {
+            return ChargeVoiceLine ? ChargeVoiceLine : null;
+    }
 }

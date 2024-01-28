@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd12fd4d04f3b764a9589acca4042b8c, type: 3}
   m_Name: SLight Geoffrey
   m_EditorClassIdentifier: 
+  MoveName: Caked Face
   conserveVelocity: 0
   grounded: 0
   attackPlacement: 2
+  attackType: 0
   manaCost: 13
   HitEffect: []
   SoundEffect:
   - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
   - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   - {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
-  VoiceLine:
-  - {fileID: 0}
+  VoiceLine: []
   animationName: 
   nextMovePart: {fileID: 0}
   animation: {fileID: 7400000, guid: 9e95208d216425f408f3aa5ff71c6700, type: 2}

@@ -42,14 +42,12 @@ public abstract class State
 
     public virtual void DoAttack()
     {
-        Debug.Log("Attack Input");
         DoMoveset();
     }
 
 
     public virtual void DoSpecial()
     {
-        Debug.Log("Special Input");
         DoMoveset(true);
     }
 

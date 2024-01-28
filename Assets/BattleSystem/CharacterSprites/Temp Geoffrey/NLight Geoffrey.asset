@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd12fd4d04f3b764a9589acca4042b8c, type: 3}
   m_Name: NLight Geoffrey
   m_EditorClassIdentifier: 
+  MoveName: Swipe
   conserveVelocity: 0
   grounded: 0
   attackPlacement: 3
+  attackType: 0
   manaCost: 0
   HitEffect: []
   SoundEffect:

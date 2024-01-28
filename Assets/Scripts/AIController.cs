@@ -134,17 +134,27 @@ public class AIController : Controller
     private AttackPlacement FindMatchingAttack()
     {
         // Iterate through the available attacks in your AttackListManager
-        foreach (AttackData attackData in battleCharacter.GetComponent<AttackListManager>().AttackList)
+        foreach (MoveData attackData in battleCharacter.GetComponent<AttackListManager>().AttackList)
         {
-            // For simplicity, assume that the attack should have a hitbox (change this condition based on your actual requirements)
-            if (attackData.hitboxes != null && attackData.hitboxes.Count > 0)
+            if(attackData.GetType() == typeof(AttackData))
+            { // For simplicity, assume that the attack should have a hitbox (change this condition based on your actual requirements)
+                if (((AttackData)attackData).hitboxes != null && ((AttackData)attackData).hitboxes.Count > 0)
+                {
+                    // Check if the enemy is within the hitbox range
+                    if (IsEnemyInHitboxRange(((AttackData)attackData).hitboxes[0]))
+                    {
+                        return attackData.attackPlacement;
+                    }
+                }
+            }
+            else if(attackData.GetType() == typeof(SpellData))
             {
-                // Check if the enemy is within the hitbox range
-                if (IsEnemyInHitboxRange(attackData.hitboxes[0]))
+                if(Random.Range(0f, 10f) == 1)
                 {
                     return attackData.attackPlacement;
                 }
             }
+           
         }
 
         // Return NONE if no matching attack is found
@@ -232,7 +242,6 @@ public class AIController : Controller
     }
     private bool IsEnemyInHitboxRange(HitBoxInfo hitbox)
     {
-        Debug.Log("POPOPO");
         // Check if there is a valid target
         if (target != null)
         {

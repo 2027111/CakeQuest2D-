@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18d9aa92a2cd7354a8a858d6e8e11ef9, type: 3}
-  m_Name: SpellTest
+  m_Name: SpellTest2
   m_EditorClassIdentifier: 
   MoveName: Cake Fest
   conserveVelocity: 0
   grounded: 1
-  attackPlacement: 6
+  attackPlacement: 4
   attackType: 1
   manaCost: 24
   HitEffect: []
@@ -29,7 +29,7 @@ MonoBehaviour:
   castingTime: 3
   spellDuration: 1
   SpellIntermissionTime: 0.05
-  spawnBehaviour: 0
+  spawnBehaviour: 1
   SpellPrefabs:
   - {fileID: 3122504944675684838, guid: 4d098db6d82ebdf4b995c533acfee01f, type: 3}
   - {fileID: 3122504944675684838, guid: 4d098db6d82ebdf4b995c533acfee01f, type: 3}
@@ -43,6 +43,6 @@ MonoBehaviour:
   SpellChargePrefab: {fileID: 3373514802855454057, guid: e787efae7ce24bc45a041f69eaa9f4d1, type: 3}
   ChargeSFX: {fileID: 8300000, guid: d654174ef194bd7479bf4b8d8f753318, type: 3}
   ChargeVoiceLine: {fileID: 8300000, guid: 98f670d76d8e6714bb9e25cb07d059d9, type: 3}
-  XpositionOffsetRange: {x: -1, y: 1}
-  YpositionOffsetRange: {x: 0.5, y: 1}
-  rotationOffset: 0
+  XpositionOffsetRange: {x: -3, y: 3}
+  YpositionOffsetRange: {x: 0.5, y: 3}
+  rotationOffset: 360

@@ -19,7 +19,8 @@ public class EntranceState : State
         cc.canMove = false;
         rb.velocity = Vector3.zero;
         //rb.isKinematic = true;
-        cc.gameObject.layer = 13;
+
+        stateMachine.SetLayerRecursively(13, stateMachine.gameObject);
         animator.SetBool("IsAttacking", false);
     }
 

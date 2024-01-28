@@ -22,6 +22,7 @@ public class MeleeBaseState : AttackState
     protected MoveData nextData;
     AnimatorOverrideController originalController;
     AnimationClip originalClip;
+    
 
     public override void OnEnter(StateMachine _stateMachine)
     {
@@ -30,13 +31,15 @@ public class MeleeBaseState : AttackState
 
     public void OnEnter(StateMachine _stateMachine, AttackData data)
     {
-        base.OnEnter(_stateMachine, data);
-
+            base.OnEnter(_stateMachine, data);
+            
             collidersDamaged = new List<GameObject>();
             forceEvents = new List<ForceEvents>();
             hitCollider = stateMachine.GetComponent<BattleCharacter>().hitbox;
-            cc.gameObject.layer = 9;
             SetCurrentData();
+            SpawnAttackName();
+
+            PlaySFXs();
             animator.SetBool("IsAttacking", true);
 
 
@@ -112,13 +115,8 @@ public class MeleeBaseState : AttackState
                                 firstPosition = collidersToDamage[i].transform.position + Vector3.up;
                                 currentData.SpawnHitEffect(firstPosition);
                             }
-                            if(hasHit == false)
-                            {
-
-                                hasHit = true;
-                                cc.OnAttackPressed += DoAttack;
-                            }
-                        collidersDamaged.Add(collidersToDamage[i].gameObject);
+                            OnHit();
+                            collidersDamaged.Add(collidersToDamage[i].gameObject);
                         }
                     }
                 }
@@ -147,7 +145,6 @@ public class MeleeBaseState : AttackState
 
     public override void DoMoveset(bool special = false)
     {
-        Debug.Log(cc.attackPlacement);
         if (!nextData)
         {
 
@@ -181,10 +178,7 @@ public class MeleeBaseState : AttackState
         }
         attackPressedTimer = attackBetweener;
 
-        if (nextData)
-        {
-            Debug.Log($"{nextData.name} {nextData.attackPlacement}");
-        }
+        
     }
 
 
@@ -260,10 +254,11 @@ public class MeleeBaseState : AttackState
 
                         Vector3 defaultPosition = currentPrefab.DefaultSpawnPosition;
                         defaultPosition.x *= cc.Graphics.transform.localScale.x;
-                        GameObject proj = GameObject.Instantiate(currentPrefab.AttackPrefab, cc.transform.position + defaultPosition, Quaternion.identity);
-                        proj.GetComponent<Projectile>().SetDirection(cc.Graphics.transform.localScale.x);
-                        proj.GetComponent<Projectile>().SetDuration(currentPrefab.durationInFrame);
-                        proj.GetComponent<Projectile>().SetOwner(cc);
+                        Projectile proj = GameObject.Instantiate(currentPrefab.AttackPrefab, cc.transform.position + defaultPosition, Quaternion.identity).GetComponent<Projectile>();
+                        proj.SetDirection(cc.Graphics.transform.localScale.x);
+                        proj.SetDuration(currentPrefab.durationInFrame);
+                        proj.SetOwner(cc);
+                        proj.OnHit.AddListener(OnHit);
                     }
                 }
             }
@@ -314,4 +309,15 @@ public class MeleeBaseState : AttackState
 
         lastFrame = frame;
     }
+
+    public void OnHit()
+    {
+        if (hasHit == false)
+        {
+            hasHit = true;
+            cc.OnAttackPressed += DoAttack;
+        }
+    }
 }
+
+

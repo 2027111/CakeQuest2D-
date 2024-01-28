@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,5 +15,15 @@ public class CharacterData : ScriptableObject
     public string HealthName;
     public string ManaName;
 
-
+    public Sprite GetPortrait()
+    {
+        if(portraits.Length > 0)
+        {
+            return portraits[0];
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

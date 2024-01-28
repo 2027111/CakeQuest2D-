@@ -30,6 +30,7 @@ public class CharacterObject : ScriptableObject
     public Vector2 feetPosition = Vector2.zero;
 
     public List<MoveData> AttackList = new List<MoveData>();
+    public List<AudioClip> HurtVoiceClips = new List<AudioClip>();
 
     public AnimatorOverrideController animationController;
 
@@ -44,5 +45,10 @@ public class CharacterObject : ScriptableObject
         Mana = MaxMana;
         Armor = BaseArmor;
 
+    }
+
+    public AudioClip GetHurtVoiceClip()
+    {
+        return (HurtVoiceClips.Count > 0 ? HurtVoiceClips[Random.Range(0, HurtVoiceClips.Count - 1)] : null);
     }
 }

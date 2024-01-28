@@ -9,11 +9,35 @@ using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
+    private static BattleManager _singleton;
+    public static BattleManager Singleton
+    {
+        get => _singleton;
+        private set
+        {
+            if (_singleton == null)
+            {
+
+                _singleton = value;
+            }
+            else if (_singleton != value)
+            {
+                Debug.Log($"{nameof(BattleManager)} instance already exists. Destroying duplicate!");
+                Destroy(value.gameObject);
+            }
+        }
+    }
+
+
+
     [SerializeField] Party HeroParty;
     [SerializeField] Party EnemyParty;
+    [SerializeField] Transform Canvas;
     [SerializeField] BattleInfo battleInfo;
     List<GameObject> characters = new List<GameObject>();
     [SerializeField] GameObject CharacterUIPrefab;
+    [SerializeField] GameObject MoveIndicatorPrefab;
+    [SerializeField] GameObject MoveIndicator;
     [SerializeField] Transform HealthUIContainer;
     [SerializeField] CinemachineTargetGroup targetGroup;
     [SerializeField] PlayableDirector director;
@@ -40,8 +64,19 @@ public class BattleManager : MonoBehaviour
 
     // Start is called before the first frame update
 
-
-
+    private void Awake()
+    {
+        Singleton = this;
+    }
+    public void SpawnMoveIndicator(MoveSetInfos msi)
+    {
+        if(MoveIndicator != null)
+        {
+            Destroy(MoveIndicator);
+        }
+        MoveIndicator = Instantiate(MoveIndicatorPrefab, Canvas);
+        MoveIndicator.GetComponent<MoveSetIndicator>().SetMoveSetInfos(msi);
+    }
     public void MoveToScene()
     {
         if (infoStorage)
@@ -238,11 +273,6 @@ public class BattleManager : MonoBehaviour
 
                     character.GetComponent<StateMachine>().SetNextStateToMain();
                 }
-                else
-                {
-
-                    character.GetComponent<StateMachine>().SetNextState(new DeadState());
-                }
             }
         }
     }
@@ -310,6 +340,11 @@ public class BattleManager : MonoBehaviour
         {
             SpawnCharacter(character, index);
         }
+    }
+
+    public void OnSpecialMove()
+    {
+
     }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpellCastingState : AttackState
 {
+
     bool casting;
     GameObject SpellCastingObject;
     List<GameObject> SpellObjects = new List<GameObject>();
@@ -23,6 +24,9 @@ public class SpellCastingState : AttackState
         SpawnParticleCharge((SpellData)currentData);
         DebugGetTarget();
         cc.entity.AddToMana(-currentData.manaCost);
+        PlayChargeSFXs();
+        PlayChargeVoiceLines();
+
         Debug.Log(Target.name);
 
     }
@@ -56,8 +60,12 @@ public class SpellCastingState : AttackState
                     Vector3 spawnPosition = GetTargetSpawn(data);
                     GameObject SpellObject = GameObject.Instantiate(spellPrefab, spawnPosition, Quaternion.identity);
                     SpellObject.GetComponent<Projectile>().SetDirection(cc.GetFacing());
-                    SpellObject.GetComponent<Projectile>().SetDuration(data.spellDuration);
+                    SpellObject.GetComponent<Projectile>().SetDuration(data.spellDuration * 12);
                     SpellObject.GetComponent<Projectile>().SetOwner(cc);
+                    if(data.spawnBehaviour == SpawnBehaviour.SpawnOnTarget)
+                    {
+                        SpellObject.GetComponent<Projectile>().SetTarget(Target.transform);
+                    }
                     SpellObjects.Add(SpellObject);
                     yield return new WaitForSecondsRealtime(data.SpellIntermissionTime);
                 }
@@ -76,7 +84,7 @@ public class SpellCastingState : AttackState
 
     private Vector3 GetTargetSpawn(SpellData data)
     {
-        Vector3 randomize = data.SpellPrefabs.Count > 0?new Vector3(Random.Range(-1.1f, 1.1f), Random.Range(0f, 1.1f), 0):Vector3.zero;
+        Vector3 randomize = new Vector3(Random.Range(data.XpositionOffsetRange.x, data.XpositionOffsetRange.y), Random.Range(data.YpositionOffsetRange.x, data.YpositionOffsetRange.y), 0);
         Vector3 position = Vector3.zero;
         switch (data.spawnBehaviour)
         {
@@ -93,6 +101,8 @@ public class SpellCastingState : AttackState
 
         return position + randomize;
     }
+
+
 
     private void UnspawnSpell()
     {
@@ -144,6 +154,8 @@ public class SpellCastingState : AttackState
                 animator.SetTrigger("DoneCasting");
                 casting = false;
                 stateMachine.StartCoroutine(SpawnSpell(((SpellData)currentData)));
+                SpawnAttackName();
+                PlaySFXs();
                 UnspawnParticleCharge();
             }
 
@@ -166,5 +178,20 @@ public class SpellCastingState : AttackState
 
     }
 
-    
+    private void PlayChargeSFXs()
+    {
+
+        if (((SpellData)currentData).GetChargeEffect())
+        {
+            cc.PlaySFX(((SpellData)currentData).GetChargeEffect());
+        }
+    }
+    private void PlayChargeVoiceLines()
+    {
+
+        if (((SpellData)currentData).GetChargeVoiceline())
+        {
+            cc.PlayVoiceclip(((SpellData)currentData).GetChargeVoiceline());
+        }
+    }
 }

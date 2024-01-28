@@ -8,15 +8,21 @@ using UnityEngine;
 
 
 
-
+public enum AttackType
+{
+    Normal,
+    Special
+}
 
 [CreateAssetMenu(fileName = "New AttackData", menuName = "MoveData")]
 [Serializable]
 public class MoveData : ScriptableObject
 {
+    public string MoveName = "Attack";
     public bool conserveVelocity;
     public bool grounded;
     public AttackPlacement attackPlacement = AttackPlacement.NONE;
+    public AttackType attackType = AttackType.Normal;
     public int manaCost;
     public List<GameObject> HitEffect = new List<GameObject>();
     public List<AudioClip> SoundEffect = new List<AudioClip>();
