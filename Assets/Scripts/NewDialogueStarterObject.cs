@@ -12,15 +12,22 @@ using System;
 [Serializable]
 public class Dialogue
 {
+
     public LineInfo[] dialogueLines;
-    public bool EndInChoice;
-    public ChoiceDialogue choices;
+    public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
 
     public Dialogue(Dialogue dialogue)
     {
         this.dialogueLines = dialogue.dialogueLines;
-        this.EndInChoice = dialogue.EndInChoice;
+        this.choices = dialogue.choices;
+        this.OnOverEvent = dialogue.OnOverEvent;
+    }
+
+
+    public Dialogue(ChoiceDialogue dialogue)
+    {
+        this.dialogueLines = dialogue.dialogueLines;
         this.choices = dialogue.choices;
         this.OnOverEvent = dialogue.OnOverEvent;
     }
@@ -29,9 +36,13 @@ public class Dialogue
 [Serializable]
 public class ChoiceDialogue
 {
-    public string[] dialogueLines;
-    public Dialogue[] dialogues;
+    public string choicesLine;
+    public LineInfo[] dialogueLines;
+    public ChoiceDialogue[] choices;
+    public UnityEvent OnOverEvent;
 }
+
+
 
 
 public class NewDialogueStarterObject : MonoBehaviour
@@ -112,11 +123,9 @@ public class NewDialogueStarterObject : MonoBehaviour
         dialogue = newDialogue;
     }
 
-    public void EnableChoice(bool choiceOn)
+    public void DebugPrint()
     {
-        dialogue.EndInChoice = choiceOn;
     }
-
     public static LineInfo[] GetFormattedLines<T>(T currentObject, LineInfo[] lines)
     {
         List<LineInfo> formattedLines = new List<LineInfo>();

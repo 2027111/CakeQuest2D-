@@ -34,7 +34,7 @@ public class DialogueContent
     {
         this.dialogue = dialogue;
         this.lines = dialogue.dialogueLines;
-        this.choice = dialogue.EndInChoice;
+        this.choice = dialogue.choices.Length > 0;
     }
 }
 
@@ -63,7 +63,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    public UnityEvent OnDialogueOverAction;
+    public Stack<UnityEvent> OnDialogueOverAction = new Stack<UnityEvent>();
     GameState currentState = GameState.Overworld;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
@@ -97,11 +97,6 @@ public class DialogueBox : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ClearChoiceBox();
-            FillChoiceBox(3);
-        }
     }
 
     public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
@@ -165,7 +160,7 @@ public class DialogueBox : MonoBehaviour
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
 
-        OnDialogueOverAction = dialogue.OnOverEvent;
+        OnDialogueOverAction.Push(dialogue.OnOverEvent);
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
@@ -222,9 +217,9 @@ public class DialogueBox : MonoBehaviour
             }
         }
     }
-    public void StartDialogue(LineInfo[] lines, UnityAction callback,GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
+    public void StartDialogue(LineInfo[] lines, UnityAction callback, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        OnDialogueOverAction.AddListener(callback);
+        //OnDialogueOverAction.Push(delegate { callback(); });
         StartDialogue(lines, playerObject, originObject, state);
     }
 
@@ -244,25 +239,27 @@ public class DialogueBox : MonoBehaviour
         ClearChoiceBox();
 
         choiceBox.SetActive(false);
+
+        OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent);
         if (currentDialogue.dialogue != null)
         {
 
-            dialogueWaitingLine.Add(new DialogueContent(currentDialogue.dialogue.choices.dialogues[i]));
+            dialogueWaitingLine.Add(new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[i])));
         }
         Interact();
     }
 
-    private void FillChoiceBox(ChoiceDialogue choices)
+    private void FillChoiceBox(ChoiceDialogue[] choices)
     {
 
         ClearChoiceBox();
         AddInteractEventToPlayer(false);
         choiceBox.SetActive(true);
-        for (int i = 0; i < choices.dialogueLines.Length; i++)
+        for (int i = 0; i < choices.Length; i++)
         {
             int number = i;
             Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
-            obj.GetComponent<TMP_Text>().text = choices.dialogueLines[i];
+            obj.GetComponent<TMP_Text>().text = choices[i].choicesLine;
             obj.onClick.AddListener(delegate { DoChoice(number); } );
             obj.interactable = true;
             obj.Select();
@@ -402,7 +399,7 @@ public class DialogueBox : MonoBehaviour
         currentDialogue = dialogueWaitingLine[0];
         dialogueWaitingLine.RemoveAt(0);
         dialogueIndex = 0;
-        NextLine();
+        Interact();
     }
 
     public void EndDialogue()
@@ -535,7 +532,16 @@ public class DialogueBox : MonoBehaviour
         {
 
            ResetBox();
-           OnDialogueOverAction?.Invoke();
+            while(OnDialogueOverAction.Count > 0)
+            {
+                UnityEvent currentEvent = OnDialogueOverAction.Pop();
+                if (currentEvent.GetPersistentEventCount() > 0)
+                {
+                    Debug.Log(currentEvent.GetPersistentMethodName(0));
+                    currentEvent?.Invoke();
+                }
+
+            }
             
         }
         yield return new WaitForSeconds(.02f);
