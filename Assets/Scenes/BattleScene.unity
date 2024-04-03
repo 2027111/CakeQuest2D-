@@ -1645,7 +1645,7 @@ MonoBehaviour:
   storagePlay: {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}
   started: 0
   playableDirector: {fileID: 2094778769}
-  Automatic: 0
+  Automatic: 1
   battleManager: {fileID: 443016055}
 --- !u!114 &2094778772
 MonoBehaviour:

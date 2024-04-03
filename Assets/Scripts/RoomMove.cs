@@ -48,8 +48,11 @@ public class RoomMove : MonoBehaviour
 
         player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
         player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
-        player.GetComponent<Movement>().SetPosition(newPos);
-        player.GetComponent<Movement>().LookAt(DirectionToVector(Room1ToRoom2));
+        if (player.GetComponent<Character>().GetState() != "NothingBehaviour")
+        {
+            player.GetComponent<Movement>().SetPosition(newPos);
+            player.GetComponent<Movement>().LookAt(DirectionToVector(Room1ToRoom2));
+        }
 
         
     }

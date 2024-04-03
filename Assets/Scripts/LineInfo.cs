@@ -4,13 +4,13 @@ using UnityEngine;
 [System.Serializable]
 public class LineInfo : ScriptableObject
 {
-    public Sprite portrait;
+    public string portraitPath;
     public string talkername;
     public string line;
 
-    public LineInfo(Sprite portrait, string talkername, string line)
+    public LineInfo(string portraitPath, string talkername, string line)
     {
-        this.portrait = portrait;
+        this.portraitPath = portraitPath;
         this.talkername = talkername;
         this.line = line;
     }
@@ -18,8 +18,8 @@ public class LineInfo : ScriptableObject
 
     public LineInfo()
     {
-        portrait = null;
         talkername = "";
+        portraitPath = "";
         line = "";
     }
     

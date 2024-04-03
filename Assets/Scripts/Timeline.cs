@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,16 @@ public class Timeline: MonoBehaviour
         if (CheckPlay())
         {
             storagePlay.dialogueIndex = 0;
+
+            SetupRequirements();
+
             playableDirector.Play();
         }
+
+    }
+
+    public virtual void SetupRequirements()
+    {
 
     }
 

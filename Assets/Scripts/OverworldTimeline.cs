@@ -11,12 +11,18 @@ public class OverworldTimeline : Timeline
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-        if(storagePlay.StartRoom != null)
+        
+        base.Start();
+    }
+
+    public override void SetupRequirements()
+    {
+
+        if (storagePlay.StartRoom != null)
         {
 
             player.GetComponent<PlayerInfoStorage>().SetNewRoom(storagePlay.StartRoom);
         }
-        base.Start();
     }
 
     public override void DialogueRequest()
@@ -24,7 +30,7 @@ public class OverworldTimeline : Timeline
         Dialogue dialogue = new Dialogue(storagePlay.GetLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
         Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetPersistentEventCount());
-        DialogueBox.Singleton.StartDialogue(dialogue, player.gameObject, gameObject);
+        DialogueBox.Singleton.StartDialogue(dialogue, player.gameObject, null);
     }
 
 

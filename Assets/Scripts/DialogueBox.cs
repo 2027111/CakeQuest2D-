@@ -225,12 +225,38 @@ public class DialogueBox : MonoBehaviour
 
     public void SetupLine(LineInfo line)
     {
-        portraitImage.gameObject.SetActive(line.portrait != null);
-        portraitImage.sprite = line.portrait;
-        nameTextContainer.SetActive(!string.IsNullOrEmpty(line.talkername));
-        nameText.text = string.IsNullOrEmpty(line.talkername) ? "" : line.talkername;
+        // Set the active state of the portrait image based on whether a sprite is provided
+        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(line.portraitPath));
 
+        if (!string.IsNullOrEmpty(line.portraitPath))
+        {
+            // Load the sprite from Resources folder
+            string fullPath = line.portraitPath; // Assuming the path is relative to the Resources folder
+            Sprite portrait = Resources.Load<Sprite>(fullPath);
+
+            if (portrait == null)
+            {
+                // Log an error if the sprite failed to load
+                Debug.LogError("Failed to load sprite at path: " + fullPath);
+
+                // Optionally, list all loaded sprites for debugging
+                portraitImage.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                // Assign the loaded sprite to the portrait image
+                portraitImage.sprite = portrait;
+            }
+        }
+
+        // Set the active state of the name text container based on whether the talker name is provided
+        nameTextContainer.SetActive(!string.IsNullOrEmpty(line.talkername));
+
+        // Set the text of the name text component to the provided talker name
+        nameText.text = string.IsNullOrEmpty(line.talkername) ? "" : line.talkername;
     }
+
     public void DoChoice(int i)
     {
 

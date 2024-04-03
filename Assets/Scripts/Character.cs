@@ -39,6 +39,8 @@ public class Character : MonoBehaviour
         
     }
 
+
+ 
     public void AddToInventory(InventoryItem content, int amount = 1)
     {
         if (inventory)
@@ -82,6 +84,38 @@ public class Character : MonoBehaviour
     {
 
         LookToward((target.transform.position - transform.position).normalized);
+    }
+
+    public void LookUp()
+    {
+        
+
+        // Now you can use the lookDirection vector to orient the object
+        LookToward(Vector2.up.normalized);
+    }
+
+    public void LookDown()
+    {
+
+
+        // Now you can use the lookDirection vector to orient the object
+        LookToward(Vector2.down.normalized);
+    }
+
+    public void LookRight()
+    {
+
+
+        // Now you can use the lookDirection vector to orient the object
+        LookToward(Vector2.right.normalized);
+    }
+
+    public void LookLeft()
+    {
+
+
+        // Now you can use the lookDirection vector to orient the object
+        LookToward(Vector2.left.normalized);
     }
 
     public void SetPosition(Vector3 newPosition)

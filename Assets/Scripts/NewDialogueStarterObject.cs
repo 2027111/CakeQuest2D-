@@ -169,7 +169,7 @@ public class NewDialogueStarterObject : MonoBehaviour
                 }
             }
 
-            formattedLines.Add(new LineInfo(lineInfo.portrait, lineInfo.talkername, result));
+            formattedLines.Add(new LineInfo(lineInfo.portraitPath, lineInfo.talkername, result));
         }
 
         return formattedLines.ToArray();
