@@ -1645,6 +1645,7 @@ MonoBehaviour:
   storagePlay: {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}
   started: 0
   playableDirector: {fileID: 2094778769}
+  Automatic: 0
   battleManager: {fileID: 443016055}
 --- !u!114 &2094778772
 MonoBehaviour:
@@ -1662,7 +1663,6 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: ed3e2cd05dbc7be4f9b27e02331d2ca3, type: 2}
     - {fileID: 11400000, guid: d7b68a4ccee99ff40a02df31c1ef8ee7, type: 2}
-    - {fileID: 11400000, guid: 3ed4992ebb6a5c2489b156a6db0ce946, type: 2}
     - {fileID: 11400000, guid: 254c4a5d48ac08e4ba9459f2c328b769, type: 2}
     m_Events:
     - m_PersistentCalls:
@@ -1684,20 +1684,6 @@ MonoBehaviour:
         - m_Target: {fileID: 2094778771}
           m_TargetAssemblyTypeName: Timeline, Assembly-CSharp
           m_MethodName: PlayCutscene
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2094778771}
-          m_TargetAssemblyTypeName: Timeline, Assembly-CSharp
-          m_MethodName: CutsceneOver
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

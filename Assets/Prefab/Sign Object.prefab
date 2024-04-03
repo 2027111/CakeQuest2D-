@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6619528642139895876}
   - component: {fileID: 6619528642139895877}
   - component: {fileID: 6619528642139895882}
-  - component: {fileID: 1161719099}
+  - component: {fileID: -7201900825938326245}
   - component: {fileID: 1275180393}
   m_Layer: 6
   m_Name: Sign Object
@@ -141,7 +141,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002}
   m_EdgeRadius: 0
---- !u!114 &1161719099
+--- !u!114 &-7201900825938326245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,25 +150,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 6619528642139895883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96e96d058c8f6d44b0365c4dbe303a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 283f4797ce51db24b97f1b9c5cb8011d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueLines:
-  - portrait: {fileID: 21300000, guid: 7dbb33a3e03bea447bf5690852e622ef, type: 3}
-    talkername: Jimi
-    line: You better watch your mouth punk
-  - portrait: {fileID: 21300000, guid: 7dbb33a3e03bea447bf5690852e622ef, type: 3}
-    talkername: Jimi
-    line: tu parles a eyrcott rn
-  - portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
-    talkername: Jimi
-    line: ...
-  - portrait: {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
-    talkername: Jimi
-    line: ...
-  - portrait: {fileID: 21300000, guid: 7dbb33a3e03bea447bf5690852e622ef, type: 3}
-    talkername: Jimi
-    line: bitch
+  dialogue:
+    dialogueLines:
+    - {fileID: 11400000, guid: 8367999c7099b5440896a006a7db885d, type: 2}
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  started: 0
+  player: {fileID: 0}
+  OnDialogueOverEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1275180393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +180,7 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1161719099}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DialogueStarterObject, Assembly-CSharp
         m_MethodName: DialogueAction
         m_Mode: 1
@@ -196,6 +192,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  contactEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  contactEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   InteractionIndicator: {fileID: 7073876898182418826}
 --- !u!1 &7073876898182418826
 GameObject:

@@ -22,6 +22,7 @@ public class SceneTransition : MonoBehaviour
 
     public void TransitionScene()
     {
+        Debug.Log("Scene Transition Started");
         player.ChangeState(new CharacterBehaviour());
         PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
         if (storage)

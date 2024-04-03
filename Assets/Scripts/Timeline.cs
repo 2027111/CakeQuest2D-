@@ -8,27 +8,43 @@ public class Timeline: MonoBehaviour
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
-    private void Start()
+    public bool Automatic;
+    protected void Start()
     {
-
-        CheckPlay();
+        if (Automatic)
+        {
+            StartCinematic();
+        }
     }
 
+    public void StartCinematic()
+    {
+        if (CheckPlay())
+        {
+            storagePlay.dialogueIndex = 0;
+            playableDirector.Play();
+        }
+
+    }
 
     public virtual void StartDialogue()
     {
-        if (!started)
+        Debug.Log("Starting Dialogue");
+        if (!started )
         {
-            if(storagePlay.GetCurrentLine() != null)
+            if (CheckPlay())
             {
+                if (storagePlay.GetCurrentLine() != null)
+                {
 
-            started = true;
-            playableDirector.Pause();
-            DialogueRequest();
-            }
-            else
-            {
-                DialogueOver();
+                    started = true;
+                    playableDirector.Pause();
+                    DialogueRequest();
+                }
+                else
+                {
+                    CutsceneOver();
+                }
             }
         }
     }
@@ -40,8 +56,10 @@ public class Timeline: MonoBehaviour
     }
     public virtual void DialogueRequest()
     {
-
-        DialogueBox.Singleton.StartDialogue(storagePlay.GetLine(), DialogueOver, null, null);
+        Dialogue dialogue = new Dialogue(storagePlay.GetLine());
+        dialogue.OnOverEvent.AddListener(DialogueOver);
+        //Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetNonPersistentEventCount());
+        DialogueBox.Singleton.StartDialogue(dialogue, null, null);
     }
 
     public virtual void DialogueOver()
@@ -57,7 +75,7 @@ public class Timeline: MonoBehaviour
         Debug.Log("Unpause");
     }
 
-    public void CutsceneOver()
+    public virtual void CutsceneOver()
     {
         storagePlay.dialogueIndex = 0;
         if (storagePlay)
@@ -67,12 +85,26 @@ public class Timeline: MonoBehaviour
 
                 storagePlay.RuntimeValue = true;
             }
-            CheckPlay();
         }
     }
-    public void CheckPlay()
+    public void StopReplay()
     {
-        
+        if (storagePlay)
+        {
+            if (!storagePlay.repeats)
+            {
+
+                storagePlay.RuntimeValue = true;
+            }
+        }
+    }
+    public bool CheckPlay()
+    {
+        if (storagePlay)
+        {
+            return !storagePlay.RuntimeValue;
+        }
+        return false;
     }
 
 

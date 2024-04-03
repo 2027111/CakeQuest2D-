@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: SGT Cutscene
   m_EditorClassIdentifier: 
   RuntimeValue: 0
-  repeats: 0
-  dialogueContents:
-  - lines:
+  repeats: 1
+  dialogue:
+  - dialogueLines:
     - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
   dialogueIndex: 0

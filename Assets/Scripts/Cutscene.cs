@@ -2,31 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 [CreateAssetMenu]
 public class Cutscene : BoolValue
 {
     public bool repeats = false;
-    public DialogueContent[] dialogueContents;
+    public Dialogue[] dialogue;
     public int dialogueIndex = 0;
+    public RoomInfo StartRoom;
 
-    public LineInfo[] GetLine()
+    public Dialogue GetLine()
     {
-        if(dialogueIndex >= dialogueContents.Length)
-        {
-            return null;
-        }
-        LineInfo[] returnValue = dialogueContents[dialogueIndex].lines;
+        
+        Dialogue returnValue = GetCurrentLine();
         dialogueIndex++;
         return returnValue;
     }
 
-    public LineInfo[] GetCurrentLine()
+
+    public Dialogue GetCurrentLine()
     {
-        if (dialogueIndex >= dialogueContents.Length)
+        if (dialogueIndex >= dialogue.Length)
         {
             return null;
         }
-        LineInfo[] returnValue = dialogueContents[dialogueIndex].lines;
+        Dialogue returnValue = new Dialogue(dialogue[dialogueIndex]);
         return returnValue;
     }
 }

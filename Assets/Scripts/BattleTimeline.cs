@@ -10,12 +10,21 @@ public class BattleTimeline : Timeline
 
     public override void DialogueRequest()
     {
-        DialogueBox.Singleton.StartDialogue(storagePlay.GetLine(), DialogueOver, null, null, GameState.BattleScene);
+        Debug.Log("Requesting Dialogue");
+        Dialogue dialogue = new Dialogue(storagePlay.GetLine());
+        dialogue.OnOverEvent.AddListener(DialogueOver);
+        DialogueBox.Singleton.StartDialogue(dialogue, null, null, GameState.BattleScene);
     }
+
 
     public override void DialogueOver()
     {
         base.DialogueOver();
+    }
+
+    public override void CutsceneOver()
+    {
+        base.CutsceneOver();
         battleManager.StartBattle();
     }
 

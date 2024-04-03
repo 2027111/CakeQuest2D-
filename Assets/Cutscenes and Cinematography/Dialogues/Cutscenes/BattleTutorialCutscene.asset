@@ -12,21 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c7f276e93ea347bd5be0c7f87d0a9, type: 3}
   m_Name: BattleTutorialCutscene
   m_EditorClassIdentifier: 
-  RuntimeValue: 1
-  repeats: 0
-  dialogueContents:
-  - lines:
+  RuntimeValue: 0
+  repeats: 1
+  dialogue:
+  - dialogueLines:
     - {fileID: 11400000, guid: b6c4505a56130804fbe33536b07741ab, type: 2}
     - {fileID: 11400000, guid: c975daf8cfcae8e479c914d9bbaebf17, type: 2}
     - {fileID: 11400000, guid: 4401c2c3a508c28429e9afe96e8daead, type: 2}
-    dialogue:
-      dialogueLines: []
-      EndInChoice: 0
-      choices:
-        dialogueLines: []
-        dialogues: []
-      OnOverEvent:
-        m_PersistentCalls:
-          m_Calls: []
-    choice: 0
-  dialogueIndex: 0
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  dialogueIndex: 1
+  StartRoom: {fileID: 0}

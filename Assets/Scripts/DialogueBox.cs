@@ -63,7 +63,7 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    public Stack<UnityEvent> OnDialogueOverAction = new Stack<UnityEvent>();
+    public Stack<UnityAction> OnDialogueOverAction = new Stack<UnityAction>();
     GameState currentState = GameState.Overworld;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
@@ -157,10 +157,14 @@ public class DialogueBox : MonoBehaviour
         }
         
     }
+
+
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
 
-        OnDialogueOverAction.Push(dialogue.OnOverEvent);
+
+
+        OnDialogueOverAction.Push(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
@@ -217,11 +221,7 @@ public class DialogueBox : MonoBehaviour
             }
         }
     }
-    public void StartDialogue(LineInfo[] lines, UnityAction callback, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
-    {
-        //OnDialogueOverAction.Push(delegate { callback(); });
-        StartDialogue(lines, playerObject, originObject, state);
-    }
+
 
     public void SetupLine(LineInfo line)
     {
@@ -240,7 +240,7 @@ public class DialogueBox : MonoBehaviour
 
         choiceBox.SetActive(false);
 
-        OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent);
+        OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
         if (currentDialogue.dialogue != null)
         {
 
@@ -532,12 +532,12 @@ public class DialogueBox : MonoBehaviour
         {
 
            ResetBox();
+            Debug.Log(OnDialogueOverAction.Count);
             while(OnDialogueOverAction.Count > 0)
             {
-                UnityEvent currentEvent = OnDialogueOverAction.Pop();
-                if (currentEvent.GetPersistentEventCount() > 0)
+                UnityAction currentEvent = OnDialogueOverAction.Pop();
+                if (currentEvent != null)
                 {
-                    Debug.Log(currentEvent.GetPersistentMethodName(0));
                     currentEvent?.Invoke();
                 }
 
@@ -563,7 +563,6 @@ public class DialogueBox : MonoBehaviour
             setTextCoroutine = null;
         }
     }
-
 
 
 }

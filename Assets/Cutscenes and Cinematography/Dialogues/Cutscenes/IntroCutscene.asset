@@ -14,10 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RuntimeValue: 0
   repeats: 0
-  dialogueContents:
-  - lines:
+  dialogue:
+  - dialogueLines:
     - {fileID: 11400000, guid: ce21c4aa76742154da02e377b2ef9d58, type: 2}
     - {fileID: 11400000, guid: 7a44d95466db3b646ae7612b119516bf, type: 2}
-  - lines:
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - dialogueLines:
     - {fileID: 11400000, guid: 9e162e9878f587745844522629b6e8a5, type: 2}
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
   dialogueIndex: 0
+  StartRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}

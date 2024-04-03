@@ -166,6 +166,7 @@ public class BattleManager : MonoBehaviour
         else
         {
 
+            Debug.Log("Cutscene Start");
             director.Play();
         }
     }

@@ -38,7 +38,7 @@ Transform:
   m_Children:
   - {fileID: 7993561500705895488}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7993561500512630956
 SpriteRenderer:
@@ -179,10 +179,7 @@ MonoBehaviour:
   dialogue:
     dialogueLines:
     - {fileID: 11400000, guid: 991b0919b2e944242b0101c65fb4e4f0, type: 2}
-    EndInChoice: 0
-    choices:
-      dialogueLines: []
-      dialogues: []
+    choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls:
@@ -207,7 +204,7 @@ MonoBehaviour:
   amount: 5
   OnlyOnce: 1
   isOpen: 0
-  locked: 1
+  locked: 0
   lockRequirement: {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
   requirementAmount: 1
   consumesRequirement: 0
