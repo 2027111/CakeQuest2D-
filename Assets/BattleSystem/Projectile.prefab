@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5533c582074f7ef469449a066a91f2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialVelocity: {x: 500, y: 0}
+  TimeUntilVelocity: 0
+  initialVelocity: {x: 20, y: 0}
   Damage: 10
   timePassed: 0
   duration: 0
@@ -108,6 +109,9 @@ MonoBehaviour:
   gravity: 0
   Owner: {fileID: 0}
   DestroyOnContact: 1
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &3122504944675684840
 Rigidbody2D:
   serializedVersion: 4

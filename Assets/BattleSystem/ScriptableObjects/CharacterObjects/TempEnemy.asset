@@ -13,19 +13,20 @@ MonoBehaviour:
   m_Name: TempEnemy
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: f0cff09441ade6d4185cab78748b939a, type: 2}
-  Health: 0
+  Health: 1173
   MaxHealth: 1173
   Mana: 1173
   MaxMana: 1173
   AttackDamage: 11
   ManaDamage: 10
-  isDead: 1
-  Armor: -16
-  BaseArmor: 100
+  isDead: 0
+  Armor: 0
+  BaseArmor: 0
   colliderOffset: {x: -0.07, y: 0.64}
   colliderSize: {x: 0.85, y: 1.2}
   feetPosition: {x: -0.05, y: 0.04}
   AttackList:
   - {fileID: 11400000, guid: 899ad845d87d19342bd44511444b4c09, type: 2}
   - {fileID: 11400000, guid: 6268675abbc159644b60fb09b87a7219, type: 2}
+  HurtVoiceClips: []
   animationController: {fileID: 0}

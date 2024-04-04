@@ -142,7 +142,6 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator StartFadeAnimation(bool on)
     {
-        Debug.Log("Test");
         float time = 0f;
         float start = on?0:1;
         float target = on?1:0;

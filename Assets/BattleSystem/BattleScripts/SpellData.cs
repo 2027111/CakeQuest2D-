@@ -37,6 +37,7 @@ public class SpellData : MoveData
     public Vector2 XpositionOffsetRange = Vector2.zero;
     public Vector2 YpositionOffsetRange = Vector2.zero;
     public float rotationOffset = 0;
+    public bool killWithSpellEnd = false;
 
 
 

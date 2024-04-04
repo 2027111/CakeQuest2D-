@@ -173,7 +173,10 @@ public class SpellCastingState : AttackState
     {
         base.OnExit();
         animator.SetTrigger("SpellOver");
-        UnspawnSpell();
+        if (((SpellData)currentData).killWithSpellEnd)
+        {
+            UnspawnSpell();
+        }
         UnspawnParticleCharge();
 
     }

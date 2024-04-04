@@ -68,6 +68,7 @@ public class GameSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CreateTranslationPath();
         CreateSavePath();
         LoadSaveFile();
         LoadLanguage();
@@ -87,6 +88,41 @@ public class GameSaveManager : MonoBehaviour
                 Directory.CreateDirectory(GetPath(enumValueName));
             }
         }
+    }
+
+
+    public void CreateTranslationPath()
+    {
+        InitializePath(); // Assuming this method initializes the path
+
+        foreach (Language language in Enum.GetValues(typeof(Language)))
+        {
+            string filePath = GetFilePath(SaveFiles.translation.ToString(), language.ToString());
+
+            // Check if the file already exists
+            if (!File.Exists(filePath))
+            {
+                // Construct the file path for loading from resources
+                string resourcesFilePath = string.Format("{0}/{1}{0}", SaveFiles.translation.ToString(), (SaveFiles.translation.ToString() == "translation" ? language.ToString() + "_" : ""));
+                TextAsset jsonFile = Resources.Load<TextAsset>(resourcesFilePath);
+
+                if (jsonFile != null)
+                {
+                    // Save the file using the obtained JSON content and the file path
+                    SaveFileToPath(jsonFile, filePath);
+                }
+                else
+                {
+                    Debug.LogError("Failed to load JSON file: " + resourcesFilePath);
+                }
+            }
+        }
+    }
+
+    public void SaveFileToPath(TextAsset fileContent, string filePath)
+    {
+        // Write the content of the TextAsset to the specified file path
+        File.WriteAllText(filePath, fileContent.text);
     }
 
 
@@ -143,6 +179,10 @@ public class GameSaveManager : MonoBehaviour
     public string GetFilePath(string whattosave)
     {
         return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? GetLanguage() + "_" : ""));
+    }
+    public string GetFilePath(string whattosave, string language)
+    {
+        return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? language + "_" : ""));
     }
 
 

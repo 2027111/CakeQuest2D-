@@ -1,0 +1,112 @@
+{
+    "objects": [
+        {
+            "typeName": "MenuNames",
+            "objectName": "MenuNames",
+            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave\",\"settings\":\"Settings\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Title Menu\",\"resume\":\"Resume\",\"save\":\"Save\"}",
+            "HashCode": 33406
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "ChestLocked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"The chest is locked... You need {requirementAmount} {lockRequirement.itemName} to open it.\"}",
+            "HashCode": 26972
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "ChestOpened",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"You found {amount} {content.itemName}!!\"}",
+            "HashCode": 26970
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "ChestUnlocked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"You have the {requirementAmount} {lockRequirement.itemName} needed to open it! The chest opens!!\"}",
+            "HashCode": 26974
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "LINE TEsT",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Launching combat\"}",
+            "HashCode": 30108
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Intro_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Damn.. I'm starvinggg!!\"}",
+            "HashCode": 26168
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Intro_Jimi_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"I need to eat, for real... I think there's still some cake left, right?\"}",
+            "HashCode": 26170
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Intro_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Shit... I'll have to make some myself.\"}",
+            "HashCode": 26172
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Misc_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"I shouldn't go there...\"}",
+            "HashCode": 26174
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Tuto_Yankee_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"You know how to fight, right?\"}",
+            "HashCode": 33540
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Tuto_Yankee_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Use W-A-S-D to move and jump with space.\"}",
+            "HashCode": 38092
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "Tuto_Yankee_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Then use P for normal attacks and O for special attacks.\"}",
+            "HashCode": 30898
+        },
+        {
+            "typeName": "LineInfo",
+            "objectName": "EyrCutt_pc_0",
+            "jsonData": "{\"portraitPath\":\"po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Watch where you're going... or I'll smoke ya... I'm not kidding cowboy...\"}",
+            "HashCode": 42402
+        },
+        {
+            "typeName": "CharacterData",
+            "objectName": "Jimi",
+            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":[{\"instanceID\":26176},{\"instanceID\":26518}],\"HealthName\":\"Stamina\",\"ManaName\":\"Glucose\"}",
+            "HashCode": 26492
+        },
+        {
+            "typeName": "CharacterData",
+            "objectName": "Monstre1",
+            "jsonData": "{\"characterName\":\"Bastard\",\"portraits\":[{\"instanceID\":27730}],\"HealthName\":\"Vitality\",\"ManaName\":\"Rage\"}",
+            "HashCode": 28346
+        },
+        {
+            "typeName": "CharacterData",
+            "objectName": "Yankee",
+            "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":[{\"instanceID\":40622}],\"HealthName\":\"Vitality\",\"ManaName\":\"Shampoo\"}",
+            "HashCode": 27596
+        },
+        {
+            "typeName": "InventoryItem",
+            "objectName": "InstantNoodles",
+            "jsonData": "{\"itemName\":\"Instant Ramen\",\"itemDescription\":\"The most filling dish in the world!\",\"itemType\":0,\"itemSprite\":{\"instanceID\":26420},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}",
+            "HashCode": 26378
+        },
+        {
+            "typeName": "InventoryItem",
+            "objectName": "SHunBottle",
+            "jsonData": "{\"itemName\":\"Small Honey Bottle\",\"itemDescription\":\"A bear-shaped bottle filled with honey.\",\"itemType\":0,\"itemSprite\":{\"instanceID\":26400},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}",
+            "HashCode": 26016
+        }
+    ]
+}

@@ -8,6 +8,8 @@ public class BattleTimeline : Timeline
 {
     public BattleManager battleManager;
 
+
+
     public override void DialogueRequest()
     {
         Debug.Log("Requesting Dialogue");

@@ -40,7 +40,7 @@ public class AttackState : State
         if(currentData.attackType == AttackType.Special)
         {
             MoveSetInfos msi = new MoveSetInfos(currentData, stateMachine.GetComponent<Entity>().characterObject.characterData);
-            BattleManager.Singleton.SpawnMoveIndicator(msi);
+            BattleManager.Singleton?.SpawnMoveIndicator(msi);
         }
     }
     public void PlaySFXs()

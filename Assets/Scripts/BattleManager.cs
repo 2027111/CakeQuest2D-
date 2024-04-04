@@ -154,9 +154,9 @@ public class BattleManager : MonoBehaviour
     {
        
             
-            director.GetComponent<BattleTimeline>().SetCutscene(battleInfo.CutsceneForDialogue);
+        director.GetComponent<BattleTimeline>().SetCutscene(battleInfo.CutsceneForDialogue);
         
-            director.playableAsset = battleInfo.CutsceneToPlay;
+        director.playableAsset = battleInfo.CutsceneToPlay;
         
         if(director.playableAsset == null || battleInfo.CutsceneForDialogue.RuntimeValue)
         {

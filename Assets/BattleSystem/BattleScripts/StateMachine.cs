@@ -16,7 +16,7 @@ public class StateMachine : MonoBehaviour
     {
         if (CurrentState == null)
         {
-            SetNextState(new EntranceState());
+            SetNextStateToMain();
         }
     }
     /*  private void OnValidate()
