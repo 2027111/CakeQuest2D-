@@ -22,7 +22,7 @@ TagManager:
   - 
   - Dead
   - Walls
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 4138066395
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

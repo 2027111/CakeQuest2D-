@@ -31,13 +31,13 @@ public class TreasureChest : NewDialogueStarterObject
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         isOpen = storedOpen.RuntimeValue;
-        CheckOpen();
+        CheckOpen(true);
         
 
     }
 
 
-    protected void CheckOpen()
+    protected void CheckOpen(bool forceOpen = false)
     {
         if (isOpen || content == null)
         {
@@ -53,6 +53,7 @@ public class TreasureChest : NewDialogueStarterObject
             }
         }
     }
+
 
     public override void DialogueAction()
     {
@@ -149,7 +150,6 @@ public class TreasureChest : NewDialogueStarterObject
 
     public override void DialogueOver()
     {
-        Debug.Log("Lol");
         base.DialogueOver();
     }
 

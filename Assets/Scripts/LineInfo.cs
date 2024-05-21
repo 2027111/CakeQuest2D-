@@ -7,6 +7,7 @@ public class LineInfo : ScriptableObject
     public string portraitPath;
     public string talkername;
     public string line;
+    public string voiceclipId;
 
     public LineInfo(string portraitPath, string talkername, string line)
     {

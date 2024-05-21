@@ -8,7 +8,7 @@ public class OverworldTimeline : Timeline
 {
 
     public Character player;
-    private void Start()
+    private new void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         

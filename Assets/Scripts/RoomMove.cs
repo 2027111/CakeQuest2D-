@@ -43,7 +43,7 @@ public class RoomMove : MonoBehaviour
     {
         RoomInfo newRoom = room2 == GetCurrentRoom() ? room1 : room2;
 
-        float vectorFactor = room2 == GetCurrentRoom() ? 1 : -1;
+        float vectorFactor = (room2 == GetCurrentRoom() ? 1 : -1);
         Vector2 newPos = player.transform.position + DirectionToVector(Room1ToRoom2) * vectorFactor;
 
         player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);

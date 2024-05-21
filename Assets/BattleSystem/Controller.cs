@@ -14,17 +14,14 @@ public abstract class Controller : MonoBehaviour
     public delegate void EventHandler();
     public EventHandler OnJumpPressed;
     public EventHandler OnJumpRelease;
-    public EventHandler OnSpecialPressed;
-    public EventHandler OnSpecialRelease;
-    public EventHandler OnAttackPressed;
-    public EventHandler OnAttackRelease;
+    public EventHandler OnReturnPressed;
+    public EventHandler OnReturnRelease;
+    public EventHandler OnSelectPressed;
+    public EventHandler OnSelectReleased;
     public delegate void MovementHandler(Vector2 movement);
     public MovementHandler OnMovement;
 
-    public void SetController()
-    {
-        GetComponent<Player>().SetController(this);
-    }
+
 
     public void Disable()
     {

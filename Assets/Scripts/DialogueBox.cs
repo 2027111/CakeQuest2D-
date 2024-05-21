@@ -141,9 +141,9 @@ public class DialogueBox : MonoBehaviour
                 }
                 else if(currentState == GameState.BattleScene)
                 {
-                    if (player)
+                    if (BattleManager.Singleton)
                     {
-                        player.GetComponent<StateMachine>().SetNextState(new EntranceState());
+                        BattleManager.Singleton.ChangeState(new NothingState());
                         AddInteractEventToPlayer(true);
                     }
                 }
@@ -206,11 +206,8 @@ public class DialogueBox : MonoBehaviour
                 }
                 else if (currentState == GameState.BattleScene)
                 {
-                    if (player)
-                    {
-                        player.GetComponent<StateMachine>().SetNextState(new EntranceState());
                         AddInteractEventToPlayer(true);
-                    }
+                    
                 }
 
 
@@ -454,12 +451,12 @@ public class DialogueBox : MonoBehaviour
             }
             else if (currentState == GameState.BattleScene)
             {
-                BattleCharacter battleCharacterComponent = player.GetComponent<BattleCharacter>();
+                InputManager battleCharacterComponent = player.GetComponent<InputManager>();
 
                 bool contains = battleCharacterComponent.AttackContains(Interact);
                 if (battleCharacterComponent != null && !contains)
                 {
-                    battleCharacterComponent.OnAttackPressed += Interact;
+                    battleCharacterComponent.OnSelectPressed += Interact;
                 }
             }
         }
@@ -471,7 +468,7 @@ public class DialogueBox : MonoBehaviour
             }
             else if (currentState == GameState.BattleScene)
             {
-                player.GetComponent<BattleCharacter>().OnAttackPressed -= Interact;
+                player.GetComponent<InputManager>().OnSelectPressed -= Interact;
             }
         }
     }

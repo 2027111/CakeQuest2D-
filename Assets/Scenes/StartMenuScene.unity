@@ -2987,28 +2987,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2410642290145792045, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: m_Name
-      value: DialogueManager
+      value: GameSaveManager
       objectReference: {fileID: 0}
-    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
-      propertyPath: objectsToSave.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
-      propertyPath: objectsToSave.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: e969ce37378d2e9408cf44393fc84fb0, type: 2}
-    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
-      propertyPath: objectsToTranslate.Array.size
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
-      propertyPath: objectsToTranslate.Array.data[16]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4dc0cd8b081c98649a254fcf1342b744, type: 2}
-    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
-      propertyPath: objectsToTranslate.Array.data[17]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
     - target: {fileID: 2410642290145792047, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: m_RootOrder
       value: 3

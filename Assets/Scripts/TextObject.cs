@@ -12,23 +12,13 @@ public class TextObject : MonoBehaviour
 
 
 
-    public void Setup(int amount, BattleCharacter source, BattleCharacter target)
+    public void Setup(string text, Color color)
     {
-        Color color = Color.white;
-        if (target.GetComponent<TeamComponent>().teamIndex == TeamIndex.Player)
-        {
-            color = Color.red;
-        }
-
-        if (amount > 0)
-        {
-            color = Color.green;
-        }
+        
 
 
 
-
-        indicationText.text = ""+Mathf.Abs(amount);
+        indicationText.text = text;
         indicationText.color = color;
 
 

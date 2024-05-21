@@ -16,8 +16,8 @@ public class HealthBarUI : MonoBehaviour
     public void SetPlayerRef(CharacterObject character)
     {
         characterReference = character;
-        characterReference.OnHealthChange += healthBar.SetFillAmount;
-        characterReference.OnManaChange += manaBar.SetFillAmount;
+        //characterReference.OnHealthChange += healthBar.SetFillAmount;
+        //characterReference.OnManaChange += manaBar.SetFillAmount;
         if (characterReference.characterData.portraits.Length > 0)
         {
             portraitImage.gameObject.SetActive(true);
@@ -33,8 +33,8 @@ public class HealthBarUI : MonoBehaviour
 
 
 
-        characterReference.OnHealthChange.Invoke(characterReference.Health, characterReference.MaxHealth);
-        characterReference.OnManaChange.Invoke(characterReference.Mana, characterReference.MaxMana);
+        //characterReference.OnHealthChange.Invoke(characterReference.Health, characterReference.MaxHealth);
+        //characterReference.OnManaChange.Invoke(characterReference.Mana, characterReference.MaxMana);
 
 
     }
@@ -43,8 +43,8 @@ public class HealthBarUI : MonoBehaviour
 
     private void OnDisable()
     {
-        characterReference.OnHealthChange -= healthBar.SetFillAmount;
-        characterReference.OnManaChange -= manaBar.SetFillAmount;
+        //characterReference.OnHealthChange -= healthBar.SetFillAmount;
+        //characterReference.OnManaChange -= manaBar.SetFillAmount;
     }
 
 

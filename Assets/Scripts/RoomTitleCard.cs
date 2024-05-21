@@ -27,21 +27,21 @@ public class RoomTitleCard : MonoBehaviour
     [SerializeField] float animationDuration = 2f;
     [SerializeField] float displayDuration = 3f;
     [SerializeField] Transform showPosition;
-    Vector3 offScreenPosition;
-    Vector3 onScreenPosition;
+    [SerializeField] Transform offPosition;
+    Vector3 offScreenPosition
+    {
+
+        get { return offPosition.transform.position; }
+    }
+    Vector3 onScreenPosition
+    {
+        get { return showPosition.transform.position; }
+    }
     private void Start()
     {
         Singleton = this;
-        InitializePosition();
     }
 
-    private void InitializePosition()
-    {
-        // Set the initial position off-screen near the bottom right corner
-        offScreenPosition = transform.position;
-        onScreenPosition = showPosition.position;
-        Destroy(showPosition.gameObject);
-    }
 
     public static void ShowTitle(string title)
     {

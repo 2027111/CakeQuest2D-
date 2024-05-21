@@ -128,6 +128,7 @@ public class FadeScreen : MonoBehaviour
             FadeScreen.StartTransition(false, Color.black, fadeTime);
         }
 
+       
         OnFadingEnd?.Invoke();
         movingScene = false;
         yield return null;

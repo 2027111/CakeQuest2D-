@@ -36,6 +36,13 @@ public class Timeline: MonoBehaviour
 
     }
 
+
+    public void PlaySong(string songName)
+    {
+
+        MusicPlayer.Singleton.PlaySong(songName);
+    }
+
     public virtual void StartDialogue()
     {
         Debug.Log("Starting Dialogue");

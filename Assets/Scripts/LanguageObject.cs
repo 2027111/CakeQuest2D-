@@ -5,8 +5,6 @@ using UnityEngine;
 public enum Language
 {
     Français,
-    English,
-    Spanish,
 }
 
 

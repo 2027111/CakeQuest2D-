@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2410642290145792046
 MonoBehaviour:
@@ -53,9 +53,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1d0360c86dfc144a99faa13f905b220, type: 2}
   - {fileID: 11400000, guid: 3c4fbf3ec1fe8fd47a6b63826282419a, type: 2}
   - {fileID: 11400000, guid: 2aea47402aa764a42ab69917954688b0, type: 2}
-  - {fileID: 11400000, guid: bf7f4c6879e1e854c959ce1cb23d2ff2, type: 2}
-  - {fileID: 11400000, guid: 13a0dfbe416d90d45b21274f7e295add, type: 2}
-  - {fileID: 11400000, guid: c873756f74129534cbe5991b830481d9, type: 2}
+  - {fileID: 11400000, guid: 36ad50b3d79e8114ba072b42b5795ca8, type: 2}
+  - {fileID: 11400000, guid: 0704f46f2b3d8a64c80b81e430a4183a, type: 2}
+  - {fileID: 11400000, guid: e969ce37378d2e9408cf44393fc84fb0, type: 2}
   objectsToTranslate:
   - {fileID: 11400000, guid: 76cc4d87545cf3b4cb5b732724205675, type: 2}
   - {fileID: 11400000, guid: 5dc4c659f04fe494485db85e546e7b64, type: 2}
@@ -70,9 +70,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c975daf8cfcae8e479c914d9bbaebf17, type: 2}
   - {fileID: 11400000, guid: 4401c2c3a508c28429e9afe96e8daead, type: 2}
   - {fileID: 11400000, guid: cfd7d18dd88e299499554bf5af0e65bb, type: 2}
-  - {fileID: 11400000, guid: 243c15b623e95714ab713ac8670411d5, type: 2}
-  - {fileID: 11400000, guid: f0cff09441ade6d4185cab78748b939a, type: 2}
-  - {fileID: 11400000, guid: 003fa69a0f3a05a41b95b6155174863e, type: 2}
+  - {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
+  - {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
+  - {fileID: 11400000, guid: 4dc0cd8b081c98649a254fcf1342b744, type: 2}
+  - {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
   currentLanguage: {fileID: 11400000, guid: 490bd274c7c5f9a4794e5cd1f5fdffff, type: 2}
   path: C:/Users/Adam/AppData/LocalLow/R_Inc/Cake Quest
   extension: json

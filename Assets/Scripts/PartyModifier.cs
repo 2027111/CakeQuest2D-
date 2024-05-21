@@ -19,10 +19,14 @@ public class PartyModifier : MonoBehaviour
 
     public void AddToParty()
     {
+        if(characterObject != null)
+        {
+
 
         if (!player.heroParty.PartyMembers.Contains(characterObject))
         {
             player.heroParty.PartyMembers.Add(characterObject);
+            }
         }
     }
 
@@ -31,16 +35,20 @@ public class PartyModifier : MonoBehaviour
     public void RemoveFromParty()
     {
 
-        if (player.heroParty.PartyMembers.Contains(characterObject))
+        if (characterObject != null)
+        {
+
+            if (player.heroParty.PartyMembers.Contains(characterObject))
         {
             player.heroParty.PartyMembers.Remove(characterObject);
+        }
         }
     }
 
 
     public void HealEntireParty()
     {
-        player.heroParty.MainCharacter.Revitalize();
+        player.heroParty.MainCharacter?.Revitalize();
         foreach (CharacterObject obj in player.heroParty.PartyMembers)
         {
             obj.Revitalize();

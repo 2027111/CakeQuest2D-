@@ -44,7 +44,6 @@ public class SceneTransition : MonoBehaviour
         PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
         storage.infoStorage.nextRoomInfo.SetValue(roomOnLoadInfo);
 
-
         FadeScreen.Singleton?.OnFadingMid.RemoveListener(OnTransitionHalf);
 
     }
