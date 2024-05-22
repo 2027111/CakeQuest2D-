@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     dialogueLineIds:
-    - ChestOpened
+    - Misc_Chest_Opened
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -211,7 +211,7 @@ MonoBehaviour:
   consumesRequirement: 0
   LockedDialogue:
     dialogueLineIds:
-    - ChestLocked
+    - Misc_Chest_Locked
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -219,16 +219,12 @@ MonoBehaviour:
     source: {fileID: 0}
   SuccessDialogue:
     dialogueLineIds:
-    - ChestUnlocked
+    - Misc_Chest_Unlocked
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  LockedLines:
-  - {fileID: 11400000, guid: 5dc4c659f04fe494485db85e546e7b64, type: 2}
-  SuccessLines:
-  - {fileID: 11400000, guid: 863073cce39a68f44ae1229bb8fe815b, type: 2}
   storedOpen: {fileID: 11400000, guid: 3c4fbf3ec1fe8fd47a6b63826282419a, type: 2}
 --- !u!114 &7993561500512630955
 MonoBehaviour:

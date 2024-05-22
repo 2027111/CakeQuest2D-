@@ -28,6 +28,7 @@ public class PlayerInputController : MonoBehaviour
             // Implement your interaction logic here
             // For example, you might call a method to interact with an object.
             Interact();
+            Debug.Log("Interact Press");
         }
     }
 

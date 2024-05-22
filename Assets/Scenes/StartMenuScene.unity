@@ -3197,7 +3197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3361505298100145069, guid: c65547549ff008c43adeee5ea36a6f1a, type: 3}
       propertyPath: startFadeon
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3361505298100145070, guid: c65547549ff008c43adeee5ea36a6f1a, type: 3}
       propertyPath: m_Pivot.x

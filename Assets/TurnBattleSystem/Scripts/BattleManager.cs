@@ -25,6 +25,9 @@ public class BattleManager : MonoBehaviour
             }
         }
     }
+
+
+
     [SerializeField] TMP_Text text;
 
 
@@ -55,6 +58,14 @@ public class BattleManager : MonoBehaviour
     {
         return Actors[turn];
     }
+
+    public bool NextPlayerCanMove()
+    {
+
+        return !Actors[GetNextTurnIndex()].isActing;
+    }
+
+
 
     public List<BattleCharacter> GetPossibleTarget()
     {
@@ -416,14 +427,20 @@ public class BattleManager : MonoBehaviour
 
     }
 
+    private int GetNextTurnIndex()
+    {
+        int nextturn = turn+1;
+        if (nextturn >= Actors.Count)
+        {
+            nextturn = 0;
+        }
+        return nextturn;
+    }
+
     public void NextTurn()
     {
 
-        turn++;
-        if(turn >= Actors.Count)
-        {
-            turn = 0;
-        }
+        turn = GetNextTurnIndex();
 
         if (GetActor().Entity.isDead)
         {

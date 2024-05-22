@@ -21,6 +21,9 @@ public class BattleCharacter : MonoBehaviour
     public BattleCharacter _target;
 
 
+    public bool isActing = false;
+
+
     public delegate void EventHandler(int health, int maxhealth);
     public EventHandler OnHealthChange;
     public EventHandler OnManaChange;
@@ -31,6 +34,10 @@ public class BattleCharacter : MonoBehaviour
     public AnimatorController Animator;
 
     public Entity Entity;
+
+
+
+
 
     void Start()
     {
@@ -57,6 +64,10 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
+    public void SetActing(bool _isActing)
+    {
+        isActing = _isActing;
+    }
     public CharacterData GetData()
     {
         return currentCharacter.characterData;

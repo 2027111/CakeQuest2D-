@@ -6,7 +6,7 @@ using UnityEngine;
 public enum Language
 {
     Français,
-    English,
+    //English,
 }
 
 
@@ -15,7 +15,7 @@ public enum Language
 public class LanguageData
 {
     public List<JsonData> Data;
-    public static Language language = Language.English;
+    public static Language language = Language.Français;
 
     
     private static LanguageData _singleton;
@@ -76,8 +76,6 @@ public class LanguageData
     {
         string filePath = GetFilePath(); // No need to include the .json extension
         ResourceRequest request = Resources.LoadAsync<TextAsset>(filePath);
-        Debug.Log(language);
-        Debug.Log("Loading Language");
         while (!request.isDone)
         {
             yield return null;

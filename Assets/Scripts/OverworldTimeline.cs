@@ -29,7 +29,6 @@ public class OverworldTimeline : Timeline
     {
         Dialogue dialogue = new Dialogue(storagePlay.GetLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
-        Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetPersistentEventCount());
         DialogueBox.Singleton.StartDialogue(dialogue, player.gameObject, null);
     }
 

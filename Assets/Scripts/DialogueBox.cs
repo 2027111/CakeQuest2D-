@@ -131,12 +131,12 @@ public class DialogueBox : MonoBehaviour
 
                 if (active)
                 {
-                    Debug.Log("Added Dialogue");
+                    //Debug.Log("Added Dialogue");
                     dialogueWaitingLine.Add(newDialogue);
                 }
                 else
                 {
-                    Debug.Log("Starting Dialogue");
+                    //Debug.Log("Starting Dialogue");
                     dialogueText.text = "";
                     SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
                     StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
@@ -295,6 +295,7 @@ public class DialogueBox : MonoBehaviour
         currentDialogue.choice = false;
         ClearChoiceBox();
 
+        Debug.Log("Did  Choice " + i);
         choiceBox.SetActive(false);
 
         OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
@@ -311,6 +312,7 @@ public class DialogueBox : MonoBehaviour
 
         ClearChoiceBox();
         AddInteractEventToPlayer(false);
+        Debug.Log("Removed Interactions");
         choiceBox.SetActive(true);
         for (int i = 0; i < choices.Length; i++)
         {
@@ -321,7 +323,7 @@ public class DialogueBox : MonoBehaviour
             obj.GetComponent<TMP_Text>().text = line;
             obj.onClick.AddListener(delegate { DoChoice(number); } );
             obj.interactable = true;
-            obj.Select();
+           // obj.Select();
 
             if (LastButton != null)
             {
@@ -394,6 +396,7 @@ public class DialogueBox : MonoBehaviour
 
     public void Interact()
     {
+        Debug.Log("Interacted");
         if(showBoxCoroutine == null)
         {
 
@@ -418,7 +421,7 @@ public class DialogueBox : MonoBehaviour
                         {
                             if (currentDialogue.choice)
                             {
-
+                                Debug.Log("Dialogue Box");
                                 FillChoiceBox(currentDialogue.dialogue.choices);
                                 choiceBox.SetActive(true);
                                 return;

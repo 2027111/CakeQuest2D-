@@ -1,22 +1,24 @@
 {
-    
     "Data": [
         {
             "dataId": "MenuTranslations",
             "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Résumer\",\"save\":\"Sauvegarder\"}"
-        
         },
         {
-            "dataId": "ChestLocked",
+            "dataId": "Misc_Chest_Locked",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.itemName} pour l'ouvrir.\"}"
         },
         {
-            "dataId": "ChestOpened",
+            "dataId": "Misc_Chest_Opened",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.itemName}!!\"}"
         },
         {
-            "dataId": "ChestUnlocked",
+            "dataId": "Misc_Chest_Unlocked",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.itemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
+        },
+        {
+            "dataId": "Misc_Panneau_PC_000",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Si tu lis ça, t'es gay!\"}"
         },
         {
             "dataId": "Misc_Combat_Launch_Test",
@@ -68,22 +70,24 @@
         },
         {
             "dataId": "Misc_Heal_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Laissez-moi vous soigner.\"}" 
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Laissez-moi vous soigner.\"}"
         },
         {
             "dataId": "Misc_Heal_Confirmation",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Votre équipe a été entièrement soignée.\"}" 
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Votre équipe a été entièrement soignée.\"}"
         },
         {
             "dataId": "Misc_Fight_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Voulez-vous combattre?\"}" 
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Voulez-vous combattre?\"}"
         },
         {
             "dataId": "Misc_No",
-            "jsonData": "{\"line\":\"Non\"}"},
+            "jsonData": "{\"line\":\"Non\"}"
+        },
         {
             "dataId": "Misc_Yes",
-            "jsonData": "{\"line\":\"Oui\"}"},
+            "jsonData": "{\"line\":\"Oui\"}"
+        },
         {
             "dataId": "Tuto_Yankee_002",
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Ensuite utilise P pour faire des attaques normales et O pour faire des attaques spécifiques.\"}"

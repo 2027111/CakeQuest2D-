@@ -46,11 +46,9 @@ public class FadeScreen : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("Stack");
         if (startFadeon)
         {
 
-            Debug.Log("Stack2");
             fadeOn = true;
             StartTransition(false, Color.black, 0);
         }
@@ -80,10 +78,8 @@ public class FadeScreen : MonoBehaviour
 
     public static void StartTransition(bool on, Color color, float fadeTime = -1)
     {
-        Debug.Log("Stack3");
         Singleton?.SetColor(color);
 
-        Debug.Log("Stack4");
         Singleton?.StartTransition(on, fadeTime);
 
 
@@ -91,7 +87,6 @@ public class FadeScreen : MonoBehaviour
 
     private void SetColor(Color color)
     {
-        Debug.Log("Stack4");
         fadeScreen.color = color;
     }
 
@@ -103,7 +98,6 @@ public class FadeScreen : MonoBehaviour
     public void StartTransition(bool on, float fadeTime = -1)
     {
 
-        Debug.Log("Stack5");
         Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
         StartCoroutine(StartFadeAnimation(on));
 
@@ -153,7 +147,6 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator StartFadeAnimation(bool on)
     {
-        Debug.Log("Stack6");
         float time = 0f;
         float start = on?0:1;
         float target = on?1:0;

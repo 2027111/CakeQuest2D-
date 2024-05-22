@@ -9,7 +9,8 @@ public class PerformActionState : BattleState
     {
         base.OnEnter(_battleManager);
         battleManager.SetCursor(null);
-        battleManager.GetActor().currentCommand.OnExecuted += PerformanceOver;
+        //battleManager.GetActor().currentCommand.OnExecuted += PerformanceOver;
+        battleManager.GetActor().currentCommand.OnExecuted += delegate { battleManager.GetActor().SetActing(false); };
         battleManager.GetActor().currentCommand.OnExecuted += battleManager.GetActor().ResetAnimatorController;
         battleManager.GetActor().currentCommand.ExecuteCommand();
 
@@ -19,6 +20,14 @@ public class PerformActionState : BattleState
 
     public override void Handle()
     {
+
+        if (battleManager.NextPlayerCanMove())
+        {
+
+            battleManager.NextTurn();
+
+        }
+
         base.Handle();
     }
 
@@ -26,7 +35,7 @@ public class PerformActionState : BattleState
     public void PerformanceOver()
     {
 
-        battleManager.NextTurn();
+
     }
 
 
