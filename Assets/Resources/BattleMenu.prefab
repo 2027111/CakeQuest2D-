@@ -105,6 +105,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  BackgroundImage: {fileID: 1526155034723784798}
 --- !u!1 &1526155035411870090
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +481,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  BackgroundImage: {fileID: 1526155035782644903}
 --- !u!1 &1526155035950022826
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +570,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1526155035950022825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,3 +859,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  BackgroundImage: {fileID: 7870546010902714859}

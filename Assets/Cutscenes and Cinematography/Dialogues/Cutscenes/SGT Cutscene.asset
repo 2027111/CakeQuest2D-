@@ -15,10 +15,12 @@ MonoBehaviour:
   RuntimeValue: 0
   repeats: 1
   dialogue:
-  - dialogueLines:
-    - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
+  - dialogueLineIds:
+    - Misc_Jimi_000
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
+    source: {fileID: 0}
   dialogueIndex: 0
+  StartRoom: {fileID: 0}

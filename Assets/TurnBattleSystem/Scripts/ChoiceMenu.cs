@@ -30,12 +30,12 @@ public class ChoiceMenu : MonoBehaviour
     {
         if (SelectedButton)
         {
-            SelectedButton.GetComponent<Image>().color = defaultColor;
+            SelectedButton.GetComponent<ChoiceMenuButton>().SetColor(defaultColor);
         }
         SelectedButton = gameObject;
         if (SelectedButton)
         {
-            SelectedButton.GetComponent<Image>().color = selectedColor;
+            SelectedButton.GetComponent<ChoiceMenuButton>().SetColor(selectedColor);
         }
     }
 

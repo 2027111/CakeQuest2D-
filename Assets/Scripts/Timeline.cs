@@ -59,7 +59,7 @@ public class Timeline: MonoBehaviour
                 }
                 else
                 {
-                    CutsceneOver();
+                    DialogueOver();
                 }
             }
         }

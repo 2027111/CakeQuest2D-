@@ -24,21 +24,29 @@ public class Dialogue
     }
     public Dialogue(Dialogue dialogue)
     {
-        this.dialogueLineIds = dialogue.dialogueLineIds;
 
-        if(dialogue.choices.Length > 0)
+        if(dialogue != null)
         {
-            this.choices = dialogue.choices;
+            if (dialogue.dialogueLineIds != null)
+            {
+                this.dialogueLineIds = dialogue.dialogueLineIds.Length > 0 ? dialogue.dialogueLineIds : null;
+            }
+            if (dialogue.choices != null)
+            {
+                this.choices = dialogue.choices.Length>0?dialogue.choices:null;
+            }
+            this.OnOverEvent = dialogue.OnOverEvent;
+            this.source = dialogue.source;
         }
-        this.OnOverEvent = dialogue.OnOverEvent;
-        this.source = dialogue.source;
     }
 
 
     public Dialogue(ChoiceDialogue dialogue)
     {
-        this.dialogueLineIds = dialogue.dialogueLineIds;
-
+        if (dialogue.dialogueLineIds.Length > 0)
+        {
+            this.dialogueLineIds = dialogue.dialogueLineIds;
+        }
         if (dialogue.choices.Length > 0)
         {
             this.choices = dialogue.choices;
@@ -47,7 +55,16 @@ public class Dialogue
     }
 
 
-
+    public bool isNull()
+    {  if(dialogueLineIds == null)
+        {
+            return true;
+        }else if (dialogueLineIds.Length == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
 
 

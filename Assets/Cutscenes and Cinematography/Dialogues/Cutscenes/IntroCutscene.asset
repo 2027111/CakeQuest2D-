@@ -15,18 +15,21 @@ MonoBehaviour:
   RuntimeValue: 0
   repeats: 1
   dialogue:
-  - dialogueLines:
-    - {fileID: 11400000, guid: ce21c4aa76742154da02e377b2ef9d58, type: 2}
-    - {fileID: 11400000, guid: 7a44d95466db3b646ae7612b119516bf, type: 2}
+  - dialogueLineIds:
+    - Intro_Jimi_000
+    - Intro_Jimi_001
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
-  - dialogueLines:
-    - {fileID: 11400000, guid: 9e162e9878f587745844522629b6e8a5, type: 2}
+    source: {fileID: 0}
+  - dialogueLineIds:
+    - Intro_Jimi_002
+    - Intro_Jimi_003
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
+    source: {fileID: 0}
   dialogueIndex: 0
   StartRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}

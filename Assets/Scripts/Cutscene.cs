@@ -27,7 +27,14 @@ public class Cutscene : BoolValue
         {
             return null;
         }
+
+
+
         Dialogue returnValue = new Dialogue(dialogue[dialogueIndex]);
+        if (returnValue.isNull())
+        {
+            return null;
+        }
         return returnValue;
     }
 }

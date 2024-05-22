@@ -38,16 +38,18 @@ public class DialogueContent
 
 
 public class LineInfo{
-    public string portraitPath;
+    public string lineId;
     public string line;
     public string talkerName;
+    public string portraitPath;
     public AudioClip audioClip;
 
-    public LineInfo(string line, string talkerName, string portraitPath)
+    public LineInfo(string lineId, string line, string talkerName, string portraitPath)
     {
-        this.portraitPath = portraitPath;
+        this.lineId = lineId;
         this.line = line;
         this.talkerName = talkerName;
+        this.portraitPath = portraitPath;
     }
 }
 
@@ -88,7 +90,7 @@ public class DialogueBox : MonoBehaviour
     bool isShowing;
     bool active;
     DialogueContent currentDialogue;
-
+    [SerializeField] AudioSource voiceClipSource;
     private Button LastButton;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0;
@@ -121,53 +123,58 @@ public class DialogueBox : MonoBehaviour
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
-        if (dialogue.dialogueLineIds.Length > 0)
+        if (dialogue.dialogueLineIds != null)
         {
-            if (active)
-            {
-                Debug.Log("Added Dialogue");
-                dialogueWaitingLine.Add(newDialogue);
-            }
-            else
-            {
-                Debug.Log("Starting Dialogue");
-                dialogueText.text = "";
-                SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
-                StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
 
-                if (playerObject == null)
+            if (dialogue.dialogueLineIds.Length > 0)
+            {
+
+                if (active)
                 {
-                    player = GameObject.FindGameObjectWithTag("Player");
+                    Debug.Log("Added Dialogue");
+                    dialogueWaitingLine.Add(newDialogue);
                 }
                 else
                 {
+                    Debug.Log("Starting Dialogue");
+                    dialogueText.text = "";
+                    SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
+                    StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
 
-                    player = playerObject;
-                }
-                if (currentState == GameState.Overworld)
-                {
-
-                    if (player)
+                    if (playerObject == null)
                     {
-                        player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
-                        AddInteractEventToPlayer(true);
-                        if (originObject)
+                        player = GameObject.FindGameObjectWithTag("Player");
+                    }
+                    else
+                    {
+
+                        player = playerObject;
+                    }
+                    if (currentState == GameState.Overworld)
+                    {
+
+                        if (player)
                         {
-                            player.GetComponent<Character>().LookAt(originObject);
+                            player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
+                            AddInteractEventToPlayer(true);
+                            if (originObject)
+                            {
+                                player.GetComponent<Character>().LookAt(originObject);
+                            }
                         }
                     }
-                }
-                else if (currentState == GameState.BattleScene)
-                {
+                    else if (currentState == GameState.BattleScene)
+                    {
                         AddInteractEventToPlayer(true);
-                    
+
+                    }
+
+
+
+                    currentDialogue = newDialogue;
+                    dialogueIndex = 0;
+                    active = true;
                 }
-
-
-
-                currentDialogue = newDialogue;
-                dialogueIndex = 0;
-                active = true;
             }
         }
     }
@@ -204,6 +211,32 @@ public class DialogueBox : MonoBehaviour
                 portraitImage.sprite = portrait;
             }
         }
+
+
+
+        voiceClipSource?.Stop();
+
+        // Load the audio from Resources folder
+        string voiceLinePath = "VoiceLines/"+lineInfo.lineId; // Assuming the path is relative to the Resources folder
+        AudioClip voiceLine = Resources.Load<AudioClip>(voiceLinePath);
+
+        if (voiceLine == null)
+        {
+            // Log an error if the audio failed to load
+            Debug.LogError("Failed to load sprite at path: " + voiceLinePath);
+
+
+        }
+        else
+        {
+            // Assign the loaded audio to the audio source
+            voiceClipSource.clip = voiceLine;
+            voiceClipSource.Play();
+        }
+
+
+
+
 
         // Set the active state of the name text container based on whether the talker name is provided
         nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
@@ -516,7 +549,7 @@ public class DialogueBox : MonoBehaviour
 
 
 
-        LineInfo lineInfo = new LineInfo(line, talkerName, portraitPath);
+        LineInfo lineInfo = new LineInfo(lineId, line, talkerName, portraitPath);
 
 
 

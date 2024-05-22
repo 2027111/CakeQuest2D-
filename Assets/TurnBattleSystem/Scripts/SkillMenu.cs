@@ -30,11 +30,13 @@ public class SkillMenu : ChoiceMenu
             buttons.Add(button.gameObject);
 
         }
-        //Destroy(GetComponent<GridLayoutGroup>());
         DefaultSelect();
     }
 
-
+    public void EnableGridLayout(bool on)
+    {
+        GetComponent<GridLayoutGroup>().enabled = on;
+    }
     public void TriggerSkill()
     {
         Attack attack = SelectedButton.GetComponent<SkillButton>().storedSkill;

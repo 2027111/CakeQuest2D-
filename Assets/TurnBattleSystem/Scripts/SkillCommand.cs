@@ -54,12 +54,12 @@ public class SkillCommand : AttackCommand
             if(target.Entity.isDead == false)
             {
 
-            float sourceSpeed = Source.Speed * (attack.baseAccuracy / 100f);
-            float targetSpeed = target.Speed;
-            float adjustedSpeed = sourceSpeed - targetSpeed * 0.5f; // Weigh target speed less to favor source speed
+            //float sourceSpeed = Source.Speed * (attack.baseAccuracy / 100f);
+            //float targetSpeed = target.Speed;
+            //float adjustedSpeed = sourceSpeed - targetSpeed * 0.5f; // Weigh target speed less to favor source speed
 
-            float dodgeThreshold = adjustedSpeed + targetSpeed;
-            float dodge = Random.Range(0f, dodgeThreshold);
+            //float dodgeThreshold = adjustedSpeed + targetSpeed;
+            //float dodge = Random.Range(0f, dodgeThreshold);
                 CharacterObject characterObject = target.GetReference();
 
              ElementEffect elementEffect = characterObject.GetElementEffect(attack.element);
@@ -67,10 +67,10 @@ public class SkillCommand : AttackCommand
 
 
              
-            if(dodge > sourceSpeed || elementEffect == ElementEffect.NonAffected)
+            if(elementEffect == ElementEffect.NonAffected)
             {
                 target.Animator.Dodge();
-                target.GetComponent<TextEffect>().SpawnTextEffect("Miss", Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
+                target.GetComponent<TextEffect>().SpawnTextEffect("Nullified", Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
             }
             else
             {
