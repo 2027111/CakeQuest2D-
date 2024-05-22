@@ -276,7 +276,6 @@ public class BattleManager : MonoBehaviour
             layerOrder = EnemyIndex % 2;
             Position += (Vector2.down / 2) * (layerOrder);
             FlipIndex = -1;
-            characterObject.Revitalize();
             EnemyIndex++;
         }
         GameObject CharacterGameObject = Instantiate(BattlePrefab, Position, Quaternion.identity);
@@ -291,11 +290,14 @@ public class BattleManager : MonoBehaviour
         switch (index)
         {
             case TeamIndex.Player:
+
+                CharacterGameObject.GetComponent<Entity>().LoadReference();
                 HeroPartyActors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
                 break;
             case TeamIndex.Enemy:
+                CharacterGameObject.GetComponent<Entity>().LoadReferenceRefreshed();
                 EnemyPartyActors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
-                break;
+        break;
 
         }
 
@@ -385,7 +387,11 @@ public class BattleManager : MonoBehaviour
         ChangeState(new NothingState());
         foreach (BattleCharacter character in Actors)
         {
-            character.Entity.Apply();
+            if (character.GetTeam() == TeamIndex.Player)
+            {
+
+                character.Entity.Apply();
+            }
             yield return null;
         }
         yield return new WaitForSeconds(.5f);

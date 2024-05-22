@@ -13,14 +13,18 @@ MonoBehaviour:
   m_Name: JimiObject
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
-  Health: 289
-  MaxHealth: 322
-  Mana: 27
-  MaxMana: 278
-  Speed: 92
+  Health: 14
+  MaxHealth: 100
+  Mana: 24
+  MaxMana: 100
+  Speed: 0
   AttackDamage: 11
   ManaDamage: 11
   isDead: 0
+  AttackElement: 0
+  elementalAttributes:
+  - element: 1
+    elementEffect: 1
   Attacks:
   - {fileID: 11400000, guid: b40411e46752ac04fa9b9930a11f04ae, type: 2}
   - {fileID: 11400000, guid: 2d41dcd037b05c140937654bc91ba314, type: 2}

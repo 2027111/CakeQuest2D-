@@ -138,10 +138,6 @@ public class BattleCharacter : MonoBehaviour
     {
         currentCharacter = characterObject;
         ResetAnimatorController();
-        if (currentCharacter)
-        {
-            Entity.LoadReference();
-        }
     }
 
     public void Flip(int flipIndex)

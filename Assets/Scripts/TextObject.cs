@@ -12,14 +12,14 @@ public class TextObject : MonoBehaviour
 
 
 
-    public void Setup(string text, Color color)
+    public void Setup(string text, Color color, float duration = .4f)
     {
-        
 
 
 
         indicationText.text = text;
         indicationText.color = color;
+        limit = duration;
 
 
     }

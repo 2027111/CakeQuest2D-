@@ -16,7 +16,7 @@ public class DefensiveSkillCommand : SkillCommand
     {
         foreach (BattleCharacter target in Target)
         {
-            target?.Entity.TakeDamage(attack.baseDamage, Source);
+            target?.Entity.TakeDamage(attack.baseDamage, ElementEffect.Neutral);
         }
     }
 

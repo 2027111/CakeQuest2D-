@@ -7,7 +7,7 @@ public class Entity : MonoBehaviour
 {
     public BattleCharacter lastAttacker;
     BattleCharacter character;
-    public delegate void DamageEventHandler(int amount, BattleCharacter source);
+    public delegate void DamageEventHandler(int amount, ElementEffect elementEffect);
     public delegate void DamageEvent();
     public bool isDead = false;
     public DamageEventHandler OnDamageTaken;
@@ -101,23 +101,48 @@ public class Entity : MonoBehaviour
             character.OnHealthChange?.Invoke(character.Health, character.GetReference().MaxHealth);
         }
     }
-
-    public void TakeDamage(int amount, BattleCharacter attacker = null)
+    public void TakeDamage(int amount, ElementEffect effect)
     {
-        lastAttacker = attacker;
+        switch (effect)
+        {
+            case ElementEffect.Neutral:
+                // No modification to the damage
+                break;
+
+            case ElementEffect.Weak:
+                // Increase damage by 50%
+                amount = (int)(amount * 1.5f);
+                break;
+
+            case ElementEffect.Resistant:
+                // Decrease damage by 50%
+                amount = (int)(amount * 0.5f);
+                break;
+
+            case ElementEffect.NonAffected:
+                // No damage taken
+                amount = 0;
+                break;
+
+            default:
+                Debug.LogWarning("Unhandled ElementEffect: " + effect);
+                break;
+        }
+
+        // Ensure the character's health doesn't drop below 0
         if (character.Health + amount >= 0)
         {
             AddToHealth(amount);
-
         }
         else
         {
-            AddToHealth(-character.Health);
+            AddToHealth(-character.Health); // Set health to 0
         }
-        OnDamageTaken.Invoke(amount, attacker);
-        lastAttacker = null;
 
+        // Invoke the damage taken event
+        OnDamageTaken.Invoke(amount, effect);
     }
+
     public void Apply()
     {
         character.GetReference().Health = character.Health;
@@ -135,6 +160,18 @@ public class Entity : MonoBehaviour
         {
             character.Animator.Die();
         }
+
+
+
+        AddToHealth(0);
+        AddToMana(0);
+    }
+
+    public void LoadReferenceRefreshed()
+    {
+        character.Health = character.GetReference().MaxHealth;
+        character.Mana = character.GetReference().MaxMana;
+        isDead = false;
 
 
 

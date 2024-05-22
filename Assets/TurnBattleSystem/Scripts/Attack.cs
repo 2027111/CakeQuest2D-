@@ -39,6 +39,7 @@ public class Attack : ScriptableObject
     public Friendliness friendliness = Friendliness.Non_Friendly;
     public TargetStateType targetStateType = TargetStateType.Alive;
     public SkillType skillType = SkillType.Physical;
+    public Element element = Element.Slash;
     public string Name;
     public AnimationClip animationClip;
     public GameObject HitEffect;

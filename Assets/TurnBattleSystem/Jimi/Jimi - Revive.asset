@@ -16,9 +16,12 @@ MonoBehaviour:
   friendliness: 0
   targetStateType: 1
   skillType: 1
+  element: 6
   Name: Drop of Life
   animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
   HitEffect: {fileID: 0}
   baseDamage: 55
   baseAccuracy: 100
   manaCost: 4
+  spawnObjects:
+  - Weird Spell

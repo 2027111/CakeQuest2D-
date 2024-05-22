@@ -13,31 +13,51 @@ using System;
 public class Dialogue
 {
 
-    public LineInfo[] dialogueLines;
+    //public LineInfo[] dialogueLines;
+    public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
-
+    public GameObject source;
+    public void SetSource(GameObject source)
+    {
+        this.source = source;
+    }
     public Dialogue(Dialogue dialogue)
     {
-        this.dialogueLines = dialogue.dialogueLines;
-        this.choices = dialogue.choices;
+        this.dialogueLineIds = dialogue.dialogueLineIds;
+
+        if(dialogue.choices.Length > 0)
+        {
+            this.choices = dialogue.choices;
+        }
         this.OnOverEvent = dialogue.OnOverEvent;
+        this.source = dialogue.source;
     }
 
 
     public Dialogue(ChoiceDialogue dialogue)
     {
-        this.dialogueLines = dialogue.dialogueLines;
-        this.choices = dialogue.choices;
+        this.dialogueLineIds = dialogue.dialogueLineIds;
+
+        if (dialogue.choices.Length > 0)
+        {
+            this.choices = dialogue.choices;
+        }
         this.OnOverEvent = dialogue.OnOverEvent;
     }
+
+
+
+
+
+
 }
 
 [Serializable]
 public class ChoiceDialogue
 {
-    public string choicesLine;
-    public LineInfo[] dialogueLines;
+    public string choicesLineIds;
+    public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
 }
@@ -68,7 +88,7 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public virtual void DialogueAction()
     {
-        if (dialogue.dialogueLines.Length > 0)
+        if (dialogue.dialogueLineIds.Length > 0)
         {
             if (!started)
         {
@@ -85,7 +105,8 @@ public class NewDialogueStarterObject : MonoBehaviour
     {
         if (CheckLines())
         {
-            DialogueBox.Singleton.StartDialogue(dialogue, player.gameObject, gameObject);
+            Dialogue newDialogue = new Dialogue(dialogue);
+            DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
         }
         else
         {
@@ -95,7 +116,7 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public bool CheckLines()
     {
-        foreach (LineInfo line in dialogue.dialogueLines)
+        foreach (string line in dialogue.dialogueLineIds)
         {
             if (line == null)
             {
@@ -113,9 +134,9 @@ public class NewDialogueStarterObject : MonoBehaviour
     }
 
 
-    public void SetDialogueLines(LineInfo[] newLines)
+    public void SetDialogueLines(string[] newLines)
     {
-        dialogue.dialogueLines = newLines;
+        dialogue.dialogueLineIds = newLines;
     }
 
     public void SetNewDialogue(Dialogue newDialogue)
@@ -126,16 +147,63 @@ public class NewDialogueStarterObject : MonoBehaviour
     public void DebugPrint()
     {
     }
-    public static LineInfo[] GetFormattedLines<T>(T currentObject, LineInfo[] lines)
+    //public static LineInfo[] GetFormattedLines<T>(T currentObject, LineInfo[] lines)
+    //{
+    //    List<LineInfo> formattedLines = new List<LineInfo>();
+    //    string fieldNamePattern = "{(.*?)}";
+
+    //    foreach (LineInfo lineInfo in lines)
+    //    {
+    //        string result = lineInfo.line;
+
+    //        foreach (Match match in Regex.Matches(lineInfo.line, fieldNamePattern, RegexOptions.IgnoreCase))
+    //        {
+    //            string[] fieldNames = match.Groups[1].Value.Split('.');
+
+    //            // Start with the current object
+    //            object fieldValue = currentObject;
+
+    //            foreach (string fieldName in fieldNames)
+    //            {
+    //                FieldInfo fieldInfo = fieldValue.GetType().GetField(fieldName);
+
+    //                if (fieldInfo != null)
+    //                {
+    //                    fieldValue = fieldInfo.GetValue(fieldValue);
+    //                }
+    //                else
+    //                {
+    //                    Debug.LogWarning($"Field {fieldName} not found in {fieldValue}'s type");
+    //                    fieldValue = null;
+    //                    break;
+    //                }
+    //            }
+
+    //            if (fieldValue != null)
+    //            {
+    //                result = Regex.Replace(result, match.Value, fieldValue.ToString());
+    //            }
+    //            else
+    //            {
+    //                // Handle the case when a field is not found or is null
+    //                Debug.LogWarning($"Field value not found for placeholder: {match.Value}");
+    //            }
+    //        }
+
+    //        formattedLines.Add(new LineInfo(lineInfo.portraitPath, lineInfo.talkername, result));
+    //    }
+
+    //    return formattedLines.ToArray();
+    //}
+
+
+    public static string GetFormattedLines<T>(T currentObject, string lineInfo)
     {
-        List<LineInfo> formattedLines = new List<LineInfo>();
         string fieldNamePattern = "{(.*?)}";
 
-        foreach (LineInfo lineInfo in lines)
-        {
-            string result = lineInfo.line;
+            string result = lineInfo;
 
-            foreach (Match match in Regex.Matches(lineInfo.line, fieldNamePattern, RegexOptions.IgnoreCase))
+            foreach (Match match in Regex.Matches(lineInfo, fieldNamePattern, RegexOptions.IgnoreCase))
             {
                 string[] fieldNames = match.Groups[1].Value.Split('.');
 
@@ -167,12 +235,11 @@ public class NewDialogueStarterObject : MonoBehaviour
                     // Handle the case when a field is not found or is null
                     Debug.LogWarning($"Field value not found for placeholder: {match.Value}");
                 }
-            }
+            
 
-            formattedLines.Add(new LineInfo(lineInfo.portraitPath, lineInfo.talkername, result));
         }
 
-        return formattedLines.ToArray();
+        return result;
     }
 
 }

@@ -20,24 +20,36 @@ public enum GameState
 [Serializable]
 public class DialogueContent
 {
-    public LineInfo[] lines;
     public Dialogue dialogue;
     public bool choice = false;
 
 
-    public DialogueContent(LineInfo[] lines)
-    {
-        this.lines = lines;
-    }
+
 
     public DialogueContent(Dialogue dialogue)
     {
         this.dialogue = dialogue;
-        this.lines = dialogue.dialogueLines;
-        this.choice = dialogue.choices.Length > 0;
+        if (dialogue.choices != null)
+        {
+            this.choice = dialogue.choices.Length > 0;
+        }
     }
 }
 
+
+public class LineInfo{
+    public string portraitPath;
+    public string line;
+    public string talkerName;
+    public AudioClip audioClip;
+
+    public LineInfo(string line, string talkerName, string portraitPath)
+    {
+        this.portraitPath = portraitPath;
+        this.line = line;
+        this.talkerName = talkerName;
+    }
+}
 
 
 
@@ -99,65 +111,6 @@ public class DialogueBox : MonoBehaviour
     {
     }
 
-    public void StartDialogue(LineInfo[] lines, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
-    {
-        currentState = state;
-        DialogueContent newDialogue = new DialogueContent(lines);
-
-        if(lines.Length > 0)
-        {
-            if (active)
-            {
-                Debug.Log("Added Dialogue");
-                dialogueWaitingLine.Add(newDialogue);
-            }
-            else
-            {
-                dialogueText.text = "";
-                SetupLine(lines[0]);
-                StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
-
-                if (playerObject == null)
-                {
-                    player = GameObject.FindGameObjectWithTag("Player");
-                }
-                else
-                {
-
-                    player = playerObject;
-                }
-                if (currentState == GameState.Overworld)
-                {
-                   
-                    if (player)
-                    {
-                        player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
-                        AddInteractEventToPlayer(true);
-                        if (originObject)
-                        {
-                            player.GetComponent<Character>().LookAt(originObject);
-                        }
-                    }
-                }
-                else if(currentState == GameState.BattleScene)
-                {
-                    if (BattleManager.Singleton)
-                    {
-                        BattleManager.Singleton.ChangeState(new NothingState());
-                        AddInteractEventToPlayer(true);
-                    }
-                }
-                
-
-                
-                currentDialogue = newDialogue;
-                dialogueIndex = 0;
-                active = true;
-            }
-        }
-        
-    }
-
 
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
@@ -168,7 +121,7 @@ public class DialogueBox : MonoBehaviour
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
-        if (newDialogue.dialogue.dialogueLines.Length > 0)
+        if (dialogue.dialogueLineIds.Length > 0)
         {
             if (active)
             {
@@ -179,7 +132,7 @@ public class DialogueBox : MonoBehaviour
             {
                 Debug.Log("Starting Dialogue");
                 dialogueText.text = "";
-                SetupLine(newDialogue.dialogue.dialogueLines[0]);
+                SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
                 StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
 
                 if (playerObject == null)
@@ -220,15 +173,20 @@ public class DialogueBox : MonoBehaviour
     }
 
 
-    public void SetupLine(LineInfo line)
+    private void SetupLine(LineInfo lineInfo)
     {
-        // Set the active state of the portrait image based on whether a sprite is provided
-        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(line.portraitPath));
+        string portraitPath = lineInfo.portraitPath;
+        string talkerName = lineInfo.talkerName;
 
-        if (!string.IsNullOrEmpty(line.portraitPath))
+
+
+
+        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
+
+        if (!string.IsNullOrEmpty(portraitPath))
         {
             // Load the sprite from Resources folder
-            string fullPath = line.portraitPath; // Assuming the path is relative to the Resources folder
+            string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
             Sprite portrait = Resources.Load<Sprite>(fullPath);
 
             if (portrait == null)
@@ -248,11 +206,54 @@ public class DialogueBox : MonoBehaviour
         }
 
         // Set the active state of the name text container based on whether the talker name is provided
-        nameTextContainer.SetActive(!string.IsNullOrEmpty(line.talkername));
+        nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
 
         // Set the text of the name text component to the provided talker name
-        nameText.text = string.IsNullOrEmpty(line.talkername) ? "" : line.talkername;
+        nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
     }
+
+
+    private void SetupLine(string lineId)
+    {// Set the active state of the portrait image based on whether a sprite is provided
+
+
+        string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
+        string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
+
+
+
+
+        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
+
+        if (!string.IsNullOrEmpty(portraitPath))
+        {
+            // Load the sprite from Resources folder
+            string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
+            Sprite portrait = Resources.Load<Sprite>(fullPath);
+
+            if (portrait == null)
+            {
+                // Log an error if the sprite failed to load
+                Debug.LogError("Failed to load sprite at path: " + fullPath);
+
+                // Optionally, list all loaded sprites for debugging
+                portraitImage.gameObject.SetActive(false);
+
+            }
+            else
+            {
+                // Assign the loaded sprite to the portrait image
+                portraitImage.sprite = portrait;
+            }
+        }
+
+        // Set the active state of the name text container based on whether the talker name is provided
+        nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
+
+        // Set the text of the name text component to the provided talker name
+        nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
+    }
+
 
     public void DoChoice(int i)
     {
@@ -282,7 +283,9 @@ public class DialogueBox : MonoBehaviour
         {
             int number = i;
             Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
-            obj.GetComponent<TMP_Text>().text = choices[i].choicesLine;
+
+            string line = LanguageData.GetDataById(choices[i].choicesLineIds).GetValueByKey("line");
+            obj.GetComponent<TMP_Text>().text = line;
             obj.onClick.AddListener(delegate { DoChoice(number); } );
             obj.interactable = true;
             obj.Select();
@@ -363,7 +366,7 @@ public class DialogueBox : MonoBehaviour
 
         if (active)
         {
-            if (dialogueIndex >= currentDialogue.lines.Length)
+            if (dialogueIndex >= currentDialogue.dialogue.dialogueLineIds.Length)
              {
 
                     if (dialogueWaitingLine.Count > 0)
@@ -478,8 +481,10 @@ public class DialogueBox : MonoBehaviour
     private void NextLine()
     {
         AddInteractEventToPlayer(true);
-        DialogueText(currentDialogue.lines[dialogueIndex]);
+        DialogueText(currentDialogue.dialogue, dialogueIndex);
     }
+
+
 
     private void ResetBox()
     {
@@ -493,22 +498,44 @@ public class DialogueBox : MonoBehaviour
     }
 
 
-    public void DialogueText(LineInfo line)
+
+
+    private void DialogueText(Dialogue dialogue, int index)
     {
+        string lineId = dialogue.dialogueLineIds[index];
+        string line = LanguageData.GetDataById(dialogue.dialogueLineIds[index]).GetValueByKey("line");
+        string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
+        string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
+
+        if(dialogue.source != null)
+        {
+            NewDialogueStarterObject component = dialogue.source.GetComponent<NewDialogueStarterObject>();
+            line = NewDialogueStarterObject.GetFormattedLines(component, line);
+
+        }
+
+
+
+        LineInfo lineInfo = new LineInfo(line, talkerName, portraitPath);
+
+
+
+
         if (setTextCoroutine != null)
         {
             StopCoroutine(setTextCoroutine);
             setTextCoroutine = null;
-            dialogueText.text = line.line;
+            dialogueText.text = line;
             dialogueIndex++;
         }
         else
         {
-            SetupLine(line);
-            setTextCoroutine = StartCoroutine(GraduallySetText(line.line));
+            SetupLine(lineInfo);
+            setTextCoroutine = StartCoroutine(GraduallySetText(line));
         }
-
     }
+
+
     public bool IsActive()
     {
         return active;
@@ -543,6 +570,9 @@ public class DialogueBox : MonoBehaviour
             group.alpha = target;
             isShowing = show;
         }
+
+
+        yield return StartCoroutine(LanguageData.LoadJsonAsync());
         yield return new WaitForSeconds(apparitionTime);
         if (isShowing)
         {
@@ -555,7 +585,6 @@ public class DialogueBox : MonoBehaviour
         {
 
            ResetBox();
-            Debug.Log(OnDialogueOverAction.Count);
             while(OnDialogueOverAction.Count > 0)
             {
                 UnityAction currentEvent = OnDialogueOverAction.Pop();

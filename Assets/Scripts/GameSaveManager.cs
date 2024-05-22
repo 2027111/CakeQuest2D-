@@ -9,8 +9,7 @@ using System;
 
 public enum SaveFiles
 {
-    saveFile,
-    translation
+    saveFile
 }
 
 
@@ -20,7 +19,6 @@ public class GameSaveManager : MonoBehaviour
     private static GameSaveManager _singleton;
 
     public List<ScriptableObject> objectsToSave = new List<ScriptableObject>();
-    public List<ScriptableObject> objectsToTranslate = new List<ScriptableObject>();
 
 
 
@@ -48,8 +46,6 @@ public class GameSaveManager : MonoBehaviour
 
 
 
-    public LanguageObject currentLanguage;
-
     public string path;
     public string extension = "json";
 
@@ -68,10 +64,9 @@ public class GameSaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CreateTranslationPath();
         CreateSavePath();
         LoadSaveFile();
-        LoadLanguage();
+        //LoadLanguage();
     }
 
     public void CreateSavePath()
@@ -91,33 +86,7 @@ public class GameSaveManager : MonoBehaviour
     }
 
 
-    public void CreateTranslationPath()
-    {
-        InitializePath(); // Assuming this method initializes the path
 
-        foreach (Language language in Enum.GetValues(typeof(Language)))
-        {
-            string filePath = GetFilePath(SaveFiles.translation.ToString(), language.ToString());
-
-            // Check if the file already exists
-            if (!File.Exists(filePath))
-            {
-                // Construct the file path for loading from resources
-                string resourcesFilePath = string.Format("{0}/{1}{0}", SaveFiles.translation.ToString(), (SaveFiles.translation.ToString() == "translation" ? language.ToString() + "_" : ""));
-                TextAsset jsonFile = Resources.Load<TextAsset>(resourcesFilePath);
-
-                if (jsonFile != null)
-                {
-                    // Save the file using the obtained JSON content and the file path
-                    SaveFileToPath(jsonFile, filePath);
-                }
-                else
-                {
-                    Debug.LogError("Failed to load JSON file: " + resourcesFilePath);
-                }
-            }
-        }
-    }
 
     public void SaveFileToPath(TextAsset fileContent, string filePath)
     {
@@ -148,12 +117,12 @@ public class GameSaveManager : MonoBehaviour
 
     public Language GetLanguage()
     {
-        return currentLanguage.GetLanguage();
+        return LanguageData.GetLanguage();
     }
 
     public void SetLanguage(int value)
     {
-        currentLanguage.SetLanguage((Language)value);
+        LanguageData.SetLanguage((Language)value);
     }
 
     private void OnDisable()
@@ -190,19 +159,13 @@ public class GameSaveManager : MonoBehaviour
     {
         SaveScriptables(SaveFiles.saveFile);
     }
-    public void SaveDialogue()
-    {
-        SaveScriptables(SaveFiles.translation);
-    }
 
     public void LoadLanguage()
     {
 
-        LoadScriptables(SaveFiles.translation);
 
         OnLanguageChanged?.Invoke();
 
-        SaveScriptables(SaveFiles.translation);
     }
 
 
@@ -220,7 +183,6 @@ public class GameSaveManager : MonoBehaviour
 
 
         SaveScriptables(SaveFiles.saveFile);
-        SaveScriptables(SaveFiles.translation);
     }
 
 
@@ -334,8 +296,6 @@ public class GameSaveManager : MonoBehaviour
     {
         switch (listName)
         {
-            case SaveFiles.translation:
-                return objectsToTranslate;
             case SaveFiles.saveFile:
                 return objectsToSave;
             default: return null;

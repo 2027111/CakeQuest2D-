@@ -1,0 +1,108 @@
+{
+    
+    "Data": [
+        {
+            "dataId": "MenuTranslations",
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Résumer\",\"save\":\"Sauvegarder\"}"
+        
+        },
+        {
+            "dataId": "ChestLocked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.itemName} pour l'ouvrir.\"}"
+        },
+        {
+            "dataId": "ChestOpened",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.itemName}!!\"}"
+        },
+        {
+            "dataId": "ChestUnlocked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.itemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
+        },
+        {
+            "dataId": "Misc_Combat_Launch_Test",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Lancement du combat\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Putain.. j'ai méga faimmmmm!\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"J'ai besoin de manger la vérité... J'pense il reste du gateau non?\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Merde... J'vais devoir en faire moi même.\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Ah! Bien sure!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Non merci. J'apprécie!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Ah! Je relève le défi!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"J'ai pas le temps.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Tu sais comment te battre n'est-ce pas?\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilises W-A-S-D pour bouger et sauter dans l'espace.\"}"
+        },
+        {
+            "dataId": "Misc_Heal_Question",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Laissez-moi vous soigner.\"}" 
+        },
+        {
+            "dataId": "Misc_Heal_Confirmation",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Votre équipe a été entièrement soignée.\"}" 
+        },
+        {
+            "dataId": "Misc_Fight_Question",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Voulez-vous combattre?\"}" 
+        },
+        {
+            "dataId": "Misc_No",
+            "jsonData": "{\"line\":\"Non\"}"},
+        {
+            "dataId": "Misc_Yes",
+            "jsonData": "{\"line\":\"Oui\"}"},
+        {
+            "dataId": "Tuto_Yankee_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Ensuite utilise P pour faire des attaques normales et O pour faire des attaques spécifiques.\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_0",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
+        },
+        {
+            "dataId": "Jimi",
+            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":[{\"instanceID\":25840}],\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
+        },
+        {
+            "dataId": "Yankee",
+            "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":[{\"instanceID\":26684}],\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
+        },
+        {
+            "dataId": "InstantNoodles",
+            "jsonData": "{\"itemName\":\"Ramen Instantané\",\"itemDescription\":\"Le plat le plus consistent du monde!\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31002},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
+        },
+        {
+            "dataId": "SmallHoneyBottle",
+            "jsonData": "{\"itemName\":\"Petite Bouteille de miel\",\"itemDescription\":\"Une petite bouteille en forme d'ourson, remplit de miel.\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31000},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
+        }
+    ]
+}

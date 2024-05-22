@@ -21,8 +21,8 @@ public class TreasureChest : NewDialogueStarterObject
     public InventoryItem lockRequirement;
     public int requirementAmount = 1;
     public bool consumesRequirement;
-    public LineInfo[] LockedLines;
-    public LineInfo[] SuccessLines;
+    public Dialogue LockedDialogue;
+    public Dialogue SuccessDialogue;
     public BoolValue storedOpen;
     Animator anim;
 
@@ -66,18 +66,15 @@ public class TreasureChest : NewDialogueStarterObject
 
         if (!started)
         {
-            LineInfo[] Lines = dialogue.dialogueLines;
-            started = true;
-
             Dialogue newDialogue = new Dialogue(dialogue);
+            started = true;
             if (locked)
             {
                 UnityAction callback = DialogueOver;
                 if (CheckRequirement())
                 {
 
-
-                    Lines = SuccessLines;
+                    newDialogue = new Dialogue(SuccessDialogue);
                
                     if (consumesRequirement)
                         {
@@ -87,10 +84,10 @@ public class TreasureChest : NewDialogueStarterObject
                     callback = RequirementMetEvent;
                 }
                 else
-                {
-                    Lines = LockedLines;
+                    {
+                    newDialogue = new Dialogue(LockedDialogue);
                 }
-                newDialogue.dialogueLines = GetFormattedLines(this, Lines);
+                newDialogue.SetSource(this.gameObject);
                 newDialogue.OnOverEvent.RemoveAllListeners();
                 newDialogue.OnOverEvent.AddListener(callback);
                 DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
@@ -137,9 +134,7 @@ public class TreasureChest : NewDialogueStarterObject
         }
         CheckOpen();
         Dialogue newDialogue = new Dialogue(dialogue);
-        LineInfo[] Lines = newDialogue.dialogueLines;
-        Debug.Log(Lines.Length);
-        newDialogue.dialogueLines = GetFormattedLines(this, Lines);
+        newDialogue.SetSource(this.gameObject);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);
         DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);

@@ -12,6 +12,8 @@ public class ChoosingTargetState : BattleState
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
+
+        battleManager.SetCursor(null);
         if (battleManager.GetActor().currentCommand == null)
         {
             battleManager.ChangeState(new ChoosingActionState());
@@ -112,11 +114,11 @@ public class ChoosingTargetState : BattleState
     {
         if (!multiple)
         {
-            if (direction.x > .9f)
+            if (direction.x > 0)
             {
                 NextTarget();
             }
-            else if (direction.x < -.9f)
+            else if (direction.x < 0)
             {
 
                 PreviousTarget();

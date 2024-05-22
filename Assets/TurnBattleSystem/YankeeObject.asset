@@ -21,6 +21,12 @@ MonoBehaviour:
   AttackDamage: 11
   ManaDamage: 11
   isDead: 0
+  AttackElement: 1
+  elementalAttributes:
+  - element: 0
+    elementEffect: 2
+  - element: 5
+    elementEffect: 1
   Attacks:
   - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}
   - {fileID: 11400000, guid: 0b67e8c360adf3d4087758edf8620a05, type: 2}

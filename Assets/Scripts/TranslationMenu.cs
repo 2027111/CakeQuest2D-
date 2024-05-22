@@ -6,17 +6,17 @@ using TMPro;
 public class TranslationMenu : MonoBehaviour
 {
     [SerializeField] SerializableDictionary<string, List<TMP_Text>> TextObjects = new SerializableDictionary<string, List<TMP_Text>>();
-
-
-
-    [SerializeField] MenuNames menuName;
+    [SerializeField] string menuId = "MenuTranslations";
 
     private void Start()
     {
-        ActualizeText();
-        GameSaveManager.Singleton?.OnLanguageChanged.AddListener(ActualizeText);
+        LoadLangue();
+        GameSaveManager.Singleton?.OnLanguageChanged.AddListener(LoadLangue);
     }
-
+    public void LoadLangue()
+    {
+        StartCoroutine(LanguageData.LoadJsonAsync(ActualizeText));
+    }
 
 
     public void ActualizeText()
@@ -29,7 +29,9 @@ public class TranslationMenu : MonoBehaviour
                 {
                     foreach(TMP_Text text in Texts.Value)
                     {
-                        text.text = menuName.GetStringValue(Texts.Key);
+                        JsonData jsonData = LanguageData.GetDataById(menuId);
+                        string t = jsonData.GetValueByKey(Texts.Key);
+                        text.text = t;
                     }
                 }
             }

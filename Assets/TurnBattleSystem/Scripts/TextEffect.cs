@@ -9,7 +9,7 @@ public class TextEffect : MonoBehaviour
     {
         GetComponent<Entity>().OnDamageTaken += SpawnTextEffect;
     }
-    public void SpawnTextEffect(int amount, BattleCharacter source)
+    public void SpawnTextEffect(int amount, ElementEffect elementEffect = ElementEffect.Neutral)
     {
         Color color = Color.white;
         if (GetComponent<TeamComponent>().teamIndex == TeamIndex.Player)
@@ -21,15 +21,44 @@ public class TextEffect : MonoBehaviour
         {
             color = Color.green;
         }
-        SpawnTextEffect(Mathf.Abs(amount).ToString(), color);
+        Vector3 position = GetDamageTextPosition();
+        SpawnTextEffect(Mathf.Abs(amount).ToString(), color, position);
+
+
+
+        if(elementEffect != ElementEffect.Neutral)
+        {
+            Vector3 newposition = GetAspectTextPosition();
+
+            switch (elementEffect)
+            {
+                case ElementEffect.Weak:
+                    SpawnTextEffect("Weak!!", Color.red, newposition, 2f);
+                    break;
+
+                case ElementEffect.Resistant:
+                    SpawnTextEffect("Resist!!", Color.blue, newposition, 2f);
+                    break;
+            }
+
+        }
+        
 
     }
 
-
-    public void SpawnTextEffect(string text, Color color)
+    public Vector3 GetDamageTextPosition()
     {
-        TextObject textObject = Instantiate(TextObjectPrefab, transform.position + Vector3.up, Quaternion.identity).GetComponent<TextObject>();
-        textObject.Setup(text, color);
+        return transform.position + Vector3.up;
+    }
+
+    public Vector3 GetAspectTextPosition()
+    {
+        return transform.position + 2 * Vector3.up + 2 * Vector3.right;
+    }
+    public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = .4f)
+    {
+        TextObject textObject = Instantiate(TextObjectPrefab, position, Quaternion.identity).GetComponent<TextObject>();
+        textObject.Setup(text, color, duration);
 
     }
 

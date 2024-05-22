@@ -60,19 +60,28 @@ public class SkillCommand : AttackCommand
 
             float dodgeThreshold = adjustedSpeed + targetSpeed;
             float dodge = Random.Range(0f, dodgeThreshold);
+                CharacterObject characterObject = target.GetReference();
 
-            if (dodge > sourceSpeed)
+             ElementEffect elementEffect = characterObject.GetElementEffect(attack.element);
+
+
+
+             
+            if(dodge > sourceSpeed || elementEffect == ElementEffect.NonAffected)
             {
                 target.Animator.Dodge();
-                target.GetComponent<TextEffect>().SpawnTextEffect("Miss", Color.white);
+                target.GetComponent<TextEffect>().SpawnTextEffect("Miss", Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
             }
             else
             {
-                    if (attack.HitEffect)
-                    {
+                if (attack.HitEffect)
+                {
                         GameObject.Instantiate(attack.HitEffect, target.transform.position + Vector3.up, Quaternion.identity);
-                    }
-                target?.Entity.TakeDamage(attack.baseDamage, Source);
+                }
+
+
+
+                target?.Entity.TakeDamage(attack.baseDamage, elementEffect);
             }
             }
 

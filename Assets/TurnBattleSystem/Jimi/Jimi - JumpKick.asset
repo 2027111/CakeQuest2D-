@@ -14,9 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 0
   friendliness: 1
+  targetStateType: 0
   skillType: 0
+  element: 1
   Name: Spin Kick
   animationClip: {fileID: 7400000, guid: f2f497375e757b849b83449cc4b32237, type: 2}
+  HitEffect: {fileID: 0}
   baseDamage: -10
   baseAccuracy: 100
   manaCost: 14
+  spawnObjects: []

@@ -16,8 +16,9 @@ MonoBehaviour:
   friendliness: 1
   targetStateType: 0
   skillType: 1
+  element: 5
   Name: Slice & Dice
-  animationClip: {fileID: 7400000, guid: d814278c8a380464bb8b509858560ebb, type: 2}
+  animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
   HitEffect: {fileID: 0}
   baseDamage: -10
   baseAccuracy: 100

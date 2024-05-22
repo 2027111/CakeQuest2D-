@@ -40,11 +40,11 @@ public class ChoosingSkillState : BattleState
 
     public override void OnNavigate(Vector2 direction)
     {
-        if (direction.y < -.9f)
+        if (direction.y < 0)
         {
             choiceMenu.GetComponent<ChoiceMenu>().NextButton();
         }
-        else if (direction.y > .9f)
+        else if (direction.y > 0)
         {
 
             choiceMenu.GetComponent<ChoiceMenu>().PreviousButton();
