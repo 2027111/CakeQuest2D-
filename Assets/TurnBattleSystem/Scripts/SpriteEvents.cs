@@ -25,7 +25,7 @@ public class SpriteEvents : MonoBehaviour
 
     public void StartParryWindow()
     {
-        float duration = .1f;
+        float duration = .15f;
         StartCoroutine(Parry(duration));
     }
 
