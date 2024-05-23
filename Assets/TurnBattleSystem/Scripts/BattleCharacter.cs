@@ -50,6 +50,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void Parry()
     {
+
         isParrying = true;
     }
 

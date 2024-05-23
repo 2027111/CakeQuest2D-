@@ -23,15 +23,16 @@ public class SpriteEvents : MonoBehaviour
 
 
 
-    public void StartParryWindow(float duration = .5f)
+    public void StartParryWindow()
     {
-        Debug.Log("Parry");
+        float duration = .1f;
         StartCoroutine(Parry(duration));
     }
 
     IEnumerator Parry(float duration)
     {
         character.Parry();
+        GetComponent<SpriteRenderer>().color = Color.red;
         float t = 0;
         while(t < duration)
         {
@@ -41,6 +42,7 @@ public class SpriteEvents : MonoBehaviour
 
 
         character.StopParry();
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     public void SummonObjectOnTarget(int objectIndex)
