@@ -92,7 +92,45 @@ public class BattleManager : MonoBehaviour
     {
         return GetPossibleTarget(GetActor().currentCommand);
     }
+    public List<BattleCharacter> GetPossibleTarget(Attack a, BattleCharacter Source)
+    {
+        if (a == null)
+        {
+            return null;
+        }
+        Command c = a.GetCommandType();
+        c.SetSource(Source);
+        List<BattleCharacter> possibleTargets = new List<BattleCharacter>();
+        TeamIndex sourceTeamIndex = Source.GetTeam();
 
+        // Find all characters in the scene
+
+        foreach (BattleCharacter character in Actors)
+        {
+            TeamIndex characterTeamIndex = character.GetTeam();
+            if (c.CanBeTarget(character))
+            {
+
+                // Check if the command is friendly or not and add appropriate targets
+                if (c.friendly)
+                {
+                    if (characterTeamIndex == sourceTeamIndex)
+                    {
+                        possibleTargets.Add(character);
+                    }
+                }
+                else
+                {
+                    if (characterTeamIndex != sourceTeamIndex)
+                    {
+                        possibleTargets.Add(character);
+                    }
+                }
+            }
+        }
+
+        return possibleTargets;
+    }
     public List<BattleCharacter> GetPossibleTarget(Command c)
     {
         if (c  == null)

@@ -116,7 +116,7 @@ public class PerformActionState : BattleState
             Debug.Log("Block");
             foreach(BattleCharacter bc in battleManager.HeroPartyActors)
             {
-                if (!bc.isActing)
+                if (!bc.isActing && bc.IsTargetted())
                 {
                     bc.Block();
                 }

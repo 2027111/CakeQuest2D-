@@ -36,7 +36,7 @@ public class TextEffect : MonoBehaviour
         {
             Vector3 position = GetDamageTextPosition();
             SpawnTextEffect(Mathf.Abs(amount).ToString(), color, position);
-        }
+      
 
         if (source)
         {
@@ -65,6 +65,7 @@ public class TextEffect : MonoBehaviour
                 }
             }
             lastCommand = source.currentCommand;
+            }
             }
         }
 

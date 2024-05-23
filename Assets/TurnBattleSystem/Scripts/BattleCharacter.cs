@@ -96,13 +96,34 @@ public class BattleCharacter : MonoBehaviour
         }
         else
         {
-            return new SkillCommand(GetRandomAttack());
+            Attack attack = GetRandomAttack();
+            if (attack)
+            {
+                return new AttackCommand();
+            }
+            else
+            {
+                return new SkillCommand(GetRandomAttack());
+            }
         }
     }
 
     private Attack GetRandomAttack()
     {
-        return GetAttacks()[Random.Range(0, GetAttacks().Count)];
+
+        List<Attack> returnAttacks = new List<Attack>();
+        List<Attack> possibleAttacks = GetAttacks();
+        foreach(Attack attack in possibleAttacks){
+            if (BattleManager.Singleton.GetPossibleTarget(attack, this).Count > 0)
+            {
+                returnAttacks.Add(attack);
+            }
+        }
+        if(returnAttacks.Count == 0)
+        {
+            return null;
+        }
+        return returnAttacks[Random.Range(0, returnAttacks.Count)];
     }
 
     public List<Attack> GetAttacks()
