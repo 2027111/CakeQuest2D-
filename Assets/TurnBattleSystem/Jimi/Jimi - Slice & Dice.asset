@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7667df9e1e36cc2499ecbee7852134e1, type: 3}
-  m_Name: Sliced & Diced
+  m_Name: Jimi - Slice & Dice
   m_EditorClassIdentifier: 
   targetType: 1
   friendliness: 1
@@ -20,8 +20,10 @@ MonoBehaviour:
   Name: Slice & Dice
   animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
   HitEffect: {fileID: 0}
-  baseDamage: -10
+  baseDamage: -5
   baseAccuracy: 100
   manaCost: 2
   spawnObjects:
   - Spell
+  turnTilTriggered: 2
+  turnTilActive: 2

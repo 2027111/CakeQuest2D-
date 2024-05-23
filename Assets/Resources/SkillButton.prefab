@@ -280,7 +280,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4363812109550150151}
   - component: {fileID: 4363812109550150153}
-  - component: {fileID: 1988317707261006000}
   - component: {fileID: -6750239914215570001}
   m_Layer: 0
   m_Name: SkillButton
@@ -318,19 +317,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4363812109550150150}
   m_CullTransparentMesh: 1
---- !u!114 &1988317707261006000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363812109550150150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57eb71b30384e3945afe45f5b8871454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 4363812109381594292}
 --- !u!114 &-6750239914215570001
 MonoBehaviour:
   m_ObjectHideFlags: 0

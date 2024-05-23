@@ -184,8 +184,10 @@ MonoBehaviour:
   Speed: 50
   Health: 50
   Mana: 50
+  Focus: 0
   currentState: 0
   _target: {fileID: 0}
+  isActing: 0
   Animator: {fileID: 8539224105758355332}
   Entity: {fileID: 6598031230574354759}
 --- !u!114 &8539224105758355332
@@ -226,3 +228,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastAttacker: {fileID: 0}
+  isDead: 0

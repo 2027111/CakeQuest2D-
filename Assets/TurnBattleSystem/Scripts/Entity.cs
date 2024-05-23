@@ -7,7 +7,17 @@ public class Entity : MonoBehaviour
 {
     public BattleCharacter lastAttacker;
     BattleCharacter character;
-    public delegate void DamageEventHandler(int amount, ElementEffect elementEffect);
+    public int Speed = 50;
+    public int Health = 50;
+    public int Mana = 50;
+
+    public int Focus = 0;
+    public int MaxFocus = 10;
+    public delegate void EventHandler(int health, int maxhealth);
+    public EventHandler OnHealthChange;
+    public EventHandler OnManaChange;
+    public EventHandler OnFocusChange;
+    public delegate void DamageEventHandler(int amount, ElementEffect elementEffect, BattleCharacter source);
     public delegate void DamageEvent();
     public bool isDead = false;
     public DamageEventHandler OnDamageTaken;
@@ -16,22 +26,22 @@ public class Entity : MonoBehaviour
 
     public void AddToMana(int amount)
     {
-        if (character.Mana + amount <= 0)
+        if (Mana + amount <= 0)
         {
-            character.Mana = 0;
+            Mana = 0;
         }
-        else if (character.Mana + amount >= character.GetReference().MaxMana)
+        else if (Mana + amount >= character.GetReference().MaxMana)
         {
 
-            character.Mana = character.GetReference().MaxMana;
+            Mana = character.GetReference().MaxMana;
         }
         else
         {
-            character.Mana += amount;
+            Mana += amount;
         }
         if (character)
         {
-            character.OnManaChange?.Invoke(character.Mana, character.GetReference().MaxMana);
+            OnManaChange?.Invoke(Mana, character.GetReference().MaxMana);
         }
     }
     private void Awake()
@@ -41,16 +51,22 @@ public class Entity : MonoBehaviour
     public void ResetHealth()
     {
 
-        character.Health = character.GetReference().MaxHealth;
+        Health = character.GetReference().MaxHealth;
         character.GetReference().isDead = false;
     }
 
+
+    public void AddFocus(int amount)
+    {
+        Focus = Mathf.Clamp(Focus + amount, 0, MaxFocus);
+        OnFocusChange?.Invoke(Focus, MaxFocus);
+    }
     public void AddToHealth(int amount)
     {
-        if (character.Health + amount <= 0)
+        if (Health + amount <= 0)
         {
 
-            character.Health = 0;
+            Health = 0;
 
 
 
@@ -67,13 +83,13 @@ public class Entity : MonoBehaviour
         }
         else
         {
-            if (character.Health + amount >= character.GetReference().MaxHealth)
+            if (Health + amount >= character.GetReference().MaxHealth)
             {
-                character.Health = character.GetReference().MaxHealth;
+                Health = character.GetReference().MaxHealth;
             }
             else
             {
-                character.Health += amount;
+                Health += amount;
             }
             if(amount < 0)
             {
@@ -81,6 +97,7 @@ public class Entity : MonoBehaviour
                 {
                     character.Animator.Hurt();
                     CamManager.Shake(.2f, .1f);
+                    character.StopBlock();
                 }
             }
             else if(amount > 0)
@@ -98,10 +115,10 @@ public class Entity : MonoBehaviour
         } 
         if (character)
         {
-            character.OnHealthChange?.Invoke(character.Health, character.GetReference().MaxHealth);
+            OnHealthChange?.Invoke(Health, character.GetReference().MaxHealth);
         }
     }
-    public void TakeDamage(int amount, ElementEffect effect)
+    public void TakeDamage(int amount, ElementEffect effect, BattleCharacter source = null)
     {
         switch (effect)
         {
@@ -129,31 +146,37 @@ public class Entity : MonoBehaviour
                 break;
         }
 
-        // Ensure the character's health doesn't drop below 0
-        if (character.Health + amount >= 0)
+
+
+        if (character.isBlocking)
         {
-            AddToHealth(amount);
-        }
-        else
-        {
-            AddToHealth(-character.Health); // Set health to 0
+            amount /= 2;
         }
 
+
+        if (character.isParrying)
+        {
+            AddFocus((Mathf.Abs(amount) / 2));
+            amount = 0;
+            character.Animator.Parry();
+        }
+        AddToHealth(amount);
+
         // Invoke the damage taken event
-        OnDamageTaken.Invoke(amount, effect);
+        OnDamageTaken.Invoke(amount, effect, source);
     }
 
     public void Apply()
     {
-        character.GetReference().Health = character.Health;
-        character.GetReference().Mana = character.Mana;
+        character.GetReference().Health = Health;
+        character.GetReference().Mana = Mana;
         character.GetReference().isDead = isDead;
     }
 
     public void LoadReference()
     {
-        character.Health = character.GetReference().Health;
-        character.Mana =character.GetReference().Mana;
+        Health = character.GetReference().Health;
+        Mana =character.GetReference().Mana;
         isDead = character.GetReference().isDead;
 
         if (isDead)
@@ -169,8 +192,8 @@ public class Entity : MonoBehaviour
 
     public void LoadReferenceRefreshed()
     {
-        character.Health = character.GetReference().MaxHealth;
-        character.Mana = character.GetReference().MaxMana;
+        Health = character.GetReference().MaxHealth;
+        Mana = character.GetReference().MaxMana;
         isDead = false;
 
 

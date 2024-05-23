@@ -17,11 +17,14 @@ public class Command
     }
     public virtual void ExecuteCommand()
     {
-
+        Source.isActing = true;
     }
 
 
-
+    public virtual void OnCommandOver()
+    {
+        Source.isActing = false;
+    }
     public virtual bool CanBeTarget(BattleCharacter _character)
     {
         return !_character.Entity.isDead;

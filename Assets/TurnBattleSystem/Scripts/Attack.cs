@@ -48,6 +48,13 @@ public class Attack : ScriptableObject
     public int baseAccuracy = 80; //Negative for damage, positive for healing
     public int manaCost = 14;
     public string[] spawnObjects;
+
+
+
+
+
+    public int turnTilTriggered = 0;
+    public int turnTilActive = 0;
     public bool GetFriendly()
     {
         return friendliness == Friendliness.Friendly;

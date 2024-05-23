@@ -38,7 +38,7 @@ public class SkillCommand : AttackCommand
             yield return new WaitForSeconds(.6f);
             Source.ResetAnimatorController();
         }
-
+        OnCommandOver();
         OnExecuted?.Invoke();
 
 
@@ -81,7 +81,7 @@ public class SkillCommand : AttackCommand
 
 
 
-                target?.Entity.TakeDamage(attack.baseDamage, elementEffect);
+                target?.Entity.TakeDamage(attack.baseDamage, elementEffect, Source);
             }
             }
 

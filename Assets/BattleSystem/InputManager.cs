@@ -73,7 +73,7 @@ public class InputManager : Controller
         }
         if (context.canceled)
         {
-            OnReturnRelease?.Invoke();
+            OnReturnReleased?.Invoke();
         }
         attack = context.action.triggered;
     }

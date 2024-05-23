@@ -20,7 +20,9 @@ MonoBehaviour:
   Name: Spin Kick
   animationClip: {fileID: 7400000, guid: f2f497375e757b849b83449cc4b32237, type: 2}
   HitEffect: {fileID: 0}
-  baseDamage: -10
+  baseDamage: -8
   baseAccuracy: 100
   manaCost: 14
   spawnObjects: []
+  turnTilTriggered: 0
+  turnTilActive: 0

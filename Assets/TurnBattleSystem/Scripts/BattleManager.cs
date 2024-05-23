@@ -28,20 +28,30 @@ public class BattleManager : MonoBehaviour
 
 
 
+    public bool FastCombats;
+
     [SerializeField] TMP_Text text;
 
 
 
     public GameObject BattlePrefab;
     [SerializeField] GameObject CursorPrefab;
+
+
+
     [SerializeField] GameObject CardUIPrefab;
     [SerializeField] Transform CardUIContainer;
     [SerializeField] Transform PlayerSpawnPoint;
     [SerializeField] Transform EnemySpawnPoint;
     [SerializeField] PlayableDirector director;
     [SerializeField] BattleInfo battleInfo;
+
+
     private List<GameObject> currentCursor = new List<GameObject>();
 
+ 
+
+    public BattleCharacter currentActor;
     public PlayerStorage infoStorage;
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
@@ -54,18 +64,29 @@ public class BattleManager : MonoBehaviour
     int EnemyIndex = 0;
     int PlayerIndex = 0;
     int turn = 0;
+    int numberOfturnsTotal = 0;
+    int numberOfLoops = 0;
     public BattleCharacter GetActor()
     {
-        return Actors[turn];
+        return currentActor;
     }
-
-    public bool NextPlayerCanMove()
+    public bool NextActorIsSameTeam()
+    {
+        return Actors[GetNextTurnIndex()].GetTeam() == GetActor().GetTeam();
+    }
+    public bool NextActorCanAct()
     {
 
         return !Actors[GetNextTurnIndex()].isActing;
     }
-
-
+    public bool IsEnemyTurn()
+    {
+        return GetActor().GetTeam() == TeamIndex.Enemy;
+    }
+    public bool NextActorIsPlayer()
+    {
+        return Actors[GetNextTurnIndex()].GetTeam() == TeamIndex.Player;
+    }
 
     public List<BattleCharacter> GetPossibleTarget()
     {
@@ -80,27 +101,27 @@ public class BattleManager : MonoBehaviour
         }
 
         List<BattleCharacter> possibleTargets = new List<BattleCharacter>();
-        TeamComponent sourceTeamComponent = c.Source.GetComponent<TeamComponent>();
+        TeamIndex sourceTeamIndex = c.Source.GetTeam();
 
         // Find all characters in the scene
 
         foreach (BattleCharacter character in Actors)
         {
-            TeamComponent characterTeamComponent = character.GetComponent<TeamComponent>();
+            TeamIndex characterTeamIndex = character.GetTeam();
             if (c.CanBeTarget(character))
             {
 
                 // Check if the command is friendly or not and add appropriate targets
                 if (c.friendly)
                 {
-                    if (characterTeamComponent.teamIndex == sourceTeamComponent.teamIndex)
+                    if (characterTeamIndex == sourceTeamIndex)
                     {
                         possibleTargets.Add(character);
                     }
                 }
                 else
                 {
-                    if (characterTeamComponent.teamIndex != sourceTeamComponent.teamIndex)
+                    if (characterTeamIndex != sourceTeamIndex)
                     {
                         possibleTargets.Add(character);
                     }
@@ -109,6 +130,32 @@ public class BattleManager : MonoBehaviour
         }
 
         return possibleTargets;
+    }
+
+    public List<BattleCharacter> GetCurrentTarget()
+    {
+        if (GetActor().currentCommand != null)
+        {
+            return GetActor().currentCommand.Target;
+        }
+        return new List<BattleCharacter>();
+    }
+
+    public BattleCharacter RandomActor(TeamIndex player)
+    {
+        foreach(BattleCharacter b in Actors)
+        {
+            if(b.GetTeam() == player)
+            {
+                return b;
+            }
+        }
+        return null;
+    }
+
+    public bool IsForcedTurn()
+    {
+        return GetActor() != Actors[turn];
     }
 
 
@@ -165,10 +212,9 @@ public class BattleManager : MonoBehaviour
     }
     public void InitializeBattle()
     {
-        Actors.Sort((a, b) => b.Speed.CompareTo(a.Speed));
-
-        turn = Actors.Count;
-        NextTurn();
+        Actors.Sort((a, b) => b.Entity.Speed.CompareTo(a.Entity.Speed));
+        SetActor();
+        StartNewTurn();
     }
 
     public void SetBattleInfo()
@@ -225,7 +271,7 @@ public class BattleManager : MonoBehaviour
     {
         foreach(BattleCharacter actor in Actors)
         {
-            if(actor.GetComponent<TeamComponent>().teamIndex == TeamIndex.Player)
+            if(actor.GetTeam() == TeamIndex.Player)
             {
                 GameObject PartyCard = Instantiate(CardUIPrefab, CardUIContainer);
                 PartyCard.GetComponent<PartyCard>().SetPlayerRef(actor);
@@ -260,7 +306,7 @@ public class BattleManager : MonoBehaviour
         if (character)
         {
             
-            GameObject cursor = Instantiate(CursorPrefab, character.transform.position + (Vector3.up * 2.1f), Quaternion.identity);
+            GameObject cursor = Instantiate(CursorPrefab, character.transform.position + (Vector3.up * 3.1f), Quaternion.identity);
             cursor.GetComponent<Blink>().SetDefaultColor(TeamComponent.TeamColor(character.GetTeam()));
             currentCursor.Add(cursor);
         }
@@ -290,11 +336,11 @@ public class BattleManager : MonoBehaviour
             EnemyIndex++;
         }
         GameObject CharacterGameObject = Instantiate(BattlePrefab, Position, Quaternion.identity);
-
-        CharacterGameObject.GetComponent<BattleCharacter>().SetReference(characterObject);
-        CharacterGameObject.GetComponent<Entity>().OnDead += CheckTeams;
-        CharacterGameObject.GetComponent<BattleCharacter>().Flip(FlipIndex);
-        CharacterGameObject.GetComponent<TeamComponent>().teamIndex = index;
+        BattleCharacter battleCharacterObject = CharacterGameObject.GetComponent<BattleCharacter>();
+        battleCharacterObject.SetReference(characterObject);
+        battleCharacterObject.Entity.OnDead += CheckTeams;
+        battleCharacterObject.Flip(FlipIndex);
+        battleCharacterObject.SetTeam(index);
         CharacterGameObject.name = characterObject.characterData.characterName;
         CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
         Actors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
@@ -429,7 +475,7 @@ public class BattleManager : MonoBehaviour
 
     private int GetNextTurnIndex()
     {
-        int nextturn = turn+1;
+        int nextturn = turn + 1;
         if (nextturn >= Actors.Count)
         {
             nextturn = 0;
@@ -437,11 +483,20 @@ public class BattleManager : MonoBehaviour
         return nextturn;
     }
 
+
+
     public void NextTurn()
     {
-
         turn = GetNextTurnIndex();
-
+        if(turn == 0)
+        {
+            numberOfLoops++;
+        }
+        SetActor();
+    }
+    public void StartNewTurn()
+    {
+        numberOfturnsTotal++;
         if (GetActor().Entity.isDead)
         {
             GetActor().currentCommand = new DeadCommand();
@@ -461,6 +516,20 @@ public class BattleManager : MonoBehaviour
 
         }
 
+    }
+
+    private void SetActor()
+    {
+        currentActor = Actors[turn];
+    }
+
+    public void SetActor(BattleCharacter bc)
+    {
+        if (Actors.Contains(bc))
+        {
+            currentActor = Actors[Actors.IndexOf(bc)];
+        }
+        
     }
 
     public void MoveToScene()

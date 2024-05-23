@@ -16,7 +16,13 @@ public class ChoiceMenu : MonoBehaviour
     {
         DefaultSelect();
     }
-
+    public void ResetMenu()
+    {
+        foreach (Transform transform in transform)
+        {
+            Destroy(transform.gameObject);
+        }
+    }
     public void DefaultSelect()
     {
 
@@ -26,7 +32,7 @@ public class ChoiceMenu : MonoBehaviour
         }
     }
 
-    private void Select(GameObject gameObject)
+    protected void Select(GameObject gameObject)
     {
         if (SelectedButton)
         {
@@ -53,7 +59,7 @@ public class ChoiceMenu : MonoBehaviour
         return SelectedButton.GetComponent<ButtonObject>().GetText();
     }
 
-    public void NextButton()
+    public virtual void NextButton()
     {
         currentButton++;
         if (currentButton >= buttons.Count)
@@ -65,7 +71,7 @@ public class ChoiceMenu : MonoBehaviour
     }
 
 
-    public void PreviousButton()
+    public virtual void PreviousButton()
     {
         currentButton--;
         if (currentButton < 0)

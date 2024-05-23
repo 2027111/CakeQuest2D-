@@ -12,12 +12,14 @@ public class PartyCard : MonoBehaviour
     [SerializeField] Image portraitImage;
     [SerializeField] HealthBar healthBar;
     [SerializeField] HealthBar manaBar;
+    [SerializeField] HealthBar focusBar;
 
     public void SetPlayerRef(BattleCharacter character)
     {
         characterReference = character;
-        characterReference.OnHealthChange += healthBar.SetFillAmount;
-        characterReference.OnManaChange += manaBar.SetFillAmount;
+        characterReference.Entity.OnHealthChange += healthBar.SetFillAmount;
+        characterReference.Entity.OnManaChange += manaBar.SetFillAmount;
+        characterReference.Entity.OnFocusChange += focusBar.SetFillAmount;
         if (characterReference.GetData().portraits.Length > 0)
         {
             portraitImage.gameObject.SetActive(true);
@@ -41,8 +43,9 @@ public class PartyCard : MonoBehaviour
 
     private void OnDisable()
     {
-        characterReference.OnHealthChange -= healthBar.SetFillAmount;
-        characterReference.OnManaChange -= manaBar.SetFillAmount;
+        characterReference.Entity.OnHealthChange -= healthBar.SetFillAmount;
+        characterReference.Entity.OnManaChange -= manaBar.SetFillAmount;
+        characterReference.Entity.OnFocusChange -= focusBar.SetFillAmount;
     }
 
 

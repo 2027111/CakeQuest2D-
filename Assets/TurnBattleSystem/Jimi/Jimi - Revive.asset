@@ -25,3 +25,5 @@ MonoBehaviour:
   manaCost: 4
   spawnObjects:
   - Weird Spell
+  turnTilTriggered: 0
+  turnTilActive: 0

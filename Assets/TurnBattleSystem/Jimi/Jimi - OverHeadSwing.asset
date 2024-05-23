@@ -20,7 +20,9 @@ MonoBehaviour:
   Name: Spike
   animationClip: {fileID: 7400000, guid: 2d9553394368ce241ba58feb8296f7c6, type: 2}
   HitEffect: {fileID: 0}
-  baseDamage: -24
+  baseDamage: -11
   baseAccuracy: 100
   manaCost: 14
   spawnObjects: []
+  turnTilTriggered: 0
+  turnTilActive: 0

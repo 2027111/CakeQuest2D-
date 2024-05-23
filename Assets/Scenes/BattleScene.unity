@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25748bb96acbf7499a6fbb1dcab5571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FastCombats: 1
   text: {fileID: 1905705062}
   BattlePrefab: {fileID: 3887754998874502464, guid: bcc2b3dc2461fef449f4ecc8e00fe022, type: 3}
   CursorPrefab: {fileID: 1388597213317878411, guid: f9da7a3369190c5408a0b831bf4bacdc, type: 3}
@@ -161,6 +162,7 @@ MonoBehaviour:
   EnemySpawnPoint: {fileID: 889582652}
   director: {fileID: 565514064}
   battleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
+  currentActor: {fileID: 0}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}
   minimumFadeTime: 1
   HeroParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}

@@ -58,7 +58,7 @@ public class CamManager : MonoBehaviour
 
         Vector3 newPos = new Vector3(battleCharacter.transform.position.x, battleCharacter.transform.position.y + 1, _instance.zoomDistance); ;
 
-        _instance.StartCoroutine(_instance.DoPan(newPos, panDuration));
+        //_instance.StartCoroutine(_instance.DoPan(newPos, panDuration));
     }
 
 

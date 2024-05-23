@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleMenu : MonoBehaviour
+public class BattleMenu : ChoiceMenu
 {
 
 
@@ -15,13 +15,9 @@ public class BattleMenu : MonoBehaviour
         BattleManager.Singleton.ChangeState(new ChoosingTargetState());
     }
 
-    public void Heal()
+    public void Swap()
     {
-        Debug.Log("Heal");
-        //Command attackCommand = new DefensiveCommand();
-        //attackCommand.SetSource(BattleManager.Singleton.GetActor());
-        //BattleManager.Singleton.GetActor().currentCommand = attackCommand;
-        //BattleManager.Singleton.ChangeState(new ChoosingTargetState());
+        BattleManager.Singleton.ChangeState(new SwapingState());
     }
    public void OpenSkillMenu()
     {

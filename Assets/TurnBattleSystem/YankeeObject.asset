@@ -13,22 +13,23 @@ MonoBehaviour:
   m_Name: YankeeObject
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
-  Health: 100
-  MaxHealth: 100
-  Mana: 100
-  MaxMana: 100
+  Health: 200
+  MaxHealth: 200
+  Mana: 200
+  MaxMana: 200
   Speed: 0
   AttackDamage: 11
   ManaDamage: 11
   isDead: 0
-  AttackElement: 1
+  AttackElement: 0
   elementalAttributes:
   - element: 0
-    elementEffect: 2
+    elementEffect: 1
   - element: 5
     elementEffect: 1
   Attacks:
   - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}
   - {fileID: 11400000, guid: 0b67e8c360adf3d4087758edf8620a05, type: 2}
   - {fileID: 11400000, guid: a272c6c8be5577b45954f3d97f2d1a1d, type: 2}
+  - {fileID: 11400000, guid: 3244224c0146eec4dba906c7e7c94b10, type: 2}
   animationController: {fileID: 22100000, guid: bbaecce845f6a5845b2a58f6f636b165, type: 2}

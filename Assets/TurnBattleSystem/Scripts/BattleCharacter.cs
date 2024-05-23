@@ -1,4 +1,4 @@
-using System;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,19 +14,15 @@ public class BattleCharacter : MonoBehaviour
 {
 
     [SerializeField] CharacterObject currentCharacter;
-    public int Speed = 50;
-    public int Health = 50;
-    public int Mana = 50;
     public CharacterState currentState;
     public BattleCharacter _target;
 
 
     public bool isActing = false;
 
+    public bool isBlocking = false;
+    public bool isParrying = false;
 
-    public delegate void EventHandler(int health, int maxhealth);
-    public EventHandler OnHealthChange;
-    public EventHandler OnManaChange;
 
 
 
@@ -42,14 +38,21 @@ public class BattleCharacter : MonoBehaviour
     void Start()
     {
         //speed = currentCharacter.Speed;
-        Health = currentCharacter.Health;
-        Mana = currentCharacter.Mana;
         Animator = GetComponent<AnimatorController>();
         Entity = GetComponent<Entity>();
         GetComponentInChildren<SpriteEvents>().SetCharacter(this);
     }
 
-    
+    public void StopParry()
+    {
+        isParrying = false;
+    }
+
+    public void Parry()
+    {
+        isParrying = true;
+    }
+
     private void Update()
     {
         switch (currentState)
@@ -64,6 +67,11 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
+    public void Block()
+    {
+        isBlocking = true;
+        Animator.Block();
+    }
     public void SetActing(bool _isActing)
     {
         isActing = _isActing;
@@ -78,16 +86,24 @@ public class BattleCharacter : MonoBehaviour
         return currentCharacter;
     }
 
-    public void Hurt(int damage)
-    {
-        Health -= damage;
-    }
 
     public Command CreateCommand()
     {
-        return new AttackCommand();
+        float prob = Random.Range(0f, 100f);
+        if(prob > 50)
+        {
+            return new AttackCommand();
+        }
+        else
+        {
+            return new SkillCommand(GetRandomAttack());
+        }
     }
 
+    private Attack GetRandomAttack()
+    {
+        return GetAttacks()[Random.Range(0, GetAttacks().Count)];
+    }
 
     public List<Attack> GetAttacks()
     {
@@ -154,5 +170,21 @@ public class BattleCharacter : MonoBehaviour
     public void Flip(int flipIndex)
     {
         transform.localScale = new Vector3(flipIndex, 1, 1);
+    }
+
+    public bool IsTargetted()
+    {
+        return BattleManager.Singleton.GetCurrentTarget().Contains(this);
+    }
+
+    public void SetTeam(TeamIndex index)
+    {
+        GetComponent<TeamComponent>().teamIndex = index;
+    }
+
+    public void StopBlock()
+    {
+        Animator.StopBlock();
+        isBlocking = false;
     }
 }

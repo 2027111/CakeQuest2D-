@@ -10,21 +10,14 @@ public class SkillMenu : ChoiceMenu
 
 
 
-    public void ResetMenu()
-    {
-        foreach (Transform transform in transform)
-        {
-            Destroy(transform.gameObject);
-        }
-    }
+
 
     public void AddButtons(List<Attack> attacks)
     {
         foreach (Attack obj in attacks)
         {
 
-            ButtonObject button = Instantiate(ButtonPrefab, transform).GetComponent<ButtonObject>();
-            button.SetText(obj.ToString());
+            GameObject button = Instantiate(ButtonPrefab, transform);
             button.GetComponent<ChoiceMenuButton>().OnSelected.AddListener(TriggerSkill);
             button.GetComponent<SkillButton>().SetSkill(obj);
             buttons.Add(button.gameObject);
@@ -44,7 +37,7 @@ public class SkillMenu : ChoiceMenu
         Command attackCommand = attack.GetCommandType();
         attackCommand.SetSource(BattleManager.Singleton.GetActor());
 
-        if (attack.manaCost > BattleManager.Singleton.GetActor().Mana  || BattleManager.Singleton.GetPossibleTarget(attackCommand).Count == 0)
+        if (attack.manaCost > BattleManager.Singleton.GetActor().Entity.Mana  || BattleManager.Singleton.GetPossibleTarget(attackCommand).Count == 0)
         {
             SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
         }

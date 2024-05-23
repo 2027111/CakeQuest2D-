@@ -22,10 +22,31 @@ public class SpriteEvents : MonoBehaviour
     }
 
 
+
+    public void StartParryWindow(float duration = .5f)
+    {
+        Debug.Log("Parry");
+        StartCoroutine(Parry(duration));
+    }
+
+    IEnumerator Parry(float duration)
+    {
+        character.Parry();
+        float t = 0;
+        while(t < duration)
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+
+        character.StopParry();
+    }
+
     public void SummonObjectOnTarget(int objectIndex)
     {
         Debug.Log(objectIndex);
-        Command c = BattleManager.Singleton.GetActor().currentCommand;
+        Command c = character.currentCommand;
         if(c is SkillCommand)
         {
 

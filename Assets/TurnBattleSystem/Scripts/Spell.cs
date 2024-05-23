@@ -35,6 +35,7 @@ public class Spell : MonoBehaviour
         {
             if (!hit[i] && timer > hitTimers[i])
             {
+                Debug.Log("Command Activated by spell : " + name);
                 command?.ActivateCommand();
                 hit[i] = true;
             }

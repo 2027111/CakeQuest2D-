@@ -17,25 +17,49 @@ public class AnimatorController : MonoBehaviour
     public void Attack()
     {
         anim.speed = 1;
-        anim.SetTrigger("attack");
+        anim?.SetTrigger("attack");
     }
 
 
     public void Hurt()
     {
         anim.speed = 1;
-        anim.SetTrigger("hurt");
+        anim?.SetTrigger("hurt");
     }
     public void Dodge()
     {
         anim.speed = 1;
-        anim.SetTrigger("dodge");
+        anim?.SetTrigger("dodge");
     }
 
     public void Die()
     {
         anim.speed = 1;
-        anim.SetTrigger("dead");
+        anim?.SetTrigger("dead");
+    }
+
+    public void Concentrate()
+    {
+        anim.speed = 1;
+        anim?.SetTrigger("concentrate");
+    }
+    public void ResetToIdle()
+    {
+
+        anim.speed = 1;
+        anim?.SetTrigger("reset");
+    }
+    public void Block()
+    {
+        anim.speed = 1;
+        anim?.SetBool("block", true);
+    }
+
+    public void Parry()
+    {
+
+        anim.speed = 1;
+        anim?.SetTrigger("parry");
     }
 
     public AnimatorClipInfo GetCurrentAnim()
@@ -86,10 +110,11 @@ public class AnimatorController : MonoBehaviour
         return 0;
     }
 
+
     public void Revive()
     {
         anim.speed = 1;
-        anim.SetTrigger("revive");
+        anim?.SetTrigger("revive");
     }
 
 
@@ -97,7 +122,7 @@ public class AnimatorController : MonoBehaviour
     public void Move(bool isMoving)
     {
         anim.speed = 1;
-        anim.SetBool("moving",isMoving);
+        anim?.SetBool("moving",isMoving);
     }
 
     public RuntimeAnimatorController GetController()
@@ -116,5 +141,9 @@ public class AnimatorController : MonoBehaviour
         return GetCurrentAnim().clip.length;
     }
 
-
+    public void StopBlock()
+    {
+        anim.speed = 1;
+        anim?.SetBool("block", false);
+    }
 }

@@ -34,10 +34,18 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.gameObject;
-
-            ManageContactEvent(contactEvent);
-            ManageInteraction(player, true);
-            ContextClue(true);
+            if(player.GetComponent<Character>().CanInteraction())
+            {
+                Debug.Log("Interacting");
+                player.GetComponent<Character>().SetInteraction(false);
+                ManageContactEvent(contactEvent);
+                ManageInteraction(player, true);
+                ContextClue(true);
+            }
+            else
+            {
+                player = null;
+            }
         }
     }
     public void ManageInteraction(GameObject character, bool add)
@@ -69,11 +77,15 @@ public class Interactable : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            ManageInteraction(player, false);
-            ManageContactEvent(contactEndEvent);
-            ContextClue(false);
-            
-            player = null;
+            if(player != null)
+            {
+                player.GetComponent<Character>().SetInteraction(true);
+                ManageInteraction(player, false);
+                ManageContactEvent(contactEndEvent);
+                ContextClue(false);
+
+                player = null;
+            }
         }
     }
 

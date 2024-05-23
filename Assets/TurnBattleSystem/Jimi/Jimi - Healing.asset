@@ -20,8 +20,10 @@ MonoBehaviour:
   Name: Sweet Cake
   animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
   HitEffect: {fileID: 0}
-  baseDamage: 10
+  baseDamage: 82
   baseAccuracy: 100
   manaCost: 4
   spawnObjects:
   - Weird Spell
+  turnTilTriggered: 0
+  turnTilActive: 0

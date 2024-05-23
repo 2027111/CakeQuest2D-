@@ -15,7 +15,7 @@ public abstract class Controller : MonoBehaviour
     public EventHandler OnJumpPressed;
     public EventHandler OnJumpRelease;
     public EventHandler OnReturnPressed;
-    public EventHandler OnReturnRelease;
+    public EventHandler OnReturnReleased;
     public EventHandler OnSelectPressed;
     public EventHandler OnSelectReleased;
     public delegate void MovementHandler(Vector2 movement);

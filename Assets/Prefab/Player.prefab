@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: c8da05e30cf21d141bd914c8491b04cc, type: 2}
+  canGetInteract: 1
   canInteract: 0
   heroParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}
 --- !u!114 &6328120429896446889

@@ -77,7 +77,7 @@ public class AttackCommand : Command
         {
             CharacterObject characterObject = target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            target?.Entity.TakeDamage(-Source.GetReference().AttackDamage, elementEffect);
+            target?.Entity.TakeDamage(-Source.GetReference().AttackDamage, elementEffect, Source);
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         }

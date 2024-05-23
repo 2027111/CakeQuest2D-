@@ -11,6 +11,8 @@ public abstract class BattleState
         battleManager = _battleManager;
         InputManager.inputManager.OnSelectPressed += OnSelect;
         InputManager.inputManager.OnReturnPressed += OnBack;
+        InputManager.inputManager.OnSelectReleased += OnSelectReleased;
+        InputManager.inputManager.OnReturnReleased += OnBackReleased;
         InputManager.inputManager.OnMovement += OnNavigate;
     }
 
@@ -20,27 +22,34 @@ public abstract class BattleState
 
         InputManager.inputManager.OnSelectPressed -= OnSelect;
         InputManager.inputManager.OnReturnPressed -= OnBack;
+        InputManager.inputManager.OnSelectReleased -= OnSelectReleased;
+        InputManager.inputManager.OnReturnReleased -= OnBackReleased;
         InputManager.inputManager.OnMovement -= OnNavigate;
     }
+    public virtual void OnSelectReleased()
+    {
+    }
 
-    public virtual void OnSelect()
+    public virtual void OnBackReleased()
     {
 
-        Debug.Log("Select");
+    }
+    public virtual void OnSelect()
+    {
     }
 
     public virtual void OnBack()
     {
 
-        Debug.Log("Return");
     }
 
     public virtual void OnNavigate(Vector2 direction)
     {
-        Debug.Log("Navigate");
     }
     public virtual void Handle()
     {
 
     }
+
+
 }

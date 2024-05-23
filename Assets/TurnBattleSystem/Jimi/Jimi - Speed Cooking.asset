@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetType: 1
   friendliness: 1
+  targetStateType: 0
   skillType: 0
+  element: 0
   Name: Speed Cooking
   animationClip: {fileID: 7400000, guid: 2d776f0362c40cd4fba886c81b196518, type: 2}
   HitEffect: {fileID: 6489612216288041236, guid: de00b3bac50c2e4468b0439605170bbc, type: 3}
-  baseDamage: -23
+  baseDamage: -7
   baseAccuracy: 100
   manaCost: 23
+  spawnObjects: []
+  turnTilTriggered: 0
+  turnTilActive: 0

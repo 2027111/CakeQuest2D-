@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     CharacterBehaviour playerBehaviour;
     Movement playerMovement;
     public CharacterInventory inventory;
+    public bool canGetInteract = true;
     public bool canInteract = false;
     public event Action OnInteractEvent;
     public Party heroParty;
@@ -32,6 +33,18 @@ public class Character : MonoBehaviour
 
         FadeScreen.Singleton?.OnFadingStart.RemoveListener(delegate { ChangeState(new NothingBehaviour()); });
     }
+
+    public bool CanInteraction()
+    {
+        return canGetInteract;
+    }
+
+
+    public void SetInteraction(bool interaction)
+    {
+        canGetInteract = interaction;
+    }
+
 
     // Update is called once per frame
     void Update()
