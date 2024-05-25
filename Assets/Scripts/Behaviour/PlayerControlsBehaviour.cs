@@ -6,7 +6,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
 {
 
 
-    PlayerInputController playerController;
+    Controller playerController;
     
     public PlayerControlsBehaviour() : base()
     {
@@ -17,12 +17,16 @@ public class PlayerControlsBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        playerController = player.GetComponent<PlayerInputController>();
+        playerController = player.GetComponent<Controller>();
         if(playerController == null)
         {
             player.ChangeState(new PatrollingBehaviour());
         }
-        player.canInteract = true;
+        else
+        {
+            character.inputManager.CanInteract(true);
+            character.CanMove(true);
+        }
 
     }
 
@@ -30,7 +34,6 @@ public class PlayerControlsBehaviour : CharacterBehaviour
 
     public override void Handle()
     {
-        movement.movementInput = playerController.input;
         if (movement.movementInput != Vector2.zero)
         {
             movement.MoveCharacter();
@@ -40,8 +43,12 @@ public class PlayerControlsBehaviour : CharacterBehaviour
 
     public override void OnExit()
     {
+        if (playerController != null)
+        {
+            character.inputManager?.CanInteract(false);
+            character.CanMove(false);
+        }
         movement.movementInput = Vector2.zero;
-        character.canInteract = false;
     }
 
 

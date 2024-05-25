@@ -48,7 +48,6 @@ public class PartyModifier : MonoBehaviour
 
     public void HealEntireParty()
     {
-        player.heroParty.MainCharacter?.Revitalize();
         foreach (CharacterObject obj in player.heroParty.PartyMembers)
         {
             obj.Revitalize();

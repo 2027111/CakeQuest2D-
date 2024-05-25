@@ -109,7 +109,7 @@ public class Entity : MonoBehaviour
                 }
                 else
                 {
-                    character.Animator.Dodge();
+
                 }
             }
         } 
@@ -158,7 +158,10 @@ public class Entity : MonoBehaviour
         {
             AddFocus((Mathf.Abs(amount) / 2));
             amount = 0;
+            character.StopBlock();
             character.Animator.Parry();
+            StartCoroutine(Utils.SlowDown(1.1f, .3f));
+            //StartCoroutine(CamManager.DoPan(character.transform.position, .1f, 1f / .5f));
         }
         AddToHealth(amount);
 

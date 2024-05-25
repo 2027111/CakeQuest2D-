@@ -223,7 +223,7 @@ public class DialogueBox : MonoBehaviour
         if (voiceLine == null)
         {
             // Log an error if the audio failed to load
-            Debug.LogError("Failed to load sprite at path: " + voiceLinePath);
+            Debug.LogWarning("Failed to load sprite at path: " + voiceLinePath);
 
 
         }
@@ -249,6 +249,8 @@ public class DialogueBox : MonoBehaviour
     private void SetupLine(string lineId)
     {// Set the active state of the portrait image based on whether a sprite is provided
 
+        if(LanguageData.GetDataById(lineId) != null)
+        {
 
         string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
         string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
@@ -285,6 +287,8 @@ public class DialogueBox : MonoBehaviour
 
         // Set the text of the name text component to the provided talker name
         nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
+
+        }
     }
 
 
@@ -443,8 +447,20 @@ public class DialogueBox : MonoBehaviour
             {
                 if (isShowing)
                 {
-                    NextLine();
-                }
+
+                        if(CurrentLine() != null)
+                        {
+
+                            NextLine();
+                        }
+                        else
+                        {
+                            EndDialogue();
+                            Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+
+                        }
+                    }
+
 
 
 
@@ -455,6 +471,11 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    private JsonData CurrentLine()
+    {
+        return LanguageData.GetDataById(currentDialogue.dialogue.dialogueLineIds[dialogueIndex]);
+
+    }
 
     public void StartNextDialogueWaiting()
     {
@@ -479,36 +500,19 @@ public class DialogueBox : MonoBehaviour
     {
         if (addOrRemove)
         {
-            if (currentState == GameState.Overworld)
-            {
-                Character characterComponent = player.GetComponent<Character>();
-                bool contains = characterComponent.InteractContains(Interact);
-                if (characterComponent != null && !contains)
-                {
-                    characterComponent.OnInteractEvent += Interact;
-                }
-            }
-            else if (currentState == GameState.BattleScene)
-            {
-                InputManager battleCharacterComponent = player.GetComponent<InputManager>();
+                Controller battleCharacterComponent = player.GetComponent<Controller>();
 
                 bool contains = battleCharacterComponent.AttackContains(Interact);
                 if (battleCharacterComponent != null && !contains)
                 {
                     battleCharacterComponent.OnSelectPressed += Interact;
                 }
-            }
+         
         }
         else
         {
-            if (currentState == GameState.Overworld)
-            {
-                player.GetComponent<Character>().OnInteractEvent -= Interact;
-            }
-            else if (currentState == GameState.BattleScene)
-            {
-                player.GetComponent<InputManager>().OnSelectPressed -= Interact;
-            }
+                player.GetComponent<Controller>().OnSelectPressed -= Interact;
+          
         }
     }
 

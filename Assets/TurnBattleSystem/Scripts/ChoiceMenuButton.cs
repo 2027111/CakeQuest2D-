@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ChoiceMenuButton : MonoBehaviour
 {
     public UnityEvent OnSelected;
-
+    public ChoiceMenu thisMenu;
 
     [SerializeField] Image BackgroundImage;
     public void SelectFailed()
@@ -15,6 +15,11 @@ public class ChoiceMenuButton : MonoBehaviour
         Debug.Log("Select failed");
         StartCoroutine(DoShake(.3f, .5f));
 
+    }
+
+    public void SetMenu(ChoiceMenu choiceMenu)
+    {
+        thisMenu = choiceMenu;
     }
 
 
@@ -38,8 +43,13 @@ public class ChoiceMenuButton : MonoBehaviour
         BackgroundImage.transform.localPosition = _originalPos;
     }
 
-    public void SetColor(Color newColor)
+    public virtual void SetColor(Color newColor)
     {
         BackgroundImage.color = newColor;
+    }
+
+    public virtual void OnOver(bool isOverHanded)
+    {
+
     }
 }

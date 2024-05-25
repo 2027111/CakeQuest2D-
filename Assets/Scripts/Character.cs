@@ -12,14 +12,47 @@ public class Character : MonoBehaviour
     Movement playerMovement;
     public CharacterInventory inventory;
     public bool canGetInteract = true;
-    public bool canInteract = false;
-    public event Action OnInteractEvent;
+    public Vector2 input = Vector2.zero;
+    //public event Action OnInteractEvent;
+    public Controller inputManager;
     public Party heroParty;
 
     // Start is called before the first frame update
     private void Awake()
     {
         playerMovement = GetComponent<Movement>();
+
+        inputManager = GetComponent<Controller>();
+        if(inputManager != null)
+        {
+            ActivateControls();
+
+        }
+
+    }
+
+
+
+    public void ActivateControls()
+    {
+        inputManager.OnReturnPressed += delegate { Run(true); };
+        inputManager.OnReturnReleased += delegate { Run(false); };
+        inputManager.OnMovementHeld += Move;
+    }
+
+
+    public void Move(Vector2 input)
+    {
+        playerMovement.movementInput = input;
+    }
+
+    public void CanMove(bool v)
+    {
+        if (inputManager)
+        {
+            inputManager?.CanMove(v);
+        }
+        playerMovement.canMove = v;
     }
     void Start()
     {
@@ -161,13 +194,7 @@ public class Character : MonoBehaviour
     }
 
 
-    public void InteractPressed()
-    {
-        if (canInteract)
-        {
-            OnInteractEvent?.Invoke();
-        }
-    }
+ 
 
     private void FixedUpdate()
     {
@@ -178,7 +205,7 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
-        if (GetComponent<PlayerInputController>())
+        if (GetComponent<Controller>())
         {
             ChangeState(new PlayerControlsBehaviour());
 
@@ -196,12 +223,5 @@ public class Character : MonoBehaviour
         ChangeState(new NothingBehaviour());
     }
 
-    public bool InteractContains(Action interact)
-    {
-        if (OnInteractEvent == null)
-        {
-            return false;
-        }
-        return OnInteractEvent.GetInvocationList().Contains(interact);
-    }
+
 }

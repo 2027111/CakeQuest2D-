@@ -41,6 +41,7 @@ public class Attack : ScriptableObject
     public SkillType skillType = SkillType.Physical;
     public Element element = Element.Slash;
     public string Name;
+    public string Description = "Attack qui fait mal :)";
     public AnimationClip animationClip;
     public GameObject HitEffect;
     public int baseDamage = -10; //Negative for damage, positive for healing

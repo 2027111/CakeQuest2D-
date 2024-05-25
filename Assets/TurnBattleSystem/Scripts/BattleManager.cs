@@ -27,7 +27,6 @@ public class BattleManager : MonoBehaviour
     }
 
 
-
     public bool FastCombats;
 
     [SerializeField] TMP_Text text;
@@ -61,8 +60,6 @@ public class BattleManager : MonoBehaviour
     public List<BattleCharacter> HeroPartyActors;
     public List<BattleCharacter> EnemyPartyActors;
     public List<BattleCharacter> Actors;
-    int EnemyIndex = 0;
-    int PlayerIndex = 0;
     int turn = 0;
     int numberOfturnsTotal = 0;
     int numberOfLoops = 0;
@@ -72,12 +69,12 @@ public class BattleManager : MonoBehaviour
     }
     public bool NextActorIsSameTeam()
     {
-        return Actors[GetNextTurnIndex()].GetTeam() == GetActor().GetTeam();
+        return Actors[GetNextRealTurnIndex()].GetTeam() == GetActor().GetTeam();
     }
     public bool NextActorCanAct()
     {
 
-        return !Actors[GetNextTurnIndex()].isActing;
+        return Actors[GetNextRealTurnIndex()].CanAct();
     }
     public bool IsEnemyTurn()
     {
@@ -85,9 +82,48 @@ public class BattleManager : MonoBehaviour
     }
     public bool NextActorIsPlayer()
     {
-        return Actors[GetNextTurnIndex()].GetTeam() == TeamIndex.Player;
+        return Actors[GetNextRealTurnIndex()].GetTeam() == TeamIndex.Player;
+    }
+    public int GetActorIndex(BattleCharacter source)
+    {
+        return GetPartyOf(source).IndexOf(source);
     }
 
+    private int GetNextRealTurnIndex()
+    {
+        int firstTurn = turn;
+        int nextturn;
+        for (nextturn = turn; nextturn <= Actors.Count; nextturn++){
+
+
+            if(nextturn < Actors.Count)
+            {
+
+                if (nextturn != firstTurn)
+                {
+                    if (!GetActor(nextturn).Entity.isDead)
+                    {
+                        return nextturn;
+                    }
+                }
+            }
+            else
+            {
+
+                nextturn = -1;
+            }
+        }
+        return nextturn;
+    }
+    private int GetNextTurnIndex()
+    {
+        int nextturn = turn + 1;
+        if (nextturn >= Actors.Count)
+        {
+            nextturn = 0;
+        }
+        return nextturn;
+    }
     public List<BattleCharacter> GetPossibleTarget()
     {
         return GetPossibleTarget(GetActor().currentCommand);
@@ -191,6 +227,11 @@ public class BattleManager : MonoBehaviour
         return null;
     }
 
+
+    private BattleCharacter GetActor(int nextturn)
+    {
+        return nextturn < Actors.Count ? Actors[nextturn] : null;
+    }
     public bool IsForcedTurn()
     {
         return GetActor() != Actors[turn];
@@ -230,8 +271,6 @@ public class BattleManager : MonoBehaviour
     public void ClearStage()
     {
 
-        EnemyIndex = 0;
-        PlayerIndex = 0;
         foreach (BattleCharacter obj in Actors)
         {
             if (obj != null)
@@ -240,6 +279,36 @@ public class BattleManager : MonoBehaviour
             }
         }
         Actors.Clear();
+    }
+    public void SetActorIndex(BattleCharacter source, int targetIndex)
+    {
+        List<BattleCharacter> party = GetPartyOf(source);
+
+        if (party == null || !party.Contains(source))
+        {
+            Debug.LogError("The source character is not in the specified party.");
+            return;
+        }
+
+        // Remove the source character from its current position
+        party.Remove(source);
+
+        // Ensure the target index is within the valid range
+        targetIndex = Mathf.Clamp(targetIndex, 0, party.Count);
+
+        // Insert the source character at the target index
+        party.Insert(targetIndex, source);
+
+
+
+        UpdateActorsList();
+
+    }
+
+    public void UpdateActorsList()
+    {
+        Actors = new List<BattleCharacter>(HeroPartyActors);
+        Actors.AddRange(EnemyPartyActors);
     }
     public void SpawnEveryMember(Party party, TeamIndex index)
     {
@@ -349,38 +418,46 @@ public class BattleManager : MonoBehaviour
             currentCursor.Add(cursor);
         }
     }
+
+
+    public Vector3 GetPosition(BattleCharacter battleCharacter)
+    {
+        Vector3 direction = Vector3.left;
+        Vector3 basePosition = PlayerSpawnPoint.position;
+        int layerOrder;
+        List<BattleCharacter> currentParty = new List<BattleCharacter>();
+        if (HeroPartyActors.Contains(battleCharacter))
+        {
+            currentParty = HeroPartyActors;
+            direction = Vector3.left;
+            basePosition = PlayerSpawnPoint.position;
+        }
+        else if (EnemyPartyActors.Contains(battleCharacter))
+        {
+
+            currentParty = EnemyPartyActors;
+            direction = Vector3.right;
+            basePosition = EnemySpawnPoint.position;
+        }
+
+
+        layerOrder = currentParty.IndexOf(battleCharacter)%2;
+        basePosition += direction * currentParty.IndexOf(battleCharacter);
+        basePosition += (Vector3.down / 2) * (layerOrder);
+
+
+        return basePosition;
+
+    }
     public void SpawnCharacter(CharacterObject characterObject, TeamIndex index)
     {
         Vector2 Position = PlayerSpawnPoint.position;
         int FlipIndex = 1;
         int layerOrder = 0;
-        if (index == TeamIndex.Player)
-        {
-            Position = PlayerSpawnPoint.position;
-            Position += Vector2.left * PlayerIndex;
-            layerOrder = PlayerIndex % 2;
-            Position += (Vector2.down / 2) * (layerOrder);
-
-            PlayerIndex++;
-        }
-        else if (index == TeamIndex.Enemy)
-        {
-
-            Position = EnemySpawnPoint.position;
-            Position += Vector2.right * EnemyIndex;
-            layerOrder = EnemyIndex % 2;
-            Position += (Vector2.down / 2) * (layerOrder);
-            FlipIndex = -1;
-            EnemyIndex++;
-        }
         GameObject CharacterGameObject = Instantiate(BattlePrefab, Position, Quaternion.identity);
         BattleCharacter battleCharacterObject = CharacterGameObject.GetComponent<BattleCharacter>();
         battleCharacterObject.SetReference(characterObject);
         battleCharacterObject.Entity.OnDead += CheckTeams;
-        battleCharacterObject.Flip(FlipIndex);
-        battleCharacterObject.SetTeam(index);
-        CharacterGameObject.name = characterObject.characterData.characterName;
-        CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
         Actors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
         switch (index)
         {
@@ -392,16 +469,36 @@ public class BattleManager : MonoBehaviour
             case TeamIndex.Enemy:
                 CharacterGameObject.GetComponent<Entity>().LoadReferenceRefreshed();
                 EnemyPartyActors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
-        break;
+                FlipIndex = -1;
+                break;
 
         }
+        CharacterGameObject.transform.position = GetPosition(battleCharacterObject);
+        battleCharacterObject.Flip(FlipIndex);
+        battleCharacterObject.SetTeam(index);
+        CharacterGameObject.name = characterObject.characterData.characterName + Actors.Count;
+        CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)-CharacterGameObject.transform.position.y;
 
 
 
 
-      
 
 
+
+    }
+
+    public List<BattleCharacter> GetPartyOf(BattleCharacter battleCharacter)
+    {
+        if (HeroPartyActors.Contains(battleCharacter))
+        {
+            return HeroPartyActors;
+        }
+        else if (EnemyPartyActors.Contains(battleCharacter))
+        {
+
+            return EnemyPartyActors;
+        }
+        return null;
     }
 
 
@@ -509,16 +606,6 @@ public class BattleManager : MonoBehaviour
 
 
 
-    }
-
-    private int GetNextTurnIndex()
-    {
-        int nextturn = turn + 1;
-        if (nextturn >= Actors.Count)
-        {
-            nextturn = 0;
-        }
-        return nextturn;
     }
 
 

@@ -27,13 +27,15 @@ public class BattleCharacter : MonoBehaviour
 
 
     public Command currentCommand;
+
+
     public AnimatorController Animator;
 
     public Entity Entity;
 
 
 
-
+ 
 
     void Start()
     {
@@ -43,16 +45,6 @@ public class BattleCharacter : MonoBehaviour
         GetComponentInChildren<SpriteEvents>().SetCharacter(this);
     }
 
-    public void StopParry()
-    {
-        isParrying = false;
-    }
-
-    public void Parry()
-    {
-
-        isParrying = true;
-    }
 
     private void Update()
     {
@@ -87,6 +79,10 @@ public class BattleCharacter : MonoBehaviour
         return currentCharacter;
     }
 
+    public bool CanAct()
+    {
+        return !isActing;
+    }
 
     public Command CreateCommand()
     {
@@ -100,11 +96,11 @@ public class BattleCharacter : MonoBehaviour
             Attack attack = GetRandomAttack();
             if (attack)
             {
-                return new AttackCommand();
+                return new SkillCommand(attack);
             }
             else
             {
-                return new SkillCommand(GetRandomAttack());
+                return new AttackCommand();
             }
         }
     }
@@ -132,8 +128,36 @@ public class BattleCharacter : MonoBehaviour
         return GetReference().Attacks;
     }
 
+    public void StartParryWindow()
+    {
+        StartCoroutine(Parry(GetReference().GetParryWindowTime()));
+    }
+    IEnumerator Parry(float duration)
+    {
+        Parry();
+        float t = 0;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            yield return null;
+        }
 
 
+        StopParry();
+    }
+
+    public void StopParry()
+    {
+        isParrying = false;
+        GetComponentInChildren<SpriteRenderer>().color = Color.white;
+    }
+
+    public void Parry()
+    {
+
+        isParrying = true;
+        GetComponentInChildren<SpriteRenderer>().color = Color.red;
+    }
     public bool IsPlayerTeam()
     {
         return GetComponent<TeamComponent>().teamIndex == TeamIndex.Player;
@@ -196,7 +220,8 @@ public class BattleCharacter : MonoBehaviour
 
     public bool IsTargetted()
     {
-        return BattleManager.Singleton.GetCurrentTarget().Contains(this);
+        List<BattleCharacter> targets = BattleManager.Singleton.GetCurrentTarget();
+        return targets.Count > 0? targets.Contains(this):false;
     }
 
     public void SetTeam(TeamIndex index)

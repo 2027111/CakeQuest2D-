@@ -25,29 +25,13 @@ public class SpriteEvents : MonoBehaviour
 
     public void StartParryWindow()
     {
-        float duration = .15f;
-        StartCoroutine(Parry(duration));
+        character.StartParryWindow();
     }
 
-    IEnumerator Parry(float duration)
-    {
-        character.Parry();
-        GetComponent<SpriteRenderer>().color = Color.red;
-        float t = 0;
-        while(t < duration)
-        {
-            t += Time.deltaTime;
-            yield return null;
-        }
 
-
-        character.StopParry();
-        GetComponent<SpriteRenderer>().color = Color.white;
-    }
 
     public void SummonObjectOnTarget(int objectIndex)
     {
-        Debug.Log(objectIndex);
         Command c = character.currentCommand;
         if(c is SkillCommand)
         {
@@ -60,7 +44,7 @@ public class SpriteEvents : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>(ObjectName);
         if (prefab != null)
         {
-            GameObject instantiatedObject = Instantiate(prefab, c.Target[0].transform.position, Quaternion.identity);
+            GameObject instantiatedObject = Instantiate(prefab, c.Target[0].transform);
             Spell spellComponent = instantiatedObject.GetComponent<Spell>();
             Stop();
             if (spellComponent != null)

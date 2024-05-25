@@ -18,8 +18,9 @@ MonoBehaviour:
   skillType: 1
   element: 5
   Name: Slice & Dice
+  Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
   baseDamage: -5
   baseAccuracy: 100
   manaCost: 2

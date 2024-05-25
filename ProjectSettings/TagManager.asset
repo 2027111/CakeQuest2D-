@@ -14,14 +14,14 @@ TagManager:
   - Water
   - UI
   - Objects
-  - Ground
-  - Invincible
+  - 
+  - 
   - BattleCharacter
-  - Projectile
   - 
   - 
-  - Dead
-  - Walls
+  - 
+  - 
+  - 
   - BackGround
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2711571155
     locked: 0

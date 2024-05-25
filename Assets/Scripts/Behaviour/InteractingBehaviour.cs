@@ -13,7 +13,7 @@ public class InteractingBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        character.canInteract = true;
+        character.inputManager.CanInteract(true);
     }
 
 
@@ -25,7 +25,7 @@ public class InteractingBehaviour : CharacterBehaviour
 
     public override void OnExit()
     {
-        character.canInteract = false;
+        character.inputManager.CanInteract(false);
 
     }
 

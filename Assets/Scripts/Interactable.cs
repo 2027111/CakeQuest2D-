@@ -31,6 +31,10 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (enabled)
+        {
+
         if (collision.CompareTag("Player"))
         {
             player = collision.gameObject;
@@ -46,6 +50,7 @@ public class Interactable : MonoBehaviour
             {
                 player = null;
             }
+            }
         }
     }
     public void ManageInteraction(GameObject character, bool add)
@@ -55,12 +60,12 @@ public class Interactable : MonoBehaviour
             if (add)
             {
 
-                player.GetComponent<Character>().OnInteractEvent += InteractionInvoke;
+                player.GetComponent<Controller>().OnSelectPressed += InteractionInvoke;
             }
             else
             {
 
-                player.GetComponent<Character>().OnInteractEvent -= InteractionInvoke;
+                player.GetComponent<Controller>().OnSelectPressed -= InteractionInvoke;
             }
         }
     }
@@ -75,6 +80,8 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (this.enabled)
+        {
         if (collision.CompareTag("Player"))
         {
             if(player != null)
@@ -86,6 +93,8 @@ public class Interactable : MonoBehaviour
 
                 player = null;
             }
+            }
+
         }
     }
 
@@ -98,11 +107,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+
+
     public void Disable()
     {
         if (player)
         {
-            player.GetComponent<Character>().OnInteractEvent -= InteractionInvoke;
+            ManageInteraction(player, false);
+            player.GetComponent<Character>().SetInteraction(true);
             ContextClue(false);
             player = null;
         }

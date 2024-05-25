@@ -10,9 +10,8 @@ public class PerformActionState : BattleState
     {
         base.OnEnter(_battleManager);
         battleManager.SetCursor(null);
-
        
-        if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer())
+        if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer() || !battleManager.GetActor().currentCommand.skippable)
         {
 
             battleManager.GetActor().currentCommand.OnExecuted += PerformanceOver;
@@ -29,9 +28,8 @@ public class PerformActionState : BattleState
     public override void Handle()
     {
 
-        if (battleManager.NextActorCanAct() && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
+        if (battleManager.GetActor().currentCommand.skippable&&battleManager.NextActorCanAct() && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
         {
-
             PerformanceOver();
 
         }
@@ -113,7 +111,6 @@ public class PerformActionState : BattleState
     {
         if (battleManager.IsEnemyTurn())
         {
-            Debug.Log("Block");
             foreach(BattleCharacter bc in battleManager.HeroPartyActors)
             {
                 if (!bc.isActing && bc.IsTargetted())
@@ -129,7 +126,6 @@ public class PerformActionState : BattleState
     {
         if (battleManager.IsEnemyTurn())
         {
-            Debug.Log("Stopped block");
             foreach (BattleCharacter bc in battleManager.HeroPartyActors)
             {
 

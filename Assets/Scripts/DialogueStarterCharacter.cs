@@ -19,9 +19,7 @@ public class DialogueStarterCharacter : NewDialogueStarterObject
         {
             character = GetComponent<Character>();
             defaultBehaviourType = character.GetCurrentBehaviour().GetType();
-            Debug.Log(defaultBehaviourType);
             character.ChangeState(new NothingBehaviour());
-            Debug.Log(character.GetCurrentBehaviour().GetType());
             character.LookAt(player.gameObject);
             base.DialogueAction();
         }
@@ -30,8 +28,8 @@ public class DialogueStarterCharacter : NewDialogueStarterObject
     public override void DialogueOver()
     {
         // Change the state back to the original default behavior
+        Debug.Log(defaultBehaviourType);
         character.ChangeState(Activator.CreateInstance(defaultBehaviourType) as CharacterBehaviour);
-        Debug.Log("Test");
         base.DialogueOver();
     }
 }

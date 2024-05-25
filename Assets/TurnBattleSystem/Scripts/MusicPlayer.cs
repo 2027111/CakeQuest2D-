@@ -97,6 +97,9 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator TransitioningSong(AudioClip song, bool loops = false)
     {
+        if(audioSource.clip != song)
+        {
+
         while (_transitioning)
         {
             yield return null;
@@ -126,6 +129,7 @@ public class MusicPlayer : MonoBehaviour
 
         audioSource.volume = 1; // Ensure the volume is exactly 1
         _transitioning = false;
+        }
     }
 
 

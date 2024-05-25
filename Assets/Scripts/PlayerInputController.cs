@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputController : MonoBehaviour
 {
-    public Vector2 input;
 
+    public Vector2 input;
     Character pm;
 
 
@@ -66,6 +66,5 @@ public class PlayerInputController : MonoBehaviour
     {
         // Implement your interaction logic here
         // For example, interact with an object in the game world.
-        pm.InteractPressed();
     }
 }

@@ -66,7 +66,23 @@
         },
         {
             "dataId": "Tuto_Yankee_001",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilises W-A-S-D pour bouger et sauter dans l'espace.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilises W-A-S-D pour naviguer et te décider.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Tu as le choix entre attaquer, utiliser une compétence et changer de position. Vasy! Essaye!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Si tu te demandes, je n'ai pas besoin d'attendre la fin de ton tours pour attaquer. On peut lui sauter dessus.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Cependant si tu élimines ma cible avant que je l'attaque, je ne pourrai pas changer de cible et j'aurai gaspillé un tour.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
         },
         {
             "dataId": "Misc_Heal_Question",

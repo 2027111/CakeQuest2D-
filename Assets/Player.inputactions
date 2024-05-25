@@ -111,6 +111,17 @@
                 },
                 {
                     "name": "",
+                    "id": "377eab62-5909-4e85-a5bd-a54bb47d4b45",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ControllerControls",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b374c225-b33a-40da-b337-6363bd65ae7d",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -287,6 +298,17 @@
                     "name": "",
                     "id": "a26dc18f-8c0f-4764-b1b7-c7a728e25e88",
                     "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "ControllerControls",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f739581-dcb9-4ff9-8001-ecfd29130f06",
+                    "path": "<Gamepad>/dpad",
                     "interactions": "",
                     "processors": "",
                     "groups": "ControllerControls",

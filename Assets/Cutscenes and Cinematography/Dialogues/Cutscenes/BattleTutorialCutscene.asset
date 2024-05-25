@@ -15,13 +15,17 @@ MonoBehaviour:
   RuntimeValue: 1
   repeats: 0
   dialogue:
-  - dialogueLines:
-    - {fileID: 11400000, guid: b6c4505a56130804fbe33536b07741ab, type: 2}
-    - {fileID: 11400000, guid: c975daf8cfcae8e479c914d9bbaebf17, type: 2}
-    - {fileID: 11400000, guid: 4401c2c3a508c28429e9afe96e8daead, type: 2}
+  - dialogueLineIds:
+    - Tuto_Yankee_000
+    - Tuto_Yankee_001
+    - Tuto_Yankee_002
+    - Tuto_Yankee_003
+    - Tuto_Yankee_004
+    - Tuto_Yankee_005
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
+    source: {fileID: 0}
   dialogueIndex: 0
   StartRoom: {fileID: 0}

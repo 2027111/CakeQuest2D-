@@ -9,7 +9,6 @@ public class SwappingMenu : ChoiceMenu
 
     public GameObject ButtonPrefab;
     GameObject SwappingButton = null;
-    public int actorsIndex;
 
 
 
@@ -73,7 +72,7 @@ public class SwappingMenu : ChoiceMenu
             {
                 SwapCommand swapCommand = new SwapCommand();
                 swapCommand.SetSource(BattleManager.Singleton.GetActor());
-                swapCommand.SetTargetIndex(actorsIndex);
+                swapCommand.SetTargetIndex(currentButton);
                 BattleManager.Singleton.GetActor().currentCommand = swapCommand;
                 BattleManager.Singleton.ChangeState(new PerformActionState());
             }

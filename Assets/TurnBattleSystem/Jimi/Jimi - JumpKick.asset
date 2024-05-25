@@ -18,8 +18,9 @@ MonoBehaviour:
   skillType: 0
   element: 1
   Name: Spin Kick
+  Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: f2f497375e757b849b83449cc4b32237, type: 2}
-  HitEffect: {fileID: 0}
+  HitEffect: {fileID: 100004, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
   baseDamage: -8
   baseAccuracy: 100
   manaCost: 14

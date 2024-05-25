@@ -18,11 +18,13 @@ public class InputManager : Controller
     }
     public void SetMove(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            wasdInput = context.ReadValue<Vector2>();
-            OnMovement?.Invoke(wasdInput);
-        }
+            Vector2 wasdInput = context.ReadValue<Vector2>();
+            if (context.started)
+            {
+                OnMovement?.Invoke(wasdInput);
+            }
+            OnMovementHeld?.Invoke(wasdInput);
+        
     }
 
     private void OnDestroy()
@@ -31,14 +33,7 @@ public class InputManager : Controller
         Destroy(GetComponent<PlayerInput>());
     }
 
-    public bool AttackContains(Action interact)
-    {
-        if (OnSelectPressed == null)
-        {
-            return false;
-        }
-        return OnSelectPressed.GetInvocationList().Contains(interact);
-    }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -77,6 +72,15 @@ public class InputManager : Controller
         }
         attack = context.action.triggered;
     }
+    public void OnPause(InputAction.CallbackContext callback)
+    {
+        // Check if the interaction is a press (button down)
+        if (callback.started)
+        {
+            Debug.Log("Pause");
 
+            PauseManager.Singleton?.OnPausePressed();
+        }
+    }
 
 }

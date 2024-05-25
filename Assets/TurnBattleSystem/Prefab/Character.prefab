@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3887754998104906757}
   - component: {fileID: 744464202}
   - component: {fileID: 8598499224373639702}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: idle_strip9_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 8539224105758355332}
   - component: {fileID: -5750146270242861326}
   - component: {fileID: 6598031230574354759}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,13 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCharacter: {fileID: 0}
-  Speed: 50
-  Health: 50
-  Mana: 50
-  Focus: 0
   currentState: 0
   _target: {fileID: 0}
   isActing: 0
+  isBlocking: 0
+  isParrying: 0
   Animator: {fileID: 8539224105758355332}
   Entity: {fileID: 6598031230574354759}
 --- !u!114 &8539224105758355332
@@ -228,4 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastAttacker: {fileID: 0}
+  Speed: 50
+  Health: 50
+  Mana: 50
+  Focus: 0
+  MaxFocus: 10
   isDead: 0

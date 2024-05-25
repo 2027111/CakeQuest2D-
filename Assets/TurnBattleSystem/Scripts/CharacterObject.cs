@@ -21,6 +21,7 @@ public class CharacterObject : ScriptableObject
     public int Speed;
     public int AttackDamage;
     public int ManaDamage;
+    public float parryWindow = .15f;
 
     [Space(20)]
     public bool isDead;
@@ -28,10 +29,13 @@ public class CharacterObject : ScriptableObject
     [Space(20)]
     public Element AttackElement;
     [Space(20)]
+
     public List<ElementalAttribute> elementalAttributes;
 
+    [Space(40)]
     public List<Attack> Attacks;
 
+    [Space(20)]
     public AnimatorOverrideController animationController;
 
 
@@ -53,5 +57,10 @@ public class CharacterObject : ScriptableObject
             }
         }
         return ElementEffect.Neutral;
+    }
+
+    public float GetParryWindowTime()
+    {
+        return parryWindow;
     }
 }

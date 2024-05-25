@@ -21,14 +21,14 @@ public class SkillMenu : ChoiceMenu
             button.GetComponent<ChoiceMenuButton>().OnSelected.AddListener(TriggerSkill);
             button.GetComponent<SkillButton>().SetSkill(obj);
             buttons.Add(button.gameObject);
+            button.GetComponent<SkillButton>().SetMenu(this);
 
         }
         DefaultSelect();
     }
 
-    public void EnableGridLayout(bool on)
+    public void ResetGridLayour()
     {
-        GetComponent<GridLayoutGroup>().enabled = on;
     }
     public void TriggerSkill()
     {

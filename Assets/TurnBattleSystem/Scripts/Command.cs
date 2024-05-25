@@ -6,9 +6,11 @@ using UnityEngine;
 public class Command
 {
 
+    public Vector3 startPosition;
     public BattleCharacter Source;
     public List<BattleCharacter> Target;
     public bool friendly = false;
+    public bool skippable = true;
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
     public Command()
@@ -45,5 +47,50 @@ public class Command
         Target = _target;
     }
 
-    
+    public IEnumerator GoToOriginalPosition()
+    {
+        Vector3 currentPosition = Source.transform.position;
+        float t = 0;
+        Source.Animator.Move(true);
+        while (t < .5f)
+        {
+
+            Source.transform.position = Vector3.Lerp(currentPosition, BattleManager.Singleton.GetPosition(Source), t / .5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        Source.Animator.Move(false);
+
+    }
+    public IEnumerator GoToOriginalPosition(BattleCharacter bc)
+    {
+        Vector3 currentPosition = bc.transform.position;
+        float t = 0;
+        bc.Animator.Move(true);
+        while (t < .5f)
+        {
+
+            bc.transform.position = Vector3.Lerp(currentPosition, BattleManager.Singleton.GetPosition(bc), t / .5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        bc.Animator.Move(false);
+    }
+
+    public IEnumerator GoToEnemy()
+    {
+        Vector3 pos = Source.transform.position;
+        float t = 0;
+
+        Source.Animator.Move(true);
+
+        Vector3 diff = (Target[0].transform.position - Source.transform.position).normalized;
+        while (t < .5f)
+        {
+            Source.transform.position = Vector3.Lerp(pos, Target[0].transform.position - diff * 1.5f, t / .5f);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        Source.Animator.Move(false);
+    }
 }

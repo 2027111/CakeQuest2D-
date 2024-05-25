@@ -66,7 +66,7 @@ public class SwapingState : BattleState
         }
 
 
-        choiceMenu.GetComponent<SwappingMenu>().AddButtons(battleManager.Actors);
+        choiceMenu.GetComponent<SwappingMenu>().AddButtons(battleManager.GetPartyOf(battleManager.GetActor()));
     }
     public override void OnExit()
     {

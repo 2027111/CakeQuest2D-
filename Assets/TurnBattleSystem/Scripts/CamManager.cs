@@ -69,6 +69,7 @@ public class CamManager : MonoBehaviour
     }
     private IEnumerator DoPan(Vector3 position, float duration)
     {
+
         Vector3 start = _cameraTransform.position;
         float elapsed = 0.0f;
         while (elapsed < duration)
@@ -84,4 +85,12 @@ public class CamManager : MonoBehaviour
         _cameraTransform.localPosition = position;
     }
 
+
+    public static IEnumerator DoPan(Vector3 position, float duration, float timeUntilReset)
+    {
+        Vector3 newPos = new Vector3(position.x, position.y + 1, _instance.zoomDistance);
+        yield return _instance.StartCoroutine(_instance.DoPan(newPos,  duration));
+        yield return new WaitForSeconds(timeUntilReset);
+        yield return _instance.StartCoroutine(_instance.DoPan(_instance._originalPos, duration));
+    }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1526155034723784797}
   - component: {fileID: 1526155034723784798}
   - component: {fileID: 2815997285119376590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Skills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +105,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  thisMenu: {fileID: 0}
   BackgroundImage: {fileID: 1526155034723784798}
 --- !u!1 &1526155035411870090
 GameObject:
@@ -117,7 +118,7 @@ GameObject:
   - component: {fileID: 1526155035411870089}
   - component: {fileID: 1526155035411870087}
   - component: {fileID: 1526155035411870088}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +253,7 @@ GameObject:
   - component: {fileID: 1526155035540163100}
   - component: {fileID: 1526155035540163098}
   - component: {fileID: 1526155035540163099}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +389,7 @@ GameObject:
   - component: {fileID: 1526155035782644902}
   - component: {fileID: 1526155035782644903}
   - component: {fileID: 721322424460860295}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,6 +482,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  thisMenu: {fileID: 0}
   BackgroundImage: {fileID: 1526155035782644903}
 --- !u!1 &1526155035950022826
 GameObject:
@@ -496,7 +498,7 @@ GameObject:
   - component: {fileID: 1526155035950022825}
   - component: {fileID: 689963635531010738}
   - component: {fileID: 6611176140307600098}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BattleMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +512,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526155035950022826}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -520,11 +522,11 @@ RectTransform:
   - {fileID: 4295529132376103531}
   - {fileID: 7766338765200972296}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -5.830017, y: -2.4400024}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1526155035950022823
@@ -546,8 +548,8 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: -1583396141
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!114 &1526155035950022824
 MonoBehaviour:
@@ -571,7 +573,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1526155035950022825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +645,7 @@ GameObject:
   - component: {fileID: 8989771652218678722}
   - component: {fileID: 146115261487508899}
   - component: {fileID: 953104653420844857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +780,7 @@ GameObject:
   - component: {fileID: 8937288489364375826}
   - component: {fileID: 694645470933324608}
   - component: {fileID: 6526291064216048060}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -914,7 +916,7 @@ GameObject:
   - component: {fileID: 4364344116151004710}
   - component: {fileID: 7870546010902714859}
   - component: {fileID: 3734636455886497257}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Defend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1007,6 +1009,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  thisMenu: {fileID: 0}
   BackgroundImage: {fileID: 7870546010902714859}
 --- !u!1 &7979298228738720010
 GameObject:
@@ -1020,7 +1023,7 @@ GameObject:
   - component: {fileID: 458845733738945619}
   - component: {fileID: 5852972366651726190}
   - component: {fileID: 2158167459395639863}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Swap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,4 +1116,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  thisMenu: {fileID: 0}
   BackgroundImage: {fileID: 5852972366651726190}

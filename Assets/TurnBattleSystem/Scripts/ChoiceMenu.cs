@@ -37,11 +37,13 @@ public class ChoiceMenu : MonoBehaviour
         if (SelectedButton)
         {
             SelectedButton.GetComponent<ChoiceMenuButton>().SetColor(defaultColor);
+            SelectedButton.GetComponent<ChoiceMenuButton>().OnOver(false);
         }
         SelectedButton = gameObject;
         if (SelectedButton)
         {
             SelectedButton.GetComponent<ChoiceMenuButton>().SetColor(selectedColor);
+            SelectedButton.GetComponent<ChoiceMenuButton>().OnOver(true);
         }
     }
 
