@@ -30,19 +30,12 @@ public enum TargetStateType
 
 
 [CreateAssetMenu(fileName = "Basic Skill", menuName = "Skills/BaseSkill")]
-public class Skill : ScriptableObject
+public class Skill : IActionData
 {
-
-    public TargetType targetType = TargetType.Single;
-    public Friendliness friendliness = Friendliness.Non_Friendly;
-    public TargetStateType targetStateType = TargetStateType.Alive;
     public SkillType skillType = SkillType.Physical;
-    public Element element = Element.Slash;
     public string Name;
     public string Description = "Attack qui fait mal :)";
     public AnimationClip animationClip;
-    public List<GameObject> HitEffect;
-    public List<AudioClip> SoundEffect;
     public string voiceClipId;
     public int baseDamage = -10; //Negative for damage, positive for healing
     [Range(50, 100)]
@@ -56,10 +49,6 @@ public class Skill : ScriptableObject
 
     public int turnTilTriggered = 0;
     public int turnTilActive = 0;
-    public bool GetFriendly()
-    {
-        return friendliness == Friendliness.Friendly;
-    }
 
 
     public override string ToString()
@@ -85,25 +74,7 @@ public class Skill : ScriptableObject
         return null;
     }
 
-    public GameObject GetHitEffect()
-    {
-        if (HitEffect.Count > 0)
-        {
-            return HitEffect[Random.Range(0, HitEffect.Count)];
-        }
-        return null;
-                
-    }
 
-    public AudioClip GetSoundEffect()
-    {
-        if (SoundEffect.Count > 0)
-        {
-            return SoundEffect[Random.Range(0, SoundEffect.Count)];
-        }
-        return null;
-
-    }
 
     public virtual void UseSkill(BattleCharacter Source, List<BattleCharacter> Target)
     {
@@ -136,5 +107,10 @@ public class Skill : ScriptableObject
             }
 
         }
+    }
+
+    public override int GetAmount()
+    {
+        return baseDamage;
     }
 }

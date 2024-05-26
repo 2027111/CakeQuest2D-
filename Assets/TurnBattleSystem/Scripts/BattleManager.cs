@@ -32,6 +32,7 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] TMP_Text DebugBattleStateText;
     [SerializeField] TMP_Text battleControlText;
+    [SerializeField] TMP_Text battleIndicationText;
 
 
 
@@ -85,6 +86,11 @@ public class BattleManager : MonoBehaviour
     {
         battleControlText.text = v;
     }
+    public void SetIndicationText(string v)
+    {
+        battleIndicationText.text = v;
+    }
+
 
     public BattleCharacter GetActor()
     {

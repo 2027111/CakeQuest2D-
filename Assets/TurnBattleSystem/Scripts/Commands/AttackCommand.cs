@@ -50,7 +50,7 @@ public class AttackCommand : Command
         {
             CharacterObject characterObject = target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            target?.Entity.AddToHealth(null, elementEffect, Source);
+            target?.Entity.AddToHealth((Skill)null, elementEffect, Source);
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         }

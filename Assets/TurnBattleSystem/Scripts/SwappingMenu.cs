@@ -64,7 +64,7 @@ public class SwappingMenu : ChoiceMenu
     public void TriggerSkill()
     {
 
-            if (BattleManager.Singleton.Actors.IndexOf(BattleManager.Singleton.GetActor()) == currentButton)
+            if (BattleManager.Singleton.Actors.IndexOf(BattleManager.Singleton.GetActor()) == currentButton ||!BattleManager.Singleton.Actors[currentButton].CanAct())
             {
                 SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
             }

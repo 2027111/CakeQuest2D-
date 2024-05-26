@@ -39,6 +39,10 @@ public class Entity : MonoBehaviour
         {
             Mana += amount;
         }
+        if(amount > 0)
+        {
+            GetComponent<TextEffect>().SpawnTextEffect(amount);
+        }
         if (character)
         {
             OnManaChange?.Invoke(Mana, character.GetReference().MaxMana);
@@ -118,7 +122,7 @@ public class Entity : MonoBehaviour
             OnHealthChange?.Invoke(Health, character.GetReference().MaxHealth);
         }
     }
-    public void AddToHealth(Skill attack, ElementEffect effect, BattleCharacter source = null)
+    public void AddToHealth(IActionData attack, ElementEffect effect, BattleCharacter source = null)
     {
 
 
@@ -126,7 +130,7 @@ public class Entity : MonoBehaviour
 
         if (attack)
         {
-            amount = attack.element == Element.Support?attack.baseDamage:-attack.baseDamage;
+            amount = attack.element == Element.Support?attack.GetAmount():-attack.GetAmount();
         }
 
 
@@ -196,6 +200,73 @@ public class Entity : MonoBehaviour
             if (attack?.GetSoundEffect() != null)
             {
                 source.PlaySFX(attack.GetSoundEffect());
+            }
+            else
+            {
+                if (source.GetReference().GetSoundEffect() != null)
+                {
+                    source.PlaySFX(source.GetReference().GetSoundEffect());
+                }
+            }
+
+        }
+        AddToHealth(amount);
+
+        // Invoke the damage taken event
+        OnDamageTaken.Invoke(amount, effect, source);
+    }
+
+    public void AddToHealth(HealthEffectItem item, ElementEffect effect, BattleCharacter source = null)
+    {
+
+
+        int amount = 0;
+        if (item)
+        {
+            amount = item.element == Element.Support ? item.healthEffectAmount : -item.healthEffectAmount;
+        }
+
+
+
+
+
+
+
+        if (character.isBlocking)
+        {
+            amount /= 2;
+        }
+
+
+        if (character.isParrying)
+        {
+            AddFocus((Mathf.Abs(amount) / 2));
+            amount = 0;
+            character.StopBlock();
+            character.Animator.Parry();
+            character.PlaySFX(Resources.Load<AudioClip>("39_Block_03"));
+            StartCoroutine(Utils.SlowDown(1.1f, .3f));
+            //StartCoroutine(CamManager.DoPan(character.transform.position, .05f, 1.1f* .3f));
+        }
+
+
+        if (amount != 0)
+        {
+
+            if (item?.GetHitEffect() != null)
+            {
+                Instantiate(item.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+            }
+            else
+            {
+                if (source.GetReference().GetHitEffect() != null)
+                {
+                    Instantiate(source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                }
+            }
+            if (item?.GetSoundEffect() != null)
+            {
+                source.PlaySFX(item.GetSoundEffect());
             }
             else
             {

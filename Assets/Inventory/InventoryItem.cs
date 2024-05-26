@@ -13,7 +13,7 @@ public enum ItemType
 }
 [System.Serializable]
 [CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Items")]
-public class InventoryItem : ScriptableObject
+public class InventoryItem : IActionData
 {
 
     public string itemName;

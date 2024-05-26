@@ -36,7 +36,6 @@ public class ItemButton : ChoiceMenuButton
 
 
         itemNameText.text = storedItem.itemName;
-        itemDescText.text = storedItem.itemDescription;
         itemAmountText.text = "x" + itemAmount.ToString();
         Sprite itemSprite = storedItem.itemSprite;
         if (itemSprite)
@@ -47,13 +46,7 @@ public class ItemButton : ChoiceMenuButton
 
     public override void OnOver(bool isOverHanded)
     {
-        RectTransform trans = transform.GetComponent<RectTransform>();
-        Vector2 vec = baseSize;
-        if (isOverHanded)
-        {
-            vec = new Vector2(baseSize.x, baseSize.y * 2f);
-        }
-        trans.sizeDelta = vec;
+        BattleManager.Singleton.SetIndicationText(storedItem.itemDescription);
 
     }
 

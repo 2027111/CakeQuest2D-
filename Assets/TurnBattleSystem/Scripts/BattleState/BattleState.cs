@@ -26,6 +26,7 @@ public abstract class BattleState
         InputManager.inputManager.OnSelectReleased -= OnSelectReleased;
         InputManager.inputManager.OnReturnReleased -= OnBackReleased;
         InputManager.inputManager.OnMovement -= OnNavigate;
+        BattleManager.Singleton.SetIndicationText("");
     }
     public virtual void OnSelectReleased()
     {

@@ -281,6 +281,38 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: indicationText
+      value: Cook up your enemies with your skills!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 689963635531010738}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenSkillMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
@@ -394,6 +426,38 @@ PrefabInstance:
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 689963635531010738}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: indicationText
+      value: Normal attack your enemies!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 689963635531010738}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
@@ -519,6 +583,38 @@ PrefabInstance:
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Swap
       objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: indicationText
+      value: Swap position with an ally!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 689963635531010738}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Swap
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
@@ -643,6 +739,38 @@ PrefabInstance:
     - target: {fileID: 4437528856367729043, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OpenItemMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: indicationText
+      value: Use items to support your party!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 689963635531010738}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenItemMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BattleMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

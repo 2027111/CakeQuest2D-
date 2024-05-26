@@ -77,12 +77,15 @@ public class ChoosingTargetState : BattleState
                 target.Add(character);
                 battleManager.SetCursor(character);
                 CamManager.PanToCharacter(character);
+                BattleManager.Singleton.SetIndicationText("Target " + character.name);
             }
             else
             {
                 battleManager.SetCursor(character, false);
                 CamManager.ResetView();
-            }
+
+            BattleManager.Singleton.SetIndicationText("Target everyone");
+        }
     }
 
 
