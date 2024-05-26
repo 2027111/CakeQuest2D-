@@ -29,7 +29,7 @@ public class TextEffect : MonoBehaviour
 
 
             Vector3 position = GetDamageTextPosition();
-            SpawnTextEffect("Blocked", Color.white, position);
+            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("blocked"), Color.white, position);
 
 
         } else
@@ -54,11 +54,12 @@ public class TextEffect : MonoBehaviour
                     switch (elementEffect)
                     {
                         case ElementEffect.Weak:
-                            SpawnTextEffect("Weak!!", Color.red, newposition, 2f);
+                                    
+                            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("weak"), Color.red, newposition, 2f);
                             break;
 
                         case ElementEffect.Resistant:
-                            SpawnTextEffect("Resist!!", Color.blue, newposition, 2f);
+                            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("resist"), Color.blue, newposition, 2f);
                             break;
                     }
 
@@ -81,11 +82,16 @@ public class TextEffect : MonoBehaviour
     {
         return transform.position + 1.2f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
     }
-    public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = .8f)
+    public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = 1.2f)
     {
         TextObject textObject = Instantiate(TextObjectPrefab, position, Quaternion.identity).GetComponent<TextObject>();
         textObject.Setup(text, color, duration);
 
+    }
+
+    public void SpawnTextEffect(string text, Color color)
+    {
+        SpawnTextEffect(text, color, GetAspectTextPosition());
     }
 
 

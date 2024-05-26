@@ -11,11 +11,11 @@ public class ManaEffectItem : BattleItem
     {
         return manaEffectAmount;
     }
-    public override void BattleUse(List<BattleCharacter> Target)
+    public override void BattleUse(List<BattleCharacter> Target, CharacterInventory inventory = null)
     {
         foreach (BattleCharacter target in Target)
         {
-            target?.Entity.AddToMana(manaEffectAmount);
+            target?.Entity.AddToMana(this, BattleManager.Singleton.GetActor());
         }
     }
 }

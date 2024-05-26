@@ -34,8 +34,14 @@ public class SkillButton : ChoiceMenuButton
 
     public override void OnOver(bool isOverHanded)
     {
-        BattleManager.Singleton.SetIndicationText("Type : " + storedSkill.element.ToString() + " | " + storedSkill.Description + " | Does " + storedSkill.baseDamage + " damage points every hit");
+        if (isOverHanded)
+        {
+            BattleManager.Singleton.SetIndicationText("Type : " + storedSkill.element.ToString() + " | " + storedSkill.Description + " | Does " + storedSkill.baseDamage + " damage points every hit");
 
+            //string t = LanguageData.GetDataById("Indications").GetValueByKey(indicationText);
+            //BattleManager.Singleton.SetIndicationText(t);
+        }
+        
     }
 
 

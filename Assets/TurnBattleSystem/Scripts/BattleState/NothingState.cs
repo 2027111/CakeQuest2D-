@@ -11,10 +11,7 @@ public class NothingState : BattleState
         battleManager.SetCursor(null);
     }
 
-    public override void ShowControls()
-    {
-        battleManager.SetControlText("Left Click -> Next");
-    }
+
     public override void Handle()
     {
         base.Handle();

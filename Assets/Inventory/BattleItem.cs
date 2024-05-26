@@ -8,7 +8,7 @@ using UnityEngine.Events;
 public class BattleItem : InventoryItem
 {
 
-    public override void BattleUse(List<BattleCharacter> target)
+    public override void BattleUse(List<BattleCharacter> target, CharacterInventory inventory = null)
     {
         Debug.Log("Yus");
     }

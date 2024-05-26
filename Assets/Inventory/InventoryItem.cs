@@ -24,15 +24,21 @@ public class InventoryItem : IActionData
     public bool unique;
 
 
-    public virtual void BattleUse(List<BattleCharacter> target)
+    public virtual void BattleUse(List<BattleCharacter> target, CharacterInventory inventory = null)
     {
-        Debug.Log("Does Nothing");
+        if (inventory)
+        {
+            inventory.RemoveFromInventory(this);
+        }
     }
 
 
-    public virtual void OverWorldUse(List<CharacterObject> target)
+    public virtual void OverWorldUse(List<CharacterObject> target, CharacterInventory inventory = null)
     {
-        Debug.Log("Does Nothing");
+        if (inventory)
+        {
+            inventory.RemoveFromInventory(this);
+        }
     }
 
 }

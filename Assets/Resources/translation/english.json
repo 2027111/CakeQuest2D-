@@ -5,8 +5,12 @@
             "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave\",\"settings\":\"Settings\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Main Menu\",\"resume\":\"Resume\",\"save\":\"Save\"}"
         },
         {
-            "dataId": "ChestLocked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"The chest is locked... You would need {requirementAmount} {lockRequirement.itemName} to open it.\"}"
+            "dataId": "Indications",
+            "jsonData": "{\"attack\":\"Normal attack your enemies!\",\"skill\":\"Cook up your enemies with your skills!\",\"item\":\"Use items to support your party!\",\"swap\":\"Swap position with an ally!\",\"resist\":\"Resisted\",\"weak\":\"Weak\",\"blocked\":\"Blocked\",\"miss\":\"Miss\",\"null\":\"Nullified\",\"targetOne\":\"Target\",\"targetAllEnemy\":\"Target all the enemies\",\"targetAllFriend\":\"Target all your allies\"}"
+        },
+        {
+            "dataId": "ControlScheme",
+            "jsonData": "{\"BattleState\":\"WASD to navigate | Left Click to Select | Right Click to Return\",\"ChoosingActionState\":\"WASD to navigate | Left Click to Select Action\",\"ChoosingItemState\":\"WASD to navigate | Left Click to Select Item | Right Click to return\",\"ChoosingSkillState\":\"WASD to navigate | Left Click to Select Skill | Right Click to return\",\"ChoosingTargetState\":\"WASD to change target | Left Click to confirm target(s) | Right Click to return\",\"CutsceneState\":\"Left Click -> Next\",\"NothingState\":\" ... \",\"PerformActionState\":\"Right Click -> Block\",\"SwapingState\":\"\"}"
         },
         {
             "dataId": "ChestOpened",

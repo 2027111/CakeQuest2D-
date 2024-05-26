@@ -84,11 +84,12 @@ public class BattleManager : MonoBehaviour
 
     public void SetControlText(string v)
     {
-        battleControlText.text = v;
+            battleControlText.text = v;
     }
     public void SetIndicationText(string v)
     {
-        battleIndicationText.text = v;
+            battleIndicationText.text = v;
+        
     }
 
 

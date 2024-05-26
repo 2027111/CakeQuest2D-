@@ -100,7 +100,8 @@ public class LanguageData
     {
         if(Singleton == null)
         {
-            return null;
+            Singleton = LoadGameData();
+            //return null;
         }
 
 

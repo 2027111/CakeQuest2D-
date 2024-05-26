@@ -48,15 +48,14 @@ public class PerformActionState : BattleState
     {
         if (battleManager.GetActor())
         {
+            string controls = LanguageData.GetDataById("ControlScheme").GetValueByKey(this.GetType().ToString());
+
             if (battleManager.GetActor().IsPlayerTeam())
             {
-                battleManager.SetControlText("");
-            }
-            else
-            {
-                battleManager.SetControlText("Right Click -> Block");
+                 controls = LanguageData.GetDataById("ControlScheme").GetValueByKey("NothingState");
 
             }
+            battleManager.SetControlText(controls);
         }
     }
 

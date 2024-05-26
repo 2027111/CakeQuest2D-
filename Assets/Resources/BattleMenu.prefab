@@ -89,7 +89,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1526155035950022825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: indicationText
-      value: Cook up your enemies with your skills!
+      value: skill
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
@@ -428,7 +428,7 @@ PrefabInstance:
       objectReference: {fileID: 689963635531010738}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: indicationText
-      value: Normal attack your enemies!
+      value: attack
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
@@ -585,7 +585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: indicationText
-      value: Swap position with an ally!
+      value: swap
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size
@@ -742,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: indicationText
-      value: Use items to support your party!
+      value: item
       objectReference: {fileID: 0}
     - target: {fileID: 5611791348620433637, guid: 6ea3e65775f75d94e9776a8493e15ebc, type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.size

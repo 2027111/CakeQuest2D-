@@ -39,10 +39,6 @@ public class Entity : MonoBehaviour
         {
             Mana += amount;
         }
-        if(amount > 0)
-        {
-            GetComponent<TextEffect>().SpawnTextEffect(amount);
-        }
         if (character)
         {
             OnManaChange?.Invoke(Mana, character.GetReference().MaxMana);
@@ -214,6 +210,50 @@ public class Entity : MonoBehaviour
 
         // Invoke the damage taken event
         OnDamageTaken.Invoke(amount, effect, source);
+    }
+    public void AddToMana(IActionData attack, BattleCharacter source = null)
+    {
+
+
+        int amount = attack.GetAmount();
+
+
+
+
+
+
+        if (amount != 0)
+        {
+
+            if (attack?.GetHitEffect() != null)
+            {
+                Instantiate(attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+            }
+            else
+            {
+                if (source.GetReference().GetHitEffect() != null)
+                {
+                    Instantiate(source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                }
+            }
+            if (attack?.GetSoundEffect() != null)
+            {
+                source.PlaySFX(attack.GetSoundEffect());
+            }
+            else
+            {
+                if (source.GetReference().GetSoundEffect() != null)
+                {
+                    source.PlaySFX(source.GetReference().GetSoundEffect());
+                }
+            }
+
+        }
+        AddToMana(amount);
+        if (amount > 0)
+        {
+            GetComponent<TextEffect>().SpawnTextEffect(amount.ToString(), Color.cyan);
+        }
     }
 
     public void AddToHealth(HealthEffectItem item, ElementEffect effect, BattleCharacter source = null)

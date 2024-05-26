@@ -19,10 +19,7 @@ public class SwapingState : BattleState
     {
         base.Handle();
     }
-    public override void ShowControls()
-    {
-            battleManager.SetControlText("");
-    }
+
     public override void OnSelect()
     {
         choiceMenu.GetComponent<ChoiceMenu>().TriggerSelected();

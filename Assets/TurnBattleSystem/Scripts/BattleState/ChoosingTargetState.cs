@@ -77,14 +77,16 @@ public class ChoosingTargetState : BattleState
                 target.Add(character);
                 battleManager.SetCursor(character);
                 CamManager.PanToCharacter(character);
-                BattleManager.Singleton.SetIndicationText("Target " + character.name);
+                string t = LanguageData.GetDataById("Indications").GetValueByKey("targetOne");
+                BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
             }
             else
             {
                 battleManager.SetCursor(character, false);
                 CamManager.ResetView();
 
-            BattleManager.Singleton.SetIndicationText("Target everyone");
+                string t = LanguageData.GetDataById("Indications").GetValueByKey("targetAllEnemy");
+                BattleManager.Singleton.SetIndicationText(t);
         }
     }
 
@@ -116,10 +118,7 @@ public class ChoosingTargetState : BattleState
         }
         base.OnBack();
     }
-    public override void ShowControls()
-    {
-        battleManager.SetControlText("WASD to change target | Left Click to confirm target(s) | Right Click to return");
-    }
+
     public override void OnNavigate(Vector2 direction)
     {
         if (!multiple)

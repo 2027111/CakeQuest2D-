@@ -47,7 +47,9 @@ public abstract class BattleState
 
     public virtual void ShowControls()
     {
-        Debug.Log("WASD to navigate | Left Click to Select | Right Click to Return");
+        string controls = LanguageData.GetDataById("ControlScheme").GetValueByKey(this.GetType().ToString());
+
+        battleManager.SetControlText(controls);
     } 
 
     public virtual void OnNavigate(Vector2 direction)

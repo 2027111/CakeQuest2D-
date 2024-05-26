@@ -7,10 +7,6 @@ public class ChoosingItemState : ChoosingSkillState
 
     
 
-    public override void ShowControls()
-    {
-        battleManager.SetControlText("WASD to navigate | Left Click to Select Item | Right Click to return");
-    }
 
 
     public override void InstantiateMenu(BattleCharacter character)

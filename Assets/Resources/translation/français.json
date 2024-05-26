@@ -2,7 +2,15 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Résumer\",\"save\":\"Sauvegarder\"}"
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\"}"
+        },
+        {
+            "dataId": "Indications",
+            "jsonData": "{\"attack\":\"Attaque normale vos ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser un ennemi\",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\"}"
+        },
+        {
+            "dataId": "ControlScheme",
+            "jsonData": "{\"BattleState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner | Clic Droit pour Retourner\",\"ChoosingActionState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner une Action\",\"ChoosingItemState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner un Objet | Clic Droit pour retourner\",\"ChoosingSkillState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner une Compétence | Clic Droit pour retourner\",\"ChoosingTargetState\":\"WASD pour changer de cible | Clic Gauche pour confirmer la/les cible(s) | Clic Droit pour retourner\",\"CutsceneState\":\"Clic Gauche -> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"Clic Droit -> Bloquer\",\"SwapingState\":\"\"}"
         },
         {
             "dataId": "Misc_Chest_Locked",
