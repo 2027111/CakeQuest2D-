@@ -23,8 +23,8 @@ public class BattleCharacter : MonoBehaviour
     public bool isBlocking = false;
     public bool isParrying = false;
 
-
-
+    public AudioSource sfxAudioSource;
+    public AudioSource voiceAudioSource;
 
     public Command currentCommand;
 
@@ -44,6 +44,7 @@ public class BattleCharacter : MonoBehaviour
         Entity = GetComponent<Entity>();
         GetComponentInChildren<SpriteEvents>().SetCharacter(this);
     }
+
 
 
     private void Update()
@@ -67,6 +68,7 @@ public class BattleCharacter : MonoBehaviour
     }
     public void SetActing(bool _isActing)
     {
+        Debug.Log(gameObject.name + " | " + _isActing);
         isActing = _isActing;
     }
     public CharacterData GetData()
@@ -81,7 +83,7 @@ public class BattleCharacter : MonoBehaviour
 
     public bool CanAct()
     {
-        return !isActing;
+        return !isActing && !Entity.isDead;
     }
 
     public Command CreateCommand()
@@ -93,7 +95,7 @@ public class BattleCharacter : MonoBehaviour
         }
         else
         {
-            Attack attack = GetRandomAttack();
+            Skill attack = GetRandomAttack();
             if (attack)
             {
                 return new SkillCommand(attack);
@@ -105,12 +107,17 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
-    private Attack GetRandomAttack()
+    public int IsFacing()
+    {
+        return (int)Mathf.Sign(transform.localScale.x);
+    }
+
+    private Skill GetRandomAttack()
     {
 
-        List<Attack> returnAttacks = new List<Attack>();
-        List<Attack> possibleAttacks = GetAttacks();
-        foreach(Attack attack in possibleAttacks){
+        List<Skill> returnAttacks = new List<Skill>();
+        List<Skill> possibleAttacks = GetAttacks();
+        foreach(Skill attack in possibleAttacks){
             if (BattleManager.Singleton.GetPossibleTarget(attack, this).Count > 0)
             {
                 returnAttacks.Add(attack);
@@ -123,7 +130,7 @@ public class BattleCharacter : MonoBehaviour
         return returnAttacks[Random.Range(0, returnAttacks.Count)];
     }
 
-    public List<Attack> GetAttacks()
+    public List<Skill> GetAttacks()
     {
         return GetReference().Attacks;
     }
@@ -167,9 +174,9 @@ public class BattleCharacter : MonoBehaviour
     {
         return GetComponent<TeamComponent>().teamIndex;
     }
-    public Attack GetAttack(string v)
+    public Skill GetAttack(string v)
     {
-        foreach(Attack attack in GetAttacks())
+        foreach(Skill attack in GetAttacks())
         {
             if(attack.ToString() == v)
             {
@@ -185,7 +192,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
 
-    public void ApplyAttackAnimationOverride(Attack attack)
+    public void ApplyAttackAnimationOverride(Skill attack)
     {
         AnimatorOverrideController originalController = new AnimatorOverrideController(Animator.GetController());
         var anims = new List<KeyValuePair<AnimationClip, AnimationClip>>();
@@ -207,6 +214,14 @@ public class BattleCharacter : MonoBehaviour
         Animator.SetController(GetReference().animationController);
     }
 
+    public void PlaySFX(AudioClip audioClip)
+    {
+        sfxAudioSource.PlayOneShot(audioClip);
+    }
+    public void PlayVoiceLine(AudioClip audioClip)
+    {
+        voiceAudioSource.PlayOneShot(audioClip);
+    }
     public void SetReference(CharacterObject characterObject)
     {
         currentCharacter = characterObject;

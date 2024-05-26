@@ -16,7 +16,7 @@ public class FadeScreen : MonoBehaviour
     public static bool movingScene = false;
     private static FadeScreen _singleton;
 
-    private float fadeTime = .3f;
+    private float fadeTime = .5f;
     public bool startFadeon = false;
     public static FadeScreen Singleton
     {

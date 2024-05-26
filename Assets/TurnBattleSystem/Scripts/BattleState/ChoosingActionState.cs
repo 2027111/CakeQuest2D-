@@ -12,11 +12,16 @@ public class ChoosingActionState : BattleState
 
         base.OnEnter(_battleManager);
         battleManager.GetActor().currentCommand = null;
+        battleManager.GetActor().Animator.Thinking(true);
         battleManager.SetCursor(battleManager.GetActor());
         CamManager.PanToCharacter(battleManager.GetActor());
         InstantiateMenu(battleManager.GetActor());
     }
 
+    public override void ShowControls()
+    {
+        battleManager.SetControlText("WASD to navigate | Left Click to Select Action");
+    }
 
     public override void Handle()
     {

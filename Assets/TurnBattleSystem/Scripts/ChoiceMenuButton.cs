@@ -8,6 +8,7 @@ public class ChoiceMenuButton : MonoBehaviour
 {
     public UnityEvent OnSelected;
     public ChoiceMenu thisMenu;
+    
 
     [SerializeField] Image BackgroundImage;
     public void SelectFailed()
@@ -45,7 +46,10 @@ public class ChoiceMenuButton : MonoBehaviour
 
     public virtual void SetColor(Color newColor)
     {
-        BackgroundImage.color = newColor;
+        if(BackgroundImage != null)
+        {
+            BackgroundImage.color = newColor;
+        }
     }
 
     public virtual void OnOver(bool isOverHanded)

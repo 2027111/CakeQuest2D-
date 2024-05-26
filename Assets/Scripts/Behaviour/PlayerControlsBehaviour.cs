@@ -25,7 +25,8 @@ public class PlayerControlsBehaviour : CharacterBehaviour
         else
         {
             character.inputManager.CanInteract(true);
-            character.CanMove(true);
+            character.CanMove(true); 
+            character.ActivateControls();
         }
 
     }

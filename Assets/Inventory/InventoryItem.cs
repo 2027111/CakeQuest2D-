@@ -22,13 +22,17 @@ public class InventoryItem : ScriptableObject
     public Sprite itemSprite;
     public bool usable;
     public bool unique;
-    public UnityEvent OnUseEvent;
 
 
-    public void Use()
+    public virtual void BattleUse(List<BattleCharacter> target)
     {
-        Debug.Log("Using Item");
-        OnUseEvent?.Invoke();
+        Debug.Log("Does Nothing");
+    }
+
+
+    public virtual void OverWorldUse(List<CharacterObject> target)
+    {
+        Debug.Log("Does Nothing");
     }
 
 }

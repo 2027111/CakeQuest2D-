@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class ChoiceMenu : MonoBehaviour
 {
     [SerializeField] protected List<GameObject> buttons;
-    [SerializeField] protected Color defaultColor;
-    [SerializeField] protected Color selectedColor;
+    [SerializeField] protected Color defaultColor = Color.white;
+    [SerializeField] protected Color selectedColor = Color.blue;
     protected GameObject SelectedButton;
     public int currentButton;
 
@@ -18,10 +18,11 @@ public class ChoiceMenu : MonoBehaviour
     }
     public void ResetMenu()
     {
-        foreach (Transform transform in transform)
+        foreach (GameObject button in buttons)
         {
-            Destroy(transform.gameObject);
+            Destroy(button.gameObject);
         }
+        buttons.Clear();
     }
     public void DefaultSelect()
     {
@@ -83,6 +84,9 @@ public class ChoiceMenu : MonoBehaviour
         Select(buttons[currentButton]);
     }
 
-
+    public void AddButton(ChoiceMenuButton obj)
+    {
+        buttons.Add(obj.gameObject);
+    }
 
 }

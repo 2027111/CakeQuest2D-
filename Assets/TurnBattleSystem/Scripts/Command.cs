@@ -9,8 +9,10 @@ public class Command
     public Vector3 startPosition;
     public BattleCharacter Source;
     public List<BattleCharacter> Target;
-    public bool friendly = false;
+    public Friendliness friendliness = Friendliness.Non_Friendly;
+    public TargetStateType targetStateType = TargetStateType.Alive;
     public bool skippable = true;
+    public bool canFocus = true;
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
     public Command()
@@ -27,6 +29,12 @@ public class Command
     {
         Source.isActing = false;
     }
+
+    public bool CanFocus()
+    {
+        return canFocus;
+    }
+
     public virtual bool CanBeTarget(BattleCharacter _character)
     {
         return !_character.Entity.isDead;
@@ -42,7 +50,7 @@ public class Command
             Source = _source;
     }
 
-    public void SetTarget(List<BattleCharacter> _target)
+    public virtual void SetTarget(List<BattleCharacter> _target)
     {
         Target = _target;
     }

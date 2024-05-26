@@ -5,11 +5,12 @@ using UnityEngine;
 public class SkillCommand : AttackCommand
 {
 
-    protected Attack attack;
-    public SkillCommand(Attack _attack)
+    protected Skill attack;
+
+    public SkillCommand(Skill _attack)
     {
         attack = _attack;
-        friendly = attack.GetFriendly();
+        friendliness = attack.friendliness;
     }
     public override void ExecuteCommand()
     {
@@ -43,50 +44,22 @@ public class SkillCommand : AttackCommand
 
 
     }
-
+    public override void SetTarget(List<BattleCharacter> _target)
+    {
+        Target = new List<BattleCharacter>();
+        if(attack.targetType == TargetType.Single)
+        {
+            Target.Add(_target[Random.Range(0, _target.Count)]);
+        }
+        else
+        {
+            Target = _target;
+        }
+    }
 
     public override void ActivateCommand()
     {
-
-
-        foreach (BattleCharacter target in Target)
-        {
-            if(target.Entity.isDead == false)
-            {
-
-            //float sourceSpeed = Source.Speed * (attack.baseAccuracy / 100f);
-            //float targetSpeed = target.Speed;
-            //float adjustedSpeed = sourceSpeed - targetSpeed * 0.5f; // Weigh target speed less to favor source speed
-
-            //float dodgeThreshold = adjustedSpeed + targetSpeed;
-            //float dodge = Random.Range(0f, dodgeThreshold);
-                CharacterObject characterObject = target.GetReference();
-
-             ElementEffect elementEffect = characterObject.GetElementEffect(attack.element);
-
-
-
-             
-            if(elementEffect == ElementEffect.NonAffected)
-            {
-                target.Animator.Dodge();
-                target.GetComponent<TextEffect>().SpawnTextEffect("Nullified", Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
-            }
-            else
-            {
-                if (attack.HitEffect)
-                {
-                        GameObject.Instantiate(attack.HitEffect, target.transform.position + Vector3.up, Quaternion.identity);
-                }
-
-
-
-                target?.Entity.TakeDamage(attack.baseDamage, elementEffect, Source);
-            }
-            }
-
-        }
-
+        attack.UseSkill(Source, Target);
     }
     public override bool CanBeTarget(BattleCharacter _character)
     {
@@ -105,7 +78,7 @@ public class SkillCommand : AttackCommand
         Source.ResetAnimatorController();
 
     }
-    public Attack GetAttack()
+    public Skill GetAttack()
     {
         return attack;
     }

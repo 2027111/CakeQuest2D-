@@ -38,7 +38,11 @@ public class AttackCommand : Command
 
     }
 
-
+    public override void SetTarget(List<BattleCharacter> _target)
+    {
+        Target = new List<BattleCharacter>();
+        Target.Add(_target[Random.Range(0, _target.Count)]);
+    }
 
     public override void ActivateCommand()
     {
@@ -46,7 +50,7 @@ public class AttackCommand : Command
         {
             CharacterObject characterObject = target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            target?.Entity.TakeDamage(-Source.GetReference().AttackDamage, elementEffect, Source);
+            target?.Entity.AddToHealth(null, elementEffect, Source);
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         }

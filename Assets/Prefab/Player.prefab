@@ -266,13 +266,13 @@ GameObject:
   - component: {fileID: 2145510011}
   - component: {fileID: 6328120429896446889}
   - component: {fileID: 6328120429896446895}
-  - component: {fileID: 6328120429896446892}
   - component: {fileID: 6328120429896446880}
   - component: {fileID: 6328120429896446882}
   - component: {fileID: 6328120429896446881}
   - component: {fileID: 9179673714289012239}
   - component: {fileID: 1800461113}
   - component: {fileID: 1800461125}
+  - component: {fileID: 1173007849}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -294,7 +294,7 @@ Transform:
   m_Children:
   - {fileID: 6328120429556896885}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2145510011
 MonoBehaviour:
@@ -310,7 +310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: c8da05e30cf21d141bd914c8491b04cc, type: 2}
   canGetInteract: 1
-  canInteract: 0
+  input: {x: 0, y: 0}
+  inputManager: {fileID: 0}
   heroParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}
 --- !u!114 &6328120429896446889
 MonoBehaviour:
@@ -328,6 +329,7 @@ MonoBehaviour:
   rb2D: {fileID: 6328120429896446882}
   runFactor: 1
   movementInput: {x: 0, y: 0}
+  canMove: 1
 --- !u!114 &6328120429896446895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,19 +347,7 @@ MonoBehaviour:
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6328120429896446889}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnLeaveGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -367,9 +357,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328120429896446892}
-        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
-        m_MethodName: OnMove
+      - m_Target: {fileID: 1173007849}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: SetMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -383,9 +373,9 @@ MonoBehaviour:
     m_ActionName: OverWorld/Move
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328120429896446892}
-        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
-        m_MethodName: OnInteract
+      - m_Target: {fileID: 1173007849}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnSelect
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -399,8 +389,8 @@ MonoBehaviour:
     m_ActionName: OverWorld/Interact
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328120429896446892}
-        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+      - m_Target: {fileID: 1173007849}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: OnPause
         m_Mode: 0
         m_Arguments:
@@ -415,9 +405,9 @@ MonoBehaviour:
     m_ActionName: OverWorld/Pause[/DualSenseGamepadHID/start,/Keyboard/enter]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6328120429896446892}
-        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
-        m_MethodName: OnRun
+      - m_Target: {fileID: 1173007849}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnReturn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -454,19 +444,6 @@ MonoBehaviour:
   m_DefaultActionMap: OverWorld
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6328120429896446892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6328120429896446888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6498f74462a68124795ccc45463ce777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {x: 0, y: 0}
 --- !u!114 &6328120429896446880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,3 +599,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1173007849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6328120429896446888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258d6ac1331beb34eaf5ab68b0525af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: 0
+  attack: 0
+  canControl: 1
+  canInteract: 1

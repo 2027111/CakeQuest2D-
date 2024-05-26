@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour
 
     public event Action<Vector2> LookAtEvent;
     public Vector2 movementInput = Vector2.zero;
-    public bool canMove = true;
 
     public Vector2 GetInput()
     {

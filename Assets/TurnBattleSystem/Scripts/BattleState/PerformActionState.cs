@@ -5,22 +5,25 @@ using UnityEngine;
 public class PerformActionState : BattleState
 {
     GameObject choiceMenu;
-
+    BattleCharacter performer;
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
         battleManager.SetCursor(null);
-       
-        if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer() || !battleManager.GetActor().currentCommand.skippable)
+
+        performer = battleManager.GetActor();
+        performer.Animator.Thinking(false);
+        performer.SetActing(true);
+        if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer() || !performer.currentCommand.skippable)
         {
 
-            battleManager.GetActor().currentCommand.OnExecuted += PerformanceOver;
+            performer.currentCommand.OnExecuted += PerformanceOver;
             battleManager.StartCoroutine(CheckFocus());
 
         }
-        battleManager.GetActor().currentCommand.OnExecuted += delegate { battleManager.GetActor().SetActing(false); };
-        battleManager.GetActor().currentCommand.OnExecuted += battleManager.GetActor().ResetAnimatorController;
-        battleManager.GetActor().currentCommand.ExecuteCommand();
+        performer.currentCommand.OnExecuted += delegate { performer.SetActing(false); };
+        performer.currentCommand.OnExecuted += performer.ResetAnimatorController;
+        performer.currentCommand.ExecuteCommand();
         CamManager.ResetView();
     }
 
@@ -28,8 +31,9 @@ public class PerformActionState : BattleState
     public override void Handle()
     {
 
-        if (battleManager.GetActor().currentCommand.skippable&&battleManager.NextActorCanAct() && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
+        if (battleManager.GetActor().currentCommand.skippable && battleManager.NextActorCanAct() && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
         {
+            performer.currentCommand.OnExecuted -= PerformanceOver;
             PerformanceOver();
 
         }
@@ -40,10 +44,28 @@ public class PerformActionState : BattleState
         base.Handle();
     }
 
-  
+    public override void ShowControls()
+    {
+        if (battleManager.GetActor())
+        {
+            if (battleManager.GetActor().IsPlayerTeam())
+            {
+                battleManager.SetControlText("");
+            }
+            else
+            {
+                battleManager.SetControlText("Right Click -> Block");
+
+            }
+        }
+    }
 
     IEnumerator CheckFocus()
     {
+
+        if (performer.currentCommand.CanFocus())
+        {
+
         List<BattleCharacter> takeOvers = new List<BattleCharacter>();
         if (!battleManager.IsForcedTurn())
         {
@@ -54,11 +76,11 @@ public class PerformActionState : BattleState
 
 
 
-        if(battleManager.GetActor().GetTeam() == TeamIndex.Player)
+        if(performer.GetTeam() == TeamIndex.Player)
         {
             foreach(BattleCharacter bc in battleManager.HeroPartyActors)
             {
-                if(!bc.isActing && bc.Entity.Focus >= 10 && bc != battleManager.GetActor())
+                if(bc.CanAct() && bc.Entity.Focus >= 10 && bc != battleManager.GetActor())
                 {
                     takeOvers.Add(bc);
                 }
@@ -80,6 +102,7 @@ public class PerformActionState : BattleState
 
         }
         yield return null;
+        }
     }
 
     public override void OnSelect()
@@ -185,5 +208,6 @@ public class PerformActionState : BattleState
         {
             battleManager.GetActor().currentCommand.OnExecuted -= PerformanceOver;
         }
+        battleManager.GetActor().Animator.Thinking(false);
     }
 }

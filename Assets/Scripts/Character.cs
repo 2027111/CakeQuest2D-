@@ -21,7 +21,6 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         playerMovement = GetComponent<Movement>();
-
         inputManager = GetComponent<Controller>();
         if(inputManager != null)
         {
@@ -37,8 +36,9 @@ public class Character : MonoBehaviour
     {
         inputManager.OnReturnPressed += delegate { Run(true); };
         inputManager.OnReturnReleased += delegate { Run(false); };
-        inputManager.OnMovementHeld += Move;
+        //CanMove(true);
     }
+
 
 
     public void Move(Vector2 input)
@@ -48,11 +48,14 @@ public class Character : MonoBehaviour
 
     public void CanMove(bool v)
     {
-        if (inputManager)
+        if (v)
         {
-            inputManager?.CanMove(v);
+            inputManager.OnMovementHeld += Move;
         }
-        playerMovement.canMove = v;
+        else
+        {
+            inputManager.OnMovementHeld -= Move;
+        }
     }
     void Start()
     {

@@ -13,23 +13,28 @@ MonoBehaviour:
   m_Name: JimiObject
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
-  Health: 362
+  Health: 200
   MaxHealth: 200
   Mana: 200
   MaxMana: 200
   Speed: 0
   AttackDamage: 11
   ManaDamage: 11
+  parryWindow: 0.15
   isDead: 0
   AttackElement: 0
   elementalAttributes:
   - element: 1
     elementEffect: 1
+  HitEffect:
+  - {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
   Attacks:
   - {fileID: 11400000, guid: b40411e46752ac04fa9b9930a11f04ae, type: 2}
   - {fileID: 11400000, guid: 2d41dcd037b05c140937654bc91ba314, type: 2}
-  - {fileID: 11400000, guid: 0b67e8c360adf3d4087758edf8620a05, type: 2}
+  - {fileID: 11400000, guid: 9ba84941adfff72488836d83bb41f7a7, type: 2}
   - {fileID: 11400000, guid: 7af5a862e02b4384eadbb9ba09e0c416, type: 2}
   - {fileID: 11400000, guid: a272c6c8be5577b45954f3d97f2d1a1d, type: 2}
-  - {fileID: 11400000, guid: 6224381e9b580944291b23978c108bef, type: 2}
+  - {fileID: 11400000, guid: b5ddcbfa18519e94d943d512939c14b4, type: 2}
   animationController: {fileID: 22100000, guid: 993e5c20cc0303943982922e5b1118f9, type: 2}

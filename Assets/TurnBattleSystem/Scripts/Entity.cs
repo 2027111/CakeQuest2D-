@@ -118,8 +118,21 @@ public class Entity : MonoBehaviour
             OnHealthChange?.Invoke(Health, character.GetReference().MaxHealth);
         }
     }
-    public void TakeDamage(int amount, ElementEffect effect, BattleCharacter source = null)
+    public void AddToHealth(Skill attack, ElementEffect effect, BattleCharacter source = null)
     {
+
+
+        int amount = -source.GetReference().AttackDamage;
+
+        if (attack)
+        {
+            amount = attack.element == Element.Support?attack.baseDamage:-attack.baseDamage;
+        }
+
+
+
+
+
         switch (effect)
         {
             case ElementEffect.Neutral:
@@ -160,8 +173,38 @@ public class Entity : MonoBehaviour
             amount = 0;
             character.StopBlock();
             character.Animator.Parry();
+            character.PlaySFX(Resources.Load<AudioClip>("39_Block_03"));
             StartCoroutine(Utils.SlowDown(1.1f, .3f));
-            //StartCoroutine(CamManager.DoPan(character.transform.position, .1f, 1f / .5f));
+            //StartCoroutine(CamManager.DoPan(character.transform.position, .05f, 1.1f* .3f));
+        }
+
+
+        if (amount != 0)
+        {
+
+            if (attack?.GetHitEffect() != null)
+            {
+                Instantiate(attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+            }
+            else
+            {
+                if (source.GetReference().GetHitEffect() != null)
+                {
+                    Instantiate(source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                }
+            }
+            if (attack?.GetSoundEffect() != null)
+            {
+                source.PlaySFX(attack.GetSoundEffect());
+            }
+            else
+            {
+                if (source.GetReference().GetSoundEffect() != null)
+                {
+                    source.PlaySFX(source.GetReference().GetSoundEffect());
+                }
+            }
+
         }
         AddToHealth(amount);
 

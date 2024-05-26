@@ -79,7 +79,7 @@ public class TextEffect : MonoBehaviour
 
     public Vector3 GetAspectTextPosition()
     {
-        return transform.position + 1.2f * Vector3.up + 1.1f * Vector3.right;
+        return transform.position + 1.2f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
     }
     public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = .8f)
     {

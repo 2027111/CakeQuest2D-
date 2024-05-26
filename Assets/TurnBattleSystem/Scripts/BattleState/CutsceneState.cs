@@ -8,9 +8,13 @@ public class CutsceneState : BattleState
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
+        battleManager.SetCursor(null);
     }
 
-
+    public override void ShowControls()
+    {
+        battleManager.SetControlText("Left Click -> Next");
+    }
     public override void Handle()
     {
         base.Handle();

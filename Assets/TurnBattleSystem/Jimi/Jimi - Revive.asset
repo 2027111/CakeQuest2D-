@@ -18,12 +18,17 @@ MonoBehaviour:
   skillType: 1
   element: 6
   Name: Drop of Life
+  Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
-  HitEffect: {fileID: 0}
+  HitEffect:
+  - {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  voiceClipId: 
   baseDamage: 55
   baseAccuracy: 100
   manaCost: 4
   spawnObjects:
-  - Weird Spell
+  - Healing Magic
   turnTilTriggered: 0
   turnTilActive: 0

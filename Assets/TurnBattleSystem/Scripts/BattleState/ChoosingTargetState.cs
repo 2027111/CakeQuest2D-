@@ -107,9 +107,16 @@ public class ChoosingTargetState : BattleState
         {
             battleManager.ChangeState(new ChoosingActionState());
         }
+        else if (battleManager.GetActor().currentCommand.GetType() == typeof(ItemCommand))
+        {
+            battleManager.ChangeState(new ChoosingItemState());
+        }
         base.OnBack();
     }
-
+    public override void ShowControls()
+    {
+        battleManager.SetControlText("WASD to change target | Left Click to confirm target(s) | Right Click to return");
+    }
     public override void OnNavigate(Vector2 direction)
     {
         if (!multiple)

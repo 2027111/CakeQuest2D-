@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7667df9e1e36cc2499ecbee7852134e1, type: 3}
+  m_Name: Yankee - Revitalize
+  m_EditorClassIdentifier: 
+  targetType: 1
+  friendliness: 0
+  targetStateType: 0
+  skillType: 1
+  element: 6
+  Name: Drop of Life
+  Description: Attack qui fait mal :)
+  animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
+  HitEffect:
+  - {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  voiceClipId: 
+  baseDamage: 25
+  baseAccuracy: 100
+  manaCost: 7
+  spawnObjects:
+  - Healing Magic
+  turnTilTriggered: 0
+  turnTilActive: 0

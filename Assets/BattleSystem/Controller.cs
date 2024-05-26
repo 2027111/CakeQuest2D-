@@ -48,13 +48,5 @@ public abstract class Controller : MonoBehaviour
         return OnSelectPressed.GetInvocationList().Contains(interact);
     }
 
-    public void Disable()
-    {
-        canControl = false;
-    }
 
-    public void Enable()
-    {
-        canControl = false;
-    }
 }

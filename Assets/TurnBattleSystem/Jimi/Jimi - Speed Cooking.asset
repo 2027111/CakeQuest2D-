@@ -18,9 +18,14 @@ MonoBehaviour:
   skillType: 0
   element: 0
   Name: Speed Cooking
+  Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: 2d776f0362c40cd4fba886c81b196518, type: 2}
-  HitEffect: {fileID: 6489612216288041236, guid: de00b3bac50c2e4468b0439605170bbc, type: 3}
-  baseDamage: -7
+  HitEffect:
+  - {fileID: 6489612216288041236, guid: de00b3bac50c2e4468b0439605170bbc, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  voiceClipId: 
+  baseDamage: 7
   baseAccuracy: 100
   manaCost: 23
   spawnObjects: []

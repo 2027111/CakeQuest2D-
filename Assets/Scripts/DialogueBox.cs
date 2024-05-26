@@ -217,7 +217,7 @@ public class DialogueBox : MonoBehaviour
         voiceClipSource?.Stop();
 
         // Load the audio from Resources folder
-        string voiceLinePath = "VoiceLines/"+lineInfo.lineId; // Assuming the path is relative to the Resources folder
+        string voiceLinePath = "VoiceLines/" + lineInfo.lineId; // Assuming the path is relative to the Resources folder
         AudioClip voiceLine = Resources.Load<AudioClip>(voiceLinePath);
 
         if (voiceLine == null)
@@ -249,44 +249,44 @@ public class DialogueBox : MonoBehaviour
     private void SetupLine(string lineId)
     {// Set the active state of the portrait image based on whether a sprite is provided
 
-        if(LanguageData.GetDataById(lineId) != null)
+        if (LanguageData.GetDataById(lineId) != null)
         {
 
-        string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
-        string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
+            string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
+            string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
 
 
 
 
-        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
+            portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
 
-        if (!string.IsNullOrEmpty(portraitPath))
-        {
-            // Load the sprite from Resources folder
-            string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
-            Sprite portrait = Resources.Load<Sprite>(fullPath);
-
-            if (portrait == null)
+            if (!string.IsNullOrEmpty(portraitPath))
             {
-                // Log an error if the sprite failed to load
-                Debug.LogError("Failed to load sprite at path: " + fullPath);
+                // Load the sprite from Resources folder
+                string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
+                Sprite portrait = Resources.Load<Sprite>(fullPath);
 
-                // Optionally, list all loaded sprites for debugging
-                portraitImage.gameObject.SetActive(false);
+                if (portrait == null)
+                {
+                    // Log an error if the sprite failed to load
+                    Debug.LogError("Failed to load sprite at path: " + fullPath);
 
+                    // Optionally, list all loaded sprites for debugging
+                    portraitImage.gameObject.SetActive(false);
+
+                }
+                else
+                {
+                    // Assign the loaded sprite to the portrait image
+                    portraitImage.sprite = portrait;
+                }
             }
-            else
-            {
-                // Assign the loaded sprite to the portrait image
-                portraitImage.sprite = portrait;
-            }
-        }
 
-        // Set the active state of the name text container based on whether the talker name is provided
-        nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
+            // Set the active state of the name text container based on whether the talker name is provided
+            nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
 
-        // Set the text of the name text component to the provided talker name
-        nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
+            // Set the text of the name text component to the provided talker name
+            nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
 
         }
     }
@@ -295,7 +295,7 @@ public class DialogueBox : MonoBehaviour
     public void DoChoice(int i)
     {
 
-        
+
         currentDialogue.choice = false;
         ClearChoiceBox();
 
@@ -308,6 +308,8 @@ public class DialogueBox : MonoBehaviour
 
             dialogueWaitingLine.Add(new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[i])));
         }
+
+        AddNavigateEventToPlayer(false);
         Interact();
     }
 
@@ -316,98 +318,45 @@ public class DialogueBox : MonoBehaviour
 
         ClearChoiceBox();
         AddInteractEventToPlayer(false);
-        Debug.Log("Removed Interactions");
+        AddNavigateEventToPlayer(true);
         choiceBox.SetActive(true);
         for (int i = 0; i < choices.Length; i++)
         {
             int number = i;
-            Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
+            ChoiceMenuButton obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<ChoiceMenuButton>();
 
             string line = LanguageData.GetDataById(choices[i].choicesLineIds).GetValueByKey("line");
             obj.GetComponent<TMP_Text>().text = line;
-            obj.onClick.AddListener(delegate { DoChoice(number); } );
-            obj.interactable = true;
-           // obj.Select();
-
-            if (LastButton != null)
-            {
-                Navigation lastNav = LastButton.GetComponent<Button>().navigation;
-                lastNav.mode = Navigation.Mode.Explicit;
-                lastNav.selectOnDown = obj;
-
-                Navigation customNav = new Navigation();
-                customNav.mode = Navigation.Mode.Explicit;
-                customNav.selectOnUp = obj;
+            obj.OnSelected.AddListener(delegate { DoChoice(number); });
+            obj.SetMenu(choiceBox.GetComponent<ChoiceMenu>());
+            choiceBox.GetComponent<ChoiceMenu>().AddButton(obj);
+            // obj.Select();
 
 
-
-
-
-
-                LastButton.GetComponent<Button>().navigation = lastNav;
-                obj.navigation = customNav;
-            }
-            LastButton = obj;
 
         }
-        LastButton = null;
+        choiceBox.GetComponent<ChoiceMenu>().DefaultSelect();
     }
-    public void FillChoiceBox(int amount)
-    {
-        for(int i = 0; i < amount; i++)
-        {
-            Button obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<Button>();
-            obj.onClick.AddListener(DebugTest);
-            obj.interactable = true;
-            obj.Select();
-
-            if (LastButton != null)
-            {
-                Navigation lastNav = LastButton.GetComponent<Button>().navigation;
-                lastNav.mode = Navigation.Mode.Explicit;
-                lastNav.selectOnDown = obj;
-
-                Navigation customNav = new Navigation();
-                customNav.mode = Navigation.Mode.Explicit;
-                customNav.selectOnUp = obj;
-               
-
-
-
-
-
-                LastButton.GetComponent<Button>().navigation = lastNav;
-                obj.navigation = customNav;
-            }
-            LastButton = obj;
-
-        }
-        LastButton = null;
-    }
-
+  
     public void DebugTest()
     {
         Debug.Log("Button clicked");
     }
     public void ClearChoiceBox()
     {
-        foreach(Transform child in choiceBox.transform) {
-            Destroy(child.gameObject);
-
-        }
+        choiceBox.GetComponent<ChoiceMenu>().ResetMenu();
         choiceBox.SetActive(false);
     }
 
     public void Interact()
     {
-        Debug.Log("Interacted");
-        if(showBoxCoroutine == null)
+        if (showBoxCoroutine == null)
         {
 
-        if (active)
-        {
-            if (dialogueIndex >= currentDialogue.dialogue.dialogueLineIds.Length)
-             {
+            if (active)
+            {
+                if (dialogueIndex >= currentDialogue.dialogue.dialogueLineIds.Length)
+                {
 
                     if (dialogueWaitingLine.Count > 0)
                     {
@@ -443,12 +392,12 @@ public class DialogueBox : MonoBehaviour
 
 
                 }
-            else
-            {
-                if (isShowing)
+                else
                 {
+                    if (isShowing)
+                    {
 
-                        if(CurrentLine() != null)
+                        if (CurrentLine() != null)
                         {
 
                             NextLine();
@@ -466,8 +415,8 @@ public class DialogueBox : MonoBehaviour
 
 
 
+                }
             }
-        }
         }
     }
 
@@ -500,22 +449,55 @@ public class DialogueBox : MonoBehaviour
     {
         if (addOrRemove)
         {
-                Controller battleCharacterComponent = player.GetComponent<Controller>();
+            Controller battleCharacterComponent = player.GetComponent<Controller>();
 
-                bool contains = battleCharacterComponent.AttackContains(Interact);
-                if (battleCharacterComponent != null && !contains)
-                {
-                    battleCharacterComponent.OnSelectPressed += Interact;
-                }
-         
+            bool contains = battleCharacterComponent.AttackContains(Interact);
+            if (battleCharacterComponent != null && !contains)
+            {
+                battleCharacterComponent.OnSelectPressed += Interact;
+            }
+
         }
         else
         {
-                player.GetComponent<Controller>().OnSelectPressed -= Interact;
-          
+            player.GetComponent<Controller>().OnSelectPressed -= Interact;
+
+        }
+    }
+    public void AddNavigateEventToPlayer(bool addOrRemove)
+    {
+        Controller battleCharacterComponent = player.GetComponent<Controller>();
+        if (addOrRemove)
+        {
+            battleCharacterComponent.OnMovementHeld += NavigateMenu;
+            battleCharacterComponent.OnSelectPressed += choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
+
+        }
+        else
+        {
+            battleCharacterComponent.OnMovementHeld -= NavigateMenu;
+            battleCharacterComponent.OnSelectPressed -= choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
+
         }
     }
 
+    public void NavigateMenu(Vector2 direction)
+    {
+        Debug.Log("navigation");
+        ChoiceMenu menu = choiceBox.GetComponent<ChoiceMenu>();
+        if (menu != null)
+        {
+            Debug.Log(direction);
+            if(direction.y > 0)
+            {
+                menu.PreviousButton();
+            }
+            if (direction.y < 0)
+            {
+                menu.NextButton();
+            }
+        }
+    }
 
 
     private void NextLine()

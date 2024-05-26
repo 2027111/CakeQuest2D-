@@ -170,7 +170,7 @@ public class InventoryManager : MonoBehaviour
 
     public void UseButtonPress()
     {
-        currentItem.Use();
+        currentItem.OverWorldUse(null);
     }
 
 

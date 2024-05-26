@@ -20,6 +20,12 @@ public class AnimatorController : MonoBehaviour
         anim?.SetTrigger("attack");
     }
 
+    public void Thinking(bool on)
+    {
+
+        anim.speed = 1;
+        anim?.SetBool("thinking", on);
+    }
 
     public void Hurt()
     {

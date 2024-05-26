@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: YankeeObject
   m_EditorClassIdentifier: 
   characterData: {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
-  Health: 200
+  Health: 179
   MaxHealth: 200
-  Mana: 200
+  Mana: 128
   MaxMana: 200
   Speed: 0
   AttackDamage: 11
   ManaDamage: 11
+  parryWindow: 0.15
   isDead: 0
   AttackElement: 0
   elementalAttributes:
@@ -27,9 +28,12 @@ MonoBehaviour:
     elementEffect: 1
   - element: 5
     elementEffect: 1
+  HitEffect:
+  - {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   Attacks:
   - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}
-  - {fileID: 11400000, guid: 0b67e8c360adf3d4087758edf8620a05, type: 2}
-  - {fileID: 11400000, guid: a272c6c8be5577b45954f3d97f2d1a1d, type: 2}
-  - {fileID: 11400000, guid: 3244224c0146eec4dba906c7e7c94b10, type: 2}
+  - {fileID: 11400000, guid: 1170790d61fe9e842ae8339c2270b7db, type: 2}
+  - {fileID: 11400000, guid: 79c067635bf80b14c8035ed0b979a463, type: 2}
   animationController: {fileID: 22100000, guid: bbaecce845f6a5845b2a58f6f636b165, type: 2}

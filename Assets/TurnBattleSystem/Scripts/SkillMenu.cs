@@ -12,9 +12,9 @@ public class SkillMenu : ChoiceMenu
 
 
 
-    public void AddButtons(List<Attack> attacks)
+    public void AddButtons(List<Skill> attacks)
     {
-        foreach (Attack obj in attacks)
+        foreach (Skill obj in attacks)
         {
 
             GameObject button = Instantiate(ButtonPrefab, transform);
@@ -32,7 +32,7 @@ public class SkillMenu : ChoiceMenu
     }
     public void TriggerSkill()
     {
-        Attack attack = SelectedButton.GetComponent<SkillButton>().storedSkill;
+        Skill attack = SelectedButton.GetComponent<SkillButton>().storedSkill;
 
         Command attackCommand = attack.GetCommandType();
         attackCommand.SetSource(BattleManager.Singleton.GetActor());

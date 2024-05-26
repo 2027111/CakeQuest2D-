@@ -1,5 +1,4 @@
-using System;
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,9 +30,11 @@ public class CharacterObject : ScriptableObject
     [Space(20)]
 
     public List<ElementalAttribute> elementalAttributes;
+    public List<GameObject> HitEffect;
+    public List<AudioClip> SoundEffect;
 
     [Space(40)]
-    public List<Attack> Attacks;
+    public List<Skill> Attacks;
 
     [Space(20)]
     public AnimatorOverrideController animationController;
@@ -44,6 +45,25 @@ public class CharacterObject : ScriptableObject
         isDead = false;
         Health = MaxHealth;
         Mana = MaxMana;
+
+    }
+    public GameObject GetHitEffect()
+    {
+        if (HitEffect.Count > 0)
+        {
+            return HitEffect[Random.Range(0, HitEffect.Count)];
+        }
+        return null;
+
+    }
+
+    public AudioClip GetSoundEffect()
+    {
+        if (SoundEffect.Count > 0)
+        {
+            return SoundEffect[Random.Range(0, SoundEffect.Count)];
+        }
+        return null;
 
     }
 

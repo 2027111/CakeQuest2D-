@@ -27,5 +27,10 @@ MonoBehaviour:
   - element: 1
     elementEffect: 1
   Attacks:
+  - {fileID: 11400000, guid: b40411e46752ac04fa9b9930a11f04ae, type: 2}
+  - {fileID: 11400000, guid: 2d41dcd037b05c140937654bc91ba314, type: 2}
+  - {fileID: 11400000, guid: 0b67e8c360adf3d4087758edf8620a05, type: 2}
   - {fileID: 11400000, guid: 7af5a862e02b4384eadbb9ba09e0c416, type: 2}
+  - {fileID: 11400000, guid: a272c6c8be5577b45954f3d97f2d1a1d, type: 2}
+  - {fileID: 11400000, guid: 6224381e9b580944291b23978c108bef, type: 2}
   animationController: {fileID: 22100000, guid: 993e5c20cc0303943982922e5b1118f9, type: 2}

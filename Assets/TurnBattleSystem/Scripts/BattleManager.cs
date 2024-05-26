@@ -27,17 +27,16 @@ public class BattleManager : MonoBehaviour
     }
 
 
+
     public bool FastCombats;
 
-    [SerializeField] TMP_Text text;
+    [SerializeField] TMP_Text DebugBattleStateText;
+    [SerializeField] TMP_Text battleControlText;
 
 
 
     public GameObject BattlePrefab;
     [SerializeField] GameObject CursorPrefab;
-
-
-
     [SerializeField] GameObject CardUIPrefab;
     [SerializeField] Transform CardUIContainer;
     [SerializeField] Transform PlayerSpawnPoint;
@@ -52,6 +51,7 @@ public class BattleManager : MonoBehaviour
 
     public BattleCharacter currentActor;
     public PlayerStorage infoStorage;
+    public CharacterInventory playerInventory;
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
     [SerializeField] Party HeroParty;
@@ -63,6 +63,29 @@ public class BattleManager : MonoBehaviour
     int turn = 0;
     int numberOfturnsTotal = 0;
     int numberOfLoops = 0;
+
+
+    public List<BattleItem> GetPlayerItems()
+    {
+        List<BattleItem> battleItems = new List<BattleItem>();
+
+        foreach(InventoryItem item in playerInventory.myInventory)
+        {
+            if(item is BattleItem)
+            {
+                battleItems.Add((BattleItem)item);
+            }
+        }
+
+
+        return battleItems;
+    }
+
+    public void SetControlText(string v)
+    {
+        battleControlText.text = v;
+    }
+
     public BattleCharacter GetActor()
     {
         return currentActor;
@@ -128,7 +151,7 @@ public class BattleManager : MonoBehaviour
     {
         return GetPossibleTarget(GetActor().currentCommand);
     }
-    public List<BattleCharacter> GetPossibleTarget(Attack a, BattleCharacter Source)
+    public List<BattleCharacter> GetPossibleTarget(Skill a, BattleCharacter Source)
     {
         if (a == null)
         {
@@ -136,42 +159,13 @@ public class BattleManager : MonoBehaviour
         }
         Command c = a.GetCommandType();
         c.SetSource(Source);
-        List<BattleCharacter> possibleTargets = new List<BattleCharacter>();
-        TeamIndex sourceTeamIndex = Source.GetTeam();
-
-        // Find all characters in the scene
-
-        foreach (BattleCharacter character in Actors)
-        {
-            TeamIndex characterTeamIndex = character.GetTeam();
-            if (c.CanBeTarget(character))
-            {
-
-                // Check if the command is friendly or not and add appropriate targets
-                if (c.friendly)
-                {
-                    if (characterTeamIndex == sourceTeamIndex)
-                    {
-                        possibleTargets.Add(character);
-                    }
-                }
-                else
-                {
-                    if (characterTeamIndex != sourceTeamIndex)
-                    {
-                        possibleTargets.Add(character);
-                    }
-                }
-            }
-        }
-
-        return possibleTargets;
+        return GetPossibleTarget(c);
     }
     public List<BattleCharacter> GetPossibleTarget(Command c)
     {
         if (c  == null)
         {
-            return null;
+            return new List<BattleCharacter>();
         }
 
         List<BattleCharacter> possibleTargets = new List<BattleCharacter>();
@@ -186,19 +180,9 @@ public class BattleManager : MonoBehaviour
             {
 
                 // Check if the command is friendly or not and add appropriate targets
-                if (c.friendly)
+                if ((c.friendliness == Friendliness.Friendly && characterTeamIndex == sourceTeamIndex) || (c.friendliness == Friendliness.Non_Friendly && characterTeamIndex != sourceTeamIndex)||(c.friendliness == Friendliness.Neutral))
                 {
-                    if (characterTeamIndex == sourceTeamIndex)
-                    {
-                        possibleTargets.Add(character);
-                    }
-                }
-                else
-                {
-                    if (characterTeamIndex != sourceTeamIndex)
-                    {
-                        possibleTargets.Add(character);
-                    }
+                    possibleTargets.Add(character);
                 }
             }
         }
@@ -369,9 +353,9 @@ public class BattleManager : MonoBehaviour
         BattleState?.OnExit();
         BattleState = state;
         BattleState.OnEnter(this);
-        if (text != null)
+        if (DebugBattleStateText != null)
         {
-            text.text = BattleState.GetType().ToString();
+            DebugBattleStateText.text = BattleState.GetType().ToString();
         }
     }
     private void SpawnPartyCards()
@@ -464,11 +448,13 @@ public class BattleManager : MonoBehaviour
             case TeamIndex.Player:
 
                 CharacterGameObject.GetComponent<Entity>().LoadReference();
-                HeroPartyActors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
+                HeroPartyActors.Add(battleCharacterObject);
+                layerOrder = HeroPartyActors.IndexOf(battleCharacterObject) % 2;
                 break;
             case TeamIndex.Enemy:
                 CharacterGameObject.GetComponent<Entity>().LoadReferenceRefreshed();
-                EnemyPartyActors.Add(CharacterGameObject.GetComponent<BattleCharacter>());
+                EnemyPartyActors.Add(battleCharacterObject);
+                layerOrder = EnemyPartyActors.IndexOf(battleCharacterObject) % 2;
                 FlipIndex = -1;
                 break;
 
@@ -477,7 +463,9 @@ public class BattleManager : MonoBehaviour
         battleCharacterObject.Flip(FlipIndex);
         battleCharacterObject.SetTeam(index);
         CharacterGameObject.name = characterObject.characterData.characterName + Actors.Count;
-        CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = (int)-CharacterGameObject.transform.position.y;
+
+        CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
+
 
 
 

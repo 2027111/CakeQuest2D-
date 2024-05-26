@@ -40,7 +40,6 @@ public class Interactable : MonoBehaviour
             player = collision.gameObject;
             if(player.GetComponent<Character>().CanInteraction())
             {
-                Debug.Log("Interacting");
                 player.GetComponent<Character>().SetInteraction(false);
                 ManageContactEvent(contactEvent);
                 ManageInteraction(player, true);

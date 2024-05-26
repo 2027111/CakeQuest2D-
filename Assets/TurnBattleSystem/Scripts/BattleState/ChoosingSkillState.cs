@@ -5,7 +5,7 @@ using UnityEngine;
 public class ChoosingSkillState : BattleState
 {
 
-    GameObject choiceMenu;
+    public GameObject choiceMenu;
 
     public override void OnEnter(BattleManager _battleManager)
     {
@@ -15,7 +15,10 @@ public class ChoosingSkillState : BattleState
         CamManager.PanToCharacter(battleManager.GetActor());
         InstantiateMenu(battleManager.GetActor());
     }
-
+    public override void ShowControls()
+    {
+        battleManager.SetControlText("WASD to navigate | Left Click to Select Skill | Right Click to return");
+    }
 
     public override void Handle()
     {
@@ -62,7 +65,7 @@ public class ChoosingSkillState : BattleState
 
 
 
-    public void InstantiateMenu(BattleCharacter character)
+    public virtual void InstantiateMenu(BattleCharacter character)
     {
         GameObject choiceMenuPrefab = Resources.Load<GameObject>("Skillmenu");
         if (choiceMenuPrefab != null)

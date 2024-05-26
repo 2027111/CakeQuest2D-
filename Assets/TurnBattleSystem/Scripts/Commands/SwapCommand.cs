@@ -9,6 +9,7 @@ public class SwapCommand : AttackCommand
     public SwapCommand() : base()
     {
         skippable = false;
+        canFocus = false;
     }
 
 

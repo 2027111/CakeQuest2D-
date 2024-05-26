@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpriteEvents : MonoBehaviour
 {
     BattleCharacter character;
+    [SerializeField] AudioClip walkSound;
     Animator anim;
     private void Awake()
     {
@@ -27,6 +28,11 @@ public class SpriteEvents : MonoBehaviour
     {
         character.StartParryWindow();
     }
+    public void PlayWalkingSound()
+    {
+        character.PlaySFX(walkSound);
+    }
+
 
 
 
@@ -36,7 +42,7 @@ public class SpriteEvents : MonoBehaviour
         if(c is SkillCommand)
         {
 
-        Attack skill = (c as SkillCommand).GetAttack();
+        Skill skill = (c as SkillCommand).GetAttack();
         string ObjectName = skill.GetSpawnObject(objectIndex);
             if (!string.IsNullOrEmpty(ObjectName))
             {
@@ -44,19 +50,27 @@ public class SpriteEvents : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>(ObjectName);
         if (prefab != null)
         {
-            GameObject instantiatedObject = Instantiate(prefab, c.Target[0].transform);
-            Spell spellComponent = instantiatedObject.GetComponent<Spell>();
-            Stop();
-            if (spellComponent != null)
-            {
-                // Set the command on the Spell component
-                spellComponent.SetCommand(c);
-                spellComponent.OnOver += Resume;
-            }
-            else
-            {
-                Debug.LogError("The instantiated object does not have a Spell component.");
-            }
+
+                    foreach(BattleCharacter bc in c.Target)
+                    {
+                        GameObject instantiatedObject = Instantiate(prefab, bc.transform);
+                        Spell spellComponent = instantiatedObject.GetComponent<Spell>();
+                        if(c.Target.IndexOf(bc) == 0)
+                        {
+                            Stop();
+                            if (spellComponent != null)
+                            {
+                                // Set the command on the Spell component
+                                spellComponent.SetCommand(c);
+                                spellComponent.OnOver += Resume;
+                            }
+                            else
+                            {
+                                Debug.LogError("The instantiated object does not have a Spell component.");
+                            }
+                        }
+                    }
+            
         }
         else
         {

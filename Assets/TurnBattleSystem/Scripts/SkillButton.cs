@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SkillButton : ChoiceMenuButton
 {
     [SerializeField] string logoPath = "Sprites/logo_element_";
-    public Attack storedSkill;
+    public Skill storedSkill;
 
     [SerializeField] TMP_Text attackNameText;
     [SerializeField] TMP_Text attackDescText;
@@ -19,7 +19,7 @@ public class SkillButton : ChoiceMenuButton
     {
 
     }
-    public void SetSkill(Attack attack)
+    public void SetSkill(Skill attack)
     {
         storedSkill = attack;
 

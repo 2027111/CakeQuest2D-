@@ -34,7 +34,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Animate && pm.canMove)
+        if (Animate)
         {
 
             if (anim)

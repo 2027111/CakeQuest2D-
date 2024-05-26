@@ -14,6 +14,7 @@ public abstract class BattleState
         InputManager.inputManager.OnSelectReleased += OnSelectReleased;
         InputManager.inputManager.OnReturnReleased += OnBackReleased;
         InputManager.inputManager.OnMovement += OnNavigate;
+        ShowControls();
     }
 
 
@@ -42,6 +43,11 @@ public abstract class BattleState
     {
 
     }
+
+    public virtual void ShowControls()
+    {
+        Debug.Log("WASD to navigate | Left Click to Select | Right Click to Return");
+    } 
 
     public virtual void OnNavigate(Vector2 direction)
     {
