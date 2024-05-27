@@ -34,7 +34,10 @@ public class CameraMovement : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, currentRoomInfo.minCameraOffset.y, currentRoomInfo.maxCameraOffset.y);
         return targetPos;
     }
+    public void StartShaking(bool shaking)
+    {
 
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

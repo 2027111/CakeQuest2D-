@@ -26,8 +26,9 @@ public class BattleMenu : ChoiceMenu
     }
     public void OpenItemMenu()
     {
-
-        BattleManager.Singleton.ChangeState(new ChoosingItemState());
+        if (BattleManager.Singleton.GetPlayerItems().Count > 0) { 
+            BattleManager.Singleton.ChangeState(new ChoosingItemState());
+        }
     }
 
     public void Attack()

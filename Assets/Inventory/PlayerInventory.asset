@@ -12,19 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82ea3142847f2d47bc5addf3f1c6d43, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  myInventory:
-  - {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
-  - {fileID: 11400000, guid: 4b6529dd8f586f14381d67e6b69f5b28, type: 2}
-  - {fileID: 11400000, guid: 4dc0cd8b081c98649a254fcf1342b744, type: 2}
-  - {fileID: 11400000, guid: 4dc0cd8b081c98649a254fcf1342b744, type: 2}
-  - {fileID: 11400000, guid: b518d1a988c485445bbf745fc799fec2, type: 2}
-  - {fileID: 11400000, guid: b518d1a988c485445bbf745fc799fec2, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
+  myInventory: []
   pessos: 0

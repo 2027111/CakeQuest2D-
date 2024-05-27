@@ -12,7 +12,10 @@ public class AttackCommand : Command
     public virtual IEnumerator Execute()
     {
         startPosition = Source.transform.position;
-        yield return Source.StartCoroutine(GoToEnemy());
+        if(Source.GetReference().attackType == SkillType.Physical)
+        {
+            yield return Source.StartCoroutine(GoToEnemy());
+        }
 
 
         yield return new WaitForSeconds(.3f);
@@ -30,8 +33,10 @@ public class AttackCommand : Command
 
 
         yield return new WaitForSeconds(.6f);
-
-        yield return Source.StartCoroutine(GoToOriginalPosition());
+        if (Source.GetReference().attackType == SkillType.Physical)
+        {
+            yield return Source.StartCoroutine(GoToOriginalPosition());
+        }
 
         yield return new WaitForSeconds(.6f);
         OnExecuted?.Invoke();

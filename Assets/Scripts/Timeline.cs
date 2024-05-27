@@ -18,9 +18,9 @@ public class Timeline: MonoBehaviour
         }
     }
 
-    public void StartCinematic()
+    public virtual void StartCinematic()
     {
-        if (CheckPlay())
+        if (CanPlayCutscene())
         {
             storagePlay.dialogueIndex = 0;
 
@@ -48,7 +48,7 @@ public class Timeline: MonoBehaviour
         Debug.Log("Starting Dialogue");
         if (!started )
         {
-            if (CheckPlay())
+            if (CanPlayCutscene())
             {
                 if (storagePlay.GetCurrentLine() != null)
                 {
@@ -114,7 +114,7 @@ public class Timeline: MonoBehaviour
             }
         }
     }
-    public bool CheckPlay()
+    public bool CanPlayCutscene()
     {
         if (storagePlay)
         {

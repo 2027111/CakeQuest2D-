@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading.Tasks;
 using UnityEngine;
-using TMPro;
 using UnityEngine.Events;
-using System;
 
 public enum SaveFiles
 {
     saveFile
 }
-
-
 
 public class GameSaveManager : MonoBehaviour
 {
@@ -20,11 +17,8 @@ public class GameSaveManager : MonoBehaviour
 
     public List<ScriptableObject> objectsToSave = new List<ScriptableObject>();
 
-
-
-
-
-
+    public static int saveFileIndex = 0; // Default to the first save slot
+    public string version = "0.0.05.27";
 
     public static GameSaveManager Singleton
     {
@@ -33,7 +27,6 @@ public class GameSaveManager : MonoBehaviour
         {
             if (_singleton == null)
             {
-
                 _singleton = value;
             }
             else if (_singleton != value)
@@ -45,74 +38,51 @@ public class GameSaveManager : MonoBehaviour
     }
 
 
-
     public string path;
     public string extension = "json";
 
-
-
     public UnityEvent OnLanguageChanged;
     public UnityEvent OnSaveFileLoaded;
-
-
 
     private void Awake()
     {
         Singleton = this;
         DontDestroyOnLoad(Singleton);
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         CreateSavePath();
-        LoadSaveFile();
-        //LoadLanguage();
     }
 
     public void CreateSavePath()
     {
-
         InitializePath();
         foreach (var value in Enum.GetValues(typeof(SaveFiles)))
         {
             string enumValueName = value.ToString();
-
-            // Check if the directory exists, if not, create it
             if (!Directory.Exists(GetPath(enumValueName)))
             {
                 Directory.CreateDirectory(GetPath(enumValueName));
             }
         }
+        Debug.Log(GetNumberOfSaveSlots());
     }
-
-
-
-
-    public void SaveFileToPath(TextAsset fileContent, string filePath)
-    {
-        // Write the content of the TextAsset to the specified file path
-        File.WriteAllText(filePath, fileContent.text);
-    }
-
 
     private void OnValidate()
     {
         InitializePath();
     }
 
-    public void OnLanguageDropdownValueChanged(int value)
-    {
-        // Handle the dropdown value changed event
-        // You can access the selected enum value using the dropdown's value property
-        SetLanguage(value);
-        OnChangeLanguage();
-    }
-
-
     public void InitializePath()
     {
+        path = $"{Application.dataPath}";
+    }
 
-        path = $"{Application.persistentDataPath}";
+    public void OnLanguageDropdownValueChanged(int value)
+    {
+        SetLanguage(value);
+        OnChangeLanguage();
     }
 
     public Language GetLanguage()
@@ -125,127 +95,125 @@ public class GameSaveManager : MonoBehaviour
         LanguageData.SetLanguage((Language)value);
     }
 
-    private void OnDisable()
-    {
-    }
-
-
-
     public void OnChangeLanguage()
     {
-
         SaveGame();
         LoadLanguage();
     }
 
-
-
     public string GetPath(string whattosave)
     {
-        return path + string.Format("/{0}", whattosave);
+        return $"{path}/{whattosave}";
     }
 
     public string GetFilePath(string whattosave)
     {
-        return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? GetLanguage() + "_" : ""));
+        return $"{path}/{whattosave}/save_{saveFileIndex}_{version}.{extension}";
     }
-    public string GetFilePath(string whattosave, string language)
-    {
-        return path + string.Format("/{0}/{2}{0}.{1}", whattosave, extension, (whattosave == "translation" ? language + "_" : ""));
-    }
-
 
     public void SaveGame()
     {
-        SaveScriptables(SaveFiles.saveFile);
+        StartCoroutine(SaveFileCoroutine());
     }
+    public IEnumerator SaveFileCoroutine()
+    {
+        yield return SaveScriptablesAsync(SaveFiles.saveFile);
 
+    }
     public void LoadLanguage()
     {
-
-
         OnLanguageChanged?.Invoke();
-
     }
-
 
     public void LoadSaveFile()
     {
-        LoadScriptables(SaveFiles.saveFile);
-
-        OnSaveFileLoaded?.Invoke();
-
+        StartCoroutine(LoadSaveFileCoroutine());
     }
 
-    public void SaveEverything()
+    public IEnumerator LoadSaveFileCoroutine()
     {
-
-
-
-        SaveScriptables(SaveFiles.saveFile);
+        yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.saveFile));
     }
 
 
-
-    public void SaveScriptables(SaveFiles listName)
+    public IEnumerator SaveScriptablesAsync(SaveFiles listName)
     {
-        List<ScriptableObject> list;
-
-        list = GetListMatch(listName);
+        List<ScriptableObject> list = GetListMatch(listName);
         string filePath = GetFilePath(listName.ToString());
         List<ScriptableObjectDTO> dtoList = GetCurrentDTOList(list);
         var json = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
-        File.WriteAllText(filePath, json);
-        
+
+        var saveTask = Task.Run(() => File.WriteAllTextAsync(filePath, json));
+
+        while (!saveTask.IsCompleted)
+        {
+            yield return null;
+        }
+
+        if (saveTask.Exception != null)
+        {
+            Debug.LogError($"Error saving file: {saveTask.Exception}");
+        }
     }
 
-
-
-    public void LoadScriptables(SaveFiles listName)
+    private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
     {
-        List<ScriptableObject> list;
-            list = GetListMatch(listName);
+        if(GetNumberOfSaveSlots() == saveFileIndex)
+        {
+            yield return SaveFileCoroutine();
+        }
+        else
+        {
+            List<ScriptableObject> list = GetListMatch(listName);
             List<ScriptableObjectDTO> dtoList = ReadSaveFile(listName);
             if (dtoList != null)
             {
-                ApplyToScriptableObjects(dtoList, list);
+                yield return ApplyToScriptableObjects(dtoList, list);
             }
+            yield return null;
         }
-    public void ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<ScriptableObject> list)
+    }
+
+    public void LoadScriptables(SaveFiles listName)
+    {
+        List<ScriptableObject> list = GetListMatch(listName);
+        List<ScriptableObjectDTO> dtoList = ReadSaveFile(listName);
+        if (dtoList != null)
+        {
+            ApplyToScriptableObjects(dtoList, list);
+        }
+    }
+
+    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<ScriptableObject> list)
     {
         foreach (ScriptableObject obj in list)
         {
-            ApplyToScriptableObjects(dtoList, obj);
+           yield return ApplyToScriptableObjects(dtoList, obj);
+            yield return null;
         }
     }
 
-    public void ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
+    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
     {
-            ScriptableObject yourObj = obj;
-            if (yourObj != null)
+        ScriptableObject yourObj = obj;
+        if (yourObj != null)
+        {
+            ScriptableObjectDTO scriptableObjectDTO = GetMatchingObject(dtoList, obj);
+            if (scriptableObjectDTO != null)
             {
-
-                ScriptableObjectDTO scriptableObjectDTO = GetMatchingObject(dtoList, obj);
-
-
-                // Find the corresponding DTO using the unique identifier
-                if (scriptableObjectDTO != null)
-                {
-                    // Apply data to the ScriptableObject
-                    scriptableObjectDTO.ApplyData(yourObj);
-                }
+                scriptableObjectDTO.ApplyData(yourObj);
             }
-        
+        }
+        yield return null;
     }
-
 
     public ScriptableObjectDTO GetMatchingObject(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
     {
-        foreach(ScriptableObjectDTO sodto in dtoList)
+        foreach (ScriptableObjectDTO sodto in dtoList)
         {
-            if(sodto.typeName == obj.GetType().Name)
+            if (sodto.typeName == obj.GetType().Name)
             {
-                if(sodto.objectName == obj.name || sodto.HashCode == obj.GetHashCode())
+                if (sodto.objectName == obj.name || sodto.HashCode == obj.GetHashCode())
                 {
                     return sodto;
                 }
@@ -254,43 +222,29 @@ public class GameSaveManager : MonoBehaviour
         return null;
     }
 
-
-
-
     public List<ScriptableObjectDTO> GetCurrentDTOList(List<ScriptableObject> list)
     {
-
-        
         List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
-
         for (int i = 0; i < list.Count; i++)
         {
             ScriptableObjectDTO scriptableObjectDTO = new ScriptableObjectDTO(list[i]);
             dtoList.Add(scriptableObjectDTO);
         }
-
         return dtoList;
     }
 
     public List<ScriptableObjectDTO> ReadSaveFile(SaveFiles path)
     {
-
         string filePath = GetFilePath(path.ToString());
-
         if (File.Exists(filePath))
         {
             var json = File.ReadAllText(filePath);
             ScriptableObjectListWrapper listWrapper = JsonUtility.FromJson<ScriptableObjectListWrapper>(json);
-
             List<ScriptableObjectDTO> dtoList = listWrapper.objects;
             return dtoList;
         }
-
         return null;
     }
-
-
-
 
     private List<ScriptableObject> GetListMatch(SaveFiles listName)
     {
@@ -298,7 +252,42 @@ public class GameSaveManager : MonoBehaviour
         {
             case SaveFiles.saveFile:
                 return objectsToSave;
-            default: return null;
+            default:
+                return null;
         }
+    }
+
+    // Methods to manage save slots
+    public void SetSaveFileIndex(int index)
+    {
+        saveFileIndex = index;
+    }
+
+    public void CreateNewSaveSlot()
+    {
+        // Determine the next available save slot
+        saveFileIndex = GetNumberOfSaveSlots();
+    }
+
+    public void DeleteSaveSlot(int index)
+    {
+        string filePath = $"{path}/{SaveFiles.saveFile}/save_{index}_{version}.{extension}";
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+        }
+    }
+
+
+
+    public int GetNumberOfSaveSlots()
+    {
+        string saveFilePath = GetPath(SaveFiles.saveFile.ToString()) + "/";
+        if (Directory.Exists(saveFilePath))
+        {
+            string[] files = Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}");
+            return files.Length;
+        }
+        return -1;
     }
 }

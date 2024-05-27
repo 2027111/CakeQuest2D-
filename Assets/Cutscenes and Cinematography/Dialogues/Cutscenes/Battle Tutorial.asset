@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d379bc498f63e4e9f75862634adafd, type: 3}
+  m_Name: Battle Tutorial
+  m_EditorClassIdentifier: 
+  RuntimeValue: 1
+  repeats: 0
+  dialogue: []
+  dialogueIndex: 1
+  StartRoom: {fileID: 0}
+  battleDialogue:
+  - condition: {fileID: 0}
+    dialogueLineIds:
+    - Tuto_Yankee_000
+    - Tuto_Yankee_001
+    - Tuto_Yankee_002
+    - Tuto_Yankee_003
+    - Tuto_Yankee_004
+    - Tuto_Yankee_005
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    source: {fileID: 0}
+    technicalCondition: 1
+    conditionIndex: 0
+    played: 1
+  - condition: {fileID: 0}
+    dialogueLineIds:
+    - Tuto_Yankee_006
+    - Tuto_Yankee_007
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    source: {fileID: 0}
+    technicalCondition: 3
+    conditionIndex: 0
+    played: 1

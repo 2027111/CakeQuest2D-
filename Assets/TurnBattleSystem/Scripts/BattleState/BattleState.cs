@@ -13,7 +13,7 @@ public abstract class BattleState
         InputManager.inputManager.OnReturnPressed += OnBack;
         InputManager.inputManager.OnSelectReleased += OnSelectReleased;
         InputManager.inputManager.OnReturnReleased += OnBackReleased;
-        InputManager.inputManager.OnMovement += OnNavigate;
+        InputManager.inputManager.OnMovementPressed += OnNavigate;
         ShowControls();
     }
 
@@ -25,7 +25,7 @@ public abstract class BattleState
         InputManager.inputManager.OnReturnPressed -= OnBack;
         InputManager.inputManager.OnSelectReleased -= OnSelectReleased;
         InputManager.inputManager.OnReturnReleased -= OnBackReleased;
-        InputManager.inputManager.OnMovement -= OnNavigate;
+        InputManager.inputManager.OnMovementPressed -= OnNavigate;
         BattleManager.Singleton.SetIndicationText("");
     }
     public virtual void OnSelectReleased()

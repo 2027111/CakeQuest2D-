@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78849739c56f7f2418ca225d28e90d8a, type: 3}
+  m_Name: Boiling Oil
+  m_EditorClassIdentifier: 
+  UID: be78b9d89857cc347b561e476b8f2240
+  targetType: 0
+  friendliness: 1
+  targetStateType: 0
+  element: 6
+  HitEffect:
+  - {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
+  SoundEffect: []
+  itemName: Boiling Oil
+  itemId: 
+  itemDescription: Boiling oil..? what more do you need
+  itemType: 0
+  itemSprite: {fileID: 21300000, guid: 8acb1a3a04ed7e849a06db4f2676141f, type: 3}
+  usable: 1
+  unique: 0
+  healthEffectAmount: 12

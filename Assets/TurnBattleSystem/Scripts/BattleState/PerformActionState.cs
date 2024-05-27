@@ -190,7 +190,6 @@ public class PerformActionState : BattleState
     {
         battleManager.StopCoroutine(CheckFocus());
         battleManager.NextTurn();
-        battleManager.StartNewTurn();
     }
 
 

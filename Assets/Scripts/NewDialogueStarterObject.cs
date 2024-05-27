@@ -13,11 +13,20 @@ using System;
 public class Dialogue
 {
 
-    //public LineInfo[] dialogueLines;
+
+
+    public BoolValue condition;
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
+    public UnityEvent OnInstantOverEvent;
     public GameObject source;
+
+    public virtual void SetPlayed()
+    {
+        Debug.Log("OK");
+    }
+
     public void SetSource(GameObject source)
     {
         this.source = source;
@@ -35,12 +44,12 @@ public class Dialogue
             {
                 this.choices = dialogue.choices.Length>0?dialogue.choices:null;
             }
+            this.condition = dialogue.condition;
             this.OnOverEvent = dialogue.OnOverEvent;
+            this.OnInstantOverEvent = dialogue.OnInstantOverEvent;
             this.source = dialogue.source;
         }
     }
-
-
     public Dialogue(ChoiceDialogue dialogue)
     {
         if (dialogue.dialogueLineIds.Length > 0)
@@ -51,10 +60,19 @@ public class Dialogue
         {
             this.choices = dialogue.choices;
         }
+        this.condition = dialogue.condition;
         this.OnOverEvent = dialogue.OnOverEvent;
+        this.OnInstantOverEvent = dialogue.OnInstantOverEvent;
     }
 
-
+    public bool ConditionRespected()
+    {
+        if (condition)
+        {
+            return !condition.RuntimeValue;
+        }
+        return true;
+    }
     public bool isNull()
     {  if(dialogueLineIds == null)
         {
@@ -62,6 +80,16 @@ public class Dialogue
         }else if (dialogueLineIds.Length == 0)
         {
             return true;
+        }
+        else
+        {
+            foreach(string l in dialogueLineIds)
+            {
+                if (string.IsNullOrEmpty(l))
+                {
+                    return true;
+                }
+            }
         }
         return false;
     }
@@ -73,10 +101,85 @@ public class Dialogue
 [Serializable]
 public class ChoiceDialogue
 {
+
+    public BoolValue condition;
     public string choicesLineIds;
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
+    public UnityEvent OnInstantOverEvent;
+
+
+}
+
+
+public enum BattleCondition
+{
+    None,
+    OnLoop,
+    OnTurn,
+    OnEnemyTurn
+}
+
+[Serializable]
+public class BattleDialogue : Dialogue
+{
+    public BattleCondition technicalCondition;
+    public int conditionIndex;
+    public bool played = false;
+
+    public bool CheckBattleCondition()
+    {
+
+        if (played)
+        {
+            return false;
+        }
+        switch (technicalCondition)
+        {
+            case BattleCondition.None:
+                return true;
+                // Implement the logic for the 'None' condition
+                Debug.Log("Condition: None");
+                break;
+            case BattleCondition.OnLoop:
+                if(BattleManager.Singleton.GetLoopAmount() == conditionIndex && BattleManager.Singleton.IsFirstTurn())
+                {
+                    return true;
+                }
+                // Implement the logic for the 'OnLoop' condition
+                Debug.Log("Condition: OnLoop");
+                break;
+            case BattleCondition.OnTurn:
+                if (BattleManager.Singleton.GetTurnAmount() == conditionIndex && !BattleManager.Singleton.IsEnemyTurn())
+                {
+                    return true;
+                }
+                // Implement the logic for the 'OnTurn' condition
+                Debug.Log("Condition: OnTurn");
+                break;
+            case BattleCondition.OnEnemyTurn:
+                if (BattleManager.Singleton.GetEnemyTurnAmount() == conditionIndex && BattleManager.Singleton.IsEnemyTurn())
+                {
+                    Debug.Log("Enemy turn and amount : " + BattleManager.Singleton.GetEnemyTurnAmount());
+                    return true;
+                }
+                // Implement the logic for the 'OnFirstEnemyTurn' condition
+                Debug.Log("Condition: OnEnemyTurn");
+                break;
+            default:
+                Debug.LogWarning("Unknown condition");
+                break;
+        }
+        return false;
+    }
+    public override void SetPlayed()
+    {
+        played = true;
+    }
+    public BattleDialogue(Dialogue dialogue) : base(dialogue)
+    {
+    }
 }
 
 
@@ -133,14 +236,14 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public bool CheckLines()
     {
-        foreach (string line in dialogue.dialogueLineIds)
+       if (dialogue.isNull())
         {
-            if (line == null)
-            {
                 return false;
-            }
         }
-        return true;
+        else
+        {
+            return dialogue.ConditionRespected();
+        }
     }
 
     public virtual void DialogueOver()
@@ -151,19 +254,7 @@ public class NewDialogueStarterObject : MonoBehaviour
     }
 
 
-    public void SetDialogueLines(string[] newLines)
-    {
-        dialogue.dialogueLineIds = newLines;
-    }
 
-    public void SetNewDialogue(Dialogue newDialogue)
-    {
-        dialogue = newDialogue;
-    }
-
-    public void DebugPrint()
-    {
-    }
     //public static LineInfo[] GetFormattedLines<T>(T currentObject, LineInfo[] lines)
     //{
     //    List<LineInfo> formattedLines = new List<LineInfo>();

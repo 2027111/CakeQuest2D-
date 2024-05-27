@@ -18,10 +18,6 @@ public class ChoosingActionState : BattleState
         InstantiateMenu(battleManager.GetActor());
     }
 
-    public override void ShowControls()
-    {
-        battleManager.SetControlText("WASD to navigate | Left Click to Select Action");
-    }
 
     public override void Handle()
     {

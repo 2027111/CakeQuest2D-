@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class TurnOnAndOff : MonoBehaviour
 {
     public bool TurnedOn;
+    public BoolValue condition;
     Animator anim;
     public UnityEvent OnTurnedOn;
 
@@ -29,7 +30,13 @@ public class TurnOnAndOff : MonoBehaviour
 
     public void Turn()
     {
-        
+        if (condition)
+        {
+            if (!condition.RuntimeValue)
+            {
+                return;
+            }
+        }
         TurnedOn = !TurnedOn;
         CheckOn();
     }

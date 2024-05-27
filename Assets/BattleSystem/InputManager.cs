@@ -18,10 +18,10 @@ public class InputManager : Controller
     }
     public void SetMove(InputAction.CallbackContext context)
     {
-        Vector2 wasdInput = context.ReadValue<Vector2>();
+        Vector2 wasdInput = context.ReadValue<Vector2>().normalized;
             if (context.started)
             {
-                OnMovement?.Invoke(wasdInput);
+                OnMovementPressed?.Invoke(wasdInput);
             }
             OnMovementHeld?.Invoke(wasdInput);
         

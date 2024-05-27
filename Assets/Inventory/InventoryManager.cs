@@ -97,57 +97,58 @@ public class InventoryManager : MonoBehaviour
 
         InventorySlot Slot = Instantiate(blankInventorySlot, InventoryContainer.transform).GetComponent<InventorySlot>();
         Slot.OnSelect.AddListener(delegate{ SnapTo(Slot.GetComponent<RectTransform>()); }) ;
-        if(LastButton != null)
-        {
-            Navigation lastNav = LastButton.GetComponent<Button>().navigation;
-            lastNav.mode = Navigation.Mode.Explicit;
-            lastNav.selectOnDown = Slot.GetComponent<Button>();
-
-            Navigation customNav = new Navigation();
-            customNav.mode = Navigation.Mode.Explicit;
-            customNav.selectOnUp = LastButton.GetComponent<Button>();
-            if (LeftButton)
-            {
-
-                customNav.selectOnLeft = LeftButton;
-                lastNav.selectOnLeft = LeftButton;
-            }
-
-            if (RightButton)
-            {
-
-                customNav.selectOnRight = RightButton;
-                lastNav.selectOnRight = RightButton;
-            }
-
-
-
-
-
-            LastButton.GetComponent<Button>().navigation = lastNav;
-            Slot.GetComponent<Button>().navigation = customNav;
-        }
-        else
+        if(LastButton == null)
         {
             if (LeftButton)
             {
-                Navigation customNav = new Navigation();
-                customNav.mode = Navigation.Mode.Explicit;
-                customNav.selectOnRight = Slot.GetComponent<Button>();
+                Navigation customNav = new Navigation
+                {
+                    mode = Navigation.Mode.Explicit,
+                    selectOnRight = Slot.GetComponent<Selectable>()
+                };
                 LeftButton.navigation = customNav;
             }
 
             if (RightButton)
             {
-                Navigation customNav = new Navigation();
-                customNav.mode = Navigation.Mode.Explicit;
-                customNav.selectOnLeft = Slot.GetComponent<Button>();
+                Navigation customNav = new Navigation
+                {
+
+                    mode = Navigation.Mode.Explicit,
+                    selectOnLeft = Slot.GetComponent<Selectable>()
+                };
                 RightButton.navigation = customNav;
             }
             
 
 
         }
+        Navigation nav = new Navigation();
+        nav.mode = Navigation.Mode.Explicit;
+        if (LastButton)
+        {
+            nav.selectOnUp = LastButton.GetComponent<Selectable>();
+            Navigation n = LastButton.GetComponent<Selectable>().navigation;
+            n.selectOnDown = Slot.GetComponent<Selectable>();
+            LastButton.GetComponent<Selectable>().navigation = n;
+        }
+        if (LeftButton)
+        {
+
+            nav.selectOnLeft = LeftButton;
+        }
+
+        if (RightButton)
+        {
+
+            nav.selectOnRight = RightButton;
+        }
+
+
+
+
+
+        Slot.GetComponent<Selectable>().navigation = nav;
         Slot.Setup(item, this, characterInventory.AmountObject(item));
         LastButton = Slot;
 
@@ -159,7 +160,7 @@ public class InventoryManager : MonoBehaviour
     {
         currentItem = newItem;
         descriptionText.text = currentItem.itemDescription;
-        useButton.SetActive(currentItem.itemType == ItemType.Consumable);
+        useButton.SetActive(currentItem.usable);
         if (useButton.activeSelf)
         {
             useButton.GetComponent<Button>().Select();

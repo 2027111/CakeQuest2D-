@@ -47,7 +47,6 @@ public class PlayerInfoStorage : MonoBehaviour
     public void GoToBattleScene()
     {
         SetNewInformationToFile();
-        GameSaveManager.Singleton?.SaveGame();
         infoStorage.forceNextChange = true;
         FadeScreen.MoveToScene("BattleScene");
 

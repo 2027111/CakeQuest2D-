@@ -43,7 +43,7 @@ public class Character : MonoBehaviour
 
     public void Move(Vector2 input)
     {
-        playerMovement.movementInput = input;
+        playerMovement.SetInput(input);
     }
 
     public void CanMove(bool v)

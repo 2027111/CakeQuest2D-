@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BattleMusic: {fileID: 8300000, guid: f92a4982bec7e764d98a41430911c16f, type: 3}
   CutsceneToPlay: {fileID: 11400000, guid: f9d6cbe23f7a42743a4cef6c4bf3b4b8, type: 2}
-  CutsceneForDialogue: {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}
+  CutsceneForDialogue: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}

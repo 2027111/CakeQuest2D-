@@ -37,7 +37,7 @@ public class ItemCommand : Command
 
     public override void ActivateCommand()
     {
-        item.BattleUse(Target);
+        item.BattleUse(Target, BattleManager.Singleton.playerInventory);
     }
     public override bool CanBeTarget(BattleCharacter _character)
     {

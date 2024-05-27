@@ -1,19 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] UnityEvent OnNewGame;
     [SerializeField] UnityEvent OnContinue;
     [SerializeField] PlayerStorage playerSave;
+    [SerializeField] Button NewGameButton;
+    [SerializeField] Button ContinueButton;
+    [SerializeField] GameObject LoadFileButtonPrefab;
+    [SerializeField] Transform LoadMenuContainer;
     [SerializeField] string firstScene;
     [SerializeField] RoomInfo firstRoom;
    
     [SerializeField] TMP_Dropdown languageDropdown;
+    [SerializeField] List<GameObject> Menus;
 
     private void Start()
     {
@@ -23,6 +30,10 @@ public class MainMenu : MonoBehaviour
         {
             Destroy(UICanvas.Singleton.gameObject);
         }
+
+        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveSlots() > 0);
+
+
     }
     private void InitDropdown()
     {
@@ -47,17 +58,50 @@ public class MainMenu : MonoBehaviour
 
    
 
+    public void OpenLoadMenu()
+    {
+        foreach(Transform t in LoadMenuContainer.GetChild(0))
+        {
+            Destroy(t.gameObject);
+        }
+        LoadMenuContainer.gameObject.SetActive(true);
+        int amount = GameSaveManager.Singleton.GetNumberOfSaveSlots();
+        for (int i = 0; i < amount; i++)
+        {
+            GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer.GetChild(0));
+            button.GetComponentInChildren<TMP_Text>().text = "Load Save " + i;
+            int index = i;
+            button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
+        }
+    }
 
+    private void LoadGame(int index)
+    {
+        GameSaveManager.Singleton.SetSaveFileIndex(index);
+        StartCoroutine(StartGameRoutine());
+    }
+    public void CloseAll()
+    {
+        foreach(GameObject g in Menus)
+        {
+            g.SetActive(false);
+        }
+    }
 
+    public void CloseLoadMenu()
+    {
+        foreach (Transform t in LoadMenuContainer.GetChild(0))
+        {
+            Destroy(t.gameObject);
+        }
+        LoadMenuContainer.gameObject.SetActive(false);
+
+    }
     public void NewGame()
     {
-        Debug.Log("Test");
-        Debug.Log(FadeScreen.fading);
-        playerSave.sceneName = firstScene;
-        playerSave.nextRoomInfo.SetValue(firstRoom);
-        playerSave.forceNextChange = true;
-        OnNewGame?.Invoke();
-        GoToGame();
+
+        GameSaveManager.Singleton.CreateNewSaveSlot();
+        StartCoroutine(StartGameRoutine());
     }
 
 
@@ -67,7 +111,11 @@ public class MainMenu : MonoBehaviour
         GoToGame();
     }
 
-
+    public IEnumerator StartGameRoutine()
+    {
+        yield return StartCoroutine(GameSaveManager.Singleton.LoadSaveFileCoroutine());
+        GoToGame();
+    }
     public void GoToGame()
     {
         playerSave.forceNextChange = true;

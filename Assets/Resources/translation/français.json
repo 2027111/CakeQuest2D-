@@ -10,7 +10,7 @@
         },
         {
             "dataId": "ControlScheme",
-            "jsonData": "{\"BattleState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner | Clic Droit pour Retourner\",\"ChoosingActionState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner une Action\",\"ChoosingItemState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner un Objet | Clic Droit pour retourner\",\"ChoosingSkillState\":\"WASD pour naviguer | Clic Gauche pour Sélectionner une Compétence | Clic Droit pour retourner\",\"ChoosingTargetState\":\"WASD pour changer de cible | Clic Gauche pour confirmer la/les cible(s) | Clic Droit pour retourner\",\"CutsceneState\":\"Clic Gauche -> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"Clic Droit -> Bloquer\",\"SwapingState\":\"\"}"
+            "jsonData": "{\"BattleState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner | <sprite name=cancel> Retourner\",\"ChoosingActionState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une Action\",\"ChoosingItemState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner un Objet | <sprite name=cancel> Retourner\",\"ChoosingSkillState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une compétence | <sprite name=cancel> Retourner\",\"ChoosingTargetState\":\"<sprite name=move> Changer de cible | <sprite name=select> Confirmer la/les cible(s) | <sprite name=cancel> Retourner\",\"CutsceneState\":\"<sprite name=select> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"<sprite name=cancel> Bloquer\",\"SwapingState\":\"\"}"
         },
         {
             "dataId": "Misc_Chest_Locked",
@@ -47,6 +47,26 @@
         {
             "dataId": "Intro_Jimi_003",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Hmm... 300°F pour 10 minutes...\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Papa me dit toujours de respecter la recette, mais...                         \n Je pourrais le cuir à 30000°F pendant 1 seconde pour avoir mon gateau le plus tôt possible.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Ow?! Qu'est-ce que..?!\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
         },
         {
             "dataId": "Misc_Jimi_000",
@@ -93,6 +113,14 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
         },
         {
+            "dataId": "Tuto_Yankee_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Fais gaffe à ton adversaire. Tu n'es pas obligé de prendre le coup. Tu peux bloquer avec <sprite name=cancel> et prendre uniquement la moitié des dégats!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
+        },
+        {
             "dataId": "Misc_Heal_Question",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Laissez-moi vous soigner.\"}"
         },
@@ -137,8 +165,44 @@
             "jsonData": "{\"itemName\":\"Ramen Instantané\",\"itemDescription\":\"Le plat le plus consistent du monde!\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31002},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
         },
         {
-            "dataId": "SmallHoneyBottle",
+            "dataId": "item_SmallHoneyBottle",
             "jsonData": "{\"itemName\":\"Petite Bouteille de miel\",\"itemDescription\":\"Une petite bouteille en forme d'ourson, remplit de miel.\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31000},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
+        },
+        {
+            "dataId": "element",
+            "jsonData": "{\"Slash\":\"Tranchant\",\"Bash\":\"Bash\",\"Sweet\":\"Sucré\",\"Sour\":\"Sûre\",\"Bitter\":\"Amer\",\"Salty\":\"Salé\",\"Support\":\"Support\"}"
+        },
+        {
+            "dataId": "skill_spinning_kick",
+            "jsonData": "{\"skillName\":\"Coup de Pied Tourné\",\"skillDescription\":\"Un coup de pied amplifié par la force centrifuge.\"}"
+        },
+        {
+            "dataId": "skill_low_heal",
+            "jsonData": "{\"skillName\":\"Premier Soins\",\"skillDescription\":\"Un sort de soin de bas niveau\"}"
+        },
+        {
+            "dataId": "skill_overhead_smash",
+            "jsonData": "{\"skillName\":\"Fracas Aérien\",\"skillDescription\":\"Un coup amplifié par la gravité\"}"
+        },
+        {
+            "dataId": "skill_ressurection",
+            "jsonData": "{\"skillName\":\"Résurrection\",\"skillDescription\":\"Un sort pouvant ranimé les alliés évanouis\"}"
+        },
+        {
+            "dataId": "skill_salad_rain",
+            "jsonData": "{\"skillName\":\"Pluie de Salade\",\"skillDescription\":\"Invoque une recette de salade tranchante\"}"
+        },
+        {
+            "dataId": "skill_slice_dice",
+            "jsonData": "{\"skillName\":\"Coupe et Découpe\",\"skillDescription\":\"Un enchainement de tranche\"}"
+        },
+        {
+            "dataId": "skill_super_kick",
+            "jsonData": "{\"skillName\":\"Super Coup de pied\",\"skillDescription\":\"Un enchainement de coup de pied\"}"
+        },
+        {
+            "dataId": "skill_egg_drill",
+            "jsonData": "{\"skillName\":\"Perç'Oeuf\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
         }
     ]
 }

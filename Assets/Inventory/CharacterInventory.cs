@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,22 @@ public class CharacterInventory : ScriptableObject
         pessos += amount;
     }
 
-
+    public bool CheckInventoryFor(List<InventoryItem> requiredItems)
+    {
+        List<InventoryItem> tempInv = myInventory;
+        foreach (InventoryItem item in requiredItems)
+        {
+            if (tempInv.Contains(item))
+            {
+                tempInv.Remove(item);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void AddToInventory(InventoryItem content, int amount = 1)
     {

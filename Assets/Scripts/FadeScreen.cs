@@ -138,6 +138,11 @@ public class FadeScreen : MonoBehaviour
         yield return null;
 
 
+        OnFadingStart?.RemoveAllListeners();
+        OnFadingMid?.RemoveAllListeners();
+        OnFadingEnd?.RemoveAllListeners();
+
+
 
 
 

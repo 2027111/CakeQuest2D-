@@ -12,16 +12,16 @@ public class Cutscene : BoolValue
     public int dialogueIndex = 0;
     public RoomInfo StartRoom;
 
-    public Dialogue GetLine()
+    public virtual Dialogue GetLine()
     {
-        
+
         Dialogue returnValue = GetCurrentLine();
         dialogueIndex++;
         return returnValue;
     }
 
 
-    public Dialogue GetCurrentLine()
+    public virtual Dialogue GetCurrentLine()
     {
         if (dialogueIndex >= dialogue.Length)
         {
@@ -36,5 +36,14 @@ public class Cutscene : BoolValue
             return null;
         }
         return returnValue;
+    }
+
+    public virtual void SetRuntime()
+    {
+        Debug.Log(":)");
+    }
+    public virtual void ResetPlayed()
+    {
+
     }
 }

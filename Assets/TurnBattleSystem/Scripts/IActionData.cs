@@ -2,10 +2,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 
 public class IActionData : ScriptableObject
 {
+
+    public string UID;
+    private void OnValidate()
+    {
+        #if UNITY_EDITOR
+        if (UID == "")
+        {
+            UID = GUID.Generate().ToString();
+            UnityEditor.EditorUtility.SetDirty(this);
+        }
+        #endif
+    }
+
 
     public TargetType targetType ;
     public Friendliness friendliness = Friendliness.Friendly;
@@ -38,4 +54,5 @@ public class IActionData : ScriptableObject
     {
         return 0;
     }
+
 }

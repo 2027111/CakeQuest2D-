@@ -23,7 +23,7 @@ public class SkillButton : ChoiceMenuButton
         storedSkill = attack;
 
 
-        attackNameText.text = storedSkill.Name;
+        attackNameText.text = storedSkill.GetName();
         attackCostText.text = storedSkill.manaCost.ToString();
         Sprite attackSprite = Resources.Load<Sprite>(logoPath + storedSkill.element.ToString().ToLower());
         if (attackSprite)
@@ -36,10 +36,8 @@ public class SkillButton : ChoiceMenuButton
     {
         if (isOverHanded)
         {
-            BattleManager.Singleton.SetIndicationText("Type : " + storedSkill.element.ToString() + " | " + storedSkill.Description + " | Does " + storedSkill.baseDamage + " damage points every hit");
+            BattleManager.Singleton.SetIndicationText($"Type : {storedSkill.GetElement()} | {storedSkill.GetDescription()} | {storedSkill.baseDamage} damage points every hit");
 
-            //string t = LanguageData.GetDataById("Indications").GetValueByKey(indicationText);
-            //BattleManager.Singleton.SetIndicationText(t);
         }
         
     }

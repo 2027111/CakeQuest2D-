@@ -27,9 +27,8 @@ public abstract class Controller : MonoBehaviour
 
 
     public delegate void MovementHandler(Vector2 movement);
-    public MovementHandler OnMovement;
+    public MovementHandler OnMovementPressed;
     public MovementHandler OnMovementHeld;
-
 
     public void CanInteract(bool _canInteract)
     {

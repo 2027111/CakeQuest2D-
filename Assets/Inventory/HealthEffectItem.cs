@@ -16,5 +16,6 @@ public class HealthEffectItem : BattleItem
         {
             target?.Entity.AddToHealth(this, ElementEffect.Neutral, BattleManager.Singleton.GetActor());
         }
+        base.BattleUse(Target, inventory);
     }
 }

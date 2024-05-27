@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7667df9e1e36cc2499ecbee7852134e1, type: 3}
   m_Name: Jimi - Slice & Dice
   m_EditorClassIdentifier: 
+  UID: aa620d2fe85818748bf81d9beda0fffa
   targetType: 1
   friendliness: 1
   targetStateType: 0
-  skillType: 1
-  element: 5
-  Name: Slice & Dice
-  Description: Attack qui fait mal :)
-  animationClip: {fileID: 7400000, guid: ed038dfd5c15b334aaa6e8b0283dca48, type: 2}
+  element: 0
   HitEffect:
   - {fileID: 6489612216288041236, guid: de00b3bac50c2e4468b0439605170bbc, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  skillType: 0
+  skillId: slice_dice
+  Description: Attack qui fait mal :)
+  animationClip: {fileID: 7400000, guid: 2d776f0362c40cd4fba886c81b196518, type: 2}
   voiceClipId: 
-  baseDamage: 5
+  baseDamage: 7
   baseAccuracy: 100
-  manaCost: 2
-  spawnObjects:
-  - Spell
-  turnTilTriggered: 2
-  turnTilActive: 2
+  manaCost: 23
+  spawnObjects: []
+  turnTilTriggered: 0
+  turnTilActive: 0

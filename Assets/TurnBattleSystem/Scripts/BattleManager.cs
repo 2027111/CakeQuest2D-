@@ -38,16 +38,18 @@ public class BattleManager : MonoBehaviour
 
     public GameObject BattlePrefab;
     [SerializeField] GameObject CursorPrefab;
+
+ 
+
     [SerializeField] GameObject CardUIPrefab;
     [SerializeField] Transform CardUIContainer;
     [SerializeField] Transform PlayerSpawnPoint;
     [SerializeField] Transform EnemySpawnPoint;
-    [SerializeField] PlayableDirector director;
     [SerializeField] BattleInfo battleInfo;
 
 
     private List<GameObject> currentCursor = new List<GameObject>();
-
+    public BattleTimeline timeline;
  
 
     public BattleCharacter currentActor;
@@ -63,7 +65,9 @@ public class BattleManager : MonoBehaviour
     public List<BattleCharacter> Actors;
     int turn = 0;
     int numberOfturnsTotal = 0;
+    int numberOfEnemyturnsTotal = 0;
     int numberOfLoops = 0;
+
 
 
     public List<BattleItem> GetPlayerItems()
@@ -145,6 +149,27 @@ public class BattleManager : MonoBehaviour
         }
         return nextturn;
     }
+
+    public bool IsFirstTurn()
+    {
+        return turn == 0;
+    }
+
+    public int GetLoopAmount()
+    {
+        return numberOfLoops;
+    }
+
+    public int GetEnemyTurnAmount()
+    {
+        return numberOfEnemyturnsTotal;
+    }
+
+    public int GetTurnAmount()
+    {
+        return numberOfturnsTotal;
+    }
+
     private int GetNextTurnIndex()
     {
         int nextturn = turn + 1;
@@ -329,20 +354,8 @@ public class BattleManager : MonoBehaviour
         ChangeState(new NothingState());
 
 
-        director.GetComponent<BattleTimeline>().SetCutscene(battleInfo.CutsceneForDialogue);
-
-        director.playableAsset = battleInfo.CutsceneToPlay;
-
-        if (director.playableAsset == null || battleInfo.CutsceneForDialogue.RuntimeValue){
-            Debug.Log("Direct Start");
-            StartBattle();
-       }
-       else
-        {
-
-          Debug.Log("Cutscene Start");
-          director.Play();
-        }
+        timeline.SetCutscene(battleInfo.CutsceneForDialogue);
+        StartBattle();
     }
 
     public void PlayOST()
@@ -435,6 +448,7 @@ public class BattleManager : MonoBehaviour
         layerOrder = currentParty.IndexOf(battleCharacter)%2;
         basePosition += direction * currentParty.IndexOf(battleCharacter);
         basePosition += (Vector3.down / 2) * (layerOrder);
+        battleCharacter.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
 
 
         return basePosition;
@@ -581,7 +595,9 @@ public class BattleManager : MonoBehaviour
             }
             yield return null;
         }
+
         yield return new WaitForSeconds(.5f);
+        timeline.ResetPlayed();
 
 
         if (battleWon)
@@ -603,7 +619,11 @@ public class BattleManager : MonoBehaviour
 
     }
 
-
+    public void StartingDialogue()
+    {
+        ChangeState(new CutsceneState());
+        timeline.StartDialogue();
+    }
 
     public void NextTurn()
     {
@@ -613,10 +633,27 @@ public class BattleManager : MonoBehaviour
             numberOfLoops++;
         }
         SetActor();
+
+        StartNewTurn();
+
+    }
+
+    private bool CheckCutscene()
+    {
+        return timeline.HasCutscene();
+    }
+    public void CutsceneOver()
+    {
+        StartNewTurn();
     }
     public void StartNewTurn()
     {
-        numberOfturnsTotal++;
+        if (CheckCutscene())
+        {
+            timeline.StartCinematic();
+        }
+        else
+        {
         if (GetActor().Entity.isDead)
         {
             GetActor().currentCommand = new DeadCommand();
@@ -634,6 +671,13 @@ public class BattleManager : MonoBehaviour
             GetActor().currentCommand.SetTarget(GetRandomTargets());
             ChangeState(new PerformActionState());
 
+        }
+
+            if (!GetActor().IsPlayerTeam())
+            {
+                numberOfEnemyturnsTotal++;
+            }
+            numberOfturnsTotal++;
         }
 
     }

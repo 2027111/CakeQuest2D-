@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7667df9e1e36cc2499ecbee7852134e1, type: 3}
   m_Name: Yankee - SuperKick
   m_EditorClassIdentifier: 
+  UID: 9a57fc146a736cf42acd5a4020dd093e
   targetType: 1
   friendliness: 1
   targetStateType: 0
-  skillType: 0
   element: 1
-  Name: Super Kick
-  Description: Attack qui fait mal :)
-  animationClip: {fileID: 7400000, guid: d264508a58c683247ab36eae686557fc, type: 2}
   HitEffect: []
   SoundEffect: []
+  skillType: 0
+  skillId: super_kick
+  Description: Super coup de pied
+  animationClip: {fileID: 7400000, guid: d264508a58c683247ab36eae686557fc, type: 2}
   voiceClipId: 
   baseDamage: 6
   baseAccuracy: 100

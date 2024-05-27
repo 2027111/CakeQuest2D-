@@ -26,6 +26,8 @@ public class CharacterObject : ScriptableObject
     public bool isDead;
 
     [Space(20)]
+    public SkillType attackType = SkillType.Physical;
+    [Space(20)]
     public Element AttackElement;
     [Space(20)]
 

@@ -17,5 +17,6 @@ public class ManaEffectItem : BattleItem
         {
             target?.Entity.AddToMana(this, BattleManager.Singleton.GetActor());
         }
+        base.BattleUse(Target, inventory);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public enum Language
 {
     Français,
-    //English,
+    English,
 }
 
 
@@ -113,7 +113,7 @@ public class LanguageData
                 return dataInfo;
             }
         }
-        return null;
+        return new JsonData();
     }
 }
 
@@ -125,11 +125,6 @@ public class JsonData
     public string dataId;
     public string jsonData;
 
-    [Serializable]
-    private class SerializableDictionary
-    {
-        public List<KeyValuePair<string, string>> keyValuePairs;
-    }
 
     public string GetValueByKey(string key)
     {

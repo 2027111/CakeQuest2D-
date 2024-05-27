@@ -1,7 +1,11 @@
 
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
 public enum TargetType
 {
     Single,
@@ -28,12 +32,13 @@ public enum TargetStateType
 
 
 
-
 [CreateAssetMenu(fileName = "Basic Skill", menuName = "Skills/BaseSkill")]
 public class Skill : IActionData
 {
+    
+
     public SkillType skillType = SkillType.Physical;
-    public string Name;
+    public string skillId;
     public string Description = "Attack qui fait mal :)";
     public AnimationClip animationClip;
     public string voiceClipId;
@@ -44,7 +49,39 @@ public class Skill : IActionData
     public string[] spawnObjects;
 
 
+    public string GetName()
+    {
+        string name = skillId;
+        string newName = LanguageData.GetDataById("skill_" + skillId).GetValueByKey("skillName");
+        if (newName != "E404")
+        {
+            return newName;
+        }
+        return name;
+    }
 
+    public string GetDescription()
+    {
+        string desc = Description;
+        string newDesc = LanguageData.GetDataById("skill_" + skillId).GetValueByKey("skillDescription");
+        if(newDesc != "E404")
+        {
+            return newDesc;
+        }
+        return desc;
+    }
+
+
+    public string GetElement()
+    {
+        string elem = element.ToString();
+        string newElem = LanguageData.GetDataById("element").GetValueByKey(elem);
+        if (newElem != "E404")
+        {
+            return newElem;
+        }
+        return newElem;
+    }
 
 
     public int turnTilTriggered = 0;
@@ -53,7 +90,7 @@ public class Skill : IActionData
 
     public override string ToString()
     {
-        return Name;
+        return skillId;
     }
 
 

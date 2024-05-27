@@ -31,6 +31,26 @@ public class Movement : MonoBehaviour
         
     }
 
+    public void SetInput(Vector2 direction)
+    {
+        // Normalize the direction vector to ensure it has a magnitude of 1
+        direction.Normalize();
+
+        // Round the x and y components to the nearest integer to get one of the 8 directions
+        float roundedX = Mathf.Round(direction.x);
+        float roundedY = Mathf.Round(direction.y);
+
+        // Combine the rounded components to form the final direction vector
+        movementInput = new Vector2(roundedX, roundedY);
+
+        // If both x and y are zero (which means no direction), keep it as zero
+        if (movementInput.magnitude > 1)
+        {
+            movementInput.Normalize(); // this handles cases like (1, 1) turning into (1.41, 1.41) before normalization
+        }
+    }
+
+
 
     public void LookAt(Vector2 direction)
     {
@@ -48,7 +68,7 @@ public class Movement : MonoBehaviour
     public void MoveCharacter()
     {
 
-        rb2D.MovePosition(rb2D.position + (movementInput * moveSpeed * runFactor * Time.deltaTime));
+        rb2D.MovePosition(rb2D.position + (movementInput.normalized * moveSpeed * runFactor * Time.deltaTime));
     }
 
     public void Run(bool running)

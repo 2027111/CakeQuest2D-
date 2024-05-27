@@ -22,7 +22,10 @@ public class ChoosingItemState : ChoosingSkillState
             Debug.LogError("ChoiceMenu prefab not found in Resources.");
         }
 
+        if (choiceMenu)
+        {
+            choiceMenu.GetComponent<ItemMenu>().AddButtons(battleManager.GetPlayerItems());
 
-        choiceMenu.GetComponent<ItemMenu>().AddButtons(battleManager.GetPlayerItems());
+        }
     }
 }

@@ -21,7 +21,7 @@ public enum GameState
 public class DialogueContent
 {
     public Dialogue dialogue;
-    public bool choice = false;
+    //public bool choice = false;
 
 
 
@@ -29,10 +29,7 @@ public class DialogueContent
     public DialogueContent(Dialogue dialogue)
     {
         this.dialogue = dialogue;
-        if (dialogue.choices != null)
-        {
-            this.choice = dialogue.choices.Length > 0;
-        }
+
     }
 }
 
@@ -296,7 +293,7 @@ public class DialogueBox : MonoBehaviour
     {
 
 
-        currentDialogue.choice = false;
+        //currentDialogue.choice = false;
         ClearChoiceBox();
 
         Debug.Log("Did  Choice " + i);
@@ -357,11 +354,12 @@ public class DialogueBox : MonoBehaviour
             {
                 if (dialogueIndex >= currentDialogue.dialogue.dialogueLineIds.Length)
                 {
-
+                    currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
                     if (dialogueWaitingLine.Count > 0)
                     {
+                        Debug.Log(currentDialogue.dialogue.choices != null);
+                        Debug.Log(currentDialogue.dialogue.OnInstantOverEvent.GetPersistentEventCount());
                         StartNextDialogueWaiting();
-
 
 
 
@@ -369,17 +367,26 @@ public class DialogueBox : MonoBehaviour
                     }
                     else
                     {
-
-                        if (currentDialogue.dialogue != null)
-                        {
-                            if (currentDialogue.choice)
+                            if (currentDialogue.dialogue.choices != null)
                             {
-                                Debug.Log("Dialogue Box");
-                                FillChoiceBox(currentDialogue.dialogue.choices);
-                                choiceBox.SetActive(true);
-                                return;
+                                if (currentDialogue.dialogue.choices.Length == 1)
+                                {
+                                    if (currentDialogue.dialogue.choices[0].condition.RuntimeValue)
+                                    {
+                                    dialogueWaitingLine.Add(new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[0])));
+                                    Interact();
+                                    return;
+                                    }
+                                }
+                                else
+                                {
+                                    Debug.Log("Dialogue Box");
+                                    FillChoiceBox(currentDialogue.dialogue.choices);
+                                    choiceBox.SetActive(true);
+                                    return;
+                                }
                             }
-                        }
+                        
 
 
                         EndDialogue();
@@ -469,13 +476,13 @@ public class DialogueBox : MonoBehaviour
         Controller battleCharacterComponent = player.GetComponent<Controller>();
         if (addOrRemove)
         {
-            battleCharacterComponent.OnMovementHeld += NavigateMenu;
+            battleCharacterComponent.OnMovementPressed += NavigateMenu;
             battleCharacterComponent.OnSelectPressed += choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
 
         }
         else
         {
-            battleCharacterComponent.OnMovementHeld -= NavigateMenu;
+            battleCharacterComponent.OnMovementPressed -= NavigateMenu;
             battleCharacterComponent.OnSelectPressed -= choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
 
         }
@@ -552,6 +559,7 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
+            voiceClipSource.Stop();
             SetupLine(lineInfo);
             setTextCoroutine = StartCoroutine(GraduallySetText(line));
         }
@@ -594,8 +602,8 @@ public class DialogueBox : MonoBehaviour
         }
 
 
-        yield return StartCoroutine(LanguageData.LoadJsonAsync());
         yield return new WaitForSeconds(apparitionTime);
+        yield return StartCoroutine(LanguageData.LoadJsonAsync());
         if (isShowing)
         {
             if(currentDialogue != null)
@@ -614,6 +622,7 @@ public class DialogueBox : MonoBehaviour
                 {
                     currentEvent?.Invoke();
                 }
+                yield return null;
 
             }
             

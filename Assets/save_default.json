@@ -1,0 +1,70 @@
+{
+    "objects": [
+        {
+            "typeName": "PlayerStorage",
+            "objectName": "PlayerInfoStorage",
+            "jsonData": "{\"sceneName\":\"Plaine Caramel\",\"nextRoomInfo\":{\"instanceID\":27472},\"nextPosition\":{\"x\":-17.84786605834961,\"y\":0.16725710034370423},\"facing\":3,\"forceNextChange\":false}",
+            "HashCode": 27458
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "BattleTutorialCutscene",
+            "jsonData": "{\"RuntimeValue\":true,\"repeats\":false,\"dialogue\":[{\"dialogueLineIds\":[\"Tuto_Yankee_000\",\"Tuto_Yankee_001\",\"Tuto_Yankee_002\",\"Tuto_Yankee_003\",\"Tuto_Yankee_004\",\"Tuto_Yankee_005\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":0}}",
+            "HashCode": 27052
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "IntroCutscene",
+            "jsonData": "{\"RuntimeValue\":true,\"repeats\":false,\"dialogue\":[{\"dialogueLineIds\":[\"Intro_Jimi_000\",\"Intro_Jimi_001\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}},{\"dialogueLineIds\":[\"Intro_Jimi_002\",\"Intro_Jimi_003\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":37840}}",
+            "HashCode": 49562
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "SGT Cutscene",
+            "jsonData": "{\"RuntimeValue\":false,\"repeats\":true,\"dialogue\":[{\"dialogueLineIds\":[\"Misc_Jimi_000\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":0}}",
+            "HashCode": 49704
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAA",
+            "jsonData": "{\"RuntimeValue\":true}",
+            "HashCode": 27046
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAB",
+            "jsonData": "{\"RuntimeValue\":true}",
+            "HashCode": 27832
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAA",
+            "jsonData": "{\"RuntimeValue\":true}",
+            "HashCode": 43752
+        },
+        {
+            "typeName": "CharacterObject",
+            "objectName": "JimiObject",
+            "jsonData": "{\"characterData\":{\"instanceID\":27484},\"Health\":89,\"MaxHealth\":100,\"Mana\":54,\"MaxMana\":100,\"Speed\":0,\"AttackDamage\":11,\"ManaDamage\":11,\"parryWindow\":0.15000000596046449,\"isDead\":false,\"attackType\":0,\"AttackElement\":0,\"elementalAttributes\":[{\"element\":1,\"elementEffect\":1}],\"HitEffect\":[{\"instanceID\":27486}],\"SoundEffect\":[{\"instanceID\":27488}],\"Attacks\":[{\"instanceID\":27490},{\"instanceID\":27492},{\"instanceID\":27494},{\"instanceID\":27496},{\"instanceID\":27498},{\"instanceID\":27500}],\"animationController\":{\"instanceID\":27502}}",
+            "HashCode": 27470
+        },
+        {
+            "typeName": "CharacterObject",
+            "objectName": "YankeeObject",
+            "jsonData": "{\"characterData\":{\"instanceID\":27056},\"Health\":85,\"MaxHealth\":100,\"Mana\":58,\"MaxMana\":100,\"Speed\":0,\"AttackDamage\":11,\"ManaDamage\":11,\"parryWindow\":0.15000000596046449,\"isDead\":false,\"attackType\":0,\"AttackElement\":0,\"elementalAttributes\":[{\"element\":0,\"elementEffect\":1},{\"element\":5,\"elementEffect\":1}],\"HitEffect\":[{\"instanceID\":27058}],\"SoundEffect\":[{\"instanceID\":27060}],\"Attacks\":[{\"instanceID\":27062},{\"instanceID\":27064}],\"animationController\":{\"instanceID\":27066}}",
+            "HashCode": 25822
+        },
+        {
+            "typeName": "RoomInfo",
+            "objectName": "CurrentRoom",
+            "jsonData": "{\"roomName\":\"Plaine Caramel\",\"minCameraOffset\":{\"x\":-15.0,\"y\":-16.0},\"maxCameraOffset\":{\"x\":20.0,\"y\":20.0}}",
+            "HashCode": 27472
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAC",
+            "jsonData": "{\"RuntimeValue\":true}",
+            "HashCode": 59380
+        }
+    ]
+}

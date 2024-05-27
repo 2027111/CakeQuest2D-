@@ -28,14 +28,30 @@ public class CamManager : MonoBehaviour
     {
         if (_instance != null)
         {
-            _instance.StartCoroutine(_instance.DoShake(duration, magnitude));
+            _instance.ShakeCam(duration, magnitude);
         }
     }
+    public void ShakeCam(float duration, float magnitude)
+    {
+        StartCoroutine(_instance.DoShake(duration, magnitude));
+    }
+    public void ShakeCam()
+    {
+        StartCoroutine(DoShake(-1, .35f));
+    }
 
+    public void StopShake()
+    {
+        _instance.StopCoroutine("DoShake");
+    }
     private IEnumerator DoShake(float duration, float magnitude)
     {
         float elapsed = 0.0f;
-
+        bool timed  = duration > 0;
+        if (duration < 0)
+        {
+            duration = 100;
+        }
         while (elapsed < duration)
         {
             float x = Random.Range(-1f, 1f) * magnitude;
@@ -43,7 +59,10 @@ public class CamManager : MonoBehaviour
 
             _cameraTransform.localPosition = new Vector3(x, y, _originalPos.z);
 
-            elapsed += Time.deltaTime;
+            if(timed)
+            {
+                elapsed += Time.deltaTime;
+            }
 
             yield return null;
         }

@@ -7,13 +7,15 @@ using UnityEngine.Playables;
 public class BattleTimeline : Timeline
 {
     public BattleManager battleManager;
-
-
+    public Event OnCutsceneOver;
 
     public override void DialogueRequest()
     {
         Debug.Log("Requesting Dialogue");
-        Dialogue dialogue = new Dialogue(storagePlay.GetLine());
+        Dialogue ddialogue = storagePlay.GetLine();
+        Dialogue dialogue = new Dialogue(ddialogue);
+        dialogue.OnOverEvent.AddListener(ddialogue.SetPlayed);
+        dialogue.OnOverEvent.AddListener(storagePlay.SetRuntime);
         dialogue.OnOverEvent.AddListener(DialogueOver);
         DialogueBox.Singleton.StartDialogue(dialogue, null, null, GameState.BattleScene);
     }
@@ -21,14 +23,82 @@ public class BattleTimeline : Timeline
 
     public override void DialogueOver()
     {
-        base.DialogueOver();
+
+        Debug.Log("Battle Cutscene is Over");
+        started = false;
+        battleManager.StartNewTurn();
+
     }
+
+
+    public override void StartDialogue()
+    {
+        Debug.Log("Starting Dialogue");
+        if (!started)
+        {
+            if (CanPlayCutscene())
+            {
+                if (storagePlay.GetCurrentLine() != null)
+                {
+
+                    started = true;
+                    DialogueRequest();
+                }
+                else
+                {
+                    DialogueOver();
+                }
+            }
+        }
+    }
+
+
 
     public override void CutsceneOver()
     {
         base.CutsceneOver();
-        battleManager.StartBattle();
+        
     }
 
+    public override void StartCinematic()
+    {
+        if (CanPlayCutscene())
+        {
+            storagePlay.dialogueIndex = 0;
+
+            SetupRequirements();
+
+            BattleManager.Singleton.StartingDialogue();
+        }
+    }
+
+    public bool HasCutscene()
+    {
+        Debug.Log("Checking for cutscene : ");
+        if (CanPlayCutscene())
+        {
+            if (storagePlay)
+            {
+                if(storagePlay is BattleCutscene)
+                {
+                    if (((BattleCutscene)storagePlay).GetPlayableLine() != null)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+        }
+        return false;
+    }
+
+    public void ResetPlayed()
+    {
+        if (storagePlay)
+        {
+            storagePlay.ResetPlayed();
+        }
+
+    }
 }
 
