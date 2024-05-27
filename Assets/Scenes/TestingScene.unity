@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &401500772 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3116605184036968067, guid: 55e62f0e7b173434992b25bde8cb63fb, type: 3}
-  m_PrefabInstance: {fileID: 1816403266}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24afff2def380e34292b1bf899a4f132, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &421951991
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +166,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &641472574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 641472576}
+  - component: {fileID: 641472575}
+  m_Layer: 0
+  m_Name: AnimationClipCreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &641472575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641472574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e532bea43cca1b743b7c941b54b9bf0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterName: Eyr Cutt
+  AnimationName: idle
+  SpriteSheetName: Idle_Strip10
+--- !u!4 &641472576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641472574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6507292, y: -2.8828995, z: 0.03194964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311187811
 GameObject:
@@ -5151,7 +5187,7 @@ PrefabInstance:
     - target: {fileID: 3116605184036968069, guid: 55e62f0e7b173434992b25bde8cb63fb, type: 3}
       propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 401500772}
+      objectReference: {fileID: 0}
     - target: {fileID: 3116605184036968069, guid: 55e62f0e7b173434992b25bde8cb63fb, type: 3}
       propertyPath: m_ControlsChangedEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnControlsChanged

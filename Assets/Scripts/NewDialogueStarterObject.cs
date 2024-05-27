@@ -139,36 +139,26 @@ public class BattleDialogue : Dialogue
         {
             case BattleCondition.None:
                 return true;
-                // Implement the logic for the 'None' condition
-                Debug.Log("Condition: None");
                 break;
             case BattleCondition.OnLoop:
                 if(BattleManager.Singleton.GetLoopAmount() == conditionIndex && BattleManager.Singleton.IsFirstTurn())
                 {
                     return true;
                 }
-                // Implement the logic for the 'OnLoop' condition
-                Debug.Log("Condition: OnLoop");
                 break;
             case BattleCondition.OnTurn:
                 if (BattleManager.Singleton.GetTurnAmount() == conditionIndex && !BattleManager.Singleton.IsEnemyTurn())
                 {
                     return true;
                 }
-                // Implement the logic for the 'OnTurn' condition
-                Debug.Log("Condition: OnTurn");
                 break;
             case BattleCondition.OnEnemyTurn:
                 if (BattleManager.Singleton.GetEnemyTurnAmount() == conditionIndex && BattleManager.Singleton.IsEnemyTurn())
                 {
-                    Debug.Log("Enemy turn and amount : " + BattleManager.Singleton.GetEnemyTurnAmount());
                     return true;
                 }
-                // Implement the logic for the 'OnFirstEnemyTurn' condition
-                Debug.Log("Condition: OnEnemyTurn");
                 break;
             default:
-                Debug.LogWarning("Unknown condition");
                 break;
         }
         return false;
