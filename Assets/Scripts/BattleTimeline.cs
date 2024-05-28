@@ -7,7 +7,6 @@ using UnityEngine.Playables;
 public class BattleTimeline : Timeline
 {
     public BattleManager battleManager;
-    public Event OnCutsceneOver;
 
     public override void DialogueRequest()
     {

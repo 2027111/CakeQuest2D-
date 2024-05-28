@@ -18,7 +18,7 @@ public class GameSaveManager : MonoBehaviour
     public List<ScriptableObject> objectsToSave = new List<ScriptableObject>();
 
     public static int saveFileIndex = 0; // Default to the first save slot
-    public string version = "0.0.05.27";
+    public string version = "0.0.05.28";
 
     public static GameSaveManager Singleton
     {
@@ -105,6 +105,11 @@ public class GameSaveManager : MonoBehaviour
     {
         return $"{path}/{whattosave}";
     }
+    private string GetDefaultFilePath(string whattosave)
+    {
+        return $"{path}/{whattosave}/save_default_{version}.{extension}";
+    }
+
 
     public string GetFilePath(string whattosave)
     {
@@ -158,17 +163,25 @@ public class GameSaveManager : MonoBehaviour
 
     private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
     {
-        if(GetNumberOfSaveSlots() == saveFileIndex)
+        List<ScriptableObject> list = GetListMatch(listName);
+        List<ScriptableObjectDTO> dtoList = ReadDefaultSaveFile(listName);
+        if (dtoList != null)
         {
+            yield return ApplyToScriptableObjects(dtoList, list);
+        }
+        yield return null;
+        if (GetNumberOfSaveSlots() == saveFileIndex)
+        {
+            
             yield return SaveFileCoroutine();
         }
         else
         {
-            List<ScriptableObject> list = GetListMatch(listName);
-            List<ScriptableObjectDTO> dtoList = ReadSaveFile(listName);
+            List<ScriptableObject> loadList = GetListMatch(listName);
+            List<ScriptableObjectDTO> dtoloadList = ReadSaveFile(listName);
             if (dtoList != null)
             {
-                yield return ApplyToScriptableObjects(dtoList, list);
+                yield return ApplyToScriptableObjects(dtoloadList, loadList);
             }
             yield return null;
         }
@@ -246,6 +259,20 @@ public class GameSaveManager : MonoBehaviour
         return null;
     }
 
+    public List<ScriptableObjectDTO> ReadDefaultSaveFile(SaveFiles path)
+    {
+        string filePath = GetDefaultFilePath(path.ToString());
+        if (File.Exists(filePath))
+        {
+            var json = File.ReadAllText(filePath);
+            ScriptableObjectListWrapper listWrapper = JsonUtility.FromJson<ScriptableObjectListWrapper>(json);
+            List<ScriptableObjectDTO> dtoList = listWrapper.objects;
+            return dtoList;
+        }
+        return null;
+    }
+
+
     private List<ScriptableObject> GetListMatch(SaveFiles listName)
     {
         switch (listName)
@@ -285,8 +312,15 @@ public class GameSaveManager : MonoBehaviour
         string saveFilePath = GetPath(SaveFiles.saveFile.ToString()) + "/";
         if (Directory.Exists(saveFilePath))
         {
-            string[] files = Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}");
-            return files.Length;
+            List<string> files = new List<string>(Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}"));
+            foreach(string f in files)
+            {
+                if (f.Split("_")[0].Contains("default"))
+                {
+                    files.Remove(f);
+                }
+            }
+        return files.Count;
         }
         return -1;
     }

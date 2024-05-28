@@ -139,7 +139,6 @@ public class BattleDialogue : Dialogue
         {
             case BattleCondition.None:
                 return true;
-                break;
             case BattleCondition.OnLoop:
                 if(BattleManager.Singleton.GetLoopAmount() == conditionIndex && BattleManager.Singleton.IsFirstTurn())
                 {

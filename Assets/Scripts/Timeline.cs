@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Playables;
 
 public class Timeline: MonoBehaviour
@@ -9,6 +10,7 @@ public class Timeline: MonoBehaviour
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
+    public UnityEvent OnCutsceneOver;
     public bool Automatic;
     protected void Start()
     {

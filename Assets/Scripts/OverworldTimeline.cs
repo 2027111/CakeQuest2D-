@@ -8,6 +8,7 @@ public class OverworldTimeline : Timeline
 {
 
     public Character player;
+
     private new void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
@@ -37,6 +38,7 @@ public class OverworldTimeline : Timeline
     public override void CutsceneOver()
     {
         base.CutsceneOver();
+        OnCutsceneOver?.Invoke();
         player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
     }
 
