@@ -58,7 +58,7 @@ public class AnimationClipCreator : MonoBehaviour
         Debug.Log($"Loaded sprite sheet: {spriteSheet.name}");
 
         string[] split = spriteSheet.name.Split('_');
-        string amount = split[split.Length - 1].Replace("Strip", "");
+        string amount = split[split.Length - 1].ToLower().Replace("strip", "");
         int frames = int.Parse(amount);
         Debug.Log(frames);
 
