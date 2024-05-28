@@ -37,7 +37,7 @@ public class TeamComponent : MonoBehaviour
         switch (index)
         {
             case TeamIndex.Player:
-                return Color.blue;
+                return Color.cyan;
             case TeamIndex.Enemy:
                 return Color.red;
         }

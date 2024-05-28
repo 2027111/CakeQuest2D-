@@ -386,6 +386,11 @@ public class BattleManager : MonoBehaviour
             {
                 GameObject PartyCard = Instantiate(CardUIPrefab, CardUIContainer);
                 PartyCard.GetComponent<PartyCard>().SetPlayerRef(actor);
+                
+            }
+            else
+            {
+                actor.GetComponent<Entity>().OnHealthChange += actor.GetComponent<HealthBarPopUp>().OnHealthChange;
             }
         }
     }
@@ -421,6 +426,11 @@ public class BattleManager : MonoBehaviour
             cursor.GetComponent<Blink>().SetDefaultColor(TeamComponent.TeamColor(character.GetTeam()));
             currentCursor.Add(cursor);
         }
+    }
+
+    public void OnEnemyHurt()
+    {
+
     }
 
 

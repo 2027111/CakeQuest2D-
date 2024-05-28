@@ -1093,6 +1093,23 @@ MonoBehaviour:
     - {fileID: -6568535411173111444}
     - {fileID: -8283317980110673839}
     - {fileID: 3611587099228780162}
+    - {fileID: 411869986935694821}
+--- !u!114 &411869986935694821
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Fade Scene
+  m_EditorClassIdentifier: 
+  m_Time: 5.116666666666666
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 1631b409bd07a6d4080ee2fe8d278d1a, type: 2}
 --- !u!114 &2021464345241340601
 MonoBehaviour:
   m_ObjectHideFlags: 1

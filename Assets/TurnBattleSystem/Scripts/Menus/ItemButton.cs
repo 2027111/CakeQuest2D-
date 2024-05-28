@@ -18,7 +18,6 @@ public class ItemButton : ChoiceMenuButton
 
     [SerializeField] TMP_Text itemAmountText;
     [SerializeField] Image attackTypeLogo;
-    Vector2 baseSize = new Vector2(160, 40);
 
 
     public bool IsItem(InventoryItem obj)
@@ -35,7 +34,7 @@ public class ItemButton : ChoiceMenuButton
         storedItem = item;
 
 
-        itemNameText.text = storedItem.itemName;
+        itemNameText.text = storedItem.GetName();
         itemAmountText.text = "x" + itemAmount.ToString();
         Sprite itemSprite = storedItem.itemSprite;
         if (itemSprite)
@@ -46,8 +45,7 @@ public class ItemButton : ChoiceMenuButton
 
     public override void OnOver(bool isOverHanded)
     {
-        BattleManager.Singleton.SetIndicationText(storedItem.itemDescription);
-
+        BattleManager.Singleton.SetIndicationText(storedItem.GetDescription());
     }
 
 

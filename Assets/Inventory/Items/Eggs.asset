@@ -19,10 +19,9 @@ MonoBehaviour:
   element: 6
   HitEffect: []
   SoundEffect: []
-  itemName: Egg
-  itemId: Egg
-  itemDescription: Egg
-  itemType: 4
+  itemName: Oeuf
+  itemId: egg
+  itemDescription: Un oeuf. Yep. Rien de plus.
   itemSprite: {fileID: 0}
   usable: 0
   unique: 0

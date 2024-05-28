@@ -20,10 +20,10 @@ MonoBehaviour:
   HitEffect:
   - {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
   SoundEffect: []
-  itemName: Boiling Oil
-  itemId: 
-  itemDescription: Boiling oil..? what more do you need
-  itemType: 0
+  itemName: Huile Brulant
+  itemId: huile_bouillante
+  itemDescription: "De l'huile bouilante. La lanc\xE9 sur un enemie fera {healthEffectAmount}
+    d\xE9ga"
   itemSprite: {fileID: 21300000, guid: 8acb1a3a04ed7e849a06db4f2676141f, type: 3}
   usable: 1
   unique: 0

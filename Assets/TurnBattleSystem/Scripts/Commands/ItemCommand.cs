@@ -11,6 +11,7 @@ public class ItemCommand : Command
     {
         item = _item;
         friendliness = item.friendliness;
+        canFocus = false;
     }
     public override void ExecuteCommand()
     {

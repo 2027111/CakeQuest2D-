@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Eyr Cutt
-  animationName: die
-  spriteSheetName: Die_Strip6
+  animationName: idle
+  spriteSheetName: idle
   sprite: {fileID: 1047609002}
 --- !u!4 &641472576
 Transform:
@@ -180,8 +180,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1047609001}
-  - component: {fileID: 1047608999}
   - component: {fileID: 1047609002}
+  - component: {fileID: 1047609003}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -189,21 +189,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!111 &1047608999
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047608998}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!4 &1047609001
 Transform:
   m_ObjectHideFlags: 0
@@ -271,6 +256,98 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!111 &1047609003
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047608998}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 1117463918}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!74 &1117463918
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: idle
+  serializedVersion: 7
+  m_Legacy: 1
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: -859852685, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.083333336
+      value: {fileID: 584655534, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.16666667
+      value: {fileID: -267063784, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.25
+      value: {fileID: -406536454, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.33333334
+      value: {fileID: -1823411293, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.41666666
+      value: {fileID: 107065792, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.5
+      value: {fileID: -347063504, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.5833333
+      value: {fileID: -1727757813, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.6666667
+      value: {fileID: -2039422864, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    - time: 0.75
+      value: {fileID: -1532561192, guid: 67e1a22ff554be346ac695d9c6e7c375, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings: []
+    pptrCurveMapping: []
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.8333333
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events: []
 --- !u!1 &1311187811
 GameObject:
   m_ObjectHideFlags: 0
@@ -5341,3 +5418,46 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e62f0e7b173434992b25bde8cb63fb, type: 3}
+--- !u!1 &1816403267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3116605184036968071, guid: 55e62f0e7b173434992b25bde8cb63fb, type: 3}
+  m_PrefabInstance: {fileID: 1816403266}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1816403268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816403267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a67647e25a7b9438fba9edd2689449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - {fileID: 11400000, guid: 1ab5723ddd3b7014192170a782d0b81e, type: 2}
+  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
+  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
+  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
+--- !u!114 &1816403269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816403267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f8f2fc1dcfe82a49b8b14025975f4d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills:
+  - {fileID: 11400000, guid: b40411e46752ac04fa9b9930a11f04ae, type: 2}
+  - {fileID: 11400000, guid: 9ba84941adfff72488836d83bb41f7a7, type: 2}
+  - {fileID: 11400000, guid: 2d41dcd037b05c140937654bc91ba314, type: 2}
+  - {fileID: 11400000, guid: b5ddcbfa18519e94d943d512939c14b4, type: 2}
+  - {fileID: 11400000, guid: a272c6c8be5577b45954f3d97f2d1a1d, type: 2}
+  - {fileID: 11400000, guid: 7af5a862e02b4384eadbb9ba09e0c416, type: 2}
+  - {fileID: 11400000, guid: f52855296ba9e174daf048dbd622d234, type: 2}
+  - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}

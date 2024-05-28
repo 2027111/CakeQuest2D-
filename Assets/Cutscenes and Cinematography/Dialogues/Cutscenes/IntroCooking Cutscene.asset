@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c7f276e93ea347bd5be0c7f87d0a9, type: 3}
   m_Name: IntroCooking Cutscene
   m_EditorClassIdentifier: 
-  RuntimeValue: 1
+  RuntimeValue: 0
   repeats: 0
   dialogue:
   - condition: {fileID: 0}

@@ -3,7 +3,7 @@
         {
             "typeName": "PlayerStorage",
             "objectName": "PlayerInfoStorage",
-            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":27472},\"nextPosition\":{\"x\":-13.5,\"y\":12},\"facing\":3,\"forceNextChange\":false}",
+            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":41846},\"nextPosition\":{\"x\":13.910918235778809,\"y\":4.718198299407959},\"facing\":3,\"forceNextChange\":false}",
             "HashCode": 47666
         },
         {
@@ -83,6 +83,36 @@
             "objectName": "ChestAC",
             "jsonData": "{\"RuntimeValue\":false}",
             "HashCode": 38278
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAD",
+            "jsonData": "{\"RuntimeValue\":false}",
+            "HashCode": 68330
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAE",
+            "jsonData": "{\"RuntimeValue\":false}",
+            "HashCode": -116596
+        },
+        {
+            "typeName": "FetchQuest",
+            "objectName": "Intro Quest",
+            "jsonData": "{\"RuntimeValue\":true,\"questName\":\"Find the cake ingredients\",\"requiredItems\":[{\"instanceID\":39310},{\"instanceID\":39310},{\"instanceID\":42052},{\"instanceID\":43170}],\"characterInventory\":{\"instanceID\":40604}}",
+            "HashCode": 32694
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "IntroCooking Cutscene",
+            "jsonData": "{\"RuntimeValue\":false,\"repeats\":false,\"dialogue\":[{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_005\",\"Intro_Jimi_006\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}},{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_007\",\"Intro_Jimi_008\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":0}}",
+            "HashCode": 31544
+        },
+        {
+            "typeName": "CharacterInventory",
+            "objectName": "PlayerInventory",
+            "jsonData": "{\"myInventory\":[],\"pessos\":0}",
+            "HashCode": 40604
         }
     ]
 }

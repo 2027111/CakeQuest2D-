@@ -69,6 +69,10 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
         },
         {
+            "dataId": "Intro_Jimi_SGT",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Il est 3h du mat, rien n'est ouvert à cette heure-ci. De plus, je devrais avoir les ingrédients ici de toute manière.\"}"
+        },
+        {
             "dataId": "Misc_Jimi_000",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
         },
@@ -94,7 +98,7 @@
         },
         {
             "dataId": "Tuto_Yankee_001",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilises W-A-S-D pour naviguer et te décider.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilises <sprite name=move> pour naviguer et prend ta décision avec <sprite name=select>.\"}"
         },
         {
             "dataId": "Tuto_Yankee_002",
@@ -139,10 +143,6 @@
         {
             "dataId": "Misc_Yes",
             "jsonData": "{\"line\":\"Oui\"}"
-        },
-        {
-            "dataId": "Tuto_Yankee_002",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Ensuite utilise P pour faire des attaques normales et O pour faire des attaques spécifiques.\"}"
         },
         {
             "dataId": "EyrCutt_pc_0",
@@ -203,6 +203,22 @@
         {
             "dataId": "skill_egg_drill",
             "jsonData": "{\"skillName\":\"Perç'Oeuf\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
+        },
+        {
+            "dataId": "item_huile_bouillante",
+            "jsonData": "{\"itemName\":\"Bouteille d'huile bouillante\",\"itemDescription\":\"De l'huile bouilante. La lancé sur un enemie fera des dégats\"}"
+        },
+        {
+            "dataId": "item_biscuit_chocolat",
+            "jsonData": "{\"itemName\":\"Biscuit au chocolat\",\"itemDescription\":\"Un biscuit au chocolat soignant des points de vie.\"}"
+        },
+        {
+            "dataId": "item_egg",
+            "jsonData": "{\"itemName\":\"Oeuf\",\"itemDescription\":\"Un oeuf. Yep. Rien de plus.\"}"
+        },
+        {
+            "dataId": "item_small_honey_bottle",
+            "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise celui qui en bois.\"}"
         }
     ]
 }

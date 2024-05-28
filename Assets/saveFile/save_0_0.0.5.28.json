@@ -3,7 +3,7 @@
         {
             "typeName": "PlayerStorage",
             "objectName": "PlayerInfoStorage",
-            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":41846},\"nextPosition\":{\"x\":-1.4264657497406006,\"y\":-3.0089564323425295},\"facing\":3,\"forceNextChange\":false}",
+            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":41846},\"nextPosition\":{\"x\":12.494994163513184,\"y\":-1.7199954986572266},\"facing\":3,\"forceNextChange\":false}",
             "HashCode": 47666
         },
         {
@@ -15,7 +15,7 @@
         {
             "typeName": "Cutscene",
             "objectName": "IntroCutscene",
-            "jsonData": "{\"RuntimeValue\":false,\"repeats\":false,\"dialogue\":[{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_000\",\"Intro_Jimi_001\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}},{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_002\",\"Intro_Jimi_003\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":37910}}",
+            "jsonData": "{\"RuntimeValue\":true,\"repeats\":false,\"dialogue\":[{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_000\",\"Intro_Jimi_001\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}},{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_002\",\"Intro_Jimi_003\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":37910}}",
             "HashCode": 47854
         },
         {
@@ -57,7 +57,7 @@
         {
             "typeName": "RoomInfo",
             "objectName": "CurrentRoom",
-            "jsonData": "{\"roomName\":\"Jimi's Room\",\"minCameraOffset\":{\"x\":6.0,\"y\":0.0},\"maxCameraOffset\":{\"x\":11.0,\"y\":0.0}}",
+            "jsonData": "{\"roomName\":\"Kitchen\",\"minCameraOffset\":{\"x\":6.0,\"y\":0.0},\"maxCameraOffset\":{\"x\":11.0,\"y\":0.0}}",
             "HashCode": 41846
         },
         {
@@ -101,6 +101,18 @@
             "objectName": "Intro Quest",
             "jsonData": "{\"RuntimeValue\":true,\"questName\":\"Find the cake ingredients\",\"requiredItems\":[{\"instanceID\":39310},{\"instanceID\":39310},{\"instanceID\":42052},{\"instanceID\":43170}],\"characterInventory\":{\"instanceID\":40604}}",
             "HashCode": 32694
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "IntroCooking Cutscene",
+            "jsonData": "{\"RuntimeValue\":false,\"repeats\":false,\"dialogue\":[{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_005\",\"Intro_Jimi_006\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}},{\"condition\":{\"instanceID\":0},\"dialogueLineIds\":[\"Intro_Jimi_007\",\"Intro_Jimi_008\"],\"choices\":[],\"OnOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"OnInstantOverEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}},\"source\":{\"instanceID\":0}}],\"dialogueIndex\":0,\"StartRoom\":{\"instanceID\":0}}",
+            "HashCode": 31544
+        },
+        {
+            "typeName": "CharacterInventory",
+            "objectName": "PlayerInventory",
+            "jsonData": "{\"myInventory\":[],\"pessos\":0}",
+            "HashCode": 40604
         }
     ]
 }

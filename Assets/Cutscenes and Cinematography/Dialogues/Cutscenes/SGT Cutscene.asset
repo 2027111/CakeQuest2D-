@@ -26,5 +26,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 1
+  dialogueIndex: 0
   StartRoom: {fileID: 0}

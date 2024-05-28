@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6eea6ad7b7346ae4a84d14f9989382c5
+guid: 7ad7080a8d27f424c998f4e5f4990eb1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shoot_Strip7_0
+      name: shoot_frame_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,20 +115,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4a70062d4a488ca44acd607f8e827ef8
-      internalID: 1846610540
+      spriteID: 8c143d2f95122df90800000000000000
+      internalID: -6930440206360034872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_1
+      name: shoot_frame_1
       rect:
         serializedVersion: 2
         x: 64
@@ -136,20 +136,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c2f2e0c07c06f614a813cb361ab1497d
-      internalID: 1444736528
+      spriteID: 53f13259158d97870800000000000000
+      internalID: 8681207601639399221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_2
+      name: shoot_frame_2
       rect:
         serializedVersion: 2
         x: 128
@@ -157,20 +157,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2f270a2e8828f0a4e9518c9020a5a37d
-      internalID: -146117258
+      spriteID: 8ee92c326e9eceab0800000000000000
+      internalID: -4977346313499533592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_3
+      name: shoot_frame_3
       rect:
         serializedVersion: 2
         x: 192
@@ -178,20 +178,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c348441a33eef2e40a3182e192065e00
-      internalID: 1926027358
+      spriteID: 8533b1c3427b43e60800000000000000
+      internalID: 7941173409216148312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_4
+      name: shoot_frame_4
       rect:
         serializedVersion: 2
         x: 256
@@ -199,20 +199,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e943d980c6b8d664c8afca57bd50b62c
-      internalID: 1440698573
+      spriteID: f6c4e1cd7e1a5bae0800000000000000
+      internalID: -1534142080847295377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_5
+      name: shoot_frame_5
       rect:
         serializedVersion: 2
         x: 320
@@ -220,20 +220,20 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7163ab5c3af7bb740bd9035f66d4a6e4
-      internalID: 1336171678
+      spriteID: 6bc6bfd4340fda1d0800000000000000
+      internalID: -3337747576949871434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_6
+      name: shoot_frame_6
       rect:
         serializedVersion: 2
         x: 384
@@ -241,14 +241,98 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b4f9ac3ccdde9db43937a2e5ee43a19e
-      internalID: -685904390
+      spriteID: 03430f0be072a7f30800000000000000
+      internalID: 4574011315599717424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot_frame_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35f57ffec476d0c30800000000000000
+      internalID: 4327228397114056531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot_frame_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7177869e01ecbe2f0800000000000000
+      internalID: -942433124973250793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot_frame_9
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b2f3e1180919b70800000000000000
+      internalID: 8904056822520818470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: shoot_frame_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: affc7db1ead022420800000000000000
+      internalID: 2603658576016166906
       vertices: []
       indices: 
       edges: []
@@ -264,13 +348,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shoot_Strip7_4: 1440698573
-      Shoot_Strip7_5: 1336171678
-      Shoot_Strip7_2: -146117258
-      Shoot_Strip7_3: 1926027358
-      Shoot_Strip7_1: 1444736528
-      Shoot_Strip7_6: -685904390
-      Shoot_Strip7_0: 1846610540
+      shoot_frame_8: -942433124973250793
+      shoot_frame_7: 4327228397114056531
+      shoot_frame_0: -6930440206360034872
+      shoot_frame_4: -1534142080847295377
+      shoot_frame_3: 7941173409216148312
+      shoot_frame_2: -4977346313499533592
+      shoot_frame_11: 9133503370384994871
+      shoot_frame_6: 4574011315599717424
+      shoot_frame_1: 8681207601639399221
+      shoot_frame_5: -3337747576949871434
+      shoot_frame_10: 2603658576016166906
+      shoot_frame_9: 8904056822520818470
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

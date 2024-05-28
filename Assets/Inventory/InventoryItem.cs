@@ -17,7 +17,7 @@ public class InventoryItem : IActionData
     public string GetName()
     {
         string name = itemId;
-        string newName = LanguageData.GetDataById("item_" + itemId).GetValueByKey("skillName");
+        string newName = LanguageData.GetDataById("item_" + itemId).GetValueByKey("itemName");
         if (newName != "E404")
         {
             return newName;
@@ -28,7 +28,7 @@ public class InventoryItem : IActionData
     public string GetDescription()
     {
         string desc = itemDescription;
-        string newDesc = LanguageData.GetDataById("item_" + itemId).GetValueByKey("skillDescription");
+        string newDesc = LanguageData.GetDataById("item_" + itemId).GetValueByKey("itemDescription");
         if (newDesc != "E404")
         {
             return newDesc;

@@ -178,7 +178,7 @@ public class GameSaveManager : MonoBehaviour
         {
             List<ScriptableObject> loadList = GetListMatch(listName);
             List<ScriptableObjectDTO> dtoloadList = ReadSaveFile(listName);
-            if (dtoList != null)
+            if (dtoloadList != null)
             {
                 yield return ApplyToScriptableObjects(dtoloadList, loadList);
             }

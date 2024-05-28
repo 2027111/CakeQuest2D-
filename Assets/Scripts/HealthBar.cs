@@ -10,6 +10,8 @@ public class HealthBar : MonoBehaviour
     [SerializeField] Image underfillBar;
     [SerializeField] TextMeshProUGUI bartext;
     [SerializeField] TextMeshProUGUI barNameText;
+    [SerializeField] float delayTime = 1;
+    [SerializeField] float catchUpTime = 1;
     bool underfilling = false;
 
 
@@ -22,7 +24,7 @@ public class HealthBar : MonoBehaviour
     {
         underfilling = true;
         float startFill = underfillBar.fillAmount;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(delayTime);
 
         float time = 0f;
         float targetFillAmount = fillBar.fillAmount;
@@ -31,7 +33,7 @@ public class HealthBar : MonoBehaviour
         {
             float newFill = Mathf.Lerp(startFill, targetFillAmount, time);
             underfillBar.fillAmount = newFill;
-            time += Time.deltaTime; // Use Time.deltaTime for smoother interpolation
+            time += Time.deltaTime * catchUpTime; // Use Time.deltaTime for smoother interpolation
             yield return null;
         }
 
@@ -42,7 +44,7 @@ public class HealthBar : MonoBehaviour
     public void SetFillAmount(int currentHealth, int maxHealth)
     {
         fillBar.fillAmount = (float)((float)currentHealth / (float)maxHealth);
-        bartext.text = currentHealth.ToString();
+        bartext?.SetText(currentHealth.ToString());
         if (!underfilling)
         {
             StartCoroutine(DelayUnderFill());
