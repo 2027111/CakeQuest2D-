@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 
-public class Timeline: MonoBehaviour
+public class Timeline : MonoBehaviour
 {
     public Cutscene storagePlay;
     public bool started = false;
@@ -48,7 +48,7 @@ public class Timeline: MonoBehaviour
     public virtual void StartDialogue()
     {
         Debug.Log("Starting Dialogue");
-        if (!started )
+        if (!started)
         {
             if (CanPlayCutscene())
             {
@@ -125,7 +125,8 @@ public class Timeline: MonoBehaviour
         return false;
     }
 
-
+    public void FadeTo() { 
+    }
     public void PlayCutscene()
     {
         playableDirector.Play();

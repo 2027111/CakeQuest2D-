@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6eea6ad7b7346ae4a84d14f9989382c5
+guid: 36ec62e7904ba45448145d799eef624b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shoot_Strip7_0
+      name: Walk_Strip4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a70062d4a488ca44acd607f8e827ef8
-      internalID: 1846610540
+      spriteID: 502b383eac8ffb648a24ae5fcd85ef0d
+      internalID: 1908248103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_1
+      name: Walk_Strip4_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2f2e0c07c06f614a813cb361ab1497d
-      internalID: 1444736528
+      spriteID: 09b38fc468132484d8966172cc4ad904
+      internalID: -1376125061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_2
+      name: Walk_Strip4_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f270a2e8828f0a4e9518c9020a5a37d
-      internalID: -146117258
+      spriteID: 372f3242012acfc4c99ba85bab527eaf
+      internalID: -1175560223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_3
+      name: Walk_Strip4_3
       rect:
         serializedVersion: 2
         x: 192
@@ -184,71 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c348441a33eef2e40a3182e192065e00
-      internalID: 1926027358
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoot_Strip7_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e943d980c6b8d664c8afca57bd50b62c
-      internalID: 1440698573
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoot_Strip7_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7163ab5c3af7bb740bd9035f66d4a6e4
-      internalID: 1336171678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoot_Strip7_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4f9ac3ccdde9db43937a2e5ee43a19e
-      internalID: -685904390
+      spriteID: 2ac102de7c953e748aed4658e8e9e6c6
+      internalID: -1054753997
       vertices: []
       indices: 
       edges: []
@@ -264,13 +201,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shoot_Strip7_4: 1440698573
-      Shoot_Strip7_5: 1336171678
-      Shoot_Strip7_2: -146117258
-      Shoot_Strip7_3: 1926027358
-      Shoot_Strip7_1: 1444736528
-      Shoot_Strip7_6: -685904390
-      Shoot_Strip7_0: 1846610540
+      Walk_Strip4_0: 1908248103
+      Walk_Strip4_2: -1175560223
+      Walk_Strip4_1: -1376125061
+      Walk_Strip4_3: -1054753997
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

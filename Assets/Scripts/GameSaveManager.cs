@@ -66,7 +66,6 @@ public class GameSaveManager : MonoBehaviour
                 Directory.CreateDirectory(GetPath(enumValueName));
             }
         }
-        Debug.Log(GetNumberOfSaveSlots());
     }
 
     private void OnValidate()
@@ -107,7 +106,7 @@ public class GameSaveManager : MonoBehaviour
     }
     private string GetDefaultFilePath(string whattosave)
     {
-        return $"{path}/{whattosave}/save_default_{version}.{extension}";
+        return $"{path}/save_default_{version}.{extension}";
     }
 
 

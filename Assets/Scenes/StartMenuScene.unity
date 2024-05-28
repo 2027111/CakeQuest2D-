@@ -5252,7 +5252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.size
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.data[0]
@@ -5310,6 +5310,18 @@ PrefabInstance:
       propertyPath: objectsToSave.Array.data[13]
       value: 
       objectReference: {fileID: 11400000, guid: e6ea45dc46258994d96a120f297a516f, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: d063e17c0fae38b49b233acaeec7f845, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: c8c2a69ff93f77142bcbcd86768653b5, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToTranslate.Array.size
       value: 0

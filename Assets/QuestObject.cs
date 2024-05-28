@@ -17,6 +17,6 @@ public class QuestObject : BoolValue
 
     public virtual void CompleteQuest()
     {
-        RuntimeValue = true;
+        SetRuntime();
     }
 }

@@ -38,12 +38,9 @@ public class Cutscene : BoolValue
         return returnValue;
     }
 
-    public virtual void SetRuntime()
-    {
-        Debug.Log(":)");
-    }
+
     public virtual void ResetPlayed()
     {
-
+        dialogueIndex = 0;
     }
 }

@@ -3,7 +3,7 @@
         {
             "typeName": "PlayerStorage",
             "objectName": "PlayerInfoStorage",
-            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":41846},\"nextPosition\":{\"x\":1.0,\"y\":1.0},\"facing\":3,\"forceNextChange\":false}",
+            "jsonData": "{\"sceneName\":\"MaisonJimi\",\"nextRoomInfo\":{\"instanceID\":41846},\"nextPosition\":{\"x\":-54.5,\"y\":9.0},\"facing\":3,\"forceNextChange\":false}",
             "HashCode": 47666
         },
         {
@@ -57,7 +57,7 @@
         {
             "typeName": "RoomInfo",
             "objectName": "CurrentRoom",
-            "jsonData": "{\"roomName\":\"Jimi's Room\",\"minCameraOffset\":{\"x\":-15.0,\"y\":-16.0},\"maxCameraOffset\":{\"x\":20.0,\"y\":20.0}}",
+            "jsonData": "{\"roomName\":\"Jimi's Room\",\"minCameraOffset\":{\"x\":-64.0,\"y\":-16.0},\"maxCameraOffset\":{\"x\":-39.0,\"y\":19.0}}",
             "HashCode": 41846
         },
         {
@@ -83,6 +83,24 @@
             "objectName": "ChestAC",
             "jsonData": "{\"RuntimeValue\":false}",
             "HashCode": 38278
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAD",
+            "jsonData": "{\"RuntimeValue\":false}",
+            "HashCode": 68330
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAE",
+            "jsonData": "{\"RuntimeValue\":false}",
+            "HashCode": -116596
+        },
+        {
+            "typeName": "FetchQuest",
+            "objectName": "Intro Quest",
+            "jsonData": "{\"RuntimeValue\":true,\"questName\":\"Find the cake ingredients\",\"requiredItems\":[{\"instanceID\":39310},{\"instanceID\":39310},{\"instanceID\":42052},{\"instanceID\":43170}],\"characterInventory\":{\"instanceID\":40604}}",
+            "HashCode": 32694
         }
     ]
 }

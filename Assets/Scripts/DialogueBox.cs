@@ -110,6 +110,18 @@ public class DialogueBox : MonoBehaviour
     {
     }
 
+    public static void CancelCurrentDialogue()
+    {
+
+        Singleton?.CancelDialogue();
+    }
+
+    private void CancelDialogue()
+    {
+        EndDialogue();
+        Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+
+    }
 
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
@@ -296,7 +308,6 @@ public class DialogueBox : MonoBehaviour
         //currentDialogue.choice = false;
         ClearChoiceBox();
 
-        Debug.Log("Did  Choice " + i);
         choiceBox.SetActive(false);
 
         OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
@@ -337,7 +348,6 @@ public class DialogueBox : MonoBehaviour
   
     public void DebugTest()
     {
-        Debug.Log("Button clicked");
     }
     public void ClearChoiceBox()
     {
@@ -357,8 +367,7 @@ public class DialogueBox : MonoBehaviour
                     currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
                     if (dialogueWaitingLine.Count > 0)
                     {
-                        Debug.Log(currentDialogue.dialogue.choices != null);
-                        Debug.Log(currentDialogue.dialogue.OnInstantOverEvent.GetPersistentEventCount());
+                        voiceClipSource.Stop();
                         StartNextDialogueWaiting();
 
 
@@ -380,7 +389,6 @@ public class DialogueBox : MonoBehaviour
                                 }
                                 else
                                 {
-                                    Debug.Log("Dialogue Box");
                                     FillChoiceBox(currentDialogue.dialogue.choices);
                                     choiceBox.SetActive(true);
                                     return;
@@ -490,11 +498,9 @@ public class DialogueBox : MonoBehaviour
 
     public void NavigateMenu(Vector2 direction)
     {
-        Debug.Log("navigation");
         ChoiceMenu menu = choiceBox.GetComponent<ChoiceMenu>();
         if (menu != null)
         {
-            Debug.Log(direction);
             if(direction.y > 0)
             {
                 menu.PreviousButton();

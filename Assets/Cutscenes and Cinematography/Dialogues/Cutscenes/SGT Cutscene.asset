@@ -15,12 +15,16 @@ MonoBehaviour:
   RuntimeValue: 0
   repeats: 1
   dialogue:
-  - dialogueLineIds:
+  - condition: {fileID: 0}
+    dialogueLineIds:
     - Misc_Jimi_000
     choices: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 0
+  dialogueIndex: 1
   StartRoom: {fileID: 0}

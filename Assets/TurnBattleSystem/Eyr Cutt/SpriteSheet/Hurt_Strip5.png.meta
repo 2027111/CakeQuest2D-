@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6eea6ad7b7346ae4a84d14f9989382c5
+guid: 453fb464cce62f544af26d40dec569f4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shoot_Strip7_0
+      name: Hurt_Strip5_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a70062d4a488ca44acd607f8e827ef8
-      internalID: 1846610540
+      spriteID: 8a28226da9fc94e44a57b33e710cabe6
+      internalID: 2077073889
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_1
+      name: Hurt_Strip5_1
       rect:
         serializedVersion: 2
         x: 64
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2f2e0c07c06f614a813cb361ab1497d
-      internalID: 1444736528
+      spriteID: 528f22fad0e739243b65817a94ac5e97
+      internalID: -1781717174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_2
+      name: Hurt_Strip5_2
       rect:
         serializedVersion: 2
         x: 128
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f270a2e8828f0a4e9518c9020a5a37d
-      internalID: -146117258
+      spriteID: 23b5236ed267b90428ac86866dd66841
+      internalID: 2067311731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_3
+      name: Hurt_Strip5_3
       rect:
         serializedVersion: 2
         x: 192
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c348441a33eef2e40a3182e192065e00
-      internalID: 1926027358
+      spriteID: 6c6eb1fd69f95c04d9ed8d3f1c6a8693
+      internalID: -1095083360
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shoot_Strip7_4
+      name: Hurt_Strip5_4
       rect:
         serializedVersion: 2
         x: 256
@@ -205,50 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e943d980c6b8d664c8afca57bd50b62c
-      internalID: 1440698573
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoot_Strip7_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7163ab5c3af7bb740bd9035f66d4a6e4
-      internalID: 1336171678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoot_Strip7_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4f9ac3ccdde9db43937a2e5ee43a19e
-      internalID: -685904390
+      spriteID: 211d8f81ac970b149bd09cd8cfe71f8a
+      internalID: -469990599
       vertices: []
       indices: 
       edges: []
@@ -264,13 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shoot_Strip7_4: 1440698573
-      Shoot_Strip7_5: 1336171678
-      Shoot_Strip7_2: -146117258
-      Shoot_Strip7_3: 1926027358
-      Shoot_Strip7_1: 1444736528
-      Shoot_Strip7_6: -685904390
-      Shoot_Strip7_0: 1846610540
+      Hurt_Strip5_1: -1781717174
+      Hurt_Strip5_3: -1095083360
+      Hurt_Strip5_2: 2067311731
+      Hurt_Strip5_4: -469990599
+      Hurt_Strip5_0: 2077073889
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

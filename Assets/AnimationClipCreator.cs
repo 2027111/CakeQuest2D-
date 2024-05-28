@@ -11,20 +11,25 @@ public class AnimationClipCreator : MonoBehaviour
     [SerializeField] string characterName = "Jimi";
     [SerializeField] string animationName = "idle";
     [SerializeField] string spriteSheetName = "spritesheet-name";
+    [SerializeField] SpriteRenderer sprite;
+    AnimationClip animClip;
 
+#if UNITY_EDITOR
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
             CreateClip();
+            PlayAnim();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            PlayAnim();
         }
     }
     public void CreateClip()
     {
-        Debug.Log("Lol");
-#if UNITY_EDITOR
-        Debug.Log("Lol");
         // Load all sprites from the specified sprite sheet in the Resources folder
         string path = $"Assets/TurnBattleSystem/{characterName}/SpriteSheet/{spriteSheetName}.png";
         object[] objects = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
@@ -37,8 +42,8 @@ public class AnimationClipCreator : MonoBehaviour
             else
             {
 
-                // Create a new AnimationClip
-                AnimationClip animClip = new AnimationClip
+            // Create a new AnimationClip
+            animClip = new AnimationClip
                 {
                     frameRate = 25 // Set the frame rate
                 };
@@ -62,6 +67,7 @@ public class AnimationClipCreator : MonoBehaviour
                     };
                 }
 
+
                 // Set the keyframes to the AnimationClip
                 AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames);
 
@@ -84,7 +90,42 @@ public class AnimationClipCreator : MonoBehaviour
                 Debug.Log($"Animation clip created at {assetPath}");
 
             }
-        
+
+
+
+
+    }
+    public void PlayAnim()
+    {
+
+        if (animClip)
+        {
+            // Create a new AnimationClip
+            AnimationClip clip = new AnimationClip();
+
+            // Copy the properties from the original clip
+            EditorUtility.CopySerialized(animClip, clip);
+
+            // Set the clip to legacy if needed
+            clip.legacy = true;
+
+            // Get the Animation component
+            Animation animation = sprite.GetComponent<Animation>();
+            if (animation == null)
+            {
+                animation = sprite.gameObject.AddComponent<Animation>();
+            }
+
+            // Add the clip to the animation component
+            animation.AddClip(clip, animationName);
+            Debug.Log($"Added animation clip {animationName} to {sprite.name}");
+
+            // Play the animation
+            animation.Play(animationName);
+            Debug.Log($"Playing animation {animationName} on {sprite.name}");
+        }
+    }
+
+
 #endif
-    }
-    }
+}

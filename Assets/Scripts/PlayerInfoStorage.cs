@@ -81,7 +81,7 @@ public class PlayerInfoStorage : MonoBehaviour
 
 
                 character.SetPosition(infoStorage.nextPosition);
-                Camera.main.GetComponent<CameraMovement>().ForceToTarget();
+                Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
 
                 infoStorage.forceNextChange = false;
 

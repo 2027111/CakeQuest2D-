@@ -37,7 +37,7 @@ public class CamManager : MonoBehaviour
     }
     public void ShakeCam()
     {
-        StartCoroutine(DoShake(-1, .35f));
+        StartCoroutine(DoShake(-1, .15f));
     }
 
     public void StopShake()

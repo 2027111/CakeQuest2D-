@@ -2212,7 +2212,7 @@ PrefabInstance:
     - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
       propertyPath: storagePlay
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}
     - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
       propertyPath: battleManager
       value: 

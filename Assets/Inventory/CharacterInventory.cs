@@ -16,7 +16,7 @@ public class CharacterInventory : ScriptableObject
 
     public bool CheckInventoryFor(List<InventoryItem> requiredItems)
     {
-        List<InventoryItem> tempInv = myInventory;
+        List<InventoryItem> tempInv = new List<InventoryItem>(myInventory);
         foreach (InventoryItem item in requiredItems)
         {
             if (tempInv.Contains(item))

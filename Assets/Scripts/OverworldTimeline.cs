@@ -15,7 +15,10 @@ public class OverworldTimeline : Timeline
         
         base.Start();
     }
-
+    public override void StartCinematic()
+    {
+        base.StartCinematic();
+    }
     public override void SetupRequirements()
     {
 
@@ -38,8 +41,9 @@ public class OverworldTimeline : Timeline
     public override void CutsceneOver()
     {
         base.CutsceneOver();
-        OnCutsceneOver?.Invoke();
         player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
+        Debug.Log(OnCutsceneOver.GetPersistentEventCount());
+        OnCutsceneOver?.Invoke();
     }
 
 

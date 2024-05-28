@@ -38,10 +38,11 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.gameObject;
-            if(player.GetComponent<Character>().CanInteraction())
+
+           ManageContactEvent(contactEvent);
+          if (player.GetComponent<Character>().CanInteraction())
             {
                 player.GetComponent<Character>().SetInteraction(false);
-                ManageContactEvent(contactEvent);
                 ManageInteraction(player, true);
                 ContextClue(true);
             }

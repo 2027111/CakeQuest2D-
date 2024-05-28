@@ -9,7 +9,10 @@ public class BoolValue : ScriptableObject
 
     public bool RuntimeValue;
 
+    public virtual void SetRuntime()
+    {
+        RuntimeValue = true;
+    }
 
 
-    
 }

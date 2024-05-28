@@ -5,7 +5,7 @@ using UnityEngine;
 public class QuestGiver : MonoBehaviour
 {
 
-    QuestObject questObject;
+    [SerializeField] QuestObject questObject;
 
 
 

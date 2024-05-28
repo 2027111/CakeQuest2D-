@@ -61,6 +61,8 @@ public class FadeScreen : MonoBehaviour
         MoveToScene(sceneName, fadeTime);
     }
 
+
+
     public static void MoveToScene(string sceneName,float fadeTime = -1)
     {
         if (!movingScene)
@@ -113,12 +115,12 @@ public class FadeScreen : MonoBehaviour
 
         movingScene = true;
         OnFadingStart?.Invoke();
-        if (!FadeScreen.fading)
+        if (!FadeScreen.fading && !fadeOn)
         {
             FadeScreen.StartTransition(true, Color.black, fadeTime);
+            yield return new WaitForSecondsRealtime(fadeTime);
+            fadeOn = true;
         }
-        yield return new WaitForSecondsRealtime(fadeTime);
-
         OnFadingMid?.Invoke();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
 
@@ -127,9 +129,10 @@ public class FadeScreen : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSecondsRealtime(fadeTime);
-        if (!FadeScreen.fading)
+        if (!FadeScreen.fading && fadeOn)
         {
             FadeScreen.StartTransition(false, Color.black, fadeTime);
+            fadeOn = false;
         }
 
        
