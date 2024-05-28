@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: VillainParty
   m_EditorClassIdentifier: 
   PartyMembers:
-  - {fileID: 11400000, guid: 36ad50b3d79e8114ba072b42b5795ca8, type: 2}
-  - {fileID: 11400000, guid: 0704f46f2b3d8a64c80b81e430a4183a, type: 2}
+  - {fileID: 11400000, guid: a36de0f26f02a7b42904ecdeb15e86f7, type: 2}

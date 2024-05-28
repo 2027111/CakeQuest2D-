@@ -5248,11 +5248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: version
-      value: 0.0.5.27
+      value: 0.0.5.28
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.size
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.data[0]
@@ -5261,7 +5261,7 @@ PrefabInstance:
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: fff6496c7cffe2b4094513cb163a25ce, type: 2}
+      objectReference: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToSave.Array.data[2]
       value: 
@@ -5298,6 +5298,18 @@ PrefabInstance:
       propertyPath: objectsToSave.Array.data[10]
       value: 
       objectReference: {fileID: 11400000, guid: 02eefe78f017e55409d4baa6ea075959, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2aea47402aa764a42ab69917954688b0, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 52c4fbfc5d4409a4bb88a8feacbdf82b, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: objectsToSave.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: e6ea45dc46258994d96a120f297a516f, type: 2}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: objectsToTranslate.Array.size
       value: 0

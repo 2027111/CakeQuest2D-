@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d379bc498f63e4e9f75862634adafd, type: 3}
   m_Name: Battle Tutorial
   m_EditorClassIdentifier: 
-  RuntimeValue: 1
+  RuntimeValue: 0
   repeats: 0
   dialogue: []
-  dialogueIndex: 1
+  dialogueIndex: 0
   StartRoom: {fileID: 0}
   battleDialogue:
   - condition: {fileID: 0}
@@ -36,7 +36,7 @@ MonoBehaviour:
     source: {fileID: 0}
     technicalCondition: 1
     conditionIndex: 0
-    played: 1
+    played: 0
   - condition: {fileID: 0}
     dialogueLineIds:
     - Tuto_Yankee_006
@@ -51,4 +51,4 @@ MonoBehaviour:
     source: {fileID: 0}
     technicalCondition: 3
     conditionIndex: 0
-    played: 1
+    played: 0

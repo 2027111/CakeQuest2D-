@@ -16438,7 +16438,6 @@ CompositeCollider2D:
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
-  m_CompositeGameObject: {fileID: 1650533283}
 --- !u!19719996 &1650533286
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -23342,11 +23341,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6328120429896446894, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.99
+      value: -13.5
       objectReference: {fileID: 0}
     - target: {fileID: 6328120429896446894, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6328120429896446894, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
       propertyPath: m_LocalPosition.z

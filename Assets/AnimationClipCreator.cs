@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -21,61 +22,69 @@ public class AnimationClipCreator : MonoBehaviour
     }
     public void CreateClip()
     {
+        Debug.Log("Lol");
 #if UNITY_EDITOR
+        Debug.Log("Lol");
         // Load all sprites from the specified sprite sheet in the Resources folder
-        Sprite[] sprites = Resources.LoadAll<Sprite>(spriteSheetName);
-
-        if (sprites.Length == 0)
-        {
-            Debug.LogError($"No sprites found in {spriteSheetName}. Ensure the path and name are correct.");
-            return;
-        }
-
-        // Create a new AnimationClip
-        AnimationClip animClip = new AnimationClip
-        {
-            frameRate = 25 // Set the frame rate
-        };
-
-        // Create an EditorCurveBinding for the SpriteRenderer component's sprite property
-        EditorCurveBinding spriteBinding = new EditorCurveBinding
-        {
-            type = typeof(SpriteRenderer),
-            path = "",
-            propertyName = "m_Sprite"
-        };
-
-        // Create keyframes for each sprite
-        ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[sprites.Length];
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            spriteKeyFrames[i] = new ObjectReferenceKeyframe
+        string path = $"Assets/TurnBattleSystem/{characterName}/SpriteSheet/{spriteSheetName}.png";
+        object[] objects = UnityEditor.AssetDatabase.LoadAllAssetsAtPath(path);
+        Sprite[] sprites = (objects.Where(q => q is Sprite).Cast<Sprite>()).ToArray<Sprite>();
+            if (sprites.Length == 0)
             {
-                time = i / animClip.frameRate,
-                value = sprites[i]
-            };
-        }
+                Debug.LogError($"No sprites found in {spriteSheetName}. Ensure the path and name are correct.");
+                return;
+            }
+            else
+            {
 
-        // Set the keyframes to the AnimationClip
-        AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames);
+                // Create a new AnimationClip
+                AnimationClip animClip = new AnimationClip
+                {
+                    frameRate = 25 // Set the frame rate
+                };
 
-        // Ensure the directory structure exists
-        string directoryPath = $"Assets/TurnBattleSystem/{characterName}/Animation";
-        if (!AssetDatabase.IsValidFolder(directoryPath))
-        {
-            AssetDatabase.CreateFolder($"Assets/TurnBattleSystem/{characterName}", "Animation");
-        }
+                // Create an EditorCurveBinding for the SpriteRenderer component's sprite property
+                EditorCurveBinding spriteBinding = new EditorCurveBinding
+                {
+                    type = typeof(SpriteRenderer),
+                    path = "",
+                    propertyName = "m_Sprite"
+                };
 
-        // Create the asset and save it
-        string assetPath = $"{directoryPath}/{characterName}_{animationName}.anim";
-        AssetDatabase.CreateAsset(animClip, assetPath);
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
+                // Create keyframes for each sprite
+                ObjectReferenceKeyframe[] spriteKeyFrames = new ObjectReferenceKeyframe[sprites.Length];
+                for (int i = 0; i < sprites.Length; i++)
+                {
+                    spriteKeyFrames[i] = new ObjectReferenceKeyframe
+                    {
+                        time = i / animClip.frameRate,
+                        value = sprites[i]
+                    };
+                }
 
-        // Mark the new animation clip as dirty so Unity knows to save it
-        EditorUtility.SetDirty(animClip);
+                // Set the keyframes to the AnimationClip
+                AnimationUtility.SetObjectReferenceCurve(animClip, spriteBinding, spriteKeyFrames);
 
-        Debug.Log($"Animation clip created at {assetPath}");
-    }
+                // Ensure the directory structure exists
+                string directoryPath = $"Assets/TurnBattleSystem/{characterName}/Animation";
+                if (!AssetDatabase.IsValidFolder(directoryPath))
+                {
+                    AssetDatabase.CreateFolder($"Assets/TurnBattleSystem/{characterName}", "Animation");
+                }
+
+                // Create the asset and save it
+                string assetPath = $"{directoryPath}/{characterName}_{animationName}.anim";
+                AssetDatabase.CreateAsset(animClip, assetPath);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+
+                // Mark the new animation clip as dirty so Unity knows to save it
+                EditorUtility.SetDirty(animClip);
+
+                Debug.Log($"Animation clip created at {assetPath}");
+
+            }
+        
 #endif
+    }
     }
