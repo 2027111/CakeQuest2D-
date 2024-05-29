@@ -1949,21 +1949,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
-      propertyPath: Automatic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
-      propertyPath: storagePlay
-      value: 
-      objectReference: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}
-    - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 84279180}
-    - target: {fileID: 1530214205774646539, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}
-      propertyPath: playableDirector
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: cbe3ae5433ece864983000a1061f26dc, type: 3}

@@ -33,6 +33,10 @@ public class SpriteEvents : MonoBehaviour
         character.PlaySFX(walkSound);
     }
 
+    private void Update()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+    }
 
 
 

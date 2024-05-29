@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: CurrentRoom
   m_EditorClassIdentifier: 
-  roomName: Plaine Caramel - Baie D'Hudson
-  minCameraOffset: {x: -64, y: -16}
-  maxCameraOffset: {x: -39, y: 19}
+  roomName: Jimi's Room
+  minCameraOffset: {x: -7, y: 11}
+  maxCameraOffset: {x: -7, y: 11}

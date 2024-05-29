@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RoomInfo", menuName = "ScriptableObjects/RoomInfo", order = 1)]
+[Serializable]
 public class RoomInfo : ScriptableObject
 {
     public string roomName;

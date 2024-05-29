@@ -85,7 +85,8 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        GetComponentInChildren<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
     }
 
 

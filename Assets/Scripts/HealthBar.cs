@@ -29,7 +29,7 @@ public class HealthBar : MonoBehaviour
         float time = 0f;
         float targetFillAmount = fillBar.fillAmount;
 
-        while (underfillBar.fillAmount > targetFillAmount)
+        while (underfillBar.fillAmount > fillBar.fillAmount)
         {
             float newFill = Mathf.Lerp(startFill, targetFillAmount, time);
             underfillBar.fillAmount = newFill;

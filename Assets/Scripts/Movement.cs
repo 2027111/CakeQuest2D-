@@ -11,7 +11,10 @@ public class Movement : MonoBehaviour
     public float moveSpeed = 5;
     public Rigidbody2D rb2D;
     public float runFactor = 1f;
-
+    public float coneAngle = 45f;
+    public float rayDistance = 1f;
+    public int coneRayCount = 10;
+    public LayerMask obstacleLayer; // The layer mask for obstacles
     public event Action<Vector2> LookAtEvent;
     public Vector2 movementInput = Vector2.zero;
 
@@ -67,8 +70,26 @@ public class Movement : MonoBehaviour
 
     public void MoveCharacter()
     {
+        Vector2 direction = movementInput.normalized;
+        float distance = moveSpeed * runFactor * Time.deltaTime;
 
-        rb2D.MovePosition(rb2D.position + (movementInput.normalized * moveSpeed * runFactor * Time.deltaTime));
+        // Cast a ray in the direction of movement
+        List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(rb2D.position, direction, distance, obstacleLayer));
+        foreach(RaycastHit2D hit in hits)
+        {
+            // Check if the ray hit anything
+            if (hit.collider.gameObject != gameObject)
+            {
+                distance = 0;
+                Vector2 dist = (hit.collider.gameObject.transform.position - transform.position).normalized;
+                direction -= dist;
+                // Optionally handle what happens if an obstacle is detected
+                Debug.Log("Obstacle detected: " + hit.collider.name);
+                // If the ray didn't hit anything, move the character
+            }
+        }
+        rb2D.MovePosition(rb2D.position + (direction * distance));
+
     }
 
     public void Run(bool running)

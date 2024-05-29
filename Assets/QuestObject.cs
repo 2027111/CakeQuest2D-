@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class QuestObject : BoolValue
 {
+    public string questId;
     public string questName;
     public virtual void CheckConditions()
     {
 
     }
+
+
+    public virtual void ShowQuest()
+    {
+
+    }
+
 
     public bool isCompleted()
     {
@@ -19,4 +27,31 @@ public class QuestObject : BoolValue
     {
         SetRuntime();
     }
+
+
+
+
+
+    public string GetName()
+    {
+        string name = questName;
+        string newName = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questName");
+        if (newName != "E404")
+        {
+            return newName;
+        }
+        return name;
+    }
+
+    public string GetDescription()
+    {
+        string desc = "";
+        string newDesc = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questDescription");
+        if (newDesc != "E404")
+        {
+            return newDesc;
+        }
+        return desc;
+    }
+
 }

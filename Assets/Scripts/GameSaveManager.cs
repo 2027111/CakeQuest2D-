@@ -158,7 +158,15 @@ public class GameSaveManager : MonoBehaviour
         var jdata = File.ReadAllText(Application.dataPath + "/temp.json");
         var pData = JsonConvert.DeserializeObject<List<ScriptableObject>>(jdata);
         Debug.Log("Imported data from temp.json");
-        playerData = pData;
+        SetPlayerData(pData);
+    }
+
+    private void SetPlayerData(List<ScriptableObject> pData)
+    {
+        foreach(ScriptableObject obj in playerData)
+        {
+
+        }
     }
 
     public IEnumerator SaveScriptablesAsync(SaveFiles listName)
