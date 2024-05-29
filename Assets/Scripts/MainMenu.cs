@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
 
-        GameSaveManager.Singleton.CreateNewSaveSlot();
+        GameSaveManager.Singleton?.CreateNewSaveSlot();
         StartCoroutine(StartGameRoutine());
     }
 

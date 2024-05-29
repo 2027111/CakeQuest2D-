@@ -1,0 +1,118 @@
+{
+    "objects": [
+        {
+            "typeName": "PlayerStorage",
+            "objectName": "PlayerInfoStorage",
+            "jsonData": "{\n    \"sceneName\": \"HouseTest\",\n    \"nextRoomInfo\": {\n        \"instanceID\": 25850\n    },\n    \"nextPosition\": {\n        \"x\": 0.0,\n        \"y\": -4.0\n    },\n    \"facing\": 2,\n    \"forceNextChange\": false\n}",
+            "HashCode": 25754
+        },
+        {
+            "typeName": "BattleCutscene",
+            "objectName": "Battle Tutorial",
+            "jsonData": "{\n    \"RuntimeValue\": true,\n    \"repeats\": false,\n    \"dialogue\": [],\n    \"dialogueIndex\": 1,\n    \"StartRoom\": {\n        \"instanceID\": 0\n    },\n    \"battleDialogue\": [\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Tuto_Yankee_000\",\n                \"Tuto_Yankee_001\",\n                \"Tuto_Yankee_002\",\n                \"Tuto_Yankee_003\",\n                \"Tuto_Yankee_004\",\n                \"Tuto_Yankee_005\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            },\n            \"technicalCondition\": 1,\n            \"conditionIndex\": 0,\n            \"played\": false\n        },\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Tuto_Yankee_006\",\n                \"Tuto_Yankee_007\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            },\n            \"technicalCondition\": 3,\n            \"conditionIndex\": 0,\n            \"played\": false\n        }\n    ]\n}",
+            "HashCode": 25806
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "IntroCutscene",
+            "jsonData": "{\n    \"RuntimeValue\": true,\n    \"repeats\": false,\n    \"dialogue\": [\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Intro_Jimi_000\",\n                \"Intro_Jimi_001\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            }\n        },\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Intro_Jimi_002\",\n                \"Intro_Jimi_003\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            }\n        }\n    ],\n    \"dialogueIndex\": 0,\n    \"StartRoom\": {\n        \"instanceID\": 34426\n    }\n}",
+            "HashCode": 34442
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "SGT Cutscene",
+            "jsonData": "{\n    \"RuntimeValue\": false,\n    \"repeats\": true,\n    \"dialogue\": [\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Misc_Jimi_000\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            }\n        }\n    ],\n    \"dialogueIndex\": 1,\n    \"StartRoom\": {\n        \"instanceID\": 0\n    }\n}",
+            "HashCode": 34444
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAA",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34446
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAB",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34448
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAA",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34450
+        },
+        {
+            "typeName": "CharacterObject",
+            "objectName": "JimiObject",
+            "jsonData": "{\n    \"characterData\": {\n        \"instanceID\": 25918\n    },\n    \"Health\": 122,\n    \"MaxHealth\": 200,\n    \"Mana\": 62,\n    \"MaxMana\": 200,\n    \"Speed\": 0,\n    \"AttackDamage\": 11,\n    \"ManaDamage\": 11,\n    \"parryWindow\": 0.15000000596046449,\n    \"isDead\": false,\n    \"attackType\": 0,\n    \"AttackElement\": 0,\n    \"elementalAttributes\": [\n        {\n            \"element\": 1,\n            \"elementEffect\": 1\n        }\n    ],\n    \"HitEffect\": [\n        {\n            \"instanceID\": 25920\n        }\n    ],\n    \"SoundEffect\": [\n        {\n            \"instanceID\": 25922\n        }\n    ],\n    \"Attacks\": [\n        {\n            \"instanceID\": 25924\n        },\n        {\n            \"instanceID\": 25926\n        },\n        {\n            \"instanceID\": 25928\n        },\n        {\n            \"instanceID\": 25930\n        },\n        {\n            \"instanceID\": 25932\n        },\n        {\n            \"instanceID\": 25934\n        }\n    ],\n    \"animationController\": {\n        \"instanceID\": 25936\n    }\n}",
+            "HashCode": 25860
+        },
+        {
+            "typeName": "CharacterObject",
+            "objectName": "YankeeObject",
+            "jsonData": "{\n    \"characterData\": {\n        \"instanceID\": 25938\n    },\n    \"Health\": 108,\n    \"MaxHealth\": 200,\n    \"Mana\": 200,\n    \"MaxMana\": 200,\n    \"Speed\": 0,\n    \"AttackDamage\": 11,\n    \"ManaDamage\": 11,\n    \"parryWindow\": 0.15000000596046449,\n    \"isDead\": false,\n    \"attackType\": 0,\n    \"AttackElement\": 0,\n    \"elementalAttributes\": [\n        {\n            \"element\": 0,\n            \"elementEffect\": 1\n        },\n        {\n            \"element\": 5,\n            \"elementEffect\": 1\n        }\n    ],\n    \"HitEffect\": [\n        {\n            \"instanceID\": 25940\n        }\n    ],\n    \"SoundEffect\": [\n        {\n            \"instanceID\": 25942\n        }\n    ],\n    \"Attacks\": [\n        {\n            \"instanceID\": 25944\n        },\n        {\n            \"instanceID\": 25946\n        }\n    ],\n    \"animationController\": {\n        \"instanceID\": 25948\n    }\n}",
+            "HashCode": 25862
+        },
+        {
+            "typeName": "RoomInfo",
+            "objectName": "CurrentRoom",
+            "jsonData": "{\n    \"roomName\": \"RandomHouseYouBrokeInto\",\n    \"minCameraOffset\": {\n        \"x\": 0.0,\n        \"y\": 0.0\n    },\n    \"maxCameraOffset\": {\n        \"x\": 0.0,\n        \"y\": 0.0\n    }\n}",
+            "HashCode": 25850
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAC",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34452
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAA",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34450
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAB",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34454
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAC",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34456
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAD",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34458
+        },
+        {
+            "typeName": "BoolValue",
+            "objectName": "ChestAE",
+            "jsonData": "{\n    \"RuntimeValue\": false\n}",
+            "HashCode": 34460
+        },
+        {
+            "typeName": "FetchQuest",
+            "objectName": "Intro Quest",
+            "jsonData": "{\n    \"RuntimeValue\": true,\n    \"questName\": \"Find the cake ingredients\",\n    \"requiredItems\": [\n        {\n            \"instanceID\": 25852\n        },\n        {\n            \"instanceID\": 25852\n        },\n        {\n            \"instanceID\": 25854\n        },\n        {\n            \"instanceID\": 25858\n        }\n    ],\n    \"characterInventory\": {\n        \"instanceID\": 25756\n    }\n}",
+            "HashCode": 34462
+        },
+        {
+            "typeName": "Cutscene",
+            "objectName": "IntroCooking Cutscene",
+            "jsonData": "{\n    \"RuntimeValue\": false,\n    \"repeats\": false,\n    \"dialogue\": [\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Intro_Jimi_005\",\n                \"Intro_Jimi_006\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            }\n        },\n        {\n            \"condition\": {\n                \"instanceID\": 0\n            },\n            \"dialogueLineIds\": [\n                \"Intro_Jimi_007\",\n                \"Intro_Jimi_008\"\n            ],\n            \"choices\": [],\n            \"OnOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"OnInstantOverEvent\": {\n                \"m_PersistentCalls\": {\n                    \"m_Calls\": []\n                }\n            },\n            \"source\": {\n                \"instanceID\": 0\n            }\n        }\n    ],\n    \"dialogueIndex\": 0,\n    \"StartRoom\": {\n        \"instanceID\": 0\n    }\n}",
+            "HashCode": 34464
+        },
+        {
+            "typeName": "CharacterInventory",
+            "objectName": "PlayerInventory",
+            "jsonData": "{\n    \"myInventory\": [],\n    \"pessos\": 0\n}",
+            "HashCode": 25756
+        }
+    ]
+}

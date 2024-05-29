@@ -62,6 +62,8 @@ public class AnimationClipCreator : MonoBehaviour
         int frames = int.Parse(amount);
         Debug.Log(frames);
 
+
+
         List<Sprite> spritesheetList = new List<Sprite>();
         float width = spriteSheet.width / frames;
         float height = spriteSheet.height;

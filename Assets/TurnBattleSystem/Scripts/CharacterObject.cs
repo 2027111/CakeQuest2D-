@@ -1,4 +1,5 @@
 
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class CharacterObject : ScriptableObject
 {
 
 
-    public CharacterData characterData;
+   [JsonIgnore] public CharacterData characterData;
     [Space(20)]
     public int Health;
     public int MaxHealth;
@@ -19,7 +20,6 @@ public class CharacterObject : ScriptableObject
     [Space(20)]
     public int Speed;
     public int AttackDamage;
-    public int ManaDamage;
     public float parryWindow = .15f;
 
     [Space(20)]
@@ -31,15 +31,15 @@ public class CharacterObject : ScriptableObject
     public Element AttackElement;
     [Space(20)]
 
-    public List<ElementalAttribute> elementalAttributes;
-    public List<GameObject> HitEffect;
-    public List<AudioClip> SoundEffect;
+    [JsonIgnore] public List<ElementalAttribute> elementalAttributes;
+    [JsonIgnore] public List<GameObject> HitEffect;
+    [JsonIgnore] public List<AudioClip> SoundEffect;
 
     [Space(40)]
     public List<Skill> Attacks;
 
     [Space(20)]
-    public AnimatorOverrideController animationController;
+    [JsonIgnore] public AnimatorOverrideController animationController;
 
 
     public void Revitalize()

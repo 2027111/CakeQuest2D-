@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ public class ScriptableObjectDTO
     {
         typeName = scriptableObject.GetType().FullName;
         objectName = scriptableObject.name;
-        jsonData = JsonUtility.ToJson(scriptableObject);
+        jsonData = JsonUtility.ToJson(scriptableObject, true);
         HashCode = scriptableObject.GetHashCode();
     }
 

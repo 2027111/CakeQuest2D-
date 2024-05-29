@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class InventoryItem : IActionData
     public string itemName;
     public string itemId;
     public string itemDescription;
-    public Sprite itemSprite;
+    [JsonIgnore] public Sprite itemSprite;
     public bool usable;
     public bool unique;
 

@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Newtonsoft.Json;
 
 public enum TargetType
 {
@@ -40,7 +41,7 @@ public class Skill : IActionData
     public SkillType skillType = SkillType.Physical;
     public string skillId;
     public string Description = "Attack qui fait mal :)";
-    public AnimationClip animationClip;
+    [JsonIgnore] public AnimationClip animationClip;
     public string voiceClipId;
     public int baseDamage = -10; //Negative for damage, positive for healing
     [Range(50, 100)]

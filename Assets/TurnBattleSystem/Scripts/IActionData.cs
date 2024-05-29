@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Newtonsoft.Json;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -27,8 +28,8 @@ public class IActionData : ScriptableObject
     public Friendliness friendliness = Friendliness.Friendly;
     public TargetStateType targetStateType = TargetStateType.Alive;
     public Element element = Element.Support;
-    public List<GameObject> HitEffect;
-    public List<AudioClip> SoundEffect;
+    [JsonIgnore] public List<GameObject> HitEffect;
+    [JsonIgnore] public List<AudioClip> SoundEffect;
 
     public GameObject GetHitEffect()
     {

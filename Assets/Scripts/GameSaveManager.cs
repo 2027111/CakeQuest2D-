@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,8 @@ public class GameSaveManager : MonoBehaviour
 {
     private static GameSaveManager _singleton;
 
-    public List<ScriptableObject> objectsToSave = new List<ScriptableObject>();
+    public List<ScriptableObject> data = new List<ScriptableObject>();
+    public List<ScriptableObject> playerData = new List<ScriptableObject>();
 
     public static int saveFileIndex = 0; // Default to the first save slot
     public string version = "0.0.05.28";
@@ -139,6 +141,25 @@ public class GameSaveManager : MonoBehaviour
         yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.saveFile));
     }
 
+
+    [ContextMenu("Test NewSoft")]
+    public void ExportTemp()
+    {
+        var settings = new JsonSerializerSettings();
+
+        var json = JsonConvert.SerializeObject(playerData);
+        var saveTask = Task.Run(() => File.WriteAllTextAsync(Application.dataPath + "/temp.json", json));
+        Debug.Log("Exported data to temp.json");
+    }
+
+    [ContextMenu("Test LoadNewsoft")]
+    public void ImportTemp() { 
+
+        var jdata = File.ReadAllText(Application.dataPath + "/temp.json");
+        var pData = JsonConvert.DeserializeObject<List<ScriptableObject>>(jdata);
+        Debug.Log("Imported data from temp.json");
+        playerData = pData;
+    }
 
     public IEnumerator SaveScriptablesAsync(SaveFiles listName)
     {
@@ -277,7 +298,7 @@ public class GameSaveManager : MonoBehaviour
         switch (listName)
         {
             case SaveFiles.saveFile:
-                return objectsToSave;
+                return data;
             default:
                 return null;
         }

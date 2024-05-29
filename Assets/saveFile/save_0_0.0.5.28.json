@@ -68,12 +68,6 @@
         },
         {
             "typeName": "BoolValue",
-            "objectName": "ChestAA",
-            "jsonData": "{\"RuntimeValue\":false}",
-            "HashCode": 42154
-        },
-        {
-            "typeName": "BoolValue",
             "objectName": "ChestAB",
             "jsonData": "{\"RuntimeValue\":false}",
             "HashCode": 32790

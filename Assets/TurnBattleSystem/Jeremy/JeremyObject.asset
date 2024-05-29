@@ -12,20 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ae358c1207b2c4c918450214e54f7d, type: 3}
   m_Name: JeremyObject
   m_EditorClassIdentifier: 
-  characterData: {fileID: 0}
-  Health: 0
-  MaxHealth: 0
-  Mana: 0
-  MaxMana: 0
+  characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
+  Health: 100
+  MaxHealth: 100
+  Mana: 100
+  MaxMana: 100
   Speed: 0
-  AttackDamage: 0
+  AttackDamage: 6
   ManaDamage: 0
   parryWindow: 0.15
   isDead: 0
   attackType: 0
   AttackElement: 0
   elementalAttributes: []
-  HitEffect: []
-  SoundEffect: []
+  HitEffect:
+  - {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
   Attacks: []
-  animationController: {fileID: 0}
+  animationController: {fileID: 22100000, guid: 035f6f042f8a6d9448ab30c9196270b5, type: 2}
