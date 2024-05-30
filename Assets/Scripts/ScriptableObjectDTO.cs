@@ -9,18 +9,20 @@ public class ScriptableObjectDTO
 {
     public string typeName; // To store the type name
     public string objectName; // To store the scriptable object name
+    public string uid; // To store the uid
     public string jsonData; // To store the serialized JSON data
     public int HashCode; // To store the unique identifier
 
-    public ScriptableObjectDTO(ScriptableObject scriptableObject)
+    public ScriptableObjectDTO(SavableObject scriptableObject)
     {
         typeName = scriptableObject.GetType().FullName;
         objectName = scriptableObject.name;
+        uid = scriptableObject.UID;
         jsonData = JsonUtility.ToJson(scriptableObject, true);
         HashCode = scriptableObject.GetHashCode();
     }
 
-    public void ApplyData(ScriptableObject scriptableObject)
+    public void ApplyData(SavableObject scriptableObject)
     {
         // Ensure the type matches before deserializing
         if (scriptableObject.GetType().FullName.Equals(typeName))
@@ -28,13 +30,14 @@ public class ScriptableObjectDTO
             // Log JSON data
 
             // Create a temporary ScriptableObject copy
-            ScriptableObject tempCopy = ScriptableObject.CreateInstance(scriptableObject.GetType());
+            SavableObject tempCopy = SavableObject.CreateInstance(scriptableObject.GetType()) as SavableObject;
 
             // Deserialize JSON data into the temporary copy
             JsonUtility.FromJsonOverwrite(jsonData, tempCopy);
 
             // Compare and apply only string fields from the temporary copy to the target ScriptableObject
-            ApplyStringFields(scriptableObject, tempCopy);
+            scriptableObject.ApplyData(tempCopy);
+            //ApplyStringFields(scriptableObject, tempCopy);
 
             // Log information about the deserialization
         }
@@ -44,7 +47,7 @@ public class ScriptableObjectDTO
         }
     }
 
-    private void ApplyStringFields(ScriptableObject target, ScriptableObject source)
+    private void ApplyStringFields(SavableObject target, SavableObject source)
     {
         // Get all fields of the target and source objects
         System.Reflection.FieldInfo[] targetFields = target.GetType().GetFields();
@@ -53,7 +56,7 @@ public class ScriptableObjectDTO
         foreach (var sourceField in sourceFields)
         {
             // Check if the field type is enum, numeric, boolean, or string
-            if (IsSupportedFieldType(sourceField.FieldType))
+            if (IsSupportedFieldType(sourceField.FieldType) && sourceField.Name != "UID")
             {
                 // Find the corresponding field in the target object
                 var matchingField = System.Array.Find(targetFields, field => field.Name == sourceField.Name);

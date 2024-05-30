@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b89f5bdc13e960488677403c05f88a8, type: 3}
   m_Name: Intro Quest
   m_EditorClassIdentifier: 
-  RuntimeValue: 1
+  UID: 357fa63766d8fb64d9d797ba2cde4194
+  RuntimeValue: 0
+  questId: 
   questName: Find the cake ingredients
   requiredItems:
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}

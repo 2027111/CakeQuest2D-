@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: Kitchen
   m_EditorClassIdentifier: 
+  UID: 7315fa0c3d64aa149bef0362178f8aa0
   roomName: Kitchen
   minCameraOffset: {x: 6, y: 0}
   maxCameraOffset: {x: 11, y: 0}

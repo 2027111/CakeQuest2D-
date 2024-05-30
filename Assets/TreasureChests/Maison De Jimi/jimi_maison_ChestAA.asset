@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef881497d12299469e1cff5619f5b8f, type: 3}
   m_Name: jimi_maison_ChestAA
   m_EditorClassIdentifier: 
-  RuntimeValue: 0
+  UID: bb9468841dd52c74ca4ddcf1b90c666b
+  RuntimeValue: 1

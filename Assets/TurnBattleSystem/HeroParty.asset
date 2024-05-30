@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa263f305655c0541b7acf45e0eb25ef, type: 3}
   m_Name: HeroParty
   m_EditorClassIdentifier: 
+  UID: 4fcbdc8de328d2840961cf7a0f3d9146
   PartyMembers:
   - {fileID: 11400000, guid: 36ad50b3d79e8114ba072b42b5795ca8, type: 2}
-  - {fileID: 11400000, guid: 0704f46f2b3d8a64c80b81e430a4183a, type: 2}

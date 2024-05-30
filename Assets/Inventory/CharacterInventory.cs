@@ -4,10 +4,40 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory/CharacterInventory")]
-public class CharacterInventory : ScriptableObject
+public class CharacterInventory : SavableObject
 {
     public List<InventoryItem> myInventory = new List<InventoryItem>();
     public int pessos = 0;
+
+
+
+    public override void ApplyData(SavableObject tempCopy)
+    {
+        GameSaveManager.Singleton.StartCoroutine(AddLoadedItemToInventory((tempCopy as CharacterInventory).myInventory));
+        pessos = (tempCopy as CharacterInventory).pessos;
+        base.ApplyData(tempCopy);
+    }
+
+   
+    public IEnumerator AddLoadedItemToInventory(List<InventoryItem> loadedInventory)
+    {
+        myInventory.Clear();
+
+
+        foreach (InventoryItem item in loadedInventory)
+        {
+            Debug.Log(item.name);
+            ResourceRequest request = Resources.LoadAsync<InventoryItem>($"ItemFolder/{item.name}");
+            while (!request.isDone)
+            {
+                yield return null;
+            }
+            InventoryItem loadedItem = request.asset as InventoryItem;
+            AddToInventory(loadedItem);
+            yield return null;
+        }
+        yield return null;
+    }
 
     public void AddMoney(int amount)
     {

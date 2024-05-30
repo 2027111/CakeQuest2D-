@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: Main
   m_EditorClassIdentifier: 
+  UID: 4fe60a3bb6d8b4d49ba4320ee343436a
   roomName: Plaine Caramel
   minCameraOffset: {x: -15, y: -16}
   maxCameraOffset: {x: 20, y: 20}

@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,10 +9,16 @@ using UnityEngine.Events;
 public class Cutscene : BoolValue
 {
     public bool repeats = false;
-    public Dialogue[] dialogue;
+    [JsonIgnore] public Dialogue[] dialogue;
     public int dialogueIndex = 0;
-    public RoomInfo StartRoom;
+    [JsonIgnore] public RoomInfo StartRoom;
+    public override void ApplyData(SavableObject tempCopy)
+    {
 
+        repeats = (tempCopy as Cutscene).repeats;
+        dialogueIndex = (tempCopy as Cutscene).dialogueIndex;
+        base.ApplyData(tempCopy);
+    }
     public virtual Dialogue GetLine()
     {
 

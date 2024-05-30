@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 [CreateAssetMenu]
-public class BattleInfo : ScriptableObject
+public class BattleInfo : SavableObject
 {
     public AudioClip BattleMusic;
     public TimelineAsset CutsceneToPlay;

@@ -3,11 +3,19 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "RoomInfo", menuName = "ScriptableObjects/RoomInfo", order = 1)]
 [Serializable]
-public class RoomInfo : ScriptableObject
+public class RoomInfo : SavableObject
 {
     public string roomName;
     public Vector2 minCameraOffset;
     public Vector2 maxCameraOffset;
+
+    public override void ApplyData(SavableObject tempCopy)
+    {
+
+        minCameraOffset = (tempCopy as RoomInfo).minCameraOffset;
+        maxCameraOffset = (tempCopy as RoomInfo).maxCameraOffset;
+        base.ApplyData(tempCopy);
+    }
 
     public static bool operator ==(RoomInfo c1, RoomInfo c2)
     {

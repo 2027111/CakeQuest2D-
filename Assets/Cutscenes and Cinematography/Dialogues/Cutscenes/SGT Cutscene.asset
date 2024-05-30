@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540c7f276e93ea347bd5be0c7f87d0a9, type: 3}
   m_Name: SGT Cutscene
   m_EditorClassIdentifier: 
+  UID: 454d2391fa20f8240975dde6ec24e7ce
   RuntimeValue: 0
   repeats: 1
   dialogue:

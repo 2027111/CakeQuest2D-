@@ -26,6 +26,7 @@ public class InventoryItem : IActionData
         return name;
     }
 
+
     public string GetDescription()
     {
         string desc = itemDescription;

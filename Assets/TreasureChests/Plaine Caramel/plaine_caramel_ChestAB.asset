@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef881497d12299469e1cff5619f5b8f, type: 3}
   m_Name: plaine_caramel_ChestAB
   m_EditorClassIdentifier: 
-  RuntimeValue: 1
+  UID: 751c2dcadbfd91f46b416a63bf19d340
+  RuntimeValue: 0

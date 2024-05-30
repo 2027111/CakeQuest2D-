@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: PabloRoom
   m_EditorClassIdentifier: 
+  UID: c8d8c2d7a66321549844757f42b07ab1
   roomName: Pa's room
   minCameraOffset: {x: -7, y: 0}
   maxCameraOffset: {x: -7, y: 0}

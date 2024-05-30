@@ -1,247 +1,48 @@
-[
+{
+  "$type": "System.Collections.Generic.List`1[[CharacterInventory, Assembly-CSharp]], mscorlib",
+  "$values": [
     {
-        "myInventory": [
-            {
-                "itemName": "Oeuf",
-                "itemId": "egg",
-                "itemDescription": "Un oeuf. Yep. Rien de plus.",
-                "usable": false,
-                "unique": false,
-                "UID": "e09c66edc6e979442a85934eb4480603",
-                "targetType": 0,
-                "friendliness": 0,
-                "targetStateType": 0,
-                "element": 6,
-                "name": "Eggs",
-                "hideFlags": 0
-            },
-            {
-                "itemName": "Oeuf",
-                "itemId": "egg",
-                "itemDescription": "Un oeuf. Yep. Rien de plus.",
-                "usable": false,
-                "unique": false,
-                "UID": "e09c66edc6e979442a85934eb4480603",
-                "targetType": 0,
-                "friendliness": 0,
-                "targetStateType": 0,
-                "element": 6,
-                "name": "Eggs",
-                "hideFlags": 0
-            },
-            {
-                "itemName": "Oeuf",
-                "itemId": "egg",
-                "itemDescription": "Un oeuf. Yep. Rien de plus.",
-                "usable": false,
-                "unique": false,
-                "UID": "e09c66edc6e979442a85934eb4480603",
-                "targetType": 0,
-                "friendliness": 0,
-                "targetStateType": 0,
-                "element": 6,
-                "name": "Eggs",
-                "hideFlags": 0
-            }
-        ],
-        "pessos": 0,
-        "name": "PlayerInventory",
-        "hideFlags": 0
-    },
-    {
-        "PartyMembers": [
-            {
-                "Health": 200,
-                "MaxHealth": 200,
-                "Mana": 200,
-                "MaxMana": 200,
-                "Speed": 0,
-                "AttackDamage": 11,
-                "parryWindow": 0.15,
-                "isDead": false,
-                "attackType": 0,
-                "AttackElement": 0,
-                "Attacks": [
-                    {
-                        "skillType": 0,
-                        "skillId": "spinning_kick",
-                        "Description": "Attack qui fait mal :)",
-                        "voiceClipId": "",
-                        "baseDamage": 8,
-                        "baseAccuracy": 100,
-                        "manaCost": 14,
-                        "spawnObjects": [],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "224c5edfcfce48c419e1e6f873166ebe",
-                        "targetType": 0,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 1,
-                        "name": "Jimi - JumpKick",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 0,
-                        "skillId": "overhead_smash",
-                        "Description": "Attack qui fait mal :)",
-                        "voiceClipId": "",
-                        "baseDamage": 11,
-                        "baseAccuracy": 100,
-                        "manaCost": 14,
-                        "spawnObjects": [],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "8e8d7959ff147ad45a36c25e7968b74b",
-                        "targetType": 0,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 1,
-                        "name": "Jimi - OverHeadSwing",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 1,
-                        "skillId": "low_heal",
-                        "Description": "Soigne",
-                        "voiceClipId": "",
-                        "baseDamage": 12,
-                        "baseAccuracy": 100,
-                        "manaCost": 5,
-                        "spawnObjects": [
-                            "Healing Magic"
-                        ],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "cfb73ef97622693469a69a6944a9fcd6",
-                        "targetType": 0,
-                        "friendliness": 0,
-                        "targetStateType": 0,
-                        "element": 6,
-                        "name": "Jimi - Low Heal",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 0,
-                        "skillId": "slice_dice",
-                        "Description": "Attack qui fait mal :)",
-                        "voiceClipId": "",
-                        "baseDamage": 7,
-                        "baseAccuracy": 100,
-                        "manaCost": 23,
-                        "spawnObjects": [],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "aa620d2fe85818748bf81d9beda0fffa",
-                        "targetType": 1,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 0,
-                        "name": "Jimi - Slice & Dice",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 1,
-                        "skillId": "salad_rain",
-                        "Description": "Attack qui fait mal :)",
-                        "voiceClipId": "",
-                        "baseDamage": 5,
-                        "baseAccuracy": 100,
-                        "manaCost": 2,
-                        "spawnObjects": [
-                            "Spell"
-                        ],
-                        "turnTilTriggered": 2,
-                        "turnTilActive": 2,
-                        "UID": "e8a2eee11bd46b748b3684657e4b2b0d",
-                        "targetType": 1,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 5,
-                        "name": "Jimi - Salad Rain",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 1,
-                        "skillId": "ressurection",
-                        "Description": "Soigne",
-                        "voiceClipId": "",
-                        "baseDamage": 30,
-                        "baseAccuracy": 100,
-                        "manaCost": 5,
-                        "spawnObjects": [
-                            "Healing Magic"
-                        ],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "229d8bfa901ac724c8c08783a5b4648b",
-                        "targetType": 0,
-                        "friendliness": 0,
-                        "targetStateType": 1,
-                        "element": 6,
-                        "name": "Jimi - Ressurection",
-                        "hideFlags": 0
-                    }
-                ],
-                "name": "JimiObject",
-                "hideFlags": 0
-            },
-            {
-                "Health": 179,
-                "MaxHealth": 200,
-                "Mana": 128,
-                "MaxMana": 200,
-                "Speed": 0,
-                "AttackDamage": 11,
-                "parryWindow": 0.15,
-                "isDead": false,
-                "attackType": 0,
-                "AttackElement": 0,
-                "Attacks": [
-                    {
-                        "skillType": 0,
-                        "skillId": "super_kick",
-                        "Description": "Super coup de pied",
-                        "voiceClipId": "",
-                        "baseDamage": 6,
-                        "baseAccuracy": 100,
-                        "manaCost": 14,
-                        "spawnObjects": [],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "9a57fc146a736cf42acd5a4020dd093e",
-                        "targetType": 1,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 1,
-                        "name": "Yankee - SuperKick",
-                        "hideFlags": 0
-                    },
-                    {
-                        "skillType": 0,
-                        "skillId": "egg_drill",
-                        "Description": "Tournois et perce ton adversaire",
-                        "voiceClipId": "",
-                        "baseDamage": 3,
-                        "baseAccuracy": 100,
-                        "manaCost": 5,
-                        "spawnObjects": [],
-                        "turnTilTriggered": 0,
-                        "turnTilActive": 0,
-                        "UID": "659393d480360f5498ef8dfcdf5e2a32",
-                        "targetType": 0,
-                        "friendliness": 1,
-                        "targetStateType": 0,
-                        "element": 1,
-                        "name": "Yankee - Egg Drill",
-                        "hideFlags": 0
-                    }
-                ],
-                "name": "YankeeObject",
-                "hideFlags": 0
-            }
-        ],
-        "name": "HeroParty",
-        "hideFlags": 0
+      "$type": "CharacterInventory, Assembly-CSharp",
+      "myInventory": {
+        "$type": "System.Collections.Generic.List`1[[InventoryItem, Assembly-CSharp]], mscorlib",
+        "$values": [
+          {
+            "$type": "InventoryItem, Assembly-CSharp",
+            "itemName": "Oeuf",
+            "itemId": "egg",
+            "itemDescription": "Un oeuf. Yep. Rien de plus.",
+            "usable": false,
+            "unique": false,
+            "targetType": 0,
+            "friendliness": 0,
+            "targetStateType": 0,
+            "element": 6,
+            "UID": "e09c66edc6e979442a85934eb4480603",
+            "name": "Eggs",
+            "hideFlags": 0
+          },
+          {
+            "$type": "HealthEffectItem, Assembly-CSharp",
+            "healthEffectAmount": 12,
+            "itemName": "Huile Brulant",
+            "itemId": "huile_bouillante",
+            "itemDescription": "De l'huile bouilante. La lancé sur un enemie fera {healthEffectAmount} déga",
+            "usable": true,
+            "unique": false,
+            "targetType": 0,
+            "friendliness": 1,
+            "targetStateType": 0,
+            "element": 6,
+            "UID": "be78b9d89857cc347b561e476b8f2240",
+            "name": "Boiling Oil",
+            "hideFlags": 0
+          }
+        ]
+      },
+      "pessos": 0,
+      "UID": "381c74390e9664647ba32510270b594c",
+      "name": "PlayerInventory",
+      "hideFlags": 0
     }
-]
+  ]
+}

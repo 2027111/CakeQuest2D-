@@ -3,25 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 
-public class IActionData : ScriptableObject
+public class IActionData : SavableObject
 {
 
-    public string UID;
-    private void OnValidate()
-    {
-        #if UNITY_EDITOR
-        if (UID == "")
-        {
-            UID = GUID.Generate().ToString();
-            UnityEditor.EditorUtility.SetDirty(this);
-        }
-        #endif
-    }
 
 
     public TargetType targetType ;
@@ -30,6 +16,16 @@ public class IActionData : ScriptableObject
     public Element element = Element.Support;
     [JsonIgnore] public List<GameObject> HitEffect;
     [JsonIgnore] public List<AudioClip> SoundEffect;
+
+
+
+
+
+    public override void ApplyData(SavableObject tempCopy)
+    {
+        base.ApplyData(tempCopy);
+    }
+
 
     public GameObject GetHitEffect()
     {

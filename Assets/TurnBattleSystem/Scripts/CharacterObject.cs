@@ -1,12 +1,13 @@
 
 using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
 [CreateAssetMenu]
 [System.Serializable]
-public class CharacterObject : ScriptableObject
+public class CharacterObject : SavableObject
 {
 
 
@@ -41,6 +42,41 @@ public class CharacterObject : ScriptableObject
     [Space(20)]
     [JsonIgnore] public AnimatorOverrideController animationController;
 
+    public override void ApplyData(SavableObject tempCopy)
+    {
+        GameSaveManager.Singleton.StartCoroutine(AddLoadedSkillToMoveset((tempCopy as CharacterObject).Attacks));
+        Health = (tempCopy as CharacterObject).Health;
+        MaxHealth = (tempCopy as CharacterObject).MaxHealth;
+        Mana = (tempCopy as CharacterObject).Mana;
+        MaxMana = (tempCopy as CharacterObject).MaxMana;
+        Speed = (tempCopy as CharacterObject).Speed;
+        AttackDamage = (tempCopy as CharacterObject).AttackDamage;
+        parryWindow = (tempCopy as CharacterObject).parryWindow;
+        isDead = (tempCopy as CharacterObject).isDead;
+        base.ApplyData(tempCopy);
+    }
+
+
+    public IEnumerator AddLoadedSkillToMoveset(List<Skill> loadedSkills)
+    {
+
+        Attacks.Clear();
+        foreach (Skill skill in loadedSkills)
+        {
+            ResourceRequest request = Resources.LoadAsync<Skill>($"SkillFolder/{skill.name}");
+            while (!request.isDone)
+            {
+                yield return null;
+            }
+            Skill loadedSkill = request.asset as Skill;
+            if (!Attacks.Contains(loadedSkill))
+            {
+                Attacks.Add(loadedSkill);
+            }
+            yield return null;
+        }
+        yield return null;
+    }
 
     public void Revitalize()
     {

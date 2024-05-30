@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ae358c1207b2c4c918450214e54f7d, type: 3}
   m_Name: YankeeObject
   m_EditorClassIdentifier: 
+  UID: 4c83b2a75b75c43408098c0ecf8e9740
   characterData: {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
   Health: 179
   MaxHealth: 200
@@ -19,7 +20,6 @@ MonoBehaviour:
   MaxMana: 200
   Speed: 0
   AttackDamage: 11
-  ManaDamage: 11
   parryWindow: 0.15
   isDead: 0
   attackType: 0

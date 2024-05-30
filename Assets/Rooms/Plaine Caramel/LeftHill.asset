@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: LeftHill
   m_EditorClassIdentifier: 
+  UID: e5f6522aae6ac834aa7ff30e8eeae025
   roomName: Plaine Caramel - Baie D'Hudson
   minCameraOffset: {x: -64, y: -16}
   maxCameraOffset: {x: -39, y: 19}

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d379bc498f63e4e9f75862634adafd, type: 3}
   m_Name: Battle Tutorial
   m_EditorClassIdentifier: 
+  UID: 960d1819756087f4c8d5343fc97ca64a
   RuntimeValue: 0
   repeats: 0
   dialogue: []

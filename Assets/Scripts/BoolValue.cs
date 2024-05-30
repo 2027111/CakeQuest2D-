@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu]
 [System.Serializable]
-public class BoolValue : ScriptableObject
+public class BoolValue : SavableObject
 {
 
 
@@ -14,5 +14,12 @@ public class BoolValue : ScriptableObject
         RuntimeValue = true;
     }
 
+
+    public override void ApplyData(SavableObject tempCopy)
+    {
+
+        RuntimeValue = (tempCopy as BoolValue).RuntimeValue;
+        base.ApplyData(tempCopy);
+    }
 
 }

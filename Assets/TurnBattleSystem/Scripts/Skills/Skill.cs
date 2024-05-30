@@ -49,7 +49,7 @@ public class Skill : IActionData
     public int manaCost = 14;
     public string[] spawnObjects;
 
-
+    
     public string GetName()
     {
         string name = skillId;

@@ -9,15 +9,17 @@ using UnityEngine.Events;
 
 public enum SaveFiles
 {
-    saveFile
+    save
 }
 
 public class GameSaveManager : MonoBehaviour
 {
     private static GameSaveManager _singleton;
 
-    public List<ScriptableObject> data = new List<ScriptableObject>();
-    public List<ScriptableObject> playerData = new List<ScriptableObject>();
+    public List<SavableObject> data = new List<SavableObject>();
+    public List<CharacterInventory> allInventories = new List<CharacterInventory>(); 
+    public List<CharacterObject> allCharacterObjects = new List<CharacterObject>();
+    public List<Party> allParties = new List<Party>();
 
     public static int saveFileIndex = 0; // Default to the first save slot
     public string version = "0.0.05.28";
@@ -56,17 +58,21 @@ public class GameSaveManager : MonoBehaviour
     {
         CreateSavePath();
     }
+    
+
 
     public void CreateSavePath()
     {
         InitializePath();
         foreach (var value in Enum.GetValues(typeof(SaveFiles)))
         {
+
             string enumValueName = value.ToString();
             if (!Directory.Exists(GetPath(enumValueName)))
             {
                 Directory.CreateDirectory(GetPath(enumValueName));
             }
+
         }
     }
 
@@ -104,18 +110,20 @@ public class GameSaveManager : MonoBehaviour
 
     public string GetPath(string whattosave)
     {
-        return $"{path}/{whattosave}";
+        return $"{path}/saveFile";
     }
     private string GetDefaultFilePath(string whattosave)
     {
-        return $"{path}/save_default_{version}.{extension}";
+        return $"{path}/{whattosave}_default_{version}.{extension}";
     }
 
 
-    public string GetFilePath(string whattosave)
+
+    public string GetNewFilePath(string whattosave)
     {
-        return $"{path}/{whattosave}/save_{saveFileIndex}_{version}.{extension}";
+        return $"{path}/saveFile/{whattosave}_{saveFileIndex}_{version}.{extension}";
     }
+
 
     public void SaveGame()
     {
@@ -123,7 +131,8 @@ public class GameSaveManager : MonoBehaviour
     }
     public IEnumerator SaveFileCoroutine()
     {
-        yield return SaveScriptablesAsync(SaveFiles.saveFile);
+        yield return SaveScriptablesAsync(SaveFiles.save);
+        yield return ExportStoredData();
 
     }
     public void LoadLanguage()
@@ -138,41 +147,134 @@ public class GameSaveManager : MonoBehaviour
 
     public IEnumerator LoadSaveFileCoroutine()
     {
-        yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.saveFile));
+        yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
     }
 
 
-    [ContextMenu("Test NewSoft")]
-    public void ExportTemp()
+    public IEnumerator ExportStoredData()
     {
-        var settings = new JsonSerializerSettings();
-
-        var json = JsonConvert.SerializeObject(playerData);
-        var saveTask = Task.Run(() => File.WriteAllTextAsync(Application.dataPath + "/temp.json", json));
-        Debug.Log("Exported data to temp.json");
-    }
-
-    [ContextMenu("Test LoadNewsoft")]
-    public void ImportTemp() { 
-
-        var jdata = File.ReadAllText(Application.dataPath + "/temp.json");
-        var pData = JsonConvert.DeserializeObject<List<ScriptableObject>>(jdata);
-        Debug.Log("Imported data from temp.json");
-        SetPlayerData(pData);
-    }
-
-    private void SetPlayerData(List<ScriptableObject> pData)
-    {
-        foreach(ScriptableObject obj in playerData)
+        var settings = new JsonSerializerSettings
         {
+            TypeNameHandling = TypeNameHandling.All,
+            Formatting = Formatting.Indented,
+            NullValueHandling = NullValueHandling.Ignore
+        };
 
+        // Create an instance of SaveDataWrapper and populate it
+        var saveData = new SaveDataWrapper
+        {
+            AllInventories = allInventories,
+            AllCharacterObjects = allCharacterObjects,
+            AllParties = allParties
+        };
+
+        var json = JsonConvert.SerializeObject(saveData, settings);
+        var saveTask = Task.Run(() => File.WriteAllTextAsync(GetNewFilePath("playerData"), json));
+        while (!saveTask.IsCompleted)
+        {
+            yield return null;
+        }
+        yield return null;
+    }
+
+
+    public IEnumerator ImportStoredData()
+    {
+        var settings = new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.All,
+            NullValueHandling = NullValueHandling.Include
+        };
+
+        if (File.Exists(GetNewFilePath("playerData")))
+        {
+            var jdata = File.ReadAllText(GetNewFilePath("playerData"));
+            var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(jdata, settings);
+
+            if (saveData != null)
+            {
+                Debug.Log("Imported data from allData.json");
+
+                // Set the lists from the deserialized data
+                SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
+                SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
+                SetPlayerData<Party>((saveData.AllParties), allParties);
+                yield return null;
+            }
+            else
+            {
+                Debug.LogError("Failed to deserialize data from allData.json. Data is null.");
+            }
+        }
+        else
+        {
+            Debug.LogError("File allData.json does not exist.");
+        }
+
+    }
+
+
+    public IEnumerator ImportDefaultStoredData()
+    {
+        var settings = new JsonSerializerSettings
+        {
+            TypeNameHandling = TypeNameHandling.All,
+            NullValueHandling = NullValueHandling.Include
+        };
+
+        if (File.Exists(GetDefaultFilePath("playerData")))
+        {
+            var jdata = File.ReadAllText(GetDefaultFilePath("playerData"));
+            var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(jdata, settings);
+
+            if (saveData != null)
+            {
+                Debug.Log("Imported data from allData.json");
+
+                // Set the lists from the deserialized data
+                SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
+                SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
+                SetPlayerData<Party>((saveData.AllParties), allParties);
+                yield return null;
+            }
+            else
+            {
+                Debug.LogError("Failed to deserialize data from allData.json. Data is null.");
+            }
+        }
+        else
+        {
+            Debug.LogError("File allData.json does not exist.");
+        }
+
+    }
+
+
+
+
+
+    private void SetPlayerData<T>(List<T> loadedDataFiles, List<T> fileToApplyTo)
+    {
+        foreach(T obj in fileToApplyTo)
+        {
+            foreach (T data in loadedDataFiles) 
+            {
+
+                if ((obj as SavableObject).UID.Equals((data as SavableObject).UID))
+                {
+                    (obj as SavableObject).ApplyData(data as SavableObject);
+                }
+
+            }
         }
     }
 
+    
+
     public IEnumerator SaveScriptablesAsync(SaveFiles listName)
     {
-        List<ScriptableObject> list = GetListMatch(listName);
-        string filePath = GetFilePath(listName.ToString());
+        List<SavableObject> list = GetListMatch(listName);
+        string filePath = GetNewFilePath(listName.ToString());
         List<ScriptableObjectDTO> dtoList = GetCurrentDTOList(list);
         var json = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
 
@@ -191,8 +293,9 @@ public class GameSaveManager : MonoBehaviour
 
     private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
     {
-        List<ScriptableObject> list = GetListMatch(listName);
+        List<SavableObject> list = GetListMatch(listName);
         List<ScriptableObjectDTO> dtoList = ReadDefaultSaveFile(listName);
+        yield return ImportDefaultStoredData();
         if (dtoList != null)
         {
             yield return ApplyToScriptableObjects(dtoList, list);
@@ -205,19 +308,21 @@ public class GameSaveManager : MonoBehaviour
         }
         else
         {
-            List<ScriptableObject> loadList = GetListMatch(listName);
+            List<SavableObject> loadList = GetListMatch(listName);
             List<ScriptableObjectDTO> dtoloadList = ReadSaveFile(listName);
+
             if (dtoloadList != null)
             {
                 yield return ApplyToScriptableObjects(dtoloadList, loadList);
             }
+            yield return ImportStoredData();
             yield return null;
         }
     }
 
     public void LoadScriptables(SaveFiles listName)
     {
-        List<ScriptableObject> list = GetListMatch(listName);
+        List<SavableObject> list = GetListMatch(listName);
         List<ScriptableObjectDTO> dtoList = ReadSaveFile(listName);
         if (dtoList != null)
         {
@@ -225,18 +330,18 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<ScriptableObject> list)
+    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<SavableObject> list)
     {
-        foreach (ScriptableObject obj in list)
+        foreach (SavableObject obj in list)
         {
            yield return ApplyToScriptableObjects(dtoList, obj);
             yield return null;
         }
     }
 
-    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
+    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, SavableObject obj)
     {
-        ScriptableObject yourObj = obj;
+        SavableObject yourObj = obj;
         if (yourObj != null)
         {
             ScriptableObjectDTO scriptableObjectDTO = GetMatchingObject(dtoList, obj);
@@ -248,13 +353,13 @@ public class GameSaveManager : MonoBehaviour
         yield return null;
     }
 
-    public ScriptableObjectDTO GetMatchingObject(List<ScriptableObjectDTO> dtoList, ScriptableObject obj)
+    public ScriptableObjectDTO GetMatchingObject(List<ScriptableObjectDTO> dtoList, SavableObject obj)
     {
         foreach (ScriptableObjectDTO sodto in dtoList)
         {
             if (sodto.typeName == obj.GetType().Name)
             {
-                if (sodto.objectName == obj.name || sodto.HashCode == obj.GetHashCode())
+                if (sodto.objectName == obj.name || sodto.uid == obj.UID)
                 {
                     return sodto;
                 }
@@ -263,7 +368,7 @@ public class GameSaveManager : MonoBehaviour
         return null;
     }
 
-    public List<ScriptableObjectDTO> GetCurrentDTOList(List<ScriptableObject> list)
+    public List<ScriptableObjectDTO> GetCurrentDTOList(List<SavableObject> list)
     {
         List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
         for (int i = 0; i < list.Count; i++)
@@ -276,7 +381,7 @@ public class GameSaveManager : MonoBehaviour
 
     public List<ScriptableObjectDTO> ReadSaveFile(SaveFiles path)
     {
-        string filePath = GetFilePath(path.ToString());
+        string filePath = GetNewFilePath(path.ToString());
         if (File.Exists(filePath))
         {
             var json = File.ReadAllText(filePath);
@@ -301,11 +406,11 @@ public class GameSaveManager : MonoBehaviour
     }
 
 
-    private List<ScriptableObject> GetListMatch(SaveFiles listName)
+    private List<SavableObject> GetListMatch(SaveFiles listName)
     {
         switch (listName)
         {
-            case SaveFiles.saveFile:
+            case SaveFiles.save:
                 return data;
             default:
                 return null;
@@ -326,7 +431,7 @@ public class GameSaveManager : MonoBehaviour
 
     public void DeleteSaveSlot(int index)
     {
-        string filePath = $"{path}/{SaveFiles.saveFile}/save_{index}_{version}.{extension}";
+        string filePath = $"{path}/{SaveFiles.save}/save_{index}_{version}.{extension}";
         if (File.Exists(filePath))
         {
             File.Delete(filePath);
@@ -337,7 +442,7 @@ public class GameSaveManager : MonoBehaviour
 
     public int GetNumberOfSaveSlots()
     {
-        string saveFilePath = GetPath(SaveFiles.saveFile.ToString()) + "/";
+        string saveFilePath = GetPath(SaveFiles.save.ToString());
         if (Directory.Exists(saveFilePath))
         {
             List<string> files = new List<string>(Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}"));
