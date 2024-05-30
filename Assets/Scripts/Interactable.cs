@@ -53,6 +53,7 @@ public class Interactable : MonoBehaviour
             }
         }
     }
+
     public void ManageInteraction(GameObject character, bool add)
     {
         if(interactionEvent.GetPersistentEventCount() > 0)
@@ -78,12 +79,14 @@ public class Interactable : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (this.enabled)
+        if (enabled)
         {
         if (collision.CompareTag("Player"))
         {
+                Debug.Log("Player pls work :)");
             if(player != null)
             {
                 player.GetComponent<Character>().SetInteraction(true);

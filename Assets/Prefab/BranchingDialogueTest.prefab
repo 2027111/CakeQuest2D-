@@ -35,9 +35,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6140875260855343750}
+  - {fileID: 1674143958559875894}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &441118092297867419
 SpriteRenderer:
@@ -156,65 +156,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    dialogueLines:
-    - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
-    - {fileID: 11400000, guid: b6c4505a56130804fbe33536b07741ab, type: 2}
-    EndInChoice: 1
+    condition: {fileID: 0}
+    dialogueLineIds: []
     choices:
-      dialogueLines:
-      - Salope
-      - "Encul\xE9"
-      - Lil Bitch
-      dialogues:
-      - dialogueLines:
-        - {fileID: 11400000, guid: 5dc4c659f04fe494485db85e546e7b64, type: 2}
-        EndInChoice: 0
-        choices:
-          dialogueLines:
-          - peepoo
-          - poopee
-          dialogues:
-          - dialogueLines:
-            - {fileID: 11400000, guid: 863073cce39a68f44ae1229bb8fe815b, type: 2}
-            - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
-            EndInChoice: 0
-            choices:
-              dialogueLines: []
-              dialogues: []
-            OnOverEvent:
-              m_PersistentCalls:
-                m_Calls: []
-          - dialogueLines:
-            - {fileID: 11400000, guid: 9e162e9878f587745844522629b6e8a5, type: 2}
-            - {fileID: 11400000, guid: e40043b7488694d4d8fcfbcfac2b13f6, type: 2}
-            EndInChoice: 0
-            choices:
-              dialogueLines: []
-              dialogues: []
-            OnOverEvent:
-              m_PersistentCalls:
-                m_Calls: []
-        OnOverEvent:
-          m_PersistentCalls:
-            m_Calls: []
-      - dialogueLines:
-        - {fileID: 11400000, guid: 863073cce39a68f44ae1229bb8fe815b, type: 2}
-        EndInChoice: 0
-        choices:
-          dialogueLines: []
-          dialogues: []
-        OnOverEvent:
-          m_PersistentCalls:
-            m_Calls: []
-      - dialogueLines:
-        - {fileID: 11400000, guid: 8367999c7099b5440896a006a7db885d, type: 2}
-        EndInChoice: 0
-        choices:
-          dialogueLines: []
-          dialogues: []
-        OnOverEvent:
-          m_PersistentCalls:
-            m_Calls: []
+    - condition: {fileID: 0}
+      choicesLineIds: 
+      dialogueLineIds: []
+      choices: []
+      OnOverEvent:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInstantOverEvent:
+        m_PersistentCalls:
+          m_Calls: []
+    - condition: {fileID: 0}
+      choicesLineIds: 
+      dialogueLineIds: []
+      choices: []
+      OnOverEvent:
+        m_PersistentCalls:
+          m_Calls: []
+      OnInstantOverEvent:
+        m_PersistentCalls:
+          m_Calls: []
     OnOverEvent:
       m_PersistentCalls:
         m_Calls:
@@ -230,18 +194,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2591987198444682845}
-          m_TargetAssemblyTypeName: NewDialogueStarterObject, Assembly-CSharp
-          m_MethodName: EnableChoice
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    source: {fileID: 0}
   started: 0
   player: {fileID: 0}
   OnDialogueOverEvent:
@@ -280,7 +236,7 @@ MonoBehaviour:
   contactEndEvent:
     m_PersistentCalls:
       m_Calls: []
-  InteractionIndicator: {fileID: 4605235339956418901}
+  InteractionIndicator: {fileID: 1674143958559875893}
 --- !u!114 &5486297278761393426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,108 +265,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisbattleInfo: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}
   currentBattleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
---- !u!1 &4605235339956418901
+--- !u!1001 &2200697363953329955
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 441118092297867416}
+    m_Modifications:
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.345
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302230, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_Name
+      value: ContextClue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+--- !u!1 &1674143958559875893 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 698536886062302230, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+  m_PrefabInstance: {fileID: 2200697363953329955}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6140875260855343750}
-  - component: {fileID: 5013786618170461096}
-  - component: {fileID: 8420274199178062351}
-  m_Layer: 6
-  m_Name: BubbleAnim
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &6140875260855343750
+--- !u!4 &1674143958559875894 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+  m_PrefabInstance: {fileID: 2200697363953329955}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605235339956418901}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.345, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 441118092297867416}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5013786618170461096
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605235339956418901}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 1723057012, guid: b8d4cfafa497b804bb725e57a0ac677b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 2}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &8420274199178062351
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4605235339956418901}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2df9ffba1aab83042aed32a96a25b9e2, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

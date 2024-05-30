@@ -92,6 +92,9 @@ MonoBehaviour:
       m_Calls: []
   contactEvent:
     m_PersistentCalls:
+      m_Calls: []
+  contactEndEvent:
+    m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2431629471824279771}
         m_TargetAssemblyTypeName: RoomMove, Assembly-CSharp
@@ -105,7 +108,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  contactEndEvent:
-    m_PersistentCalls:
-      m_Calls: []
   InteractionIndicator: {fileID: 0}
