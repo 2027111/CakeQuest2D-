@@ -2,11 +2,15 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\"}"
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\"}"
         },
         {
             "dataId": "Indications",
-            "jsonData": "{\"attack\":\"Attaque normale vos ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser un ennemi\",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\"}"
+            "jsonData": "{\"attack\":\"Attaquez directement vos ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"done\":\"Complété!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser un ennemi\",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\"}"
+        },
+        {
+            "dataId": "Locations",
+            "jsonData": "{\"kitchen\":\"Cuisine\",\"dining_hall\":\"Salle à manger\",\"room\":\"Chambre\"}"
         },
         {
             "dataId": "ControlScheme",
@@ -19,6 +23,10 @@
         {
             "dataId": "Misc_Chest_Opened",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.itemName}!!\"}"
+        },
+        {
+            "dataId": "Misc_Item_Received",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez obtenu {amount} {content.itemName}.\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
@@ -149,8 +157,36 @@
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
         },
         {
-            "dataId": "EyrCutt_pc_0",
+            "dataId": "EyrCutt_pc_1",
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Je suis le plus grand tireur de tout le colorado\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_2",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Je ne te rendrais jamais ton portefeuille trouduc\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_3",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Bordel j'ai mal\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Mai- \n Mais t'es chauve aussi???!\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_4",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Maintenant, vous connaissez mon plus grand secret...\"}"
+        },
+        {
+            "dataId": "Tuto_Jimi_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_5",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Tien, reprends le ton porte-feuille de mes deux.\"}"
+        },
+        {
+            "dataId": "EyrCutt_pc_6",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Moi, j'me casse d'ici.\"}"
         },
         {
             "dataId": "Jimi",
@@ -219,6 +255,10 @@
         {
             "dataId": "item_small_honey_bottle",
             "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise celui qui en bois.\"}"
+        },
+        {
+            "dataId": "quest_intro_fetch_ingredients",
+            "jsonData": "{\"questName\":\"Le Gateau\",\"questDescription\":\"Trouves les ingrédients nécéssaires, afin de préparer un gateau.\"}"
         }
     ]
 }

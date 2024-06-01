@@ -32,7 +32,7 @@ public class QuestObject : BoolValue
 
 
 
-    public string GetName()
+    public virtual string GetName()
     {
         string name = questName;
         string newName = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questName");
@@ -43,7 +43,7 @@ public class QuestObject : BoolValue
         return name;
     }
 
-    public string GetDescription()
+    public virtual string GetDescription()
     {
         string desc = "";
         string newDesc = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questDescription");
@@ -51,6 +51,11 @@ public class QuestObject : BoolValue
         {
             return newDesc;
         }
+        return desc;
+    }
+    public virtual string GetObjectiveProgress()
+    {
+        string desc = "Completed";
         return desc;
     }
 

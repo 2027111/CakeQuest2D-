@@ -45,7 +45,8 @@ public class BattleManager : MonoBehaviour
     [SerializeField] Transform CardUIContainer;
     [SerializeField] Transform PlayerSpawnPoint;
     [SerializeField] Transform EnemySpawnPoint;
-    [SerializeField] BattleInfo battleInfo;
+    public BattleInfoHolder currentBattleInfo;
+
 
 
     private List<GameObject> currentCursor = new List<GameObject>();
@@ -275,7 +276,7 @@ public class BattleManager : MonoBehaviour
     public void SetupBattle()
     {
         ClearStage();
-
+        UICanvas.TurnBordersOn(false);
         SpawnEveryMember(HeroParty, TeamIndex.Player);
         SpawnEveryMember(EnemyParty, TeamIndex.Enemy);
         SpawnPartyCards();
@@ -342,10 +343,13 @@ public class BattleManager : MonoBehaviour
 
     public void SetBattleInfo()
     {
-        if (battleInfo)
+        if (currentBattleInfo)
         {
-            PlayOST();
-            PlayCutscene();
+            if (currentBattleInfo.battleInfo)
+            {
+                PlayOST();
+                PlayCutscene();
+            }
         }
 
     }
@@ -354,16 +358,16 @@ public class BattleManager : MonoBehaviour
         ChangeState(new NothingState());
 
 
-        timeline.SetCutscene(battleInfo.CutsceneForDialogue);
+        timeline.SetCutscene(currentBattleInfo.battleInfo.CutsceneForDialogue);
         StartBattle();
     }
 
     public void PlayOST()
     {
-        if (battleInfo.BattleMusic)
+        if (currentBattleInfo.battleInfo.BattleMusic)
         {
-            Debug.Log(battleInfo.BattleMusic);
-            MusicPlayer.Singleton?.PlaySong(battleInfo.BattleMusic, true);
+            Debug.Log(currentBattleInfo.battleInfo.BattleMusic);
+            MusicPlayer.Singleton?.PlaySong(currentBattleInfo.battleInfo.BattleMusic, true);
         }
     }
 
@@ -422,16 +426,13 @@ public class BattleManager : MonoBehaviour
         if (character)
         {
             
-            GameObject cursor = Instantiate(CursorPrefab, character.transform.position + (Vector3.up * 3.1f), Quaternion.identity);
+            GameObject cursor = Instantiate(CursorPrefab, character.transform.position + (Vector3.up * 3.1f), Quaternion.identity, character.transform);
             cursor.GetComponent<Blink>().SetDefaultColor(TeamComponent.TeamColor(character.GetTeam()));
             currentCursor.Add(cursor);
         }
     }
 
-    public void OnEnemyHurt()
-    {
 
-    }
 
 
     public Vector3 GetPosition(BattleCharacter battleCharacter)
@@ -523,6 +524,7 @@ public class BattleManager : MonoBehaviour
 
     public void OnBattleWon()
     {
+        currentBattleInfo.battleInfo.SetRuntime();
         Debug.Log("Battle Won");
     }
 
@@ -733,7 +735,7 @@ public class BattleManager : MonoBehaviour
 
 
         ClearStage();
-
+        UICanvas.TurnBordersOn(true);
 
 
 

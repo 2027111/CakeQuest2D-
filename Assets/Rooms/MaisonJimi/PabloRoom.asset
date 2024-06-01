@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PabloRoom
   m_EditorClassIdentifier: 
   UID: c8d8c2d7a66321549844757f42b07ab1
-  roomName: Pa's room
+  roomName: room
   minCameraOffset: {x: -7, y: 0}
   maxCameraOffset: {x: -7, y: 0}

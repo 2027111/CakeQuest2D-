@@ -59,20 +59,17 @@ public class CharacterObject : SavableObject
 
     public IEnumerator AddLoadedSkillToMoveset(List<Skill> loadedSkills)
     {
-
         Attacks.Clear();
         foreach (Skill skill in loadedSkills)
         {
+
             ResourceRequest request = Resources.LoadAsync<Skill>($"SkillFolder/{skill.name}");
             while (!request.isDone)
             {
                 yield return null;
             }
             Skill loadedSkill = request.asset as Skill;
-            if (!Attacks.Contains(loadedSkill))
-            {
                 Attacks.Add(loadedSkill);
-            }
             yield return null;
         }
         yield return null;

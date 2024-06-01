@@ -51,7 +51,7 @@ public class AttackCommand : Command
 
     public override void ActivateCommand()
     {
-        foreach(BattleCharacter target in Target)
+        foreach (BattleCharacter target in Target)
         {
             CharacterObject characterObject = target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
@@ -59,6 +59,18 @@ public class AttackCommand : Command
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         }
+    }
+
+
+
+        public override void ActivateCommand(BattleCharacter _target)
+    {
+            CharacterObject characterObject = _target.GetReference();
+            ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
+            _target?.Entity.AddToHealth((Skill)null, elementEffect, Source);
+            CamManager.Shake(.2f, .05f);
+            base.ActivateCommand();
+        
     }
 
 }

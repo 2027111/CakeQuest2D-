@@ -82,13 +82,6 @@ public class Character : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        GetComponentInChildren<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
-    }
-
 
  
     public void AddToInventory(InventoryItem content, int amount = 1)
@@ -209,9 +202,11 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
+        Debug.Log("PlayerState");
         if (GetComponent<Controller>())
         {
             ChangeState(new PlayerControlsBehaviour());
+            UICanvas.TurnBordersOn(true);
 
         }
         else
@@ -223,8 +218,9 @@ public class Character : MonoBehaviour
     }
     public void ToggleCutsceneState()
     {
-
+        Debug.Log("CutsceneState");
         ChangeState(new NothingBehaviour());
+        UICanvas.TurnBordersOn(false);
     }
 
 

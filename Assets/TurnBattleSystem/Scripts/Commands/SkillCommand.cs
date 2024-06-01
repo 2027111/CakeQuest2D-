@@ -61,6 +61,15 @@ public class SkillCommand : AttackCommand
     {
         attack.UseSkill(Source, Target);
     }
+
+    public override void ActivateCommand(BattleCharacter _target)
+    {
+        List<BattleCharacter> temp = new List<BattleCharacter>();
+        temp.Add(_target);
+        attack.UseSkill(Source, temp);
+
+    }
+
     public override bool CanBeTarget(BattleCharacter _character)
     {
 

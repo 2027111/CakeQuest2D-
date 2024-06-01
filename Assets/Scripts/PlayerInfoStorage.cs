@@ -110,8 +110,11 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void SetNewRoom(RoomInfo newRoom)
     {
-        infoStorage.nextRoomInfo.SetValue(newRoom);
-        RoomTitleCard.ShowTitle(infoStorage.nextRoomInfo.roomName);
+        if(newRoom != infoStorage.nextRoomInfo)
+        {
+            infoStorage.nextRoomInfo.SetValue(newRoom);
+            RoomTitleCard.ShowTitle(infoStorage.nextRoomInfo.roomName);
+        }
     }
 
 

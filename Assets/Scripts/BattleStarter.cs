@@ -7,7 +7,7 @@ public class BattleStarter : MonoBehaviour
 
 
     public BattleInfo ThisbattleInfo;
-    public BattleInfo currentBattleInfo;
+    public BattleInfoHolder currentBattleInfo;
 
 
 

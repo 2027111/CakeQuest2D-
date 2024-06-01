@@ -26,6 +26,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Button LeftButton;
     [SerializeField] Button RightButton;
 
+    
 
     InventoryItem currentItem;
     private void Start()

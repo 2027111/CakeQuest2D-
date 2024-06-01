@@ -34,6 +34,5 @@ MonoBehaviour:
   SoundEffect:
   - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   Attacks:
-  - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}
   - {fileID: 11400000, guid: f52855296ba9e174daf048dbd622d234, type: 2}
   animationController: {fileID: 22100000, guid: bbaecce845f6a5845b2a58f6f636b165, type: 2}

@@ -64,9 +64,6 @@ public class BattleTimeline : Timeline
         if (CanPlayCutscene())
         {
             storagePlay.dialogueIndex = 0;
-
-            SetupRequirements();
-
             BattleManager.Singleton.StartingDialogue();
         }
     }

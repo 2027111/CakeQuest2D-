@@ -20,16 +20,17 @@ public class Dialogue
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
     public UnityEvent OnInstantOverEvent;
-    public GameObject source;
 
-    public virtual void SetPlayed()
-    {
-        Debug.Log("OK");
-    }
+    public GameObject source = null;
 
     public void SetSource(GameObject source)
     {
         this.source = source;
+    }
+
+    public virtual void SetPlayed()
+    {
+        Debug.Log("OK");
     }
     public Dialogue(Dialogue dialogue)
     {
@@ -48,6 +49,20 @@ public class Dialogue
             this.OnOverEvent = dialogue.OnOverEvent;
             this.OnInstantOverEvent = dialogue.OnInstantOverEvent;
             this.source = dialogue.source;
+        }
+    }
+
+    public Dialogue(string singleLine)
+    {
+
+        if (!string.IsNullOrEmpty(singleLine))
+        {
+            this.dialogueLineIds = new string[1];
+            this.dialogueLineIds[0] = singleLine;
+            this.choices = null;
+            this.condition = null;
+            this.OnOverEvent = new UnityEvent();
+            this.OnInstantOverEvent = new UnityEvent();
         }
     }
     public Dialogue(ChoiceDialogue dialogue)

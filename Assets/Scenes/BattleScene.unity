@@ -162,7 +162,7 @@ MonoBehaviour:
   CardUIContainer: {fileID: 826835430}
   PlayerSpawnPoint: {fileID: 922476621}
   EnemySpawnPoint: {fileID: 889582652}
-  battleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
+  currentBattleInfo: {fileID: 11400000, guid: 1f693b96667904f41bdc334145135192, type: 2}
   timeline: {fileID: 7799266381120146111}
   currentActor: {fileID: 0}
   infoStorage: {fileID: 11400000, guid: 8f80c141aabc14042b82be373f4a23c4, type: 2}

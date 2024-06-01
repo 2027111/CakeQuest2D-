@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Kitchen
   m_EditorClassIdentifier: 
   UID: 7315fa0c3d64aa149bef0362178f8aa0
-  roomName: Kitchen
+  roomName: kitchen
   minCameraOffset: {x: 6, y: 0}
   maxCameraOffset: {x: 11, y: 0}

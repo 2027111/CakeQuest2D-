@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Timeline;
 
 [CreateAssetMenu]
 public class Cutscene : BoolValue
@@ -12,9 +13,9 @@ public class Cutscene : BoolValue
     [JsonIgnore] public Dialogue[] dialogue;
     public int dialogueIndex = 0;
     [JsonIgnore] public RoomInfo StartRoom;
+    public TimelineAsset CutsceneToPlay;
     public override void ApplyData(SavableObject tempCopy)
     {
-
         repeats = (tempCopy as Cutscene).repeats;
         dialogueIndex = (tempCopy as Cutscene).dialogueIndex;
         base.ApplyData(tempCopy);

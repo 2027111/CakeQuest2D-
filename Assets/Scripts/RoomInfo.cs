@@ -52,5 +52,6 @@ public class RoomInfo : SavableObject
         roomName = newRoom.roomName;
         minCameraOffset = newRoom.minCameraOffset;
         maxCameraOffset = newRoom.maxCameraOffset;
+        RoomTitleCard.ShowTitle(roomName);
     }
 }

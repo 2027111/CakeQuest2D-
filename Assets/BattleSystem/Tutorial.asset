@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ba8b5bd428cb846b40ff5177f10bdf, type: 3}
   m_Name: Tutorial
   m_EditorClassIdentifier: 
+  UID: 98cd78d15977a4143b35067944b9ac22
+  RuntimeValue: 1
   BattleMusic: {fileID: 8300000, guid: 489e288ae2cbda74aa7e8011ced72aa6, type: 3}
-  CutsceneToPlay: {fileID: 11400000, guid: f9d6cbe23f7a42743a4cef6c4bf3b4b8, type: 2}
   CutsceneForDialogue: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}

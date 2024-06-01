@@ -46,14 +46,27 @@ public class RoomTitleCard : MonoBehaviour
     public static void ShowTitle(string title)
     {
         Singleton?.SetText(title);
-        Singleton?.StartCoroutine(Singleton.ShowTitleCardAnimation());
+       // Singleton?.StartCoroutine(Singleton.ShowTitleCardAnimation());
     }
 
     private void SetText(string title)
     {
-        townNameText.text = title;
+
+
+        string content = GetRoomName(title); 
+        townNameText.text = content;
     }
 
+    public string GetRoomName(string title)
+    {
+        string desc = "";
+        string newDesc = LanguageData.GetDataById("Locations").GetValueByKey(title);
+        if (newDesc != "E404")
+        {
+            return newDesc;
+        }
+        return desc;
+    }
     private IEnumerator ShowTitleCardAnimation()
     {
         // Move the title card on screen

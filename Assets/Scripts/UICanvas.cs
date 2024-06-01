@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,25 @@ public class UICanvas : MonoBehaviour
     }
 
 
+
+    [SerializeField] UIBorder border;
+    [SerializeField] QuestList questList;
+
     private void Start()
     {
         Singleton = this;
         DontDestroyOnLoad(Singleton);
+    }
+
+
+    public static void TurnBordersOn(bool on)
+    {
+        Singleton?.border.Appear(on);
+        Singleton?.questList.Appear(on);
+    }
+
+    public static void UpdateQuestList()
+    {
+        Singleton?.questList?.ResetList();
     }
 }

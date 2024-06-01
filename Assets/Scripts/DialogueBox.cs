@@ -127,8 +127,10 @@ public class DialogueBox : MonoBehaviour
     {
 
 
-
-        OnDialogueOverAction.Push(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+        if(dialogue.OnOverEvent != null)
+        {
+            OnDialogueOverAction.Push(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+        }
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
@@ -367,7 +369,6 @@ public class DialogueBox : MonoBehaviour
                     currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
                     if (dialogueWaitingLine.Count > 0)
                     {
-                        voiceClipSource.Stop();
                         StartNextDialogueWaiting();
 
 
@@ -376,7 +377,7 @@ public class DialogueBox : MonoBehaviour
                     }
                     else
                     {
-                            if (currentDialogue.dialogue.choices != null)
+                        if (currentDialogue.dialogue.choices != null)
                             {
                                 if (currentDialogue.dialogue.choices.Length == 1)
                                 {
@@ -394,9 +395,10 @@ public class DialogueBox : MonoBehaviour
                                     return;
                                 }
                             }
-                        
 
 
+
+                        voiceClipSource?.Stop();
                         EndDialogue();
                         Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
 
@@ -544,8 +546,7 @@ public class DialogueBox : MonoBehaviour
 
         if(dialogue.source != null)
         {
-            NewDialogueStarterObject component = dialogue.source.GetComponent<NewDialogueStarterObject>();
-            line = NewDialogueStarterObject.GetFormattedLines(component, line);
+            line = NewDialogueStarterObject.GetFormattedLines(dialogue.source.GetComponent<NewDialogueStarterObject>(), line);
 
         }
 
@@ -642,11 +643,25 @@ public class DialogueBox : MonoBehaviour
         {
             dialogueText.text = "";
 
-
-            for(int i = 0; i < text.Length; i++)
+            string[] dividedText = text.Split(" ");
+            for(int i = 0; i < dividedText.Length; i++)
             {
-                dialogueText.text += text[i];
-                yield return new WaitForSeconds((1.1f - textSpeed) / 10);
+                if (dividedText[i].Contains("<sprite"))
+                {
+                    dialogueText.text += dividedText[i];
+                    yield return new WaitForSeconds((1.1f - textSpeed) / 10);
+                }
+                else
+                {
+                    for (int j = 0; j < dividedText[i].Length; j++)
+                    {
+
+                        dialogueText.text += dividedText[i][j];
+                        yield return new WaitForSeconds((1.1f - textSpeed) / 10);
+                    }
+                }
+                dialogueText.text += " ";
+
             }
             dialogueIndex++;
             setTextCoroutine = null;

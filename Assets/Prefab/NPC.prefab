@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 8532248538276063811}
   - component: {fileID: 6393111097336211545}
   - component: {fileID: 29123948777174162}
+  - component: {fileID: 6728774882749222358}
+  - component: {fileID: 7802787928765662709}
   m_Layer: 3
   m_Name: NPC
   m_TagString: NPC
@@ -273,6 +275,94 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NameText: {fileID: 8904592816136423546}
   StateText: {fileID: 8699264878117447447}
+--- !u!114 &6728774882749222358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430433989948180660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: a9fc8088121724144b1999a5af3315c5, type: 2}
+    - {fileID: 11400000, guid: c7880e34e98c1574abc44ab14bf811c7, type: 2}
+    - {fileID: 11400000, guid: cc4f82dc2e381a145beec542917fb754, type: 2}
+    - {fileID: 11400000, guid: 6143ae88ea75cfc4fa937c4dbd63d4ee, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &7802787928765662709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430433989948180660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40981dcedd3e23546b4677e0adcb9952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionEvents: []
 --- !u!1 &2496252377109816245
 GameObject:
   m_ObjectHideFlags: 0
@@ -692,6 +782,7 @@ GameObject:
   - component: {fileID: 1970177524312941756}
   - component: {fileID: 2137786039877172099}
   - component: {fileID: 580185629734562360}
+  - component: {fileID: 1569447726650274170}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -816,6 +907,18 @@ MonoBehaviour:
   m_labelHash: 0
   m_SpriteKey: 0
   m_SpriteHash: 389354833
+--- !u!114 &1569447726650274170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358897905816536175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008cafead9fd0f04c8d4252e2a5bdc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6265970263909510527
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,10 @@ public class BoolValue : SavableObject
     {
         RuntimeValue = true;
     }
+    public virtual void ResetRuntime()
+    {
+        RuntimeValue = false;
+    }
 
 
     public override void ApplyData(SavableObject tempCopy)

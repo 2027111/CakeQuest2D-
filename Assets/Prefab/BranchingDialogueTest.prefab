@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6756068680581094838}
   - component: {fileID: 5486297278761393426}
   - component: {fileID: 5486297278761393427}
+  - component: {fileID: 5184951897207713536}
   m_Layer: 6
   m_Name: BranchingDialogueTest
   m_TagString: Untagged
@@ -265,6 +266,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisbattleInfo: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}
   currentBattleInfo: {fileID: 11400000, guid: 64d061619ba4180429a372dd41711865, type: 2}
+--- !u!114 &5184951897207713536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441118092297867412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008cafead9fd0f04c8d4252e2a5bdc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2200697363953329955
 PrefabInstance:
   m_ObjectHideFlags: 0

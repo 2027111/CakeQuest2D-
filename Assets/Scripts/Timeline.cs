@@ -7,6 +7,8 @@ using UnityEngine.Playables;
 
 public class Timeline : MonoBehaviour
 {
+
+    public BoolValue condition;
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
@@ -35,7 +37,7 @@ public class Timeline : MonoBehaviour
 
     public virtual void SetupRequirements()
     {
-
+        playableDirector.playableAsset = storagePlay.CutsceneToPlay;
     }
 
 
@@ -118,6 +120,13 @@ public class Timeline : MonoBehaviour
     }
     public bool CanPlayCutscene()
     {
+        if (condition)
+        {
+            if (!condition.RuntimeValue)
+            {
+                return false;
+            }
+        }
         if (storagePlay)
         {
             return !storagePlay.RuntimeValue;

@@ -74,7 +74,9 @@ public class CharacterInventory : SavableObject
                     myInventory.Add(content);
                 }
             }
-        
+
+
+
     }
     public List<InventoryItem> ReturnUniqueInventory()
     {

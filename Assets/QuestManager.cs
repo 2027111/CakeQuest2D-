@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class QuestManager : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-
+    public UnityEvent OnQuestCheck;
 
     [SerializeField] List<QuestObject> currentQuests = new List<QuestObject>();
     private void Awake()
@@ -36,12 +37,21 @@ public class QuestManager : MonoBehaviour
         Singleton = this;
         DontDestroyOnLoad(this.gameObject);
     }
+
+    public List<QuestObject> GetQuests()
+    {
+        return currentQuests;
+    }
+
     public void GiveQuest(QuestObject questObject)
     {
         if (!currentQuests.Contains(questObject))
         {
             currentQuests.Add(questObject);
         }
+
+        UICanvas.UpdateQuestList();
+        CheckQuests();
     }
 
     public void CheckQuests()
@@ -49,6 +59,24 @@ public class QuestManager : MonoBehaviour
         foreach(QuestObject questObject in currentQuests)
         {
             questObject.CheckConditions();
+
+            if (questObject.RuntimeValue)
+            {
+                StartCoroutine(RemoveQuest(questObject));
+            }
         }
+        OnQuestCheck?.Invoke();
+    }
+
+    IEnumerator RemoveQuest(QuestObject questObject)
+    {
+        yield return new WaitForSeconds(2f);
+        if (currentQuests.Contains(questObject))
+        {
+            currentQuests.Remove(questObject);
+        }
+
+        UICanvas.UpdateQuestList();
+        CheckQuests();
     }
 }

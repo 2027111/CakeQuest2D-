@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4659476406715409032}
   - component: {fileID: 4659476406715409033}
   - component: {fileID: 4471432746096728691}
+  - component: {fileID: 348676398884313181}
   m_Layer: 0
   m_Name: SceneTransition
   m_TagString: Untagged
@@ -106,4 +107,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  contactEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   InteractionIndicator: {fileID: 0}
+--- !u!114 &348676398884313181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4659476406715409034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40981dcedd3e23546b4677e0adcb9952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditionEvents: []

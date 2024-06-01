@@ -43,7 +43,7 @@ public class RoomMove : MonoBehaviour
 
     private Direction GetExitDirection(Vector2 difference)
     {
-        if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+        if (Room1ToRoom2 == Direction.Left || Room1ToRoom2 == Direction.Right)
         {
             return difference.x > 0 ? Direction.Right : Direction.Left;
         }
@@ -55,12 +55,12 @@ public class RoomMove : MonoBehaviour
 
     private void MovePlayer(RoomInfo newRoom, Direction moveDirection)
     {
-        Vector2 newPos = (Vector2)player.transform.position + (Vector2)DirectionToVector(moveDirection);
+        Vector2 newPos = (Vector2)player.transform.position;// + (Vector2)DirectionToVector(moveDirection);
         player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
         player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
         if (player.GetComponent<Character>().GetState() != "NothingBehaviour")
         {
-            player.GetComponent<Movement>().SetPosition(newPos);
+            //player.GetComponent<Movement>().SetPosition(newPos);
             player.GetComponent<Movement>().LookAt(DirectionToVector(moveDirection));
         }
     }

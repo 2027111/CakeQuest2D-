@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons: []
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  selectedColor: {r: 1, g: 0.33490568, b: 0.33490568, a: 1}
+  selectedColor: {r: 0, g: 1, b: 0.56078434, a: 1}
   currentButton: 0
   possibleTakeOvers: []
   takeOverButtonPrefab: {fileID: 3881647871792600046, guid: f1dba76a06e9c7a47a44be1a11b70c73, type: 3}

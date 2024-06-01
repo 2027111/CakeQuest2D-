@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DiningHall
   m_EditorClassIdentifier: 
   UID: 5774b73a69239734aa3286a0df4c7bbd
-  roomName: Dining Hall
+  roomName: dining_hall
   minCameraOffset: {x: 3.7, y: 11}
   maxCameraOffset: {x: 11, y: 11}

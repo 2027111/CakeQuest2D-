@@ -15,6 +15,16 @@ public class Command
     public bool canFocus = true;
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
+
+    public Vector3 GetTargetPosition()
+    {
+        if (Target.Count == 0)
+        {
+            return Vector3.zero;
+        }
+        return Target[UnityEngine.Random.Range(0, Target.Count)].transform.position; ;
+    }
+
     public Command()
     {
 
@@ -42,6 +52,10 @@ public class Command
 
 
     public virtual void ActivateCommand()
+    {
+
+    }
+    public virtual void ActivateCommand(BattleCharacter _target)
     {
 
     }
