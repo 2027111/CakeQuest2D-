@@ -62,20 +62,15 @@ public class QuestManager : MonoBehaviour
 
             if (questObject.RuntimeValue)
             {
-                StartCoroutine(RemoveQuest(questObject));
+                StartCoroutine(LateUpdateQuest());
             }
         }
         OnQuestCheck?.Invoke();
     }
 
-    IEnumerator RemoveQuest(QuestObject questObject)
+    IEnumerator LateUpdateQuest()
     {
         yield return new WaitForSeconds(2f);
-        if (currentQuests.Contains(questObject))
-        {
-            currentQuests.Remove(questObject);
-        }
-
         UICanvas.UpdateQuestList();
         CheckQuests();
     }

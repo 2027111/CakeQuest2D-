@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 766730e090102734abd365b31bbfe345, type: 3}
+  m_Name: Cake Mix
+  m_EditorClassIdentifier: 
+  UID: acde461fc93e45745b1fdd9e6b71dadf
+  targetType: 0
+  friendliness: 0
+  targetStateType: 0
+  element: 6
+  HitEffect: []
+  SoundEffect: []
+  itemName: "patte \xE0 gateau"
+  itemId: item_cake_mix
+  itemDescription: 
+  itemSprite: {fileID: 21300000, guid: ecffecd45076a5b4aaa196379962a203, type: 3}
+  usable: 0
+  unique: 0

@@ -429,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questIndicatorPrefab: {fileID: 8863331090176270425, guid: 42d1097f91738af41856a78cbb86d219, type: 3}
   container: {fileID: 407906489}
+  Affiched: 0
 --- !u!95 &2305527971548748058
 Animator:
   serializedVersion: 4
@@ -1427,7 +1428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   border: {fileID: 779569224072672713}
-  questList: {fileID: 0}
+  questList: {fileID: 1283301295}
 --- !u!1 &683195660694413647
 GameObject:
   m_ObjectHideFlags: 0

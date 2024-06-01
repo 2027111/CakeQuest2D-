@@ -257,6 +257,14 @@
             "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise celui qui en bois.\"}"
         },
         {
+            "dataId": "item_flour",
+            "jsonData": "{\"itemName\":\"Farine\",\"itemDescription\":\"Un sac en carton rempli de farine.\"}"
+        },
+        {
+            "dataId": "item_cake_mix",
+            "jsonData": "{\"itemName\":\"Pate à Gateau\",\"itemDescription\":\"Une boite en carton rempli de poudre brunâtre. Miam.\"}"
+        },
+        {
             "dataId": "quest_intro_fetch_ingredients",
             "jsonData": "{\"questName\":\"Le Gateau\",\"questDescription\":\"Trouves les ingrédients nécéssaires, afin de préparer un gateau.\"}"
         }

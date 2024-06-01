@@ -352,14 +352,13 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        StartBattle();
+
     }
     public void PlayCutscene()
     {
         ChangeState(new NothingState());
-
-
         timeline.SetCutscene(currentBattleInfo.battleInfo.CutsceneForDialogue);
-        StartBattle();
     }
 
     public void PlayOST()

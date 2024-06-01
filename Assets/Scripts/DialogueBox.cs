@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using UnityEngine.Events;
+using System.Text.RegularExpressions;
 
 public enum GameState
 {
@@ -643,26 +644,30 @@ public class DialogueBox : MonoBehaviour
         {
             dialogueText.text = "";
 
-            string[] dividedText = text.Split(" ");
-            for(int i = 0; i < dividedText.Length; i++)
+            // Define the pattern to match <sprite name=something>
+            string pattern = @"<sprite name=([\w\d_]+)>";
+
+            string[] dividedText = text.Split(' ');
+
+            for (int i = 0; i < dividedText.Length; i++)
             {
-                if (dividedText[i].Contains("<sprite"))
+                // If the text contains a <sprite> tag, append it instantly
+                if (Regex.IsMatch(dividedText[i], pattern))
                 {
                     dialogueText.text += dividedText[i];
-                    yield return new WaitForSeconds((1.1f - textSpeed) / 10);
                 }
                 else
                 {
+                    // Gradually append each character of the word
                     for (int j = 0; j < dividedText[i].Length; j++)
                     {
-
                         dialogueText.text += dividedText[i][j];
                         yield return new WaitForSeconds((1.1f - textSpeed) / 10);
                     }
                 }
                 dialogueText.text += " ";
-
             }
+
             dialogueIndex++;
             setTextCoroutine = null;
         }

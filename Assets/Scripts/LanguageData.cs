@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 public enum Language
 {
@@ -141,7 +142,21 @@ public class JsonData
 
             if (values.TryGetValue(key, out string value))
             {
-                return value;
+
+
+                string pattern = @"<sprite name=([\w\d_]+)>";
+
+                // Replace <sprite name=something> with <sprite name=something_else>
+                string replacedText = Regex.Replace(value, pattern, match => {
+                    string originalName = match.Groups[1].Value;
+                    // You can customize the replacement logic here
+                    string newName = originalName + "_" + InputManager.controlSettings; // Example replacement
+                    return $"<sprite name={newName}>";
+                });
+
+
+
+                return replacedText;
                 
             }
 

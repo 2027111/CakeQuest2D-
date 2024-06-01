@@ -12,6 +12,7 @@ public class InputManager : Controller
 {
     public static InputManager inputManager;
 
+    public static string controlSettings = "keyboard";
     private void Awake()
     {
         inputManager = this;
@@ -26,7 +27,17 @@ public class InputManager : Controller
             OnMovementHeld?.Invoke(wasdInput);
         
     }
-
+    public void OnInputChange(PlayerInput playerInput)
+    {
+        if(playerInput.currentControlScheme == "KeyboardControls")
+        {
+            controlSettings = "keyboard";
+        }
+        else
+        {
+            controlSettings = "controller";
+        }
+    }
     private void OnDestroy()
     {
 
