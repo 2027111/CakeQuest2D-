@@ -20,7 +20,7 @@ MonoBehaviour:
   HitEffect: []
   SoundEffect: []
   itemName: "patte \xE0 gateau"
-  itemId: item_cake_mix
+  itemId: cake_mix
   itemDescription: 
   itemSprite: {fileID: 21300000, guid: ecffecd45076a5b4aaa196379962a203, type: 3}
   usable: 0

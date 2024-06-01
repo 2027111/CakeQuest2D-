@@ -20,7 +20,7 @@ MonoBehaviour:
   HitEffect: []
   SoundEffect: []
   itemName: flour
-  itemId: item_flour
+  itemId: flour
   itemDescription: 
   itemSprite: {fileID: 21300000, guid: 14dfeee8d860ca94a8c86f49dc693011, type: 3}
   usable: 0
