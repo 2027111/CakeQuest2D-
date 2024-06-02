@@ -63,7 +63,6 @@ public class BattleCutscene : Cutscene
                 b= bd;
             }
         }
-        Debug.Log(b);
         return b;
     }
 }

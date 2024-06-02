@@ -73,21 +73,21 @@ public class Movement : MonoBehaviour
         Vector2 direction = movementInput.normalized;
         float distance = moveSpeed * runFactor * Time.deltaTime;
 
-        // Cast a ray in the direction of movement
-        List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(rb2D.position, direction, distance, obstacleLayer));
-        foreach(RaycastHit2D hit in hits)
-        {
-            // Check if the ray hit anything
-            if (hit.collider.gameObject != gameObject)
-            {
-                distance = 0;
-                Vector2 dist = (hit.collider.gameObject.transform.position - transform.position).normalized;
-                direction -= dist;
-                // Optionally handle what happens if an obstacle is detected
-                Debug.Log("Obstacle detected: " + hit.collider.name);
-                // If the ray didn't hit anything, move the character
-            }
-        }
+        //// Cast a ray in the direction of movement
+        //List<RaycastHit2D> hits = new List<RaycastHit2D>(Physics2D.RaycastAll(rb2D.position, direction, distance, obstacleLayer));
+        //foreach(RaycastHit2D hit in hits)
+        //{
+        //    // Check if the ray hit anything
+        //    if (hit.collider.gameObject != gameObject)
+        //    {
+        //        distance = 0;
+        //        Vector2 dist = (hit.collider.gameObject.transform.position - transform.position).normalized;
+        //        direction -= dist;
+        //        // Optionally handle what happens if an obstacle is detected
+        //        Debug.Log("Obstacle detected: " + hit.collider.name);
+        //        // If the ray didn't hit anything, move the character
+        //    }
+        //}
         rb2D.MovePosition(rb2D.position + (direction * distance));
 
     }

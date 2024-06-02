@@ -149,9 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c98ca41eba024b4a95d5c6135230746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wayPoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  wayPoints: []
   minimumPatrollingdistance: 0.1
 --- !u!61 &8532248538276063809
 BoxCollider2D:

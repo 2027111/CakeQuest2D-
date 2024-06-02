@@ -202,7 +202,6 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
-        Debug.Log("PlayerState");
         if (GetComponent<Controller>())
         {
             ChangeState(new PlayerControlsBehaviour());
@@ -218,7 +217,6 @@ public class Character : MonoBehaviour
     }
     public void ToggleCutsceneState()
     {
-        Debug.Log("CutsceneState");
         ChangeState(new NothingBehaviour());
         UICanvas.TurnBordersOn(false);
     }

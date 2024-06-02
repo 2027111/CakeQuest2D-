@@ -68,7 +68,6 @@ public class BattleCharacter : MonoBehaviour
     }
     public void SetActing(bool _isActing)
     {
-        Debug.Log(gameObject.name + " | " + _isActing);
         isActing = _isActing;
     }
     public CharacterData GetData()

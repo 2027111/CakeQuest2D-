@@ -10,7 +10,6 @@ public class BattleTimeline : Timeline
 
     public override void DialogueRequest()
     {
-        Debug.Log("Requesting Dialogue");
         Dialogue ddialogue = storagePlay.GetLine();
         Dialogue dialogue = new Dialogue(ddialogue);
         dialogue.OnOverEvent.AddListener(ddialogue.SetPlayed);
@@ -23,7 +22,6 @@ public class BattleTimeline : Timeline
     public override void DialogueOver()
     {
 
-        Debug.Log("Battle Cutscene is Over");
         started = false;
         battleManager.StartNewTurn();
 
@@ -32,7 +30,6 @@ public class BattleTimeline : Timeline
 
     public override void StartDialogue()
     {
-        Debug.Log("Starting Dialogue");
         if (!started)
         {
             if (CanPlayCutscene())
@@ -70,7 +67,6 @@ public class BattleTimeline : Timeline
 
     public bool HasCutscene()
     {
-        Debug.Log("Checking for cutscene : ");
         if (CanPlayCutscene())
         {
             if (storagePlay)

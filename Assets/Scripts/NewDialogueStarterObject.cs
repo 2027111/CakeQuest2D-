@@ -31,7 +31,6 @@ public class Dialogue
 
     public virtual void SetPlayed()
     {
-        Debug.Log("OK");
     }
     public Dialogue(Dialogue dialogue)
     {
@@ -230,11 +229,8 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public virtual void DialogueAction()
     {
-        Debug.Log(dialogue.choices.Length);
-        Debug.Log(dialogue.dialogueLineIds.Length);
-        if (dialogue.dialogueLineIds.Length > 0 || dialogue.choices.Length > 0)
+        if (dialogue.dialogueLineIds.Length > 0)
         {
-            Debug.Log("Started");
             if (!started)
                 {
                     started = true;
@@ -250,7 +246,6 @@ public class NewDialogueStarterObject : MonoBehaviour
     {
         if (CheckLines())
         {
-            Debug.Log("Checked Lines");
             Dialogue newDialogue = new Dialogue(dialogue);
             DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
         }
@@ -334,46 +329,67 @@ public class NewDialogueStarterObject : MonoBehaviour
     public static string GetFormattedLines<T>(T currentObject, string lineInfo)
     {
         string fieldNamePattern = "{(.*?)}";
+        string result = lineInfo;
 
-            string result = lineInfo;
+        foreach (Match match in Regex.Matches(lineInfo, fieldNamePattern, RegexOptions.IgnoreCase))
+        {
+            string[] fieldNames = match.Groups[1].Value.Split('.');
 
-            foreach (Match match in Regex.Matches(lineInfo, fieldNamePattern, RegexOptions.IgnoreCase))
+            // Start with the current object
+            object fieldValue = currentObject;
+
+            foreach (string fieldName in fieldNames)
             {
-                string[] fieldNames = match.Groups[1].Value.Split('.');
-
-                // Start with the current object
-                object fieldValue = currentObject;
-
-                foreach (string fieldName in fieldNames)
+                if (fieldValue == null)
                 {
-                    FieldInfo fieldInfo = fieldValue.GetType().GetField(fieldName);
-
-                    if (fieldInfo != null)
-                    {
-                        fieldValue = fieldInfo.GetValue(fieldValue);
-                    }
-                    else
-                    {
-                        Debug.LogWarning($"Field {fieldName} not found in {fieldValue}'s type");
-                        fieldValue = null;
-                        break;
-                    }
+                    break;
                 }
 
-                if (fieldValue != null)
-                {
-                    result = Regex.Replace(result, match.Value, fieldValue.ToString());
-                }
-                else
-                {
-                    // Handle the case when a field is not found or is null
-                    Debug.LogWarning($"Field value not found for placeholder: {match.Value}");
-                }
-            
+                Type fieldType = fieldValue.GetType();
 
+                // Check for a field
+                FieldInfo fieldInfo = fieldType.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (fieldInfo != null)
+                {
+                    fieldValue = fieldInfo.GetValue(fieldValue);
+                    continue;
+                }
+
+                // Check for a property
+                PropertyInfo propertyInfo = fieldType.GetProperty(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (propertyInfo != null)
+                {
+                    fieldValue = propertyInfo.GetValue(fieldValue);
+                    continue;
+                }
+
+                // Check for a method
+                MethodInfo methodInfo = fieldType.GetMethod(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (methodInfo != null && methodInfo.GetParameters().Length == 0)
+                {
+                    fieldValue = methodInfo.Invoke(fieldValue, null);
+                    continue;
+                }
+
+                // If we get here, the field/property/method was not found
+                Debug.LogWarning($"Field, property, or method {fieldName} not found in {fieldType}");
+                fieldValue = null;
+                break;
+            }
+
+            if (fieldValue != null)
+            {
+                result = Regex.Replace(result, match.Value, fieldValue.ToString());
+            }
+            else
+            {
+                // Handle the case when a field is not found or is null
+                Debug.LogWarning($"Field value not found for placeholder: {match.Value}");
+            }
         }
 
         return result;
     }
+
 
 }

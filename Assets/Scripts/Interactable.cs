@@ -86,7 +86,6 @@ public class Interactable : MonoBehaviour
         {
         if (collision.CompareTag("Player"))
         {
-                Debug.Log("Player pls work :)");
             if(player != null)
             {
                 player.GetComponent<Character>().SetInteraction(true);

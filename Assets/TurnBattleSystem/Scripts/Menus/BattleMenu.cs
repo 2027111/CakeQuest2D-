@@ -8,7 +8,6 @@ public class BattleMenu : ChoiceMenu
 
     public void Guard()
     {
-        Debug.Log("Guard");
         Command attackCommand = new AttackCommand();
         attackCommand.SetSource(BattleManager.Singleton.GetActor());
         BattleManager.Singleton.GetActor().currentCommand = attackCommand;

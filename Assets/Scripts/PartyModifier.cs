@@ -56,6 +56,7 @@ public class PartyModifier : MonoBehaviour
         {
             obj.Revitalize();
         }
+        UICanvas.UpdatePartyList();
     }
 
 

@@ -381,7 +381,6 @@ public class BattleManager : MonoBehaviour
     {
         if (currentBattleInfo.battleInfo.BattleMusic)
         {
-            Debug.Log(currentBattleInfo.battleInfo.BattleMusic);
             MusicPlayer.Singleton?.PlaySong(currentBattleInfo.battleInfo.BattleMusic, true);
         }
     }
@@ -585,7 +584,6 @@ public class BattleManager : MonoBehaviour
 
             if (party.PartyMembers.Contains(character.GetReference()))
             {
-                Debug.Log(character.name + " " + party.name);
                 if (!character.Entity.isDead)
                 {
                     return true;

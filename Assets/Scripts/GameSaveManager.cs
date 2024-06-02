@@ -18,6 +18,10 @@ public class GameSaveManager : MonoBehaviour
     SaveDataJsonWrapper currentLoadedData;
     public DateTime dateTime;
 
+
+
+    public List<SaveDataJsonWrapper> saveFiles = new List<SaveDataJsonWrapper>();
+
     public List<SavableObject> data = new List<SavableObject>();
     public List<CharacterInventory> allInventories = new List<CharacterInventory>(); 
     public List<CharacterObject> allCharacterObjects = new List<CharacterObject>();
@@ -59,6 +63,7 @@ public class GameSaveManager : MonoBehaviour
     void Start()
     {
         CreateSavePath();
+        StartLoadingFiles();
     }
     
 
@@ -156,7 +161,6 @@ public class GameSaveManager : MonoBehaviour
         SaveDataJsonWrapper listWrapper = ReadDefaultSaveFile(listName);
 
         string saveObjectsData = listWrapper.ObjectDataWrapperJson;
-        string saveData = listWrapper.SaveDataWrapperJson;
         ScriptableObjectListWrapper data = JsonUtility.FromJson<ScriptableObjectListWrapper>(saveObjectsData);
         List<ScriptableObjectDTO> dtoList = data.objects;
         if (dtoList != null)
@@ -197,76 +201,7 @@ public class GameSaveManager : MonoBehaviour
     }
 
 
-    public IEnumerator ImportStoredData()
-    {
-        var settings = new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.All,
-            NullValueHandling = NullValueHandling.Include
-        };
 
-        if (File.Exists(GetNewFilePath("playerData")))
-        {
-            var jdata = File.ReadAllText(GetNewFilePath("playerData"));
-            var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(jdata, settings);
-
-            if (saveData != null)
-            {
-                Debug.Log("Imported data from allData.json");
-
-                // Set the lists from the deserialized data
-                SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
-                SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
-                SetPlayerData<Party>((saveData.AllParties), allParties);
-                yield return null;
-            }
-            else
-            {
-                Debug.LogError("Failed to deserialize data from allData.json. Data is null.");
-            }
-        }
-        else
-        {
-            Debug.LogError("File allData.json does not exist.");
-        }
-
-    }
-
-
-    public IEnumerator ImportDefaultStoredData()
-    {
-        var settings = new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.All,
-            NullValueHandling = NullValueHandling.Include
-        };
-
-        if (File.Exists(GetDefaultFilePath("playerData")))
-        {
-            var jdata = File.ReadAllText(GetDefaultFilePath("playerData"));
-            var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(jdata, settings);
-
-            if (saveData != null)
-            {
-                Debug.Log("Imported data from allData.json");
-
-                // Set the lists from the deserialized data
-                SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
-                SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
-                SetPlayerData<Party>((saveData.AllParties), allParties);
-                yield return null;
-            }
-            else
-            {
-                Debug.LogError("Failed to deserialize data from allData.json. Data is null.");
-            }
-        }
-        else
-        {
-            Debug.LogError("File allData.json does not exist.");
-        }
-
-    }
 
     public IEnumerator ImportStoredData(string stringeddataWrapped)
     {
@@ -280,7 +215,6 @@ public class GameSaveManager : MonoBehaviour
 
             if (saveData != null)
             {
-                Debug.Log("Imported data from allData.json");
 
                 // Set the lists from the deserialized data
                 SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
@@ -290,7 +224,7 @@ public class GameSaveManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError("Failed to deserialize data from allData.json. Data is null.");
+                Debug.LogError("Failed to deserialize data from save Data is null.");
             }
 
     }
@@ -527,5 +461,70 @@ public class GameSaveManager : MonoBehaviour
         return files.Count;
         }
         return -1;
+    }
+
+
+    public void StartLoadingFiles()
+    {
+        saveFiles.Clear();
+        StartCoroutine(LoadAllSaveFilesCoroutine(files =>
+        {
+            Debug.Log($"Number of save files: {files.Count}");
+            foreach (var file in files)
+            {
+
+                saveFiles.Add(file);
+                Debug.Log($"Loaded save file with progress: {file.playTime}");
+            }
+        }));
+    }
+
+    public IEnumerator LoadAllSaveFilesCoroutine(System.Action<List<SaveDataJsonWrapper>> onComplete)
+    {
+        string saveFilePath = GetPath(SaveFiles.save.ToString());
+        List<SaveDataJsonWrapper> saveDataList = new List<SaveDataJsonWrapper>();
+
+        if (Directory.Exists(saveFilePath))
+        {
+            List<string> files = new List<string>(Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}"));
+
+            // Remove "default" files
+            files.RemoveAll(f => Path.GetFileName(f).Split('_')[0].Contains("default"));
+
+            foreach (var file in files)
+            {
+                SaveDataJsonWrapper saveData = null;
+                yield return StartCoroutine(ReadFileCoroutine(file, result => saveData = JsonUtility.FromJson<SaveDataJsonWrapper>(result)));
+
+                if (saveData != null)
+                {
+                    saveDataList.Add(saveData);
+                }
+
+                // Simulate asynchronous operation
+                yield return null;
+            }
+
+            onComplete?.Invoke(saveDataList);
+        }
+        else
+        {
+            onComplete?.Invoke(saveDataList);
+        }
+    }
+
+    private IEnumerator ReadFileCoroutine(string filePath, System.Action<string> onComplete)
+    {
+        string fileContent = null;
+
+        // Simulate asynchronous operation
+        yield return new WaitForSeconds(0.1f); // Adjust delay as needed
+
+        if (File.Exists(filePath))
+        {
+            fileContent = File.ReadAllText(filePath);
+        }
+
+        onComplete?.Invoke(fileContent);
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Patrolling : MonoBehaviour
 {
@@ -9,6 +10,14 @@ public class Patrolling : MonoBehaviour
     [SerializeField] Transform[] wayPoints;
     int wayPointsIndex = 0;
     public float minimumPatrollingdistance = 0.1f;
+    public float timeBetweenPoint = 0f;
+    public UnityEvent OnCatchPlayer;
+
+
+    public float visionRadius = 10f;
+    public float visionAngle = 45f;
+
+
 
 
     private void Start()
@@ -43,5 +52,25 @@ public class Patrolling : MonoBehaviour
     {
         return wayPoints[wayPointsIndex];
     }
+    private void OnDrawGizmos()
+    {
+        if (GetComponent<Character>() != null)
+        {
+            Vector2 forward = GetComponent<Movement>().movementInput;
+            Vector2 position = transform.position;
+            position += forward;
 
+            Gizmos.color = Color.yellow;
+           // Gizmos.DrawWireSphere(position, visionRadius);
+
+            Vector2 leftBoundary = Quaternion.Euler(0, 0, visionAngle / 2) * forward;
+            Vector2 rightBoundary = Quaternion.Euler(0, 0, -visionAngle / 2) * forward;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(position , position + leftBoundary * visionRadius);
+            Gizmos.DrawLine(position , position + rightBoundary * visionRadius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawLine(position , position + forward * visionRadius);
+        }
+    }
 }

@@ -18,19 +18,19 @@
         },
         {
             "dataId": "Misc_Chest_Locked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.itemName} pour l'ouvrir.\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.ItemName} pour l'ouvrir.\"}"
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.itemName}!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.ItemName}!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez obtenu {amount} {content.itemName}.\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez obtenu {amount} {content.ItemName}.\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.itemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
         },
         {
             "dataId": "Misc_Panneau_PC_000",

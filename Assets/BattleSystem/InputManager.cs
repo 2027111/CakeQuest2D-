@@ -88,7 +88,6 @@ public class InputManager : Controller
         // Check if the interaction is a press (button down)
         if (callback.started)
         {
-            Debug.Log("Pause");
 
             PauseManager.Singleton?.OnPausePressed();
         }

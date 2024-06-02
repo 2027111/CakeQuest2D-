@@ -15,7 +15,6 @@ public class FetchQuest : QuestObject
     {
         if (characterInventory.CheckInventoryFor(requiredItems))
         {
-            Debug.Log("Quest was a success!");
             CompleteQuest();
         }
         base.CheckConditions();

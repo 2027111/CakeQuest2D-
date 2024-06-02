@@ -26,7 +26,6 @@ public class CharacterInventory : SavableObject
 
         foreach (InventoryItem item in loadedInventory)
         {
-            Debug.Log(item.name);
             ResourceRequest request = Resources.LoadAsync<InventoryItem>($"ItemFolder/{item.name}");
             while (!request.isDone)
             {

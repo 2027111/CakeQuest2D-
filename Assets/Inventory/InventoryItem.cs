@@ -9,6 +9,12 @@ public class InventoryItem : IActionData
 {
 
     public string itemName;
+    public string ItemName {
+    get{return  GetName(); }
+    }
+
+
+
     public string itemId;
     public string itemDescription;
     [JsonIgnore] public Sprite itemSprite;
