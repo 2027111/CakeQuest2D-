@@ -120,7 +120,10 @@ public class Dialogue
                 returnChocies.Add(c);
             }
         }
-
+        if(returnChocies.Count == 0)
+        {
+            return null;
+        }
         return returnChocies.ToArray();
     }
 }

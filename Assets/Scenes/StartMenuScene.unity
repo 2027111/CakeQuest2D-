@@ -872,7 +872,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 268, y: -5}
+  m_AnchoredPosition: {x: 268, y: -5.000122}
   m_SizeDelta: {x: -560, y: -324.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506960027
@@ -4856,7 +4856,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.556763, y: -5.735779}
+  m_AnchoredPosition: {x: -8.556763, y: -5.73584}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2086586176
@@ -5278,7 +5278,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: data.Array.size
-      value: 17
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: data.Array.data[0]
@@ -5348,6 +5348,18 @@ PrefabInstance:
       propertyPath: data.Array.data[16]
       value: 
       objectReference: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[17]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a08317485fc643459f7857a604bbb66, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[18]
+      value: 
+      objectReference: {fileID: 11400000, guid: eaf611e04a0733c4c9ca4da8a0a31cb7, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[19]
+      value: 
+      objectReference: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: tempData.Array.size
       value: 2

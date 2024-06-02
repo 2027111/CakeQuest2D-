@@ -27,6 +27,7 @@ public class PartyModifier : MonoBehaviour
         {
             player.heroParty.PartyMembers.Add(characterObject);
                 characterObject.InParty.SetRuntime();
+                player.heroParty.OnAddToParty?.Invoke();
             }
         }
     }
@@ -43,6 +44,7 @@ public class PartyModifier : MonoBehaviour
         {
             player.heroParty.PartyMembers.Remove(characterObject);
                 characterObject.InParty.ResetRuntime();
+                player.heroParty.OnAddToParty?.Invoke();
             }
         }
     }

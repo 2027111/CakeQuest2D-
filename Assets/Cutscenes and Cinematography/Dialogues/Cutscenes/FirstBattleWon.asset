@@ -16,7 +16,9 @@ MonoBehaviour:
   RuntimeValue: 1
   repeats: 0
   dialogue:
-  - condition: {fileID: 0}
+  - condition:
+      condition: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - EyrCutt_pc_3
     - Tuto_Yankee_008

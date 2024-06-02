@@ -29,6 +29,7 @@ public class UICanvas : MonoBehaviour
 
     [SerializeField] UIBorder border;
     [SerializeField] QuestList questList;
+    [SerializeField] PartyList partyList;
 
     private void Start()
     {
@@ -41,10 +42,16 @@ public class UICanvas : MonoBehaviour
     {
         Singleton?.border.Appear(on);
         Singleton?.questList.Appear(on);
+        Singleton?.partyList.Appear(on);
     }
 
     public static void UpdateQuestList()
     {
         Singleton?.questList?.ResetList();
+    }
+
+    public static void UpdatePartyList()
+    {
+        Singleton?.partyList?.UpdateList();
     }
 }

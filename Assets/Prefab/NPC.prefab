@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 8532248538276063810}
   - component: {fileID: 8532248538276063811}
   - component: {fileID: 6393111097336211545}
-  - component: {fileID: 29123948777174162}
   - component: {fileID: 6728774882749222358}
+  - component: {fileID: 29123948777174162}
   - component: {fileID: 7802787928765662709}
   m_Layer: 3
   m_Name: NPC
@@ -226,7 +226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    condition: {fileID: 0}
+    condition:
+      condition: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds: []
     choices: []
     OnOverEvent:
@@ -261,20 +263,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &29123948777174162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2430433989948180660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f862031fcc2b6f4392fb7bbe78e59ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameText: {fileID: 8904592816136423546}
-  StateText: {fileID: 8699264878117447447}
 --- !u!114 &6728774882749222358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,16 +277,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
+    - {fileID: 11400000, guid: 254c4a5d48ac08e4ba9459f2c328b769, type: 2}
+    - {fileID: 11400000, guid: d7b68a4ccee99ff40a02df31c1ef8ee7, type: 2}
     - {fileID: 11400000, guid: a9fc8088121724144b1999a5af3315c5, type: 2}
-    - {fileID: 11400000, guid: c7880e34e98c1574abc44ab14bf811c7, type: 2}
     - {fileID: 11400000, guid: cc4f82dc2e381a145beec542917fb754, type: 2}
     - {fileID: 11400000, guid: 6143ae88ea75cfc4fa937c4dbd63d4ee, type: 2}
+    - {fileID: 11400000, guid: c7880e34e98c1574abc44ab14bf811c7, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 2430433989948180668}
+          m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+          m_MethodName: ToggleAnimator
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
         - m_Target: {fileID: 8695336453385115700}
           m_TargetAssemblyTypeName: Character, Assembly-CSharp
-          m_MethodName: LookDown
+          m_MethodName: TogglePlayableState
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2430433989948180668}
+          m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+          m_MethodName: ToggleAnimator
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: ToggleCutsceneState
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -312,7 +340,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 8695336453385115700}
           m_TargetAssemblyTypeName: Character, Assembly-CSharp
-          m_MethodName: LookLeft
+          m_MethodName: LookDown
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -350,6 +378,34 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8695336453385115700}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookLeft
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &29123948777174162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430433989948180660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f862031fcc2b6f4392fb7bbe78e59ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NameText: {fileID: 8904592816136423546}
+  StateText: {fileID: 8699264878117447447}
 --- !u!114 &7802787928765662709
 MonoBehaviour:
   m_ObjectHideFlags: 0

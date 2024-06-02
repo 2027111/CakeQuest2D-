@@ -44,8 +44,8 @@ public class HealthBar : MonoBehaviour
     public void SetFillAmount(int currentHealth, int maxHealth)
     {
         fillBar.fillAmount = (float)((float)currentHealth / (float)maxHealth);
-        bartext?.SetText(currentHealth.ToString());
-        if (!underfilling)
+        bartext?.SetText($"{currentHealth}/{maxHealth}");
+        if (!underfilling && underfillBar != null)
         {
             StartCoroutine(DelayUnderFill());
         }

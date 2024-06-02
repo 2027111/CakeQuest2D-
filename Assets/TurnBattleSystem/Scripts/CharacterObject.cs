@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 [CreateAssetMenu]
 [System.Serializable]
@@ -43,6 +43,12 @@ public class CharacterObject : SavableObject
     [JsonIgnore] public AnimatorOverrideController animationController;
 
     public BoolValue InParty;
+
+
+
+    
+
+
 
     public override void ApplyData(SavableObject tempCopy)
     {

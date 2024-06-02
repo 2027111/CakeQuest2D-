@@ -655,24 +655,27 @@ public class DialogueBox : MonoBehaviour
         {
             dialogueText.text = "";
 
-            // Define the pattern to match <sprite name=something>
-            string pattern = @"<sprite name=([\w\d_]+)>";
+            // Define the pattern to match <sprite name=something> or any word
+            string pattern = @"<sprite name=[\w\d_]+>|[^\s]+";
 
-            string[] dividedText = text.Split(' ');
+            // Match all words and <sprite> tags
+            MatchCollection matches = Regex.Matches(text, pattern);
 
-            for (int i = 0; i < dividedText.Length; i++)
+            foreach (Match match in matches)
             {
+                string wordOrTag = match.Value;
+
                 // If the text contains a <sprite> tag, append it instantly
-                if (Regex.IsMatch(dividedText[i], pattern))
+                if (Regex.IsMatch(wordOrTag, @"<sprite name=[\w\d_]+>"))
                 {
-                    dialogueText.text += dividedText[i];
+                    dialogueText.text += wordOrTag;
                 }
                 else
                 {
                     // Gradually append each character of the word
-                    for (int j = 0; j < dividedText[i].Length; j++)
+                    for (int j = 0; j < wordOrTag.Length; j++)
                     {
-                        dialogueText.text += dividedText[i][j];
+                        dialogueText.text += wordOrTag[j];
                         yield return new WaitForSeconds((1.1f - textSpeed) / 10);
                     }
                 }
@@ -683,6 +686,7 @@ public class DialogueBox : MonoBehaviour
             setTextCoroutine = null;
         }
     }
+
 
 
 }

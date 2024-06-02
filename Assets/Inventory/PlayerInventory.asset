@@ -13,9 +13,5 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   UID: 381c74390e9664647ba32510270b594c
-  myInventory:
-  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
-  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
-  - {fileID: 11400000, guid: 1ab5723ddd3b7014192170a782d0b81e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
+  myInventory: []
   pessos: 0

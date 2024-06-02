@@ -567,6 +567,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a9fc8088121724144b1999a5af3315c5, type: 2}
     - {fileID: 11400000, guid: cc4f82dc2e381a145beec542917fb754, type: 2}
     - {fileID: 11400000, guid: 6143ae88ea75cfc4fa937c4dbd63d4ee, type: 2}
+    - {fileID: 11400000, guid: c7880e34e98c1574abc44ab14bf811c7, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -653,6 +654,20 @@ MonoBehaviour:
         - m_Target: {fileID: 2145510011}
           m_TargetAssemblyTypeName: Character, Assembly-CSharp
           m_MethodName: LookRight
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2145510011}
+          m_TargetAssemblyTypeName: Character, Assembly-CSharp
+          m_MethodName: LookLeft
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
