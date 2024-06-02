@@ -31,3 +31,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
   Attacks: []
   animationController: {fileID: 22100000, guid: 035f6f042f8a6d9448ab30c9196270b5, type: 2}
+  InParty: {fileID: 11400000, guid: 0a08317485fc643459f7857a604bbb66, type: 2}

@@ -15,7 +15,8 @@ public class Dialogue
 
 
 
-    public BoolValue condition;
+    public Condition condition;
+
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
@@ -82,17 +83,13 @@ public class Dialogue
 
     public bool ConditionRespected()
     {
-        if (condition)
-        {
-            return !condition.RuntimeValue;
-        }
-        return true;
+        return condition.CheckCondition();
     }
     public bool isNull()
     {  if(dialogueLineIds == null)
         {
             return true;
-        }else if (dialogueLineIds.Length == 0)
+        }else if (dialogueLineIds.Length == 0 && choices.Length == 0)
         {
             return true;
         }
@@ -109,21 +106,39 @@ public class Dialogue
         return false;
     }
 
+    public ChoiceDialogue[] GetUsableChoices()
+    {
+        List<ChoiceDialogue> returnChocies = new List<ChoiceDialogue>();
+        if(choices == null)
+        {
+            return null;
+        }
+        foreach (ChoiceDialogue c in choices)
+        {
+            if (c.ConditionRespected())
+            {
+                returnChocies.Add(c);
+            }
+        }
 
-
+        return returnChocies.ToArray();
+    }
 }
 
 [Serializable]
 public class ChoiceDialogue
 {
 
-    public BoolValue condition;
+    public Condition condition;
     public string choicesLineIds;
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
     public UnityEvent OnOverEvent;
     public UnityEvent OnInstantOverEvent;
-
+    public bool ConditionRespected()
+    {
+        return condition.CheckCondition();
+    }
 
 }
 
@@ -212,14 +227,17 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public virtual void DialogueAction()
     {
-        if (dialogue.dialogueLineIds.Length > 0)
+        Debug.Log(dialogue.choices.Length);
+        Debug.Log(dialogue.dialogueLineIds.Length);
+        if (dialogue.dialogueLineIds.Length > 0 || dialogue.choices.Length > 0)
         {
+            Debug.Log("Started");
             if (!started)
-        {
-            started = true;
-                DialogueRequest();
+                {
+                    started = true;
+                    DialogueRequest();
+                }
             }
-        }
         else
         {
             OnDialogueOverEvent.Invoke();
@@ -229,6 +247,7 @@ public class NewDialogueStarterObject : MonoBehaviour
     {
         if (CheckLines())
         {
+            Debug.Log("Checked Lines");
             Dialogue newDialogue = new Dialogue(dialogue);
             DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
         }

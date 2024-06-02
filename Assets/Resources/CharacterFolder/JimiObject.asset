@@ -40,3 +40,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7af5a862e02b4384eadbb9ba09e0c416, type: 2}
   - {fileID: 11400000, guid: 30b8f02918380654080540028eb4d1a8, type: 2}
   animationController: {fileID: 22100000, guid: 993e5c20cc0303943982922e5b1118f9, type: 2}
+  InParty: {fileID: 11400000, guid: eaf611e04a0733c4c9ca4da8a0a31cb7, type: 2}

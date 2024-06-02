@@ -14771,8 +14771,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.condition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: SuccessDialogue.choices.Array.data[0].choicesLineIds
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.wantedResult
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: dialogue.choices.Array.data[0].dialogueLineIds.Array.size
@@ -15208,8 +15216,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.condition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: SuccessDialogue.choices.Array.data[0].choicesLineIds
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.wantedResult
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: dialogue.choices.Array.data[0].dialogueLineIds.Array.size
@@ -16369,8 +16385,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.condition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: SuccessDialogue.choices.Array.data[0].choicesLineIds
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.wantedResult
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: dialogue.choices.Array.data[0].dialogueLineIds.Array.size
@@ -24371,8 +24395,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.condition
+      value: 
+      objectReference: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: SuccessDialogue.choices.Array.data[0].choicesLineIds
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
+      propertyPath: dialogue.choices.Array.data[0].condition.wantedResult
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7993561500512630954, guid: ee320cc64e3970145b73a6e04734f187, type: 3}
       propertyPath: dialogue.choices.Array.data[0].dialogueLineIds.Array.size

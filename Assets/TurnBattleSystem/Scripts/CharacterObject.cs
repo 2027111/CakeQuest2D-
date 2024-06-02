@@ -42,6 +42,8 @@ public class CharacterObject : SavableObject
     [Space(20)]
     [JsonIgnore] public AnimatorOverrideController animationController;
 
+    public BoolValue InParty;
+
     public override void ApplyData(SavableObject tempCopy)
     {
         GameSaveManager.Singleton.StartCoroutine(AddLoadedSkillToMoveset((tempCopy as CharacterObject).Attacks));

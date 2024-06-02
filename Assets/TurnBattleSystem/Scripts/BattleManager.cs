@@ -39,7 +39,12 @@ public class BattleManager : MonoBehaviour
     public GameObject BattlePrefab;
     [SerializeField] GameObject CursorPrefab;
 
- 
+
+
+
+    [SerializeField] GameObject currentBackground;
+
+
 
     [SerializeField] GameObject CardUIPrefab;
     [SerializeField] Transform CardUIContainer;
@@ -349,12 +354,23 @@ public class BattleManager : MonoBehaviour
             {
                 PlayOST();
                 PlayCutscene();
+                SetBackground();
             }
         }
 
         StartBattle();
 
     }
+
+    private void SetBackground()
+    {
+        if (currentBattleInfo.battleInfo.backgroundPrefab != null)
+        {
+            Destroy(currentBackground.gameObject);
+            currentBackground = Instantiate(currentBattleInfo.battleInfo.backgroundPrefab);
+        }
+    }
+
     public void PlayCutscene()
     {
         ChangeState(new NothingState());

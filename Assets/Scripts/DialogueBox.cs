@@ -134,7 +134,7 @@ public class DialogueBox : MonoBehaviour
         }
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
-
+        
         if (dialogue.dialogueLineIds != null)
         {
 
@@ -365,7 +365,12 @@ public class DialogueBox : MonoBehaviour
 
             if (active)
             {
-                if (dialogueIndex >= currentDialogue.dialogue.dialogueLineIds.Length)
+                int dialogueLength = 0;
+                if(currentDialogue.dialogue.dialogueLineIds != null)
+                {
+                    dialogueLength = currentDialogue.dialogue.dialogueLineIds.Length;
+                }
+                if (dialogueIndex >= dialogueLength)
                 {
                     currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
                     if (dialogueWaitingLine.Count > 0)
@@ -378,20 +383,26 @@ public class DialogueBox : MonoBehaviour
                     }
                     else
                     {
-                        if (currentDialogue.dialogue.choices != null)
+
+                        ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
+
+
+
+                        if (choices != null)
                             {
-                                if (currentDialogue.dialogue.choices.Length == 1)
+                                if (choices.Length == 1)
                                 {
-                                    if (currentDialogue.dialogue.choices[0].condition.RuntimeValue)
+                                    if (choices[0].condition.CheckCondition())
                                     {
-                                    dialogueWaitingLine.Add(new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[0])));
+                                    dialogueWaitingLine.Add(new DialogueContent(new Dialogue(choices[0])));
                                     Interact();
                                     return;
                                     }
                                 }
                                 else
                                 {
-                                    FillChoiceBox(currentDialogue.dialogue.choices);
+
+                                    FillChoiceBox(choices);
                                     choiceBox.SetActive(true);
                                     return;
                                 }

@@ -26,6 +26,7 @@ public class PartyModifier : MonoBehaviour
         if (!player.heroParty.PartyMembers.Contains(characterObject))
         {
             player.heroParty.PartyMembers.Add(characterObject);
+                characterObject.InParty.SetRuntime();
             }
         }
     }
@@ -41,7 +42,8 @@ public class PartyModifier : MonoBehaviour
             if (player.heroParty.PartyMembers.Contains(characterObject))
         {
             player.heroParty.PartyMembers.Remove(characterObject);
-        }
+                characterObject.InParty.ResetRuntime();
+            }
         }
     }
 

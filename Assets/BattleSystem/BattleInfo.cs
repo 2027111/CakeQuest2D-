@@ -9,6 +9,7 @@ public class BattleInfo : BoolValue
 {
     public AudioClip BattleMusic;
     public Cutscene CutsceneForDialogue;
+    public GameObject backgroundPrefab;
 
 
 

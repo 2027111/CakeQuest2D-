@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 
 
@@ -9,10 +11,14 @@ using UnityEngine;
 public class Condition
 {
     public BoolValue condition;
-    public GameObject prefab;
-    public Vector3 position;
-}
-public class ConditionSpawner : MonoBehaviour
-{
-    public List<Condition> conditions = new List<Condition>();
+    public bool wantedResult = true;
+
+    public bool CheckCondition()
+    {
+        if (!condition)
+        {
+            return true;
+        }
+        return condition.RuntimeValue == wantedResult;
+    }
 }
