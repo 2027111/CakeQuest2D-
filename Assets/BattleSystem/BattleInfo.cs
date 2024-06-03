@@ -10,6 +10,7 @@ public class BattleInfo : BoolValue
     public AudioClip BattleMusic;
     public Cutscene CutsceneForDialogue;
     public GameObject backgroundPrefab;
+    public List<CharacterObject> FightParty;
 
 
 
@@ -18,5 +19,7 @@ public class BattleInfo : BoolValue
     {
         this.CutsceneForDialogue = replacement.CutsceneForDialogue;
         this.BattleMusic = replacement.BattleMusic;
+        this.FightParty = replacement.FightParty;
+        this.backgroundPrefab = replacement.backgroundPrefab;
     }
 }

@@ -282,6 +282,7 @@ public class BattleManager : MonoBehaviour
     {
         ClearStage();
         UICanvas.TurnBordersOn(false);
+        SetBattleParty();
         SpawnEveryMember(HeroParty, TeamIndex.Player);
         SpawnEveryMember(EnemyParty, TeamIndex.Enemy);
         SpawnPartyCards();
@@ -289,6 +290,21 @@ public class BattleManager : MonoBehaviour
 
     }
 
+    private void SetBattleParty()
+    {
+        if (currentBattleInfo)
+        {
+            if (currentBattleInfo.battleInfo)
+            {
+                if(currentBattleInfo.battleInfo.FightParty.Count > 0)
+                {
+
+                    EnemyParty.SetParty(currentBattleInfo.battleInfo.FightParty);
+
+                }
+            }
+        }
+    }
 
     public void ClearStage()
     {

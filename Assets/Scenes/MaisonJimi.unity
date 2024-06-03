@@ -15925,7 +15925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4659476406715409033, guid: b3781390e67e8354e95e2cdf05d8a9d4, type: 3}
       propertyPath: playerPositionOnLoad.x
-      value: -54.5
+      value: -55.5
       objectReference: {fileID: 0}
     - target: {fileID: 4659476406715409033, guid: b3781390e67e8354e95e2cdf05d8a9d4, type: 3}
       propertyPath: playerPositionOnLoad.y
@@ -23611,7 +23611,7 @@ PrefabInstance:
     - target: {fileID: 6328120428649999559, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -476633045, guid: 5b498c75b489f2e4693f5a896a192f6a, type: 3}
+      objectReference: {fileID: -998888167, guid: 953268e97eb0678449cac31c0043bdd1, type: 3}
     - target: {fileID: 6328120429896446888, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
       propertyPath: m_Name
       value: Player

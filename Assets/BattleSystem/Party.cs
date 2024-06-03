@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,5 +37,9 @@ public class Party : SavableObject
         yield return null;
     }
 
-
+    public void SetParty(List<CharacterObject> fightParty)
+    {
+        PartyMembers.Clear();
+        PartyMembers.AddRange(fightParty);
+    }
 }

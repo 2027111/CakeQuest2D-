@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ba8b5bd428cb846b40ff5177f10bdf, type: 3}
+  m_Name: BarGuard1
+  m_EditorClassIdentifier: 
+  UID: ef694d6bb510934439a5441663b495d9
+  RuntimeValue: 0
+  BattleMusic: {fileID: 8300000, guid: a9d3c9416d5eee0478c7f944f2e2ff6a, type: 3}
+  CutsceneForDialogue: {fileID: 0}
+  backgroundPrefab: {fileID: 8407348522836946457, guid: 946a82bd42e46da4f942b0efe52aa37c, type: 3}
+  FightParty:
+  - {fileID: 11400000, guid: 0f29c282958ebcd4981fb3f1e352410e, type: 2}
+  - {fileID: 11400000, guid: a36de0f26f02a7b42904ecdeb15e86f7, type: 2}
+  - {fileID: 11400000, guid: a36de0f26f02a7b42904ecdeb15e86f7, type: 2}

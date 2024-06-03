@@ -31,8 +31,9 @@ public class PatrollingBehaviour : CharacterBehaviour
 
     public override void Handle()
     {
-        if (IsPlayerInSight())
+        if (IsPlayerInSight() && patrolling.isUsable())
         {
+            Debug.Log("Caught Player");
             patrolling.OnCatchPlayer?.Invoke();
         }
         else if (Vector2.Distance(character.transform.position, currentTarget.position) > patrolling.minimumPatrollingdistance)

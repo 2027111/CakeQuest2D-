@@ -29,6 +29,7 @@ MonoBehaviour:
   - {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
-  Attacks: []
+  Attacks:
+  - {fileID: 11400000, guid: 30b8f02918380654080540028eb4d1a8, type: 2}
   animationController: {fileID: 22100000, guid: 035f6f042f8a6d9448ab30c9196270b5, type: 2}
   InParty: {fileID: 11400000, guid: 0a08317485fc643459f7857a604bbb66, type: 2}

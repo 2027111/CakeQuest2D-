@@ -107,190 +107,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_0
+      name: jimi_temp_sprite_sheet 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fb6f97ba931f6f409e891da07fe1229
-      internalID: -998888167
+      spriteID: 58540841ae6154b4184c6e194687b01c
+      internalID: 365672370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_1
+      name: jimi_temp_sprite_sheet 1_1
       rect:
         serializedVersion: 2
         x: 48
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caec81de242dfbe4ea77379a28e6cfd6
-      internalID: 1552157994
+      spriteID: 7d1d27f56e997b7488e9048118090b49
+      internalID: 1435928236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_2
+      name: jimi_temp_sprite_sheet 1_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db36af8fa1f57374a88038ac970a9950
-      internalID: -1393369936
+      spriteID: c25bb04ffe0c1b34aa9625b0ef9c1a13
+      internalID: -683435641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_3
+      name: jimi_temp_sprite_sheet 1_3
       rect:
         serializedVersion: 2
         x: 144
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0382a852fe022684a9899f7525f2f5b2
-      internalID: -22173017
+      spriteID: 2032dc8de61d3544495c8c1f799ae2ff
+      internalID: 2032251175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_4
+      name: jimi_temp_sprite_sheet 1_4
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fe39456ab757ff47ac97d79aa2b81dd
-      internalID: -1093995762
+      spriteID: cd87dcb43575c474abfd6b23f85a9dab
+      internalID: 620684218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_5
+      name: jimi_temp_sprite_sheet 1_5
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e26be3fdfb2292a48a52a46fa8e2cf6f
-      internalID: -1583252525
+      spriteID: cdf9e1ae71c7d354aabf5d0bf190595c
+      internalID: 1778128718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_6
+      name: jimi_temp_sprite_sheet 1_6
       rect:
         serializedVersion: 2
         x: 288
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6084d1477b8fe2548bc33d12eb5ac48a
-      internalID: 809707463
+      spriteID: 4c208d7cf23b7984093705bd619eb154
+      internalID: -1097794475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_7
+      name: jimi_temp_sprite_sheet 1_7
       rect:
         serializedVersion: 2
         x: 336
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cd22792172326248895bc3ba8ae03b2
-      internalID: -728230365
+      spriteID: 8a573a60d35eb7f4099ba1360ad6c38c
+      internalID: 1121205645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_8
+      name: jimi_temp_sprite_sheet 1_8
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed1e9e29862cb504d9436bdc9d0a7fd2
-      internalID: 1530624022
+      spriteID: 1bd0be6e63bdb124381754a54ba7ffdb
+      internalID: -2033227800
       vertices: []
       indices: 
       edges: []
@@ -306,15 +306,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jimi_temp_sprite_sheet_0: -998888167
-      jimi_temp_sprite_sheet_5: -1583252525
-      jimi_temp_sprite_sheet_2: -1393369936
-      jimi_temp_sprite_sheet_7: -728230365
-      jimi_temp_sprite_sheet_1: 1552157994
-      jimi_temp_sprite_sheet_3: -22173017
-      jimi_temp_sprite_sheet_6: 809707463
-      jimi_temp_sprite_sheet_4: -1093995762
-      jimi_temp_sprite_sheet_8: 1530624022
+      jimi_temp_sprite_sheet 1_2: -683435641
+      jimi_temp_sprite_sheet 1_0: 365672370
+      jimi_temp_sprite_sheet 1_3: 2032251175
+      jimi_temp_sprite_sheet 1_7: 1121205645
+      jimi_temp_sprite_sheet 1_4: 620684218
+      jimi_temp_sprite_sheet 1_5: 1778128718
+      jimi_temp_sprite_sheet 1_6: -1097794475
+      jimi_temp_sprite_sheet 1_1: 1435928236
+      jimi_temp_sprite_sheet 1_8: -2033227800
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
