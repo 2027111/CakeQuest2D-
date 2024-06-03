@@ -17,18 +17,32 @@ public class DialogueStarterCharacter : NewDialogueStarterObject
 
         if (!started)
         {
-            character = GetComponent<Character>();
-            defaultBehaviourType = character.GetCurrentBehaviour().GetType();
-            character.ChangeState(new NothingBehaviour());
-            character.LookAt(player.gameObject);
+            StopCharacterBehaviour();
             base.DialogueAction();
         }
+    }
+
+
+    public void StopCharacterBehaviour()
+    {
+        character = GetComponent<Character>();
+        defaultBehaviourType = character.GetCurrentBehaviour().GetType();
+        character.ChangeState(new NothingBehaviour());
+        character.LookAt(player.gameObject);
     }
 
     public override void DialogueOver()
     {
         // Change the state back to the original default behavior
-        character.ChangeState(Activator.CreateInstance(defaultBehaviourType) as CharacterBehaviour);
+        ResumeCharacterBehaviour();
         base.DialogueOver();
+    }
+
+
+
+    public void ResumeCharacterBehaviour()
+    {
+
+        character.ChangeState(Activator.CreateInstance(defaultBehaviourType) as CharacterBehaviour);
     }
 }

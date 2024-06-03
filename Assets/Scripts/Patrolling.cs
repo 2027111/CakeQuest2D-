@@ -12,10 +12,10 @@ public class Patrolling : MonoBehaviour
     public float minimumPatrollingdistance = 0.1f;
     public float timeBetweenPoint = 0f;
     public UnityEvent OnCatchPlayer;
-
-
     public float visionRadius = 10f;
     public float visionAngle = 45f;
+    public LayerMask detectionLayerMask; // LayerMask to specify which layers to detect
+
 
 
 
@@ -42,6 +42,10 @@ public class Patrolling : MonoBehaviour
         return wayPoints[wayPointsIndex];
     }
 
+    public bool isUsable()
+    {
+        return wayPoints != null || wayPoints.Length > 0;
+    }
 
     public Transform GetStartingWayPoint()
     {

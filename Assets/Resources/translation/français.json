@@ -41,6 +41,18 @@
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Lancement du combat\"}"
         },
         {
+            "dataId": "Misc_Caught_Guard_000",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"HEY?! QU'EST-CE QUE VOUS FAITES ICI?!\"}"
+        },
+        {
+            "dataId": "Misc_Caught_Guard_001",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"VOUS ÊTES BANNI D'ICI, DEHORS!\"}"
+        },
+        {
+            "dataId": "Misc_Caught_Guard_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Merde! Il m'a attrapé.... Je pourrai techniquement me le faire... Mais....\"}"
+        },
+        {
             "dataId": "Intro_Jimi_000",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Putain.. j'ai méga faimmmmm!\"}"
         },

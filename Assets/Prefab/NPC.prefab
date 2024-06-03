@@ -151,6 +151,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPoints: []
   minimumPatrollingdistance: 0.1
+  timeBetweenPoint: 0
+  OnCatchPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  visionRadius: 10
+  visionAngle: 45
+  detectionLayerMask:
+    serializedVersion: 2
+    m_Bits: 32833
 --- !u!61 &8532248538276063809
 BoxCollider2D:
   m_ObjectHideFlags: 0

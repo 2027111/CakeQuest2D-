@@ -20,12 +20,13 @@ public class PatrollingBehaviour : CharacterBehaviour
 
         if (patrolling)
         {
-            currentTarget = patrolling.GetCurrentWayPoint();
+            if (patrolling.isUsable())
+            {
+                currentTarget = patrolling.GetCurrentWayPoint();
+            }
+            return;
         }
-        else
-        {
             character.ChangeState(new NothingBehaviour());
-        }
     }
 
     public override void Handle()
@@ -66,23 +67,29 @@ public class PatrollingBehaviour : CharacterBehaviour
 
     private bool IsPlayerInSight()
     {
-        Vector2 directionToPlayer = player.transform.position - character.transform.position;
-        float distanceToPlayer = directionToPlayer.magnitude;
-        // Check if the player is within the vision radius
-        if (distanceToPlayer <= patrolling.visionRadius)
-        {
-            float angleToPlayer = Vector2.Angle(movement.movementInput, directionToPlayer);
+        Vector2 position = character.transform.position;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, patrolling.visionRadius);
 
-            // Check if the player is within the vision angle
-            if (angleToPlayer <= patrolling.visionAngle / 2)
+        foreach (Collider2D collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Player is in");
-                // Raycast to detect obstacles between the patrolling character and the player
-                RaycastHit2D hit = Physics2D.Raycast(character.transform.position + new Vector3(movement.movementInput.x, movement.movementInput.y, 0), directionToPlayer.normalized, patrolling.visionRadius);
-                if (hit.collider != null && hit.collider.gameObject.CompareTag("Player"))
+                Vector2 directionToPlayer = (Vector2)collider.transform.position - position;
+                float distanceToPlayer = directionToPlayer.magnitude;
+
+                // Check if the player is within the vision angle
+                float angleToPlayer = Vector2.Angle(character.transform.right, directionToPlayer);
+                if (angleToPlayer <= patrolling.visionAngle / 2)
                 {
-                    Debug.Log("Player Caught");
-                    return true;
+                    // Raycast to detect obstacles between the patrolling character and the player
+                    RaycastHit2D hit = Physics2D.Raycast(position, directionToPlayer.normalized, distanceToPlayer, patrolling.detectionLayerMask);
+
+                    // Check if the raycast hits the player and not an obstacle
+                    if (hit.collider == null)
+                    {
+                        Debug.Log(patrolling.gameObject.name + " Player Caught");
+                        return true;
+                    }
                 }
             }
         }
