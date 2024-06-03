@@ -55,25 +55,6 @@ public class LineInfo{
 
 public class DialogueBox : MonoBehaviour
 {
-    private static DialogueBox _singleton;
-
-    public static DialogueBox Singleton
-    {
-        get => _singleton;
-        private set
-        {
-            if (_singleton == null)
-            {
-
-                _singleton = value;
-            }
-            else if (_singleton != value)
-            {
-                Debug.Log($"{nameof(DialogueBox)} instance already exists. Destroying duplicate!");
-                Destroy(value.gameObject);
-            }
-        }
-    }
 
     public Stack<UnityAction> OnDialogueOverAction = new Stack<UnityAction>();
     GameState currentState = GameState.Overworld;
@@ -102,7 +83,6 @@ public class DialogueBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Singleton = this;
         group.alpha = 0;
         dialogueIndex = 0;
     }
@@ -111,16 +91,11 @@ public class DialogueBox : MonoBehaviour
     {
     }
 
-    public static void CancelCurrentDialogue()
-    {
 
-        Singleton?.CancelDialogue();
-    }
-
-    private void CancelDialogue()
+    public void CancelDialogue()
     {
         EndDialogue();
-        Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+        StartCoroutine(ShowDialogueBoxAlpha(false));
 
     }
 
@@ -151,7 +126,7 @@ public class DialogueBox : MonoBehaviour
                     //Debug.Log("Starting Dialogue");
                     dialogueText.text = "";
                     SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
-                    StartCoroutine(Singleton.ShowDialogueBoxAlpha(true));
+                    StartCoroutine(ShowDialogueBoxAlpha(true));
 
                     if (playerObject == null)
                     {
@@ -412,7 +387,7 @@ public class DialogueBox : MonoBehaviour
 
                         voiceClipSource?.Stop();
                         EndDialogue();
-                        Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+                        StartCoroutine(ShowDialogueBoxAlpha(false));
 
                     }
 
@@ -434,7 +409,7 @@ public class DialogueBox : MonoBehaviour
                         else
                         {
                             EndDialogue();
-                            Singleton.StartCoroutine(Singleton.ShowDialogueBoxAlpha(false));
+                            StartCoroutine(ShowDialogueBoxAlpha(false));
 
                         }
                     }

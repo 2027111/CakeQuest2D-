@@ -7,10 +7,27 @@ public class UICanvas : MonoBehaviour
 {
 
     private static UICanvas _singleton;
-
     public static UICanvas Singleton
     {
-        get => _singleton;
+        get
+        {
+            if (_singleton == null)
+            {
+                // Load the MusicPlayer prefab from Resources
+                GameObject canvasPrefab = Resources.Load<GameObject>("UICanvas");
+                if (canvasPrefab != null)
+                {
+                    GameObject canvasInstance = Instantiate(canvasPrefab);
+                    Singleton = canvasInstance.GetComponent<UICanvas>();
+                    Debug.Log("UICanvas Instantiated");
+                }
+                else
+                {
+                    Debug.LogError("UICanvas prefab not found in Resources.");
+                }
+            }
+            return _singleton;
+        }
         private set
         {
             if (_singleton == null)
@@ -27,14 +44,45 @@ public class UICanvas : MonoBehaviour
 
 
 
+    void Awake()
+    {
+        if (_singleton == null)
+        {
+            Singleton = this;
+            DontDestroyOnLoad(Singleton.gameObject);
+        }
+        else if (_singleton != this)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+
+
     [SerializeField] UIBorder border;
     [SerializeField] QuestList questList;
     [SerializeField] PartyList partyList;
+    [SerializeField] DialogueBox dialogueBox;
 
-    private void Start()
+
+    public static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        Singleton = this;
-        DontDestroyOnLoad(Singleton);
+        Singleton?.dialogueBox.StartDialogue(dialogue, playerObject, originObject, state);
+    }
+    public static void ForceStopDialogue()
+    {
+        Singleton?.dialogueBox.ForceStop();
+    }
+
+    public static bool DialogueBoxIsActive()
+    {
+        return Singleton.dialogueBox.IsActive();
+    }
+
+    public static void CancelCurrentDialogue()
+    {
+
+        Singleton?.dialogueBox.CancelDialogue();
     }
 
 

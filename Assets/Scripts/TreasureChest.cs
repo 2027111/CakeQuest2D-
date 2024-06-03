@@ -90,7 +90,7 @@ public class TreasureChest : NewDialogueStarterObject
                 newDialogue.SetSource(this.gameObject);
                 newDialogue.OnOverEvent.RemoveAllListeners();
                 newDialogue.OnOverEvent.AddListener(callback);
-                DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
+                    UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
 
             }
             else
@@ -137,7 +137,7 @@ public class TreasureChest : NewDialogueStarterObject
         newDialogue.SetSource(this.gameObject);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);
-        DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
+        UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
 
 
 

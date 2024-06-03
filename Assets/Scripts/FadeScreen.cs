@@ -75,6 +75,14 @@ public class FadeScreen : MonoBehaviour
 
     private void FadeToScene(string sceneName)
     {
+
+        if (FadeScreen.fading)
+        {
+            Singleton.StopCoroutine("FadeCoroutine");
+            fading = false;
+            fadeOn = false;
+            SetAlphaTarget(0);
+        }
         StartCoroutine(FadeCoroutine(sceneName));
     }
 
@@ -117,8 +125,9 @@ public class FadeScreen : MonoBehaviour
         OnFadingStart?.Invoke();
         if (!FadeScreen.fading && !fadeOn)
         {
-            FadeScreen.StartTransition(true, Color.black, fadeTime);
-            yield return new WaitForSecondsRealtime(fadeTime);
+            Singleton.SetColor(Color.black);
+            Singleton.SetTransitionTime(fadeTime);
+            yield return Singleton.StartCoroutine(StartFadeAnimation(true));
             fadeOn = true;
         }
         OnFadingMid?.Invoke();
@@ -131,7 +140,10 @@ public class FadeScreen : MonoBehaviour
         yield return new WaitForSecondsRealtime(fadeTime);
         if (!FadeScreen.fading && fadeOn)
         {
-            FadeScreen.StartTransition(false, Color.black, fadeTime);
+
+            Singleton.SetColor(Color.black);
+            Singleton.SetTransitionTime(fadeTime);
+            yield return Singleton.StartCoroutine(StartFadeAnimation(false));
             fadeOn = false;
         }
 
@@ -151,6 +163,11 @@ public class FadeScreen : MonoBehaviour
 
     }
 
+    public void SetAlphaTarget(float target)
+    {
+        group.alpha = target;
+    }
+
 
 
     public IEnumerator StartFadeAnimation(bool on)
@@ -160,6 +177,7 @@ public class FadeScreen : MonoBehaviour
         float target = on?1:0;
 
         group.alpha = start;
+        SetAlphaTarget(start);
         fading = true;
         while (time < fadeTime)
         {
@@ -167,8 +185,8 @@ public class FadeScreen : MonoBehaviour
             group.alpha = Mathf.Lerp(start, target, time/ fadeTime);
             yield return null;
         }
-        group.alpha = target;
-        if(group.alpha == 1)
+        SetAlphaTarget(target);
+        if (group.alpha == 1)
         {
             fadeOn = true;
         }

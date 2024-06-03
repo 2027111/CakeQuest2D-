@@ -44,7 +44,7 @@ public class Patrolling : MonoBehaviour
 
     public bool isUsable()
     {
-        return wayPoints != null || wayPoints.Length > 0;
+        return wayPoints != null && wayPoints.Length > 0 && OnCatchPlayer.GetPersistentEventCount() > 0;
     }
 
     public Transform GetStartingWayPoint()
@@ -60,7 +60,7 @@ public class Patrolling : MonoBehaviour
     {
         if (GetComponent<Character>() != null)
         {
-            Vector2 forward = GetComponent<Movement>().movementInput;
+            Vector2 forward = GetComponent<Movement>().lookDirection;
             Vector2 position = transform.position;
             position += forward;
 

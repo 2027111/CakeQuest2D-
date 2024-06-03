@@ -79,7 +79,7 @@ public class PatrollingBehaviour : CharacterBehaviour
                 float distanceToPlayer = directionToPlayer.magnitude;
 
                 // Check if the player is within the vision angle
-                float angleToPlayer = Vector2.Angle(character.transform.right, directionToPlayer);
+                float angleToPlayer = Vector2.Angle(movement.lookDirection, directionToPlayer);
                 if (angleToPlayer <= patrolling.visionAngle / 2)
                 {
                     // Raycast to detect obstacles between the patrolling character and the player
@@ -94,6 +94,7 @@ public class PatrollingBehaviour : CharacterBehaviour
                 }
             }
         }
+        Debug.DrawLine(position, GameObject.Find("Player").transform.position);
 
         return false;
     }

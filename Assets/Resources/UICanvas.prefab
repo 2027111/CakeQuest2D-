@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 683195660675569547}
   - component: {fileID: 7179724173474351472}
   m_Layer: 5
-  m_Name: DialogueBoxCanvas
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1430,6 +1430,7 @@ MonoBehaviour:
   border: {fileID: 779569224072672713}
   questList: {fileID: 1283301295}
   partyList: {fileID: 7234234399864657416}
+  dialogueBox: {fileID: 683195659870482511}
 --- !u!1 &683195660694413647
 GameObject:
   m_ObjectHideFlags: 0

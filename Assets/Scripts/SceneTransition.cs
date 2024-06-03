@@ -22,7 +22,7 @@ public class SceneTransition : MonoBehaviour
 
     public void TransitionScene()
     {
-        DialogueBox.CancelCurrentDialogue();
+        UICanvas.CancelCurrentDialogue();
         player.ChangeState(new CharacterBehaviour());
         PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
         if (storage)

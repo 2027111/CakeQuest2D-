@@ -33,7 +33,7 @@ public class OverworldTimeline : Timeline
     {
         Dialogue dialogue = new Dialogue(storagePlay.GetLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
-        DialogueBox.Singleton.StartDialogue(dialogue, player.gameObject, null);
+        UICanvas.StartDialogue(dialogue, player.gameObject, null);
     }
 
 

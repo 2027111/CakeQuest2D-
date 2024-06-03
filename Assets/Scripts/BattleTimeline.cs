@@ -15,7 +15,7 @@ public class BattleTimeline : Timeline
         dialogue.OnOverEvent.AddListener(ddialogue.SetPlayed);
         dialogue.OnOverEvent.AddListener(storagePlay.SetRuntime);
         dialogue.OnOverEvent.AddListener(DialogueOver);
-        DialogueBox.Singleton.StartDialogue(dialogue, null, null, GameState.BattleScene);
+        UICanvas.StartDialogue(dialogue, null, null, GameState.BattleScene);
     }
 
 

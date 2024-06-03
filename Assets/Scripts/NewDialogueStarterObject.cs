@@ -247,7 +247,7 @@ public class NewDialogueStarterObject : MonoBehaviour
         if (CheckLines())
         {
             Dialogue newDialogue = new Dialogue(dialogue);
-            DialogueBox.Singleton.StartDialogue(newDialogue, player.gameObject, gameObject);
+            UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
         }
         else
         {

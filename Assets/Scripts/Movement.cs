@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     public LayerMask obstacleLayer; // The layer mask for obstacles
     public event Action<Vector2> LookAtEvent;
     public Vector2 movementInput = Vector2.zero;
-
+    public Vector2 lookDirection = Vector2.zero;
     public Vector2 GetInput()
     {
         return movementInput;
@@ -50,6 +50,11 @@ public class Movement : MonoBehaviour
         if (movementInput.magnitude > 1)
         {
             movementInput.Normalize(); // this handles cases like (1, 1) turning into (1.41, 1.41) before normalization
+        }
+
+        if(direction != Vector2.zero)
+        {
+            lookDirection = movementInput;
         }
     }
 

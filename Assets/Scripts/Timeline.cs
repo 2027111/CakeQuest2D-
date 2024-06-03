@@ -79,7 +79,7 @@ public class Timeline : MonoBehaviour
         Dialogue dialogue = new Dialogue(storagePlay.GetLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
         //Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetNonPersistentEventCount());
-        DialogueBox.Singleton.StartDialogue(dialogue, null, null);
+        UICanvas.StartDialogue(dialogue, null, null);
     }
 
     public virtual void DialogueOver()

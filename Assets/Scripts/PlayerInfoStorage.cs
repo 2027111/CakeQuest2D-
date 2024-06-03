@@ -57,13 +57,10 @@ public class PlayerInfoStorage : MonoBehaviour
 
 
 
-        if (DialogueBox.Singleton)
-        {
-            if (DialogueBox.Singleton.IsActive())
+            if (UICanvas.DialogueBoxIsActive())
             {
-                DialogueBox.Singleton.ForceStop();
+                UICanvas.ForceStopDialogue();
             }
-        }
         if (infoStorage)
         {
 
