@@ -31,7 +31,8 @@ public class PatrollingBehaviour : CharacterBehaviour
 
     public override void Handle()
     {
-        if (IsPlayerInSight() && patrolling.isUsable())
+        patrolling.SetLightSource();
+        if (IsPlayerInSight() && patrolling.isUsable() && patrolling.OnCatchPlayer.GetPersistentEventCount() > 0)
         {
             Debug.Log("Caught Player");
             patrolling.OnCatchPlayer?.Invoke();
@@ -39,10 +40,11 @@ public class PatrollingBehaviour : CharacterBehaviour
         else if (Vector2.Distance(character.transform.position, currentTarget.position) > patrolling.minimumPatrollingdistance)
         {
             Vector2 direction = (currentTarget.position - character.transform.position).normalized;
-            movement.movementInput = direction;
+            movement.SetInput(direction);
 
             if (movement.movementInput != Vector2.zero)
             {
+
                 movement.MoveCharacter();
             }
         }

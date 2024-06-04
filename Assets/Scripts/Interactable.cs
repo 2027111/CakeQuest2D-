@@ -38,6 +38,9 @@ public class Interactable : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player = collision.gameObject;
+                if(player.GetComponent<Character>().GetCurrentBehaviour() is PlayerControlsBehaviour)
+                {
+
 
            ManageContactEvent(contactEvent);
           if (player.GetComponent<Character>().CanInteraction())
@@ -50,6 +53,8 @@ public class Interactable : MonoBehaviour
             {
                 player = null;
             }
+            }
+
             }
         }
     }

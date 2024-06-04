@@ -122,7 +122,9 @@ public class FadeScreen : MonoBehaviour
 
 
         movingScene = true;
+        yield return new WaitForSeconds(.05f);
         OnFadingStart?.Invoke();
+
         if (!FadeScreen.fading && !fadeOn)
         {
             Singleton.SetColor(Color.black);
@@ -130,6 +132,7 @@ public class FadeScreen : MonoBehaviour
             yield return Singleton.StartCoroutine(StartFadeAnimation(true));
             fadeOn = true;
         }
+        yield return new WaitForSeconds(.05f);
         OnFadingMid?.Invoke();
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
 
@@ -147,7 +150,8 @@ public class FadeScreen : MonoBehaviour
             fadeOn = false;
         }
 
-       
+        yield return new WaitForSeconds(.05f);
+
         OnFadingEnd?.Invoke();
         movingScene = false;
         yield return null;

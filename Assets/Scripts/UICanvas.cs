@@ -67,7 +67,10 @@ public class UICanvas : MonoBehaviour
 
     public static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        Singleton?.dialogueBox.StartDialogue(dialogue, playerObject, originObject, state);
+        if (!FadeScreen.fading)
+        {
+            Singleton?.dialogueBox.StartDialogue(dialogue, playerObject, originObject, state);
+        }
     }
     public static void ForceStopDialogue()
     {

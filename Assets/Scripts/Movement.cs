@@ -46,16 +46,21 @@ public class Movement : MonoBehaviour
         // Combine the rounded components to form the final direction vector
         movementInput = new Vector2(roundedX, roundedY);
 
+        if (movementInput.magnitude > 0)
+        {
+
+            lookDirection = movementInput;
+        }
+
         // If both x and y are zero (which means no direction), keep it as zero
         if (movementInput.magnitude > 1)
         {
             movementInput.Normalize(); // this handles cases like (1, 1) turning into (1.41, 1.41) before normalization
+
         }
 
-        if(direction != Vector2.zero)
-        {
-            lookDirection = movementInput;
-        }
+
+
     }
 
 

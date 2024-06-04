@@ -59,8 +59,9 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        TogglePlayableState();
         FadeScreen.Singleton?.OnFadingStart.AddListener(delegate { ChangeState(new NothingBehaviour()); });
+        TogglePlayableState();
+        FadeScreen.Singleton?.OnFadingEnd.AddListener(TogglePlayableState);
     }
 
 
