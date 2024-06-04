@@ -30,8 +30,12 @@ public class CameraMovement : MonoBehaviour
     public Vector3 GetCamPosition()
     {
         Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+        if (currentRoomInfo)
+        {
+
         targetPos.x = Mathf.Clamp(targetPos.x, currentRoomInfo.minCameraOffset.x, currentRoomInfo.maxCameraOffset.x);
         targetPos.y = Mathf.Clamp(targetPos.y, currentRoomInfo.minCameraOffset.y, currentRoomInfo.maxCameraOffset.y);
+        }
         return targetPos;
     }
     public void StartShaking(bool shaking)
