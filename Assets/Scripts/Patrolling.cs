@@ -24,7 +24,7 @@ public class Patrolling : MonoBehaviour
         if (lightSource)
         {
             Vector2 forward = GetComponent<Movement>().lookDirection;
-            Vector2 position = (Vector2)transform.position + forward;
+            Vector2 position = (Vector2)transform.position;
 
             // Calculate the angle in degrees that the light should be facing
             float angle = Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg;

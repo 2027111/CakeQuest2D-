@@ -61,8 +61,8 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowIntensityEnabled: 0
-  m_ShadowIntensity: 0.75
+  m_ShadowIntensityEnabled: 1
+  m_ShadowIntensity: 1
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:
@@ -960,6 +960,7 @@ GameObject:
   - component: {fileID: 2137786039877172099}
   - component: {fileID: 580185629734562360}
   - component: {fileID: 1569447726650274170}
+  - component: {fileID: 530830348871804023}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -1096,6 +1097,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008cafead9fd0f04c8d4252e2a5bdc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &530830348871804023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4358897905816536175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: dbe1a5f600000000d34a9fa1a1d801af5950f3ec
+  m_ShapePath:
+  - {x: -0.15999997, y: 0, z: 0}
+  - {x: -0.15999997, y: 0.32, z: 0}
+  - {x: 0.16000009, y: 0.32, z: 0}
+  - {x: 0.16000009, y: 0, z: 0}
+  m_ShapePathHash: 0
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 56780
 --- !u!1 &6265970263909510527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.345
+      value: 2.175
       objectReference: {fileID: 0}
     - target: {fileID: 698536886062302229, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
       propertyPath: m_LocalPosition.z

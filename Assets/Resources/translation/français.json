@@ -69,8 +69,24 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\"}"
         },
         {
+            "dataId": "Intro_Jimi_0031",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
+        },
+        {
             "dataId": "Intro_Jimi_004",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0045",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"J'ai tout ce font j'ai besoin?\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0046",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Ouai. J'devrais être correcte.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0047",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Non.. Il me manque quelque chose...\"}"
         },
         {
             "dataId": "Intro_Jimi_005",
@@ -194,7 +210,7 @@
         },
         {
             "dataId": "EyrCutt_pcc_0",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Ile st ou le  maltezer???\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Mais- Il est oû le  maltezer???\"}"
         },
         {
             "dataId": "EyrCutt_pcc_1",

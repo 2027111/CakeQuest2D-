@@ -61,7 +61,7 @@ public class RoomMove : MonoBehaviour
         if (player.GetComponent<Character>().GetState() != "NothingBehaviour")
         {
             //player.GetComponent<Movement>().SetPosition(newPos);
-            player.GetComponent<Movement>().LookAt(DirectionToVector(moveDirection));
+            //player.GetComponent<Movement>().LookAt(DirectionToVector(moveDirection));
         }
     }
 

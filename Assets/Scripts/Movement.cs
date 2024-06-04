@@ -67,6 +67,8 @@ public class Movement : MonoBehaviour
 
     public void LookAt(Vector2 direction)
     {
+        SetInput(direction);
+        SetInput(Vector2.zero);
         LookAtEvent?.Invoke(direction);
     }
 

@@ -266,6 +266,10 @@ public class NewDialogueStarterObject : MonoBehaviour
             return dialogue.ConditionRespected();
         }
     }
+    public void CancelDialogue()
+    {
+        UICanvas.CancelCurrentDialogue();
+    }
 
     public virtual void DialogueOver()
     {
