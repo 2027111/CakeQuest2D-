@@ -95,7 +95,7 @@ public class FadeScreen : MonoBehaviour
 
     }
 
-    private void SetColor(Color color)
+    public void SetColor(Color color)
     {
         fadeScreen.color = color;
     }

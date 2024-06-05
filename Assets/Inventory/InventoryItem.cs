@@ -39,12 +39,18 @@ public class InventoryItem : IActionData
         string newDesc = LanguageData.GetDataById("item_" + itemId).GetValueByKey("itemDescription");
         if (newDesc != "E404")
         {
+            newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;
         }
         return desc;
     }
     public virtual void BattleUse(List<BattleCharacter> Target, CharacterInventory inventory = null)
     {
+    }
+
+    public virtual void ConsumeItem(CharacterInventory inventory = null)
+    {
+
         if (inventory)
         {
             inventory.RemoveFromInventory(this);

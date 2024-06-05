@@ -48,6 +48,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
         {
             character.inputManager?.CanInteract(false);
             character.CanMove(false);
+            character.ActivateControls(false);
         }
         movement.movementInput = Vector2.zero;
     }

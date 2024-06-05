@@ -23,8 +23,10 @@ public class QuestManager : MonoBehaviour
             }
             else if (_singleton != value)
             {
+                value.currentQuests = _singleton.currentQuests;
                 Debug.Log($"{nameof(QuestManager)} instance already exists. Destroying duplicate!");
-                Destroy(value.gameObject);
+                Destroy(_singleton.gameObject);
+                _singleton = value;
             }
         }
     }
@@ -36,6 +38,7 @@ public class QuestManager : MonoBehaviour
     {
         Singleton = this;
         DontDestroyOnLoad(this.gameObject);
+        UICanvas.UpdateQuestList();
     }
 
     public List<QuestObject> GetQuests()

@@ -8,7 +8,7 @@ using UnityEngine.Playables;
 public class Timeline : MonoBehaviour
 {
 
-    public BoolValue condition;
+    public Condition[] condition;
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
@@ -26,6 +26,7 @@ public class Timeline : MonoBehaviour
     {
         if (CanPlayCutscene())
         {
+            Debug.Log("Playing Cutscene");
             storagePlay.dialogueIndex = 0;
 
             SetupRequirements();
@@ -118,14 +119,23 @@ public class Timeline : MonoBehaviour
             }
         }
     }
-    public bool CanPlayCutscene()
+
+    public bool CheckCondition()
     {
-        if (condition)
+        foreach (Condition c in condition)
         {
-            if (!condition.RuntimeValue)
+            if (!c.CheckCondition())
             {
                 return false;
             }
+        }
+        return true;
+    }
+    public bool CanPlayCutscene()
+    {
+        if (!CheckCondition())
+        {
+                return false;
         }
         if (storagePlay)
         {

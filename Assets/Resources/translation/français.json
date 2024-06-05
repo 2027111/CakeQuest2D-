@@ -245,14 +245,6 @@
             "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":\"Portraits/Yankee/po_yankee_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
         },
         {
-            "dataId": "InstantNoodles",
-            "jsonData": "{\"itemName\":\"Ramen Instantané\",\"itemDescription\":\"Le plat le plus consistent du monde!\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31002},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
-        },
-        {
-            "dataId": "item_SmallHoneyBottle",
-            "jsonData": "{\"itemName\":\"Petite Bouteille de miel\",\"itemDescription\":\"Une petite bouteille en forme d'ourson, remplit de miel.\",\"itemType\":0,\"itemSprite\":{\"instanceID\":31000},\"usable\":true,\"unique\":false,\"OnUseEvent\":{\"m_PersistentCalls\":{\"m_Calls\":[]}}}"
-        },
-        {
             "dataId": "element",
             "jsonData": "{\"Slash\":\"Tranchant\",\"Bash\":\"Bash\",\"Sweet\":\"Sucré\",\"Sour\":\"Sûre\",\"Bitter\":\"Amer\",\"Salty\":\"Salé\",\"Support\":\"Support\"}"
         },
@@ -290,11 +282,11 @@
         },
         {
             "dataId": "item_huile_bouillante",
-            "jsonData": "{\"itemName\":\"Bouteille d'huile bouillante\",\"itemDescription\":\"De l'huile bouilante. La lancé sur un enemie fera des dégats\"}"
+            "jsonData": "{\"itemName\":\"Bouteille d'huile bouillante\",\"itemDescription\":\"De l'huile bouilante. La lancé sur un enemie fera {healthEffectAmount} points de dégats\"}"
         },
         {
             "dataId": "item_biscuit_chocolat",
-            "jsonData": "{\"itemName\":\"Biscuit au chocolat\",\"itemDescription\":\"Un biscuit au chocolat soignant des points de vie.\"}"
+            "jsonData": "{\"itemName\":\"Biscuit au chocolat\",\"itemDescription\":\"Un biscuit au chocolat (Miam!) Soigne {healthEffectAmount} points de vie.\"}"
         },
         {
             "dataId": "item_egg",
@@ -302,7 +294,7 @@
         },
         {
             "dataId": "item_small_honey_bottle",
-            "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise celui qui en bois.\"}"
+            "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise {manaEffectAmount} points de Mana à celui qui en bois.\"}"
         },
         {
             "dataId": "item_flour",

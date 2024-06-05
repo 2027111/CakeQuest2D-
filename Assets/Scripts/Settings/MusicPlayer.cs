@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -83,6 +84,16 @@ public class MusicPlayer : MonoBehaviour
                 PlaySong(Song, loops);
             }
         }
+    }
+
+    public static void Stop()
+    {
+        Singleton.audioSource.Stop();
+    }
+
+    public static void Resume()
+    {
+        Singleton.audioSource.Play();
     }
 
     public void PlaySong(AudioClip song, bool loops = false)

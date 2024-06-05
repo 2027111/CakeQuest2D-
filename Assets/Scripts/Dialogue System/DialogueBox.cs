@@ -77,6 +77,23 @@ public class DialogueBox : MonoBehaviour
     Coroutine setTextCoroutine;
 
     GameObject player = null;
+
+    GameObject Player 
+    {
+        get
+        {
+            if(player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
+            return player;
+        }
+        set
+        {
+            player = value;
+        }
+
+    }
     //DialogueStarterObject starterObject;
     [SerializeField] private GameObject nameTextContainer;
 
@@ -87,14 +104,31 @@ public class DialogueBox : MonoBehaviour
         dialogueIndex = 0;
     }
 
+    public IEnumerator WaitForResume()
+    {
+        yield return MakeBoxAppear(false);
+        AddInteractEventToPlayer(false);
+    }
+
+
+
+    public IEnumerator Resume()
+    {
+
+        if (isShowing)
+        {
+            yield return MakeBoxAppear(true);
+            AddInteractEventToPlayer(true);
+        }
+    }
     private void Update()
     {
     }
 
-
     public void CancelDialogue()
     {
-        EndDialogue();
+        Debug.Log("Cancel Dialogue");
+        ForceStop();
         StartCoroutine(ShowDialogueBoxAlpha(false));
 
     }
@@ -130,23 +164,23 @@ public class DialogueBox : MonoBehaviour
 
                     if (playerObject == null)
                     {
-                        player = GameObject.FindGameObjectWithTag("Player");
+                        Player = GameObject.FindGameObjectWithTag("Player");
                     }
                     else
                     {
 
-                        player = playerObject;
+                        Player = playerObject;
                     }
                     if (currentState == GameState.Overworld)
                     {
 
-                        if (player)
+                        if (Player)
                         {
-                            player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
+                            Player.GetComponent<Character>().ChangeState(new InteractingBehaviour());
                             AddInteractEventToPlayer(true);
                             if (originObject)
                             {
-                                player.GetComponent<Character>().LookAt(originObject);
+                                Player.GetComponent<Character>().LookAt(originObject);
                             }
                         }
                     }
@@ -347,8 +381,16 @@ public class DialogueBox : MonoBehaviour
                 }
                 if (dialogueIndex >= dialogueLength)
                 {
+
+
                     currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
-                    if (dialogueWaitingLine.Count > 0)
+
+
+                    if (currentDialogue != null)
+                    {
+
+
+                        if (dialogueWaitingLine.Count > 0)
                     {
                         StartNextDialogueWaiting();
 
@@ -364,24 +406,24 @@ public class DialogueBox : MonoBehaviour
 
 
                         if (choices != null)
+                        {
+                            if (choices.Length == 1)
                             {
-                                if (choices.Length == 1)
+                                if (choices[0].ConditionRespected())
                                 {
-                                    if (choices[0].condition.CheckCondition())
-                                    {
                                     dialogueWaitingLine.Add(new DialogueContent(new Dialogue(choices[0])));
                                     Interact();
                                     return;
-                                    }
-                                }
-                                else
-                                {
-
-                                    FillChoiceBox(choices);
-                                    choiceBox.SetActive(true);
-                                    return;
                                 }
                             }
+                            else
+                            {
+
+                                FillChoiceBox(choices);
+                                choiceBox.SetActive(true);
+                                return;
+                            }
+                        }
 
 
 
@@ -391,6 +433,8 @@ public class DialogueBox : MonoBehaviour
 
                     }
 
+
+                }
 
 
 
@@ -440,7 +484,7 @@ public class DialogueBox : MonoBehaviour
 
     public void EndDialogue()
     {
-        if (player)
+        if (Player)
         {
             AddInteractEventToPlayer(false);
         }
@@ -453,7 +497,7 @@ public class DialogueBox : MonoBehaviour
     {
         if (addOrRemove)
         {
-            Controller battleCharacterComponent = player.GetComponent<Controller>();
+            Controller battleCharacterComponent = Player.GetComponent<Controller>();
 
             bool contains = battleCharacterComponent.AttackContains(Interact);
             if (battleCharacterComponent != null && !contains)
@@ -464,13 +508,18 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
-            player.GetComponent<Controller>().OnSelectPressed -= Interact;
+            Controller battleCharacterComponent = Player.GetComponent<Controller>();
+            bool contains = battleCharacterComponent.AttackContains(Interact);
+            if (battleCharacterComponent != null && contains)
+            {
+                battleCharacterComponent.OnSelectPressed -= Interact;
+            }
 
         }
     }
     public void AddNavigateEventToPlayer(bool addOrRemove)
     {
-        Controller battleCharacterComponent = player.GetComponent<Controller>();
+        Controller battleCharacterComponent = Player.GetComponent<Controller>();
         if (addOrRemove)
         {
             battleCharacterComponent.OnMovementPressed += NavigateMenu;
@@ -567,36 +616,40 @@ public class DialogueBox : MonoBehaviour
 
     public void ForceStop()
     {
-        ClearChoiceBox();
         EndDialogue();
+        ClearChoiceBox();
         ResetBox();
         isShowing = false;
         group.alpha = 0;
+    }
+
+    IEnumerator MakeBoxAppear(bool show)
+    {
+
+            float target = show ? 1 : 0;
+            float start = group.alpha;
+            float duration = 0;
+            while (duration < apparitionTime)
+            {
+                group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
+                duration += Time.deltaTime;
+                yield return null;
+            }
+            group.alpha = target;
+
+
+        yield return new WaitForSeconds(apparitionTime);
     }
     IEnumerator ShowDialogueBoxAlpha(bool show)
     {
         ClearChoiceBox();
 
 
-
-        if (isShowing != show)
+        if(isShowing != show)
         {
-
-        float target = show ? 1 : 0;
-        float start = group.alpha;
-        float duration = 0;
-        while(duration < apparitionTime)
-        {
-            group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
-            duration += Time.deltaTime;
-            yield return null;
-        }
-            group.alpha = target;
+            yield return MakeBoxAppear(show);
             isShowing = show;
         }
-
-
-        yield return new WaitForSeconds(apparitionTime);
         yield return StartCoroutine(LanguageData.LoadJsonAsync());
         if (isShowing)
         {

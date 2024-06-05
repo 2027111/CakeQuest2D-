@@ -16,6 +16,9 @@ public class Character : MonoBehaviour
     //public event Action OnInteractEvent;
     public Controller inputManager;
     public Party heroParty;
+    private CharacterBehaviour previousBehaviour;
+
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -32,10 +35,23 @@ public class Character : MonoBehaviour
 
 
 
-    public void ActivateControls()
+    public void ActivateControls(bool on = true)
     {
-        inputManager.OnReturnPressed += delegate { Run(true); };
-        inputManager.OnReturnReleased += delegate { Run(false); };
+        if (on)
+        {
+
+            inputManager.OnReturnPressed += delegate { Run(true); };
+            inputManager.OnReturnReleased += delegate { Run(false); };
+            inputManager.OnPausedPressed += delegate { PauseMenu.Singleton?.OnPausePressed(); };
+
+        }
+        else
+        {
+
+            inputManager.OnReturnPressed -= delegate { Run(true); };
+            inputManager.OnReturnReleased -= delegate { Run(false); };
+            inputManager.OnPausedPressed -= delegate { PauseMenu.Singleton?.OnPausePressed(); };
+        }
         //CanMove(true);
     }
 
@@ -181,6 +197,7 @@ public class Character : MonoBehaviour
     public void ChangeState(CharacterBehaviour newBehaviour)
     {
         playerBehaviour?.OnExit();
+        previousBehaviour = playerBehaviour;
         playerBehaviour = newBehaviour;
         newBehaviour.OnEnter(this);
     }
@@ -222,5 +239,13 @@ public class Character : MonoBehaviour
         UICanvas.TurnBordersOn(false);
     }
 
+    public void TogglePreviousState()
+    {
+        ChangeState(previousBehaviour);
+    }
+    public void ToggleNothingState()
+    {
+        ChangeState(new NothingBehaviour());
+    }
 
 }

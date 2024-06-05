@@ -33,12 +33,12 @@ public class InventorySlot : MonoBehaviour
         if (thisItem)
         {
             itemSprite = thisItem.itemSprite;
-            itemName = thisItem.itemName;
+            itemName = thisItem.GetName();
             itemAmount = amount;
             amountText.text = $"x{itemAmount}";
             itemNameText.text = itemName;
             itemLogo.sprite = itemSprite;
-            itemDescription = thisItem.itemDescription;
+            itemDescription = thisItem.GetDescription();
 
         }
 

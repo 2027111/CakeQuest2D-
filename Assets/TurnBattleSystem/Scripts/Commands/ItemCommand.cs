@@ -16,6 +16,8 @@ public class ItemCommand : Command
     public override void ExecuteCommand()
     {
         Debug.Log("Used " + item.itemName);
+
+        item.ConsumeItem(BattleManager.Singleton.playerInventory);
         base.ExecuteCommand();
         Source.StartCoroutine(Execute());
     }

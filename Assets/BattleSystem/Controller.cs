@@ -25,6 +25,9 @@ public abstract class Controller : MonoBehaviour
     public EventHandler OnSelectReleased;
 
 
+    public EventHandler OnPausedPressed;
+
+
 
     public delegate void MovementHandler(Vector2 movement);
     public MovementHandler OnMovementPressed;

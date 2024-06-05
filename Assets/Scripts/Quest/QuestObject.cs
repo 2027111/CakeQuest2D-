@@ -49,6 +49,7 @@ public class QuestObject : BoolValue
         string newDesc = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questDescription");
         if (newDesc != "E404")
         {
+            newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;
         }
         return desc;

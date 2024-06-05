@@ -60,6 +60,9 @@ public class InputManager : Controller
 
     public void OnSelect(InputAction.CallbackContext context)
     {
+        if (canInteract)
+        {
+
         if (context.performed)
         {
             OnSelectPressed?.Invoke();
@@ -69,6 +72,7 @@ public class InputManager : Controller
             OnSelectReleased?.Invoke();
         }
         attack = context.action.triggered;
+        }
     }
 
     public void OnReturn(InputAction.CallbackContext context)
@@ -88,8 +92,7 @@ public class InputManager : Controller
         // Check if the interaction is a press (button down)
         if (callback.started)
         {
-
-            PauseManager.Singleton?.OnPausePressed();
+            OnPausedPressed?.Invoke();
         }
     }
 

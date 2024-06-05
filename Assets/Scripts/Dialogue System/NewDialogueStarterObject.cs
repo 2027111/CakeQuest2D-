@@ -15,7 +15,7 @@ public class Dialogue
 
 
 
-    public Condition condition;
+    public Condition[] condition;
 
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
@@ -82,7 +82,14 @@ public class Dialogue
 
     public bool ConditionRespected()
     {
-        return condition.CheckCondition();
+        foreach (Condition c in condition)
+        {
+            if (!c.CheckCondition())
+            {
+                return false;
+            }
+        }
+        return true;
     }
     public bool isNull()
     {  if(dialogueLineIds == null)
@@ -131,7 +138,7 @@ public class Dialogue
 public class ChoiceDialogue
 {
 
-    public Condition condition;
+    public Condition[] condition;
     public string choicesLineIds;
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
@@ -139,7 +146,14 @@ public class ChoiceDialogue
     public UnityEvent OnInstantOverEvent;
     public bool ConditionRespected()
     {
-        return condition.CheckCondition();
+        foreach (Condition c in condition)
+        {
+            if (!c.CheckCondition())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
@@ -332,6 +346,7 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public static string GetFormattedLines<T>(T currentObject, string lineInfo)
     {
+        Debug.Log(currentObject.GetType().ToString());
         string fieldNamePattern = "{(.*?)}";
         string result = lineInfo;
 
