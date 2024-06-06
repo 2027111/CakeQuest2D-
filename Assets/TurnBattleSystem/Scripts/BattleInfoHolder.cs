@@ -12,4 +12,12 @@ public class BattleInfoHolder : SavableObject
     {
         battleInfo = thisbattleInfo;
     }
+
+    public void ConfirmBattle()
+    {
+        if (battleInfo)
+        {
+            battleInfo.SetRuntime();
+        }
+    }
 }

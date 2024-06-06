@@ -25,7 +25,7 @@ MonoBehaviour:
   itemId: biscuit_chocolat
   itemDescription: Un biscuit au chocolat soignant {healthEffectAmount} points de
     vie.
-  itemSprite: {fileID: 21300000, guid: a67b58d6cddcd4345b1e001340de5a76, type: 3}
+  itemSprite: {fileID: 21300000, guid: 12a981f812f851a4ab9437572048a965, type: 3}
   usable: 1
   unique: 0
   healthEffectAmount: 12

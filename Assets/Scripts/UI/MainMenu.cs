@@ -119,7 +119,8 @@ public class MainMenu : MonoBehaviour
     public void GoToGame()
     {
         playerSave.forceNextChange = true;
-        StartCoroutine(FadeCoroutine(playerSave.sceneName));
+
+        FadeScreen.MoveToScene(playerSave.sceneName, Color.black, .3f);
     }
     public void QuitToDesktop()
     {
@@ -128,31 +129,4 @@ public class MainMenu : MonoBehaviour
 
 
 
-    public IEnumerator FadeCoroutine(string scene)
-    {
-
-        if (!FadeScreen.fading)
-        {
-            FadeScreen.StartTransition(true, Color.black, .5f);
-        }
-        yield return new WaitForSeconds(.5f);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
-        }
-
-        if (!FadeScreen.fading)
-        {
-            FadeScreen.StartTransition(false, Color.black, .5f);
-        }
-
-        yield return null;
-
-
-
-
-
-    }
 }

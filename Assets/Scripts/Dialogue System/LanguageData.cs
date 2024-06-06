@@ -131,7 +131,7 @@ public class JsonData
     {
         if (string.IsNullOrEmpty(jsonData))
         {
-            Debug.LogError("jsonData is null or empty.");
+            Debug.LogWarning("jsonData is null or empty.");
             return "E404";
         }
 

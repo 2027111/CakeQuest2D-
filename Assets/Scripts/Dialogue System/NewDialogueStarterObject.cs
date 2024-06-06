@@ -224,7 +224,6 @@ public class NewDialogueStarterObject : MonoBehaviour
 {
     public Dialogue dialogue;
     public bool started = false;
-    public Character player;
     const string fieldNamePattern = "{.*?}";
 
 
@@ -233,13 +232,11 @@ public class NewDialogueStarterObject : MonoBehaviour
 
 
 
-    void Start()
+    public void PlayVideo()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-
-        
+        Debug.Log("Called Play Video");
+        UICanvas.PlayVideoRec();
     }
-
 
     public virtual void DialogueAction()
     {
@@ -261,7 +258,7 @@ public class NewDialogueStarterObject : MonoBehaviour
         if (CheckLines())
         {
             Dialogue newDialogue = new Dialogue(dialogue);
-            UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
+            UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
         }
         else
         {
@@ -288,7 +285,7 @@ public class NewDialogueStarterObject : MonoBehaviour
     public virtual void DialogueOver()
     {
         started = false;
-        player.ChangeState(new PlayerControlsBehaviour());
+        Character.Player.ChangeState(new PlayerControlsBehaviour());
         OnDialogueOverEvent?.Invoke();
     }
 
@@ -346,7 +343,6 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public static string GetFormattedLines<T>(T currentObject, string lineInfo)
     {
-        Debug.Log(currentObject.GetType().ToString());
         string fieldNamePattern = "{(.*?)}";
         string result = lineInfo;
 

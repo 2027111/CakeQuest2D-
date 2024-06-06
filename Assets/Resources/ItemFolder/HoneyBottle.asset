@@ -24,7 +24,7 @@ MonoBehaviour:
   itemName: Petite bouteille de miel
   itemId: small_honey_bottle
   itemDescription: Une bouteille de miel qui revitalise celui qui en bois.
-  itemSprite: {fileID: 21300000, guid: 18256ccd389c89642b2b61091ecfdd3e, type: 3}
+  itemSprite: {fileID: 21300000, guid: ea2e105943c0e3a428b25bb63ae6a8f5, type: 3}
   usable: 1
   unique: 0
   manaEffectAmount: 12

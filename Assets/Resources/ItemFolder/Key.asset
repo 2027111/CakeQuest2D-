@@ -22,6 +22,6 @@ MonoBehaviour:
   itemName: "Cl\xE9"
   itemId: key
   itemDescription: "cl\xE9 qui pu"
-  itemSprite: {fileID: 21300000, guid: 11f9078994faccd46b9bba5ad694762f, type: 3}
+  itemSprite: {fileID: 21300000, guid: 4724c4121bc85a54b9bf000fa36d7db5, type: 3}
   usable: 0
   unique: 0

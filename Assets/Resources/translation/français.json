@@ -33,6 +33,10 @@
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
         },
         {
+            "dataId": "Misc_Temp",
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Lancer Video?!\"}"
+        },
+        {
             "dataId": "Misc_Panneau_PC_000",
             "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Si tu lis ça, t'es gay!\"}"
         },

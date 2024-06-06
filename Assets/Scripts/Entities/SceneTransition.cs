@@ -11,27 +11,23 @@ public class SceneTransition : MonoBehaviour
     public Vector2 playerPositionOnLoad;
     public RoomInfo roomOnLoadInfo;
     public Direction facing;
-    Character player;
 
 
-    private void Start()
-    {
-
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-    }
 
     public void TransitionScene()
     {
         UICanvas.CancelCurrentDialogue();
-        player.ChangeState(new CharacterBehaviour());
-        PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
+        PlayerInfoStorage storage = Character.Player.GetComponent<PlayerInfoStorage>();
         if (storage)
         {
             storage.infoStorage.sceneName = sceneToLoadName;
             storage.infoStorage.nextPosition = playerPositionOnLoad;
             storage.infoStorage.facing = facing;
         }
-        FadeScreen.Singleton?.OnFadingMid.AddListener(OnTransitionHalf);
+        FadeScreen.AddOnMidFadeEvent(OnTransitionHalf);
+
+        FadeScreen.AddOnStartFadeEvent(Character.DeactivatePlayer);
+        FadeScreen.AddOnEndFadeEvent(Character.ActivatePlayer);
         storage.MoveToScene();
         //SceneManager.LoadScene(sceneToLoadName);
     }
@@ -41,10 +37,10 @@ public class SceneTransition : MonoBehaviour
 
     public void OnTransitionHalf()
     {
-        PlayerInfoStorage storage = player.GetComponent<PlayerInfoStorage>();
+        Debug.Log("Stop");
+        PlayerInfoStorage storage = Character.Player.GetComponent<PlayerInfoStorage>();
         storage.infoStorage.nextRoomInfo.SetValue(roomOnLoadInfo);
 
-        FadeScreen.Singleton?.OnFadingMid.RemoveListener(OnTransitionHalf);
 
     }
 

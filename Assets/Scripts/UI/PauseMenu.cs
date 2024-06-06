@@ -10,7 +10,25 @@ public class PauseMenu : MonoBehaviour
 
     public static PauseMenu Singleton
     {
-        get => _singleton;
+        get
+        {
+            if (_singleton == null)
+            {
+                // Load the MusicPlayer prefab from Resources
+                GameObject PauseMenuPrefab = Resources.Load<GameObject>("PauseCanvas");
+                if (PauseMenuPrefab != null)
+                {
+                    GameObject canvasInstance = Instantiate(PauseMenuPrefab);
+                    Singleton = canvasInstance.GetComponent<PauseMenu>();
+                    Debug.Log("PauseMenu Instantiated");
+                }
+                else
+                {
+                    Debug.LogError("PauseMenu prefab not found in Resources.");
+                }
+            }
+            return _singleton;
+        }
         private set
         {
             if (_singleton == null)
@@ -26,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     private bool isPaused;
-    public static bool canPause;
+    public static bool canPause = true;
     [SerializeField] GameObject pausePanel;
     public UnityEvent OnPause;
 
@@ -46,6 +64,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (canPause)
         {
+            Debug.Log("Paused Pressed");
             isPaused = !isPaused;
             OnPausePressed(isPaused);
         }

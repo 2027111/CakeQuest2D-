@@ -20,11 +20,31 @@ public class FadeScreen : MonoBehaviour
     public bool startFadeon = false;
     public static FadeScreen Singleton
     {
-        get => _singleton;
+        get
+        {
+            if (_singleton == null)
+            {
+                // Load the MusicPlayer prefab from Resources
+                GameObject FadeScreenPrefab = Resources.Load<GameObject>("FadeScreen");
+                if (FadeScreenPrefab != null)
+                {
+                    GameObject FadeScreenInstance = Instantiate(FadeScreenPrefab);
+                    Singleton = FadeScreenInstance.GetComponent<FadeScreen>();
+                    Debug.Log("FadeScreen Instantiated");
+                }
+                else
+                {
+                    Debug.LogError("FadeScreen prefab not found in Resources.");
+                }
+            }
+            return _singleton;
+        }
         private set
         {
             if (_singleton == null)
             {
+
+
                 _singleton = value;
             }
             else if (_singleton != value)
@@ -46,6 +66,7 @@ public class FadeScreen : MonoBehaviour
     }
     private void Start()
     {
+        name = "FadeScreen ID" + UnityEngine.Random.Range(0, 203912039);
         if (startFadeon)
         {
 
@@ -78,6 +99,7 @@ public class FadeScreen : MonoBehaviour
 
         if (FadeScreen.fading)
         {
+            Debug.Log("Cancelling fade");
             Singleton.StopCoroutine("FadeCoroutine");
             fading = false;
             fadeOn = false;
@@ -108,7 +130,7 @@ public class FadeScreen : MonoBehaviour
     public void StartTransition(bool on, float fadeTime = -1)
     {
 
-        Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
+        Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .8f));
         StartCoroutine(StartFadeAnimation(on));
 
 
@@ -125,7 +147,8 @@ public class FadeScreen : MonoBehaviour
         yield return new WaitForSeconds(.05f);
         OnFadingStart?.Invoke();
 
-        if (!FadeScreen.fading && !fadeOn)
+        Debug.Log("Fading On");
+        if (!FadeScreen.fading)
         {
             Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
@@ -141,9 +164,11 @@ public class FadeScreen : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSecondsRealtime(fadeTime);
-        if (!FadeScreen.fading && fadeOn)
+        Debug.Log("Fading away");
+        if (!FadeScreen.fading)
         {
 
+            Debug.Log("Miaou");
             Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
             yield return Singleton.StartCoroutine(StartFadeAnimation(false));
@@ -185,21 +210,45 @@ public class FadeScreen : MonoBehaviour
         fading = true;
         while (time < fadeTime)
         {
+            Debug.Log("Fading");
             time += Time.deltaTime;
             group.alpha = Mathf.Lerp(start, target, time/ fadeTime);
             yield return null;
         }
         SetAlphaTarget(target);
-        if (group.alpha == 1)
+        fading = false;
+        startFadeon = false;
+
+
+        yield return null;
+    }
+
+    public static void AddOnMidFadeEvent(Action action)
+    {
+        UnityAction actionU = new UnityAction(action);
+        Debug.Log(action.Method.Name);
+        Singleton?.OnFadingMid.AddListener(actionU);
+    }
+
+    public static void AddOnStartFadeEvent(Action action)
+    {
+        UnityAction actionU = new UnityAction(action);
+        Debug.Log(action.Method.Name);
+        Singleton?.OnFadingStart.AddListener(actionU);
+    }
+
+    public static void AddOnEndFadeEvent(Action action)
+    {
+        UnityAction actionU = new UnityAction(action);
+        Debug.Log(action.Method.Name);
+
+        if (Singleton.startFadeon)
         {
-            fadeOn = true;
+            actionU?.Invoke();
         }
         else
         {
-            fadeOn = false;
+            Singleton?.OnFadingEnd.AddListener(actionU);
         }
-        fading = false;
-
-        yield return null;
     }
 }

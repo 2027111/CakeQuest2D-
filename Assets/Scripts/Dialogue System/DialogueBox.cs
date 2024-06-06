@@ -56,7 +56,7 @@ public class LineInfo{
 public class DialogueBox : MonoBehaviour
 {
 
-    public Stack<UnityAction> OnDialogueOverAction = new Stack<UnityAction>();
+    public Queue<UnityAction> OnDialogueOverAction = new Queue<UnityAction>();
     GameState currentState = GameState.Overworld;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
@@ -139,7 +139,7 @@ public class DialogueBox : MonoBehaviour
 
         if(dialogue.OnOverEvent != null)
         {
-            OnDialogueOverAction.Push(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+            OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
         }
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
@@ -220,7 +220,7 @@ public class DialogueBox : MonoBehaviour
             if (portrait == null)
             {
                 // Log an error if the sprite failed to load
-                Debug.LogError("Failed to load sprite at path: " + fullPath);
+                Debug.LogWarning("Failed to load sprite at path: " + fullPath);
 
                 // Optionally, list all loaded sprites for debugging
                 portraitImage.gameObject.SetActive(false);
@@ -244,7 +244,7 @@ public class DialogueBox : MonoBehaviour
         if (voiceLine == null)
         {
             // Log an error if the audio failed to load
-            Debug.LogWarning("Failed to load sprite at path: " + voiceLinePath);
+            Debug.LogWarning("Failed to load Voice Line at path: " + voiceLinePath);
 
 
         }
@@ -319,10 +319,9 @@ public class DialogueBox : MonoBehaviour
 
         //currentDialogue.choice = false;
         ClearChoiceBox();
-
         choiceBox.SetActive(false);
 
-        OnDialogueOverAction.Push(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
+        OnDialogueOverAction.Enqueue(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
         if (currentDialogue.dialogue != null)
         {
 
@@ -382,9 +381,18 @@ public class DialogueBox : MonoBehaviour
                 if (dialogueIndex >= dialogueLength)
                 {
 
+                    if (currentDialogue != null)
+                    {
+                        if(currentDialogue.dialogue.OnInstantOverEvent != null)
+                        {
+                            currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
 
-                    currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
-
+                            if (currentDialogue != null)
+                            {
+                                currentDialogue.dialogue.OnInstantOverEvent = null;
+                            }
+                        }
+                    }
 
                     if (currentDialogue != null)
                     {
@@ -647,32 +655,31 @@ public class DialogueBox : MonoBehaviour
 
         if(isShowing != show)
         {
-            yield return MakeBoxAppear(show);
             isShowing = show;
         }
-        yield return StartCoroutine(LanguageData.LoadJsonAsync());
-        if (isShowing)
-        {
-            if(currentDialogue != null)
-            {
-                NextLine();
-            }
-        }
-        else
+        if(!isShowing)
         {
 
            ResetBox();
             while(OnDialogueOverAction.Count > 0)
             {
-                UnityAction currentEvent = OnDialogueOverAction.Pop();
-                if (currentEvent != null)
-                {
-                    currentEvent?.Invoke();
-                }
+                Debug.Log("TESDT");
+                UnityAction currentEvent = OnDialogueOverAction.Dequeue();
+                currentEvent?.Invoke();
                 yield return null;
 
             }
-            
+
+        }
+        yield return MakeBoxAppear(show);
+
+        if (isShowing)
+        {
+            if (currentDialogue != null)
+            {
+                yield return StartCoroutine(LanguageData.LoadJsonAsync());
+                NextLine();
+            }
         }
         yield return new WaitForSeconds(.02f);
     }

@@ -16,16 +16,10 @@ public class RoomMove : MonoBehaviour
     [SerializeField] RoomInfo room1;
     [SerializeField] RoomInfo room2;
     public Direction Room1ToRoom2 = Direction.Right;
-    Character player;
-
-    void Start()
-    {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
-    }
 
     public void MoveToNextRoom()
     {
-            Vector2 playerPos = player.transform.position;
+            Vector2 playerPos = Character.Player.transform.position;
             Vector2 triggerPos = transform.position;
             Vector2 difference = playerPos - triggerPos;
             Direction moveDirection = GetExitDirection(difference);
@@ -55,14 +49,9 @@ public class RoomMove : MonoBehaviour
 
     private void MovePlayer(RoomInfo newRoom, Direction moveDirection)
     {
-        Vector2 newPos = (Vector2)player.transform.position;// + (Vector2)DirectionToVector(moveDirection);
-        player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
-        player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
-        if (player.GetComponent<Character>().GetState() != "NothingBehaviour")
-        {
-            //player.GetComponent<Movement>().SetPosition(newPos);
-            //player.GetComponent<Movement>().LookAt(DirectionToVector(moveDirection));
-        }
+        Vector2 newPos = (Vector2)Character.Player.transform.position;// + (Vector2)DirectionToVector(moveDirection);
+        Character.Player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
+        Character.Player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
     }
 
     private Direction GetOppositeDirection(Direction direction)
@@ -93,6 +82,6 @@ public class RoomMove : MonoBehaviour
 
     public RoomInfo GetCurrentRoom()
     {
-        return player.GetComponent<PlayerInfoStorage>().GetCurrentRoomInfo();
+        return Character.Player.GetComponent<PlayerInfoStorage>().GetCurrentRoomInfo();
     }
 }

@@ -61,6 +61,9 @@ public class PlayerInfoStorage : MonoBehaviour
             {
                 UICanvas.ForceStopDialogue();
             }
+
+
+
         if (infoStorage)
         {
 
@@ -76,17 +79,20 @@ public class PlayerInfoStorage : MonoBehaviour
                     FadeScreen.StartTransition(false, Color.black, .5f);
                 }
 
-
-                character.SetPosition(infoStorage.nextPosition);
-                Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
-
-                infoStorage.forceNextChange = false;
-
-                character.LookToward(RoomMove.DirectionToVector(infoStorage.facing));
+                OnTransitionOver();
 
             }
         }
         
+    }
+
+
+    public void OnTransitionOver()
+    {
+        character.SetPosition(infoStorage.nextPosition);
+        Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
+        infoStorage.forceNextChange = false;
+        character.LookToward(RoomMove.DirectionToVector(infoStorage.facing));
     }
 
     public RoomInfo GetCurrentRoomInfo()

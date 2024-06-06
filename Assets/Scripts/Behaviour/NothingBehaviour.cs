@@ -16,7 +16,10 @@ public class NothingBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-
+        if (player.gameObject.tag == "Player")
+        {
+            UICanvas.TurnBordersOn(false);
+        }
     }
 
 

@@ -29,7 +29,6 @@ public class TreasureChest : NewDialogueStarterObject
     private void Start()
     {
         anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         isOpen = storedOpen.RuntimeValue;
         CheckOpen(true);
         
@@ -78,7 +77,7 @@ public class TreasureChest : NewDialogueStarterObject
                
                     if (consumesRequirement)
                         {
-                        player.RemoveFromInventory(lockRequirement, requirementAmount);
+                            Character.Player.RemoveFromInventory(lockRequirement, requirementAmount);
                         }
                     Unlock();
                     callback = RequirementMetEvent;
@@ -90,7 +89,7 @@ public class TreasureChest : NewDialogueStarterObject
                 newDialogue.SetSource(this.gameObject);
                 newDialogue.OnOverEvent.RemoveAllListeners();
                 newDialogue.OnOverEvent.AddListener(callback);
-                    UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
+                    UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
 
             }
             else
@@ -120,13 +119,13 @@ public class TreasureChest : NewDialogueStarterObject
 
     public bool CheckRequirement()
     {
-        return player.HasObject(lockRequirement, requirementAmount);
+        return Character.Player.HasObject(lockRequirement, requirementAmount);
     }
     public void RequirementMetEvent()
     {
         isOpen = true;
         storedOpen.RuntimeValue = true;
-        player.AddToInventory(content, amount);
+        Character.Player.AddToInventory(content, amount);
         if (anim)
         {
 
@@ -137,7 +136,7 @@ public class TreasureChest : NewDialogueStarterObject
         newDialogue.SetSource(this.gameObject);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);
-        UICanvas.StartDialogue(newDialogue, player.gameObject, gameObject);
+        UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
 
 
 

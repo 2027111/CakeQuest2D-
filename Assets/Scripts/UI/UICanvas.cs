@@ -64,26 +64,30 @@ public class UICanvas : MonoBehaviour
     [SerializeField] QuestList questList;
     [SerializeField] PartyList partyList;
     [SerializeField] DialogueBox dialogueBox;
+    [SerializeField] MoviePlayer moviePlayer;
     [SerializeField] VideoPlayer videoPlayer;
 
 
-    private void Update()
+
+
+    public static void PlayVideoRec()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            PlayVideoRequest();
-        }
+        Singleton.PlayVideoRequest();
     }
-
-
     public void PlayVideoRequest()
     {
+
+
+        if (!videoPlayer.isPlaying)
+        {
+            Debug.Log("Changed state");
         GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().ToggleCutsceneState();
         videoPlayer.prepareCompleted += delegate
         {
             StartCoroutine(StartAnimatedCutscene());
         };
         videoPlayer.Prepare();
+        }
 
 
     }

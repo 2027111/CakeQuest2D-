@@ -7,7 +7,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
 
-
+    public static Character Player;
     CharacterBehaviour playerBehaviour;
     Movement playerMovement;
     public CharacterInventory inventory;
@@ -25,11 +25,12 @@ public class Character : MonoBehaviour
     {
         playerMovement = GetComponent<Movement>();
         inputManager = GetComponent<Controller>();
-        if(inputManager != null)
+        if (inputManager)
         {
-            ActivateControls();
-
+            Player = this;
         }
+        FadeScreen.AddOnEndFadeEvent(TogglePlayableState);
+
 
     }
 
@@ -48,9 +49,9 @@ public class Character : MonoBehaviour
         else
         {
 
-            inputManager.OnReturnPressed -= delegate { Run(true); };
-            inputManager.OnReturnReleased -= delegate { Run(false); };
-            inputManager.OnPausedPressed -= delegate { PauseMenu.Singleton?.OnPausePressed(); };
+            inputManager.OnReturnPressed = null;
+            inputManager.OnReturnReleased = null;
+            inputManager.OnPausedPressed = null;
         }
         //CanMove(true);
     }
@@ -75,18 +76,19 @@ public class Character : MonoBehaviour
     }
     void Start()
     {
-        FadeScreen.Singleton?.OnFadingStart.AddListener(delegate { ChangeState(new NothingBehaviour()); });
-        TogglePlayableState();
-        FadeScreen.Singleton?.OnFadingEnd.AddListener(TogglePlayableState);
+        ToggleNothingState();
     }
 
-
-    private void OnDisable()
+    public static void ActivatePlayer()
     {
-
-        FadeScreen.Singleton?.OnFadingStart.RemoveListener(delegate { ChangeState(new NothingBehaviour()); });
+        Player.TogglePlayableState();
     }
 
+
+    public static void DeactivatePlayer()
+    {
+        Player.ToggleNothingState();
+    }
     public bool CanInteraction()
     {
         return canGetInteract;
@@ -196,9 +198,19 @@ public class Character : MonoBehaviour
 
     public void ChangeState(CharacterBehaviour newBehaviour)
     {
+
+        if (FadeScreen.fading)
+        {
+            return;
+        }
+
         playerBehaviour?.OnExit();
         previousBehaviour = playerBehaviour;
         playerBehaviour = newBehaviour;
+        if (previousBehaviour != null)
+        {
+            Debug.Log(name + " State changed : " + previousBehaviour.GetType().ToString() + " replaced by " + GetCurrentBehaviour().ToString(),this);
+        }
         newBehaviour.OnEnter(this);
     }
 
@@ -220,10 +232,9 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
-        if (GetComponent<Controller>())
+        if (inputManager)
         {
             ChangeState(new PlayerControlsBehaviour());
-            UICanvas.TurnBordersOn(true);
 
         }
         else
@@ -236,7 +247,6 @@ public class Character : MonoBehaviour
     public void ToggleCutsceneState()
     {
         ChangeState(new NothingBehaviour());
-        UICanvas.TurnBordersOn(false);
     }
 
     public void TogglePreviousState()
@@ -245,7 +255,7 @@ public class Character : MonoBehaviour
     }
     public void ToggleNothingState()
     {
-        ChangeState(new NothingBehaviour());
+            ChangeState(new NothingBehaviour());
     }
 
 }

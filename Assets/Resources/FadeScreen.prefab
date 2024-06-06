@@ -35,7 +35,7 @@ RectTransform:
   m_Children:
   - {fileID: 3361505298683660824}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -130,6 +130,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 3361505298683660823}
   group: {fileID: 3361505298100145068}
+  startFadeon: 1
+  OnFadingStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFadingMid:
+    m_PersistentCalls:
+      m_Calls: []
+  OnFadingEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3361505298683660825
 GameObject:
   m_ObjectHideFlags: 0

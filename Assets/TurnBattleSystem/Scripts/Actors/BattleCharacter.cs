@@ -49,6 +49,8 @@ public class BattleCharacter : MonoBehaviour
 
     private void Update()
     {
+
+        
         switch (currentState)
         {
             case CharacterState.Idle:
@@ -64,6 +66,7 @@ public class BattleCharacter : MonoBehaviour
     public void Block()
     {
         isBlocking = true;
+        StartCoroutine(ConsumeBlock());
         Animator.Block();
     }
     public void SetActing(bool _isActing)
@@ -152,11 +155,28 @@ public class BattleCharacter : MonoBehaviour
         StopParry();
     }
 
+
+    IEnumerator ConsumeBlock()
+    {
+        while (isBlocking)
+        {
+            yield return new WaitForSeconds(1);
+            if (isBlocking && !isParrying)
+            {
+                Entity.AddFocus(-1);
+            }
+
+        }
+
+
+    }
     public void StopParry()
     {
         isParrying = false;
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
     }
+
+
 
     public void Parry()
     {

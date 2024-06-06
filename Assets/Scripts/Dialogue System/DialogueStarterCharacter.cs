@@ -28,7 +28,7 @@ public class DialogueStarterCharacter : NewDialogueStarterObject
         character = GetComponent<Character>();
         defaultBehaviourType = character.GetCurrentBehaviour().GetType();
         character.ChangeState(new NothingBehaviour());
-        character.LookAt(player.gameObject);
+        character.LookAt(Character.Player.gameObject);
     }
 
     public override void DialogueOver()

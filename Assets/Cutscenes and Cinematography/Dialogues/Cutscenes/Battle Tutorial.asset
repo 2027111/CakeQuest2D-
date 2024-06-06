@@ -18,8 +18,9 @@ MonoBehaviour:
   dialogue: []
   dialogueIndex: 0
   StartRoom: {fileID: 0}
+  CutsceneToPlay: {fileID: 0}
   battleDialogue:
-  - condition: {fileID: 0}
+  - condition: []
     dialogueLineIds:
     - Tuto_Yankee_000
     - Tuto_Yankee_001
@@ -38,7 +39,7 @@ MonoBehaviour:
     technicalCondition: 1
     conditionIndex: 0
     played: 0
-  - condition: {fileID: 0}
+  - condition: []
     dialogueLineIds:
     - Tuto_Yankee_006
     - Tuto_Yankee_007

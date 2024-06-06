@@ -28,6 +28,10 @@ public class PlayerControlsBehaviour : CharacterBehaviour
             character.CanMove(true); 
             character.ActivateControls();
         }
+        if (player.gameObject.tag == "Player")
+        {
+            UICanvas.TurnBordersOn(true);
+        }
 
     }
 
@@ -51,6 +55,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
             character.ActivateControls(false);
         }
         movement.movementInput = Vector2.zero;
+
     }
 
 

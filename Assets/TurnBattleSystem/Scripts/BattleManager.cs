@@ -440,7 +440,7 @@ public class BattleManager : MonoBehaviour
 
     private void Update()
     {
-        BattleState.Handle();
+        BattleState?.Handle();
     }
 
     public void SetCursor(BattleCharacter character, bool resetCursors = true)
@@ -554,7 +554,7 @@ public class BattleManager : MonoBehaviour
 
     public void OnBattleWon()
     {
-        currentBattleInfo.battleInfo.SetRuntime();
+        currentBattleInfo.ConfirmBattle();
         Debug.Log("Battle Won");
     }
 
@@ -745,42 +745,14 @@ public class BattleManager : MonoBehaviour
             if (infoStorage.sceneName != SceneManager.GetActiveScene().name)
             {
                 infoStorage.forceNextChange = true;
-                StartCoroutine(FadeCoroutine(infoStorage.sceneName));
+                FadeScreen.AddOnMidFadeEvent(ClearStage);
+                FadeScreen.MoveToScene(infoStorage.sceneName);
             }
 
 
 
         }
 
-    }
-    public IEnumerator FadeCoroutine(string scene)
-    {
-
-        if (!FadeScreen.fading)
-        {
-            FadeScreen.StartTransition(true, Color.black, .5f);
-        }
-        yield return new WaitForSeconds(minimumFadeTime * 2);
-
-
-        ClearStage();
-        UICanvas.TurnBordersOn(true);
-
-
-
-        yield return new WaitForSeconds(minimumFadeTime / 2);
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-
-        while (!asyncOperation.isDone)
-        {
-            yield return null;
-        }
-
-        if (!FadeScreen.fading)
-        {
-            FadeScreen.StartTransition(false, Color.black, .5f);
-        }
-        yield return null;
     }
 
     private List<BattleCharacter> GetRandomTargets()
