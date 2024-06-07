@@ -9,11 +9,29 @@ public class Blink : MonoBehaviour
 {
     Color DefaultColor;
     Color otherColor;
-    SpriteRenderer sr;
+    [SerializeField] SpriteRenderer sr;
     [SerializeField] private float transitionTime = .4f;
     private void Start()
     {
-        sr = GetComponentInChildren<SpriteRenderer>();
+        if (!sr)
+        {
+            sr = GetComponent<SpriteRenderer>();
+            if (!sr)
+            {
+                sr = GetComponentInChildren<SpriteRenderer>();
+            }
+
+
+            if (!sr)
+            {
+                Destroy(this);
+                return;
+            }
+
+        }
+
+
+
         StartCoroutine(Blinking());
     }
 

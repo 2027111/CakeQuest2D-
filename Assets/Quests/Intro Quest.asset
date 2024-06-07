@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Intro Quest
   m_EditorClassIdentifier: 
   UID: 357fa63766d8fb64d9d797ba2cde4194
-  RuntimeValue: 1
+  RuntimeValue: 0
   questId: intro_fetch_ingredients
   questName: Find the cake ingredients
+  QuestToggled: 0
   requiredItems:
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}

@@ -39,7 +39,7 @@ public class PatrollingBehaviour : CharacterBehaviour
         }
         else if (Vector2.Distance(character.transform.position, currentTarget.position) > patrolling.minimumPatrollingdistance)
         {
-            Vector2 direction = (currentTarget.position - character.transform.position).normalized;
+            Vector2 direction = CalculateDirection(character.transform.position, currentTarget.position);
             movement.SetInput(direction);
 
             if (movement.movementInput != Vector2.zero)
@@ -63,7 +63,34 @@ public class PatrollingBehaviour : CharacterBehaviour
         }
     }
 
-    public override void OnExit()
+    private Vector2 CalculateDirection(Vector3 characterPosition, Vector3 targetPosition)
+    {
+        Vector2 direction = (targetPosition - characterPosition).normalized;
+
+        // Prioritize X-axis over Y-axis
+        if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+        {
+            direction.y = 0; // Zero out Y component to prioritize horizontal movement
+        }
+        else
+        {
+            direction.x = 0; // Zero out X component to prioritize vertical movement
+        }
+
+        // Ensure direction is exactly one of the four cardinal directions
+        if (direction.x != 0)
+        {
+            direction.x = Mathf.Sign(direction.x);
+        }
+        if (direction.y != 0)
+        {
+            direction.y = Mathf.Sign(direction.y);
+        }
+
+        return direction;
+    }
+
+public override void OnExit()
     {
         movement.movementInput = Vector2.zero;
     }

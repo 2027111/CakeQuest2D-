@@ -28,7 +28,7 @@ public class QuestList : MonoBehaviour
         {
             foreach(QuestObject q in QuestManager.Singleton.GetQuests())
             {
-                if (!q.RuntimeValue)
+                if (!q.RuntimeValue && q.QuestToggled)
                 {
                     CreateIndicator(q);
                 }

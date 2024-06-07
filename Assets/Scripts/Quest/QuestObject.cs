@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class QuestObject : BoolValue
 {
     public string questId;
     public string questName;
+    public bool QuestToggled = false;
     public virtual void CheckConditions()
     {
 
@@ -60,4 +62,8 @@ public class QuestObject : BoolValue
         return desc;
     }
 
+    public void ToggleQuest(bool on = true)
+    {
+        QuestToggled = on;
+    }
 }

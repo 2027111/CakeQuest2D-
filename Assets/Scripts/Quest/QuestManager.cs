@@ -53,6 +53,7 @@ public class QuestManager : MonoBehaviour
             currentQuests.Add(questObject);
         }
 
+        questObject.ToggleQuest();
         UICanvas.UpdateQuestList();
         CheckQuests();
     }
