@@ -266,6 +266,7 @@ public class GameSaveManager : MonoBehaviour
             AllInventories = allInventories,
             AllCharacterObjects = allCharacterObjects,
             AllParties = allParties
+            
         };
 
         string wrapperjson = JsonConvert.SerializeObject(saveData, settings);

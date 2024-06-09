@@ -34,18 +34,73 @@ public class BattleCharacter : MonoBehaviour
     public Entity Entity;
 
 
-
+    public int recipeIndex = 0;
+    public List<ElementalAttribute> recipe;
  
 
     void Start()
     {
+
+        
         //speed = currentCharacter.Speed;
         Animator = GetComponent<AnimatorController>();
         Entity = GetComponent<Entity>();
         GetComponentInChildren<SpriteEvents>().SetCharacter(this);
+        SetRecipe();
     }
 
 
+    public void SetRecipe()
+    {
+        recipe = new List<ElementalAttribute>();
+        int length = GetReference().recipeLength;
+        length += Random.Range(-1, 2);
+        length = Mathf.Clamp(length, 2, 999);
+        for (int i = 0; i < length; i++)
+        {
+            recipe.Add(new ElementalAttribute());
+        }
+        recipeIndex = 0;
+    }
+
+    public bool HandleRecipe(AttackInformation attackInfo)
+    {
+        if(recipe.Count > recipeIndex)
+        {
+            if(recipe[recipeIndex].element == attackInfo.element)
+            {
+                recipe[recipeIndex].found = true;
+                recipeIndex++;
+                attackInfo.MatchedRecipe(recipeIndex);
+
+                if(recipeIndex == recipe.Count)
+                {
+                    attackInfo.effect = ElementEffect.RecipeCompleted;
+                    SetRecipe();
+                }
+                return true;
+            }
+            else
+            {
+                if (recipeIndex != 0)
+                {
+                    recipeIndex = 0;
+                    attackInfo.effect = ElementEffect.RecipeFailed;
+                }
+            }
+        }
+        return false;
+
+
+    }
+
+    public void RevealRecipe()
+    {
+        foreach(ElementalAttribute ee in recipe)
+        {
+            ee.found = true;
+        }
+    }
 
     private void Update()
     {
@@ -111,7 +166,7 @@ public class BattleCharacter : MonoBehaviour
 
     public int IsFacing()
     {
-        return (int)Mathf.Sign(transform.localScale.x);
+        return IsPlayerTeam()?-1:1;
     }
 
     private Skill GetRandomAttack()
@@ -136,6 +191,8 @@ public class BattleCharacter : MonoBehaviour
     {
         return GetReference().Attacks;
     }
+
+
 
     public void StartParryWindow()
     {

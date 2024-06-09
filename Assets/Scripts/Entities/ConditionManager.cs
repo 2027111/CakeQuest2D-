@@ -6,9 +6,26 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ConditionEvents
 {
-    public BoolValue condition;
+    public ConditionObject[] condition;
     public UnityEvent onConditionTrueEvent;
     public UnityEvent onConditionFalseEvent;
+
+
+
+    public bool CheckCondition()
+    {
+        foreach (ConditionObject con in condition)
+        {
+            if (con != null)
+            {
+                if (!con.CheckCondition())
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
 public class ConditionManager : MonoBehaviour
 {
@@ -20,16 +37,14 @@ public class ConditionManager : MonoBehaviour
     {
         foreach(ConditionEvents ev in conditionEvents)
         {
-            if (ev.condition)
+            if (ev.CheckCondition())
             {
-                if (ev.condition.RuntimeValue)
-                {
                     ev.onConditionTrueEvent?.Invoke();
-                }
-                else
-                {
-                    ev.onConditionFalseEvent?.Invoke();
-                }
+
+            }
+            else
+            {
+                ev.onConditionFalseEvent?.Invoke();
             }
         }
     }

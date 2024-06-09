@@ -8,17 +8,17 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class Condition
+public class ConditionObject
 {
-    public BoolValue condition;
+    public BoolValue boolValue;
     public bool wantedResult = true;
 
     public bool CheckCondition()
     {
-        if (!condition)
+        if (!boolValue)
         {
             return true;
         }
-        return condition.RuntimeValue == wantedResult;
+        return boolValue.RuntimeValue == wantedResult;
     }
 }

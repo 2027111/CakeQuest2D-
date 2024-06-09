@@ -36,6 +36,10 @@ public class BattleManager : MonoBehaviour
 
 
 
+
+    public ActorInfoPanel actorInfoPanel;
+
+
     public GameObject BattlePrefab;
     [SerializeField] GameObject CursorPrefab;
 
@@ -189,6 +193,8 @@ public class BattleManager : MonoBehaviour
     {
         return GetPossibleTarget(GetActor().currentCommand);
     }
+
+    
     public List<BattleCharacter> GetPossibleTarget(Skill a, BattleCharacter Source)
     {
         if (a == null)
@@ -550,6 +556,9 @@ public class BattleManager : MonoBehaviour
         }
         return null;
     }
+
+
+
 
 
     public void OnBattleWon()

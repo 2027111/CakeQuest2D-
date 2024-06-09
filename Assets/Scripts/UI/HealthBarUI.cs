@@ -8,44 +8,32 @@ public class HealthBarUI : MonoBehaviour
 {
 
     [SerializeField] TextMeshProUGUI usernametext;
-    CharacterObject characterReference;
+    BattleCharacter characterReference;
     [SerializeField] Image portraitImage;
     [SerializeField] HealthBar healthBar;
     [SerializeField] HealthBar manaBar;
 
-    public void SetPlayerRef(CharacterObject character)
+    public void SetPlayerRef(BattleCharacter character)
     {
         characterReference = character;
-        //characterReference.OnHealthChange += healthBar.SetFillAmount;
-        //characterReference.OnManaChange += manaBar.SetFillAmount;
-        if (characterReference.characterData.portraits.Length > 0)
+        if (characterReference.GetData().portraits.Length > 0)
         {
             portraitImage.gameObject.SetActive(true);
-            portraitImage.sprite = characterReference.characterData.portraits[0];
+            portraitImage.sprite = characterReference.GetData().portraits[0];
         }
         else
         {
             portraitImage.gameObject.SetActive(false);
         }
-        healthBar.SetBarName(characterReference.characterData.HealthName);
-        manaBar.SetBarName(characterReference.characterData.ManaName);
-        usernametext.text = $"{characterReference.characterData.characterName}";
+        healthBar?.SetBarName(characterReference.GetData().HealthName);
+        manaBar?.SetBarName(characterReference.GetData().ManaName);
+        usernametext?.SetText($"{characterReference.GetData().characterName}");
 
-
-
-        //characterReference.OnHealthChange.Invoke(characterReference.Health, characterReference.MaxHealth);
-        //characterReference.OnManaChange.Invoke(characterReference.Mana, characterReference.MaxMana);
-
-
+        healthBar?.SetFillAmount(characterReference.Entity.Health, characterReference.GetReference().MaxHealth);
+        manaBar?.SetFillAmount(characterReference.Entity.Mana, characterReference.GetReference().MaxMana);
     }
 
 
-
-    private void OnDisable()
-    {
-        //characterReference.OnHealthChange -= healthBar.SetFillAmount;
-        //characterReference.OnManaChange -= manaBar.SetFillAmount;
-    }
 
 
     

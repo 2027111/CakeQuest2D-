@@ -10,7 +10,9 @@ public class TextEffect : MonoBehaviour
     {
         GetComponent<Entity>().OnDamageTaken += SpawnTextEffect;
     }
-    public void SpawnTextEffect(int amount, ElementEffect elementEffect = ElementEffect.Neutral, BattleCharacter source = null)
+
+
+    public void SpawnTextEffect(AttackInformation attackInfo)
     {
 
         Color color = Color.white;
@@ -19,59 +21,73 @@ public class TextEffect : MonoBehaviour
             color = Color.red;
         }
 
-        if (amount > 0)
+        if (attackInfo.GetAmount()> 0)
         {
             color = Color.green;
         }
 
 
-        if(amount == 0) {
+        if (attackInfo.GetAmount() == 0)
+        {
 
 
             Vector3 position = GetDamageTextPosition();
             SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("blocked"), Color.white, position);
 
 
-        } else
+        }
+        else
         {
             Vector3 position = GetDamageTextPosition();
-            SpawnTextEffect(Mathf.Abs(amount).ToString(), color, position);
-      
+            SpawnTextEffect(Mathf.Abs(attackInfo.GetAmount()).ToString(), color, position);
 
-        if (source)
-        {
 
-        if(source.currentCommand != null)
-        {
-
-            if (source.currentCommand != lastCommand)
+            if (attackInfo.source)
             {
 
-                if (elementEffect != ElementEffect.Neutral)
+                if (attackInfo.source.currentCommand != null)
                 {
-                    Vector3 newposition = GetAspectTextPosition();
 
-                    switch (elementEffect)
-                    {
-                        case ElementEffect.Weak:
-                                    
-                            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("weak"), Color.red, newposition, 2f);
-                            break;
+                        if (attackInfo.effect != ElementEffect.Neutral)
+                        {
+                            Vector3 newposition = GetAspectTextPosition();
+                            string message = "Keep Cooking!!";
+                            Color textColor = Color.white;
+                            switch (attackInfo.effect)
+                            {
+                                case ElementEffect.RecipeBoosted:
 
-                        case ElementEffect.Resistant:
-                            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("resist"), Color.blue, newposition, 2f);
-                            break;
+                                    message = "Keep Cooking!!";
+                                    textColor = Color.red;
+                                StartCoroutine(Utils.SlowDown(.8f, .25f));
+                                break;
+
+                                case ElementEffect.RecipeFailed:
+
+                                    message = "You Messed Up!!";
+                                    textColor = Color.blue;
+                                    break;
+                                case ElementEffect.RecipeCompleted:
+
+                                    message = "Splendid Meal!!!!!";
+                                    StartCoroutine(Utils.SlowDown(.8f, .25f));
+                                    textColor = Color.red;
+                                    break;
+                            }
+
+
+                            SpawnTextEffect(message, textColor, newposition, 2f);
+
+                        }
                     }
-
-                }
-            }
-            lastCommand = source.currentCommand;
-            }
+                    lastCommand = attackInfo.source.currentCommand;
+                
             }
         }
 
 
     }
+
 
     public Vector3 GetDamageTextPosition()
     {
@@ -80,7 +96,9 @@ public class TextEffect : MonoBehaviour
 
     public Vector3 GetAspectTextPosition()
     {
-        return transform.position + 1.2f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
+
+
+        return transform.position + 1.5f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
     }
     public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = 1.2f)
     {
@@ -92,6 +110,11 @@ public class TextEffect : MonoBehaviour
     public void SpawnTextEffect(string text, Color color)
     {
         SpawnTextEffect(text, color, GetAspectTextPosition());
+    }
+
+    public void SpawnTextEffect(int text, Color color)
+    {
+        SpawnTextEffect(text.ToString(), color, GetDamageTextPosition());
     }
 
 

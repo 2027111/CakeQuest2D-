@@ -76,7 +76,6 @@ public class ChoosingTargetState : BattleState
                 target.Clear();
                 target.Add(character);
                 battleManager.SetCursor(character);
-                CamManager.PanToCharacter(character);
                 string t = LanguageData.GetDataById("Indications").GetValueByKey("targetOne");
                 BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
             }

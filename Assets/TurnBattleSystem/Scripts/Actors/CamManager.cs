@@ -77,7 +77,7 @@ public class CamManager : MonoBehaviour
 
         Vector3 newPos = new Vector3(battleCharacter.transform.position.x, battleCharacter.transform.position.y + 1, _instance.zoomDistance); ;
 
-        //_instance.StartCoroutine(_instance.DoPan(newPos, panDuration));
+        _instance.StartCoroutine(_instance.DoPan(newPos, panDuration));
     }
 
 
@@ -95,7 +95,7 @@ public class CamManager : MonoBehaviour
         {
             _cameraTransform.localPosition = Vector3.Lerp(start, position, elapsed / duration);
 
-            elapsed += Time.deltaTime;
+            elapsed += Time.unscaledDeltaTime;
 
             yield return null;
         }

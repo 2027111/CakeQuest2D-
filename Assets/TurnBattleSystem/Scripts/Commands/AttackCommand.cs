@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AttackCommand : Command
 {
+
     public override void ExecuteCommand()
     {
         Source.StartCoroutine(Execute());
@@ -53,24 +54,23 @@ public class AttackCommand : Command
     {
         foreach (BattleCharacter target in Target)
         {
-            CharacterObject characterObject = target.GetReference();
-            ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            target?.Entity.AddToHealth((Skill)null, elementEffect, Source);
-            CamManager.Shake(.2f, .05f);
-            base.ActivateCommand();
+            ActivateCommand(target);
         }
+        base.ActivateCommand();
     }
 
 
 
         public override void ActivateCommand(BattleCharacter _target)
-    {
+        {
             CharacterObject characterObject = _target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            _target?.Entity.AddToHealth((Skill)null, elementEffect, Source);
+            AttackInformation info = new AttackInformation(null, elementEffect, Source);
+            info.element = Source.GetReference().AttackElement;
+            _target?.Entity.AddToHealth(info);
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         
-    }
+        }
 
 }

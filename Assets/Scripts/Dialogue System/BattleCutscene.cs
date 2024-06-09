@@ -35,6 +35,7 @@ public class BattleCutscene : Cutscene
         }
     }
 
+
     public override Dialogue GetCurrentLine()
     {
         if (dialogueIndex >= battleDialogue.Length)

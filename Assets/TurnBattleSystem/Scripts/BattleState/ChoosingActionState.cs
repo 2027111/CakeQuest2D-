@@ -14,7 +14,6 @@ public class ChoosingActionState : BattleState
         battleManager.GetActor().currentCommand = null;
         battleManager.GetActor().Animator.Thinking(true);
         battleManager.SetCursor(battleManager.GetActor());
-        CamManager.PanToCharacter(battleManager.GetActor());
         InstantiateMenu(battleManager.GetActor());
     }
 

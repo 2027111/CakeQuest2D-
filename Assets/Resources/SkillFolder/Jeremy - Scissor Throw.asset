@@ -16,7 +16,7 @@ MonoBehaviour:
   targetType: 1
   friendliness: 1
   targetStateType: 0
-  element: 0
+  element: 1
   HitEffect:
   - {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
   SoundEffect:

@@ -16,10 +16,11 @@ MonoBehaviour:
   targetType: 0
   friendliness: 1
   targetStateType: 0
-  element: 6
+  element: 7
   HitEffect:
   - {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
   SoundEffect: []
+  fixedAmount: 0
   itemName: Huile Brulant
   itemId: huile_bouillante
   itemDescription: "De l'huile bouilante. La lanc\xE9 sur un enemie fera {healthEffectAmount}

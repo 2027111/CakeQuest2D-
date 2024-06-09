@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,10 @@ using UnityEngine.Timeline;
 [CreateAssetMenu]
 public class BattleInfo : BoolValue
 {
-    public AudioClip BattleMusic;
-    public Cutscene CutsceneForDialogue;
-    public GameObject backgroundPrefab;
-    public List<CharacterObject> FightParty;
+    [JsonIgnore] public AudioClip BattleMusic;
+    [JsonIgnore] public Cutscene CutsceneForDialogue;
+    [JsonIgnore] public GameObject backgroundPrefab;
+    [JsonIgnore] public List<CharacterObject> FightParty;
 
 
 

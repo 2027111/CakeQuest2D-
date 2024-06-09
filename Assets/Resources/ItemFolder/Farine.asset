@@ -16,9 +16,10 @@ MonoBehaviour:
   targetType: 0
   friendliness: 0
   targetStateType: 0
-  element: 6
+  element: 7
   HitEffect: []
   SoundEffect: []
+  fixedAmount: 0
   itemName: flour
   itemId: flour
   itemDescription: 

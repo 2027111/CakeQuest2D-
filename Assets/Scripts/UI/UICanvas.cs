@@ -44,6 +44,12 @@ public class UICanvas : MonoBehaviour
     }
 
 
+    [SerializeField] UIBorder border;
+    [SerializeField] QuestList questList;
+    [SerializeField] PartyList partyList;
+    [SerializeField] DialogueBox dialogueBox;
+    [SerializeField] MoviePlayer moviePlayer;
+    [SerializeField] VideoPlayer videoPlayer;
 
     void Awake()
     {
@@ -60,12 +66,6 @@ public class UICanvas : MonoBehaviour
 
 
 
-    [SerializeField] UIBorder border;
-    [SerializeField] QuestList questList;
-    [SerializeField] PartyList partyList;
-    [SerializeField] DialogueBox dialogueBox;
-    [SerializeField] MoviePlayer moviePlayer;
-    [SerializeField] VideoPlayer videoPlayer;
 
 
 

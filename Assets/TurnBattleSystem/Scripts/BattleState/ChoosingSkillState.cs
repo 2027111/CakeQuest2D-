@@ -12,7 +12,7 @@ public class ChoosingSkillState : BattleState
 
         base.OnEnter(_battleManager);
         battleManager.GetActor().currentCommand = null;
-        CamManager.PanToCharacter(battleManager.GetActor());
+        battleManager.SetCursor(battleManager.GetActor());
         InstantiateMenu(battleManager.GetActor());
     }
 

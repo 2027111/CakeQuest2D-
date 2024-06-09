@@ -6,6 +6,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public BattleCharacter lastAttacker;
+    public AttackInformation lastAttack;
     BattleCharacter character;
     public int Speed = 50;
     public int Health = 50;
@@ -17,12 +18,26 @@ public class Entity : MonoBehaviour
     public EventHandler OnHealthChange;
     public EventHandler OnManaChange;
     public EventHandler OnFocusChange;
-    public delegate void DamageEventHandler(int amount, ElementEffect elementEffect, BattleCharacter source);
+    public delegate void DamageEventHandler(AttackInformation attackInfo);
     public delegate void DamageEvent();
     public bool isDead = false;
     public DamageEventHandler OnDamageTaken;
     public DamageEvent OnDead;
 
+    public bool HasMaxHealth()
+    {
+        return Health >= character.GetReference().MaxHealth;
+    }
+
+    public bool HasMaxMana()
+    {
+        return Mana >= character.GetReference().MaxMana;
+    }
+
+    public bool HasMaxFocus()
+    {
+        return Focus >= MaxFocus;
+    }
 
     public void AddToMana(int amount)
     {
@@ -107,10 +122,6 @@ public class Entity : MonoBehaviour
                     isDead = false;
                     character.Animator.Revive();
                 }
-                else
-                {
-
-                }
             }
         } 
         if (character)
@@ -118,99 +129,100 @@ public class Entity : MonoBehaviour
             OnHealthChange?.Invoke(Health, character.GetReference().MaxHealth);
         }
     }
-    public void AddToHealth(IActionData attack, ElementEffect effect, BattleCharacter source = null)
+    
+    
+
+    public void AddToHealth(AttackInformation attackInfo)
     {
 
 
-        int amount = -source.GetReference().AttackDamage;
 
-        if (attack)
+        if (attackInfo.attack)
         {
-            amount = attack.element == Element.Support?attack.GetAmount():-attack.GetAmount();
+            attackInfo.amount = attackInfo.element == Element.Support ? attackInfo.attack.GetAmount() : -attackInfo.attack.GetAmount();
         }
 
 
 
 
 
-        switch (effect)
+        
+
+        if (attackInfo.element != Element.Support)
         {
-            case ElementEffect.Neutral:
-                // No modification to the damage
-                break;
-
-            case ElementEffect.Weak:
-                // Increase damage by 50%
-                amount = (int)(amount * 1.5f);
-                break;
-
-            case ElementEffect.Resistant:
-                // Decrease damage by 50%
-                amount = (int)(amount * 0.5f);
-                break;
-
-            case ElementEffect.NonAffected:
-                // No damage taken
-                amount = 0;
-                break;
-
-            default:
-                Debug.LogWarning("Unhandled ElementEffect: " + effect);
-                break;
-        }
-
-
-
-        if (character.isBlocking)
-        {
-            amount /= 2;
-        }
-
-
-        if (character.isParrying)
-        {
-            AddFocus((Mathf.Abs(amount) / 2));
-            amount = 0;
-            character.StopBlock();
-            character.Animator.Parry();
-            character.PlaySFX(Resources.Load<AudioClip>("39_Block_03"));
-            StartCoroutine(Utils.SlowDown(1.1f, .3f));
-            //StartCoroutine(CamManager.DoPan(character.transform.position, .05f, 1.1f* .3f));
-        }
-
-
-        if (amount != 0)
-        {
-
-            if (attack?.GetHitEffect() != null)
+            if (character.isBlocking)
             {
-                Instantiate(attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                attackInfo.amount /= 2;
             }
-            else
+
+
+            if (character.isParrying)
             {
-                if (source.GetReference().GetHitEffect() != null)
+                AddFocus(Mathf.Abs(attackInfo.GetAmount()));
+                attackInfo.amount = 0;
+                character.StopBlock();
+                character.Animator.Parry();
+                character.PlaySFX(Resources.Load<AudioClip>("39_Block_03"));
+                StartCoroutine(Utils.SlowDown(1.1f, .3f));
+            }
+
+            if (lastAttack != null)
+            {
+
+                if(attackInfo.attack == null|| attackInfo.attack != lastAttack.attack)
                 {
-                    Instantiate(source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+
+                    attackInfo.HandleRecipe(character);
                 }
             }
-            if (attack?.GetSoundEffect() != null)
+            else
             {
-                source.PlaySFX(attack.GetSoundEffect());
+                attackInfo.HandleRecipe(character);
+            }
+
+        }
+
+
+
+
+
+
+        if (attackInfo.GetAmount() != 0)
+        {
+
+            if (attackInfo.attack?.GetHitEffect() != null)
+            {
+                Instantiate(attackInfo.attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
             }
             else
             {
-                if (source.GetReference().GetSoundEffect() != null)
+                if (attackInfo.source.GetReference().GetHitEffect() != null)
                 {
-                    source.PlaySFX(source.GetReference().GetSoundEffect());
+                    Instantiate(attackInfo.source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                }
+            }
+            if (attackInfo.attack?.GetSoundEffect() != null)
+            {
+                attackInfo.source.PlaySFX(attackInfo.attack.GetSoundEffect());
+            }
+            else
+            {
+                if (attackInfo.source.GetReference().GetSoundEffect() != null)
+                {
+                    attackInfo.source.PlaySFX(attackInfo.source.GetReference().GetSoundEffect());
                 }
             }
 
         }
-        AddToHealth(amount);
+        AddToHealth(attackInfo.GetAmount());
 
+
+        lastAttack = attackInfo;
+        Debug.Log("Attack ID: " + lastAttack.GetHashCode());
         // Invoke the damage taken event
-        OnDamageTaken.Invoke(amount, effect, source);
+        OnDamageTaken.Invoke(attackInfo);
     }
+
     public void AddToMana(IActionData attack, BattleCharacter source = null)
     {
 
@@ -252,75 +264,8 @@ public class Entity : MonoBehaviour
         AddToMana(amount);
         if (amount > 0)
         {
-            GetComponent<TextEffect>().SpawnTextEffect(amount.ToString(), Color.cyan);
+            GetComponent<TextEffect>().SpawnTextEffect(amount, Color.cyan);
         }
-    }
-
-    public void AddToHealth(HealthEffectItem item, ElementEffect effect, BattleCharacter source = null)
-    {
-
-
-        int amount = 0;
-        if (item)
-        {
-            amount = item.element == Element.Support ? item.healthEffectAmount : -item.healthEffectAmount;
-        }
-
-
-
-
-
-
-
-        if (character.isBlocking)
-        {
-            amount /= 2;
-        }
-
-
-        if (character.isParrying)
-        {
-            AddFocus((Mathf.Abs(amount) / 2));
-            amount = 0;
-            character.StopBlock();
-            character.Animator.Parry();
-            character.PlaySFX(Resources.Load<AudioClip>("39_Block_03"));
-            StartCoroutine(Utils.SlowDown(1.1f, .3f));
-            //StartCoroutine(CamManager.DoPan(character.transform.position, .05f, 1.1f* .3f));
-        }
-
-
-        if (amount != 0)
-        {
-
-            if (item?.GetHitEffect() != null)
-            {
-                Instantiate(item.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
-            }
-            else
-            {
-                if (source.GetReference().GetHitEffect() != null)
-                {
-                    Instantiate(source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
-                }
-            }
-            if (item?.GetSoundEffect() != null)
-            {
-                source.PlaySFX(item.GetSoundEffect());
-            }
-            else
-            {
-                if (source.GetReference().GetSoundEffect() != null)
-                {
-                    source.PlaySFX(source.GetReference().GetSoundEffect());
-                }
-            }
-
-        }
-        AddToHealth(amount);
-
-        // Invoke the damage taken event
-        OnDamageTaken.Invoke(amount, effect, source);
     }
 
     public void Apply()

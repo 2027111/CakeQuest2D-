@@ -16,7 +16,7 @@ MonoBehaviour:
   targetType: 1
   friendliness: 1
   targetStateType: 0
-  element: 1
+  element: 2
   HitEffect: []
   SoundEffect: []
   skillType: 0

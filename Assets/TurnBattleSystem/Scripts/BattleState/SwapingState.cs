@@ -10,7 +10,6 @@ public class SwapingState : BattleState
     {
         base.OnEnter(_battleManager);
         battleManager.GetActor().currentCommand = null;
-        CamManager.PanToCharacter(battleManager.GetActor());
         InstantiateMenu();
     }
 

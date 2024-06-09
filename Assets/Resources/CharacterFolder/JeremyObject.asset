@@ -13,18 +13,17 @@ MonoBehaviour:
   m_Name: JeremyObject
   m_EditorClassIdentifier: 
   UID: 41ee1a37819a3bb4e89fcc68983368d7
-  characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
+  characterData: {fileID: 11400000, guid: 44396e416c2474546b575af983db4e3d, type: 2}
   Health: 100
   MaxHealth: 100
   Mana: 100
   MaxMana: 100
   Speed: 0
-  AttackDamage: 6
+  AttackDamage: 5
   parryWindow: 0.15
   isDead: 0
   attackType: 0
-  AttackElement: 0
-  elementalAttributes: []
+  AttackElement: 1
   HitEffect:
   - {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
   SoundEffect:
@@ -33,3 +32,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 30b8f02918380654080540028eb4d1a8, type: 2}
   animationController: {fileID: 22100000, guid: 035f6f042f8a6d9448ab30c9196270b5, type: 2}
   InParty: {fileID: 11400000, guid: 0a08317485fc643459f7857a604bbb66, type: 2}
+  recipeLength: 3

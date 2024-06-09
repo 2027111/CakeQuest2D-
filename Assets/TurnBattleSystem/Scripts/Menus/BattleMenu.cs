@@ -37,4 +37,10 @@ public class BattleMenu : ChoiceMenu
         BattleManager.Singleton.GetActor().currentCommand = attackCommand;
         BattleManager.Singleton.ChangeState(new ChoosingTargetState());
     }
+
+
+    public void Analyze()
+    {
+        BattleManager.Singleton.ChangeState(new AnalyzingTargetState());
+    }
 }

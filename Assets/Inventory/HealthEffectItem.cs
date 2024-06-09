@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Healing Item", menuName = "Inventory/Healing Items")]
 public class HealthEffectItem : BattleItem
 {
-    public int healthEffectAmount = 12;
+    [JsonIgnore] public int healthEffectAmount = 12;
     public override int GetAmount()
     {
         return healthEffectAmount;
@@ -14,7 +15,8 @@ public class HealthEffectItem : BattleItem
     {
         foreach (BattleCharacter target in Target)
         {
-            target?.Entity.AddToHealth(this, ElementEffect.Neutral, BattleManager.Singleton.GetActor());
+            AttackInformation attackInfo = new AttackInformation(this, ElementEffect.Neutral, BattleManager.Singleton.GetActor());
+            target?.Entity.AddToHealth(attackInfo);
         }
         base.BattleUse(Target, inventory);
     }

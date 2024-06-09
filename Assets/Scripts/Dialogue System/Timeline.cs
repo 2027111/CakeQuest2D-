@@ -8,7 +8,7 @@ using UnityEngine.Playables;
 public class Timeline : MonoBehaviour
 {
 
-    public Condition[] condition;
+    public ConditionObject[] condition;
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
@@ -122,7 +122,7 @@ public class Timeline : MonoBehaviour
 
     public bool CheckCondition()
     {
-        foreach (Condition c in condition)
+        foreach (ConditionObject c in condition)
         {
             if (!c.CheckCondition())
             {

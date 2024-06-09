@@ -14,10 +14,6 @@ public class SkillButton : ChoiceMenuButton
     [SerializeField] TMP_Text attackCostText;
     [SerializeField] Image attackTypeLogo;
 
-    private void Start()
-    {
-
-    }
     public void SetSkill(Skill attack)
     {
         storedSkill = attack;

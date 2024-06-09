@@ -16,11 +16,12 @@ MonoBehaviour:
   targetType: 0
   friendliness: 0
   targetStateType: 0
-  element: 6
+  element: 7
   HitEffect:
   - {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: ba39bf8baf6d13046889b2d64822381a, type: 3}
+  fixedAmount: 0
   itemName: Petite bouteille de miel
   itemId: small_honey_bottle
   itemDescription: Une bouteille de miel qui revitalise celui qui en bois.

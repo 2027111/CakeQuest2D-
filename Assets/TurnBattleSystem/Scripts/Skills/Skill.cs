@@ -36,18 +36,18 @@ public enum TargetStateType
 [CreateAssetMenu(fileName = "Basic Skill", menuName = "Skills/BaseSkill")]
 public class Skill : IActionData
 {
-    
 
-    public SkillType skillType = SkillType.Physical;
+
+    [JsonIgnore] public SkillType skillType = SkillType.Physical;
     public string skillId;
-    public string Description = "Attack qui fait mal :)";
+    [JsonIgnore] public string Description = "Attack qui fait mal :)";
     [JsonIgnore] public AnimationClip animationClip;
-    public string voiceClipId;
-    public int baseDamage = -10; //Negative for damage, positive for healing
+    [JsonIgnore] public string voiceClipId;
+    [JsonIgnore] public int baseDamage = -10; //Negative for damage, positive for healing
     [Range(50, 100)]
-    public int baseAccuracy = 80; //Negative for damage, positive for healing
-    public int manaCost = 14;
-    public string[] spawnObjects;
+    [JsonIgnore] public int baseAccuracy = 80; //Negative for damage, positive for healing
+    [JsonIgnore] public int manaCost = 14;
+    [JsonIgnore] public string[] spawnObjects;
 
     
     public string GetName()
@@ -141,7 +141,9 @@ public class Skill : IActionData
                 }
                 else
                 {
-                    target?.Entity.AddToHealth(this, elementEffect, Source);
+
+                    AttackInformation info = new AttackInformation(this, elementEffect, Source);
+                    target?.Entity.AddToHealth(info);
                 }
             }
 

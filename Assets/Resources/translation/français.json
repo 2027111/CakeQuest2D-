@@ -6,7 +6,7 @@
         },
         {
             "dataId": "Indications",
-            "jsonData": "{\"attack\":\"Attaquez directement vos ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"done\":\"Complété!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser un ennemi\",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\"}"
+            "jsonData": "{\"attack\":\"Attaquez directement vos ennemis!\",\"observe\":\"Observez vos  Ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"done\":\"Complété!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser un ennemi\",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\"}"
         },
         {
             "dataId": "Locations",
@@ -14,7 +14,7 @@
         },
         {
             "dataId": "ControlScheme",
-            "jsonData": "{\"BattleState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner | <sprite name=cancel> Retourner\",\"ChoosingActionState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une Action\",\"ChoosingItemState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner un Objet | <sprite name=cancel> Retourner\",\"ChoosingSkillState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une compétence | <sprite name=cancel> Retourner\",\"ChoosingTargetState\":\"<sprite name=move> Changer de cible | <sprite name=select> Confirmer la/les cible(s) | <sprite name=cancel> Retourner\",\"CutsceneState\":\"<sprite name=select> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"<sprite name=cancel> Bloquer\",\"SwapingState\":\"\"}"
+            "jsonData": "{\"BattleState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner | <sprite name=cancel> Retourner\",\"ChoosingActionState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une Action\",\"AnalyzingTargetState\":\"<sprite name=move> Changer de cible à observer\",\"ChoosingItemState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner un Objet | <sprite name=cancel> Retourner\",\"ChoosingSkillState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une compétence | <sprite name=cancel> Retourner\",\"ChoosingTargetState\":\"<sprite name=move> Changer de cible | <sprite name=select> Confirmer la/les cible(s) | <sprite name=cancel> Retourner\",\"CutsceneState\":\"<sprite name=select> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"<sprite name=cancel> Bloquer\",\"SwapingState\":\"\"}"
         },
         {
             "dataId": "Misc_Chest_Locked",
@@ -242,7 +242,7 @@
         },
         {
             "dataId": "Jimi",
-            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":\"Portraits/Jimi/po_jimi_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
+            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":\"Portraits/Jimi/po_jimi_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Ingrédients\"}"
         },
         {
             "dataId": "Yankee",

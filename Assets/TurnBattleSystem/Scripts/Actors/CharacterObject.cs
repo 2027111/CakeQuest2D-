@@ -11,7 +11,7 @@ public class CharacterObject : SavableObject
 {
 
 
-   [JsonIgnore] public CharacterData characterData;
+    [JsonIgnore] public CharacterData characterData;
     [Space(20)]
     public int Health;
     public int MaxHealth;
@@ -19,9 +19,9 @@ public class CharacterObject : SavableObject
     public int Mana;
     public int MaxMana;
     [Space(20)]
-    public int Speed;
-    public int AttackDamage;
-    public float parryWindow = .15f;
+    [JsonIgnore] public int Speed;
+    [JsonIgnore] public int AttackDamage;
+    [JsonIgnore] public float parryWindow = .15f;
 
     [Space(20)]
     public bool isDead;
@@ -32,7 +32,6 @@ public class CharacterObject : SavableObject
     public Element AttackElement;
     [Space(20)]
 
-    [JsonIgnore] public List<ElementalAttribute> elementalAttributes;
     [JsonIgnore] public List<GameObject> HitEffect;
     [JsonIgnore] public List<AudioClip> SoundEffect;
 
@@ -42,9 +41,12 @@ public class CharacterObject : SavableObject
     [Space(20)]
     [JsonIgnore] public AnimatorOverrideController animationController;
 
-    public BoolValue InParty;
+    [JsonIgnore] public BoolValue InParty;
 
 
+
+    [Space(20)]
+    [JsonIgnore] public int recipeLength = 3;
 
     
 
@@ -57,9 +59,6 @@ public class CharacterObject : SavableObject
         MaxHealth = (tempCopy as CharacterObject).MaxHealth;
         Mana = (tempCopy as CharacterObject).Mana;
         MaxMana = (tempCopy as CharacterObject).MaxMana;
-        Speed = (tempCopy as CharacterObject).Speed;
-        AttackDamage = (tempCopy as CharacterObject).AttackDamage;
-        parryWindow = (tempCopy as CharacterObject).parryWindow;
         isDead = (tempCopy as CharacterObject).isDead;
         base.ApplyData(tempCopy);
     }
@@ -112,13 +111,6 @@ public class CharacterObject : SavableObject
 
     public ElementEffect GetElementEffect(Element element)
     {
-        foreach (ElementalAttribute ea in elementalAttributes)
-        {
-            if (ea.element == element)
-            {
-                return ea.elementEffect;
-            }
-        }
         return ElementEffect.Neutral;
     }
 

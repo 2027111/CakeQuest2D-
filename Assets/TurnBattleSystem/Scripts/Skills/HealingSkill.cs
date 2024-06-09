@@ -17,7 +17,8 @@ public class HealingSkill : Skill
     {
         foreach (BattleCharacter target in Target)
         {
-            target?.Entity.AddToHealth(this, ElementEffect.Neutral, Source);
+            AttackInformation info = new AttackInformation(this, ElementEffect.Neutral, Source);
+            target?.Entity.AddToHealth(info);
         }
     }
 }

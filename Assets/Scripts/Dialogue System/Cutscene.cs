@@ -10,10 +10,10 @@ using UnityEngine.Timeline;
 public class Cutscene : BoolValue
 {
     public bool repeats = false;
-    [JsonIgnore] public Dialogue[] dialogue;
     public int dialogueIndex = 0;
+    [JsonIgnore] public Dialogue[] dialogue;
     [JsonIgnore] public RoomInfo StartRoom;
-    public TimelineAsset CutsceneToPlay;
+    [JsonIgnore] public TimelineAsset CutsceneToPlay;
     public override void ApplyData(SavableObject tempCopy)
     {
         repeats = (tempCopy as Cutscene).repeats;

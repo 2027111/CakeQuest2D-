@@ -5,6 +5,7 @@ using UnityEngine;
 
 public enum Element
 {
+    None,
     Slash,
     Bash,
     Sweet,
@@ -19,7 +20,11 @@ public enum ElementEffect
     Neutral,
     Weak,
     Resistant,
-    NonAffected
+    NonAffected,
+    RecipeBoosted,
+    RecipeFailed,
+    RecipeCompleted,
+    Blocked,
 }
 
 
@@ -27,5 +32,26 @@ public enum ElementEffect
 public class ElementalAttribute
 {
     public Element element;
-    public ElementEffect elementEffect;
+    public bool found = false;
+
+    public ElementalAttribute()
+    {
+        element = GetRandomElement();
+    }
+
+    private Element GetRandomElement()
+    {
+        List<Element> validElements = new List<Element>();
+
+        foreach (Element element in System.Enum.GetValues(typeof(Element)))
+        {
+            if (element != Element.None && element != Element.Support)
+            {
+                validElements.Add(element);
+            }
+        }
+
+        Element randomElement = validElements[UnityEngine.Random.Range(0, validElements.Count)];
+        return randomElement;
+    }
 }
