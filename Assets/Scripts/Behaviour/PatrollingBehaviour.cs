@@ -123,7 +123,6 @@ public override void OnExit()
                 }
             }
         }
-        Debug.DrawLine(position, GameObject.Find("Player").transform.position);
 
         return false;
     }

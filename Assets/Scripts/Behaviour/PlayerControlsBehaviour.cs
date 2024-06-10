@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerControlsBehaviour : CharacterBehaviour
 {
 
-
-    Controller playerController;
     
     public PlayerControlsBehaviour() : base()
     {
@@ -17,8 +15,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        playerController = player.GetComponent<Controller>();
-        if(playerController == null)
+        if(character.inputManager == null)
         {
             player.ChangeState(new PatrollingBehaviour());
         }
@@ -48,7 +45,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
 
     public override void OnExit()
     {
-        if (playerController != null)
+        if (character.inputManager != null)
         {
             character.inputManager?.CanInteract(false);
             character.CanMove(false);

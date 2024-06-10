@@ -24,11 +24,13 @@ public class TreasureChest : NewDialogueStarterObject
     public Dialogue LockedDialogue;
     public Dialogue SuccessDialogue;
     public BoolValue storedOpen;
-    Animator anim;
+
+
+    public UnityEvent OnIsOpen;
+
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
         isOpen = storedOpen.RuntimeValue;
         CheckOpen(true);
         
@@ -40,11 +42,8 @@ public class TreasureChest : NewDialogueStarterObject
     {
         if (isOpen || content == null)
         {
-            if (anim)
-            {
-                anim.SetBool("Opened", isOpen);
-                anim.SetTrigger((isOpen ? "Open" : "Close"));
-            }
+
+            OnIsOpen?.Invoke();
             Interactable inter = GetComponent<Interactable>();
             if (inter && OnlyOnce) 
             {
@@ -126,11 +125,6 @@ public class TreasureChest : NewDialogueStarterObject
         isOpen = true;
         storedOpen.RuntimeValue = true;
         Character.Player.AddToInventory(content, amount);
-        if (anim)
-        {
-
-            anim.SetTrigger("Open");
-        }
         CheckOpen();
         Dialogue newDialogue = new Dialogue(dialogue);
         newDialogue.SetSource(this.gameObject);

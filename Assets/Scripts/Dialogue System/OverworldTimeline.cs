@@ -7,11 +7,9 @@ using UnityEngine.Playables;
 public class OverworldTimeline : Timeline
 {
 
-    public Character player;
 
     private new void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Character>();
         
         base.Start();
     }
@@ -25,7 +23,7 @@ public class OverworldTimeline : Timeline
         if (storagePlay.StartRoom != null)
         {
 
-            player.GetComponent<PlayerInfoStorage>().SetNewRoom(storagePlay.StartRoom);
+            Character.Player.GetComponent<PlayerInfoStorage>().SetNewRoom(storagePlay.StartRoom);
         }
     }
 
@@ -33,7 +31,7 @@ public class OverworldTimeline : Timeline
     {
         Dialogue dialogue = new Dialogue(storagePlay.GetLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
-        UICanvas.StartDialogue(dialogue, player.gameObject, null);
+        UICanvas.StartDialogue(dialogue, Character.Player.gameObject, null);
     }
 
 
@@ -41,7 +39,7 @@ public class OverworldTimeline : Timeline
     public override void CutsceneOver()
     {
         base.CutsceneOver();
-        player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
+        Character.Player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
         Debug.Log(OnCutsceneOver.GetPersistentEventCount());
         OnCutsceneOver?.Invoke();
     }

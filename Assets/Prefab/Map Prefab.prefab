@@ -24140,7 +24140,7 @@ GameObject:
   - component: {fileID: 2597098801031128374}
   - component: {fileID: 2597098801031128522}
   - component: {fileID: 2597098801031128373}
-  m_Layer: 15
+  m_Layer: 7
   m_Name: Collision
   m_TagString: Untagged
   m_Icon: {fileID: 0}

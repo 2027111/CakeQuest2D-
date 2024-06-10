@@ -8,6 +8,9 @@ using UnityEngine.Playables;
 public class Timeline : MonoBehaviour
 {
 
+    public static bool IsInCutscene = false;
+
+
     public ConditionObject[] condition;
     public Cutscene storagePlay;
     public bool started = false;
@@ -32,6 +35,7 @@ public class Timeline : MonoBehaviour
             SetupRequirements();
 
             playableDirector.Play();
+            IsInCutscene = true;
         }
 
     }
@@ -107,6 +111,8 @@ public class Timeline : MonoBehaviour
                 storagePlay.RuntimeValue = true;
             }
         }
+
+        IsInCutscene = false;
     }
     public void StopReplay()
     {

@@ -63,6 +63,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] GameObject choiceBox;
     [SerializeField] GameObject choicePrefab;
     [SerializeField] TMP_Text nameText;
+    [SerializeField] GameObject portraitContainer;
     [SerializeField] Image portraitImage;
     [SerializeField] [Range(0.1f, 1)] float apparitionTime = .4f;
     [SerializeField] [Range(0.1f, 1)] float textSpeed = 0.5f;
@@ -208,8 +209,7 @@ public class DialogueBox : MonoBehaviour
 
 
 
-
-        portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
+        portraitContainer.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
 
         if (!string.IsNullOrEmpty(portraitPath))
         {
@@ -223,7 +223,7 @@ public class DialogueBox : MonoBehaviour
                 Debug.LogWarning("Failed to load sprite at path: " + fullPath);
 
                 // Optionally, list all loaded sprites for debugging
-                portraitImage.gameObject.SetActive(false);
+                portraitContainer.gameObject.SetActive(false);
 
             }
             else
@@ -279,7 +279,7 @@ public class DialogueBox : MonoBehaviour
 
 
 
-            portraitImage.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
+            portraitContainer.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
 
             if (!string.IsNullOrEmpty(portraitPath))
             {
@@ -293,7 +293,7 @@ public class DialogueBox : MonoBehaviour
                     Debug.LogError("Failed to load sprite at path: " + fullPath);
 
                     // Optionally, list all loaded sprites for debugging
-                    portraitImage.gameObject.SetActive(false);
+                    portraitContainer.gameObject.SetActive(false);
 
                 }
                 else
@@ -583,6 +583,9 @@ public class DialogueBox : MonoBehaviour
 
     private void DialogueText(Dialogue dialogue, int index)
     {
+        if(index < dialogue.dialogueLineIds.Length)
+        {
+
         string lineId = dialogue.dialogueLineIds[index];
         string line = LanguageData.GetDataById(dialogue.dialogueLineIds[index]).GetValueByKey("line");
         string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
@@ -613,6 +616,7 @@ public class DialogueBox : MonoBehaviour
             voiceClipSource.Stop();
             SetupLine(lineInfo);
             setTextCoroutine = StartCoroutine(GraduallySetText(line));
+            }
         }
     }
 

@@ -62,6 +62,8 @@ public class BattleTimeline : Timeline
         {
             storagePlay.dialogueIndex = 0;
             BattleManager.Singleton.StartingDialogue();
+
+            IsInCutscene = true;
         }
     }
 

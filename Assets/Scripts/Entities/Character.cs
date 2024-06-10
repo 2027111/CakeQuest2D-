@@ -25,6 +25,10 @@ public class Character : MonoBehaviour
     {
         playerMovement = GetComponent<Movement>();
         inputManager = GetComponent<Controller>();
+
+
+
+        ToggleNothingState();
         if (inputManager)
         {
             Player = this;
@@ -33,7 +37,6 @@ public class Character : MonoBehaviour
 
 
     }
-
 
 
     public void ActivateControls(bool on = true)
@@ -53,10 +56,7 @@ public class Character : MonoBehaviour
             inputManager.OnReturnReleased = null;
             inputManager.OnPausedPressed = null;
         }
-        //CanMove(true);
     }
-
-
 
     public void Move(Vector2 input)
     {
@@ -74,34 +74,26 @@ public class Character : MonoBehaviour
             inputManager.OnMovementHeld -= Move;
         }
     }
-    void Start()
-    {
-        ToggleNothingState();
-    }
 
     public static void ActivatePlayer()
     {
         Player.TogglePlayableState();
     }
 
-
     public static void DeactivatePlayer()
     {
         Player.ToggleNothingState();
     }
+
     public bool CanInteraction()
     {
         return canGetInteract;
     }
 
-
     public void SetInteraction(bool interaction)
     {
         canGetInteract = interaction;
     }
-
-
-
  
     public void AddToInventory(InventoryItem content, int amount = 1)
     {
@@ -116,8 +108,6 @@ public class Character : MonoBehaviour
 
         return inventory.HasObject(content, amount);
     }
-
-
     public int AmountObject(InventoryItem content)
     {
         return inventory.AmountObject(content);
@@ -140,8 +130,6 @@ public class Character : MonoBehaviour
         playerMovement.LookAt(direction);
     }
 
-
-
     public void LookAt(GameObject target)
     {
 
@@ -163,7 +151,6 @@ public class Character : MonoBehaviour
         // Now you can use the lookDirection vector to orient the object
         LookToward(Vector2.down.normalized);
     }
-
     public void LookRight()
     {
 
@@ -171,7 +158,6 @@ public class Character : MonoBehaviour
         // Now you can use the lookDirection vector to orient the object
         LookToward(Vector2.right.normalized);
     }
-
     public void LookLeft()
     {
 
@@ -214,25 +200,19 @@ public class Character : MonoBehaviour
         newBehaviour.OnEnter(this);
     }
 
-
     public CharacterBehaviour GetCurrentBehaviour()
     {
         return playerBehaviour;
     }
-
-
- 
 
     private void FixedUpdate()
     {
         playerBehaviour.Handle();
     }
 
-
-
     public void TogglePlayableState()
     {
-        if (inputManager)
+        if (Player == this && !Timeline.IsInCutscene)
         {
             ChangeState(new PlayerControlsBehaviour());
 
@@ -244,6 +224,7 @@ public class Character : MonoBehaviour
 
         }
     }
+
     public void ToggleCutsceneState()
     {
         ChangeState(new NothingBehaviour());
@@ -253,9 +234,10 @@ public class Character : MonoBehaviour
     {
         ChangeState(previousBehaviour);
     }
+
     public void ToggleNothingState()
     {
-            ChangeState(new NothingBehaviour());
+        ChangeState(new NothingBehaviour());
     }
 
 }

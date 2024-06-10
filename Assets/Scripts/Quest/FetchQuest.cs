@@ -10,7 +10,9 @@ public class FetchQuest : QuestObject
 
     public List<InventoryItem> requiredItems = new List<InventoryItem>();
     public CharacterInventory characterInventory;
-    
+
+
+
     public override void CheckConditions()
     {
         if (characterInventory.CheckInventoryFor(requiredItems))
@@ -58,4 +60,15 @@ public class FetchQuest : QuestObject
 
     }
 
+    public override void RemoveCheckEvent()
+    {
+        characterInventory.InventoryChangeEvent.RemoveListener(QuestManager.CheckToggledQuests);
+        base.RemoveCheckEvent();
+    }
+
+    public override void AddCheckEvent()
+    {
+        characterInventory.InventoryChangeEvent.AddListener(QuestManager.CheckToggledQuests);
+        base.AddCheckEvent();
+    }
 }

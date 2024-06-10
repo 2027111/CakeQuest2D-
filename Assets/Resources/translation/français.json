@@ -54,35 +54,35 @@
         },
         {
             "dataId": "Misc_Caught_Guard_Jimi_000",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Merde! Il m'a attrapé.... Je pourrai techniquement me le faire... Mais....\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkername\":\"Jimi\",\"line\":\"Merde! Il m'a attrapé.... Je pourrai techniquement me le faire... Mais....\"}"
         },
         {
             "dataId": "Intro_Jimi_000",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Putain.. j'ai méga faimmmmm!\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkername\":\"???\",\"line\":\"Bordel.. j'ai méga faimmmmm!\"}"
         },
         {
             "dataId": "Intro_Jimi_001",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"J'ai besoin de manger la vérité... J'pense il reste du gateau non?\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"???\",\"line\":\"J'ai besoin de manger la vérité... J'pense il reste du gateau non?\"}"
         },
         {
             "dataId": "Intro_Jimi_002",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_angry_1\",\"talkername\":\"???\",\"line\":\"Merde... J'vais devoir en faire moi même.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_6\",\"talkername\":\"???\",\"line\":\"Merde... J'vais devoir en faire moi même.\"}"
         },
         {
             "dataId": "Intro_Jimi_003",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkername\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\"}"
         },
         {
             "dataId": "Intro_Jimi_0031",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
         },
         {
             "dataId": "Intro_Jimi_004",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
         },
         {
             "dataId": "Intro_Jimi_0045",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"J'ai tout ce font j'ai besoin?\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"???\",\"line\":\"J'ai tout ce font j'ai besoin?\"}"
         },
         {
             "dataId": "Intro_Jimi_0046",
@@ -90,31 +90,31 @@
         },
         {
             "dataId": "Intro_Jimi_0047",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Non.. Il me manque quelque chose...\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"???\",\"line\":\"Non.. Il me manque quelque chose...\"}"
         },
         {
             "dataId": "Intro_Jimi_005",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Hmm... 300°F pour 10 minutes...\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"???\",\"line\":\"Hmm... 300°F pour 10 minutes...\"}"
         },
         {
             "dataId": "Intro_Jimi_006",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Papa me dit toujours de respecter la recette, mais...                         \n Je pourrais le cuir à 30000°F pendant 1 seconde pour avoir mon gateau le plus tôt possible.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"Papa me dit toujours de respecter la recette, mais...\n Je pourrais le cuir à 30000°F pendant 1 seconde pour avoir mon gateau le plus tôt possible.\"}"
         },
         {
             "dataId": "Intro_Jimi_007",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Ow?! Qu'est-ce que..?!\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkername\":\"???\",\"line\":\"Ow?! Qu'est-ce que..?!\"}"
         },
         {
             "dataId": "Intro_Jimi_008",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_4\",\"talkername\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
         },
         {
             "dataId": "Intro_Jimi_SGT",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"Il est 3h du mat, rien n'est ouvert à cette heure-ci. De plus, je devrais avoir les ingrédients ici de toute manière.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkername\":\"???\",\"line\":\"Il est 3h du mat, rien n'est ouvert à cette heure-ci. De plus, je devrais avoir les ingrédients ici de toute manière.\"}"
         },
         {
             "dataId": "Misc_Jimi_000",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
         },
         {
             "dataId": "Misc_Jimi_001",
@@ -230,7 +230,7 @@
         },
         {
             "dataId": "Tuto_Jimi_008",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkername\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
         },
         {
             "dataId": "EyrCutt_pc_5",

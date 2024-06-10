@@ -48,7 +48,6 @@ public class UICanvas : MonoBehaviour
     [SerializeField] QuestList questList;
     [SerializeField] PartyList partyList;
     [SerializeField] DialogueBox dialogueBox;
-    [SerializeField] MoviePlayer moviePlayer;
     [SerializeField] VideoPlayer videoPlayer;
 
     void Awake()
@@ -65,15 +64,27 @@ public class UICanvas : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        
+    }
 
 
+    public static void SetVideoForPlayer(VideoClip clip)
+    {
+            Singleton?.SetVideoClip(clip);
+    }
 
-
+    public void SetVideoClip(VideoClip clip)
+    {
+        videoPlayer.clip = clip;
+    }
 
     public static void PlayVideoRec()
     {
         Singleton.PlayVideoRequest();
     }
+
     public void PlayVideoRequest()
     {
 
@@ -91,7 +102,6 @@ public class UICanvas : MonoBehaviour
 
 
     }
-
 
     public IEnumerator StartAnimatedCutscene()
     {
@@ -113,15 +123,7 @@ public class UICanvas : MonoBehaviour
         yield return FadeScreen.Singleton.StartFadeAnimation(false);
         yield return new WaitForSeconds(.1f); //Let the video start yaknow;
 
-
-
-
-
-
-
     }
-
-
 
     public IEnumerator EndAnimatedCutscene()
     {
@@ -148,6 +150,7 @@ public class UICanvas : MonoBehaviour
         videoPlayer.Pause();
         StartCoroutine(EndAnimatedCutscene());
     }
+
     public void PlayVideo()
     {
         videoPlayer.targetCamera = Camera.main;
@@ -174,9 +177,6 @@ public class UICanvas : MonoBehaviour
         }
 
     }
-
-
-
     public static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
         if (!FadeScreen.fading)
@@ -199,8 +199,6 @@ public class UICanvas : MonoBehaviour
 
         Singleton?.dialogueBox.CancelDialogue();
     }
-
-
     public static void TurnBordersOn(bool on)
     {
         Singleton?.border.Appear(on);

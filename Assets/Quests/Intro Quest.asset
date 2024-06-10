@@ -16,7 +16,7 @@ MonoBehaviour:
   RuntimeValue: 0
   questId: intro_fetch_ingredients
   questName: Find the cake ingredients
-  QuestToggled: 0
+  QuestToggled: 1
   requiredItems:
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}

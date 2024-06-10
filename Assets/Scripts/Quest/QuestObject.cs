@@ -65,5 +65,25 @@ public class QuestObject : BoolValue
     public void ToggleQuest(bool on = true)
     {
         QuestToggled = on;
+        if (on)
+        {
+            AddCheckEvent();
+        }
+        else
+        {
+            RemoveCheckEvent();
+        }
     }
+
+    public virtual void AddCheckEvent()
+    {
+        
+    }
+
+
+    public virtual void RemoveCheckEvent()
+    {
+
+    }
+
 }

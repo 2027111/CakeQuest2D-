@@ -570,10 +570,10 @@ RectTransform:
   m_Father: {fileID: 1553117938962533108}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.8, y: -14.6}
-  m_SizeDelta: {x: 94.0537, y: 120.0008}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1553117938688061614
 CanvasRenderer:
@@ -653,7 +653,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.999985, y: -35.784}
+  m_AnchoredPosition: {x: 15.900009, y: -40.183994}
   m_SizeDelta: {x: 68.4992, y: 17.7114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1553117938786052393
@@ -710,6 +710,8 @@ MonoBehaviour:
   underfillBar: {fileID: 1553117938238835824}
   bartext: {fileID: 1553117938101287899}
   barNameText: {fileID: 0}
+  delayTime: 1
+  catchUpTime: 1
 --- !u!1 &1553117938898336589
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,7 +978,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015258789, y: -14}
+  m_AnchoredPosition: {x: 33.9, y: -18.4}
   m_SizeDelta: {x: 100, y: 25.8564}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1553117939049735480
@@ -1033,6 +1035,8 @@ MonoBehaviour:
   underfillBar: {fileID: 1553117938654115851}
   bartext: {fileID: 1553117938898336591}
   barNameText: {fileID: 0}
+  delayTime: 1
+  catchUpTime: 1
 --- !u!1 &1553117939232496869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1375,11 +1379,11 @@ RectTransform:
   m_Father: {fileID: 1553117938141722518}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30.1, y: 40.8}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 32, y: 32}
   m_SizeDelta: {x: 64, y: 64}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &8762732181616669833
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1434,6 +1438,8 @@ MonoBehaviour:
   underfillBar: {fileID: 3312833052802110548}
   bartext: {fileID: 7404334757810926684}
   barNameText: {fileID: 0}
+  delayTime: 1
+  catchUpTime: 1
 --- !u!1 &5841423212533758780
 GameObject:
   m_ObjectHideFlags: 0

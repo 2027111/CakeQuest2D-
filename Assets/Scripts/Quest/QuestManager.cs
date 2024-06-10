@@ -38,6 +38,7 @@ public class QuestManager : MonoBehaviour
     {
         Singleton = this;
         DontDestroyOnLoad(this.gameObject);
+        CheckQuests();
         UICanvas.UpdateQuestList();
     }
 
@@ -58,15 +59,31 @@ public class QuestManager : MonoBehaviour
         CheckQuests();
     }
 
+    public void RemoveQuest(QuestObject questObject)
+    {
+        questObject.ToggleQuest(false);
+        UICanvas.UpdateQuestList();
+        CheckQuests();
+    }
+    public static void CheckToggledQuests()
+    {
+        Singleton?.CheckQuests();
+    }
     public void CheckQuests()
     {
         foreach(QuestObject questObject in currentQuests)
         {
+            if (questObject.QuestToggled)
+            {
+
             questObject.CheckConditions();
 
             if (questObject.RuntimeValue)
             {
+
+                RemoveQuest(questObject);
                 StartCoroutine(LateUpdateQuest());
+            }
             }
         }
         OnQuestCheck?.Invoke();
@@ -76,6 +93,5 @@ public class QuestManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         UICanvas.UpdateQuestList();
-        CheckQuests();
     }
 }

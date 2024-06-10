@@ -66,7 +66,6 @@ public class FadeScreen : MonoBehaviour
     }
     private void Start()
     {
-        name = "FadeScreen ID" + UnityEngine.Random.Range(0, 203912039);
         if (startFadeon)
         {
 
@@ -250,5 +249,13 @@ public class FadeScreen : MonoBehaviour
         {
             Singleton?.OnFadingEnd.AddListener(actionU);
         }
+    }
+
+    public static void RemoveOnEndFadeEvent(Action action)
+    {
+        UnityAction actionU = new UnityAction(action);
+        Debug.Log(action.Method.Name);
+        Singleton?.OnFadingEnd.RemoveListener(actionU);
+
     }
 }

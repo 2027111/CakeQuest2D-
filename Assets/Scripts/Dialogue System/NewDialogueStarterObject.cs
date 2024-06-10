@@ -224,7 +224,6 @@ public class NewDialogueStarterObject : MonoBehaviour
 {
     public Dialogue dialogue;
     public bool started = false;
-    const string fieldNamePattern = "{.*?}";
 
 
     public UnityEvent OnDialogueOverEvent;

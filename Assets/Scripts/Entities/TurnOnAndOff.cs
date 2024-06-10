@@ -20,8 +20,8 @@ public class TurnOnAndOff : MonoBehaviour
     private void CheckOn()
     {
 
-        anim.SetBool("Opened", TurnedOn);
-        anim.SetTrigger((TurnedOn?"Open":"Close"));
+        anim?.SetBool("Opened", TurnedOn);
+        anim?.SetTrigger((TurnedOn?"Open":"Close"));
         if (TurnedOn)
         {
             OnTurnedOn?.Invoke();
@@ -30,6 +30,7 @@ public class TurnOnAndOff : MonoBehaviour
 
     public void Turn()
     {
+        Debug.Log("Turned");
         if (condition)
         {
             if (!condition.RuntimeValue)

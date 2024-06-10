@@ -71,18 +71,7 @@ public class Command
 
     public IEnumerator GoToOriginalPosition()
     {
-        Vector3 currentPosition = Source.transform.position;
-        float t = 0;
-        Source.Animator.Move(true);
-        while (t < .5f)
-        {
-
-            Source.transform.position = Vector3.Lerp(currentPosition, BattleManager.Singleton.GetPosition(Source), t / .5f);
-            t += Time.deltaTime;
-            yield return null;
-        }
-        Source.Animator.Move(false);
-
+        yield return GoToOriginalPosition(Source);
     }
     public IEnumerator GoToOriginalPosition(BattleCharacter bc)
     {
@@ -98,21 +87,28 @@ public class Command
         }
         bc.Animator.Move(false);
     }
-
-    public IEnumerator GoToEnemy()
+    public IEnumerator GoToEnemy(BattleCharacter bc)
     {
-        Vector3 pos = Source.transform.position;
+        Vector3 pos = bc.transform.position;
         float t = 0;
 
         Source.Animator.Move(true);
 
-        Vector3 diff = (Target[0].transform.position - Source.transform.position).normalized;
+        Vector3 diff = (Target[0].transform.position - bc.transform.position).normalized;
+        diff.y /=4f;
+        Vector3 targetPos = Target[0].transform.position;
+        targetPos.y = bc.transform.position.y+diff.y;
         while (t < .5f)
         {
-            Source.transform.position = Vector3.Lerp(pos, Target[0].transform.position - diff * 1.5f, t / .5f);
+            bc.transform.position = Vector3.Lerp(pos, targetPos - diff * 1.5f, t / .5f);
             t += Time.deltaTime;
             yield return null;
         }
-        Source.Animator.Move(false);
+        bc.Animator.Move(false);
     }
+    public IEnumerator GoToEnemy()
+    {
+        yield return GoToEnemy(Source);
+    }
+
 }
