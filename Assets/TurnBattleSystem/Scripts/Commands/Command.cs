@@ -95,9 +95,7 @@ public class Command
         Source.Animator.Move(true);
 
         Vector3 diff = (Target[0].transform.position - bc.transform.position).normalized;
-        diff.y /=4f;
         Vector3 targetPos = Target[0].transform.position;
-        targetPos.y = bc.transform.position.y+diff.y;
         while (t < .5f)
         {
             bc.transform.position = Vector3.Lerp(pos, targetPos - diff * 1.5f, t / .5f);

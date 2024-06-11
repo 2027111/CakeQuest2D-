@@ -5,11 +5,13 @@ using UnityEngine;
 public class ChoosingActionState : BattleState
 {
 
-    GameObject choiceMenu;
+    public ChoosingActionState()
+    {
+        MenuName = "BattleMenu";
+    }
 
     public override void OnEnter(BattleManager _battleManager)
     {
-
         base.OnEnter(_battleManager);
         battleManager.GetActor().currentCommand = null;
         battleManager.GetActor().Animator.Thinking(true);
@@ -60,10 +62,9 @@ public class ChoosingActionState : BattleState
     }
 
 
-
-    public void InstantiateMenu(BattleCharacter character)
+    public override void InstantiateMenu(BattleCharacter character)
     {
-        GameObject choiceMenuPrefab = Resources.Load<GameObject>("BattleMenu");
+        GameObject choiceMenuPrefab = Resources.Load<GameObject>($"{BattleMenuPath}{MenuName}");
         if (choiceMenuPrefab != null)
         {
             choiceMenu = GameObject.Instantiate(choiceMenuPrefab, character.transform.position + Vector3.up, Quaternion.identity);
@@ -72,5 +73,7 @@ public class ChoosingActionState : BattleState
         {
             Debug.LogError("ChoiceMenu prefab not found in Resources.");
         }
+
+        OnMenuInstantiated();
     }
 }

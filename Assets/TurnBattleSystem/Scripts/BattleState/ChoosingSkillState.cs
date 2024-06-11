@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class ChoosingSkillState : BattleState
 {
-
-    public GameObject choiceMenu;
+    public ChoosingSkillState()
+    {
+        MenuName = "Skillmenu";
+    }
 
     public override void OnEnter(BattleManager _battleManager)
     {
-
         base.OnEnter(_battleManager);
+
+
+
         battleManager.GetActor().currentCommand = null;
         battleManager.SetCursor(battleManager.GetActor());
         InstantiateMenu(battleManager.GetActor());
@@ -62,20 +66,17 @@ public class ChoosingSkillState : BattleState
 
 
 
-    public virtual void InstantiateMenu(BattleCharacter character)
+    public override void InstantiateMenu(BattleCharacter character)
     {
-        GameObject choiceMenuPrefab = Resources.Load<GameObject>("Skillmenu");
-        if (choiceMenuPrefab != null)
-        {
-            choiceMenu = GameObject.Instantiate(choiceMenuPrefab,GameObject.Find("HUD Canvas").transform);
-            
-        }
-        else
-        {
-            Debug.LogError("ChoiceMenu prefab not found in Resources.");
-        }
 
+        base.InstantiateMenu(character);
+    }
 
-        choiceMenu.GetComponent<SkillMenu>().AddButtons(battleManager.GetActor().GetAttacks());
+    public override void OnMenuInstantiated()
+    {
+        if (choiceMenu)
+        {
+            choiceMenu.GetComponent<SkillMenu>().AddButtons(battleManager.GetActor().GetAttacks());
+        }
     }
 }

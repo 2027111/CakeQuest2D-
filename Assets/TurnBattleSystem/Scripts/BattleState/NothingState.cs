@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NothingState : BattleState
 {
-
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);

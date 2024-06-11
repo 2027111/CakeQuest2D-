@@ -111,7 +111,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -132,7 +132,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -153,7 +153,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -174,7 +174,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -195,7 +195,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 16
+        y: 48
         width: 16
         height: 16
       alignment: 0
@@ -216,7 +216,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -237,7 +237,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -258,7 +258,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -279,7 +279,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 32
         width: 16
         height: 16
       alignment: 0
@@ -291,6 +291,90 @@ TextureImporter:
       bones: []
       spriteID: c501b1402d67c6740847bce9a5df295d
       internalID: -242455820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: collisions_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f028fe0963cf37248be7d321676af648
+      internalID: 2042343875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: collisions_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7138c04d6a209594ab368b7296d42d10
+      internalID: 368180126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: collisions_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355a3d4ad63ebc04385bcb80fd21fc5f
+      internalID: -1251739902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: collisions_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b603d1b3d1291bc4b8b2e2afea5f8b84
+      internalID: 397714915
       vertices: []
       indices: 
       edges: []
@@ -309,11 +393,15 @@ TextureImporter:
       collisions_2: 350489490
       collisions_3: -1519002734
       collisions_7: 701298713
+      collisions_9: 2042343875
+      collisions_12: 397714915
       collisions_5: -1261568067
       collisions_1: 1573294138
       collisions_0: 683664314
       collisions_8: -242455820
       collisions_6: -1916320195
+      collisions_10: 368180126
+      collisions_11: -1251739902
       collisions_4: -1256087627
   spritePackingTag: 
   pSDRemoveMatte: 0

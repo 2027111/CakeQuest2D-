@@ -49,3 +49,4 @@ MonoBehaviour:
       m_Calls: []
   currentQuests:
   - {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+  - {fileID: 11400000, guid: bae4e404899d48d49b2c8180f3a1ccdb, type: 2}

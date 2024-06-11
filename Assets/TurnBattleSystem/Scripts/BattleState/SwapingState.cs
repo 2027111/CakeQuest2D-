@@ -5,12 +5,17 @@ using UnityEngine;
 public class SwapingState : BattleState
 {
 
-    GameObject choiceMenu;
+    public SwapingState()
+    {
+
+        MenuName = "SwapMenu";
+    }
+
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
         battleManager.GetActor().currentCommand = null;
-        InstantiateMenu();
+        InstantiateMenu(battleManager.GetActor());
     }
 
 
@@ -51,21 +56,15 @@ public class SwapingState : BattleState
 
     }
 
-    public void InstantiateMenu()
+    public override void InstantiateMenu(BattleCharacter character)
     {
-        GameObject choiceMenuPrefab = Resources.Load<GameObject>("SwapMenu");
-        if (choiceMenuPrefab != null)
-        {
-            choiceMenu = GameObject.Instantiate(choiceMenuPrefab, GameObject.Find("HUD Canvas").transform);
-
-        }
-        else
-        {
-            Debug.LogError("SwapMenu prefab not found in Resources.");
-        }
+        base.InstantiateMenu(character);
+        choiceMenu.GetComponent<SwappingMenu>().AddButtons(battleManager.GetPartyOf(character));
+    }
 
 
-        choiceMenu.GetComponent<SwappingMenu>().AddButtons(battleManager.GetPartyOf(battleManager.GetActor()));
+    public override void OnMenuInstantiated()
+    {
     }
     public override void OnExit()
     {

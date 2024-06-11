@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 6489612216288041236, guid: de00b3bac50c2e4468b0439605170bbc, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  fixedAmount: 0
   skillType: 1
   skillId: salad_rain
   Description: Attack qui fait mal :)
@@ -30,6 +31,6 @@ MonoBehaviour:
   baseAccuracy: 100
   manaCost: 2
   spawnObjects:
-  - Spell
+  - {fileID: 6097895606965858334, guid: e1e26934e03751046b165fba606be3d8, type: 3}
   turnTilTriggered: 2
   turnTilActive: 2

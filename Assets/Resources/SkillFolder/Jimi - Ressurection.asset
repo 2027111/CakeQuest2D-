@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  fixedAmount: 0
   skillType: 1
   skillId: ressurection
   Description: Soigne
@@ -30,6 +31,6 @@ MonoBehaviour:
   baseAccuracy: 100
   manaCost: 5
   spawnObjects:
-  - Healing Magic
+  - {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
   turnTilTriggered: 0
   turnTilActive: 0

@@ -16,7 +16,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
   Health: 200
   MaxHealth: 200
-  Mana: 144
+  Mana: 200
   MaxMana: 200
   Speed: 0
   AttackDamage: 5

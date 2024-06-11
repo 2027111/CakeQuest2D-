@@ -182,6 +182,11 @@ public class Entity : MonoBehaviour
 
         }
 
+        if(attackInfo.effect == ElementEffect.RecipeCompleted)
+        {
+            Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
+        }
+
 
 
 

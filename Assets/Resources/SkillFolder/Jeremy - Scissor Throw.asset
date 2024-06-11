@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 8525990746615576120, guid: b85d21f3b8fed714bacf0c4fd50fa512, type: 3}
   SoundEffect:
   - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
+  fixedAmount: 0
   skillType: 2
   skillId: scissor_throw
   Description: Attack qui fait mal :)
@@ -30,6 +31,6 @@ MonoBehaviour:
   baseAccuracy: 100
   manaCost: 2
   spawnObjects:
-  - Projectile
+  - {fileID: 719228749414121262, guid: 203e9622336951049990d9dc9da2d712, type: 3}
   turnTilTriggered: 2
   turnTilActive: 2

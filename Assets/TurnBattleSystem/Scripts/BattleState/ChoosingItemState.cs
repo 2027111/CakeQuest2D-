@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class ChoosingItemState : ChoosingSkillState
 {
+    public ChoosingItemState()
+    {
+        MenuName = "ItemMenu";
+    }
+    public override void OnEnter(BattleManager _battleManager)
+    {
+        base.OnEnter(_battleManager);
+    }
 
-    
 
 
 
     public override void InstantiateMenu(BattleCharacter character)
     {
-        GameObject choiceMenuPrefab = Resources.Load<GameObject>("ItemMenu");
-        if (choiceMenuPrefab != null)
-        {
-            choiceMenu = GameObject.Instantiate(choiceMenuPrefab,GameObject.Find("HUD Canvas").transform);
-            
-        }
-        else
-        {
-            Debug.LogError("ChoiceMenu prefab not found in Resources.");
-        }
+        base.InstantiateMenu(character);
+    }
 
+
+    public override void OnMenuInstantiated()
+    {
         if (choiceMenu)
         {
             choiceMenu.GetComponent<ItemMenu>().AddButtons(battleManager.GetPlayerItems());

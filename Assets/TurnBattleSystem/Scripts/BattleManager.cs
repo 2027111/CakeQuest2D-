@@ -45,6 +45,10 @@ public class BattleManager : MonoBehaviour
 
 
 
+    public GameObject KOKUSEN;
+
+
+
 
     [SerializeField] GameObject currentBackground;
 

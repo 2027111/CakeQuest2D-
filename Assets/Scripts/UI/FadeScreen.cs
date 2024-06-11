@@ -209,7 +209,6 @@ public class FadeScreen : MonoBehaviour
         fading = true;
         while (time < fadeTime)
         {
-            Debug.Log("Fading");
             time += Time.deltaTime;
             group.alpha = Mathf.Lerp(start, target, time/ fadeTime);
             yield return null;

@@ -76,14 +76,18 @@ public class QuestManager : MonoBehaviour
             if (questObject.QuestToggled)
             {
 
-            questObject.CheckConditions();
 
-            if (questObject.RuntimeValue)
-            {
+                if (!questObject.RuntimeValue)
+                {
+                    questObject.CheckConditions();
+                }
 
-                RemoveQuest(questObject);
-                StartCoroutine(LateUpdateQuest());
-            }
+                if (questObject.RuntimeValue)
+                {
+
+                    RemoveQuest(questObject);
+                    StartCoroutine(LateUpdateQuest());
+                }
             }
         }
         OnQuestCheck?.Invoke();

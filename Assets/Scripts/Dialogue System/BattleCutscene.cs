@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BattleCutscene : Cutscene
 {
-    public BattleDialogue[] battleDialogue;
+    [JsonIgnore] public BattleDialogue[] battleDialogue;
 
     public override Dialogue GetLine()
     {

@@ -47,7 +47,7 @@ public class Skill : IActionData
     [Range(50, 100)]
     [JsonIgnore] public int baseAccuracy = 80; //Negative for damage, positive for healing
     [JsonIgnore] public int manaCost = 14;
-    [JsonIgnore] public string[] spawnObjects;
+    [JsonIgnore] public GameObject[] spawnObjects;
 
     
     public string GetName()
@@ -103,7 +103,7 @@ public class Skill : IActionData
     }
 
 
-    public string GetSpawnObject(int i)
+    public GameObject GetSpawnObject(int i)
     {
         if (i < spawnObjects.Length)
         {

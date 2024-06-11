@@ -1,13 +1,16 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Quest", menuName = "Quests/QuestObject")]
 public class QuestObject : BoolValue
 {
     public string questId;
     public string questName;
     public bool QuestToggled = false;
+    [JsonIgnore]public QuestObject NextQuestObject;
     public virtual void CheckConditions()
     {
 
@@ -27,7 +30,10 @@ public class QuestObject : BoolValue
 
     public virtual void CompleteQuest()
     {
+
+
         SetRuntime();
+        UICanvas.UpdateQuestList();
     }
 
 
@@ -58,8 +64,17 @@ public class QuestObject : BoolValue
     }
     public virtual string GetObjectiveProgress()
     {
-        string desc = "Completed";
-        return desc;
+        string returnValue = "";
+        if (RuntimeValue)
+        {
+            returnValue = "done";
+            string newDesc = LanguageData.GetDataById("Indications").GetValueByKey("done");
+            if (newDesc != "E404")
+            {
+                returnValue = newDesc;
+            }
+        }
+        return returnValue;
     }
 
     public void ToggleQuest(bool on = true)
@@ -71,6 +86,12 @@ public class QuestObject : BoolValue
         }
         else
         {
+
+                if (NextQuestObject != null)
+                {
+                    QuestManager.Singleton?.GiveQuest(NextQuestObject);
+                }
+           
             RemoveCheckEvent();
         }
     }

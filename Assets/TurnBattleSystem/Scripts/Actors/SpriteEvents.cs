@@ -46,14 +46,11 @@ public class SpriteEvents : MonoBehaviour
         if(c is SkillCommand)
         {
 
-        Skill skill = (c as SkillCommand).GetAttack();
-        string ObjectName = skill.GetSpawnObject(objectIndex);
-            if (!string.IsNullOrEmpty(ObjectName))
-            {
+            Skill skill = (c as SkillCommand).GetAttack();
+            GameObject prefab = skill.GetSpawnObject(objectIndex);
 
-        GameObject prefab = Resources.Load<GameObject>(ObjectName);
-        if (prefab != null)
-        {
+            if (prefab != null)
+            {
 
                     foreach(BattleCharacter bc in c.Target)
                     {
@@ -77,14 +74,14 @@ public class SpriteEvents : MonoBehaviour
                         }
                     }
             
-        }
-        else
-        {
-            Debug.LogError($"Prefab with objectIndex '{objectIndex}' could not be found in Resources.");
-        }
+            }
+            else
+            {
+                Debug.LogError($"Prefab with objectIndex '{objectIndex}' could not be found in Resources.");
+            }
 
             }
-        }
+       
     }
 
 
@@ -93,15 +90,12 @@ public class SpriteEvents : MonoBehaviour
         Command c = character.currentCommand;
         if (c is SkillCommand)
         {
-
             Skill skill = (c as SkillCommand).GetAttack();
-            string ObjectName = skill.GetSpawnObject(objectIndex);
-            if (!string.IsNullOrEmpty(ObjectName))
+            GameObject prefab = skill.GetSpawnObject(objectIndex);
+
+            if (prefab != null)
             {
 
-                GameObject prefab = Resources.Load<GameObject>(ObjectName);
-                if (prefab != null)
-                {
 
                     foreach (BattleCharacter bc in c.Target)
                     {
@@ -133,7 +127,7 @@ public class SpriteEvents : MonoBehaviour
                 }
 
             }
-        }
+        
 
     }
     public void Stop()

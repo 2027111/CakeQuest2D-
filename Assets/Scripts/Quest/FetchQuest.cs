@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +9,23 @@ public class FetchQuest : QuestObject
 
 
 
-    public List<InventoryItem> requiredItems = new List<InventoryItem>();
-    public CharacterInventory characterInventory;
+    [JsonIgnore] public List<InventoryItem> requiredItems = new List<InventoryItem>();
+    [JsonIgnore] public CharacterInventory characterInventory;
 
 
 
     public override void CheckConditions()
     {
-        if (characterInventory.CheckInventoryFor(requiredItems))
+
+        if (!RuntimeValue)
         {
-            CompleteQuest();
-        }
-        base.CheckConditions();
+
+            if (characterInventory.CheckInventoryFor(requiredItems))
+            {
+                    CompleteQuest();
+            }
+            base.CheckConditions();
+        } 
     }
 
     public override string GetObjectiveProgress()

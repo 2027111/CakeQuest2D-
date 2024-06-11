@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ public class CharacterInventory : SavableObject
 {
     public List<InventoryItem> myInventory = new List<InventoryItem>();
     public int pessos = 0;
-    public UnityEvent InventoryChangeEvent;
+    [JsonIgnore] public UnityEvent InventoryChangeEvent;
 
 
 

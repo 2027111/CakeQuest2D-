@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PerformActionState : BattleState
 {
-    GameObject choiceMenu;
     BattleCharacter performer;
+
+
+    public PerformActionState()
+    {
+        MenuName = "TakeOverMenu";
+    }
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
@@ -159,20 +164,12 @@ public class PerformActionState : BattleState
     }
     public void InstantiateMenu(List<BattleCharacter> battleCharacters)
     {
-        GameObject choiceMenuPrefab = Resources.Load<GameObject>("TakeOverMenu");
-        if (choiceMenuPrefab != null)
-        {
-            choiceMenu = GameObject.Instantiate(choiceMenuPrefab, GameObject.Find("HUD Canvas").transform);
-
-        }
-        else
-        {
-            Debug.LogError("TakeOverMenu prefab not found in Resources.");
-        }
-
+        InstantiateMenu(battleManager?.GetActor());
 
         choiceMenu.GetComponent<TakeOverMenu>().GiveTakeOvers(battleCharacters, this);
     }
+
+
 
 
 

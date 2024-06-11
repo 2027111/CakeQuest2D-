@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bar
   m_EditorClassIdentifier: 
   UID: ef7746df834828c48a95deeecf464276
-  roomName: RandomHouseYouBrokeInto
-  minCameraOffset: {x: -7, y: 0}
-  maxCameraOffset: {x: 7, y: 6}
+  roomName: BarCaramel
+  minCameraOffset: {x: -4.7, y: 1}
+  maxCameraOffset: {x: 7, y: 3.3}
