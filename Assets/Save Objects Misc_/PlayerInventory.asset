@@ -14,16 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UID: 381c74390e9664647ba32510270b594c
   myInventory:
+  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
+  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
+  - {fileID: 11400000, guid: 303e8396e50aacc4eb1ec59bf0e06647, type: 2}
+  - {fileID: 11400000, guid: 1ab5723ddd3b7014192170a782d0b81e, type: 2}
+  - {fileID: 11400000, guid: e34e646158a738d45b9de2f44777b4b9, type: 2}
+  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
+  - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
-  - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
   pessos: 0
+  InventoryChangeEvent:
+    m_PersistentCalls:
+      m_Calls: []

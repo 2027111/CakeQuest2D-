@@ -4925,7 +4925,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496487245117367874}
   serializedVersion: 8
-  lengthInSec: 1
+  lengthInSec: 0.5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -9773,7 +9773,7 @@ Light:
     m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.483
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -9847,7 +9847,7 @@ GameObject:
   - component: {fileID: 9027514048236820044}
   - component: {fileID: 6747932735989160330}
   m_Layer: 0
-  m_Name: CFXR Electrified 3
+  m_Name: KOKUSEN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9879,8 +9879,8 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027514048236820045}
   serializedVersion: 8
-  lengthInSec: 0.5
-  simulationSpeed: 1
+  lengthInSec: 2
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -9889,7 +9889,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  useUnscaledTime: 0
+  useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
     serializedVersion: 2
@@ -10007,7 +10007,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0.92
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10123,7 +10123,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.06
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10501,7 +10501,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 55
+    angle: 34.04
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0.03
@@ -10816,7 +10816,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 0
-        scalar: 1
+        scalar: 37.24
         minScalar: 30
         maxCurve:
           serializedVersion: 2

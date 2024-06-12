@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8094408624d21ab4ca28c2290674beb0, type: 3}
   m_Name: CurrentBattleInfo
   m_EditorClassIdentifier: 
-  UID: 
-  battleInfo: {fileID: 0}
+  UID: fc6a3d00693cfa54dbe4ac99157f9427
+  battleInfo: {fileID: 11400000, guid: 869444271934e77489c6e759d89a534f, type: 2}

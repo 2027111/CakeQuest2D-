@@ -195,7 +195,7 @@ public class Character : MonoBehaviour
         playerBehaviour = newBehaviour;
         if (previousBehaviour != null)
         {
-            Debug.Log(name + " State changed : " + previousBehaviour.GetType().ToString() + " replaced by " + GetCurrentBehaviour().ToString(),this);
+            //Debug.Log(name + " State changed : " + previousBehaviour.GetType().ToString() + " replaced by " + GetCurrentBehaviour().ToString(),this);
         }
         newBehaviour.OnEnter(this);
     }

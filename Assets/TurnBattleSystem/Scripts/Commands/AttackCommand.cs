@@ -65,7 +65,7 @@ public class AttackCommand : Command
         {
             CharacterObject characterObject = _target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            AttackInformation info = new AttackInformation(null, elementEffect, Source);
+            AttackInformation info = new AttackInformation(null, elementEffect, Source, BattleManager.Singleton.GetActor().currentCommand);
             info.element = Source.GetReference().AttackElement;
             _target?.Entity.AddToHealth(info);
             CamManager.Shake(.2f, .05f);

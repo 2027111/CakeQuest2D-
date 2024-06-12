@@ -15,17 +15,20 @@ MonoBehaviour:
   UID: 241c2449bbdc1d045af9df0ffa71b246
   RuntimeValue: 1
   repeats: 0
+  dialogueIndex: 0
   dialogue:
   - condition:
-      condition: {fileID: 0}
+    - boolValue: {fileID: 0}
+      wantedResult: 1
+    - boolValue: {fileID: 0}
       wantedResult: 1
     dialogueLineIds:
-    - EyrCutt_pc_3
-    - Tuto_Yankee_008
-    - EyrCutt_pc_4
+    - EyrCott_pc_3
+    - Tuto_Yankee_011
+    - EyrCott_pc_4
     - Tuto_Jimi_008
-    - EyrCutt_pc_5
-    - EyrCutt_pc_6
+    - EyrCott_pc_5
+    - EyrCott_pc_6
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -34,6 +37,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 0
   StartRoom: {fileID: 0}
   CutsceneToPlay: {fileID: 0}

@@ -13,8 +13,19 @@ MonoBehaviour:
   m_Name: GoToOven
   m_EditorClassIdentifier: 
   UID: 8fc905196edcbb943a98b21412ac020f
-  RuntimeValue: 1
+  RuntimeValue: 0
   questId: go_to_oven
   questName: Find Oven
   QuestToggled: 1
   NextQuestObject: {fileID: 0}
+  OnQuestCompletedDialogue:
+    condition: []
+    dialogueLineIds: []
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    source: {fileID: 0}

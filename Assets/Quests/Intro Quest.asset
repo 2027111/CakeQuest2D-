@@ -13,11 +13,23 @@ MonoBehaviour:
   m_Name: Intro Quest
   m_EditorClassIdentifier: 
   UID: 357fa63766d8fb64d9d797ba2cde4194
-  RuntimeValue: 0
+  RuntimeValue: 1
   questId: intro_fetch_ingredients
   questName: Find the cake ingredients
-  QuestToggled: 1
+  QuestToggled: 0
   NextQuestObject: {fileID: 11400000, guid: bae4e404899d48d49b2c8180f3a1ccdb, type: 2}
+  OnQuestCompletedDialogue:
+    condition: []
+    dialogueLineIds:
+    - Intro_Jimi_0042
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    source: {fileID: 0}
   requiredItems:
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}

@@ -62,7 +62,11 @@ public class BattleCharacter : MonoBehaviour
         }
         recipeIndex = 0;
     }
-
+    public void SetRecipe(List<ElementalAttribute> attributes)
+    {
+        recipe = attributes;
+        recipeIndex = 0;
+    }
     public bool HandleRecipe(AttackInformation attackInfo)
     {
         if(recipe.Count > recipeIndex)
@@ -314,6 +318,8 @@ public class BattleCharacter : MonoBehaviour
         List<BattleCharacter> targets = BattleManager.Singleton.GetCurrentTarget();
         return targets.Count > 0? targets.Contains(this):false;
     }
+
+
 
     public void SetTeam(TeamIndex index)
     {

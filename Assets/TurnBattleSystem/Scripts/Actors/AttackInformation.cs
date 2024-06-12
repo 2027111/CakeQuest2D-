@@ -13,9 +13,10 @@ public class AttackInformation
     public BattleCharacter source;
     public string ID;
     public int RecipeIndex = 0;
+    public Command command;
 
 
-    public AttackInformation(IActionData actionData, ElementEffect elementEffect, BattleCharacter source)
+    public AttackInformation(IActionData actionData, ElementEffect elementEffect, BattleCharacter source, Command currentCommand)
     {
 
         if (string.IsNullOrEmpty(this.ID))
@@ -36,6 +37,7 @@ public class AttackInformation
         }
         this.effect = elementEffect;
         this.source = source;
+        this.command = currentCommand;
     }
 
 

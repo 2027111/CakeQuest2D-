@@ -58,25 +58,35 @@ public class DialogueBox : MonoBehaviour
 
     public Queue<UnityAction> OnDialogueOverAction = new Queue<UnityAction>();
     GameState currentState = GameState.Overworld;
+    [Header("References")]
+    [SerializeField] GameObject choiceBox;
     [SerializeField] CanvasGroup group;
     [SerializeField] TMP_Text dialogueText;
-    [SerializeField] GameObject choiceBox;
-    [SerializeField] GameObject choicePrefab;
     [SerializeField] TMP_Text nameText;
     [SerializeField] GameObject portraitContainer;
     [SerializeField] Image portraitImage;
+    [SerializeField] AudioSource voiceClipSource;
+    [SerializeField] private GameObject nameTextContainer;
+
+    [Header("Prefabs")]
+    [SerializeField] GameObject choicePrefab;
+
+
+
+    [Header("Attributes")]
     [SerializeField] [Range(0.1f, 1)] float apparitionTime = .4f;
     [SerializeField] [Range(0.1f, 1)] float textSpeed = 0.5f;
+
+
+
+    [Header("InnerAttributes")]
     bool isShowing;
     bool active;
     DialogueContent currentDialogue;
-    [SerializeField] AudioSource voiceClipSource;
-    private Button LastButton;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0;
     Coroutine showBoxCoroutine;
     Coroutine setTextCoroutine;
-
     GameObject player = null;
 
     GameObject Player 
@@ -95,8 +105,6 @@ public class DialogueBox : MonoBehaviour
         }
 
     }
-    //DialogueStarterObject starterObject;
-    [SerializeField] private GameObject nameTextContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -133,6 +141,28 @@ public class DialogueBox : MonoBehaviour
         StartCoroutine(ShowDialogueBoxAlpha(false));
 
     }
+    public void StartDialogueDelayed(Dialogue dialogue, GameObject playerObject, GameObject originObject, GameState state)
+    {
+        if (dialogue.OnOverEvent != null)
+        {
+            OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+        }
+        currentState = state;
+        DialogueContent newDialogue = new DialogueContent(dialogue);
+
+
+        if (dialogue.dialogueLineIds != null)
+        {
+            if (dialogue.dialogueLineIds.Length > 0)
+            {
+
+                Debug.Log("Added waiting dialogue");
+                dialogueWaitingLine.Add(newDialogue);
+
+            }
+        }
+
+     }
 
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
@@ -311,12 +341,29 @@ public class DialogueBox : MonoBehaviour
 
         }
     }
+    public void DoChoice(ChoiceDialogue choice)
+    {
 
+        Debug.Log("HELP CHOICE");
+        //currentDialogue.choice = false;
+        ClearChoiceBox();
+        choiceBox.SetActive(false);
+
+        OnDialogueOverAction.Enqueue(choice.OnOverEvent.Invoke);
+        if (currentDialogue.dialogue != null)
+        {
+
+            dialogueWaitingLine.Insert(0, new DialogueContent(new Dialogue(choice)));
+        }
+
+        AddNavigateEventToPlayer(false);
+        StartNextDialogueWaiting();
+    }
 
     public void DoChoice(int i)
     {
 
-
+        Debug.Log("HELP CHOICE");
         //currentDialogue.choice = false;
         ClearChoiceBox();
         choiceBox.SetActive(false);
@@ -325,7 +372,7 @@ public class DialogueBox : MonoBehaviour
         if (currentDialogue.dialogue != null)
         {
 
-            dialogueWaitingLine.Add(new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[i])));
+            dialogueWaitingLine.Insert(0,new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[i])));
         }
 
         AddNavigateEventToPlayer(false);
@@ -342,11 +389,12 @@ public class DialogueBox : MonoBehaviour
         for (int i = 0; i < choices.Length; i++)
         {
             int number = i;
+            ChoiceDialogue choice = choices[number];
             ChoiceMenuButton obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<ChoiceMenuButton>();
 
             string line = LanguageData.GetDataById(choices[i].choicesLineIds).GetValueByKey("line");
             obj.GetComponent<TMP_Text>().text = line;
-            obj.OnSelected.AddListener(delegate { DoChoice(number); });
+            obj.OnSelected.AddListener(delegate { DoChoice(choice); });
             obj.SetMenu(choiceBox.GetComponent<ChoiceMenu>());
             choiceBox.GetComponent<ChoiceMenu>().AddButton(obj);
             // obj.Select();
@@ -359,6 +407,17 @@ public class DialogueBox : MonoBehaviour
   
     public void DebugTest()
     {
+    }
+
+    public void FlipPortrait()
+    {
+        float side = Mathf.Sign(portraitContainer.transform.localScale.x);
+        float nextSide = side * -1f;
+        float xPos = side * 28;
+
+
+
+
     }
     public void ClearChoiceBox()
     {
@@ -398,16 +457,7 @@ public class DialogueBox : MonoBehaviour
                     {
 
 
-                        if (dialogueWaitingLine.Count > 0)
-                    {
-                        StartNextDialogueWaiting();
-
-
-
-
-                    }
-                    else
-                    {
+                    
 
                         ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
 
@@ -419,8 +469,8 @@ public class DialogueBox : MonoBehaviour
                             {
                                 if (choices[0].ConditionRespected())
                                 {
-                                    dialogueWaitingLine.Add(new DialogueContent(new Dialogue(choices[0])));
-                                    Interact();
+                                    dialogueWaitingLine.Insert(0,new DialogueContent(new Dialogue(choices[0])));
+                                    StartNextDialogueWaiting();
                                     return;
                                 }
                             }
@@ -432,6 +482,15 @@ public class DialogueBox : MonoBehaviour
                                 return;
                             }
                         }
+                        else if (dialogueWaitingLine.Count > 0)
+                        {
+                            StartNextDialogueWaiting();
+
+                            return;
+
+
+
+                        }
 
 
 
@@ -439,7 +498,7 @@ public class DialogueBox : MonoBehaviour
                         EndDialogue();
                         StartCoroutine(ShowDialogueBoxAlpha(false));
 
-                    }
+                   
 
 
                 }
@@ -484,6 +543,7 @@ public class DialogueBox : MonoBehaviour
 
     public void StartNextDialogueWaiting()
     {
+        Debug.Log("Started Queued Dialogue");
         currentDialogue = dialogueWaitingLine[0];
         dialogueWaitingLine.RemoveAt(0);
         dialogueIndex = 0;
@@ -667,7 +727,6 @@ public class DialogueBox : MonoBehaviour
            ResetBox();
             while(OnDialogueOverAction.Count > 0)
             {
-                Debug.Log("TESDT");
                 UnityAction currentEvent = OnDialogueOverAction.Dequeue();
                 currentEvent?.Invoke();
                 yield return null;
@@ -694,18 +753,18 @@ public class DialogueBox : MonoBehaviour
         {
             dialogueText.text = "";
 
-            // Define the pattern to match <sprite name=something> or any word
-            string pattern = @"<sprite name=[\w\d_]+>|[^\s]+";
+            // Define the pattern to match <anything> or any word
+            string pattern = @"<[^>]+>|[^\s]+";
 
-            // Match all words and <sprite> tags
+            // Match all words and tags
             MatchCollection matches = Regex.Matches(text, pattern);
 
             foreach (Match match in matches)
             {
                 string wordOrTag = match.Value;
 
-                // If the text contains a <sprite> tag, append it instantly
-                if (Regex.IsMatch(wordOrTag, @"<sprite name=[\w\d_]+>"))
+                // If the text contains a tag, append it instantly
+                if (Regex.IsMatch(wordOrTag, @"<[^>]+>"))
                 {
                     dialogueText.text += wordOrTag;
                 }
@@ -717,15 +776,14 @@ public class DialogueBox : MonoBehaviour
                         dialogueText.text += wordOrTag[j];
                         yield return new WaitForSeconds((1.1f - textSpeed) / 10);
                     }
+                    dialogueText.text += " ";
                 }
-                dialogueText.text += " ";
             }
 
             dialogueIndex++;
             setTextCoroutine = null;
         }
     }
-
 
 
 }

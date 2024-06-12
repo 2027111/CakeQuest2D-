@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
@@ -13,6 +14,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] float delayTime = 1;
     [SerializeField] float catchUpTime = 1;
     bool underfilling = false;
+    public UnityEvent OnFillAmountReached;
 
 
 
@@ -39,6 +41,7 @@ public class HealthBar : MonoBehaviour
 
         underfillBar.fillAmount = targetFillAmount; // Ensure underfillBar matches fillBar
         underfilling = false;
+        OnFillAmountReached?.Invoke();
     }
 
     public void SetFillAmount(int currentHealth, int maxHealth)

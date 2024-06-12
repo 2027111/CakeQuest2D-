@@ -38,6 +38,12 @@ public class ElementalAttribute
     {
         element = GetRandomElement();
     }
+    public ElementalAttribute(int i, bool _found = false)
+    {
+        element = (Element)i;
+        Debug.Log(element);
+        this.found = _found;
+    }
 
     private Element GetRandomElement()
     {

@@ -64,7 +64,6 @@ public class PauseMenu : MonoBehaviour
     {
         if (canPause)
         {
-            Debug.Log("Paused Pressed");
             isPaused = !isPaused;
             OnPausePressed(isPaused);
         }

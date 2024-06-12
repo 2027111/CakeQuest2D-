@@ -142,7 +142,7 @@ public class Skill : IActionData
                 else
                 {
 
-                    AttackInformation info = new AttackInformation(this, elementEffect, Source);
+                    AttackInformation info = new AttackInformation(this, elementEffect, Source, BattleManager.Singleton.GetActor().currentCommand);
                     target?.Entity.AddToHealth(info);
                 }
             }

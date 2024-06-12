@@ -15,4 +15,4 @@ MonoBehaviour:
   UID: e5f6522aae6ac834aa7ff30e8eeae025
   roomName: Plaine Caramel - Baie D'Hudson
   minCameraOffset: {x: -64, y: -16}
-  maxCameraOffset: {x: -39, y: 19}
+  maxCameraOffset: {x: -37, y: 19}

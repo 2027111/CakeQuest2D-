@@ -27,9 +27,9 @@ public class CharacterObject : SavableObject
     public bool isDead;
 
     [Space(20)]
-    public SkillType attackType = SkillType.Physical;
+    [JsonIgnore] public SkillType attackType = SkillType.Physical;
     [Space(20)]
-    public Element AttackElement;
+    [JsonIgnore] public Element AttackElement;
     [Space(20)]
 
     [JsonIgnore] public List<GameObject> HitEffect;

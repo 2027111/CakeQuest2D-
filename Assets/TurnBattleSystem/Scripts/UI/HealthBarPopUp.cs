@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthBarPopUp : MonoBehaviour
 {
@@ -13,28 +15,24 @@ public class HealthBarPopUp : MonoBehaviour
         if(currentBar == null)
         {
             currentBar = Instantiate(healthBar, transform);
+            currentBar.GetComponentInChildren<HealthBar>().OnFillAmountReached.AddListener(DestroyPopup);
         }
-        currentBar.GetComponentInChildren<HealthBar>().SetFillAmount(currentAmount, maxAmount);
-        StopCoroutine(DestroyPopup(timeTillDest));
-        StartCoroutine(DestroyPopup(timeTillDest));
+            currentBar.GetComponentInChildren<HealthBar>().SetFillAmount(currentAmount, maxAmount);
+     
+
+
     }
 
-
-
-    public IEnumerator DestroyPopup(float time)
+    public void DestroyPopup()
     {
-        float t = 0;
-        while(t < time)
-        {
-            t += Time.deltaTime;
-            yield return null;
-        }
+        StartCoroutine(DestroyIn());
+    }
 
-        if (currentBar)
-        {
-            Destroy(currentBar);
-        }
-        yield return null;
+    public IEnumerator DestroyIn()
+    {
+        yield return new WaitForSeconds(timeTillDest);
+        Destroy(currentBar);
+
     }
 
 

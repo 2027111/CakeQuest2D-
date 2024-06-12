@@ -40,6 +40,7 @@ public class QuestManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         CheckQuests();
         UICanvas.UpdateQuestList();
+        ActivateQuestEvents();
     }
 
     public List<QuestObject> GetQuests()
@@ -59,12 +60,24 @@ public class QuestManager : MonoBehaviour
         CheckQuests();
     }
 
+
+
     public void RemoveQuest(QuestObject questObject)
     {
         questObject.ToggleQuest(false);
         UICanvas.UpdateQuestList();
         CheckQuests();
     }
+
+    public void ActivateQuestEvents()
+    {
+        foreach(QuestObject q in currentQuests)
+        {
+
+            q.ToggleQuest(q.QuestToggled);
+        }
+    }
+
     public static void CheckToggledQuests()
     {
         Singleton?.CheckQuests();

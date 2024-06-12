@@ -44,6 +44,7 @@ public class UICanvas : MonoBehaviour
     }
 
 
+
     [SerializeField] UIBorder border;
     [SerializeField] QuestList questList;
     [SerializeField] PartyList partyList;
@@ -176,6 +177,11 @@ public class UICanvas : MonoBehaviour
 
         }
 
+    }
+
+    public static void StartDialogueDelayed(Dialogue newDialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
+    {
+        Singleton?.dialogueBox.StartDialogueDelayed(newDialogue, playerObject, originObject, state);
     }
     public static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {

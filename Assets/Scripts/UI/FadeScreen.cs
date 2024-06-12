@@ -146,7 +146,6 @@ public class FadeScreen : MonoBehaviour
         yield return new WaitForSeconds(.05f);
         OnFadingStart?.Invoke();
 
-        Debug.Log("Fading On");
         if (!FadeScreen.fading)
         {
             Singleton.SetColor(Color.black);
@@ -163,11 +162,9 @@ public class FadeScreen : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSecondsRealtime(fadeTime);
-        Debug.Log("Fading away");
         if (!FadeScreen.fading)
         {
 
-            Debug.Log("Miaou");
             Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
             yield return Singleton.StartCoroutine(StartFadeAnimation(false));

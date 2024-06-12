@@ -11,6 +11,14 @@ public class QuestObject : BoolValue
     public string questName;
     public bool QuestToggled = false;
     [JsonIgnore]public QuestObject NextQuestObject;
+    [JsonIgnore] public Dialogue OnQuestCompletedDialogue;
+
+    public override void ApplyData(SavableObject tempCopy)
+    {
+        QuestToggled = ((QuestObject)tempCopy).QuestToggled;
+        base.ApplyData(tempCopy);
+    }
+
     public virtual void CheckConditions()
     {
 
@@ -21,7 +29,16 @@ public class QuestObject : BoolValue
     {
 
     }
-
+    public virtual void DialogueRequest()
+    {
+            Dialogue newDialogue = new Dialogue(OnQuestCompletedDialogue);
+            newDialogue.OnOverEvent.AddListener(DialogueOver);
+            UICanvas.StartDialogueDelayed(newDialogue, Character.Player.gameObject);
+    }
+    public virtual void DialogueOver()
+    {
+        Character.Player.ChangeState(new PlayerControlsBehaviour());
+    }
 
     public bool isCompleted()
     {
@@ -34,10 +51,26 @@ public class QuestObject : BoolValue
 
         SetRuntime();
         UICanvas.UpdateQuestList();
+        Debug.Log("Request");
+        Debug.Log(CheckLines());
+        if (CheckLines())
+        {
+            DialogueRequest();
+        }
     }
 
 
-
+    public bool CheckLines()
+    {
+        if (OnQuestCompletedDialogue.isNull())
+        {
+            return false;
+        }
+        else
+        {
+            return OnQuestCompletedDialogue.ConditionRespected();
+        }
+    }
 
 
     public virtual string GetName()

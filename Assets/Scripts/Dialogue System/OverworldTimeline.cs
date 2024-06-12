@@ -25,6 +25,8 @@ public class OverworldTimeline : Timeline
 
             Character.Player.GetComponent<PlayerInfoStorage>().SetNewRoom(storagePlay.StartRoom);
         }
+
+        playableDirector.playableAsset = storagePlay.CutsceneToPlay;
     }
 
     public override void DialogueRequest()
@@ -40,7 +42,6 @@ public class OverworldTimeline : Timeline
     {
         base.CutsceneOver();
         Character.Player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
-        Debug.Log(OnCutsceneOver.GetPersistentEventCount());
         OnCutsceneOver?.Invoke();
     }
 

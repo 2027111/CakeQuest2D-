@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Battle Tutorial
   m_EditorClassIdentifier: 
   UID: 960d1819756087f4c8d5343fc97ca64a
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
-  dialogueIndex: 0
+  dialogueIndex: 1
   dialogue: []
   StartRoom: {fileID: 0}
   CutsceneToPlay: {fileID: 0}
@@ -53,4 +53,32 @@ MonoBehaviour:
     source: {fileID: 0}
     technicalCondition: 3
     conditionIndex: 0
+    played: 0
+  - condition: []
+    dialogueLineIds:
+    - Tuto_Yankee_008
+    - Tuto_Yankee_009
+    - Tuto_Yankee_010
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000}
+          m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
+          m_MethodName: ForceWeakness
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 0121
+            m_BoolArgument: 0
+          m_CallState: 2
+    source: {fileID: 0}
+    technicalCondition: 1
+    conditionIndex: 1
     played: 0

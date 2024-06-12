@@ -15,7 +15,7 @@ public class HealthEffectItem : BattleItem
     {
         foreach (BattleCharacter target in Target)
         {
-            AttackInformation attackInfo = new AttackInformation(this, ElementEffect.Neutral, BattleManager.Singleton.GetActor());
+            AttackInformation attackInfo = new AttackInformation(this, ElementEffect.Neutral, BattleManager.Singleton.GetActor(), BattleManager.Singleton.GetActor().currentCommand);
             target?.Entity.AddToHealth(attackInfo);
         }
         base.BattleUse(Target, inventory);

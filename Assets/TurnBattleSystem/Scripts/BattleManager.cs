@@ -67,6 +67,9 @@ public class BattleManager : MonoBehaviour
  
 
     public BattleCharacter currentActor;
+
+
+
     public PlayerStorage infoStorage;
     public CharacterInventory playerInventory;
     public float minimumFadeTime = 1f;
@@ -268,7 +271,27 @@ public class BattleManager : MonoBehaviour
     {
         return GetActor() != Actors[turn];
     }
+    public void ForceRecipe(int[] vs)
+    {
+        if(vs[0] < EnemyPartyActors.Count)
+        {
 
+            BattleCharacter enemy = EnemyPartyActors[vs[0]];
+
+            List<ElementalAttribute> attributes = new List<ElementalAttribute>();
+            if (enemy != null)
+            {
+
+                for (int i = 1; i < vs.Length; i++)
+                {
+                    ElementalAttribute newAttribute = new ElementalAttribute(vs[i], true);
+                    attributes.Add(newAttribute);
+                }
+                enemy.SetRecipe(attributes);
+            }
+        }
+
+    }
 
     private void Awake()
     {
@@ -400,6 +423,7 @@ public class BattleManager : MonoBehaviour
     public void PlayCutscene()
     {
         ChangeState(new NothingState());
+        timeline.ResetPlayed();
         timeline.SetCutscene(currentBattleInfo.battleInfo.CutsceneForDialogue);
     }
 

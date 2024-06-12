@@ -169,7 +169,7 @@ public class Entity : MonoBehaviour
             if (lastAttack != null)
             {
 
-                if(attackInfo.attack == null|| attackInfo.attack != lastAttack.attack)
+                if(attackInfo.attack == null|| attackInfo.command != lastAttack.command)
                 {
 
                     attackInfo.HandleRecipe(character);
@@ -223,7 +223,6 @@ public class Entity : MonoBehaviour
 
 
         lastAttack = attackInfo;
-        Debug.Log("Attack ID: " + lastAttack.GetHashCode());
         // Invoke the damage taken event
         OnDamageTaken.Invoke(attackInfo);
     }

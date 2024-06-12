@@ -54,6 +54,27 @@ public class BattleCutscene : Cutscene
         return returnValue;
     }
 
+    public void ForceWeakness(string weakness)
+    {
+        List<int> elementRecipe = new List<int>();
+
+        foreach(char e in weakness)
+        {
+            Debug.Log(e);
+            if(int.TryParse(e.ToString(), out int ress))
+            {
+                elementRecipe.Add(ress);
+            }
+        }
+
+
+
+
+
+
+        BattleManager.Singleton?.ForceRecipe(elementRecipe.ToArray());
+
+    }
     public BattleDialogue GetPlayableLine()
     {
         BattleDialogue b = null;

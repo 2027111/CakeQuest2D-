@@ -59,7 +59,7 @@ public class TextEffect : MonoBehaviour
 
                                     message = "Keep Cooking!!";
                                     textColor = Color.red;
-                                StartCoroutine(Utils.SlowDown(.8f, .25f));
+                                StartCoroutine(Utils.SlowDown(.8f, .5f));
                                 break;
 
                                 case ElementEffect.RecipeFailed:
@@ -70,7 +70,7 @@ public class TextEffect : MonoBehaviour
                                 case ElementEffect.RecipeCompleted:
 
                                     message = "Splendid Meal!!!!!";
-                                    StartCoroutine(Utils.SlowDown(.8f, .25f));
+                                    StartCoroutine(Utils.SlowDown(1f, .2f));
                                     textColor = Color.red;
                                     break;
                             }
@@ -98,7 +98,7 @@ public class TextEffect : MonoBehaviour
     {
 
 
-        return transform.position + 1.5f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
+        return transform.position + 2.1f * Vector3.up + 1.1f * Vector3.right * GetComponent<BattleCharacter>().IsFacing();
     }
     public void SpawnTextEffect(string text, Color color, Vector3 position, float duration = 1.2f)
     {

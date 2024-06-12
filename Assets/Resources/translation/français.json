@@ -22,11 +22,11 @@
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} {content.ItemName}!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color=#7DE7D7>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez obtenu {amount} {content.ItemName}.\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color=#7DE7D7>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
@@ -79,6 +79,10 @@
         {
             "dataId": "Intro_Jimi_004",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0042",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"C'est bon, J'ai tout se qu'il me faut! Direction le four!.\"}"
         },
         {
             "dataId": "Intro_Jimi_0045",
@@ -161,6 +165,22 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Fais gaffe à ton adversaire. Tu n'es pas obligé de prendre le coup. Tu peux bloquer avec <sprite name=cancel> et prendre uniquement la moitié des dégats!\"}"
         },
         {
+            "dataId": "Tuto_Yankee_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Utilise la loupe pour observé l'ennemie, chaque combattant commence le combat avec une recette.!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_009",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Si tu suis la recette, chaque étape rendra ton attaque encore plus fort!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_010",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Mais une fois la recette complété, la recette sera réinitialisé de manière aléatoire. Tu devras donc porté attention au combat et trouver la recette toi-même. Cependant, si ta barre de focus est rempli, tu pourras analyser l'adversaire pour afficher sa recette avec la loupe.\"}"
+        },
+        {
             "dataId": "Misc_Yankee_Join",
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Laisse-moi te rejoindre!\"}"
         },
@@ -171,10 +191,6 @@
         {
             "dataId": "Misc_Yankee_Leave",
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
-        },
-        {
-            "dataId": "Tuto_Yankee_007",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
         },
         {
             "dataId": "Misc_Heal_Question",
@@ -197,48 +213,48 @@
             "jsonData": "{\"line\":\"Oui\"}"
         },
         {
-            "dataId": "EyrCutt_pc_0",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
+            "dataId": "EyrCott_pc_0",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
         },
         {
-            "dataId": "EyrCutt_pc_1",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Je suis le plus grand tireur de tout le colorado\"}"
+            "dataId": "EyrCott_pc_1",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Je suis le plus grand tireur de tout le colorado\"}"
         },
         {
-            "dataId": "EyrCutt_pc_2",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Je ne te rendrais jamais ton portefeuille trouduc\"}"
+            "dataId": "EyrCott_pc_2",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Je ne te rendrais jamais ton portefeuille trouduc\"}"
         },
         {
-            "dataId": "EyrCutt_pc_3",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Bordel j'ai mal\"}"
+            "dataId": "EyrCott_pc_3",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Bordel j'ai mal\"}"
         },
         {
-            "dataId": "EyrCutt_pcc_0",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Mais- Il est oû le  maltezer???\"}"
+            "dataId": "EyrCott_pcc_0",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Mais- Il est oû le  maltezer???\"}"
         },
         {
-            "dataId": "EyrCutt_pcc_1",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Je ne t'affronterai que quand il aura pris ces couilles et sera venu me défier lui-même.\"}"
+            "dataId": "EyrCott_pcc_1",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Je ne t'affronterai que quand il aura pris ces couilles et sera venu me défier lui-même.\"}"
         },
         {
-            "dataId": "Tuto_Yankee_008",
+            "dataId": "Tuto_Yankee_011",
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkername\":\"Yankee\",\"line\":\"Mai- \n Mais t'es chauve aussi???!\"}"
         },
         {
-            "dataId": "EyrCutt_pc_4",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Maintenant, vous connaissez mon plus grand secret...\"}"
+            "dataId": "EyrCott_pc_4",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Maintenant, vous connaissez mon plus grand secret...\"}"
         },
         {
             "dataId": "Tuto_Jimi_008",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkername\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
         },
         {
-            "dataId": "EyrCutt_pc_5",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Tien, reprends le ton porte-feuille de mes deux.\"}"
+            "dataId": "EyrCott_pc_5",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Tien, reprends le ton porte-feuille de mes deux.\"}"
         },
         {
-            "dataId": "EyrCutt_pc_6",
-            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cutt\",\"line\":\"Moi, j'me casse d'ici.\"}"
+            "dataId": "EyrCott_pc_6",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkername\":\"Eyr Cott\",\"line\":\"Moi, j'me casse d'ici.\"}"
         },
         {
             "dataId": "Jimi",
