@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstBattleWon
   m_EditorClassIdentifier: 
   UID: 241c2449bbdc1d045af9df0ffa71b246
-  RuntimeValue: 1
+  RuntimeValue: 0
   repeats: 0
   dialogueIndex: 0
   dialogue:
@@ -37,5 +37,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  StartRoom: {fileID: 0}
-  CutsceneToPlay: {fileID: 0}
+  StartRoom: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
+  CutsceneToPlay: {fileID: 11400000, guid: 8893d989e8b20664c928fde8517909ea, type: 2}

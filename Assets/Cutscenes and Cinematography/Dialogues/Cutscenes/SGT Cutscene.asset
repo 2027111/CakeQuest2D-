@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: SGT Cutscene
   m_EditorClassIdentifier: 
   UID: 454d2391fa20f8240975dde6ec24e7ce
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 1
+  dialogueIndex: 0
   dialogue:
-  - condition: {fileID: 0}
+  - condition:
+    - boolValue: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - Misc_Jimi_000
     choices: []
@@ -27,5 +30,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 0
-  StartRoom: {fileID: 0}
+  StartRoom: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
+  CutsceneToPlay: {fileID: 11400000, guid: 9e569440e856ce2438cf68526920c9a6, type: 2}

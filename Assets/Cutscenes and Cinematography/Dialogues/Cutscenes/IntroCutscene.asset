@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: IntroCutscene
   m_EditorClassIdentifier: 
   UID: 28f9f4732b803074fba519bf7e6ac594
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
+  dialogueIndex: 0
   dialogue:
-  - condition: {fileID: 0}
+  - condition:
+    - boolValue: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - Intro_Jimi_000
     - Intro_Jimi_001
@@ -28,7 +31,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  - condition: {fileID: 0}
+  - condition:
+    - boolValue: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - Intro_Jimi_002
     - Intro_Jimi_003
@@ -40,5 +45,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 0
   StartRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}
+  CutsceneToPlay: {fileID: 11400000, guid: 2ce920f1f688a9d45a2b6d2f5be62cf7, type: 2}

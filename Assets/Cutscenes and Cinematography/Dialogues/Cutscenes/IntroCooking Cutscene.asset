@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: IntroCooking Cutscene
   m_EditorClassIdentifier: 
   UID: cc5e26914c5c6e346948f02a9bde52fa
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
+  dialogueIndex: 0
   dialogue:
-  - condition: {fileID: 0}
+  - condition:
+    - boolValue: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - Intro_Jimi_005
     - Intro_Jimi_006
@@ -28,7 +31,9 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  - condition: {fileID: 0}
+  - condition:
+    - boolValue: {fileID: 0}
+      wantedResult: 1
     dialogueLineIds:
     - Intro_Jimi_007
     - Intro_Jimi_008
@@ -40,5 +45,5 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
     source: {fileID: 0}
-  dialogueIndex: 0
-  StartRoom: {fileID: 0}
+  StartRoom: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
+  CutsceneToPlay: {fileID: 11400000, guid: 35b4a3ff5dc69d64f972fcf988e6114c, type: 2}
