@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeScreen: {fileID: 3361505298683660823}
   group: {fileID: 3361505298100145068}
-  startFadeon: 1
+  startFadeon: 0
   OnFadingStart:
     m_PersistentCalls:
       m_Calls: []

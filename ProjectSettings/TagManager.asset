@@ -43,6 +43,18 @@ TagManager:
   - name: BackGround
     uniqueID: 4138066395
     locked: 0
+  - name: GroundLayer1
+    uniqueID: 655367041
+    locked: 0
+  - name: GroundLayer2
+    uniqueID: 2248804909
+    locked: 0
+  - name: GroundLayer3
+    uniqueID: 4060527429
+    locked: 0
+  - name: GroundLayer4
+    uniqueID: 2486255107
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
@@ -54,4 +66,7 @@ TagManager:
     locked: 0
   - name: ForeverInTheFront
     uniqueID: 3975368793
+    locked: 0
+  - name: CollisionLayer
+    uniqueID: 1461710507
     locked: 0

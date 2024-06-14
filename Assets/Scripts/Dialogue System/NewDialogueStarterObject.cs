@@ -233,7 +233,6 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public void PlayVideo()
     {
-        Debug.Log("Called Play Video");
         UICanvas.PlayVideoRec();
     }
 

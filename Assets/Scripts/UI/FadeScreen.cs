@@ -70,7 +70,7 @@ public class FadeScreen : MonoBehaviour
         {
 
             fadeOn = true;
-            StartTransition(false, Color.black, 0);
+            StartTransition(false, Color.black, .5f);
         }
     }
     public static void MoveToScene(string sceneName, Color transitionColor, float fadeTime = -1)

@@ -344,7 +344,6 @@ public class DialogueBox : MonoBehaviour
     public void DoChoice(ChoiceDialogue choice)
     {
 
-        Debug.Log("HELP CHOICE");
         //currentDialogue.choice = false;
         ClearChoiceBox();
         choiceBox.SetActive(false);
@@ -543,7 +542,6 @@ public class DialogueBox : MonoBehaviour
 
     public void StartNextDialogueWaiting()
     {
-        Debug.Log("Started Queued Dialogue");
         currentDialogue = dialogueWaitingLine[0];
         dialogueWaitingLine.RemoveAt(0);
         dialogueIndex = 0;

@@ -73,7 +73,13 @@ public class InputManager : Controller
         }
         attack = context.action.triggered;
         }
+
+
+        if (context.performed)
+        {
+            OnSecretSelectPressed?.Invoke();
     }
+}
 
     public void OnReturn(InputAction.CallbackContext context)
     {

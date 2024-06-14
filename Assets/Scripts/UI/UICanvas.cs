@@ -50,6 +50,7 @@ public class UICanvas : MonoBehaviour
     [SerializeField] PartyList partyList;
     [SerializeField] DialogueBox dialogueBox;
     [SerializeField] VideoPlayer videoPlayer;
+    [SerializeField] GameObject VideoPauseMenu;
 
     void Awake()
     {
@@ -63,13 +64,6 @@ public class UICanvas : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
-    private void OnDestroy()
-    {
-        
-    }
-
 
     public static void SetVideoForPlayer(VideoClip clip)
     {
@@ -92,7 +86,6 @@ public class UICanvas : MonoBehaviour
 
         if (!videoPlayer.isPlaying)
         {
-            Debug.Log("Changed state");
         GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().ToggleCutsceneState();
         videoPlayer.prepareCompleted += delegate
         {
@@ -119,11 +112,62 @@ public class UICanvas : MonoBehaviour
 
         InputManager.inputManager.OnPausedPressed = null;
         videoPlayer.loopPointReached += delegate { EndVideo(); };
-        InputManager.inputManager.OnPausedPressed += delegate { EndVideo(); };
+        InputManager.inputManager.OnPausedPressed += delegate { TogglePauseScreen(); };
         PlayVideo();
         yield return FadeScreen.Singleton.StartFadeAnimation(false);
         yield return new WaitForSeconds(.1f); //Let the video start yaknow;
 
+    }
+    public void AddNavigateEventToPlayer(bool addOrRemove)
+    {
+        Controller battleCharacterComponent = InputManager.inputManager;
+        if (addOrRemove)
+        {
+            battleCharacterComponent.OnMovementPressed += NavigateMenu;
+            battleCharacterComponent.OnSecretSelectPressed += VideoPauseMenu.GetComponent<ChoiceMenu>().TriggerSelected;
+
+        }
+        else
+        {
+            battleCharacterComponent.OnMovementPressed -= NavigateMenu;
+            battleCharacterComponent.OnSecretSelectPressed -= VideoPauseMenu.GetComponent<ChoiceMenu>().TriggerSelected;
+
+        }
+    }
+    public void NavigateMenu(Vector2 direction)
+    {
+        ChoiceMenu menu = VideoPauseMenu.GetComponent<ChoiceMenu>();
+        if (menu != null)
+        {
+            if (direction.y > 0)
+            {
+                menu.PreviousButton();
+            }
+            if (direction.y < 0)
+            {
+                menu.NextButton();
+            }
+        }
+    }
+
+    public void TogglePauseScreen()
+    {
+        TogglePauseScreen(!VideoPauseMenu.activeSelf);
+    }
+
+    public void TogglePauseScreen(bool on)
+    {
+        if (on)
+        {
+            videoPlayer.Pause();
+        }
+        else
+        {
+            videoPlayer.Play();
+        }
+        VideoPauseMenu.GetComponent<ChoiceMenu>().DefaultSelect();
+        VideoPauseMenu.SetActive(on);
+        AddNavigateEventToPlayer(on);
     }
 
     public IEnumerator EndAnimatedCutscene()
@@ -146,6 +190,7 @@ public class UICanvas : MonoBehaviour
 
     public void EndVideo()
     {
+        TogglePauseScreen(false);
         videoPlayer.loopPointReached -= delegate { EndVideo(); };
         InputManager.inputManager.OnPausedPressed = null;
         videoPlayer.Pause();

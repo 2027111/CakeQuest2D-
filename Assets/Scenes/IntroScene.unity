@@ -561,4 +561,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  fadeTime: 0.69
   automatic: 1

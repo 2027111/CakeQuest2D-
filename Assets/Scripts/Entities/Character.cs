@@ -108,6 +108,8 @@ public class Character : MonoBehaviour
 
         return inventory.HasObject(content, amount);
     }
+
+
     public int AmountObject(InventoryItem content)
     {
         return inventory.AmountObject(content);
@@ -224,6 +226,12 @@ public class Character : MonoBehaviour
 
         }
     }
+
+    public void ToggleInteractionState()
+    {
+        ChangeState(new InteractingBehaviour());
+    }
+
 
     public void ToggleCutsceneState()
     {

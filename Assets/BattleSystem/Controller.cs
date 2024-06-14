@@ -25,6 +25,8 @@ public abstract class Controller : MonoBehaviour
     public EventHandler OnSelectReleased;
 
 
+    public EventHandler OnSecretSelectPressed;
+
     public EventHandler OnPausedPressed;
 
 

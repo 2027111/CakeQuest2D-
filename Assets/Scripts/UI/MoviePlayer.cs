@@ -10,6 +10,7 @@ public class MoviePlayer : MonoBehaviour
 
     [SerializeField] VideoPlayer videoPlayer;
     public UnityEvent OnVideoOver;
+    public float fadeTime = .3f;
     public bool automatic;
 
 
@@ -105,9 +106,9 @@ public class MoviePlayer : MonoBehaviour
         {
 
             float duration = 0;
-            while (duration < .5f)
+            while (duration < fadeTime)
             {
-                videoPlayer.targetCameraAlpha = Mathf.Lerp(start, target, duration / .5f);
+                videoPlayer.targetCameraAlpha = Mathf.Lerp(start, target, duration / fadeTime);
                 duration += Time.deltaTime;
                 yield return null;
             }

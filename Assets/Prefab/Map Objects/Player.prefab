@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -998888167, guid: 953268e97eb0678449cac31c0043bdd1, type: 3}
+  m_Sprite: {fileID: -22173017, guid: 953268e97eb0678449cac31c0043bdd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_CategoryHash: 0
   m_labelHash: 0
   m_SpriteKey: 0
-  m_SpriteHash: 0
+  m_SpriteHash: 823024583
 --- !u!114 &9128803462113194104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
     m_ActionId: 25004ea6-e51c-4e15-9c37-e09eafa07740
     m_ActionName: BattleScene/Jump[/Keyboard/space,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: ControllerControls
+  m_DefaultControlScheme: KeyboardControls
   m_DefaultActionMap: OverWorld
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
