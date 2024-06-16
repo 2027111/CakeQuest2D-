@@ -121,7 +121,7 @@ public class FadeScreen : MonoBehaviour
         fadeScreen.color = color;
     }
 
-    private void SetTransitionTime(float time)
+    public void SetTransitionTime(float time)
     {
         fadeTime = time;
     }
@@ -150,7 +150,7 @@ public class FadeScreen : MonoBehaviour
         {
             Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
-            yield return Singleton.StartCoroutine(StartFadeAnimation(true));
+            yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
             fadeOn = true;
         }
         yield return new WaitForSeconds(.05f);
@@ -167,7 +167,7 @@ public class FadeScreen : MonoBehaviour
 
             Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
-            yield return Singleton.StartCoroutine(StartFadeAnimation(false));
+            yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
             fadeOn = false;
         }
 
@@ -195,7 +195,7 @@ public class FadeScreen : MonoBehaviour
 
 
 
-    public IEnumerator StartFadeAnimation(bool on)
+    public IEnumerator StartFadeAnimation(bool on, float fadeTime = .8f)
     {
         float time = 0f;
         float start = on?0:1;

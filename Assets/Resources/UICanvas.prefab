@@ -1398,7 +1398,7 @@ MonoBehaviour:
   partyList: {fileID: 7234234399864657416}
   dialogueBox: {fileID: 683195659870482511}
   videoPlayer: {fileID: 2471761775494460334}
-  choiceMenu: {fileID: 6663831690974652598}
+  VideoPauseMenu: {fileID: 6663831690974652598}
 --- !u!1 &683195660694413647
 GameObject:
   m_ObjectHideFlags: 0

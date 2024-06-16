@@ -86,6 +86,7 @@ public class UICanvas : MonoBehaviour
 
         if (!videoPlayer.isPlaying)
         {
+            dialogueBox.DontGoNext();
         GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().ToggleCutsceneState();
         videoPlayer.prepareCompleted += delegate
         {
@@ -104,7 +105,7 @@ public class UICanvas : MonoBehaviour
         yield return dialogueBox.WaitForResume();
 
         FadeScreen.Singleton.SetColor(Color.black);
-        yield return FadeScreen.Singleton.StartFadeAnimation(true);
+        yield return FadeScreen.Singleton.StartFadeAnimation(true, .8f);
         yield return ShowVideo(true);
 
 
@@ -114,6 +115,7 @@ public class UICanvas : MonoBehaviour
         videoPlayer.loopPointReached += delegate { EndVideo(); };
         InputManager.inputManager.OnPausedPressed += delegate { TogglePauseScreen(); };
         PlayVideo();
+        yield return new WaitForSeconds(.15f);
         yield return FadeScreen.Singleton.StartFadeAnimation(false);
         yield return new WaitForSeconds(.1f); //Let the video start yaknow;
 

@@ -85,6 +85,7 @@ public class DialogueBox : MonoBehaviour
     DialogueContent currentDialogue;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0;
+    bool dontGoNext = false;
     Coroutine showBoxCoroutine;
     Coroutine setTextCoroutine;
     GameObject player = null;
@@ -104,6 +105,11 @@ public class DialogueBox : MonoBehaviour
             player = value;
         }
 
+    }
+
+    public void DontGoNext()
+    {
+        dontGoNext = true;
     }
 
     // Start is called before the first frame update
@@ -126,8 +132,10 @@ public class DialogueBox : MonoBehaviour
 
         if (isShowing)
         {
+            dontGoNext = false;
             yield return MakeBoxAppear(true);
             AddInteractEventToPlayer(true);
+            Interact();
         }
     }
     private void Update()
@@ -452,7 +460,11 @@ public class DialogueBox : MonoBehaviour
                         }
                     }
 
-                    if (currentDialogue != null)
+                    if (dontGoNext)
+                    {
+                        dontGoNext = false;
+                        return;
+                    }else if (currentDialogue != null)
                     {
 
 
