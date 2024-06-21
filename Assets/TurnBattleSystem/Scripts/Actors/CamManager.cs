@@ -7,6 +7,7 @@ public class CamManager : MonoBehaviour
     private static CamManager _instance;
     private Transform _cameraTransform;
     private Vector3 _originalPos;
+    private Vector3 _originalCamPos;
     [SerializeField] private float zoomDistance = -5f;
 
     void Awake()
@@ -16,7 +17,8 @@ public class CamManager : MonoBehaviour
         {
             _instance = this;
             _cameraTransform = Camera.main.transform;
-            _originalPos = _cameraTransform.localPosition;
+            _originalCamPos = _cameraTransform.localPosition;
+            _originalPos = transform.localPosition;
         }
         else
         {
@@ -37,7 +39,7 @@ public class CamManager : MonoBehaviour
     }
     public void ShakeCam()
     {
-        StartCoroutine(DoShake(-1, .15f));
+        ShakeCam(-1, .15f);
     }
 
     public void StopShake()
@@ -57,7 +59,7 @@ public class CamManager : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            _cameraTransform.localPosition = new Vector3(x, y, _originalPos.z);
+            transform.localPosition = new Vector3(x, y, _originalPos.z);
 
             if(timed)
             {
@@ -67,7 +69,7 @@ public class CamManager : MonoBehaviour
             yield return null;
         }
 
-        _cameraTransform.localPosition = _originalPos;
+        transform.localPosition = _originalPos;
     }
 
 
@@ -75,7 +77,7 @@ public class CamManager : MonoBehaviour
     {
 
 
-        Vector3 newPos = new Vector3(battleCharacter.transform.position.x, battleCharacter.transform.position.y + 1, _instance.zoomDistance); ;
+        Vector3 newPos = new Vector3(battleCharacter.transform.position.x, battleCharacter.transform.position.y + 2, _instance.zoomDistance); ;
 
         _instance.StartCoroutine(_instance.DoPan(newPos, panDuration));
     }
@@ -83,7 +85,7 @@ public class CamManager : MonoBehaviour
 
     public static void ResetView(float panDuration = .3f)
     {
-        _instance.StartCoroutine(_instance.DoPan(_instance._originalPos, panDuration));
+        _instance.StartCoroutine(_instance.DoPan(_instance._originalCamPos, panDuration));
 
     }
     private IEnumerator DoPan(Vector3 position, float duration)

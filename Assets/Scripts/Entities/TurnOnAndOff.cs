@@ -30,7 +30,6 @@ public class TurnOnAndOff : MonoBehaviour
 
     public void Turn()
     {
-        Debug.Log("Turned");
         if (condition)
         {
             if (!condition.RuntimeValue)

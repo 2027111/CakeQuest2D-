@@ -90,5 +90,6 @@ public abstract class BattleState
     public virtual void OnMenuInstantiated()
     {
 
+        Resources.UnloadUnusedAssets();
     }
 }

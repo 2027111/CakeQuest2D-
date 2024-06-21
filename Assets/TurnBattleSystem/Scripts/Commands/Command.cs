@@ -69,6 +69,20 @@ public class Command
         Target = _target;
     }
 
+
+    public virtual bool WillKokusen()
+    {
+           foreach(BattleCharacter t in Target)
+            {
+                if (t.WillKokusen(this))
+                {
+                    return true;
+                }
+            }
+        return false;
+
+    }
+
     public IEnumerator GoToOriginalPosition()
     {
         yield return GoToOriginalPosition(Source);
@@ -104,6 +118,12 @@ public class Command
         }
         bc.Animator.Move(false);
     }
+
+    public virtual Element GetElement()
+    {
+        return Source.GetReference().AttackElement;
+    }
+
     public IEnumerator GoToEnemy()
     {
         yield return GoToEnemy(Source);

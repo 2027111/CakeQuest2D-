@@ -2,7 +2,7 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\"}"
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\"}"
         },
         {
             "dataId": "Indications",

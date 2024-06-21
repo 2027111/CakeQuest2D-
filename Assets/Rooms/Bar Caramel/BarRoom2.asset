@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
+  m_Name: BarRoom2
+  m_EditorClassIdentifier: 
+  UID: 18cd63db5cbe16e45a0948b3c693f56f
+  roomName: Second Floor
+  minCameraOffset: {x: -62.6, y: 2.05}
+  maxCameraOffset: {x: -56.35, y: 3.3}

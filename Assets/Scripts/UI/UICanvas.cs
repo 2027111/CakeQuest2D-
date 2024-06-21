@@ -20,7 +20,7 @@ public class UICanvas : MonoBehaviour
                 {
                     GameObject canvasInstance = Instantiate(canvasPrefab);
                     Singleton = canvasInstance.GetComponent<UICanvas>();
-                    Debug.Log("UICanvas Instantiated");
+                   // Debug.Log("UICanvas Instantiated");
                 }
                 else
                 {
@@ -37,7 +37,7 @@ public class UICanvas : MonoBehaviour
             }
             else if (_singleton != value)
             {
-                Debug.Log($"{nameof(UICanvas)} instance already exists. Destroying duplicate!");
+                Debug.LogWarning($"{nameof(UICanvas)} instance already exists. Destroying duplicate!");
                 Destroy(value.gameObject);
             }
         }

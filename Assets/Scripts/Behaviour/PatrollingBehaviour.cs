@@ -32,9 +32,8 @@ public class PatrollingBehaviour : CharacterBehaviour
     public override void Handle()
     {
         patrolling.SetLightSource();
-        if (IsPlayerInSight() && patrolling.isUsable() && patrolling.OnCatchPlayer.GetPersistentEventCount() > 0)
+        if (IsPlayerInSight() && patrolling.isUsable() && patrolling.OnCatchPlayer.GetPersistentEventCount() > 0 && !FadeScreen.fading)
         {
-            Debug.Log("Caught Player");
             patrolling.OnCatchPlayer?.Invoke();
         }
         else if (Vector2.Distance(character.transform.position, currentTarget.position) > patrolling.minimumPatrollingdistance)
@@ -117,7 +116,6 @@ public override void OnExit()
                     // Check if the raycast hits the player and not an obstacle
                     if (hit.collider == null)
                     {
-                        Debug.Log(patrolling.gameObject.name + " Player Caught");
                         return true;
                     }
                 }

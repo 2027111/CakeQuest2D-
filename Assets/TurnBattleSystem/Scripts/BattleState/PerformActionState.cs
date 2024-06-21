@@ -5,7 +5,8 @@ using UnityEngine;
 public class PerformActionState : BattleState
 {
     BattleCharacter performer;
-
+    bool willAutoSkip = false;
+    
 
     public PerformActionState()
     {
@@ -21,24 +22,30 @@ public class PerformActionState : BattleState
         performer.SetActing(true);
         if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer() || !performer.currentCommand.skippable)
         {
-
+            willAutoSkip = false;
             performer.currentCommand.OnExecuted += PerformanceOver;
             battleManager.StartCoroutine(CheckFocus());
 
+
+
+        }
+        else if(battleManager.GetActor().currentCommand.skippable && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
+        {
+            willAutoSkip = true;
         }
         performer.currentCommand.OnExecuted += delegate { performer.SetActing(false); };
         performer.currentCommand.OnExecuted += performer.ResetAnimatorController;
         performer.currentCommand.ExecuteCommand();
-        CamManager.ResetView();
     }
 
 
     public override void Handle()
     {
 
-        if (battleManager.GetActor().currentCommand.skippable && battleManager.NextActorCanAct() && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
+        if (battleManager.NextActorCanAct() && willAutoSkip)
         {
             performer.currentCommand.OnExecuted -= PerformanceOver;
+            willAutoSkip = false;
             PerformanceOver();
 
         }
@@ -74,7 +81,7 @@ public class PerformActionState : BattleState
         if (!battleManager.IsForcedTurn())
         {
 
-        yield return new WaitForSeconds(Random.Range(.3f, .9f));
+        yield return new WaitForSeconds(Random.Range(.8f, 1.5f));
 
 
 

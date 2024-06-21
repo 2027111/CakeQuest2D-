@@ -46,11 +46,13 @@ public class BattleManager : MonoBehaviour
 
 
     public GameObject KOKUSEN;
+    public GameObject KOKUSENAURA;
 
 
 
 
     [SerializeField] GameObject currentBackground;
+    [SerializeField] GameObject fadeBackground;
 
 
 
@@ -273,21 +275,42 @@ public class BattleManager : MonoBehaviour
     }
     public void ForceRecipe(int[] vs)
     {
-        if(vs[0] < EnemyPartyActors.Count)
+        int index = vs[0];
+
+        if(index < EnemyPartyActors.Count)
         {
 
-            BattleCharacter enemy = EnemyPartyActors[vs[0]];
-
             List<ElementalAttribute> attributes = new List<ElementalAttribute>();
-            if (enemy != null)
-            {
 
                 for (int i = 1; i < vs.Length; i++)
                 {
                     ElementalAttribute newAttribute = new ElementalAttribute(vs[i], true);
                     attributes.Add(newAttribute);
                 }
+
+
+
+
+            if (index >= 0)
+            {
+                BattleCharacter enemy = EnemyPartyActors[vs[0]];
                 enemy.SetRecipe(attributes);
+            }
+            else if(index == -1)
+            {
+                foreach(BattleCharacter enemy in EnemyPartyActors)
+                {
+
+                    enemy.SetRecipe(attributes);
+                }
+            }
+            else if (index == -2)
+            {
+                foreach (BattleCharacter hero in HeroPartyActors)
+                {
+
+                    hero.SetRecipe(attributes);
+                }
             }
         }
 
@@ -658,7 +681,33 @@ public class BattleManager : MonoBehaviour
         return false;
     }
 
+    public void FadeBackground(bool ToBlack, float fadeDuration = .1f)
+    {
+        StartCoroutine(FadeBackgroundTo(ToBlack, fadeDuration));
+    }
 
+    public IEnumerator FadeBackgroundTo(bool ToBlack, float fadeDuration = .1f)
+    {
+        float target = ToBlack ? .8f : 0;
+        float start = ToBlack ? 0 : .8f;
+        float t = 0;
+        SpriteRenderer sr = fadeBackground.GetComponent<SpriteRenderer>();
+        if(sr.color.a == target)
+        {
+
+            t = fadeDuration;
+        }
+        while (t < fadeDuration)
+            {
+            float alpha = Mathf.Lerp(start, target, (t / fadeDuration));
+            sr.color = new Color(0, 0, 0, alpha);
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = new Color(0, 0, 0, target);
+        yield return null;
+    }
 
     public IEnumerator EndBattleCountDown(bool battleWon)
     {
@@ -776,6 +825,7 @@ public class BattleManager : MonoBehaviour
 
     public void MoveToScene()
     {
+        Resources.UnloadUnusedAssets();
         if (infoStorage)
         {
 

@@ -98,6 +98,23 @@ public class BattleCharacter : MonoBehaviour
 
     }
 
+
+    public bool WillKokusen(Command command)
+    {
+        if(command is AttackCommand)
+        {
+            if (recipeIndex == recipe.Count - 1)
+            {
+                if (command.GetElement() == recipe[recipeIndex].element)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
     public void RevealRecipe()
     {
         foreach(ElementalAttribute ee in recipe)

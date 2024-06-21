@@ -33,7 +33,7 @@ public class MusicPlayer : MonoBehaviour
                 {
                     GameObject musicPlayerInstance = Instantiate(musicPlayerPrefab);
                     Singleton = musicPlayerInstance.GetComponent<MusicPlayer>();
-                    Debug.Log("MusicPlayer Instantiated");
+                    //Debug.Log("MusicPlayer Instantiated");
                 }
                 else
                 {
@@ -50,7 +50,7 @@ public class MusicPlayer : MonoBehaviour
             }
             else if (_singleton != value)
             {
-                Debug.Log($"{nameof(MusicPlayer)} instance already exists. Destroying duplicate!");
+                Debug.LogWarning($"{nameof(MusicPlayer)} instance already exists. Destroying duplicate!");
                 Destroy(value.gameObject);
             }
         }

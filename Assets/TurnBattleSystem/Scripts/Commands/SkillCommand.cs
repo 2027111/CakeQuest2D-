@@ -18,31 +18,9 @@ public class SkillCommand : AttackCommand
         base.ExecuteCommand();
     }
 
-    public override IEnumerator Execute()
+    public override bool IsPhysical()
     {
-
-        startPosition = Source.transform.position;
-
-        if (attack.skillType == SkillType.Physical)
-        {
-            yield return Source.StartCoroutine(GoToEnemy());
-            yield return new WaitForSeconds(.6f);
-        }
-        yield return new WaitForSeconds(.6f);
-
-        yield return Source.StartCoroutine(WaitForAnimationOver());
-
-        yield return new WaitForSeconds(.6f);
-        if(attack.skillType == SkillType.Physical)
-        {
-            yield return Source.StartCoroutine(GoToOriginalPosition());
-            yield return new WaitForSeconds(.6f);
-            Source.ResetAnimatorController();
-        }
-        OnCommandOver();
-        OnExecuted?.Invoke();
-
-
+        return attack.skillType == SkillType.Physical;
     }
     public override void SetTarget(List<BattleCharacter> _target)
     {
@@ -70,12 +48,18 @@ public class SkillCommand : AttackCommand
 
     }
 
+    public override Element GetElement()
+    {
+        return attack.element;
+    }
+
+
     public override bool CanBeTarget(BattleCharacter _character)
     {
 
         return base.CanBeTarget(_character) == (attack.targetStateType == TargetStateType.Alive);
     }
-    public IEnumerator WaitForAnimationOver()
+    public override IEnumerator WaitForAnimationOver()
     {
         Source.Animator.Attack();
         Source.ApplyAttackAnimationOverride(attack);

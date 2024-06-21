@@ -30,7 +30,7 @@ public class FadeScreen : MonoBehaviour
                 {
                     GameObject FadeScreenInstance = Instantiate(FadeScreenPrefab);
                     Singleton = FadeScreenInstance.GetComponent<FadeScreen>();
-                    Debug.Log("FadeScreen Instantiated");
+                   // Debug.Log("FadeScreen Instantiated");
                 }
                 else
                 {
@@ -49,11 +49,13 @@ public class FadeScreen : MonoBehaviour
             }
             else if (_singleton != value)
             {
-                Debug.Log($"{nameof(FadeScreen)} instance already exists. Destroying duplicate!");
+                Debug.LogWarning($"{nameof(FadeScreen)} instance already exists. Destroying duplicate!");
                 Destroy(value.gameObject);
             }
         }
     }
+
+
 
     public UnityEvent OnFadingStart;
     public UnityEvent OnFadingMid;
@@ -137,7 +139,53 @@ public class FadeScreen : MonoBehaviour
 
     }
 
+    public static void FakeMoveToScene()
+    {
+        Singleton?.StartCoroutine(Singleton?.FakeCoroutine());
+    }
 
+
+    public IEnumerator FakeCoroutine()
+    {
+
+
+        yield return new WaitForSeconds(.05f);
+        OnFadingStart?.Invoke();
+
+        if (!FadeScreen.fading)
+        {
+            Singleton.SetColor(Color.black);
+            Singleton.SetTransitionTime(fadeTime);
+            yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
+            fadeOn = true;
+        }
+        yield return new WaitForSeconds(.05f);
+        OnFadingMid?.Invoke();
+        yield return new WaitForSecondsRealtime(fadeTime);
+        if (!FadeScreen.fading)
+        {
+
+            Singleton.SetColor(Color.black);
+            Singleton.SetTransitionTime(fadeTime);
+            yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
+            fadeOn = false;
+        }
+
+        yield return new WaitForSeconds(.05f);
+
+        OnFadingEnd?.Invoke();
+        yield return null;
+
+
+        OnFadingStart?.RemoveAllListeners();
+        OnFadingMid?.RemoveAllListeners();
+        OnFadingEnd?.RemoveAllListeners();
+
+
+
+
+
+    }
     public IEnumerator FadeCoroutine(string scene)
     {
 
@@ -228,14 +276,12 @@ public class FadeScreen : MonoBehaviour
     public static void AddOnStartFadeEvent(Action action)
     {
         UnityAction actionU = new UnityAction(action);
-        Debug.Log(action.Method.Name);
         Singleton?.OnFadingStart.AddListener(actionU);
     }
 
     public static void AddOnEndFadeEvent(Action action)
     {
         UnityAction actionU = new UnityAction(action);
-        Debug.Log(action.Method.Name);
 
         if (Singleton.startFadeon)
         {
@@ -250,7 +296,6 @@ public class FadeScreen : MonoBehaviour
     public static void RemoveOnEndFadeEvent(Action action)
     {
         UnityAction actionU = new UnityAction(action);
-        Debug.Log(action.Method.Name);
         Singleton?.OnFadingEnd.RemoveListener(actionU);
 
     }

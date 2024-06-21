@@ -4,46 +4,55 @@ using UnityEngine;
 
 public class AttackCommand : Command
 {
-
+    
     public override void ExecuteCommand()
     {
         Source.StartCoroutine(Execute());
     }
 
+
     public virtual IEnumerator Execute()
     {
+
         startPosition = Source.transform.position;
-        if(Source.GetReference().attackType == SkillType.Physical)
+
+        if (IsPhysical())
         {
+            
             yield return Source.StartCoroutine(GoToEnemy());
+            yield return new WaitForSeconds(.6f);
         }
-
-
-        yield return new WaitForSeconds(.3f);
-
-        Source.Animator.Move(false);
-        Source.Animator.Attack();
-
-
-        float animTime = 0;
-        while (animTime < Source.Animator.GetCurrentAnimLen())
+        yield return new WaitForSeconds(.6f);
+        if (WillKokusen())
         {
-            animTime += Time.deltaTime;
-            yield return null;
+            if (IsPhysical())
+            {
+                CamManager.PanToCharacter(Source);
+            }
+            GameObject.Instantiate(BattleManager.Singleton?.KOKUSENAURA, Source.transform.position + Vector3.up, Quaternion.identity);
+            BattleManager.Singleton.FadeBackground(true);
+            Source.StartCoroutine(Utils.SlowDown(1f, .02f));
         }
-
+        yield return Source.StartCoroutine(WaitForAnimationOver());
 
         yield return new WaitForSeconds(.6f);
-        if (Source.GetReference().attackType == SkillType.Physical)
+        CamManager.ResetView();
+        BattleManager.Singleton.FadeBackground(false, .3f);
+        if (IsPhysical())
         {
             yield return Source.StartCoroutine(GoToOriginalPosition());
+            yield return new WaitForSeconds(.6f);
         }
-
-        yield return new WaitForSeconds(.6f);
+        OnCommandOver();
         OnExecuted?.Invoke();
+
 
     }
 
+    public virtual bool IsPhysical()
+    {
+        return Source.GetReference().attackType == SkillType.Physical;
+    }
     public override void SetTarget(List<BattleCharacter> _target)
     {
         Target = new List<BattleCharacter>();
@@ -59,9 +68,22 @@ public class AttackCommand : Command
         base.ActivateCommand();
     }
 
+    public virtual IEnumerator WaitForAnimationOver()
+    {
+        AnimationClip clip = null;
+        Source.ResetAnimatorController();
+        Source.Animator.Attack();
+        yield return new WaitForSeconds(.1f);
+        clip = Source.Animator.GetCurrentAnim().clip;
+        while (Source.Animator.GetCurrentAnim().clip == clip && Source.Animator.GetCurrentAnimTime() < Source.Animator.GetCurrentAnimLen())
+        {
+            yield return null;
+        }
 
+        Source.ResetAnimatorController();
+    }
 
-        public override void ActivateCommand(BattleCharacter _target)
+    public override void ActivateCommand(BattleCharacter _target)
         {
             CharacterObject characterObject = _target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);

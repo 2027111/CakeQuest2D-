@@ -29,7 +29,6 @@ public class MoviePlayer : MonoBehaviour
 
         if (!videoPlayer.isPlaying)
         {
-            Debug.Log("Changed state");
             videoPlayer.prepareCompleted += delegate
             {
                 StartCoroutine(StartAnimatedCutscene());

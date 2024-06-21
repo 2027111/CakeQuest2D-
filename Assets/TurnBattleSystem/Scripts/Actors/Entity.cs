@@ -156,7 +156,7 @@ public class Entity : MonoBehaviour
             }
 
 
-            if (character.isParrying)
+            if (character.isParrying && !attackInfo.command.WillKokusen())
             {
                 AddFocus(Mathf.Abs(attackInfo.GetAmount()));
                 attackInfo.amount = 0;
@@ -184,7 +184,13 @@ public class Entity : MonoBehaviour
 
         if(attackInfo.effect == ElementEffect.RecipeCompleted)
         {
-            Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
+            GameObject obj = Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
+            Vector3 rotation = Vector3.zero;
+            if (character.IsFacing() == -1)
+            {
+                rotation.z = 180;
+            }
+            obj.transform.rotation = Quaternion.Euler(rotation);
         }
 
 
@@ -197,13 +203,25 @@ public class Entity : MonoBehaviour
 
             if (attackInfo.attack?.GetHitEffect() != null)
             {
-                Instantiate(attackInfo.attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                GameObject obj = Instantiate(attackInfo.attack.GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                Vector3 rotation = Vector3.zero;
+                if (character.IsFacing() == -1)
+                {
+                    rotation.z = 180;
+                }
+                obj.transform.rotation = Quaternion.Euler(rotation);
             }
             else
             {
                 if (attackInfo.source.GetReference().GetHitEffect() != null)
                 {
-                    Instantiate(attackInfo.source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                    GameObject obj = Instantiate(attackInfo.source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
+                    Vector3 rotation = Vector3.zero;
+                    if(character.IsFacing()  == -1)
+                    {
+                        rotation.z = 180;
+                    }
+                    obj.transform.rotation = Quaternion.Euler(rotation);
                 }
             }
             if (attackInfo.attack?.GetSoundEffect() != null)

@@ -60,7 +60,6 @@ public class BattleCutscene : Cutscene
 
         foreach(char e in weakness)
         {
-            Debug.Log(e);
             if(int.TryParse(e.ToString(), out int ress))
             {
                 elementRecipe.Add(ress);

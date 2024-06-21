@@ -46,14 +46,11 @@ TagManager:
   - name: GroundLayer1
     uniqueID: 655367041
     locked: 0
-  - name: GroundLayer2
-    uniqueID: 2248804909
+  - name: PlayerLayer1
+    uniqueID: 198235773
     locked: 0
-  - name: GroundLayer3
-    uniqueID: 4060527429
-    locked: 0
-  - name: GroundLayer4
-    uniqueID: 2486255107
+  - name: ForegroundLayer1
+    uniqueID: 3019642729
     locked: 0
   - name: Default
     uniqueID: 0

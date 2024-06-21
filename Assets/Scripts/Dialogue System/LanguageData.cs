@@ -69,6 +69,8 @@ public class LanguageData
             Debug.LogError("Failed to load gameData.json");
         }
 
+
+        Resources.UnloadUnusedAssets();
         return null;
     }
 

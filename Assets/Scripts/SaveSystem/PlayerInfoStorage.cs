@@ -76,10 +76,10 @@ public class PlayerInfoStorage : MonoBehaviour
             {
                 if (!FadeScreen.movingScene)
                 {
-                    FadeScreen.StartTransition(false, Color.black, .5f);
+                    FadeScreen.AddOnMidFadeEvent(OnTransitionOver);
+                    FadeScreen.FakeMoveToScene();
                 }
 
-                OnTransitionOver();
 
             }
         }

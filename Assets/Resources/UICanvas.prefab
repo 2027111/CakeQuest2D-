@@ -374,7 +374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -42, y: -81.043}
+  m_AnchoredPosition: {x: 388, y: -81.043}
   m_SizeDelta: {x: 330, y: 65}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1283301294
@@ -669,7 +669,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683195659870482506}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dialogue testing yes you suck bitch.
+  m_text: Dialogue testing yes
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
   m_sharedMaterial: {fileID: 8001631950869338567, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
@@ -2055,7 +2055,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 42, y: -90}
+  m_AnchoredPosition: {x: -274, y: -89.999}
   m_SizeDelta: {x: 241.55603, y: 47.087}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6664538493289598114
@@ -2147,7 +2147,7 @@ GameObject:
   - component: {fileID: 2301418772920823072}
   - component: {fileID: 3085206277450406067}
   m_Layer: 5
-  m_Name: Choice Box
+  m_Name: Resume Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

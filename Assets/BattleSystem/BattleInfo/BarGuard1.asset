@@ -15,7 +15,7 @@ MonoBehaviour:
   UID: ef694d6bb510934439a5441663b495d9
   RuntimeValue: 0
   BattleMusic: {fileID: 8300000, guid: a9d3c9416d5eee0478c7f944f2e2ff6a, type: 3}
-  CutsceneForDialogue: {fileID: 0}
+  CutsceneForDialogue: {fileID: 11400000, guid: cecf614b3f29e724cadb5311c68084da, type: 2}
   backgroundPrefab: {fileID: 7888560091559115593, guid: 4a0647a9b166a9946bee05e5fbcb67d7, type: 3}
   FightParty:
   - {fileID: 11400000, guid: 0f29c282958ebcd4981fb3f1e352410e, type: 2}

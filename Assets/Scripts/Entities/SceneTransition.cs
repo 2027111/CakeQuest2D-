@@ -16,6 +16,7 @@ public class SceneTransition : MonoBehaviour
 
     public void TransitionScene()
     {
+        Resources.UnloadUnusedAssets();
         UICanvas.CancelCurrentDialogue();
         PlayerInfoStorage storage = Character.Player.GetComponent<PlayerInfoStorage>();
         if (storage)
