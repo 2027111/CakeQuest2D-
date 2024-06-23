@@ -31,7 +31,7 @@ public class PlayerInfoStorage : MonoBehaviour
         {
             if (infoStorage.forceNextChange)
             {
-                MoveToScene();
+                OnTransitionOver();
             }
         }
         else
@@ -76,7 +76,6 @@ public class PlayerInfoStorage : MonoBehaviour
             {
                 if (!FadeScreen.movingScene)
                 {
-                    FadeScreen.AddOnMidFadeEvent(OnTransitionOver);
                     FadeScreen.FakeMoveToScene();
                 }
 
@@ -89,6 +88,7 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void OnTransitionOver()
     {
+        Debug.Log("Forced Pos : " + infoStorage.nextPosition);
         character.SetPosition(infoStorage.nextPosition);
         Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
         infoStorage.forceNextChange = false;

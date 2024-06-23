@@ -35,7 +35,7 @@ public class CharacterInventory : SavableObject
                 yield return null;
             }
             InventoryItem loadedItem = request.asset as InventoryItem;
-            AddToInventory(loadedItem);
+            AddToInventory(loadedItem, 1,  false);
             yield return null;
         }
         yield return null;
@@ -63,7 +63,7 @@ public class CharacterInventory : SavableObject
         return true;
     }
 
-    public void AddToInventory(InventoryItem content, int amount = 1)
+    public void AddToInventory(InventoryItem content, int amount = 1, bool checkEvent = true)
     {
             if (content.itemName == "pesso")
             {
@@ -76,8 +76,10 @@ public class CharacterInventory : SavableObject
                     myInventory.Add(content);
                 }
             }
-
-        InventoryChangeEvent?.Invoke();
+        if (checkEvent)
+        {
+            InventoryChangeEvent?.Invoke();
+        }
 
     }
     public List<InventoryItem> ReturnUniqueInventory()

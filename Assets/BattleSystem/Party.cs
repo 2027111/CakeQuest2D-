@@ -25,6 +25,7 @@ public class Party : SavableObject
 
         foreach (CharacterObject item in loadedParty)
         {
+            Debug.Log(item.name);
             ResourceRequest request = Resources.LoadAsync<CharacterObject>($"CharacterFolder/{item.name}");
             while (!request.isDone)
             {
