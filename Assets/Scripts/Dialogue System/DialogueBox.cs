@@ -298,23 +298,9 @@ public class DialogueBox : MonoBehaviour
 
         if (lineInfo.voiced)
         {
-        // Load the audio from Resources folder
-        string voiceLinePath = $"VoiceLines/{LanguageData.GetLanguage()}/{lineInfo.lineId}"; // Assuming the path is relative to the Resources folder
-        AudioClip voiceLine = Resources.Load<AudioClip>(voiceLinePath);
+            // Load the audio from Resources folder
 
-        if (voiceLine == null)
-        {
-            // Log an error if the audio failed to load
-            Debug.LogWarning("Failed to load Voice Line at path: " + voiceLinePath);
-
-
-        }
-        else
-        {
-            // Assign the loaded audio to the audio source
-            voiceClipSource.clip = voiceLine;
-            voiceClipSource.Play();
-        }
+            PlayLineVoiceClip(lineInfo.lineId);
 
 
 
@@ -329,7 +315,18 @@ public class DialogueBox : MonoBehaviour
         nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
     }
 
+    public void PlayLineVoiceClip(string lineId)
+    {
+        AudioClip voiceLine = Utils.GetVoiceLine(lineId);
 
+        if (voiceLine != null)
+        {
+            // Assign the loaded audio to the audio source
+            voiceClipSource.clip = voiceLine;
+            voiceClipSource.Play();
+        }
+
+    }
     public void DoChoice(ChoiceDialogue choice)
     {
 

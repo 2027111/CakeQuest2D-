@@ -21,4 +21,22 @@ public class Utils : MonoBehaviour
 
         Time.timeScale = 1;
     }
+
+
+    public static AudioClip GetVoiceLine(string voiceClipId)
+    {
+        AudioClip clip = Resources.Load<AudioClip>($"VoiceLines/{LanguageData.GetLanguage()}/{voiceClipId}");
+
+
+            if(clip == null && LanguageData.GetLanguage() != LanguageData.defaultLanguage)
+            {
+
+            clip = Resources.Load<AudioClip>($"VoiceLines/{LanguageData.defaultLanguage}/{voiceClipId}");
+
+        }
+
+        return clip;
+
+
+    }
 }

@@ -17,7 +17,7 @@ public class LanguageData
     public Dictionary<string, string> GlobalColors;
     public List<GlobalColor> globalColors;
     public static Language language = Language.Français;
-
+    public static Language defaultLanguage = Language.Français;
     private static LanguageData _singleton;
     public static LanguageData Singleton
     {
