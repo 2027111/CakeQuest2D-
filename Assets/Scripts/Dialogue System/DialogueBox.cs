@@ -43,6 +43,20 @@ public class LineInfo{
     public bool voiced = false;
     public AudioClip audioClip;
 
+    public LineInfo(string lineId)
+    {
+        this.lineId = lineId;
+        this.line = LanguageData.GetDataById(lineId).GetValueByKey("line");
+        this.talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkerName");
+        this.portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
+        if (bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result))
+        {
+            voiced = result;
+        }
+    }
+
+
+
     public LineInfo(string lineId, string line, string talkerName, string portraitPath)
     {
         this.lineId = lineId;
@@ -202,7 +216,9 @@ public class DialogueBox : MonoBehaviour
                 {
                     //Debug.Log("Starting Dialogue");
                     dialogueText.text = "";
-                    SetupLine(newDialogue.dialogue.dialogueLineIds[0]);
+                    string lineId = newDialogue.dialogue.dialogueLineIds[0];
+                    LineInfo lineInfo = new LineInfo(lineId);
+                    SetupLine(lineInfo);
                     StartCoroutine(ShowDialogueBoxAlpha(true));
 
                     if (playerObject == null)
@@ -283,7 +299,7 @@ public class DialogueBox : MonoBehaviour
         if (lineInfo.voiced)
         {
         // Load the audio from Resources folder
-        string voiceLinePath = "VoiceLines/" + lineInfo.lineId; // Assuming the path is relative to the Resources folder
+        string voiceLinePath = $"VoiceLines/{LanguageData.GetLanguage()}/{lineInfo.lineId}"; // Assuming the path is relative to the Resources folder
         AudioClip voiceLine = Resources.Load<AudioClip>(voiceLinePath);
 
         if (voiceLine == null)
@@ -314,50 +330,6 @@ public class DialogueBox : MonoBehaviour
     }
 
 
-    private void SetupLine(string lineId)
-    {// Set the active state of the portrait image based on whether a sprite is provided
-
-        if (LanguageData.GetDataById(lineId) != null)
-        {
-
-            string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
-            string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
-
-
-
-
-            portraitContainer.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
-
-            if (!string.IsNullOrEmpty(portraitPath))
-            {
-                // Load the sprite from Resources folder
-                string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
-                Sprite portrait = Resources.Load<Sprite>(fullPath);
-
-                if (portrait == null)
-                {
-                    // Log an error if the sprite failed to load
-                    Debug.LogError("Failed to load sprite at path: " + fullPath);
-
-                    // Optionally, list all loaded sprites for debugging
-                    portraitContainer.gameObject.SetActive(false);
-
-                }
-                else
-                {
-                    // Assign the loaded sprite to the portrait image
-                    portraitImage.sprite = portrait;
-                }
-            }
-
-            // Set the active state of the name text container based on whether the talker name is provided
-            nameTextContainer.SetActive(!string.IsNullOrEmpty(talkerName));
-
-            // Set the text of the name text component to the provided talker name
-            nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
-
-        }
-    }
     public void DoChoice(ChoiceDialogue choice)
     {
 
@@ -376,24 +348,7 @@ public class DialogueBox : MonoBehaviour
         StartNextDialogueWaiting();
     }
 
-    public void DoChoice(int i)
-    {
 
-        Debug.Log("HELP CHOICE");
-        //currentDialogue.choice = false;
-        ClearChoiceBox();
-        choiceBox.SetActive(false);
-
-        OnDialogueOverAction.Enqueue(currentDialogue.dialogue.choices[i].OnOverEvent.Invoke);
-        if (currentDialogue.dialogue != null)
-        {
-
-            dialogueWaitingLine.Insert(0,new DialogueContent(new Dialogue(currentDialogue.dialogue.choices[i])));
-        }
-
-        AddNavigateEventToPlayer(false);
-        Interact();
-    }
 
     private void FillChoiceBox(ChoiceDialogue[] choices)
     {
@@ -407,9 +362,8 @@ public class DialogueBox : MonoBehaviour
             int number = i;
             ChoiceDialogue choice = choices[number];
             ChoiceMenuButton obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<ChoiceMenuButton>();
-
-            string line = LanguageData.GetDataById(choices[i].choicesLineIds).GetValueByKey("line");
-            obj.GetComponent<TMP_Text>().text = line;
+            LineInfo choiceLine = new LineInfo(choices[i].choicesLineIds);
+            obj.GetComponent<TMP_Text>().text = choiceLine.line;
             obj.OnSelected.AddListener(delegate { DoChoice(choice); });
             obj.SetMenu(choiceBox.GetComponent<ChoiceMenu>());
             choiceBox.GetComponent<ChoiceMenu>().AddButton(obj);
@@ -666,20 +620,16 @@ public class DialogueBox : MonoBehaviour
         {
 
         string lineId = dialogue.dialogueLineIds[index];
+        LineInfo lineInfo = new LineInfo(lineId);
 
-        string line = LanguageData.GetDataById(dialogue.dialogueLineIds[index]).GetValueByKey("line");
-        string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
-        string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
+            if (dialogue.source != null)
+            {
+                lineInfo.line = NewDialogueStarterObject.GetFormattedLines(dialogue.source.GetComponent<NewDialogueStarterObject>(), lineInfo.line);
 
-        if(dialogue.source != null)
-        {
-            line = NewDialogueStarterObject.GetFormattedLines(dialogue.source.GetComponent<NewDialogueStarterObject>(), line);
-
-        }
+            }
 
 
 
-        LineInfo lineInfo = new LineInfo(lineId, line, talkerName, portraitPath);
 
 
 
@@ -688,14 +638,14 @@ public class DialogueBox : MonoBehaviour
         {
             StopCoroutine(setTextCoroutine);
             setTextCoroutine = null;
-            dialogueText.text = line;
+            dialogueText.text = lineInfo.line;
             dialogueIndex++;
         }
         else
         {
             voiceClipSource.Stop();
             SetupLine(lineInfo);
-            setTextCoroutine = StartCoroutine(GraduallySetText(line));
+            setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo.line));
             }
         }
     }

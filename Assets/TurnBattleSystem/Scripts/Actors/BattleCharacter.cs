@@ -313,11 +313,23 @@ public class BattleCharacter : MonoBehaviour
 
     public void PlaySFX(AudioClip audioClip)
     {
-        sfxAudioSource.PlayOneShot(audioClip);
+        PlayAudioClip(sfxAudioSource, audioClip);
     }
     public void PlayVoiceLine(AudioClip audioClip)
     {
-        voiceAudioSource.PlayOneShot(audioClip);
+        
+        PlayAudioClip(voiceAudioSource, audioClip);
+    }
+
+
+    public void PlayAudioClip(AudioSource source, AudioClip audioClip)
+    {
+        if (audioClip == null)
+        {
+            return;
+        }
+        source.PlayOneShot(audioClip);
+
     }
     public void SetReference(CharacterObject characterObject)
     {

@@ -26,8 +26,8 @@ public class TakeOverButton : ChoiceMenuButton
     }
     public void Confirm()
     {
-        AudioClip TakeOverClip = Resources.Load<AudioClip>("VoiceLines/Battle_" + battleCharacter.GetData().characterName + "_TakeOver");
-        Debug.Log(TakeOverClip == null);
+        AudioClip TakeOverClip = Resources.Load<AudioClip>($"VoiceLines/{LanguageData.GetLanguage()}/Battle_{battleCharacter.GetData().characterName}_TakeOver");
+        
         battleCharacter.PlayVoiceLine(TakeOverClip);
         battleCharacter.PlaySFX(confirmAudioClip);
     }

@@ -148,6 +148,8 @@ public class LanguageData
                 return dataInfo;
             }
         }
+
+        Debug.LogWarning($"Key '{id}' not found in Translation File data.");
         return new JsonData();
     }
 }
