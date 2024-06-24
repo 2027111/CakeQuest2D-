@@ -50,8 +50,8 @@ public class RoomMove : MonoBehaviour
     private void MovePlayer(RoomInfo newRoom, Direction moveDirection)
     {
         Vector2 newPos = (Vector2)Character.Player.transform.position;// + (Vector2)DirectionToVector(moveDirection);
-        Character.Player.GetComponent<PlayerInfoStorage>().SetNewRoom(newRoom);
-        Character.Player.GetComponent<PlayerInfoStorage>().SetNewPosition(newPos);
+        PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(newRoom);
+        PlayerInfoStorage.CurrentInfoStorage.SetNewPosition(newPos);
     }
 
     private Direction GetOppositeDirection(Direction direction)
@@ -80,8 +80,5 @@ public class RoomMove : MonoBehaviour
         return change;
     }
 
-    public RoomInfo GetCurrentRoom()
-    {
-        return Character.Player.GetComponent<PlayerInfoStorage>().GetCurrentRoomInfo();
-    }
+
 }

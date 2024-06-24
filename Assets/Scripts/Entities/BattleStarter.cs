@@ -14,6 +14,6 @@ public class BattleStarter : MonoBehaviour
     public  void StartBattle()
     {
         currentBattleInfo.SetInfos(ThisbattleInfo);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>().GoToBattleScene();
+        PlayerInfoStorage.CurrentInfoStorage.GoToBattleScene();
     }
 }

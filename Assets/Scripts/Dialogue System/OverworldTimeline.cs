@@ -22,8 +22,7 @@ public class OverworldTimeline : Timeline
 
         if (storagePlay.StartRoom != null)
         {
-
-            Character.Player.GetComponent<PlayerInfoStorage>().SetNewRoom(storagePlay.StartRoom);
+            PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(storagePlay.StartRoom);
         }
 
         playableDirector.playableAsset = storagePlay.CutsceneToPlay;

@@ -9,6 +9,8 @@ public class PlayerInfoStorage : MonoBehaviour
 
 
     public PlayerStorage infoStorage;
+    public static PlayerStorage InfoStorage;
+    public static PlayerInfoStorage CurrentInfoStorage;
     [SerializeField] Character character;
     private CameraMovement camMove;
 
@@ -16,7 +18,11 @@ public class PlayerInfoStorage : MonoBehaviour
     public float minimumFadeTime = 1f;
     public static float DestroyTime = 1.4f;
 
-
+    private void Awake()
+    {
+        InfoStorage = infoStorage;
+        CurrentInfoStorage = this;
+    }
 
 
 
@@ -27,9 +33,9 @@ public class PlayerInfoStorage : MonoBehaviour
 
         character = GetComponent<Character>();
 
-        if (infoStorage)
+        if (InfoStorage)
         {
-            if (infoStorage.forceNextChange)
+            if (InfoStorage.forceNextChange)
             {
                 OnTransitionOver();
             }
@@ -47,7 +53,7 @@ public class PlayerInfoStorage : MonoBehaviour
     public void GoToBattleScene()
     {
         SetNewInformationToFile();
-        infoStorage.forceNextChange = true;
+        InfoStorage.forceNextChange = true;
         FadeScreen.MoveToScene("BattleScene");
 
     }
@@ -64,19 +70,20 @@ public class PlayerInfoStorage : MonoBehaviour
 
 
 
-        if (infoStorage)
+        if (InfoStorage)
         {
 
-            if (infoStorage.sceneName != SceneManager.GetActiveScene().name)
+            if (InfoStorage.sceneName != SceneManager.GetActiveScene().name)
             {
-                infoStorage.forceNextChange = true;
-                FadeScreen.MoveToScene(infoStorage.sceneName);
+                InfoStorage.forceNextChange = true;
+                FadeScreen.MoveToScene(InfoStorage.sceneName);
             }
             else
             {
                 if (!FadeScreen.movingScene)
                 {
                     FadeScreen.FakeMoveToScene();
+                    FadeScreen.AddOnMidFadeEvent(OnTransitionOver);
                 }
 
 
@@ -88,35 +95,35 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void OnTransitionOver()
     {
-        Debug.Log("Forced Pos : " + infoStorage.nextPosition);
-        character.SetPosition(infoStorage.nextPosition);
+        Debug.Log("Forced Pos : " + InfoStorage.nextPosition);
+        character.SetPosition(InfoStorage.nextPosition);
         Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
-        infoStorage.forceNextChange = false;
-        character.LookToward(RoomMove.DirectionToVector(infoStorage.facing));
+        InfoStorage.forceNextChange = false;
+        character.LookToward(RoomMove.DirectionToVector(InfoStorage.facing));
     }
 
     public RoomInfo GetCurrentRoomInfo()
     {
-        return infoStorage.nextRoomInfo;
+        return InfoStorage.nextRoomInfo;
     }
 
     public void SetNewInformationToFile()
     {
-        infoStorage.sceneName = SceneManager.GetActiveScene().name;
-        infoStorage.nextPosition = transform.position;
+        InfoStorage.sceneName = SceneManager.GetActiveScene().name;
+        InfoStorage.nextPosition = transform.position;
     }
 
     public void SetNewPosition(Vector2 newPos)
     {
-        infoStorage.nextPosition = newPos;
+        InfoStorage.nextPosition = newPos;
     }
 
     public void SetNewRoom(RoomInfo newRoom)
     {
-        if(newRoom != infoStorage.nextRoomInfo)
+        if(newRoom != InfoStorage.nextRoomInfo)
         {
-            infoStorage.nextRoomInfo.SetValue(newRoom);
-            RoomTitleCard.ShowTitle(infoStorage.nextRoomInfo.roomName);
+            InfoStorage.nextRoomInfo.SetValue(newRoom);
+            RoomTitleCard.ShowTitle(InfoStorage.nextRoomInfo.roomName);
         }
     }
 
@@ -124,7 +131,6 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void MoveToHomeScreenScene()
     {
-
         FadeScreen.MoveToScene("StartMenuScene");
     }
 }

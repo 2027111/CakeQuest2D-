@@ -111,16 +111,14 @@ public class PauseManager : MonoBehaviour
 
     public void Save()
     {
-        PlayerInfoStorage playerInfoStorage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>();
-        playerInfoStorage.SetNewInformationToFile();
+        PlayerInfoStorage.CurrentInfoStorage.SetNewInformationToFile();
         GameSaveManager.Singleton?.SaveGame();
     }
 
     public void ReturnToTitle()
     {
-        PlayerInfoStorage playerInfoStorage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>();
         OnPausePressed(false);
-        playerInfoStorage.MoveToHomeScreenScene();
+        PlayerInfoStorage.CurrentInfoStorage.MoveToHomeScreenScene();
     }
 
 

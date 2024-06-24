@@ -18,18 +18,18 @@ public class SceneTransition : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         UICanvas.CancelCurrentDialogue();
-        PlayerInfoStorage storage = Character.Player.GetComponent<PlayerInfoStorage>();
-        if (storage)
+        
+        if (PlayerInfoStorage.InfoStorage)
         {
-            storage.infoStorage.sceneName = sceneToLoadName;
-            storage.infoStorage.nextPosition = playerPositionOnLoad;
-            storage.infoStorage.facing = facing;
+            PlayerInfoStorage.InfoStorage.sceneName = sceneToLoadName;
+            PlayerInfoStorage.InfoStorage.nextPosition = playerPositionOnLoad;
+            PlayerInfoStorage.InfoStorage.facing = facing;
         }
         FadeScreen.AddOnMidFadeEvent(OnTransitionHalf);
 
         FadeScreen.AddOnStartFadeEvent(Character.DeactivatePlayer);
         FadeScreen.AddOnEndFadeEvent(Character.ActivatePlayer);
-        storage.MoveToScene();
+        PlayerInfoStorage.CurrentInfoStorage.MoveToScene();
         //SceneManager.LoadScene(sceneToLoadName);
     }
 
@@ -39,8 +39,8 @@ public class SceneTransition : MonoBehaviour
     public void OnTransitionHalf()
     {
         Debug.Log("Stop");
-        PlayerInfoStorage storage = Character.Player.GetComponent<PlayerInfoStorage>();
-        storage.infoStorage.nextRoomInfo.SetValue(roomOnLoadInfo);
+
+        PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(roomOnLoadInfo);
 
 
     }

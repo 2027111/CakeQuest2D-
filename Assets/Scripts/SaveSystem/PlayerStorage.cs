@@ -1,4 +1,6 @@
 
+using Newtonsoft.Json;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "PlayerStorageObject", menuName = "ScriptableObjects/PlayerStorageObject", order = 1)]
@@ -7,7 +9,7 @@ public class PlayerStorage : SavableObject
 {
     [Header("Runtime")]
     public string sceneName = "Main";
-    public RoomInfo nextRoomInfo = null;
+    [JsonIgnore] public RoomInfo nextRoomInfo = null;
     public Vector2 nextPosition = Vector2.zero;
     public Direction facing;
     public bool forceNextChange = false;
@@ -20,4 +22,6 @@ public class PlayerStorage : SavableObject
         facing = ((tempCopy as PlayerStorage).facing);
         base.ApplyData(tempCopy);
     }
+
+
 }

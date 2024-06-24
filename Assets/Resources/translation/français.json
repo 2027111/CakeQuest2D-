@@ -1,4 +1,18 @@
 {
+    "globalColors": [
+        {
+            "key": "item",
+            "value": "#7DE7D7"
+        },
+        {
+            "key": "warning",
+            "value": "#FF0000"
+        },
+        {
+            "key": "success",
+            "value": "#00FF00"
+        }
+    ],
     "Data": [
         {
             "dataId": "MenuTranslations",
@@ -22,11 +36,11 @@
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color=#7DE7D7>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color=#7DE7D7>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkername\":\"\",\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
@@ -82,7 +96,7 @@
         },
         {
             "dataId": "Intro_Jimi_0042",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"C'est bon, J'ai tout se qu'il me faut! Direction le four!.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkername\":\"???\",\"line\":\"C'est bon, J'ai tout se qu'il me faut! Direction le <color={color_success}>four</color>!.\"}"
         },
         {
             "dataId": "Intro_Jimi_0045",

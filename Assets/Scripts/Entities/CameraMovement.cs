@@ -20,7 +20,7 @@ public class CameraMovement : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        currentRoomInfo = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfoStorage>().infoStorage.nextRoomInfo;
+        currentRoomInfo = PlayerInfoStorage.InfoStorage.nextRoomInfo;
         Vector3 targetPos = GetCamPosition();
         transform.position = targetPos;
 
