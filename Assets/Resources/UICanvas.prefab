@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 1283301293}
   - component: {fileID: 1283301295}
   - component: {fileID: 2305527971548748058}
+  - component: {fileID: 6448750728346482282}
   m_Layer: 5
   m_Name: QuestList
   m_TagString: Untagged
@@ -362,7 +363,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283301290}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -374,7 +375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 388, y: -81.043}
+  m_AnchoredPosition: {x: -41, y: -90}
   m_SizeDelta: {x: 330, y: 65}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1283301294
@@ -450,6 +451,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &6448750728346482282
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283301290}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1536711067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,7 +1835,7 @@ RectTransform:
   m_GameObject: {fileID: 3775792765771657128}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 683195659964663192}
@@ -2029,6 +2042,7 @@ GameObject:
   - component: {fileID: 1973594594322337321}
   - component: {fileID: 572956248047570429}
   - component: {fileID: 7234234399864657416}
+  - component: {fileID: 6694203307669371275}
   m_Layer: 5
   m_Name: PartyList
   m_TagString: Untagged
@@ -2055,7 +2069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -274, y: -89.999}
+  m_AnchoredPosition: {x: 40, y: -90}
   m_SizeDelta: {x: 241.55603, y: 47.087}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &6664538493289598114
@@ -2132,6 +2146,18 @@ MonoBehaviour:
   container: {fileID: 4629323025077204207}
   playerParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}
   Affiched: 0
+--- !u!225 &6694203307669371275
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5689666234179993895}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6663831690974652598
 GameObject:
   m_ObjectHideFlags: 0

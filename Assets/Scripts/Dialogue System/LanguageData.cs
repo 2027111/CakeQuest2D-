@@ -120,7 +120,6 @@ public class LanguageData
             {
                 LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
                 Singleton = data;
-                Debug.Log("GlobalColors Loaded Async: " + (Singleton.GlobalColors != null ? JsonConvert.SerializeObject(Singleton.GlobalColors) : "null"));
             }
             catch (Exception e)
             {
@@ -193,7 +192,6 @@ public class JsonData
                 pattern = @"\{color_([\w\d_]+)\}";
                 replacedText = Regex.Replace(replacedText, pattern, match =>
                 {
-                    Debug.Log(match.Groups[1].Value);
 
                     string placeholder = match.Groups[1].Value;
                     if (LanguageData.Singleton.GlobalColors.TryGetValue(placeholder, out string colorValue))

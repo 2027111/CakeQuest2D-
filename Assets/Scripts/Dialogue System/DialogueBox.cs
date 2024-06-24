@@ -40,6 +40,7 @@ public class LineInfo{
     public string line;
     public string talkerName;
     public string portraitPath;
+    public bool voiced = false;
     public AudioClip audioClip;
 
     public LineInfo(string lineId, string line, string talkerName, string portraitPath)
@@ -48,6 +49,9 @@ public class LineInfo{
         this.line = line;
         this.talkerName = talkerName;
         this.portraitPath = portraitPath;
+        if(bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result)){
+            voiced = result;
+        }
     }
 }
 
@@ -275,6 +279,9 @@ public class DialogueBox : MonoBehaviour
 
         voiceClipSource?.Stop();
 
+
+        if (lineInfo.voiced)
+        {
         // Load the audio from Resources folder
         string voiceLinePath = "VoiceLines/" + lineInfo.lineId; // Assuming the path is relative to the Resources folder
         AudioClip voiceLine = Resources.Load<AudioClip>(voiceLinePath);
@@ -294,6 +301,8 @@ public class DialogueBox : MonoBehaviour
         }
 
 
+
+        }
 
 
 
@@ -657,6 +666,7 @@ public class DialogueBox : MonoBehaviour
         {
 
         string lineId = dialogue.dialogueLineIds[index];
+
         string line = LanguageData.GetDataById(dialogue.dialogueLineIds[index]).GetValueByKey("line");
         string portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
         string talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkername");
