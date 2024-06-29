@@ -85,7 +85,7 @@ public class TreasureChest : NewDialogueStarterObject
                     {
                     newDialogue = new Dialogue(LockedDialogue);
                 }
-                newDialogue.SetSource(this.gameObject);
+                newDialogue.SetSource(this);
                 newDialogue.OnOverEvent.RemoveAllListeners();
                 newDialogue.OnOverEvent.AddListener(callback);
                     UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
@@ -127,7 +127,7 @@ public class TreasureChest : NewDialogueStarterObject
         Character.Player.AddToInventory(content, amount);
         CheckOpen();
         Dialogue newDialogue = new Dialogue(dialogue);
-        newDialogue.SetSource(this.gameObject);
+        newDialogue.SetSource(this);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);
         UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);

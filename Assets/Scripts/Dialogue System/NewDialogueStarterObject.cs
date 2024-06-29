@@ -22,9 +22,9 @@ public class Dialogue
     public UnityEvent OnOverEvent;
     public UnityEvent OnInstantOverEvent;
 
-    public GameObject source = null;
+    public object source = null;
 
-    public void SetSource(GameObject source)
+    public void SetSource(object source)
     {
         this.source = source;
     }
@@ -339,7 +339,7 @@ public class NewDialogueStarterObject : MonoBehaviour
     //}
 
 
-    public static string GetFormattedLines<T>(T currentObject, string lineInfo)
+    public static string GetFormattedLines(object currentObject, string lineInfo)
     {
         string fieldNamePattern = "{(.*?)}";
         string result = lineInfo;
@@ -392,7 +392,7 @@ public class NewDialogueStarterObject : MonoBehaviour
 
             if (fieldValue != null)
             {
-                result = Regex.Replace(result, match.Value, fieldValue.ToString());
+                result = result.Replace(match.Value, fieldValue.ToString());
             }
             else
             {
@@ -403,6 +403,5 @@ public class NewDialogueStarterObject : MonoBehaviour
 
         return result;
     }
-
 
 }

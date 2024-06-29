@@ -30,13 +30,13 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
   - condition:
     - boolValue: {fileID: 0}
       wantedResult: 1
     dialogueLineIds:
     - Intro_Jimi_002
     - Intro_Jimi_003
+    - Intro_Jimi_0031
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -44,6 +44,5 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
   StartRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 2ce920f1f688a9d45a2b6d2f5be62cf7, type: 2}

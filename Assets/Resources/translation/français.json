@@ -40,7 +40,7 @@
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez obtenus {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
@@ -220,11 +220,11 @@
         },
         {
             "dataId": "Misc_No",
-            "jsonData": "{\"line\":\"Non\"}"
+            "jsonData": "{\"line\":\"Non.\"}"
         },
         {
             "dataId": "Misc_Yes",
-            "jsonData": "{\"line\":\"Oui\"}"
+            "jsonData": "{\"line\":\"Oui.\"}"
         },
         {
             "dataId": "EyrCott_pc_0",
@@ -296,15 +296,15 @@
         },
         {
             "dataId": "skill_ressurection",
-            "jsonData": "{\"skillName\":\"Résurrection\",\"skillDescription\":\"Un sort pouvant ranimé les alliés évanouis\"}"
+            "jsonData": "{\"skillName\":\"Résurrection\",\"skillDescription\":\"Un sort pouvant réanimé les alliés évanouis\"}"
         },
         {
             "dataId": "skill_salad_rain",
-            "jsonData": "{\"skillName\":\"Pluie de Salade\",\"skillDescription\":\"Invoque une recette de salade tranchante\"}"
+            "jsonData": "{\"skillName\":\"Pluie de Salade\",\"skillDescription\":\"Invoque une pluie de légumes salés\"}"
         },
         {
             "dataId": "skill_slice_dice",
-            "jsonData": "{\"skillName\":\"Coupe et Découpe\",\"skillDescription\":\"Un enchainement de tranche\"}"
+            "jsonData": "{\"skillName\":\"Coupe et Découpe\",\"skillDescription\":\"Un enchainement d'attaques tranchantes\"}"
         },
         {
             "dataId": "skill_super_kick",

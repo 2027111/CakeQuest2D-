@@ -708,7 +708,7 @@ MonoBehaviour:
   nameTextContainer: {fileID: 683195660804671114}
   choicePrefab: {fileID: 222880791312350427, guid: f586d39f67780a94b98b27824290c0fe, type: 3}
   apparitionTime: 0.2
-  textSpeed: 1
+  textCharPerSecond: 45
 --- !u!82 &5115609436181282287
 AudioSource:
   m_ObjectHideFlags: 0

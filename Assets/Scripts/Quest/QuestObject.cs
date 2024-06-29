@@ -120,12 +120,16 @@ public class QuestObject : BoolValue
         else
         {
 
+            if (RuntimeValue)
+            {
                 if (NextQuestObject != null)
                 {
                     QuestManager.Singleton?.GiveQuest(NextQuestObject);
                 }
-           
-            RemoveCheckEvent();
+
+                RemoveCheckEvent();
+            }
+                
         }
     }
 

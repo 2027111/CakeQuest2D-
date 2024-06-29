@@ -93,7 +93,7 @@ public class DialogueBox : MonoBehaviour
 
     [Header("Attributes")]
     [SerializeField] [Range(0.1f, 1)] float apparitionTime = .4f;
-    [SerializeField] [Range(0.1f, 1)] float textSpeed = 0.5f;
+    [SerializeField] [Range(5, 60)] int textCharPerSecond = 30;
 
 
 
@@ -218,7 +218,7 @@ public class DialogueBox : MonoBehaviour
                     dialogueText.text = "";
                     string lineId = newDialogue.dialogue.dialogueLineIds[0];
                     LineInfo lineInfo = new LineInfo(lineId);
-                    SetupLine(lineInfo);
+                    SetupLine(lineInfo, false);
                     StartCoroutine(ShowDialogueBoxAlpha(true));
 
                     if (playerObject == null)
@@ -260,7 +260,7 @@ public class DialogueBox : MonoBehaviour
     }
 
 
-    private void SetupLine(LineInfo lineInfo)
+    private void SetupLine(LineInfo lineInfo, bool playVoiceLine = true)
     {
         string portraitPath = lineInfo.portraitPath;
         string talkerName = lineInfo.talkerName;
@@ -293,10 +293,8 @@ public class DialogueBox : MonoBehaviour
 
 
 
-        voiceClipSource?.Stop();
 
-
-        if (lineInfo.voiced)
+        if (lineInfo.voiced && playVoiceLine)
         {
             // Load the audio from Resources folder
 
@@ -322,8 +320,14 @@ public class DialogueBox : MonoBehaviour
         if (voiceLine != null)
         {
             // Assign the loaded audio to the audio source
-            voiceClipSource.clip = voiceLine;
-            voiceClipSource.Play();
+            if(voiceClipSource.clip != voiceLine)
+            {
+
+
+                voiceClipSource?.Stop();
+                voiceClipSource.clip = voiceLine;
+                voiceClipSource.Play();
+            }
         }
 
     }
@@ -621,7 +625,7 @@ public class DialogueBox : MonoBehaviour
 
             if (dialogue.source != null)
             {
-                lineInfo.line = NewDialogueStarterObject.GetFormattedLines(dialogue.source.GetComponent<NewDialogueStarterObject>(), lineInfo.line);
+                lineInfo.line = NewDialogueStarterObject.GetFormattedLines(dialogue.source, lineInfo.line);
 
             }
 
@@ -719,9 +723,10 @@ public class DialogueBox : MonoBehaviour
         if (isShowing)
         {
             dialogueText.text = "";
+            string line = "";
 
-            // Define the pattern to match <anything> or any word
-            string pattern = @"<[^>]+>|[^\s]+";
+            // Define the pattern to match <anything> or any word without tags
+            string pattern = @"<[^>]+>|[^<\s]+";
 
             // Match all words and tags
             MatchCollection matches = Regex.Matches(text, pattern);
@@ -733,24 +738,35 @@ public class DialogueBox : MonoBehaviour
                 // If the text contains a tag, append it instantly
                 if (Regex.IsMatch(wordOrTag, @"<[^>]+>"))
                 {
-                    dialogueText.text += wordOrTag;
+                    line += wordOrTag;
                 }
                 else
                 {
                     // Gradually append each character of the word
                     for (int j = 0; j < wordOrTag.Length; j++)
                     {
-                        dialogueText.text += wordOrTag[j];
-                        yield return new WaitForSeconds((1.1f - textSpeed) / 10);
+                        line += wordOrTag[j];
+                        dialogueText.SetText(line);
+                        yield return new WaitForSeconds(1f / textCharPerSecond);
                     }
-                    dialogueText.text += " ";
-                }
-            }
 
+                    // Add a space after the word if the next match is not a closing tag
+                    if (match.NextMatch().Success && !match.NextMatch().Value.StartsWith("</"))
+                    {
+                        line += " ";
+                    }
+                }
+
+                dialogueText.SetText(line);
+            }
+            dialogueText.SetText(text);
             dialogueIndex++;
             setTextCoroutine = null;
         }
     }
 
-
 }
+
+
+
+
