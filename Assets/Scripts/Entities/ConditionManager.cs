@@ -39,8 +39,7 @@ public class ConditionManager : MonoBehaviour
         {
             if (ev.CheckCondition())
             {
-                    ev.onConditionTrueEvent?.Invoke();
-
+                ev.onConditionTrueEvent?.Invoke();
             }
             else
             {

@@ -17,11 +17,7 @@ MonoBehaviour:
   repeats: 0
   dialogueIndex: 0
   dialogue:
-  - condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
-    - boolValue: {fileID: 0}
-      wantedResult: 1
+  - condition: []
     dialogueLineIds:
     - EyrCott_pc_3
     - Tuto_Yankee_011
@@ -36,6 +32,5 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
   StartRoom: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 8893d989e8b20664c928fde8517909ea, type: 2}

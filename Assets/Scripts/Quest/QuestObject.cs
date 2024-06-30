@@ -51,8 +51,6 @@ public class QuestObject : BoolValue
 
         SetRuntime();
         UICanvas.UpdateQuestList();
-        Debug.Log("Request");
-        Debug.Log(CheckLines());
         if (CheckLines())
         {
             DialogueRequest();

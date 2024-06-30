@@ -24,9 +24,6 @@ public class DialogueContent
     public Dialogue dialogue;
     //public bool choice = false;
 
-
-
-
     public DialogueContent(Dialogue dialogue)
     {
         this.dialogue = dialogue;
@@ -634,7 +631,7 @@ public class DialogueBox : MonoBehaviour
 
 
 
-
+        Debug.Log("This is called twice");
         if (setTextCoroutine != null)
         {
             StopCoroutine(setTextCoroutine);
@@ -691,31 +688,31 @@ public class DialogueBox : MonoBehaviour
         if(isShowing != show)
         {
             isShowing = show;
-        }
-        if(!isShowing)
-        {
-
-           ResetBox();
-            while(OnDialogueOverAction.Count > 0)
+            if (!isShowing)
             {
-                UnityAction currentEvent = OnDialogueOverAction.Dequeue();
-                currentEvent?.Invoke();
-                yield return null;
+
+                ResetBox();
+                while (OnDialogueOverAction.Count > 0)
+                {
+                    UnityAction currentEvent = OnDialogueOverAction.Dequeue();
+                    currentEvent?.Invoke();
+                    yield return null;
+
+                }
 
             }
+            yield return MakeBoxAppear(show);
 
-        }
-        yield return MakeBoxAppear(show);
-
-        if (isShowing)
-        {
-            if (currentDialogue != null)
+            if (isShowing)
             {
-                yield return StartCoroutine(LanguageData.LoadJsonAsync());
-                NextLine();
+                if (currentDialogue != null)
+                {
+                    yield return StartCoroutine(LanguageData.LoadJsonAsync());
+                    NextLine();
+                }
             }
+            yield return new WaitForSeconds(.02f);
         }
-        yield return new WaitForSeconds(.02f);
     }
 
     IEnumerator GraduallySetText(string text)

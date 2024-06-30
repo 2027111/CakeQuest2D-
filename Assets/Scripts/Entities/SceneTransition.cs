@@ -30,7 +30,6 @@ public class SceneTransition : MonoBehaviour
         FadeScreen.AddOnStartFadeEvent(Character.DeactivatePlayer);
         FadeScreen.AddOnEndFadeEvent(Character.ActivatePlayer);
         PlayerInfoStorage.CurrentInfoStorage.MoveToScene();
-        //SceneManager.LoadScene(sceneToLoadName);
     }
 
 

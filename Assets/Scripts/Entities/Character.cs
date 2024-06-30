@@ -187,21 +187,22 @@ public class Character : MonoBehaviour
     public void ChangeState(CharacterBehaviour newBehaviour)
     {
 
-        if (FadeScreen.fading)
-        {
-            return;
-        }
-
         playerBehaviour?.OnExit();
         previousBehaviour = playerBehaviour;
         playerBehaviour = newBehaviour;
-        if (previousBehaviour != null)
-        {
-            //Debug.Log(name + " State changed : " + previousBehaviour.GetType().ToString() + " replaced by " + GetCurrentBehaviour().ToString(),this);
-        }
+        //LogStateChange(previousBehaviour);
         newBehaviour.OnEnter(this);
     }
+    public void LogStateChange(CharacterBehaviour previousBehaviour)
+    {
+        string state = "No State";
 
+        if (previousBehaviour != null)
+        {
+            state = previousBehaviour.GetType().ToString();
+        }
+        Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
+    }
     public CharacterBehaviour GetCurrentBehaviour()
     {
         return playerBehaviour;
@@ -214,6 +215,7 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
+        Debug.Log("Playable State");
         if (Player == this && !Timeline.IsInCutscene)
         {
             ChangeState(new PlayerControlsBehaviour());
