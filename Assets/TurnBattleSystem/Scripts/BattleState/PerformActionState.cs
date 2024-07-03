@@ -60,11 +60,11 @@ public class PerformActionState : BattleState
     {
         if (battleManager.GetActor())
         {
-            string controls = LanguageData.GetDataById("ControlScheme").GetValueByKey(this.GetType().ToString());
+            string controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(this.GetType().ToString());
 
             if (battleManager.GetActor().IsPlayerTeam())
             {
-                 controls = LanguageData.GetDataById("ControlScheme").GetValueByKey("NothingState");
+                 controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(typeof(NothingState).ToString());
 
             }
             battleManager.SetControlText(controls);

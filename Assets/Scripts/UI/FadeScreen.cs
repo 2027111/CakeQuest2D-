@@ -100,7 +100,6 @@ public class FadeScreen : MonoBehaviour
 
         if (FadeScreen.fading)
         {
-            Debug.Log("Cancelling fade");
             Singleton.StopCoroutine("FadeCoroutine");
             fading = false;
             fadeOn = false;
@@ -152,24 +151,17 @@ public class FadeScreen : MonoBehaviour
         yield return new WaitForSeconds(.05f);
         OnFadingStart?.Invoke();
 
-        if (!FadeScreen.fading)
-        {
-            Singleton.SetColor(Color.black);
-            Singleton.SetTransitionTime(fadeTime);
-            yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
-            fadeOn = true;
-        }
+        Singleton.SetColor(Color.black);
+        Singleton.SetTransitionTime(fadeTime);
+        yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
         yield return new WaitForSeconds(.05f);
         OnFadingMid?.Invoke();
         yield return new WaitForSecondsRealtime(fadeTime);
-        if (!FadeScreen.fading)
-        {
 
-            Singleton.SetColor(Color.black);
-            Singleton.SetTransitionTime(fadeTime);
-            yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
-            fadeOn = false;
-        }
+        Singleton.SetColor(Color.black);
+        Singleton.SetTransitionTime(fadeTime);
+        yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
+        fadeOn = false;
 
         yield return new WaitForSeconds(.05f);
 
@@ -249,7 +241,6 @@ public class FadeScreen : MonoBehaviour
         float start = on?0:1;
         float target = on?1:0;
 
-        group.alpha = start;
         SetAlphaTarget(start);
         fading = true;
         while (time < fadeTime)

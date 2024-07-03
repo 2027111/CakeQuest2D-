@@ -33,7 +33,7 @@ public class AnalyzingTargetState : BattleState
                 battleManager.SetCursor(character);
                 CamManager.PanToCharacter(character);
                 battleManager.actorInfoPanel.SetActor(character);
-                string t = LanguageData.GetDataById("Indications").GetValueByKey("targetOne");
+                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
                 BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
           
     }

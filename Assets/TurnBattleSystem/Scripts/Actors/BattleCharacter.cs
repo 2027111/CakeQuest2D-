@@ -99,7 +99,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
 
-    public bool WillKokusen(Command command)
+    public bool WillKokusen(Command command)//Lets know the current command if the current attack will be the last of a recipe.
     {
         if(command is AttackCommand)
         {
@@ -115,7 +115,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
 
-    public void RevealRecipe()
+    public void RevealRecipe()//Reveals the entirety of the current Battle Characters recipe
     {
         foreach(ElementalAttribute ee in recipe)
         {
@@ -123,48 +123,34 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
 
-        
-        switch (currentState)
-        {
-            case CharacterState.Idle:
-                break;
-            case CharacterState.Choosing:
-                
-                break;
-            case CharacterState.Died:
-                break;
-        }
-    }
 
-    public void Block()
+    public void Block()//Starts the blocking animation adn state
     {
         isBlocking = true;
         StartCoroutine(ConsumeBlock());
         Animator.Block();
     }
-    public void SetActing(bool _isActing)
+    public void SetActing(bool _isActing) //Lets the current BattleCharacter if it is currently performing a command
     {
         isActing = _isActing;
     }
-    public CharacterData GetData()
+    public CharacterData GetData() //returns the character data (CharacterData)  of the current battle character
     {
         return currentCharacter.characterData;
     }
 
-    public CharacterObject GetReference()
+    public CharacterObject GetReference()//returns the character reference (CharacterObject) of the current battle character
     {
         return currentCharacter;
     }
 
-    public bool CanAct()
+    public bool CanAct() //lets known if the BattleCharacter can act
     {
         return !isActing && !Entity.isDead;
     }
 
-    public Command CreateCommand()
+    public Command CreateCommand() //Creates a random command using the character references skill set.
     {
         float prob = Random.Range(0f, 100f);
         if(prob > 50)
@@ -185,12 +171,12 @@ public class BattleCharacter : MonoBehaviour
         }
     }
 
-    public int IsFacing()
+    public int IsFacing()//Lets know which direction the battlecharacter is facing (-1 being left and 1 being right)
     {
         return IsPlayerTeam()?-1:1;
     }
 
-    private Skill GetRandomAttack()
+    private Skill GetRandomAttack() //returns a random skill from the character reference.
     {
 
         List<Skill> returnAttacks = new List<Skill>();
@@ -208,18 +194,18 @@ public class BattleCharacter : MonoBehaviour
         return returnAttacks[Random.Range(0, returnAttacks.Count)];
     }
 
-    public List<Skill> GetAttacks()
+    public List<Skill> GetAttacks() //returns everyskill of the current character reference.
     {
         return GetReference().Attacks;
     }
 
 
 
-    public void StartParryWindow()
+    public void StartParryWindow() //Starts the parry window of the current battle character
     {
         StartCoroutine(Parry(GetReference().GetParryWindowTime()));
     }
-    IEnumerator Parry(float duration)
+    IEnumerator Parry(float duration) //Handles the parry window
     {
         Parry();
         float t = 0;
@@ -234,7 +220,7 @@ public class BattleCharacter : MonoBehaviour
     }
 
 
-    IEnumerator ConsumeBlock()
+    IEnumerator ConsumeBlock() //consumes 1 focus for every second of blocking 
     {
         while (isBlocking)
         {
@@ -243,12 +229,13 @@ public class BattleCharacter : MonoBehaviour
             {
                 Entity.AddFocus(-1);
             }
+            yield return null;
 
         }
 
 
     }
-    public void StopParry()
+    public void StopParry() //stops the parry state and resets the character color.
     {
         isParrying = false;
         GetComponentInChildren<SpriteRenderer>().color = Color.white;
@@ -256,22 +243,22 @@ public class BattleCharacter : MonoBehaviour
 
 
 
-    public void Parry()
+    public void Parry()//starts the parry state and resets the character color.
     {
 
         isParrying = true;
         GetComponentInChildren<SpriteRenderer>().color = Color.red;
     }
-    public bool IsPlayerTeam()
+    public bool IsPlayerTeam() //return if the BC is from the player party
     {
         return GetComponent<TeamComponent>().teamIndex == TeamIndex.Player;
     }
 
-    public TeamIndex GetTeam()
+    public TeamIndex GetTeam() //returns the team index
     {
         return GetComponent<TeamComponent>().teamIndex;
     }
-    public Skill GetAttack(string v)
+    public Skill GetAttack(string v) //returns an attack with the name 
     {
         foreach(Skill attack in GetAttacks())
         {
@@ -283,13 +270,13 @@ public class BattleCharacter : MonoBehaviour
         return null;
     }
 
-    public void TriggerHit()
+    public void TriggerHit() //Triggers the current command effect
     {
         currentCommand.ActivateCommand();
     }
 
 
-    public void ApplyAttackAnimationOverride(Skill attack)
+    public void ApplyAttackAnimationOverride(Skill attack) //Overrides the attack animation with the skill animation
     {
         AnimatorOverrideController originalController = new AnimatorOverrideController(Animator.GetController());
         var anims = new List<KeyValuePair<AnimationClip, AnimationClip>>();
@@ -306,7 +293,7 @@ public class BattleCharacter : MonoBehaviour
 
 
 
-    public void ResetAnimatorController()
+    public void ResetAnimatorController() //Resets the current animator controller
     {
         Animator.SetController(GetReference().animationController);
     }
@@ -328,13 +315,13 @@ public class BattleCharacter : MonoBehaviour
         {
             return;
         }
-        source.PlayOneShot(audioClip);
+        source?.PlayOneShot(audioClip);
 
     }
     public void SetReference(CharacterObject characterObject)
     {
         currentCharacter = characterObject;
-        ResetAnimatorController();
+        ResetAnimatorController(); 
     }
 
     public void Flip(int flipIndex)

@@ -215,7 +215,6 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
-        Debug.Log("Playable State");
         if (Player == this && !Timeline.IsInCutscene)
         {
             ChangeState(new PlayerControlsBehaviour());

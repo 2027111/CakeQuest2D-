@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Healing Item", menuName = "Inventory/Healing Items")]
+[CreateAssetMenu(fileName = "New Healing Item", menuName = "Inventory/Items/Healing Items")]
 public class HealthEffectItem : BattleItem
 {
     [JsonIgnore] public int healthEffectAmount = 12;

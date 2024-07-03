@@ -34,7 +34,7 @@ public class FetchQuest : QuestObject
         if (RuntimeValue)
         {
             returnValue = "done"; 
-            string newDesc = LanguageData.GetDataById("Indications").GetValueByKey("done");
+            string newDesc = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("done");
             if (newDesc != "E404")
             {
                 returnValue = newDesc;

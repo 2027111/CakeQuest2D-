@@ -32,7 +32,7 @@ public class TextEffect : MonoBehaviour
 
 
             Vector3 position = GetDamageTextPosition();
-            SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("blocked"), Color.white, position);
+            SpawnTextEffect(LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("blocked"), Color.white, position);
 
 
         }
@@ -51,26 +51,26 @@ public class TextEffect : MonoBehaviour
                         if (attackInfo.effect != ElementEffect.Neutral)
                         {
                             Vector3 newposition = GetAspectTextPosition();
-                            string message = "Keep Cooking!!";
+                            string message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
                             Color textColor = Color.white;
                             switch (attackInfo.effect)
                             {
                                 case ElementEffect.RecipeBoosted:
 
-                                    message = "Keep Cooking!!";
+                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
                                     textColor = Color.red;
                                 StartCoroutine(Utils.SlowDown(.8f, .5f));
                                 break;
 
                                 case ElementEffect.RecipeFailed:
 
-                                    message = "You Messed Up!!";
-                                    textColor = Color.blue;
+                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeFailed");
+                                textColor = Color.blue;
                                     break;
                                 case ElementEffect.RecipeCompleted:
 
-                                    message = "Splendid Meal!!!!!";
-                                    StartCoroutine(Utils.SlowDown(1f, .2f));
+                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeSuccess");
+                                StartCoroutine(Utils.SlowDown(1f, .2f));
                                     textColor = Color.red;
                                     break;
                             }

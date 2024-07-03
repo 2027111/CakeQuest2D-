@@ -76,7 +76,7 @@ public class ChoosingTargetState : BattleState
                 target.Clear();
                 target.Add(character);
                 battleManager.SetCursor(character);
-                string t = LanguageData.GetDataById("Indications").GetValueByKey("targetOne");
+                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
                 BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
             }
             else
@@ -84,7 +84,7 @@ public class ChoosingTargetState : BattleState
                 battleManager.SetCursor(character, false);
                 CamManager.ResetView();
 
-                string t = LanguageData.GetDataById("Indications").GetValueByKey("targetAllEnemy");
+                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetAllEnemy");
                 BattleManager.Singleton.SetIndicationText(t);
         }
     }

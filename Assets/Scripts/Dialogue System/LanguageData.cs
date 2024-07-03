@@ -2,20 +2,24 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
 public enum Language
 {
     Français,
+    English
 }
 
 [Serializable]
 public class LanguageData
 {
-    public List<JsonData> Data;
+    public static string INDICATION = "Indications";
+    public static string CONTROLS = "ControlScheme";
+    public List<JsonData> Data = new List<JsonData>();
     public Dictionary<string, string> GlobalColors;
-    public List<GlobalColor> globalColors;
+    public List<GlobalColor> globalColors = new List<GlobalColor>();
     public static Language language = Language.Français;
     public static Language defaultLanguage = Language.Français;
     private static LanguageData _singleton;
@@ -23,6 +27,10 @@ public class LanguageData
     {
         get
         {
+            if (_singleton == null)
+            {
+                Singleton = LoadGameData();
+            }
             return _singleton;
         }
         private set
@@ -35,11 +43,19 @@ public class LanguageData
         }
     }
 
+
+    public LanguageData()
+    {
+
+    }
     public void SetGlobalDictionary()
     {
         if (globalColors != null && globalColors.Count > 0)
         {
-            GlobalColors = new Dictionary<string,string>();
+            if(GlobalColors == null)
+            {
+                GlobalColors = new Dictionary<string, string>();
+            }
 
             foreach (var color in globalColors)
             {
@@ -47,15 +63,16 @@ public class LanguageData
             }
 
             // Optionally, you can log or debug the globalColors list
-            //Debug.Log($"Global Colors converted: {JsonConvert.SerializeObject(GlobalColors)}");
+            // Debug.Log($"Global Colors converted: {JsonConvert.SerializeObject(GlobalColors)}");
         }
         else
         {
-            Debug.LogWarning("GlobalColors is null or empty.");
-            GlobalColors = new Dictionary<string, string>(); // Initialize an empty list to avoid null reference issues
+            if (GlobalColors == null)
+            {
+                GlobalColors = new Dictionary<string, string>();
+            }
         }
     }
-
 
     public static Language GetLanguage()
     {
@@ -72,64 +89,77 @@ public class LanguageData
         return false;
     }
 
-    public static string GetFilePath()
+    public static string GetLanguageSuffix()
     {
-        return "translation/" + language.ToString().ToLower();
+        return $"_{language.ToString().ToLower()}";
     }
 
     private static LanguageData LoadGameData()
     {
-        // Load the JSON text file from the Resources folder
-        TextAsset jsonFile = Resources.Load<TextAsset>(GetFilePath()); // No need to include the .json extension
-        if (jsonFile != null)
+        string languageSuffix = GetLanguageSuffix();
+
+
+        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("translation");
+
+
+        LanguageData combinedData = new LanguageData();
+        foreach (var jsonFile in jsonFiles)
         {
-            try
+            if (jsonFile.name.EndsWith(languageSuffix))
             {
+
+
                 LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
-                Debug.Log("GlobalColors Loaded: " + (data.GlobalColors != null ? JsonConvert.SerializeObject(data.GlobalColors) : "null"));
-                return data;
+                if (data != null)
+                {
+                    if (data.Data != null)
+                    {
+                        combinedData.Data.AddRange(data.Data);
+                    }
+                    if (data.globalColors != null)
+                    {
+                        combinedData.globalColors.AddRange(data.globalColors);
+                    }
+                }
+
             }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error parsing JSON data: {e.Message}");
-            }
-        }
-        else
-        {
-            Debug.LogError("Failed to load gameData.json");
         }
 
-        Resources.UnloadUnusedAssets();
-        return null;
+        return combinedData;
     }
 
     public static IEnumerator LoadJsonAsync(Action onComplete = null)
     {
-        string filePath = GetFilePath(); // No need to include the .json extension
-        ResourceRequest request = Resources.LoadAsync<TextAsset>(filePath);
-        while (!request.isDone)
+        string languageSuffix = GetLanguageSuffix();
+
+
+        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("translation");
+
+
+        LanguageData combinedData = new LanguageData();
+        foreach (var jsonFile in jsonFiles)
         {
+            if (jsonFile.name.EndsWith(languageSuffix))
+            {
+                
+
+                    LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+                    if (data != null)
+                    {
+                        if (data.Data != null)
+                        {
+                            combinedData.Data.AddRange(data.Data);
+                        }
+                        if (data.globalColors != null)
+                        {
+                            combinedData.globalColors.AddRange(data.globalColors);
+                        }
+                    }
+                
+            }
             yield return null;
         }
-
-        TextAsset jsonFile = (TextAsset)request.asset;
-
-        if (jsonFile != null)
-        {
-            try
-            {
-                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
-                Singleton = data;
-            }
-            catch (Exception e)
-            {
-                Debug.LogError($"Error parsing JSON data: {e.Message}");
-            }
-        }
-        else
-        {
-            Debug.LogError("Failed to load " + GetFilePath());
-        }
+        Singleton = combinedData;
         onComplete?.Invoke();
     }
 
@@ -137,8 +167,7 @@ public class LanguageData
     {
         if (Singleton == null)
         {
-            Singleton = LoadGameData();
-            //return null;
+            return null;
         }
 
         foreach (var dataInfo in Singleton.Data)
@@ -154,25 +183,25 @@ public class LanguageData
     }
 }
 
-
-
 [Serializable]
 public class GlobalColor
 {
     public string key;
     public string value;
 }
+
 [Serializable]
 public class JsonData
 {
     public string dataId;
     public string jsonData;
+
     public string GetValueByKey(string key)
     {
         if (string.IsNullOrEmpty(jsonData))
         {
             Debug.LogWarning("jsonData is null or empty.");
-            return "E404";
+            return "";
         }
 
         try
@@ -184,7 +213,8 @@ public class JsonData
             {
                 // Replace <sprite name=something> with <sprite name=something_else>
                 string pattern = @"<sprite name=([\w\d_]+)>";
-                string replacedText = Regex.Replace(value, pattern, match => {
+                string replacedText = Regex.Replace(value, pattern, match =>
+                {
                     string originalName = match.Groups[1].Value;
                     string newName = originalName + "_" + InputManager.controlSettings; // Example replacement
                     return $"<sprite name={newName}>";
@@ -194,7 +224,6 @@ public class JsonData
                 pattern = @"\{color_([\w\d_]+)\}";
                 replacedText = Regex.Replace(replacedText, pattern, match =>
                 {
-
                     string placeholder = match.Groups[1].Value;
                     if (LanguageData.Singleton.GlobalColors.TryGetValue(placeholder, out string colorValue))
                     {
@@ -207,13 +236,16 @@ public class JsonData
             }
 
             Debug.LogWarning($"Key '{key}' not found in JSON data.");
-            return "E404";
+            if (key == "line")
+            {
+                return $"No Line Found with Key '{key}'";
+            }
+            return "";
         }
         catch (Exception e)
         {
             Debug.LogError($"Error parsing JSON data: {e.Message}");
-            return "E404";
+            return "";
         }
     }
-
 }

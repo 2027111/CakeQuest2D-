@@ -137,7 +137,7 @@ public class Skill : IActionData
 
                 if (elementEffect == ElementEffect.NonAffected)
                 {
-                    target.GetComponent<TextEffect>().SpawnTextEffect(LanguageData.GetDataById("Indications").GetValueByKey("null"), Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
+                    target.GetComponent<TextEffect>().SpawnTextEffect(LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("null"), Color.white, target.GetComponent<TextEffect>().GetAspectTextPosition());
                 }
                 else
                 {

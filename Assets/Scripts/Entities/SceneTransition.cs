@@ -16,7 +16,6 @@ public class SceneTransition : MonoBehaviour
 
     public void TransitionScene()
     {
-        Resources.UnloadUnusedAssets();
         UICanvas.CancelCurrentDialogue();
         
         if (PlayerInfoStorage.InfoStorage)
@@ -33,13 +32,23 @@ public class SceneTransition : MonoBehaviour
     }
 
 
+    public IEnumerator ClearRessources()
+    {
+
+        AsyncOperation op = Resources.UnloadUnusedAssets();
+        while (!op.isDone)
+        {
+            yield return null;
+        }
+    }
+
 
 
     public void OnTransitionHalf()
     {
-        Debug.Log("Stop");
 
         PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(roomOnLoadInfo);
+        ClearRessources();
 
 
     }

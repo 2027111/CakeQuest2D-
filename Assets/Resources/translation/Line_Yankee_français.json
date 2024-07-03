@@ -1,0 +1,64 @@
+{
+    "Data": [
+        {
+            "dataId": "Tuto_Yankee_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu sais comment te battre n'est-ce pas?\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilises <sprite name=move> pour naviguer et prend ta décision avec <sprite name=select>.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu as le choix entre attaquer, utiliser une compétence et changer de position. Vasy! Essaye!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu te demandes, je n'ai pas besoin d'attendre la fin de ton tours pour attaquer. On peut lui sauter dessus.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Cependant si tu élimines ma cible avant que je l'attaque, je ne pourrai pas changer de cible et j'aurai gaspillé un tour.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Fais gaffe à ton adversaire. Tu n'es pas obligé de prendre le coup. Tu peux bloquer avec <sprite name=cancel> et prendre uniquement la moitié des dégats!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilise la loupe pour observé l'ennemie, chaque combattant commence le combat avec une recette.!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_009",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu suis la recette, chaque étape rendra ton attaque encore plus fort!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_010",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mais une fois la recette complété, la recette sera réinitialisé de manière aléatoire. Tu devras donc porté attention au combat et trouver la recette toi-même. Cependant, si ta barre de focus est rempli, tu pourras analyser l'adversaire pour afficher sa recette avec la loupe.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_011",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mai- \n Mais t'es chauve aussi???!\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Join",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Laisse-moi te rejoindre!\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Jcowboy",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vas devoir affronter ce cow-boy...\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Leave",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
+        }
+    ]
+}

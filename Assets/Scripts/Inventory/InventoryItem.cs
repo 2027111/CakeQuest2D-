@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 [System.Serializable]
-[CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Items")]
+[CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Items/Inventory Item")]
 public class InventoryItem : IActionData
 {
 

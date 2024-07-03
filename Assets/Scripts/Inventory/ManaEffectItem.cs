@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Mana Item", menuName = "Inventory/Mana Items")]
+[CreateAssetMenu(fileName = "New Mana Item", menuName = "Inventory/Items/Mana Effect Items")]
 public class ManaEffectItem : BattleItem
 {
     public int manaEffectAmount = 12;

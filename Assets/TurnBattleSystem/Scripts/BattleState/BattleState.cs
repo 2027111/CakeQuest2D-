@@ -56,7 +56,7 @@ public abstract class BattleState
 
     public virtual void ShowControls()
     {
-        string controls = LanguageData.GetDataById("ControlScheme").GetValueByKey(this.GetType().ToString());
+        string controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(this.GetType().ToString());
 
         battleManager.SetControlText(controls);
     } 

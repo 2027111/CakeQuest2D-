@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using UnityEngine.Events;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 public enum GameState
 {
@@ -82,6 +83,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] Image portraitImage;
     [SerializeField] AudioSource voiceClipSource;
     [SerializeField] private GameObject nameTextContainer;
+    public UnityEvent<bool> OnAutomaticEvent;
 
     [Header("Prefabs")]
     [SerializeField] GameObject choicePrefab;
@@ -96,10 +98,11 @@ public class DialogueBox : MonoBehaviour
 
     [Header("InnerAttributes")]
     bool isShowing;
+    bool automaticDialogue = false;
     bool active;
     DialogueContent currentDialogue;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
-    int dialogueIndex = 0;
+    int dialogueIndex = 0; //which line to currently display in the current dialogue object
     bool dontGoNext = false;
     Coroutine showBoxCoroutine;
     Coroutine setTextCoroutine;
@@ -132,6 +135,7 @@ public class DialogueBox : MonoBehaviour
     {
         group.alpha = 0;
         dialogueIndex = 0;
+        ToggleAuto(false);
     }
 
     public IEnumerator WaitForResume()
@@ -542,6 +546,7 @@ public class DialogueBox : MonoBehaviour
             if (battleCharacterComponent != null && !contains)
             {
                 battleCharacterComponent.OnSelectPressed += Interact;
+                battleCharacterComponent.OnReturnPressed += ToggleAuto;
             }
 
         }
@@ -552,9 +557,24 @@ public class DialogueBox : MonoBehaviour
             if (battleCharacterComponent != null && contains)
             {
                 battleCharacterComponent.OnSelectPressed -= Interact;
+                battleCharacterComponent.OnReturnPressed -= ToggleAuto;
             }
 
         }
+    }
+
+    private void ToggleAuto()
+    {
+        ToggleAuto(!automaticDialogue);
+    }
+
+
+    private void ToggleAuto(bool onOff)
+    {
+
+        automaticDialogue = onOff;
+        OnAutomaticEvent.Invoke(automaticDialogue);
+        Debug.Log($"Automatic Dialogue Toggled : {automaticDialogue}");
     }
     public void AddNavigateEventToPlayer(bool addOrRemove)
     {
@@ -631,7 +651,6 @@ public class DialogueBox : MonoBehaviour
 
 
 
-        Debug.Log("This is called twice");
         if (setTextCoroutine != null)
         {
             StopCoroutine(setTextCoroutine);
@@ -643,7 +662,7 @@ public class DialogueBox : MonoBehaviour
         {
             voiceClipSource.Stop();
             SetupLine(lineInfo);
-            setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo.line));
+            setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
             }
         }
     }
@@ -715,13 +734,14 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-    IEnumerator GraduallySetText(string text)
+    IEnumerator GraduallySetText(LineInfo info)
     {
+        string text = info.line;
         if (isShowing)
         {
             dialogueText.text = "";
             string line = "";
-
+            int index = dialogueIndex;
             // Define the pattern to match <anything> or any word without tags
             string pattern = @"<[^>]+>|[^<\s]+";
 
@@ -735,7 +755,19 @@ public class DialogueBox : MonoBehaviour
                 // If the text contains a tag, append it instantly
                 if (Regex.IsMatch(wordOrTag, @"<[^>]+>"))
                 {
-                    line += wordOrTag;
+                    var secmatch = Regex.Match(wordOrTag, @"<waitSec=([\d\.]+)>");
+                    if (secmatch.Success)
+                    {
+                        string xValue = secmatch.Groups[1].Value;
+                        if (double.TryParse(xValue, NumberStyles.Float, CultureInfo.InvariantCulture, out double x))
+                        {
+                            yield return new WaitForSeconds((float)x);
+                        }
+                    }
+                    else
+                    {
+                        line += wordOrTag;
+                    }
                 }
                 else
                 {
@@ -756,9 +788,35 @@ public class DialogueBox : MonoBehaviour
 
                 dialogueText.SetText(line);
             }
-            dialogueText.SetText(text);
+            dialogueText.SetText(line);
             dialogueIndex++;
+            bool wasAutomatic = false;
+            if (automaticDialogue)
+            {
+                wasAutomatic = true;
+                if (info.voiced)
+                {
+                    while (voiceClipSource.isPlaying)
+                    {
+                        yield return null;
+
+                        yield return new WaitForSeconds(.2f);
+                    }
+                }
+                else
+                {
+
+                    yield return new WaitForSeconds(.75f);
+                }
+                
+            
+            }
+
             setTextCoroutine = null;
+            if (automaticDialogue && wasAutomatic && dialogueIndex == index+1)
+            {
+                Interact();
+            }
         }
     }
 

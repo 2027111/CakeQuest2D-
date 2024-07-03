@@ -10,7 +10,7 @@ public class BattleMenuButton : ChoiceMenuButton
         base.OnOver(isOverHanded);
         if (isOverHanded)
         {
-            string t = LanguageData.GetDataById("Indications").GetValueByKey(indicationText);
+            string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey(indicationText);
             BattleManager.Singleton.SetIndicationText(t);
         }
     }

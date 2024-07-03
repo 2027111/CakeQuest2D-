@@ -25,7 +25,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
-  - {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
+  - {fileID: 11400000, guid: da09a64f3a02f514eadc1d551becb15f, type: 2}
   pessos: 0
   InventoryChangeEvent:
     m_PersistentCalls:
