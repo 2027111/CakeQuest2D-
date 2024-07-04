@@ -1,5 +1,9 @@
+using System;
 using System.Collections.Generic;
 
+
+
+[Serializable]
 public class SaveDataWrapper
 {
     public List<CharacterInventory> AllInventories { get; set; }

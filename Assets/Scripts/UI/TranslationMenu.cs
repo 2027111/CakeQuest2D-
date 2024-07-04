@@ -10,11 +10,14 @@ public class TranslationMenu : MonoBehaviour
 
     private void Start()
     {
+        LanguageData.SetLanguage(GamePreference.Language);
         LoadLangue();
         GameSaveManager.Singleton?.OnLanguageChanged.AddListener(LoadLangue);
     }
     public void LoadLangue()
     {
+
+        GamePreference.Language = LanguageData.GetLanguage();
         StartCoroutine(LanguageData.LoadJsonAsync(ActualizeText));
     }
 

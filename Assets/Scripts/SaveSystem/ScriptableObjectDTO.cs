@@ -46,6 +46,32 @@ public class ScriptableObjectDTO
             Debug.LogError($"Type mismatch when deserializing ScriptableObject. Expected {typeName}, got {scriptableObject.GetType().FullName}");
         }
     }
+    public SavableObject ReturnNewData(SavableObject scriptableObject)
+    {
+        // Ensure the type matches before deserializing
+        if (scriptableObject.GetType().FullName.Equals(typeName))
+        {
+            // Log JSON data
+
+            // Create a temporary ScriptableObject copy
+            SavableObject tempCopy = SavableObject.CreateInstance(scriptableObject.GetType()) as SavableObject;
+
+            // Deserialize JSON data into the temporary copy
+            JsonUtility.FromJsonOverwrite(jsonData, tempCopy);
+
+            // Compare and apply only string fields from the temporary copy to the target ScriptableObject
+            return tempCopy;
+            //ApplyStringFields(scriptableObject, tempCopy);
+
+            // Log information about the deserialization
+        }
+        else
+        {
+            Debug.LogError($"Type mismatch when deserializing ScriptableObject. Expected {typeName}, got {scriptableObject.GetType().FullName}");
+        }
+        return null;
+    }
+
 
     private void ApplyStringFields(SavableObject target, SavableObject source)
     {
