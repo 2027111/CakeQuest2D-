@@ -31,7 +31,9 @@ public class MainMenu : MonoBehaviour
             Destroy(UICanvas.Singleton.gameObject);
         }
 
-        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveSlots() > 0);
+        GameSaveManager.Singleton.StartLoadingFiles();
+        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveFiles() > 0);
+
 
 
     }
@@ -69,7 +71,8 @@ public class MainMenu : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer.GetChild(0));
-            button.GetComponentInChildren<TMP_Text>().text = "Load Save " + i;
+            GameSaveManager.Singleton.saves[i].saveIndex = i;
+            button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
             int index = i;
             button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
         }
@@ -80,6 +83,8 @@ public class MainMenu : MonoBehaviour
         GameSaveManager.Singleton.SetSaveFileIndex(index);
         StartCoroutine(StartGameRoutine());
     }
+
+
     public void CloseAll()
     {
         foreach(GameObject g in Menus)

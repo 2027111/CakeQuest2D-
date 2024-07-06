@@ -15,6 +15,7 @@ public enum SaveFiles
 [Serializable]
 public class ReadableSaveData
 {
+    public int saveIndex = 0;
     public SaveDataWrapper SaveDataWrapper;
     public List<SavableObject> data;
     public float PlayTime;
@@ -34,7 +35,6 @@ public class GameSaveManager : MonoBehaviour
 
 
     [Header("Read Save Files")]
-    public List<SaveDataJsonWrapper> saveFiles = new List<SaveDataJsonWrapper>();
     public List<ReadableSaveData> saves = new List<ReadableSaveData>();
 
     [Header("Objects To Save")]
@@ -78,14 +78,11 @@ public class GameSaveManager : MonoBehaviour
         InitializePath();
         GamePreference.SetPath($"{path}/preferences.json");
         GamePreference.LoadFromFile();
+        OnLanguageChanged.Invoke();
+        CreateSavePath();
     }
 
-    void Start()
-    {
-        CreateSavePath();
-        StartLoadingFiles();
-    }
-    
+
 
 
     public void CreateSavePath()
@@ -164,16 +161,42 @@ public class GameSaveManager : MonoBehaviour
         OnLanguageChanged?.Invoke();
     }
 
-    public void LoadSaveFile()
-    {
-        StartCoroutine(LoadSaveFileCoroutine());
-    }
-
     public IEnumerator LoadSaveFileCoroutine()
     {
         yield return StartCoroutine(LoadDefaultFileCoroutine(SaveFiles.save));
-        yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
+        //yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
+        yield return StartCoroutine(LoadSavableObjects());
     }
+
+    private IEnumerator LoadSavableObjects()
+    {
+
+        if (GetNumberOfSaveFiles() <= saveFileIndex)
+        {
+            saveFileIndex = GetNumberOfSaveFiles();
+            currentLoadedData = null;
+            yield return SaveFileCoroutine();
+        }
+        else
+        {
+
+            ReadableSaveData saveData = saves[saveFileIndex];
+            yield return ImportStoredData(saveData.SaveDataWrapper);
+
+            foreach(SavableObject obj in data)
+            {
+                foreach(SavableObject saveObj in saveData.data)
+                {
+                    if (saveObj.Matches(obj))
+                    {
+                        obj.ApplyData(saveObj);
+                    }
+                }
+            }
+            yield return null;
+        }
+    }
+
     public IEnumerator LoadDefaultFileCoroutine(SaveFiles listName)
     {
         List<SavableObject> list = GetListMatch(listName);
@@ -247,7 +270,23 @@ public class GameSaveManager : MonoBehaviour
             }
 
     }
+    public IEnumerator ImportStoredData(SaveDataWrapper saveData)
+    {
+        if (saveData != null)
+        {
 
+            // Set the lists from the deserialized data
+            SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
+            SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
+            SetPlayerData<Party>((saveData.AllParties), allParties);
+            yield return null;
+        }
+        else
+        {
+            Debug.LogError("Failed to deserialize data from save Data is null.");
+        }
+
+    }
 
 
 
@@ -268,7 +307,7 @@ public class GameSaveManager : MonoBehaviour
         }
     }
 
-    
+
 
     public IEnumerator SaveScriptablesAsync(SaveFiles listName)
     {
@@ -285,11 +324,18 @@ public class GameSaveManager : MonoBehaviour
             AllInventories = allInventories,
             AllCharacterObjects = allCharacterObjects,
             AllParties = allParties
-            
-        };
 
-        string wrapperjson = JsonConvert.SerializeObject(saveData, settings);
-        List<SavableObject> list = GetListMatch(listName);
+        };
+        ReadableSaveData newData = new ReadableSaveData();
+        newData.SaveDataWrapper = saveData;
+        newData.data = GetListMatch(listName);
+        if (saveFileIndex >= GetNumberOfSaveSlots())
+        {
+            saveFileIndex = GetNumberOfSaveSlots();
+            saves.Add(newData);
+        }
+        string wrapperjson = JsonConvert.SerializeObject(newData.SaveDataWrapper, settings);
+        List<SavableObject> list = newData.data;
         string filePath = GetNewFilePath(listName.ToString());
         List<ScriptableObjectDTO> dtoList = GetCurrentDTOList(list);
         string saveDataString = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
@@ -327,7 +373,7 @@ public class GameSaveManager : MonoBehaviour
 
     private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
     {
-        if (GetNumberOfSaveSlots() == saveFileIndex)
+        if (GetNumberOfSaveFiles() == saveFileIndex)
         {
 
             currentLoadedData = null;
@@ -494,7 +540,7 @@ public class GameSaveManager : MonoBehaviour
 
 
 
-    public int GetNumberOfSaveSlots()
+    public int GetNumberOfSaveFiles()
     {
         string saveFilePath = GetPath(SaveFiles.save.ToString());
         if (Directory.Exists(saveFilePath))
@@ -511,7 +557,10 @@ public class GameSaveManager : MonoBehaviour
         }
         return -1;
     }
-
+    public int GetNumberOfSaveSlots()
+    {
+        return saves.Count;
+    }
 
     public void StartLoadingFiles()
     {
@@ -521,9 +570,7 @@ public class GameSaveManager : MonoBehaviour
             Debug.Log($"Number of save files: {files.Count}");
             foreach (var file in files)
             {
-
                 saves.Add(file);
-                Debug.Log($"Loaded save file with progress: {file.PlayTime}");
             }
         }));
     }
@@ -576,11 +623,9 @@ public class GameSaveManager : MonoBehaviour
                 SaveDataWrapper wrapper = JsonConvert.DeserializeObject<SaveDataWrapper>(saveD, settings);
                 ReadableSaveData RSaveData = new ReadableSaveData();
                 RSaveData.SaveDataWrapper = wrapper;
-                Debug.Log(wrapper.AllCharacterObjects.Count);
-                Debug.Log(wrapper.AllInventories.Count);
                 RSaveData.data = savableObjects;
                 RSaveData.PlayTime = save.playTime;
-
+                RSaveData.saveIndex = GetNumberOfSaveSlots();
                 saveDataList.Add(RSaveData);
 
 

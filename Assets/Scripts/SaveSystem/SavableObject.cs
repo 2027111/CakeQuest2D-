@@ -22,4 +22,17 @@ public class SavableObject : ScriptableObject
     public virtual void ApplyData(SavableObject tempCopy)
     {
     }
+
+    public bool Matches(SavableObject obj)
+    {
+        if (GetType().Name == obj.GetType().Name)
+        {
+            if (UID == obj.UID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

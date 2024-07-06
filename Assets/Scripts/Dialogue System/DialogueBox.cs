@@ -655,7 +655,7 @@ public class DialogueBox : MonoBehaviour
         {
             StopCoroutine(setTextCoroutine);
             setTextCoroutine = null;
-            dialogueText.text = lineInfo.line;
+            SetDialogueText(lineInfo);
             dialogueIndex++;
         }
         else
@@ -667,6 +667,46 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
+    private void SetDialogueText(LineInfo info)
+    {
+        string text = info.line;
+        string line = "";
+        // Define the pattern to match <anything> or any word without tags
+        string pattern = @"<[^>]+>|[^<\s]+";
+
+        // Match all words and tags
+        MatchCollection matches = Regex.Matches(text, pattern);
+
+        foreach (Match match in matches)
+        {
+            string wordOrTag = match.Value;
+
+            // If the text contains a tag, append it instantly
+            if (Regex.IsMatch(wordOrTag, @"<[^>]+>"))
+            {
+                var secmatch = Regex.Match(wordOrTag, @"<waitSec=([\d\.]+)>");
+                if (!secmatch.Success)
+                {
+                    line += wordOrTag;
+                }
+            }
+            else
+            {
+                // Gradually append each character of the word
+                for (int j = 0; j < wordOrTag.Length; j++)
+                {
+                    line += wordOrTag[j];
+                }
+
+                // Add a space after the word if the next match is not a closing tag
+                if (match.NextMatch().Success && !match.NextMatch().Value.StartsWith("</"))
+                {
+                    line += " ";
+                }
+            }
+        }
+        dialogueText.SetText(line);
+    }
 
     public bool IsActive()
     {

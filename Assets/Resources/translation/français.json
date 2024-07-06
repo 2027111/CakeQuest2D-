@@ -1,0 +1,354 @@
+{
+    "globalColors": [
+        {
+            "key": "item",
+            "value": "#7DE7D7"
+        },
+        {
+            "key": "warning",
+            "value": "#FF0000"
+        },
+        {
+            "key": "success",
+            "value": "#00FF00"
+        }
+    ],
+    "Data": [
+        {
+            "dataId": "MenuTranslations",
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\"}"
+        },
+        {
+            "dataId": "Indications",
+            "jsonData": "{\"attack\":\"Attaquez directement vos ennemis!\",\"observe\":\"Observez vos  Ennemis!\",\"skill\":\"Cuisinez vos ennemis avec vos compétences!\",\"done\":\"Complété!\",\"item\":\"Utilisez des objets pour soutenir votre groupe!\",\"swap\":\"Échangez de position avec un allié!\",\"resist\":\"Résisté\",\"weak\":\"Faible\",\"blocked\":\"Bloqué\",\"miss\":\"Raté\",\"null\":\"Annulé\",\"targetOne\":\"Viser \",\"targetAllEnemy\":\"Viser tous les ennemis\",\"targetAllFriend\":\"Viser tous les alliés\",\"recipeStart\":\"Continue de cuisiner\",\"recipeFailed\":\"Mauvais ingrédient...\",\"recipeSuccess\":\"Repâs 5 Étoiles!!!\",\"automaticDialogueOn\":\"Auto.\",\"automaticDialogueOff\":\"Non-Auto.\"}"
+        },
+        {
+            "dataId": "element",
+            "jsonData": "{\"Slash\":\"Tranchant\",\"Bash\":\"Frappe\",\"Sweet\":\"Sucré\",\"Sour\":\"Sûre\",\"Bitter\":\"Amer\",\"Salty\":\"Salé\",\"Support\":\"Support\"}"
+        },
+        {
+            "dataId": "ControlScheme",
+            "jsonData": "{\"BattleState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner | <sprite name=cancel> Retourner\",\"ChoosingActionState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une Action\",\"AnalyzingTargetState\":\"<sprite name=move> Changer de cible à observer\",\"ChoosingItemState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner un Objet | <sprite name=cancel> Retourner\",\"ChoosingSkillState\":\"<sprite name=move> Naviguer | <sprite name=select> Sélectionner une compétence | <sprite name=cancel> Retourner\",\"ChoosingTargetState\":\"<sprite name=move> Changer de cible | <sprite name=select> Confirmer la/les cible(s) | <sprite name=cancel> Retourner\",\"CutsceneState\":\"<sprite name=select> Suivant\",\"NothingState\":\" ... \",\"PerformActionState\":\"<sprite name=cancel> Bloquer\",\"SwapingState\":\"\"}"
+        },
+        {
+            "dataId": "Locations",
+            "jsonData": "{\"kitchen\":\"Cuisine\",\"dining_hall\":\"Salle à manger\",\"room\":\"Chambre\"}"
+        },
+        {
+            "dataId": "Misc_Chest_Locked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.ItemName} pour l'ouvrir.\"}"
+        },
+        {
+            "dataId": "Misc_Chest_Opened",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+        },
+        {
+            "dataId": "Misc_Item_Received",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez obtenus {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+        },
+        {
+            "dataId": "Misc_Chest_Unlocked",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
+        },
+        {
+            "dataId": "Misc_Temp",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Lancer Video?!\"}"
+        },
+        {
+            "dataId": "Misc_Panneau_PC_000",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Si tu lis ça, t'es gay!\",\"side\":\"right\"}"
+        },
+        {
+            "dataId": "Misc_Combat_Launch_Test",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Lancement du combat\"}"
+        },
+        {
+            "dataId": "Misc_Caught_Guard_000",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"HEY?! QU'EST-CE QUE VOUS FAITES ICI?!\"}"
+        },
+        {
+            "dataId": "Misc_Caught_Guard_001",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"VOUS ÊTES BANNI D'ICI, DEHORS!\"}"
+        },
+        {
+            "dataId": "Misc_Caught_Guard_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"Jimi\",\"line\":\"Merde! Il m'a attrapé.... Je pourrai techniquement me le faire... Mais....\"}"
+        },
+        {
+            "dataId": "Misc_Heal_Question",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Laissez-moi vous soigner.\"}"
+        },
+        {
+            "dataId": "Misc_Heal_Confirmation",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Votre équipe a été entièrement soignée.\"}"
+        },
+        {
+            "dataId": "Misc_Fight_Question",
+            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Voulez-vous combattre?\"}"
+        },
+        {
+            "dataId": "Misc_No",
+            "jsonData": "{\"line\":\"Non.\"}"
+        },
+        {
+            "dataId": "Misc_Yes",
+            "jsonData": "{\"line\":\"Oui.\"}"
+        },
+        {
+            "dataId": "Jimi",
+            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":\"Portraits/Jimi/po_jimi_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Ingrédients\"}"
+        },
+        {
+            "dataId": "Yankee",
+            "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":\"Portraits/Yankee/po_yankee_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
+        },
+        {
+            "dataId": "item_huile_bouillante",
+            "jsonData": "{\"itemName\":\"Bouteille d'huile bouillante\",\"itemDescription\":\"De l'huile bouilante. La lancé sur un enemie fera {healthEffectAmount} points de dégats\"}"
+        },
+        {
+            "dataId": "item_biscuit_chocolat",
+            "jsonData": "{\"itemName\":\"Biscuit au chocolat\",\"itemDescription\":\"Un biscuit au chocolat (Miam!) Soigne {healthEffectAmount} points de vie.\"}"
+        },
+        {
+            "dataId": "item_egg",
+            "jsonData": "{\"itemName\":\"Oeuf\",\"itemDescription\":\"Un oeuf. Yep. Rien de plus.\"}"
+        },
+        {
+            "dataId": "item_small_honey_bottle",
+            "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise {manaEffectAmount} points de Mana à celui qui en bois.\"}"
+        },
+        {
+            "dataId": "item_flour",
+            "jsonData": "{\"itemName\":\"Farine\",\"itemDescription\":\"Un sac en carton rempli de farine.\"}"
+        },
+        {
+            "dataId": "item_cook_book",
+            "jsonData": "{\"itemName\":\"Livre de Cuisine\",\"itemDescription\":\"Un livre de recette, permet d'identifier la recette d'un ennemi instantanément.\"}"
+        },
+        {
+            "dataId": "item_cake_mix",
+            "jsonData": "{\"itemName\":\"Pate à Gateau\",\"itemDescription\":\"Une boite en carton rempli de poudre brunâtre. Miam.\"}"
+        },
+        {
+            "dataId": "quest_intro_fetch_ingredients",
+            "jsonData": "{\"questName\":\"Le Gateau\",\"questDescription\":\"Trouves les ingrédients nécéssaires, afin de préparer un gateau.\"}"
+        },
+        {
+            "dataId": "quest_go_to_oven",
+            "jsonData": "{\"questName\":\"Préparer un Gâteau\",\"questDescription\":\"Dirigez-vous vers le four afin de vous préparer un gâteau..\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_0",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_1",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je suis le plus grand tireur de tout le colorado\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_2",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je ne te rendrais jamais ton portefeuille trouduc\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_3",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Bordel j'ai mal\"}"
+        },
+        {
+            "dataId": "EyrCott_pcc_0",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Mais- Il est oû le  maltezer???\"}"
+        },
+        {
+            "dataId": "EyrCott_pcc_1",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je ne t'affronterai que quand il aura pris ces couilles et sera venu me défier lui-même.\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_4",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Maintenant, vous connaissez mon plus grand secret...\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_5",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Tien, reprends le ton porte-feuille de mes deux.\"}"
+        },
+        {
+            "dataId": "EyrCott_pc_6",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Moi, j'me casse d'ici.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu sais comment te battre n'est-ce pas?\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilises <sprite name=move> pour naviguer et prend ta décision avec <sprite name=select>.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu as le choix entre attaquer, utiliser une compétence et changer de position. Vasy! Essaye!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu te demandes, je n'ai pas besoin d'attendre la fin de ton tours pour attaquer. On peut lui sauter dessus.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Cependant si tu élimines ma cible avant que je l'attaque, je ne pourrai pas changer de cible et j'aurai gaspillé un tour.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Fais gaffe à ton adversaire. Tu n'es pas obligé de prendre le coup. Tu peux bloquer avec <sprite name=cancel> et prendre uniquement la moitié des dégats!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilise la loupe pour observé l'ennemie, chaque combattant commence le combat avec une recette.!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_009",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu suis la recette, chaque étape rendra ton attaque encore plus fort!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_010",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mais une fois la recette complété, la recette sera réinitialisé de manière aléatoire. Tu devras donc porté attention au combat et trouver la recette toi-même. Cependant, si ta barre de focus est rempli, tu pourras analyser l'adversaire pour afficher sa recette avec la loupe.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_011",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mai- \n Mais t'es chauve aussi???!\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Join",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Laisse-moi te rejoindre!\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Jcowboy",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vas devoir affronter ce cow-boy...\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_Leave",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Bordel... <waitSec=0.8>j'ai méga faimmmmm!\",\"voiced\":\"true\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"J'ai besoin de manger la vérité... J'pense il reste du gateau non?\",\"voiced\":\"true\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_6\",\"talkerName\":\"???\",\"line\":\"Merde... J'vais devoir en faire moi même.\",\"voiced\":\"true\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\",\"voiced\":\"true\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0031",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0042",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"C'est bon, J'ai tout se qu'il me faut! Direction le <color={color_success}>four</color>!.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0045",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"J'ai tout ce font j'ai besoin?\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0046",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"???\",\"line\":\"Ouai. J'devrais être correcte.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_0047",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"Non.. Il me manque quelque chose...\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"Hmm... 300°F pour 10 minutes...\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Papa me dit toujours de respecter la recette, mais...\n Je pourrais le cuir à 30000°F pendant 1 seconde pour avoir mon gateau le plus tôt possible.\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Ow?! Qu'est-ce que..?!\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_4\",\"talkerName\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
+        },
+        {
+            "dataId": "Intro_Jimi_SGT",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Il est 3h du mat, rien n'est ouvert à cette heure-ci. De plus, je devrais avoir les ingrédients ici de toute manière.\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_000",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Ah! Bien sure!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Non merci. J'apprécie!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Ah! Je relève le défi!\"}"
+        },
+        {
+            "dataId": "Misc_Jimi_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"J'ai pas le temps.\"}"
+        },
+        {
+            "dataId": "Tuto_Jimi_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+        },
+        {
+            "dataId": "skill_spinning_kick",
+            "jsonData": "{\"skillName\":\"Coup de Pied Tourné\",\"skillDescription\":\"Un coup de pied amplifié par la force centrifuge.\"}"
+        },
+        {
+            "dataId": "skill_low_heal",
+            "jsonData": "{\"skillName\":\"Premier Soins\",\"skillDescription\":\"Un sort de soin de bas niveau\"}"
+        },
+        {
+            "dataId": "skill_overhead_smash",
+            "jsonData": "{\"skillName\":\"Fracas Aérien\",\"skillDescription\":\"Un coup amplifié par la gravité\"}"
+        },
+        {
+            "dataId": "skill_ressurection",
+            "jsonData": "{\"skillName\":\"Résurrection\",\"skillDescription\":\"Un sort pouvant réanimé les alliés évanouis\"}"
+        },
+        {
+            "dataId": "skill_salad_rain",
+            "jsonData": "{\"skillName\":\"Pluie de Salade\",\"skillDescription\":\"Invoque une pluie de légumes salés\"}"
+        },
+        {
+            "dataId": "skill_slice_dice",
+            "jsonData": "{\"skillName\":\"Coupe et Découpe\",\"skillDescription\":\"Un enchainement d'attaques tranchantes\"}"
+        },
+        {
+            "dataId": "skill_super_kick",
+            "jsonData": "{\"skillName\":\"Super Coup de pied\",\"skillDescription\":\"Un enchainement de coup de pied\"}"
+        },
+        {
+            "dataId": "skill_egg_drill",
+            "jsonData": "{\"skillName\":\"Perç'Oeuf\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
+        }
+    ]
+}

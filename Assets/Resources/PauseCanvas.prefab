@@ -722,7 +722,7 @@ RectTransform:
   m_Children:
   - {fileID: 1250952520827481152}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -803,6 +803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2436b86302d132b4faf6277d14606ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetOnAwake: 1
   TextObjects:
     keys:
     - inventory
@@ -824,7 +825,6 @@ MonoBehaviour:
       - {fileID: 1250952522313357171}
     - Value:
       - {fileID: 1250952520875147063}
-  menuId: MenuTranslations
 --- !u!114 &1250952521867717926
 MonoBehaviour:
   m_ObjectHideFlags: 0

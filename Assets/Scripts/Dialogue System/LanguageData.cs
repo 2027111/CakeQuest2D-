@@ -17,8 +17,13 @@ public class LanguageData
 {
     public static string INDICATION = "Indications";
     public static string CONTROLS = "ControlScheme";
+    public static string MENUS = "MenuTranslations";
+
+
+
     public List<JsonData> Data = new List<JsonData>();
     public Dictionary<string, string> GlobalColors;
+    public Dictionary<string, JsonData> translationData;
     public List<GlobalColor> globalColors = new List<GlobalColor>();
     public static Language language = Language.Français;
     public static Language defaultLanguage = Language.Français;
@@ -72,6 +77,31 @@ public class LanguageData
                 GlobalColors = new Dictionary<string, string>();
             }
         }
+
+        if (Data != null && Data.Count > 0)
+        {
+            if (translationData == null)
+            {
+                translationData = new Dictionary<string, JsonData>();
+            }
+
+            foreach (var translation in Data)
+            {
+                translationData.Add(translation.dataId, translation);
+            }
+
+            // Optionally, you can log or debug the globalColors list
+            // Debug.Log($"Global Colors converted: {JsonConvert.SerializeObject(GlobalColors)}");
+        }
+        else
+        {
+            if (translationData == null)
+            {
+                translationData = new Dictionary<string, JsonData>();
+            }
+        }
+
+
     }
 
     public static Language GetLanguage()
@@ -91,7 +121,7 @@ public class LanguageData
 
     public static string GetLanguageSuffix()
     {
-        return $"_{language.ToString().ToLower()}";
+        return $"{language.ToString().ToLower()}";
     }
 
     private static LanguageData LoadGameData()
@@ -128,7 +158,7 @@ public class LanguageData
         return combinedData;
     }
 
-    public static IEnumerator LoadJsonAsync(Action onComplete = null)
+    public static IEnumerator LoadAllJsonAsync(Action onComplete = null)
     {
         string languageSuffix = GetLanguageSuffix();
 
@@ -163,6 +193,51 @@ public class LanguageData
         onComplete?.Invoke();
     }
 
+    public static IEnumerator LoadJsonAsync(Action onComplete = null)
+    {
+        string languageSuffix = GetLanguageSuffix();
+
+
+        ResourceRequest request= Resources.LoadAsync<TextAsset>($"translation/{languageSuffix}");
+        yield return request;
+
+        if (request.asset == null)
+        {
+            Debug.LogError($"Failed to load translation file for {languageSuffix}");
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        TextAsset jsonFile = request.asset as TextAsset;
+        if (jsonFile == null)
+        {
+            Debug.LogError($"Loaded asset is not a TextAsset for {languageSuffix}");
+            onComplete?.Invoke();
+            yield break;
+        }
+        LanguageData combinedData = new LanguageData();
+        Debug.Log(jsonFile.text);
+
+                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+                if (data != null)
+                {
+                    if (data.Data != null)
+                    {
+                        combinedData.Data.AddRange(data.Data);
+                    }
+                    if (data.globalColors != null)
+                    {
+                        combinedData.globalColors.AddRange(data.globalColors);
+                    }
+                }
+
+        
+        Singleton = combinedData;
+        onComplete?.Invoke();
+    }
+
+
+
     public static JsonData GetDataById(string id)
     {
         if (Singleton == null)
@@ -170,14 +245,10 @@ public class LanguageData
             return null;
         }
 
-        foreach (var dataInfo in Singleton.Data)
+        if(Singleton.translationData.TryGetValue(id, out JsonData value))
         {
-            if (dataInfo.dataId == id)
-            {
-                return dataInfo;
-            }
+            return value;
         }
-
         Debug.LogWarning($"Key '{id}' not found in Translation File data.");
         return new JsonData();
     }

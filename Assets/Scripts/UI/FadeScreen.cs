@@ -72,7 +72,7 @@ public class FadeScreen : MonoBehaviour
         {
 
             fadeOn = true;
-            StartTransition(false, Color.black, .5f);
+            StartTransition(false, Color.black, .5f, 1);
         }
     }
     public static void MoveToScene(string sceneName, Color transitionColor, float fadeTime = -1)
@@ -108,11 +108,11 @@ public class FadeScreen : MonoBehaviour
         StartCoroutine(FadeCoroutine(sceneName));
     }
 
-    public static void StartTransition(bool on, Color color, float fadeTime = -1)
+    public static void StartTransition(bool on, Color color, float fadeTime = -1, float waitTime = 0)
     {
         Singleton?.SetColor(color);
 
-        Singleton?.StartTransition(on, fadeTime);
+        Singleton?.StartTransition(on, fadeTime, waitTime);
 
 
     }
@@ -127,11 +127,11 @@ public class FadeScreen : MonoBehaviour
         fadeTime = time;
     }
 
-    public void StartTransition(bool on, float fadeTime = -1)
+    public void StartTransition(bool on, float fadeTime = -1, float waitTime = 0)
     {
 
         Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .8f));
-        StartCoroutine(StartFadeAnimation(on));
+        StartCoroutine(StartFadeAnimation(on, Singleton.fadeTime, waitTime));
 
 
 
@@ -235,14 +235,14 @@ public class FadeScreen : MonoBehaviour
 
 
 
-    public IEnumerator StartFadeAnimation(bool on, float fadeTime = .8f)
+    public IEnumerator StartFadeAnimation(bool on, float fadeTime = .8f, float waitTime = 0)
     {
         float time = 0f;
         float start = on?0:1;
         float target = on?1:0;
-
         SetAlphaTarget(start);
         fading = true;
+        yield return new WaitForSeconds(waitTime);
         while (time < fadeTime)
         {
             time += Time.deltaTime;
