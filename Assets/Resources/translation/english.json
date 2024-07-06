@@ -16,7 +16,7 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave Game\",\"settings\":\"Settings\",\"quest\":\"Quests\",\"party\":\"Party\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Title\",\"resume\":\"Resume\",\"save\":\"Save\",\"recipe\":\"Recipe\"}"
+            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave Game\",\"settings\":\"Settings\",\"close\":\"Fermer\",\"quest\":\"Quests\",\"saveFile\":\"Save File\",\"party\":\"Party\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Title\",\"resume\":\"Resume\",\"save\":\"Save\",\"recipe\":\"Recipe\",\"sfx\":\"Sound Effects\",\"music\":\"Music\",\"voice\":\"Voices\",\"language\":\"Language\"}"
         },
         {
             "dataId": "Indications",
@@ -36,39 +36,39 @@
         },
         {
             "dataId": "Misc_Chest_Locked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"The chest is locked... You need {requirementAmount} {lockRequirement.ItemName} to open it.\"}"
+            "jsonData": "{\"line\":\"The chest is locked... You need {requirementAmount} {lockRequirement.ItemName} to open it.\"}"
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"You found {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"line\":\"You found {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"You obtained {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"line\":\"You obtained {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"You have the {requirementAmount} {lockRequirement.ItemName} necessary to open it! The chest opens!!\"}"
+            "jsonData": "{\"line\":\"You have the {requirementAmount} {lockRequirement.ItemName} necessary to open it! The chest opens!!\"}"
         },
         {
             "dataId": "Misc_Temp",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Launch Video?!\"}"
+            "jsonData": "{\"line\":\"Launch Video?!\"}"
         },
         {
             "dataId": "Misc_Panneau_PC_000",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"If you read this, you're gay!\",\"side\":\"right\"}"
+            "jsonData": "{\"line\":\"If you read this, you're gay!\",\"side\":\"right\"}"
         },
         {
             "dataId": "Misc_Combat_Launch_Test",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Launching combat\"}"
+            "jsonData": "{\"line\":\"Launching combat\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_000",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"HEY?! WHAT ARE YOU DOING HERE?!\"}"
+            "jsonData": "{\"line\":\"HEY?! WHAT ARE YOU DOING HERE?!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_001",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"YOU ARE BANNED FROM HERE, GET OUT!\"}"
+            "jsonData": "{\"line\":\"YOU ARE BANNED FROM HERE, GET OUT!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_Jimi_000",
@@ -76,15 +76,15 @@
         },
         {
             "dataId": "Misc_Heal_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Let me heal you.\"}"
+            "jsonData": "{\"line\":\"Let me heal you.\"}"
         },
         {
             "dataId": "Misc_Heal_Confirmation",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Your team has been fully healed.\"}"
+            "jsonData": "{\"line\":\"Your team has been fully healed.\"}"
         },
         {
             "dataId": "Misc_Fight_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Do you want to fight?\"}"
+            "jsonData": "{\"line\":\"Do you want to fight?\"}"
         },
         {
             "dataId": "Misc_No",

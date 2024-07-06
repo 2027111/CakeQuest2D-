@@ -16,7 +16,7 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\"}"
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"saveFile\":\"Sauvegarde\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\",\"sfx\":\"Effet Sonore\",\"music\":\"Musique\",\"voice\":\"Voix\",\"language\":\"Langue\"}"
         },
         {
             "dataId": "Indications",
@@ -36,39 +36,39 @@
         },
         {
             "dataId": "Misc_Chest_Locked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.ItemName} pour l'ouvrir.\"}"
+            "jsonData": "{\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.ItemName} pour l'ouvrir.\"}"
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez obtenus {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
+            "jsonData": "{\"line\":\"Vous avez obtenus {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
+            "jsonData": "{\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
         },
         {
             "dataId": "Misc_Temp",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Lancer Video?!\"}"
+            "jsonData": "{\"line\":\"Lancer Video?!\"}"
         },
         {
             "dataId": "Misc_Panneau_PC_000",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Si tu lis ça, t'es gay!\",\"side\":\"right\"}"
+            "jsonData": "{\"line\":\"Si tu lis ça, t'es gay!\",\"side\":\"right\"}"
         },
         {
             "dataId": "Misc_Combat_Launch_Test",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Lancement du combat\"}"
+            "jsonData": "{\"line\":\"Lancement du combat\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_000",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"HEY?! QU'EST-CE QUE VOUS FAITES ICI?!\"}"
+            "jsonData": "{\"line\":\"HEY?! QU'EST-CE QUE VOUS FAITES ICI?!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_001",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"VOUS ÊTES BANNI D'ICI, DEHORS!\"}"
+            "jsonData": "{\"line\":\"VOUS ÊTES BANNI D'ICI, DEHORS!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_Jimi_000",
@@ -76,15 +76,15 @@
         },
         {
             "dataId": "Misc_Heal_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Laissez-moi vous soigner.\"}"
+            "jsonData": "{\"line\":\"Laissez-moi vous soigner.\"}"
         },
         {
             "dataId": "Misc_Heal_Confirmation",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Votre équipe a été entièrement soignée.\"}"
+            "jsonData": "{\"line\":\"Votre équipe a été entièrement soignée.\"}"
         },
         {
             "dataId": "Misc_Fight_Question",
-            "jsonData": "{\"portraitPath\":\"\",\"talkerName\":\"\",\"line\":\"Voulez-vous combattre?\"}"
+            "jsonData": "{\"line\":\"Voulez-vous combattre?\"}"
         },
         {
             "dataId": "Misc_No",

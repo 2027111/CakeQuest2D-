@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Main
   m_EditorClassIdentifier: 
   UID: 4fe60a3bb6d8b4d49ba4320ee343436a
-  roomName: Plaine Caramel
+  roomName: Grande Plaine
   minCameraOffset: {x: -17, y: -16}
   maxCameraOffset: {x: 20, y: 20}

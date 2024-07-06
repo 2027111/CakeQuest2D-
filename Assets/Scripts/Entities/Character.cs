@@ -190,7 +190,7 @@ public class Character : MonoBehaviour
         playerBehaviour?.OnExit();
         previousBehaviour = playerBehaviour;
         playerBehaviour = newBehaviour;
-        //LogStateChange(previousBehaviour);
+        LogStateChange(previousBehaviour);
         newBehaviour.OnEnter(this);
     }
     public void LogStateChange(CharacterBehaviour previousBehaviour)

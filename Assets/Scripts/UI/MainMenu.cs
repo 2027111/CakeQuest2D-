@@ -75,8 +75,14 @@ public class MainMenu : MonoBehaviour
             button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
             int index = i;
             button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
+            if(index == 0)
+            {
+                button.GetComponent<Button>().Select();
+            }
         }
     }
+
+
 
     private void LoadGame(int index)
     {

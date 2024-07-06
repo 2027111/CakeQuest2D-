@@ -112,7 +112,7 @@ public class UICanvas : MonoBehaviour
         MusicPlayer.Stop();
 
         InputManager.inputManager.OnPausedPressed = null;
-        videoPlayer.loopPointReached += delegate { EndVideo(); };
+        videoPlayer.loopPointReached += EndVideo;
         InputManager.inputManager.OnPausedPressed += delegate { TogglePauseScreen(); };
         PlayVideo();
         yield return new WaitForSeconds(.15f);
@@ -182,21 +182,26 @@ public class UICanvas : MonoBehaviour
 
         yield return FadeScreen.Singleton.StartFadeAnimation(true);
         yield return ShowVideo(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().TogglePreviousState();
         yield return dialogueBox.Resume();
         MusicPlayer.Resume();
         TurnBordersOn(true);
         videoPlayer.Stop();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().TogglePreviousState();
         yield return FadeScreen.Singleton.StartFadeAnimation(false);
     }
 
     public void EndVideo()
     {
         TogglePauseScreen(false);
-        videoPlayer.loopPointReached -= delegate { EndVideo(); };
+        videoPlayer.loopPointReached -= EndVideo;
         InputManager.inputManager.OnPausedPressed = null;
         videoPlayer.Pause();
         StartCoroutine(EndAnimatedCutscene());
+    }
+
+    public void EndVideo(VideoPlayer source)
+    {
+        EndVideo();
     }
 
     public void PlayVideo()

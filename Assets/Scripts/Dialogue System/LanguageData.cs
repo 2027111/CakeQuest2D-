@@ -129,31 +129,29 @@ public class LanguageData
         string languageSuffix = GetLanguageSuffix();
 
 
-        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("translation");
+
+        TextAsset jsonFile = Resources.Load<TextAsset>($"translation/{languageSuffix}");
 
 
-        LanguageData combinedData = new LanguageData();
-        foreach (var jsonFile in jsonFiles)
+        if (jsonFile == null)
         {
-            if (jsonFile.name.EndsWith(languageSuffix))
+            Debug.LogError($"Loaded asset is not a TextAsset for {languageSuffix}");
+        }
+        LanguageData combinedData = new LanguageData();
+
+        LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+        if (data != null)
+        {
+            if (data.Data != null)
             {
-
-
-                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
-                if (data != null)
-                {
-                    if (data.Data != null)
-                    {
-                        combinedData.Data.AddRange(data.Data);
-                    }
-                    if (data.globalColors != null)
-                    {
-                        combinedData.globalColors.AddRange(data.globalColors);
-                    }
-                }
-
+                combinedData.Data.AddRange(data.Data);
+            }
+            if (data.globalColors != null)
+            {
+                combinedData.globalColors.AddRange(data.globalColors);
             }
         }
+
 
         return combinedData;
     }
@@ -249,7 +247,7 @@ public class LanguageData
             return value;
         }
         Debug.LogWarning($"Key '{id}' not found in Translation File data.");
-        return new JsonData();
+        return new JsonData(id, "");
     }
 }
 
@@ -266,12 +264,18 @@ public class JsonData
     public string dataId;
     public string jsonData;
 
+
+    public JsonData(string id, string data)
+    {
+        this.dataId = id;
+        this.jsonData = data;
+    }
     public string GetValueByKey(string key)
     {
         if (string.IsNullOrEmpty(jsonData))
         {
             Debug.LogWarning("jsonData is null or empty.");
-            return "";
+            return $"'{dataId} | {key}'";
         }
 
         try
@@ -308,9 +312,9 @@ public class JsonData
             Debug.LogWarning($"Key '{key}' not found in JSON data.");
             if (key == "line")
             {
-                return $"No Line Found with Key '{key}'";
+                return $"No Line Found with Key '{dataId} | {key}'";
             }
-            return "";
+            return $"'{dataId} | {key}'";
         }
         catch (Exception e)
         {
