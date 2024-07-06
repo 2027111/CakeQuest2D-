@@ -9,7 +9,7 @@ public class BattleCutscene : Cutscene
 {
     [JsonIgnore] public BattleDialogue[] battleDialogue;
 
-    public override Dialogue GetLine()
+    public override Dialogue GetNextLine()
     {
 
         Dialogue returnValue = GetPlayableLine();

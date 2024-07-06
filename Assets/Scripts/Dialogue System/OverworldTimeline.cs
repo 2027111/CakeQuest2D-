@@ -30,7 +30,7 @@ public class OverworldTimeline : Timeline
 
     public override void DialogueRequest()
     {
-        Dialogue dialogue = new Dialogue(storagePlay.GetLine());
+        Dialogue dialogue = new Dialogue(storagePlay.GetNextLine());
         dialogue.OnOverEvent.AddListener(DialogueOver);
         UICanvas.StartDialogue(dialogue, Character.Player.gameObject, null);
     }

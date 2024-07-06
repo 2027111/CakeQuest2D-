@@ -20,7 +20,7 @@ public class Cutscene : BoolValue
         dialogueIndex = (tempCopy as Cutscene).dialogueIndex;
         base.ApplyData(tempCopy);
     }
-    public virtual Dialogue GetLine()
+    public virtual Dialogue GetNextLine()
     {
 
         Dialogue returnValue = GetCurrentLine();

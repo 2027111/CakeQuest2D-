@@ -10,7 +10,7 @@ public class BattleTimeline : Timeline
 
     public override void DialogueRequest()
     {
-        Dialogue ddialogue = storagePlay.GetLine();
+        Dialogue ddialogue = storagePlay.GetNextLine();
         Dialogue dialogue = new Dialogue(ddialogue);
         dialogue.OnOverEvent.AddListener(ddialogue.SetPlayed);
         dialogue.OnOverEvent.AddListener(storagePlay.SetRuntime);

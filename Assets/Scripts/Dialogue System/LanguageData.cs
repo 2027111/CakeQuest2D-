@@ -216,7 +216,6 @@ public class LanguageData
             yield break;
         }
         LanguageData combinedData = new LanguageData();
-        Debug.Log(jsonFile.text);
 
                 LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
                 if (data != null)

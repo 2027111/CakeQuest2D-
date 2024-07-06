@@ -567,7 +567,6 @@ public class GameSaveManager : MonoBehaviour
         saves.Clear();
         StartCoroutine(LoadAllSaveFilesCoroutine(files =>
         {
-            Debug.Log($"Number of save files: {files.Count}");
             foreach (var file in files)
             {
                 saves.Add(file);
