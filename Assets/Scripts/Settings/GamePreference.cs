@@ -112,7 +112,10 @@ public static class GamePreference
         };
 
         string jsonString = JsonUtility.ToJson(data, true);
-        System.IO.File.WriteAllText(filePath, jsonString);
+        if (!string.IsNullOrEmpty(filePath))
+        {
+            System.IO.File.WriteAllText(filePath, jsonString);
+        }
     }
 
     public static void LoadFromFile()
