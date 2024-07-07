@@ -62,15 +62,14 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLoadMenu()
     {
-        foreach(Transform t in LoadMenuContainer.GetChild(0))
+        foreach(Transform t in LoadMenuContainer)
         {
             Destroy(t.gameObject);
         }
-        LoadMenuContainer.gameObject.SetActive(true);
         int amount = GameSaveManager.Singleton.GetNumberOfSaveSlots();
         for (int i = 0; i < amount; i++)
         {
-            GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer.GetChild(0));
+            GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer);
             GameSaveManager.Singleton.saves[i].saveIndex = i;
             button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
             int index = i;
@@ -101,11 +100,10 @@ public class MainMenu : MonoBehaviour
 
     public void CloseLoadMenu()
     {
-        foreach (Transform t in LoadMenuContainer.GetChild(0))
+        foreach (Transform t in LoadMenuContainer)
         {
             Destroy(t.gameObject);
         }
-        LoadMenuContainer.gameObject.SetActive(false);
 
     }
     public void NewGame()

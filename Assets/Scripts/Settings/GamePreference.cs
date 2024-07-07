@@ -3,9 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public class GamePreferenceData
 {
-    public float SFXVolume;
-    public float MusicVolume;
-    public float VoiceVolume;
+    public int SFXVolume;
+    public int MusicVolume;
+    public int VoiceVolume;
     public bool fullScreen;
     public int width;
     public int height;
@@ -14,16 +14,16 @@ public class GamePreferenceData
 
 public static class GamePreference
 {
-    private static float sfxVolume = 0;
-    private static float musicVolume = 0;
-    private static float voiceVolume = 0;
+    private static int sfxVolume = 0;
+    private static int musicVolume = 0;
+    private static int voiceVolume = 0;
     private static bool fullScreen = true;
     private static int width = -1;
     private static int height = -1;
     private static Language language = LanguageData.defaultLanguage;
     public static string filePath = "";
 
-    public static float SFXVolume
+    public static int SFXVolume
     {
         get => sfxVolume;
         set
@@ -33,7 +33,7 @@ public static class GamePreference
         }
     }
 
-    public static float MusicVolume
+    public static int MusicVolume
     {
         get => musicVolume;
         set
@@ -43,7 +43,7 @@ public static class GamePreference
         }
     }
 
-    public static float VoiceVolume
+    public static int VoiceVolume
     {
         get => voiceVolume;
         set

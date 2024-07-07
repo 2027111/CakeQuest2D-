@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class VolumeHandler : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class VolumeHandler : MonoBehaviour
     [SerializeField] bool SFX;
     [SerializeField] bool Music;
     [SerializeField] bool Voice;
+    [SerializeField] TMP_Text volumeText;
 
 
     private void Start()
@@ -31,38 +33,45 @@ public class VolumeHandler : MonoBehaviour
             SetVoicePreference(GamePreference.VoiceVolume);
 
         }
+
+
+        if( contextMixer.GetFloat("Volume", out float volume))
+        {
+            volumeText.SetText(((int)volume + 50).ToString());
+        }
     }
     public void SetVolume (float volume)
     {
         contextMixer.SetFloat("Volume", volume);
+        volumeText.SetText(((int)volume + 50).ToString());
         if (SFX)
         {
-            SetSFXPreference(volume);
+            SetSFXPreference((int)volume);
         }
         else if (Music)
         {
-            SetMusicPreference(volume);
+            SetMusicPreference((int)volume);
 
         }
         else if (Voice)
         {
-            SetVoicePreference(volume);
+            SetVoicePreference((int)volume);
 
         }
     }
 
 
 
-    public void SetSFXPreference(float volume)
+    public void SetSFXPreference(int volume)
     {
         GamePreference.SFXVolume = volume; 
     }
-    public void SetMusicPreference(float volume)
+    public void SetMusicPreference(int volume)
     {
         GamePreference.MusicVolume = volume;
 
     }
-    public void SetVoicePreference(float volume)
+    public void SetVoicePreference(int volume)
     {
         GamePreference.VoiceVolume = volume;
 

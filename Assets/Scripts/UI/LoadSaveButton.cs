@@ -25,7 +25,15 @@ public class LoadSaveButton : MonoBehaviour
         locationText.SetText(pis.sceneName + " | " + currentRoom.roomName);
     }
 
+    public void OnSelect()
+    {
+        SFXPlayer.instance.PlayOnNavigate();
+    }
 
+    public void OnClick()
+    {
+        SFXPlayer.instance.PlayOnSelect();
+    }
     public void SetSaveFile(ReadableSaveData saveData)
     {
         currentData = saveData;
