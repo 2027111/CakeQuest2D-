@@ -270,13 +270,22 @@ public class JsonData
         this.dataId = id;
         this.jsonData = data;
     }
-    public string GetValueByKey(string key)
+    public string GetValueByKey(string key, bool nullable = true)
     {
+
+        string returnValue = "";
+        if (!nullable)
+        {
+            returnValue = $"{ dataId}.{ key}";
+            
+        }
         if (string.IsNullOrEmpty(jsonData))
         {
             Debug.LogWarning("jsonData is null or empty.");
-            return $"'{dataId} | {key}'";
         }
+        else
+        {
+
 
         try
         {
@@ -290,7 +299,7 @@ public class JsonData
                 string replacedText = Regex.Replace(value, pattern, match =>
                 {
                     string originalName = match.Groups[1].Value;
-                    string newName = originalName + "_" + InputManager.controlSettings; // Example replacement
+                    string newName = $"{originalName}_{InputManager.controlSettings}"; // Example replacement
                     return $"<sprite name={newName}>";
                 });
 
@@ -305,21 +314,25 @@ public class JsonData
                     }
                     return match.Value;
                 });
-
-                return replacedText;
+                returnValue = replacedText;
             }
-
-            Debug.LogWarning($"Key '{key}' not found in JSON data.");
-            if (key == "line")
+            else
             {
-                return $"No Line Found with Key '{dataId} | {key}'";
+                Debug.LogWarning($"Key '{key}' not found in JSON data.");
+                if (key == "line")
+                {
+                    returnValue = $"No Line Found with Key '{dataId} | {key}'";
+                }
             }
-            return $"'{dataId} | {key}'";
+
         }
         catch (Exception e)
         {
             Debug.LogError($"Error parsing JSON data: {e.Message}");
-            return "";
+
+            }
         }
+
+        return returnValue;
     }
 }

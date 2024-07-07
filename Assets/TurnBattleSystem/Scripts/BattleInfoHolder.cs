@@ -18,6 +18,12 @@ public class BattleInfoHolder : SavableObject
         if (battleInfo)
         {
             battleInfo.SetRuntime();
+            if(battleInfo.CutsceneForDialogue != null)
+            {
+
+                battleInfo.CutsceneForDialogue.ForceRuntime();
+
+            }
         }
     }
 }

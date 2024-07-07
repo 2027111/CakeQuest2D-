@@ -35,10 +35,9 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
     technicalCondition: 1
     conditionIndex: 0
-    played: 0
+    played: 1
   - condition: []
     dialogueLineIds:
     - Tuto_Yankee_006
@@ -50,10 +49,9 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
     technicalCondition: 3
     conditionIndex: 0
-    played: 0
+    played: 1
   - condition: []
     dialogueLineIds:
     - Tuto_Yankee_008
@@ -78,7 +76,6 @@ MonoBehaviour:
             m_StringArgument: 0121
             m_BoolArgument: 0
           m_CallState: 2
-    source: {fileID: 0}
     technicalCondition: 1
     conditionIndex: 1
-    played: 0
+    played: 1

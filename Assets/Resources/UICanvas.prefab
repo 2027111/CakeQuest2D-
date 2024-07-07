@@ -70,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: quest
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4ad519988878118479e5a07260885eaf, type: 2}
-  m_sharedMaterial: {fileID: -4338355397666175267, guid: 4ad519988878118479e5a07260885eaf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.9
+  m_fontSize: 34.25
   m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -149,13 +149,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2436b86302d132b4faf6277d14606ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetOnAwake: 0
   TextObjects:
     keys:
     - quest
     values:
     - Value:
       - {fileID: 10157060}
-  menuId: MenuTranslations
 --- !u!1 &67521738
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,8 +567,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Town Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
-  m_sharedMaterial: {fileID: 8001631950869338567, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -592,7 +592,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.75
+  m_fontSize: 64.8
   m_fontSizeBase: 22.16
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -888,8 +888,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
-  m_sharedMaterial: {fileID: 8001631950869338567, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1118,8 +1118,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dialogue testing yes
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
-  m_sharedMaterial: {fileID: 8001631950869338567, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1892,8 +1892,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Auto.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
-  m_sharedMaterial: {fileID: 8001631950869338567, guid: 93134e7ce6e4a9f4e86e77272f3b4b5b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2389,14 +2389,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7950825, b: 0.5613208, a: 0.56078434}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 009f924435e71954396cf2522638a8fd, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2532,8 +2532,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: party
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 4ad519988878118479e5a07260885eaf, type: 2}
-  m_sharedMaterial: {fileID: -4338355397666175267, guid: 4ad519988878118479e5a07260885eaf, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
+  m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2611,13 +2611,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2436b86302d132b4faf6277d14606ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetOnAwake: 0
   TextObjects:
     keys:
     - party
     values:
     - Value:
       - {fileID: 4525291346134855339}
-  menuId: MenuTranslations
 --- !u!1 &7650712954698637500
 GameObject:
   m_ObjectHideFlags: 0

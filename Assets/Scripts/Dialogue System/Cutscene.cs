@@ -29,6 +29,11 @@ public class Cutscene : BoolValue
     }
 
 
+    public virtual void ForceRuntime()
+    {
+        RuntimeValue = true;
+    }
+
     public virtual Dialogue GetCurrentLine()
     {
         if (dialogueIndex >= dialogue.Length)

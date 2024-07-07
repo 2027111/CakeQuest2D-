@@ -2,8 +2,8 @@
     "SFXVolume": -30.0,
     "MusicVolume": -30.0,
     "VoiceVolume": -33.50013732910156,
-    "fullScreen": false,
-    "width": 1280,
-    "height": 720,
+    "fullScreen": true,
+    "width": 1920,
+    "height": 1080,
     "Language": 0
 }

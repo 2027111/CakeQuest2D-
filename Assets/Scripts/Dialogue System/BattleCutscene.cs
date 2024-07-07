@@ -28,6 +28,18 @@ public class BattleCutscene : Cutscene
         RuntimeValue = true;
     }
 
+
+    public override void ForceRuntime()
+    {
+        foreach (BattleDialogue d in battleDialogue)
+        {
+            if (!d.played)
+            {
+                d.played = true;
+            }
+        }
+        SetRuntime();
+    }
     public override void ResetPlayed()
     {
         foreach (BattleDialogue d in battleDialogue)
