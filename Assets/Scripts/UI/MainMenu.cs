@@ -24,6 +24,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        CloseAll();
         InitDropdown();
 
         if (UICanvas.Singleton)
@@ -31,9 +32,10 @@ public class MainMenu : MonoBehaviour
             Destroy(UICanvas.Singleton.gameObject);
         }
 
-        GameSaveManager.Singleton.StartLoadingFiles();
-        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveFiles() > 0);
+        GameSaveManager.Singleton.StartLoadingFiles(delegate { OpenMenu(0); 
 
+        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveFiles() > 0);
+        });
 
 
     }
@@ -94,10 +96,18 @@ public class MainMenu : MonoBehaviour
     {
         foreach(GameObject g in Menus)
         {
-            g.SetActive(false);
+            g.GetComponent<CanvasGroup>().alpha = 0;
+            g.GetComponent<CanvasGroup>().interactable = false; 
         }
     }
 
+
+    public void OpenMenu(int index)
+    {
+        CanvasGroup menu = Menus[index].GetComponent<CanvasGroup>();
+        menu.alpha = 1;
+        menu.interactable = true;
+    }
     public void CloseLoadMenu()
     {
         foreach (Transform t in LoadMenuContainer)

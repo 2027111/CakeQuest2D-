@@ -17,28 +17,29 @@ public class VolumeHandler : MonoBehaviour
 
     private void Start()
     {
+        int volume = 0;
         if (SFX)
         {
+            volume = GamePreference.SFXVolume;
             contextSlider.SetValueWithoutNotify(GamePreference.SFXVolume);
             SetSFXPreference(GamePreference.SFXVolume);
         }else if (Music)
         {
+            volume = GamePreference.MusicVolume;
             contextSlider.SetValueWithoutNotify(GamePreference.MusicVolume);
             SetMusicPreference(GamePreference.MusicVolume);
 
         }
         else if (Voice)
         {
+            volume = GamePreference.VoiceVolume;
             contextSlider.SetValueWithoutNotify(GamePreference.VoiceVolume);
             SetVoicePreference(GamePreference.VoiceVolume);
 
         }
 
-
-        if( contextMixer.GetFloat("Volume", out float volume))
-        {
-            volumeText.SetText(((int)volume + 50).ToString());
-        }
+        SetVolume(volume);
+        
     }
     public void SetVolume (float volume)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class Utils : MonoBehaviour
@@ -23,20 +24,35 @@ public class Utils : MonoBehaviour
     }
 
 
-    public static AudioClip GetVoiceLine(string voiceClipId)
+    public static async Task<AudioClip> GetVoiceLine(string voiceClipId)
     {
-        AudioClip clip = Resources.Load<AudioClip>($"VoiceLines/{LanguageData.GetLanguage()}/{voiceClipId}");
+        // Load the audio clip asynchronously
+        var clipRequest = Resources.LoadAsync<AudioClip>($"VoiceLines/{LanguageData.GetLanguage()}/{voiceClipId}");
+        await Task.Yield(); // Yield to allow the asynchronous operation to start
 
+        // Wait for the audio clip to finish loading
+        while (!clipRequest.isDone)
+        {
+            await Task.Yield();
+        }
 
-            if(clip == null && LanguageData.GetLanguage() != LanguageData.defaultLanguage)
+        AudioClip clip = clipRequest.asset as AudioClip;
+
+        if (clip == null && LanguageData.GetLanguage() != LanguageData.defaultLanguage)
+        {
+            // Load the default language audio clip asynchronously
+            var defaultClipRequest = Resources.LoadAsync<AudioClip>($"VoiceLines/{LanguageData.defaultLanguage}/{voiceClipId}");
+            await Task.Yield(); // Yield to allow the asynchronous operation to start
+
+            // Wait for the default audio clip to finish loading
+            while (!defaultClipRequest.isDone)
             {
+                await Task.Yield();
+            }
 
-            clip = Resources.Load<AudioClip>($"VoiceLines/{LanguageData.defaultLanguage}/{voiceClipId}");
-
+            clip = defaultClipRequest.asset as AudioClip;
         }
 
         return clip;
-
-
     }
 }

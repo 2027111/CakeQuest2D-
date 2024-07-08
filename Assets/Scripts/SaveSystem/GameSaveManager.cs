@@ -562,7 +562,7 @@ public class GameSaveManager : MonoBehaviour
         return saves.Count;
     }
 
-    public void StartLoadingFiles()
+    public void StartLoadingFiles(Action callback)
     {
         saves.Clear();
         StartCoroutine(LoadAllSaveFilesCoroutine(files =>
@@ -571,6 +571,8 @@ public class GameSaveManager : MonoBehaviour
             {
                 saves.Add(file);
             }
+
+            callback();
         }));
     }
 

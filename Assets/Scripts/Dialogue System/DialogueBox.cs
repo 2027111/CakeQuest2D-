@@ -260,13 +260,8 @@ public class DialogueBox : MonoBehaviour
         }
     }
 
-
-    private void SetupLine(LineInfo lineInfo, bool playVoiceLine = true)
+    public IEnumerator SetPortrait(string portraitPath)
     {
-        string portraitPath = lineInfo.portraitPath;
-        string talkerName = lineInfo.talkerName;
-
-
 
         portraitContainer.gameObject.SetActive(!string.IsNullOrEmpty(portraitPath));
 
@@ -274,13 +269,19 @@ public class DialogueBox : MonoBehaviour
         {
             // Load the sprite from Resources folder
             string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
-            Sprite portrait = Resources.Load<Sprite>(fullPath);
+           ResourceRequest request = Resources.LoadAsync<Sprite>(fullPath);
+
+            while (!request.isDone)
+            {
+                yield return null;
+            }
+
+            Sprite portrait = request.asset as Sprite;
 
             if (portrait == null)
             {
                 // Log an error if the sprite failed to load
                 Debug.LogWarning("Failed to load sprite at path: " + fullPath);
-
                 // Optionally, list all loaded sprites for debugging
                 portraitContainer.gameObject.SetActive(false);
 
@@ -292,7 +293,16 @@ public class DialogueBox : MonoBehaviour
             }
         }
 
+    }
 
+    private void SetupLine(LineInfo lineInfo, bool playVoiceLine = true)
+    {
+        string portraitPath = lineInfo.portraitPath;
+        string talkerName = lineInfo.talkerName;
+
+
+
+        StartCoroutine(SetPortrait(portraitPath));
 
 
         if (lineInfo.voiced && playVoiceLine)
@@ -314,9 +324,9 @@ public class DialogueBox : MonoBehaviour
         nameText.text = string.IsNullOrEmpty(talkerName) ? "" : talkerName;
     }
 
-    public void PlayLineVoiceClip(string lineId)
+    public async void PlayLineVoiceClip(string lineId)
     {
-        AudioClip voiceLine = Utils.GetVoiceLine(lineId);
+        AudioClip voiceLine = await Utils.GetVoiceLine(lineId);
 
         if (voiceLine != null)
         {
