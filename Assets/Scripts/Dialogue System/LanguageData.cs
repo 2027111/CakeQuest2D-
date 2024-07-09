@@ -196,12 +196,13 @@ public class LanguageData
         OnLanguageLoaded?.Invoke();
         return combinedData;
     }
-    public static LanguageData LoadLocalData(string path)
+    public static LanguageData LoadLocalData(string path, JsonDataType filter = JsonDataType.None)
     {
         string languageSuffix = GetLanguageSuffix();
 
 
-
+        LanguageData combinedData = new LanguageData();
+        try { 
         string jsonFile = System.IO.File.ReadAllText(path);
 
 
@@ -209,20 +210,54 @@ public class LanguageData
         {
             Debug.LogError($"Loaded asset is not a TextAsset for {path}");
         }
-        LanguageData combinedData = new LanguageData();
+            LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile);
+            if (data != null)
+            {
 
-        LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile);
-        if (data != null)
-        {
-            if (data.Data != null)
-            {
-                combinedData.Data.AddRange(data.Data);
-            }
-            if (data.globalColors != null)
-            {
-                combinedData.globalColors.AddRange(data.globalColors);
+                if(filter != JsonDataType.None)
+                {
+
+                    List<JsonData> toRemove = new List<JsonData>();
+
+                    foreach (JsonData j in data.Data)
+                    {
+
+                        if (j.type != filter)
+                        {
+
+                            toRemove.Add(j);
+                        
+                        }
+
+                    }
+                    foreach (JsonData j in toRemove)
+                    {
+
+                        data.Data.Remove(j);
+                    
+                    }
+
+                }
+             
+
+
+                if (data.Data != null)
+                {
+                    combinedData.Data.AddRange(data.Data);
+                }
+                if (data.globalColors != null)
+                {
+                    combinedData.globalColors.AddRange(data.globalColors);
+                }
             }
         }
+        catch(Exception e)
+        {
+
+            Debug.LogError($"No File at {path} : {e}");
+        }
+
+       
 
 
         return combinedData;
@@ -342,16 +377,37 @@ public class GlobalColor
     public string value;
 }
 
+public enum JsonDataType
+{
+    None = -1,
+    Misc = 0,
+    Line,
+    Character,
+    Item,
+    Skill,
+    Quest
+
+}
+
 [Serializable]
 public class JsonData
 {
     public string dataId;
+    public JsonDataType type;
     public string jsonData;
 
 
     public JsonData(string id, string data)
     {
         this.dataId = id;
+        this.type = JsonDataType.Misc;
+        this.jsonData = data;
+    }
+
+    public JsonData(string id, JsonDataType t, string data)
+    {
+        this.dataId = id;
+        this.type = t;
         this.jsonData = data;
     }
     public bool ContainsKey(string key)

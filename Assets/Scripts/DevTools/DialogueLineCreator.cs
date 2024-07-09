@@ -5,18 +5,21 @@ using UnityEngine.UI;
 using TMPro;
 using System.IO;
 using System;
+using Newtonsoft.Json.Linq;
 
 public class DialogueLineCreator : MonoBehaviour
 {
 
     [SerializeField] TMP_Dropdown languageDropdown;
     [SerializeField] TMP_Dropdown IdsDropdown;
+    [SerializeField] TMP_Dropdown portraitDropDown;
     [SerializeField] TMP_InputField lineField;
     [SerializeField] TMP_InputField nameField;
     [SerializeField] TMP_InputField idField;
     [SerializeField] TMP_InputField portraitField;
     [SerializeField] GameObject portraitContainer;
     [SerializeField] Image portraitImage;
+    private List<string> allPortraitFilePaths = new List<string>();
 
 
 
@@ -29,10 +32,49 @@ public class DialogueLineCreator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        InitPortraitDropdown();
         InitLanguageDropdown();
         GetLocalData();
 
     }
+    private void InitPortraitDropdown()
+    {
+        string portraitsFolderPath = Path.Combine(Application.dataPath, "Resources/Portraits");
+        allPortraitFilePaths = GetAllFilePathsInFolder(portraitsFolderPath);
+        for (int i = 0; i < allPortraitFilePaths.Count; i++)
+        {
+            string relativePath = allPortraitFilePaths[i].Replace(Path.Combine(Application.dataPath, "Resources/"), "");
+            relativePath = relativePath.Replace("\\", "/");
+            allPortraitFilePaths[i] = Path.ChangeExtension(relativePath, null);
+        }
+        allPortraitFilePaths.Add("...");
+        // Clear existing options
+        portraitDropDown.ClearOptions();
+
+        // Get the names of the enum values
+
+        // Convert the enum names to dropdown options
+
+        List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>();
+        for (int i = 0; i < allPortraitFilePaths.Count; i++)
+        {
+            dropdownOptions.Add(new TMP_Dropdown.OptionData(allPortraitFilePaths[i]));
+        }
+
+        // Add the options to the dropdown
+        portraitDropDown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
+        portraitDropDown.onValueChanged.AddListener(UpdatePortraitValue);
+        portraitDropDown.SetValueWithoutNotify(allPortraitFilePaths.Count - 1);
+    }
+
+    private void UpdatePortraitValue(int value)
+    {
+
+        portraitField?.SetTextWithoutNotify(allPortraitFilePaths[value]=="..."?"":allPortraitFilePaths[value]);
+        portraitField?.onValueChanged.Invoke(portraitField.text);
+    }
+
     private void InitLanguageDropdown()
     {
         // Clear existing options
@@ -43,6 +85,7 @@ public class DialogueLineCreator : MonoBehaviour
 
         // Convert the enum names to dropdown options
         TMP_Dropdown.OptionData[] dropdownOptions = new TMP_Dropdown.OptionData[languageNames.Length];
+
         for (int i = 0; i < languageNames.Length; i++)
         {
             dropdownOptions[i] = new TMP_Dropdown.OptionData(languageNames[i]);
@@ -60,9 +103,24 @@ public class DialogueLineCreator : MonoBehaviour
         IdsValueChanged(IdsDropdown.value);
     }
 
+    public static List<string>GetAllFilePathsInFolder(string folderPath)
+    {
+        if (Directory.Exists(folderPath))
+        {
+            return new List<string>(Directory.GetFiles(folderPath, "*.png", SearchOption.AllDirectories));
+        }
+        else
+        {
+            Debug.LogError("Directory does not exist: " + folderPath);
+            return new List<string>();
+        }
+    }
+
     private void InitIdsDropdown()
     {
         // Clear existing options
+        int length = IdsDropdown.options.Count;
+        int currentValue = IdsDropdown.value;
         IdsDropdown.ClearOptions();
 
         // Get the names of the enum values
@@ -73,17 +131,25 @@ public class DialogueLineCreator : MonoBehaviour
         List<TMP_Dropdown.OptionData>dropdownOptions = new List<TMP_Dropdown.OptionData>();
         foreach (KeyValuePair<string, JsonData> jsonData in localData.translationData)
         {
-            if (jsonData.Value.ContainsKey("line"))
-            {
                 dropdownOptions.Add(new TMP_Dropdown.OptionData(jsonData.Key));
-            }
+            
         }
         dropdownOptions.Add(new TMP_Dropdown.OptionData("..."));
         // Add the options to the dropdown
         IdsDropdown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
         IdsDropdown.onValueChanged.AddListener(IdsValueChanged);
-        IdsDropdown.SetValueWithoutNotify(dropdownOptions.Count - 2);
-        IdsValueChanged(dropdownOptions.Count-2);
+        int newValue = length == dropdownOptions.Count ? currentValue : dropdownOptions.Count - 1;
+
+
+        if(dropdownOptions.Count == 1)
+        {
+            
+            newValue = 0;
+            NewLine();
+            return;
+        }
+        IdsDropdown.SetValueWithoutNotify(newValue);
+        IdsValueChanged(newValue);
     }
 
 
@@ -113,11 +179,12 @@ public class DialogueLineCreator : MonoBehaviour
         id.Replace(" ", "_");
         idField?.SetTextWithoutNotify(id);
         // Construct the JSON string
-        string jsonDataString = $"{{\"portraitPath\":\"{portraitPath}\",\"talkerName\":\"{talkerName}\",\"line\":\"{line}\"}}";
+
+        string jsonDataString = CreateJsonDataString(portraitPath, talkerName, line);
 
         // Create the dictionary with the required structure
- 
-        JsonData json = new JsonData(id, jsonDataString);
+
+        JsonData json = new JsonData(id, JsonDataType.Line ,jsonDataString);
         if (localData.translationData.TryGetValue(id, out JsonData value))
         {
             localData.translationData[id] = json;
@@ -131,36 +198,73 @@ public class DialogueLineCreator : MonoBehaviour
         InitIdsDropdown();
 
     }
-    public IEnumerator SetPortrait(string portraitPath)
+
+    public string CreateJsonDataString(string portraitPath, string talkerName, string line)
     {
+        var jsonObject = new JObject();
 
         if (!string.IsNullOrEmpty(portraitPath))
         {
-            // Load the sprite from Resources folder
-            string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
-            ResourceRequest request = Resources.LoadAsync<Sprite>(fullPath);
+            jsonObject["portraitPath"] = portraitPath;
+        }
 
-            while (!request.isDone)
-            {
-                yield return null;
-            }
+        if (!string.IsNullOrEmpty(talkerName))
+        {
+            jsonObject["talkerName"] = talkerName;
+        }
 
-            Sprite portrait = request.asset as Sprite;
+        if (!string.IsNullOrEmpty(line))
+        {
+            jsonObject["line"] = line;
+        }
 
-            if (portrait == null)
-            {
-                // Log an error if the sprite failed to load
-                Debug.LogWarning("Failed to load sprite at path: " + fullPath);
-                // Optionally, list all loaded sprites for debugging
-                portraitContainer.gameObject.SetActive(false);
+        return jsonObject.ToString();
+    }
+    public IEnumerator SetPortrait(string portraitPath)
+    {
 
+        if (!string.IsNullOrEmpty(portraitPath) || portraitPath == "...")
+        {
+            if (allPortraitFilePaths.Contains(portraitPath))
+            { // Load the sprite from Resources folder
+                string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
+                ResourceRequest request = Resources.LoadAsync<Sprite>(fullPath);
+
+                while (!request.isDone)
+                {
+                    yield return null;
+                }
+
+                Sprite portrait = request.asset as Sprite;
+
+                if (portrait == null)
+                {
+                    // Log an error if the sprite failed to load
+                    Debug.LogWarning("Failed to load sprite at path: " + fullPath);
+                    // Optionally, list all loaded sprites for debugging
+                    portraitContainer.gameObject.SetActive(false);
+
+                }
+                else
+                {
+                    portraitContainer.gameObject.SetActive(true);
+                    // Assign the loaded sprite to the portrait image
+                    portraitImage.sprite = portrait;
+                }
+                portraitDropDown.SetValueWithoutNotify(allPortraitFilePaths.IndexOf(portraitPath));
             }
             else
             {
-                portraitContainer.gameObject.SetActive(true);
-                // Assign the loaded sprite to the portrait image
-                portraitImage.sprite = portrait;
+                portraitContainer.gameObject.SetActive(false);
+
+                portraitDropDown.SetValueWithoutNotify(allPortraitFilePaths.Count-1);
             }
+           
+        }
+        else
+        {
+
+            portraitContainer.gameObject.SetActive(false);
         }
 
     }
@@ -201,13 +305,12 @@ public class DialogueLineCreator : MonoBehaviour
             lineField?.SetTextWithoutNotify("");
         }
 
-        Debug.Log(LanguageData.language);
     }
 
     public void GetLocalData()
     {
         string path = $"{Directory.GetCurrentDirectory()}/Assets/{(Language)languageDropdown.value}.json";
-        localData = LanguageData.LoadLocalData(path);
+        localData = LanguageData.LoadLocalData(path, JsonDataType.Line);
         localData.SetGlobalDictionary();
         InitIdsDropdown();
 
