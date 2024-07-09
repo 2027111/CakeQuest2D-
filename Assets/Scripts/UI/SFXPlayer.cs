@@ -23,12 +23,16 @@ public class SFXPlayer : MonoBehaviour
     {
         instance = this;
     }
-    private void PlayRandomClip(AudioSource source, AudioClip[] clips)
+    private void PlayRandomClip(AudioSource source, AudioClip[] clips, bool canCancel = true)
     {
         if (clips != null && clips.Length > 0)
         {
             AudioClip clip = clips[Random.Range(0, clips.Length)];
-            source.PlayOneShot(clip);
+            if (!source.isPlaying || canCancel)
+            {
+                source.PlayOneShot(clip);
+
+            }
         }
     }
 
@@ -49,16 +53,16 @@ public class SFXPlayer : MonoBehaviour
 
     public void PlayOnVolumeChange()
     {
-        PlayRandomClip(sfxSource, sfxs);
+        PlayRandomClip(sfxSource, sfxs, false);
     }
 
     public void PlayOnMusicVolumeChange()
     {
-        PlayRandomClip(musicSource, melodies);
+        PlayRandomClip(musicSource, melodies, false);
     }
 
     public void PlayOnVoiceVolumeChange()
     {
-        PlayRandomClip(voiceSource, voiceClips);
+        PlayRandomClip(voiceSource, voiceClips, false);
     }
 }

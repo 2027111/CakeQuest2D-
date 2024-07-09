@@ -235,7 +235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save
+  m_text: save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PAUSE
+  m_text: pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Return to Title
+  m_text: returnToTitle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resume
+  m_text: resume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Inventory
+  m_text: inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use
+  m_text: use
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: INVENTORY
+  m_text: inventory
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}

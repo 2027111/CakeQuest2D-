@@ -2,16 +2,43 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum Language
 {
     Français,
     English
 }
+public class LanguageDataHolder
+{
 
+    public List<JsonData> Data = new List<JsonData>();
+    private LanguageData languageData;
+
+    public LanguageDataHolder(LanguageData languageData)
+    {
+        this.languageData = languageData;
+    }
+
+    public void SaveDataList(string path)
+    {
+        Data = languageData.translationData.Values.ToList();
+        if (Data != null)
+        {
+            string jsonData = JsonConvert.SerializeObject(this, Formatting.Indented);
+            System.IO.File.WriteAllText(path+".json", jsonData);
+            Debug.Log($"Data list saved to {path}");
+        }
+        else
+        {
+            Debug.LogError("Singleton or Data list is null, cannot save data.");
+        }
+    }
+}
 [Serializable]
 public class LanguageData
 {
@@ -19,11 +46,11 @@ public class LanguageData
     public static string CONTROLS = "ControlScheme";
     public static string MENUS = "MenuTranslations";
 
-
+    public static UnityEvent OnLanguageLoaded = new UnityEvent();
 
     public List<JsonData> Data = new List<JsonData>();
-    public Dictionary<string, string> GlobalColors;
     public Dictionary<string, JsonData> translationData;
+    public Dictionary<string, string> GlobalColors;
     public List<GlobalColor> globalColors = new List<GlobalColor>();
     public static Language language = Language.Français;
     public static Language defaultLanguage = Language.Français;
@@ -118,13 +145,26 @@ public class LanguageData
         }
         return false;
     }
-
+    public bool SetLocalLanguage(Language value)
+    {
+        if (language != value)
+        {
+            language = value;
+            return true;
+        }
+        return false;
+    }
     public static string GetLanguageSuffix()
     {
         return $"{language.ToString().ToLower()}";
     }
 
-    private static LanguageData LoadGameData()
+    public void SaveDataList(string path)
+    {
+        LanguageDataHolder holder = new LanguageDataHolder(this);
+        holder.SaveDataList(path);
+    }
+    public static LanguageData LoadGameData()
     {
         string languageSuffix = GetLanguageSuffix();
 
@@ -140,6 +180,38 @@ public class LanguageData
         LanguageData combinedData = new LanguageData();
 
         LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+        if (data != null)
+        {
+            if (data.Data != null)
+            {
+                combinedData.Data.AddRange(data.Data);
+            }
+            if (data.globalColors != null)
+            {
+                combinedData.globalColors.AddRange(data.globalColors);
+            }
+        }
+
+
+        OnLanguageLoaded?.Invoke();
+        return combinedData;
+    }
+    public static LanguageData LoadLocalData(string path)
+    {
+        string languageSuffix = GetLanguageSuffix();
+
+
+
+        string jsonFile = System.IO.File.ReadAllText(path);
+
+
+        if (jsonFile == null)
+        {
+            Debug.LogError($"Loaded asset is not a TextAsset for {path}");
+        }
+        LanguageData combinedData = new LanguageData();
+
+        LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile);
         if (data != null)
         {
             if (data.Data != null)
@@ -189,6 +261,7 @@ public class LanguageData
         }
         Singleton = combinedData;
         onComplete?.Invoke();
+        OnLanguageLoaded?.Invoke();
     }
 
     public static IEnumerator LoadJsonAsync(Action onComplete = null)
@@ -231,8 +304,19 @@ public class LanguageData
         
         Singleton = combinedData;
         onComplete?.Invoke();
+        OnLanguageLoaded?.Invoke();
     }
 
+    public JsonData GetLocalDataById(string id)
+    {
+
+        if (translationData.TryGetValue(id, out JsonData value))
+        {
+            return value;
+        }
+        Debug.LogWarning($"Key '{id}' not found in Translation File data.");
+        return new JsonData(id, "");
+    }
 
 
     public static JsonData GetDataById(string id)
@@ -270,7 +354,41 @@ public class JsonData
         this.dataId = id;
         this.jsonData = data;
     }
-    public string GetValueByKey(string key, bool nullable = true)
+    public bool ContainsKey(string key)
+    {
+        if (string.IsNullOrEmpty(jsonData))
+        {
+            Debug.LogWarning("jsonData is null or empty.");
+        }
+        else
+        {
+
+
+            try
+            {
+                // Deserialize the jsonData string into a SerializableDictionary
+                Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonData);
+
+                if (values.TryGetValue(key, out string value))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error parsing JSON data: {e.Message}");
+
+            }
+        }
+
+        return false;
+    }
+        public string GetValueByKey(string key, bool nullable = true)
     {
 
         string returnValue = "";
@@ -335,4 +453,6 @@ public class JsonData
 
         return returnValue;
     }
+
+
 }

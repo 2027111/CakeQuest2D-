@@ -15,7 +15,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        if(character.inputManager == null)
+        if(character.inputManager == null || Timeline.IsInCutscene)
         {
             player.ChangeState(new PatrollingBehaviour());
         }
@@ -25,7 +25,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
             character.CanMove(true); 
             character.ActivateControls();
         }
-        if (player.gameObject.tag == "Player")
+        if (player.gameObject.CompareTag("Player"))
         {
             UICanvas.TurnBordersOn(true);
         }

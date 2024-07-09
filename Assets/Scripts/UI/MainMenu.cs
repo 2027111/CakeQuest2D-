@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] RoomInfo firstRoom;
    
     [SerializeField] TMP_Dropdown languageDropdown;
-    [SerializeField] List<GameObject> Menus;
+    [SerializeField] List<UIMenu> Menus;
 
     private void Start()
     {
@@ -64,7 +64,8 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLoadMenu()
     {
-        foreach(Transform t in LoadMenuContainer)
+        OpenMenu(1);
+        foreach (Transform t in LoadMenuContainer)
         {
             Destroy(t.gameObject);
         }
@@ -94,20 +95,19 @@ public class MainMenu : MonoBehaviour
 
     public void CloseAll()
     {
-        foreach(GameObject g in Menus)
+        foreach(UIMenu g in Menus)
         {
-            g.GetComponent<CanvasGroup>().alpha = 0;
-            g.GetComponent<CanvasGroup>().interactable = false; 
+            g.CloseMenu();
         }
     }
 
 
     public void OpenMenu(int index)
     {
-        CanvasGroup menu = Menus[index].GetComponent<CanvasGroup>();
-        menu.alpha = 1;
-        menu.interactable = true;
+        Menus[index].OpenMenu();
     }
+
+
     public void CloseLoadMenu()
     {
         foreach (Transform t in LoadMenuContainer)

@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: Controls
   m_EditorClassIdentifier: 
   hashCode: -1042563116
-  material: {fileID: -1687935338584607698}
+  material: {fileID: 2020394755736945109, guid: f9e2e36b8f2e8414e83e4328ab4d4535, type: 2}
   materialHashCode: 0
   m_Version: 1.1.0
   m_FaceInfo:

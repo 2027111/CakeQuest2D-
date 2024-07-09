@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TranslationMenu : MonoBehaviour
 {
@@ -16,11 +17,44 @@ public class TranslationMenu : MonoBehaviour
             Start();
         }
         GameSaveManager.Singleton?.OnLanguageChanged.AddListener(LoadLangue);
+
     }
     private void Start()
     {
-        LanguageData.SetLanguage(GamePreference.Language);
-        LoadLangue();
+        StartCoroutine(LoadAllText(delegate {
+            LanguageData.SetLanguage(GamePreference.Language);
+            LoadLangue();
+        }));
+        
+    }
+
+
+    public IEnumerator LoadAllText(Action callback)
+    {
+
+        TextObjects = new SerializableDictionary<string, List<TMP_Text>>();
+        TMP_Text[] texts = GameObject.FindObjectsOfType<TMP_Text>();
+        foreach (TMP_Text text in texts)
+        {
+            string content = text.text;
+            JsonData translations = LanguageData.GetDataById(LanguageData.MENUS);
+            if (translations.ContainsKey(content))
+            {
+                if (TextObjects.TryGetValue(content, out List<TMP_Text> textsObj))
+                {
+                    if (!textsObj.Contains(text))
+                    {
+                        textsObj.Add(text);
+                    }
+                }
+                else
+                {
+                    TextObjects.Add(content, new List<TMP_Text> { text });
+                }
+            }
+            yield return null;
+        }
+        callback?.Invoke();
     }
     public void LoadLangue()
     {
@@ -41,8 +75,11 @@ public class TranslationMenu : MonoBehaviour
                     foreach(TMP_Text text in Texts.Value)
                     {
                         JsonData jsonData = LanguageData.GetDataById(LanguageData.MENUS);
-                        string t = jsonData.GetValueByKey(Texts.Key);
-                        text.text = t;
+                        if (jsonData.ContainsKey(Texts.Key))
+                        {
+                            string t = jsonData.GetValueByKey(Texts.Key);
+                            text.text = t;
+                        }
                     }
                 }
             }

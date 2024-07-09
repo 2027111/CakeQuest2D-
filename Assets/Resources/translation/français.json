@@ -16,7 +16,7 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"saveFile\":\"Sauvegarde\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\",\"sfx\":\"Effet Sonore\",\"music\":\"Musique\",\"voice\":\"Voix\",\"language\":\"Langue\"}"
+            "jsonData": "{\"newGame\":\"Nouvelle Partie\",\"continueGame\":\"Continuer\",\"leaveGame\":\"Quitter\",\"settings\":\"Options\",\"quest\":\"Quêtes\",\"saveFile\":\"Sauvegarde\",\"party\":\"Équipe\",\"inventory\":\"Inventaire\",\"pause\":\"Pause\",\"use\":\"Utiliser\",\"returnToTitle\":\"Retourner au Menu Principal\",\"resume\":\"Reprendre\",\"save\":\"Sauvegarder\",\"recipe\":\"Recette\",\"sfx\":\"Effet Sonore\",\"music\":\"Musique\",\"voices\":\"Voix\",\"language\":\"Langue\",\"close\":\"Fermer\",\"fullScreen\":\"Plein Écran\",\"fullScreen\":\"Plein Écran\",\"resolution\":\"éesolution\"}"
         },
         {
             "dataId": "Indications",

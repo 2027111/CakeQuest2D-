@@ -16,7 +16,7 @@
     "Data": [
         {
             "dataId": "MenuTranslations",
-            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave Game\",\"settings\":\"Settings\",\"close\":\"Fermer\",\"quest\":\"Quests\",\"saveFile\":\"Save File\",\"party\":\"Party\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Title\",\"resume\":\"Resume\",\"save\":\"Save\",\"recipe\":\"Recipe\",\"sfx\":\"Sound Effects\",\"music\":\"Music\",\"voice\":\"Voices\",\"language\":\"Language\"}"
+            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave Game\",\"settings\":\"Settings\",\"close\":\"Fermer\",\"quest\":\"Quests\",\"saveFile\":\"Save File\",\"party\":\"Party\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Title\",\"resume\":\"Resume\",\"save\":\"Save\",\"recipe\":\"Recipe\",\"sfx\":\"Sound Effects\",\"music\":\"Music\",\"voices\":\"Voices\",\"language\":\"Language\",\"close\":\"Close\",\"fullScreen\":\"Full Screen\",\"resolution\":\"Resolution\"}"
         },
         {
             "dataId": "Indications",
