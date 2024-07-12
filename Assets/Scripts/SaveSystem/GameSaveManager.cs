@@ -78,7 +78,6 @@ public class GameSaveManager : MonoBehaviour
         InitializePath();
         GamePreference.SetPath($"{path}/preferences.json");
         GamePreference.LoadFromFile();
-        OnLanguageChanged.Invoke();
         CreateSavePath();
     }
 

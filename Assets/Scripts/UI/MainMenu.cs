@@ -25,9 +25,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         CloseAll();
-        InitDropdown();
 
-        if (UICanvas.Singleton)
+        if (UICanvas.Exists())
         {
             Destroy(UICanvas.Singleton.gameObject);
         }
@@ -39,27 +38,7 @@ public class MainMenu : MonoBehaviour
 
 
     }
-    private void InitDropdown()
-    {
-        // Clear existing options
-        languageDropdown.ClearOptions();
-
-        // Get the names of the enum values
-        string[] languageNames = System.Enum.GetNames(typeof(Language));
-
-        // Convert the enum names to dropdown options
-        TMP_Dropdown.OptionData[] dropdownOptions = new TMP_Dropdown.OptionData[languageNames.Length];
-        for (int i = 0; i < languageNames.Length; i++)
-        {
-            dropdownOptions[i] = new TMP_Dropdown.OptionData(languageNames[i]);
-        }
-
-        // Add the options to the dropdown
-        languageDropdown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
-
-        languageDropdown.onValueChanged.AddListener(GameSaveManager.Singleton.OnLanguageDropdownValueChanged);
-    }
-
+    
    
 
     public void OpenLoadMenu()

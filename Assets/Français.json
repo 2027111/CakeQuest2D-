@@ -299,6 +299,11 @@
       "dataId": "Tuto_Jimi_008",
       "type": 1,
       "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+    },
+    {
+      "dataId": "jimi_intro_question",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_4\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Imagine etre stupide\"\r\n}"
     }
   ]
 }

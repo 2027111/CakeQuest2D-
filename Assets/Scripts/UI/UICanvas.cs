@@ -43,7 +43,10 @@ public class UICanvas : MonoBehaviour
         }
     }
 
-
+    public static bool Exists()
+    {
+        return _singleton != null;
+    }
 
     [SerializeField] UIBorder border;
     [SerializeField] QuestList questList;

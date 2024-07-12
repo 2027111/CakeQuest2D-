@@ -776,7 +776,10 @@ public class DialogueBox : MonoBehaviour
             {
                 if (currentDialogue != null)
                 {
-                    yield return StartCoroutine(LanguageData.LoadJsonAsync());
+                    if (!LanguageData.Loaded())
+                    {
+                        yield return StartCoroutine(LanguageData.LoadJsonAsync());
+                    }
                     NextLine();
                 }
             }

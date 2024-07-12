@@ -53,6 +53,7 @@ public class LanguageData
     public Dictionary<string, string> GlobalColors;
     public List<GlobalColor> globalColors = new List<GlobalColor>();
     public static Language language = Language.Français;
+    public  Language localLanguage = Language.Français;
     public static Language defaultLanguage = Language.Français;
     private static LanguageData _singleton;
     public static LanguageData Singleton
@@ -61,7 +62,7 @@ public class LanguageData
         {
             if (_singleton == null)
             {
-                Singleton = LoadGameData();
+                return new LanguageData();
             }
             return _singleton;
         }
@@ -80,6 +81,16 @@ public class LanguageData
     {
 
     }
+    public static bool Loaded()
+    {
+        if(_singleton != null)
+        {
+            return _singleton.localLanguage == language;
+        }
+        return _singleton != null;
+    }
+
+
     public void SetGlobalDictionary()
     {
         if (globalColors != null && globalColors.Count > 0)
@@ -303,7 +314,6 @@ public class LanguageData
     {
         string languageSuffix = GetLanguageSuffix();
 
-
         ResourceRequest request= Resources.LoadAsync<TextAsset>($"translation/{languageSuffix}");
         yield return request;
 
@@ -338,6 +348,7 @@ public class LanguageData
 
         
         Singleton = combinedData;
+        Singleton.localLanguage = language;
         onComplete?.Invoke();
         OnLanguageLoaded?.Invoke();
     }

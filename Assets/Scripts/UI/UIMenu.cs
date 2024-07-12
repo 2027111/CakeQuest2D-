@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class UIMenu : MonoBehaviour
 {
-    CanvasGroup menu;
+    [SerializeField] CanvasGroup menu;
 
     private void Awake()
     {
         menu = GetComponent<CanvasGroup>();
+    }
+
+    private void OnValidate()
+    {
+        menu = GetComponent<CanvasGroup>();
+
     }
 
     public void OpenMenu()

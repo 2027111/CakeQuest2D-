@@ -76,6 +76,7 @@ public class PauseMenu : MonoBehaviour
             isPaused = pause;
             pausePanel.SetActive(isPaused);
             Time.timeScale = isPaused ? 0f : 1;
+            InputManager.inputManager.enabled = !pause;
             if (isPaused) { OnPause?.Invoke(); }
         }
     }

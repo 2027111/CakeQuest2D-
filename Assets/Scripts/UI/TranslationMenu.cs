@@ -21,18 +21,15 @@ public class TranslationMenu : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(LoadAllText(delegate {
-            LanguageData.SetLanguage(GamePreference.Language);
-            LoadLangue();
-        }));
+
+        LanguageData.SetLanguage(GamePreference.Language);
+        LoadLangue();
         
     }
 
 
-    public IEnumerator LoadAllText(Action callback)
+    public void LoadAllText()
     {
-
-        TextObjects = new SerializableDictionary<string, List<TMP_Text>>();
         TMP_Text[] texts = GameObject.FindObjectsOfType<TMP_Text>();
         foreach (TMP_Text text in texts)
         {
@@ -52,15 +49,28 @@ public class TranslationMenu : MonoBehaviour
                     TextObjects.Add(content, new List<TMP_Text> { text });
                 }
             }
-            yield return null;
         }
-        callback?.Invoke();
     }
     public void LoadLangue()
     {
-
         GamePreference.Language = LanguageData.GetLanguage();
-        StartCoroutine(LanguageData.LoadJsonAsync(ActualizeText));
+
+        if(!LanguageData.Loaded())
+        {
+            StartCoroutine(LanguageData.LoadJsonAsync(ResetTextFields));
+        }
+        else
+        {
+            ResetTextFields();
+        }
+    }
+
+
+    public void ResetTextFields()
+    {
+        LoadAllText();
+        ActualizeText();
+
     }
 
 
