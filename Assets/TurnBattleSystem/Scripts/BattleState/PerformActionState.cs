@@ -5,7 +5,6 @@ using UnityEngine;
 public class PerformActionState : BattleState
 {
     BattleCharacter performer;
-    bool willAutoSkip = false;
     
 
     public PerformActionState()
@@ -20,40 +19,14 @@ public class PerformActionState : BattleState
         performer = battleManager.GetActor();
         performer.Animator.Thinking(false);
         performer.SetActing(true);
-        if (!battleManager.NextActorIsSameTeam() || !battleManager.NextActorIsPlayer() || !performer.currentCommand.skippable)
-        {
-            willAutoSkip = false;
-            performer.currentCommand.OnExecuted += PerformanceOver;
-            battleManager.StartCoroutine(CheckFocus());
+        performer.currentCommand.OnExecuted += PerformanceOver;
+        battleManager.StartCoroutine(CheckFocus());
 
 
 
-        }
-        else if(battleManager.GetActor().currentCommand.skippable && battleManager.NextActorIsPlayer() && battleManager.NextActorIsSameTeam())
-        {
-            willAutoSkip = true;
-        }
         performer.currentCommand.OnExecuted += delegate { performer.SetActing(false); };
         performer.currentCommand.OnExecuted += performer.ResetAnimatorController;
         performer.currentCommand.ExecuteCommand();
-    }
-
-
-    public override void Handle()
-    {
-
-        if (battleManager.NextActorCanAct() && willAutoSkip)
-        {
-            performer.currentCommand.OnExecuted -= PerformanceOver;
-            willAutoSkip = false;
-            PerformanceOver();
-
-        }
-
-
-
-
-        base.Handle();
     }
 
     public override void ShowControls()

@@ -1,9 +1,9 @@
 {
     "SFXVolume": -20,
-    "MusicVolume": -10,
-    "VoiceVolume": -18,
+    "MusicVolume": -20,
+    "VoiceVolume": 2,
     "fullScreen": true,
     "width": 1920,
     "height": 1080,
-    "Language": 1
+    "Language": 0
 }

@@ -87,6 +87,14 @@ public class Command
     {
         yield return GoToOriginalPosition(Source);
     }
+
+
+    public bool IsInAttackPosition(BattleCharacter bc)
+    {
+
+        Vector3 currentPosition = bc.transform.position;
+        return Vector3.Distance(currentPosition, BattleManager.Singleton.GetPosition(bc)) > .05f;
+    }
     public IEnumerator GoToOriginalPosition(BattleCharacter bc)
     {
         Vector3 currentPosition = bc.transform.position;

@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Utils : MonoBehaviour
+public class Utils
 {
 
 
@@ -15,6 +16,11 @@ public class Utils : MonoBehaviour
         Time.timeScale = timeFactor;
         while(t < duration)
         {
+
+            if(Time.timeScale == 1)
+            {
+                t = duration;
+            }
             t += Time.deltaTime / Time.timeScale;
             yield return null;
         }
@@ -54,5 +60,11 @@ public class Utils : MonoBehaviour
         }
 
         return clip;
+    }
+
+    public static void ResetTimeScale()
+    {
+        Time.timeScale = 1;
+
     }
 }

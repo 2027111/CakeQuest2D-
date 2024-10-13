@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackCommand : Command
 {
-    
+    public AttackInformation attackInformation;
     public override void ExecuteCommand()
     {
         Source.StartCoroutine(Execute());
@@ -16,7 +16,7 @@ public class AttackCommand : Command
 
         startPosition = Source.transform.position;
 
-        if (IsPhysical())
+        if (IsPhysical() && !IsInAttackPosition())
         {
             
             yield return Source.StartCoroutine(GoToEnemy());
@@ -38,7 +38,7 @@ public class AttackCommand : Command
         yield return new WaitForSeconds(.6f);
         CamManager.ResetView();
         BattleManager.Singleton.FadeBackground(false, .3f);
-        if (IsPhysical())
+        if (IsPhysical() || IsInAttackPosition())
         {
             yield return Source.StartCoroutine(GoToOriginalPosition());
             yield return new WaitForSeconds(.6f);
@@ -47,6 +47,11 @@ public class AttackCommand : Command
         OnExecuted?.Invoke();
 
 
+    }
+
+    private bool IsInAttackPosition()
+    {
+        return IsInAttackPosition(Source);
     }
 
     public virtual bool IsPhysical()
@@ -87,9 +92,12 @@ public class AttackCommand : Command
         {
             CharacterObject characterObject = _target.GetReference();
             ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
-            AttackInformation info = new AttackInformation(null, elementEffect, Source, BattleManager.Singleton.GetActor().currentCommand);
-            info.element = Source.GetReference().AttackElement;
-            _target?.Entity.AddToHealth(info);
+        if (attackInformation == null)
+        {
+            attackInformation = new AttackInformation(null, elementEffect, Source, BattleManager.Singleton.GetActor().currentCommand);
+        }
+        attackInformation.element = Source.GetReference().AttackElement;
+            _target?.Entity.AddToHealth(attackInformation);
             CamManager.Shake(.2f, .05f);
             base.ActivateCommand();
         

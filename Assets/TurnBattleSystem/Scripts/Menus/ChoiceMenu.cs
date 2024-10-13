@@ -73,7 +73,9 @@ public class ChoiceMenu : MonoBehaviour
 
     }
 
-
+    public virtual void Navigate(Vector2 direction)
+    {
+    }
     public virtual void PreviousButton()
     {
         currentButton--;
