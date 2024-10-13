@@ -18,6 +18,12 @@ public class ChoiceMenuButton : MonoBehaviour
 
     }
 
+    public void ForceSelect()
+    {
+        Debug.Log("On Hover");
+        thisMenu.SetSelectedAs(this.gameObject);
+    }
+
     public void SetMenu(ChoiceMenu choiceMenu)
     {
         thisMenu = choiceMenu;

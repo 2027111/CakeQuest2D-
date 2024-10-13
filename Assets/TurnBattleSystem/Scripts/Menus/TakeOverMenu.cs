@@ -18,7 +18,7 @@ public class TakeOverMenu : ChoiceMenu
         else
         {
             int index = Random.Range(0, takeOvers.Count);
-            GameObject button = Instantiate(takeOverButtonPrefab, GameObject.Find("HUD Canvas").transform);
+            GameObject button = Instantiate(takeOverButtonPrefab, this.transform);
             button.GetComponent<TakeOverButton>().SetBattleCharacter(takeOvers[index]);
             button.GetComponent<TakeOverButton>().OnSelected.AddListener(button.GetComponent<TakeOverButton>().Confirm);
             button.GetComponent<TakeOverButton>().OnSelected.AddListener(delegate { state.ForceTurn(takeOvers[index]); });

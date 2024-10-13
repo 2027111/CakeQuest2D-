@@ -16,6 +16,21 @@ public class ChoiceMenu : MonoBehaviour
     {
         DefaultSelect();
     }
+
+    public void SetSelectedAs(GameObject choiceMenuButton)
+    {
+        foreach(GameObject g in buttons)
+        {
+            if (g.GetComponent<ChoiceMenuButton>())
+            {
+                if(g.GetComponent<ChoiceMenuButton>() == choiceMenuButton)
+                {
+                    Select(g);
+                }
+            }
+        }
+    }
+
     public void ResetMenu()
     {
         foreach (GameObject button in buttons)
