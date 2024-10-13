@@ -369,9 +369,12 @@ public class LanguageData
     {
         if (Singleton == null)
         {
-            return null;
+            return new JsonData(id, "");
         }
-
+        if(Singleton.translationData == null)
+        {
+            return new JsonData(id, "");
+        }
         if(Singleton.translationData.TryGetValue(id, out JsonData value))
         {
             return value;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad26aa5066d90048b88aa15e4eaf695, type: 3}
   m_Name: Plage Caram
   m_EditorClassIdentifier: 
+  UID: c07d7626ef48f8842a4698d48aca39a0
   roomName: Plage Caramel
-  minCameraOffset: {x: 10, y: -28}
-  maxCameraOffset: {x: 10, y: -28}
+  minCameraOffset: {x: 10, y: -26}
+  maxCameraOffset: {x: 10, y: -26}

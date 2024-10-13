@@ -583,7 +583,7 @@ public class DialogueBox : MonoBehaviour
     {
 
         automaticDialogue = onOff;
-        OnAutomaticEvent.Invoke(automaticDialogue);
+        OnAutomaticEvent?.Invoke(automaticDialogue);
         Debug.Log($"Automatic Dialogue Toggled : {automaticDialogue}");
     }
     public void AddNavigateEventToPlayer(bool addOrRemove)
