@@ -17,7 +17,7 @@ public class CharacterData : ScriptableObject
 
     public Sprite GetPortrait()
     {
-        if(portraits.Length > 0)
+        if (portraits.Length > 0)
         {
             return portraits[0];
         }

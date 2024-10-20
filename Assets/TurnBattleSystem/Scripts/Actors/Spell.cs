@@ -19,7 +19,7 @@ public class Spell : BattleObjects
 
     private void Update()
     {
-        for(int i = 0; i < hitTimers.Length; i++)
+        for (int i = 0; i < hitTimers.Length; i++)
         {
             if (!hit[i] && timer > hitTimers[i])
             {

@@ -32,7 +32,7 @@ public class TextObject : MonoBehaviour
         indicationText.color = color;
 
 
-        if(limit <= 0)
+        if (limit <= 0)
         {
             Destroy(gameObject);
         }

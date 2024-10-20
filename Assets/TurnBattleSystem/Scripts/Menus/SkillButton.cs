@@ -35,7 +35,7 @@ public class SkillButton : ChoiceMenuButton
             BattleManager.Singleton.SetIndicationText($"Type : {storedSkill.GetElement()} | {storedSkill.GetDescription()} | {storedSkill.baseDamage} damage points every hit");
 
         }
-        
+
     }
 
 

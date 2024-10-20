@@ -22,7 +22,7 @@ public class IndicationArrow : MonoBehaviour
 
     public void SetObject(GameObject p)
     {
-        if(p == null)
+        if (p == null)
         {
             targetObject = null;
             arrow.gameObject.SetActive(false);

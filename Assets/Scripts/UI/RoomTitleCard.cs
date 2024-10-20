@@ -46,14 +46,14 @@ public class RoomTitleCard : MonoBehaviour
     public static void ShowTitle(string title)
     {
         Singleton?.SetText(title);
-       // Singleton?.StartCoroutine(Singleton.ShowTitleCardAnimation());
+        // Singleton?.StartCoroutine(Singleton.ShowTitleCardAnimation());
     }
 
     private void SetText(string title)
     {
 
 
-        string content = GetRoomName(title); 
+        string content = GetRoomName(title);
         townNameText.text = content;
     }
 

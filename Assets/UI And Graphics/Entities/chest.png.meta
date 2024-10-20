@@ -114,8 +114,8 @@ TextureImporter:
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,15 +128,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chest_1
+      name: chest_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,15 +149,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chest_2
+      name: chest_5
       rect:
         serializedVersion: 2
-        x: 64
+        x: 160
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,15 +170,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chest_3
+      name: chest_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,8 +198,8 @@ TextureImporter:
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,15 +212,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: chest_5
+      name: chest_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -244,11 +244,11 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       chest_0: 240373527
-      chest_3: 1118582626
-      chest_5: -1627411236
-      chest_1: 1093874502
+      chest_3: 1093874502
+      chest_5: -809023486
+      chest_1: 1118582626
       chest_4: 1274636360
-      chest_2: -809023486
+      chest_2: -1627411236
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

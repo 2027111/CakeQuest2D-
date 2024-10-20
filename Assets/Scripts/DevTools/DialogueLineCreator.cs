@@ -71,7 +71,7 @@ public class DialogueLineCreator : MonoBehaviour
     private void UpdatePortraitValue(int value)
     {
 
-        portraitField?.SetTextWithoutNotify(allPortraitFilePaths[value]=="..."?"":allPortraitFilePaths[value]);
+        portraitField?.SetTextWithoutNotify(allPortraitFilePaths[value] == "..." ? "" : allPortraitFilePaths[value]);
         portraitField?.onValueChanged.Invoke(portraitField.text);
     }
 
@@ -99,11 +99,11 @@ public class DialogueLineCreator : MonoBehaviour
 
     public void NewLine()
     {
-        IdsDropdown.SetValueWithoutNotify(IdsDropdown.options.Count-1);
+        IdsDropdown.SetValueWithoutNotify(IdsDropdown.options.Count - 1);
         IdsValueChanged(IdsDropdown.value);
     }
 
-    public static List<string>GetAllFilePathsInFolder(string folderPath)
+    public static List<string> GetAllFilePathsInFolder(string folderPath)
     {
         if (Directory.Exists(folderPath))
         {
@@ -128,11 +128,11 @@ public class DialogueLineCreator : MonoBehaviour
         string[] languageNames = System.Enum.GetNames(typeof(Language));
 
         // Convert the enum names to dropdown options
-        List<TMP_Dropdown.OptionData>dropdownOptions = new List<TMP_Dropdown.OptionData>();
+        List<TMP_Dropdown.OptionData> dropdownOptions = new List<TMP_Dropdown.OptionData>();
         foreach (KeyValuePair<string, JsonData> jsonData in localData.translationData)
         {
-                dropdownOptions.Add(new TMP_Dropdown.OptionData(jsonData.Key));
-            
+            dropdownOptions.Add(new TMP_Dropdown.OptionData(jsonData.Key));
+
         }
         dropdownOptions.Add(new TMP_Dropdown.OptionData("..."));
         // Add the options to the dropdown
@@ -141,9 +141,9 @@ public class DialogueLineCreator : MonoBehaviour
         int newValue = length == dropdownOptions.Count ? currentValue : dropdownOptions.Count - 1;
 
 
-        if(dropdownOptions.Count == 1)
+        if (dropdownOptions.Count == 1)
         {
-            
+
             newValue = 0;
             NewLine();
             return;
@@ -170,7 +170,8 @@ public class DialogueLineCreator : MonoBehaviour
         string talkerName = nameField?.text;
         string line = lineField?.text;
         string id = idField?.text;
-        if (string.IsNullOrEmpty(id.Trim()) || id.Contains("\"")){
+        if (string.IsNullOrEmpty(id.Trim()) || id.Contains("\""))
+        {
             Debug.LogError($"Line could not be created because id is invalid");
             return;
         }
@@ -184,7 +185,7 @@ public class DialogueLineCreator : MonoBehaviour
 
         // Create the dictionary with the required structure
 
-        JsonData json = new JsonData(id, JsonDataType.Line ,jsonDataString);
+        JsonData json = new JsonData(id, JsonDataType.Line, jsonDataString);
         if (localData.translationData.TryGetValue(id, out JsonData value))
         {
             localData.translationData[id] = json;
@@ -257,9 +258,9 @@ public class DialogueLineCreator : MonoBehaviour
             {
                 portraitContainer.gameObject.SetActive(false);
 
-                portraitDropDown.SetValueWithoutNotify(allPortraitFilePaths.Count-1);
+                portraitDropDown.SetValueWithoutNotify(allPortraitFilePaths.Count - 1);
             }
-           
+
         }
         else
         {
@@ -294,8 +295,8 @@ public class DialogueLineCreator : MonoBehaviour
             lineField?.SetTextWithoutNotify(json.GetValueByKey("line"));
         }
         else
-        {   
-            if(idField?.text == "...")
+        {
+            if (idField?.text == "...")
             {
                 idField?.SetTextWithoutNotify("");
             }

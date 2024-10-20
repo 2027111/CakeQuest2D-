@@ -12,7 +12,7 @@ public class AnimationClipCreator : MonoBehaviour
     [SerializeField] string characterName = "Jimi";
     [SerializeField] string animationName = "idle";
     [SerializeField] string spriteSheetName = "spritesheet-name";
-    [SerializeField] int defaultFrameRate= 25;
+    [SerializeField] int defaultFrameRate = 25;
     [SerializeField] SpriteRenderer sprite;
     AnimationClip animClip;
 
@@ -39,50 +39,50 @@ public class AnimationClipCreator : MonoBehaviour
         TextureImporter importer = AssetImporter.GetAtPath(path) as TextureImporter;
         if (importer != null)
         {
-            if(importer.spriteImportMode != SpriteImportMode.Multiple)
+            if (importer.spriteImportMode != SpriteImportMode.Multiple)
             {
 
-            if (path == null)
-        {
-            Debug.LogError($"No sprite sheet found for {animationName} in {directoryPath}");
-            return;
-        }
+                if (path == null)
+                {
+                    Debug.LogError($"No sprite sheet found for {animationName} in {directoryPath}");
+                    return;
+                }
 
-        // Load the sprite sheet
-        Texture2D spriteSheet = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
-        if (spriteSheet == null)
-        {
-            Debug.LogError($"Failed to load sprite sheet at path: {path}");
-            return;
-        }
-        Debug.Log($"Loaded sprite sheet: {spriteSheet.name}");
+                // Load the sprite sheet
+                Texture2D spriteSheet = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
+                if (spriteSheet == null)
+                {
+                    Debug.LogError($"Failed to load sprite sheet at path: {path}");
+                    return;
+                }
+                Debug.Log($"Loaded sprite sheet: {spriteSheet.name}");
 
-        string[] split = spriteSheet.name.Split('_');
-        string amount = split[split.Length - 1].ToLower().Replace("strip", "");
-        int frames = int.Parse(amount);
-        Debug.Log(frames);
+                string[] split = spriteSheet.name.Split('_');
+                string amount = split[split.Length - 1].ToLower().Replace("strip", "");
+                int frames = int.Parse(amount);
+                Debug.Log(frames);
 
 
 
-        List<Sprite> spritesheetList = new List<Sprite>();
-        float width = spriteSheet.width / frames;
-        float height = spriteSheet.height;
+                List<Sprite> spritesheetList = new List<Sprite>();
+                float width = spriteSheet.width / frames;
+                float height = spriteSheet.height;
 
-        for (int i = 0; i < frames; i++)
-        {
-            spritesheetList.Add(Sprite.Create(spriteSheet, new Rect(width * i, 0.0f, width, height), new Vector2(0.5f, 0.5f), 100.0f));
-        }
+                for (int i = 0; i < frames; i++)
+                {
+                    spritesheetList.Add(Sprite.Create(spriteSheet, new Rect(width * i, 0.0f, width, height), new Vector2(0.5f, 0.5f), 100.0f));
+                }
 
-        // Create a new Texture2D
-        Texture2D newTexture = new Texture2D(spriteSheet.width, spriteSheet.height);
-        newTexture.SetPixels(spriteSheet.GetPixels());
-        newTexture.Apply();
+                // Create a new Texture2D
+                Texture2D newTexture = new Texture2D(spriteSheet.width, spriteSheet.height);
+                newTexture.SetPixels(spriteSheet.GetPixels());
+                newTexture.Apply();
 
-        // Save the new texture as a sprite sheet with multiple sprites
-        SaveSpriteSheet(newTexture, path, frames, (int)width, (int)height);
+                // Save the new texture as a sprite sheet with multiple sprites
+                SaveSpriteSheet(newTexture, path, frames, (int)width, (int)height);
 
-        // Reimport the texture with the new import settings
-        AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
+                // Reimport the texture with the new import settings
+                AssetDatabase.ImportAsset(path, ImportAssetOptions.ForceUpdate);
 
             }
         }

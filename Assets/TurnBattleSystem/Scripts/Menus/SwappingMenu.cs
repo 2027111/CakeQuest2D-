@@ -64,19 +64,19 @@ public class SwappingMenu : ChoiceMenu
     public void TriggerSkill()
     {
 
-            if (BattleManager.Singleton.Actors.IndexOf(BattleManager.Singleton.GetActor()) == currentButton ||!BattleManager.Singleton.Actors[currentButton].CanAct())
-            {
-                SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
-            }
-            else
-            {
-                SwapCommand swapCommand = new SwapCommand();
-                swapCommand.SetSource(BattleManager.Singleton.GetActor());
-                swapCommand.SetTargetIndex(currentButton);
-                BattleManager.Singleton.GetActor().currentCommand = swapCommand;
-                BattleManager.Singleton.ChangeState(new PerformActionState());
-            }
-       
+        if (BattleManager.Singleton.Actors.IndexOf(BattleManager.Singleton.GetActor()) == currentButton || !BattleManager.Singleton.Actors[currentButton].CanAct())
+        {
+            SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
+        }
+        else
+        {
+            SwapCommand swapCommand = new SwapCommand();
+            swapCommand.SetSource(BattleManager.Singleton.GetActor());
+            swapCommand.SetTargetIndex(currentButton);
+            BattleManager.Singleton.GetActor().currentCommand = swapCommand;
+            BattleManager.Singleton.ChangeState(new PerformActionState());
+        }
+
 
 
     }

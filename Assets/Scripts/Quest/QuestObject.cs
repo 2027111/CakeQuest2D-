@@ -10,7 +10,7 @@ public class QuestObject : BoolValue
     public string questId;
     public string questName;
     public bool QuestToggled = false;
-    [JsonIgnore]public QuestObject NextQuestObject;
+    [JsonIgnore] public QuestObject NextQuestObject;
     [JsonIgnore] public Dialogue OnQuestCompletedDialogue;
 
     public override void ApplyData(SavableObject tempCopy)
@@ -31,9 +31,9 @@ public class QuestObject : BoolValue
     }
     public virtual void DialogueRequest()
     {
-            Dialogue newDialogue = new Dialogue(OnQuestCompletedDialogue);
-            newDialogue.OnOverEvent.AddListener(DialogueOver);
-            UICanvas.StartDialogueDelayed(newDialogue, Character.Player.gameObject);
+        Dialogue newDialogue = new Dialogue(OnQuestCompletedDialogue);
+        newDialogue.OnOverEvent.AddListener(DialogueOver);
+        UICanvas.StartDialogueDelayed(newDialogue, Character.Player.gameObject);
     }
     public virtual void DialogueOver()
     {
@@ -127,13 +127,13 @@ public class QuestObject : BoolValue
 
                 RemoveCheckEvent();
             }
-                
+
         }
     }
 
     public virtual void AddCheckEvent()
     {
-        
+
     }
 
 

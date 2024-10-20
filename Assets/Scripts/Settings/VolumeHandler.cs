@@ -23,7 +23,8 @@ public class VolumeHandler : MonoBehaviour
             volume = GamePreference.SFXVolume;
             contextSlider.SetValueWithoutNotify(GamePreference.SFXVolume);
             SetSFXPreference(GamePreference.SFXVolume);
-        }else if (Music)
+        }
+        else if (Music)
         {
             volume = GamePreference.MusicVolume;
             contextSlider.SetValueWithoutNotify(GamePreference.MusicVolume);
@@ -39,9 +40,9 @@ public class VolumeHandler : MonoBehaviour
         }
 
         SetVolume(volume);
-        
+
     }
-    public void SetVolume (float volume)
+    public void SetVolume(float volume)
     {
         contextMixer.SetFloat("Volume", volume);
         volumeText.SetText(((int)volume + 50).ToString());
@@ -65,7 +66,7 @@ public class VolumeHandler : MonoBehaviour
 
     public void SetSFXPreference(int volume)
     {
-        GamePreference.SFXVolume = volume; 
+        GamePreference.SFXVolume = volume;
     }
     public void SetMusicPreference(int volume)
     {

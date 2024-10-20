@@ -6,7 +6,7 @@ public class NothingBehaviour : CharacterBehaviour
 {
 
 
-    
+
     public NothingBehaviour() : base()
     {
     }
@@ -26,7 +26,7 @@ public class NothingBehaviour : CharacterBehaviour
 
     public override void Handle()
     {
-        
+
     }
 
 

@@ -71,21 +71,21 @@ public class ChoosingTargetState : BattleState
 
     public void Select(BattleCharacter character)
     {
-            if (!multiple)
-            {
-                target.Clear();
-                target.Add(character);
-                battleManager.SetCursor(character);
-                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
-                BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
-            }
-            else
-            {
-                battleManager.SetCursor(character, false);
-                CamManager.ResetView();
+        if (!multiple)
+        {
+            target.Clear();
+            target.Add(character);
+            battleManager.SetCursor(character);
+            string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
+            BattleManager.Singleton.SetIndicationText(t + " " + character.name);
+        }
+        else
+        {
+            battleManager.SetCursor(character, false);
+            CamManager.ResetView();
 
-                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetAllEnemy");
-                BattleManager.Singleton.SetIndicationText(t);
+            string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetAllEnemy");
+            BattleManager.Singleton.SetIndicationText(t);
         }
     }
 
@@ -137,9 +137,9 @@ public class ChoosingTargetState : BattleState
     }
     private void NextTarget()
     {
-        
+
         targetIndex++;
-        if(targetIndex >= possibleTarget.Count)
+        if (targetIndex >= possibleTarget.Count)
         {
             targetIndex = 0;
         }
@@ -150,7 +150,7 @@ public class ChoosingTargetState : BattleState
         targetIndex--;
         if (targetIndex < 0)
         {
-            targetIndex = possibleTarget.Count-1;
+            targetIndex = possibleTarget.Count - 1;
         }
         Select(possibleTarget[targetIndex]);
     }

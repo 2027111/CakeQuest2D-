@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -30,7 +31,7 @@ public class FadeScreen : MonoBehaviour
                 {
                     GameObject FadeScreenInstance = Instantiate(FadeScreenPrefab);
                     Singleton = FadeScreenInstance.GetComponent<FadeScreen>();
-                   // Debug.Log("FadeScreen Instantiated");
+                    // Debug.Log("FadeScreen Instantiated");
                 }
                 else
                 {
@@ -85,13 +86,13 @@ public class FadeScreen : MonoBehaviour
 
 
 
-    public static void MoveToScene(string sceneName,float fadeTime = -1)
+    public static void MoveToScene(string sceneName, float fadeTime = -1)
     {
         if (!movingScene)
         {
 
-        Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
-        Singleton?.FadeToScene(sceneName);
+            Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
+            Singleton?.FadeToScene(sceneName);
         }
     }
 
@@ -238,15 +239,15 @@ public class FadeScreen : MonoBehaviour
     public IEnumerator StartFadeAnimation(bool on, float fadeTime = .8f, float waitTime = 0)
     {
         float time = 0f;
-        float start = on?0:1;
-        float target = on?1:0;
+        float start = on ? 0 : 1;
+        float target = on ? 1 : 0;
         SetAlphaTarget(start);
         fading = true;
         yield return new WaitForSeconds(waitTime);
         while (time < fadeTime)
         {
             time += Time.deltaTime;
-            group.alpha = Mathf.Lerp(start, target, time/ fadeTime);
+            group.alpha = Mathf.Lerp(start, target, time / fadeTime);
             yield return null;
         }
         SetAlphaTarget(target);
@@ -268,6 +269,16 @@ public class FadeScreen : MonoBehaviour
     {
         UnityAction actionU = new UnityAction(action);
         Singleton?.OnFadingStart.AddListener(actionU);
+    }
+
+    public static IEnumerable<Task> WaitForNotFade()
+    {
+        while (fading)
+        {
+            yield return null;
+        }
+        yield return null;
+
     }
 
     public static void AddOnEndFadeEvent(Action action)

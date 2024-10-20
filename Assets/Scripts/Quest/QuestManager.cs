@@ -71,7 +71,7 @@ public class QuestManager : MonoBehaviour
 
     public void ActivateQuestEvents()
     {
-        foreach(QuestObject q in currentQuests)
+        foreach (QuestObject q in currentQuests)
         {
 
             q.ToggleQuest(q.QuestToggled);
@@ -84,7 +84,7 @@ public class QuestManager : MonoBehaviour
     }
     public void CheckQuests()
     {
-        foreach(QuestObject questObject in currentQuests)
+        foreach (QuestObject questObject in currentQuests)
         {
             if (questObject.QuestToggled)
             {

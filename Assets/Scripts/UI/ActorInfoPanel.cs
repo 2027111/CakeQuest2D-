@@ -27,21 +27,21 @@ public class ActorInfoPanel : MonoBehaviour
 
     private void SetRecipe()
     {
-        foreach(Transform child in ingredientContainer)
+        foreach (Transform child in ingredientContainer)
         {
             Destroy(child.gameObject);
         }
-        List<ElementalAttribute>elementalAttributes = Actor.recipe;
+        List<ElementalAttribute> elementalAttributes = Actor.recipe;
 
         foreach (ElementalAttribute ee in elementalAttributes)
         {
-            if(ee != null)
+            if (ee != null)
             {
                 GameObject ingredient = Instantiate(ingredientLinkPrefab, ingredientContainer);
                 IngredientLinkObject obj = ingredient.GetComponent<IngredientLinkObject>();
                 obj.SetIngredientAttribute(ee);
                 obj.SetIndex(elementalAttributes.IndexOf(ee));
-                if(Actor.recipeIndex > elementalAttributes.IndexOf(ee))
+                if (Actor.recipeIndex > elementalAttributes.IndexOf(ee))
                 {
                     obj.Checked(true);
                 }

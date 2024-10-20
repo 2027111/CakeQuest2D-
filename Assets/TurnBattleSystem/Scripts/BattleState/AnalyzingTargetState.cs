@@ -14,28 +14,28 @@ public class AnalyzingTargetState : BattleState
         Time.timeScale = 0f;
         battleManager.SetCursor(null);
         battleManager.actorInfoPanel.Appear(true);
-            possibleTarget = battleManager.Actors;
-            if (possibleTarget.Count == 0)
-            {
-                battleManager.ChangeState(new ChoosingActionState());
-            }
-            else
-            {
-                    Select(BattleManager.Singleton?.GetActor());
-            }
+        possibleTarget = battleManager.Actors;
+        if (possibleTarget.Count == 0)
+        {
+            battleManager.ChangeState(new ChoosingActionState());
+        }
+        else
+        {
+            Select(BattleManager.Singleton?.GetActor());
+        }
 
     }
 
     public void Select(BattleCharacter character)
     {
-                target.Clear();
-                target.Add(character);
-                battleManager.SetCursor(character);
-                CamManager.PanToCharacter(character);
-                battleManager.actorInfoPanel.SetActor(character);
-                string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
-                BattleManager.Singleton.SetIndicationText(t +" "+ character.name);
-          
+        target.Clear();
+        target.Add(character);
+        battleManager.SetCursor(character);
+        CamManager.PanToCharacter(character);
+        battleManager.actorInfoPanel.SetActor(character);
+        string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
+        BattleManager.Singleton.SetIndicationText(character.name);
+
     }
 
 
@@ -46,7 +46,7 @@ public class AnalyzingTargetState : BattleState
     public override void OnSelect()
     {
 
-        if(battleManager.GetActor().Entity.HasMaxFocus() && target[0].GetTeam() == TeamIndex.Enemy)
+        if (battleManager.GetActor().Entity.HasMaxFocus() && target[0].GetTeam() == TeamIndex.Enemy)
         {
             target[0].RevealRecipe();
             battleManager.actorInfoPanel.SetActor(target[0]);
@@ -64,23 +64,23 @@ public class AnalyzingTargetState : BattleState
 
     public override void OnNavigate(Vector2 direction)
     {
-            if (direction.x > 0)
-            {
-                NextTarget();
-            }
-            else if (direction.x < 0)
-            {
+        if (direction.x > 0)
+        {
+            NextTarget();
+        }
+        else if (direction.x < 0)
+        {
 
-                PreviousTarget(); 
-            }
+            PreviousTarget();
+        }
 
         base.OnNavigate(direction);
     }
     private void NextTarget()
     {
-        
+
         targetIndex++;
-        if(targetIndex >= possibleTarget.Count)
+        if (targetIndex >= possibleTarget.Count)
         {
             targetIndex = 0;
         }
@@ -91,7 +91,7 @@ public class AnalyzingTargetState : BattleState
         targetIndex--;
         if (targetIndex < 0)
         {
-            targetIndex = possibleTarget.Count-1;
+            targetIndex = possibleTarget.Count - 1;
         }
         Select(possibleTarget[targetIndex]);
     }

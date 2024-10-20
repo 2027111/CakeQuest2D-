@@ -49,7 +49,7 @@ public class CamManager : MonoBehaviour
     private IEnumerator DoShake(float duration, float magnitude)
     {
         float elapsed = 0.0f;
-        bool timed  = duration > 0;
+        bool timed = duration > 0;
         if (duration < 0)
         {
             duration = 100;
@@ -61,7 +61,7 @@ public class CamManager : MonoBehaviour
 
             transform.localPosition = new Vector3(x, y, _originalPos.z);
 
-            if(timed)
+            if (timed)
             {
                 elapsed += Time.deltaTime;
             }
@@ -110,7 +110,7 @@ public class CamManager : MonoBehaviour
     public static IEnumerator DoPan(Vector3 position, float duration, float timeUntilReset)
     {
         Vector3 newPos = new Vector3(position.x, position.y + 1, _instance.zoomDistance);
-        yield return _instance.StartCoroutine(_instance.DoPan(newPos,  duration));
+        yield return _instance.StartCoroutine(_instance.DoPan(newPos, duration));
         yield return new WaitForSeconds(timeUntilReset);
         yield return _instance.StartCoroutine(_instance.DoPan(_instance._originalPos, duration));
     }

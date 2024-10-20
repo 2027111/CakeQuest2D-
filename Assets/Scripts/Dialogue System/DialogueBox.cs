@@ -33,7 +33,8 @@ public class DialogueContent
 }
 
 
-public class LineInfo{
+public class LineInfo
+{
     public string lineId;
     public string line;
     public string talkerName;
@@ -61,7 +62,8 @@ public class LineInfo{
         this.line = line;
         this.talkerName = talkerName;
         this.portraitPath = portraitPath;
-        if(bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result)){
+        if (bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result))
+        {
             voiced = result;
         }
     }
@@ -108,11 +110,11 @@ public class DialogueBox : MonoBehaviour
     Coroutine setTextCoroutine;
     GameObject player = null;
 
-    GameObject Player 
+    GameObject Player
     {
         get
         {
-            if(player == null)
+            if (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
             }
@@ -189,19 +191,19 @@ public class DialogueBox : MonoBehaviour
             }
         }
 
-     }
+    }
 
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
 
 
-        if(dialogue.OnOverEvent != null)
+        if (dialogue.OnOverEvent != null)
         {
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
         }
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
-        
+
         if (dialogue.dialogueLineIds != null)
         {
 
@@ -269,7 +271,7 @@ public class DialogueBox : MonoBehaviour
         {
             // Load the sprite from Resources folder
             string fullPath = portraitPath; // Assuming the path is relative to the Resources folder
-           ResourceRequest request = Resources.LoadAsync<Sprite>(fullPath);
+            ResourceRequest request = Resources.LoadAsync<Sprite>(fullPath);
 
             while (!request.isDone)
             {
@@ -331,7 +333,7 @@ public class DialogueBox : MonoBehaviour
         if (voiceLine != null)
         {
             // Assign the loaded audio to the audio source
-            if(voiceClipSource.clip != voiceLine)
+            if (voiceClipSource.clip != voiceLine)
             {
 
 
@@ -386,7 +388,7 @@ public class DialogueBox : MonoBehaviour
         }
         choiceBox.GetComponent<ChoiceMenu>().DefaultSelect();
     }
-  
+
     public void DebugTest()
     {
     }
@@ -415,7 +417,7 @@ public class DialogueBox : MonoBehaviour
             if (active)
             {
                 int dialogueLength = 0;
-                if(currentDialogue.dialogue.dialogueLineIds != null)
+                if (currentDialogue.dialogue.dialogueLineIds != null)
                 {
                     dialogueLength = currentDialogue.dialogue.dialogueLineIds.Length;
                 }
@@ -424,7 +426,7 @@ public class DialogueBox : MonoBehaviour
 
                     if (currentDialogue != null)
                     {
-                        if(currentDialogue.dialogue.OnInstantOverEvent != null)
+                        if (currentDialogue.dialogue.OnInstantOverEvent != null)
                         {
                             currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
 
@@ -439,11 +441,12 @@ public class DialogueBox : MonoBehaviour
                     {
                         dontGoNext = false;
                         return;
-                    }else if (currentDialogue != null)
+                    }
+                    else if (currentDialogue != null)
                     {
 
 
-                    
+
 
                         ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
 
@@ -455,7 +458,7 @@ public class DialogueBox : MonoBehaviour
                             {
                                 if (choices[0].ConditionRespected())
                                 {
-                                    dialogueWaitingLine.Insert(0,new DialogueContent(new Dialogue(choices[0])));
+                                    dialogueWaitingLine.Insert(0, new DialogueContent(new Dialogue(choices[0])));
                                     StartNextDialogueWaiting();
                                     return;
                                 }
@@ -484,10 +487,10 @@ public class DialogueBox : MonoBehaviour
                         EndDialogue();
                         StartCoroutine(ShowDialogueBoxAlpha(false));
 
-                   
 
 
-                }
+
+                    }
 
 
 
@@ -584,7 +587,7 @@ public class DialogueBox : MonoBehaviour
 
         automaticDialogue = onOff;
         OnAutomaticEvent?.Invoke(automaticDialogue);
-        Debug.Log($"Automatic Dialogue Toggled : {automaticDialogue}");
+        //Debug.Log($"Automatic Dialogue Toggled : {automaticDialogue}");
     }
     public void AddNavigateEventToPlayer(bool addOrRemove)
     {
@@ -608,7 +611,7 @@ public class DialogueBox : MonoBehaviour
         ChoiceMenu menu = choiceBox.GetComponent<ChoiceMenu>();
         if (menu != null)
         {
-            if(direction.y > 0)
+            if (direction.y > 0)
             {
                 menu.PreviousButton();
             }
@@ -630,9 +633,9 @@ public class DialogueBox : MonoBehaviour
 
     private void ResetBox()
     {
-       
 
-        
+
+
         dialogueIndex = 0;
         dialogueText.text = "";
         active = false;
@@ -644,11 +647,11 @@ public class DialogueBox : MonoBehaviour
 
     private void DialogueText(Dialogue dialogue, int index)
     {
-        if(index < dialogue.dialogueLineIds.Length)
+        if (index < dialogue.dialogueLineIds.Length)
         {
 
-        string lineId = dialogue.dialogueLineIds[index];
-        LineInfo lineInfo = new LineInfo(lineId);
+            string lineId = dialogue.dialogueLineIds[index];
+            LineInfo lineInfo = new LineInfo(lineId);
 
             if (dialogue.source != null)
             {
@@ -661,18 +664,18 @@ public class DialogueBox : MonoBehaviour
 
 
 
-        if (setTextCoroutine != null)
-        {
-            StopCoroutine(setTextCoroutine);
-            setTextCoroutine = null;
-            SetDialogueText(lineInfo);
-            dialogueIndex++;
-        }
-        else
-        {
-            voiceClipSource.Stop();
-            SetupLine(lineInfo);
-            setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
+            if (setTextCoroutine != null)
+            {
+                StopCoroutine(setTextCoroutine);
+                setTextCoroutine = null;
+                SetDialogueText(lineInfo);
+                dialogueIndex++;
+            }
+            else
+            {
+                voiceClipSource.Stop();
+                SetupLine(lineInfo);
+                setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
             }
         }
     }
@@ -735,16 +738,16 @@ public class DialogueBox : MonoBehaviour
     IEnumerator MakeBoxAppear(bool show)
     {
 
-            float target = show ? 1 : 0;
-            float start = group.alpha;
-            float duration = 0;
-            while (duration < apparitionTime)
-            {
-                group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
-                duration += Time.deltaTime;
-                yield return null;
-            }
-            group.alpha = target;
+        float target = show ? 1 : 0;
+        float start = group.alpha;
+        float duration = 0;
+        while (duration < apparitionTime)
+        {
+            group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
+            duration += Time.deltaTime;
+            yield return null;
+        }
+        group.alpha = target;
 
 
         yield return new WaitForSeconds(apparitionTime);
@@ -754,7 +757,7 @@ public class DialogueBox : MonoBehaviour
         ClearChoiceBox();
 
 
-        if(isShowing != show)
+        if (isShowing != show)
         {
             isShowing = show;
             if (!isShowing)
@@ -861,12 +864,12 @@ public class DialogueBox : MonoBehaviour
 
                     yield return new WaitForSeconds(.75f);
                 }
-                
-            
+
+
             }
 
             setTextCoroutine = null;
-            if (automaticDialogue && wasAutomatic && dialogueIndex == index+1)
+            if (automaticDialogue && wasAutomatic && dialogueIndex == index + 1)
             {
                 Interact();
             }

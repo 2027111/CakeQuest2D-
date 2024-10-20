@@ -18,6 +18,8 @@ public class SkillCommand : AttackCommand
         base.ExecuteCommand();
     }
 
+
+
     public override bool IsPhysical()
     {
         return attack.skillType == SkillType.Physical;
@@ -25,7 +27,7 @@ public class SkillCommand : AttackCommand
     public override void SetTarget(List<BattleCharacter> _target)
     {
         Target = new List<BattleCharacter>();
-        if(attack.targetType == TargetType.Single)
+        if (attack.targetType == TargetType.Single)
         {
             Target.Add(_target[Random.Range(0, _target.Count)]);
         }

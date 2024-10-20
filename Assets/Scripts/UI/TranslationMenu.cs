@@ -24,7 +24,7 @@ public class TranslationMenu : MonoBehaviour
 
         LanguageData.SetLanguage(GamePreference.Language);
         LoadLangue();
-        
+
     }
 
 
@@ -55,7 +55,7 @@ public class TranslationMenu : MonoBehaviour
     {
         GamePreference.Language = LanguageData.GetLanguage();
 
-        if(!LanguageData.Loaded())
+        if (!LanguageData.Loaded())
         {
             StartCoroutine(LanguageData.LoadJsonAsync(ResetTextFields));
         }
@@ -76,13 +76,13 @@ public class TranslationMenu : MonoBehaviour
 
     public void ActualizeText()
     {
-        foreach(KeyValuePair<string, List<TMP_Text>> Texts in TextObjects)
+        foreach (KeyValuePair<string, List<TMP_Text>> Texts in TextObjects)
         {
             if (Texts.Value != null)
             {
                 if (Texts.Value.Count > 0)
                 {
-                    foreach(TMP_Text text in Texts.Value)
+                    foreach (TMP_Text text in Texts.Value)
                     {
                         JsonData jsonData = LanguageData.GetDataById(LanguageData.MENUS);
                         if (jsonData.ContainsKey(Texts.Key))

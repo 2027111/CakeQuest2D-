@@ -28,10 +28,10 @@ public class Projectile : BattleObjects
 
     private void Update()
     {
-        if(timer < timeToHit)
+        if (timer < timeToHit)
         {
             timer += Time.deltaTime;
-            transform.position = Vector3.Lerp(initialPosition, targetPosition, timer/ timeToHit);
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, timer / timeToHit);
         }
         else
         {

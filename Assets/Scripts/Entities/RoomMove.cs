@@ -19,20 +19,20 @@ public class RoomMove : MonoBehaviour
 
     public void MoveToNextRoom()
     {
-            Vector2 playerPos = Character.Player.transform.position;
-            Vector2 triggerPos = transform.position;
-            Vector2 difference = playerPos - triggerPos;
-            Direction moveDirection = GetExitDirection(difference);
+        Vector2 playerPos = Character.Player.transform.position;
+        Vector2 triggerPos = transform.position;
+        Vector2 difference = playerPos - triggerPos;
+        Direction moveDirection = GetExitDirection(difference);
 
-            if (moveDirection == Room1ToRoom2)
-            {
-                MovePlayer(room1, moveDirection);
-            }
-            else if (moveDirection == GetOppositeDirection(Room1ToRoom2))
-            {
-                MovePlayer(room2, moveDirection);
-            }
-       
+        if (moveDirection == Room1ToRoom2)
+        {
+            MovePlayer(room1, moveDirection);
+        }
+        else if (moveDirection == GetOppositeDirection(Room1ToRoom2))
+        {
+            MovePlayer(room2, moveDirection);
+        }
+
     }
 
     private Direction GetExitDirection(Vector2 difference)

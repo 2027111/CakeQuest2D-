@@ -16,7 +16,7 @@ public class TeamComponent : MonoBehaviour
     {
         set
         {
-            if(_teamIndex != value)
+            if (_teamIndex != value)
             {
                 _teamIndex = value;
             }

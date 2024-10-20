@@ -26,7 +26,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] Button LeftButton;
     [SerializeField] Button RightButton;
 
-    
+
 
     InventoryItem currentItem;
     private void Start()
@@ -39,13 +39,13 @@ public class InventoryManager : MonoBehaviour
     {
         if (characterInventory)
         {
-            foreach(Transform transform in InventoryContainer.transform)
+            foreach (Transform transform in InventoryContainer.transform)
             {
                 Destroy(transform.gameObject);
             }
 
 
-            foreach(InventoryItem item in characterInventory.ReturnUniqueInventory())
+            foreach (InventoryItem item in characterInventory.ReturnUniqueInventory())
             {
 
 
@@ -67,10 +67,10 @@ public class InventoryManager : MonoBehaviour
 
     public void SelectFirstItem()
     {
-        if(InventoryContainer.transform.childCount > 0)
+        if (InventoryContainer.transform.childCount > 0)
         {
 
-        InventoryContainer.transform.GetChild(0).GetComponent<Button>().Select();
+            InventoryContainer.transform.GetChild(0).GetComponent<Button>().Select();
         }
     }
     public void SnapTo(RectTransform target)
@@ -97,8 +97,8 @@ public class InventoryManager : MonoBehaviour
 
 
         InventorySlot Slot = Instantiate(blankInventorySlot, InventoryContainer.transform).GetComponent<InventorySlot>();
-        Slot.OnSelect.AddListener(delegate{ SnapTo(Slot.GetComponent<RectTransform>()); }) ;
-        if(LastButton == null)
+        Slot.OnSelect.AddListener(delegate { SnapTo(Slot.GetComponent<RectTransform>()); });
+        if (LastButton == null)
         {
             if (LeftButton)
             {
@@ -120,7 +120,7 @@ public class InventoryManager : MonoBehaviour
                 };
                 RightButton.navigation = customNav;
             }
-            
+
 
 
         }

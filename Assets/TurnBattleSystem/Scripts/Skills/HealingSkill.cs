@@ -9,7 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Healing Skill", menuName = "Skills/Healing Skill")]
 public class HealingSkill : Skill
 {
-   
+
 
 
 

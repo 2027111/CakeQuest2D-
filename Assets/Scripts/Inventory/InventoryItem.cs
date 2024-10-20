@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 [System.Serializable]
-[CreateAssetMenu(fileName = "New Item", menuName ="Inventory/Items/Inventory Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Items/Inventory Item")]
 public class InventoryItem : IActionData
 {
 
     [JsonIgnore] public string itemName;
     [JsonIgnore]
-    public string ItemName {
-    get{return  GetName(); }
+    public string ItemName
+    {
+        get { return GetName(); }
     }
 
 

@@ -35,7 +35,7 @@ public class Dialogue
     public Dialogue(Dialogue dialogue)
     {
 
-        if(dialogue != null)
+        if (dialogue != null)
         {
             if (dialogue.dialogueLineIds != null)
             {
@@ -43,7 +43,7 @@ public class Dialogue
             }
             if (dialogue.choices != null)
             {
-                this.choices = dialogue.choices.Length>0?dialogue.choices:null;
+                this.choices = dialogue.choices.Length > 0 ? dialogue.choices : null;
             }
             this.condition = dialogue.condition;
             this.OnOverEvent = dialogue.OnOverEvent;
@@ -92,16 +92,18 @@ public class Dialogue
         return true;
     }
     public bool isNull()
-    {  if(dialogueLineIds == null)
+    {
+        if (dialogueLineIds == null)
         {
             return true;
-        }else if (dialogueLineIds.Length == 0 && choices.Length == 0)
+        }
+        else if (dialogueLineIds.Length == 0 && choices.Length == 0)
         {
             return true;
         }
         else
         {
-            foreach(string l in dialogueLineIds)
+            foreach (string l in dialogueLineIds)
             {
                 if (string.IsNullOrEmpty(l))
                 {
@@ -115,7 +117,7 @@ public class Dialogue
     public ChoiceDialogue[] GetUsableChoices()
     {
         List<ChoiceDialogue> returnChocies = new List<ChoiceDialogue>();
-        if(choices == null)
+        if (choices == null)
         {
             return null;
         }
@@ -126,7 +128,7 @@ public class Dialogue
                 returnChocies.Add(c);
             }
         }
-        if(returnChocies.Count == 0)
+        if (returnChocies.Count == 0)
         {
             return null;
         }
@@ -186,7 +188,7 @@ public class BattleDialogue : Dialogue
             case BattleCondition.None:
                 return true;
             case BattleCondition.OnLoop:
-                if(BattleManager.Singleton.GetLoopAmount() == conditionIndex && BattleManager.Singleton.IsFirstTurn())
+                if (BattleManager.Singleton.GetLoopAmount() == conditionIndex && BattleManager.Singleton.IsFirstTurn())
                 {
                     return true;
                 }
@@ -241,11 +243,11 @@ public class NewDialogueStarterObject : MonoBehaviour
         if (dialogue.dialogueLineIds.Length > 0)
         {
             if (!started)
-                {
-                    started = true;
-                    DialogueRequest();
-                }
+            {
+                started = true;
+                DialogueRequest();
             }
+        }
         else
         {
             OnDialogueOverEvent.Invoke();
@@ -266,9 +268,9 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public bool CheckLines()
     {
-       if (dialogue.isNull())
+        if (dialogue.isNull())
         {
-                return false;
+            return false;
         }
         else
         {

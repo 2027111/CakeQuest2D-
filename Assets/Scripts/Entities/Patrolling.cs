@@ -24,13 +24,13 @@ public class Patrolling : MonoBehaviour
         if (lightSource)
         {
             Vector2 forward = GetComponent<Movement>().lookDirection;
-            Vector2 position = (Vector2)transform.position;
+            Vector2 position = (Vector2)lightSource.transform.position;
 
             // Calculate the angle in degrees that the light should be facing
             float angle = Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg;
 
             // Create a quaternion representing the rotation
-            Quaternion rotation = Quaternion.Euler(0, 0, angle-90);
+            Quaternion rotation = Quaternion.Euler(0, 0, angle - 90);
 
             // Set the position and rotation of the light source
             lightSource.transform.SetPositionAndRotation(position, rotation);

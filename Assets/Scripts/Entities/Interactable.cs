@@ -35,25 +35,25 @@ public class Interactable : MonoBehaviour
         if (enabled)
         {
 
-        if (collision.CompareTag("Player"))
-        {
-            player = collision.gameObject;
-                if(player.GetComponent<Character>().GetCurrentBehaviour() is PlayerControlsBehaviour)
+            if (collision.CompareTag("Player"))
+            {
+                player = collision.gameObject;
+                if (player.GetComponent<Character>().GetCurrentBehaviour() is PlayerControlsBehaviour)
                 {
 
 
-           ManageContactEvent(contactEvent);
-          if (player.GetComponent<Character>().CanInteraction())
-            {
-                player.GetComponent<Character>().SetInteraction(false);
-                ManageInteraction(player, true);
-                ContextClue(true);
-            }
-            else
-            {
-                player = null;
-            }
-            }
+                    ManageContactEvent(contactEvent);
+                    if (player.GetComponent<Character>().CanInteraction())
+                    {
+                        player.GetComponent<Character>().SetInteraction(false);
+                        ManageInteraction(player, true);
+                        ContextClue(true);
+                    }
+                    else
+                    {
+                        player = null;
+                    }
+                }
 
             }
         }
@@ -61,7 +61,7 @@ public class Interactable : MonoBehaviour
 
     public void ManageInteraction(GameObject character, bool add)
     {
-        if(interactionEvent.GetPersistentEventCount() > 0)
+        if (interactionEvent.GetPersistentEventCount() > 0)
         {
             if (add)
             {
@@ -89,17 +89,17 @@ public class Interactable : MonoBehaviour
     {
         if (enabled)
         {
-        if (collision.CompareTag("Player"))
-        {
-            if(player != null)
+            if (collision.CompareTag("Player"))
             {
-                player.GetComponent<Character>().SetInteraction(true);
-                ManageInteraction(player, false);
-                ManageContactEvent(contactEndEvent);
-                ContextClue(false);
+                if (player != null)
+                {
+                    player.GetComponent<Character>().SetInteraction(true);
+                    ManageInteraction(player, false);
+                    ManageContactEvent(contactEndEvent);
+                    ContextClue(false);
 
-                player = null;
-            }
+                    player = null;
+                }
             }
 
         }
@@ -127,7 +127,6 @@ public class Interactable : MonoBehaviour
         }
 
 
-
-        Destroy(this);
+        this.enabled = false;
     }
 }

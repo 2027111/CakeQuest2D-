@@ -36,7 +36,7 @@ public class ChoosingActionState : BattleState
     public override void OnBack()
     {
 
-        battleManager.ChangeState(new ChoosingActionState());
+        //battleManager.ChangeState(new ChoosingActionState());
         base.OnBack();
     }
 

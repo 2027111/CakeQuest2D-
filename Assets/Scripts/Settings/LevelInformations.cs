@@ -9,7 +9,7 @@ public class LevelInformations : MonoBehaviour
 
     public void Start()
     {
-            MusicPlayer.Singleton?.PlaySong(levelMainTheme, true);
+        MusicPlayer.Singleton?.PlaySong(levelMainTheme, true);
         Camera.main.backgroundColor = CameraBackgroundColor;
 
 

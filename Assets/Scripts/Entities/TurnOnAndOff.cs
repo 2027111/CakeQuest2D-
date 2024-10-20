@@ -21,7 +21,7 @@ public class TurnOnAndOff : MonoBehaviour
     {
 
         anim?.SetBool("Opened", TurnedOn);
-        anim?.SetTrigger((TurnedOn?"Open":"Close"));
+        anim?.SetTrigger((TurnedOn ? "Open" : "Close"));
         if (TurnedOn)
         {
             OnTurnedOn?.Invoke();

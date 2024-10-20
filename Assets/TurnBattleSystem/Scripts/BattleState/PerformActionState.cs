@@ -5,11 +5,11 @@ using UnityEngine;
 public class PerformActionState : BattleState
 {
     BattleCharacter performer;
-    
+
 
     public PerformActionState()
     {
-        MenuName = "TakeOverMenu";
+        MenuName = "ChainMenu";
     }
     public override void OnEnter(BattleManager _battleManager)
     {
@@ -20,7 +20,7 @@ public class PerformActionState : BattleState
         performer.Animator.Thinking(false);
         performer.SetActing(true);
         performer.currentCommand.OnExecuted += PerformanceOver;
-        battleManager.StartCoroutine(CheckFocus());
+        //battleManager.StartCoroutine(CheckFocus());
 
 
 
@@ -37,7 +37,7 @@ public class PerformActionState : BattleState
 
             if (battleManager.GetActor().IsPlayerTeam())
             {
-                 controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(typeof(NothingState).ToString());
+                controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(typeof(NothingState).ToString());
 
             }
             battleManager.SetControlText(controls);
@@ -50,42 +50,42 @@ public class PerformActionState : BattleState
         if (performer.currentCommand.CanFocus())
         {
 
-        List<BattleCharacter> takeOvers = new List<BattleCharacter>();
-        if (!battleManager.IsForcedTurn())
-        {
-
-        yield return new WaitForSeconds(Random.Range(.8f, 1.5f));
-
-
-
-
-
-        if(performer.GetTeam() == TeamIndex.Player)
-        {
-            foreach(BattleCharacter bc in battleManager.HeroPartyActors)
+            List<BattleCharacter> takeOvers = new List<BattleCharacter>();
+            if (!battleManager.IsForcedTurn())
             {
-                if(bc.CanAct() && bc.Entity.Focus >= 10 && bc != battleManager.GetActor())
+
+                yield return new WaitForSeconds(Random.Range(.8f, 1.5f));
+
+
+
+
+
+                if (performer.GetTeam() == TeamIndex.Player)
                 {
-                    takeOvers.Add(bc);
+                    foreach (BattleCharacter bc in battleManager.HeroPartyActors)
+                    {
+                        if (bc.CanAct() && bc.Entity.Focus >= 10 && bc != performer)
+                        {
+                            takeOvers.Add(bc);
+                        }
+                    }
                 }
+
+
+                if (takeOvers.Count > 0)
+                {
+                    InstantiateMenu(takeOvers);
+                    yield return new WaitForSeconds(Random.Range(.6f, 1.9f));
+                    if (choiceMenu)
+                    {
+                        choiceMenu.GetComponent<TakeOverMenu>().DestroyMenu();
+                    }
+                }
+
+
+
             }
-        }
-
-
-        if (takeOvers.Count > 0)
-        {
-            InstantiateMenu(takeOvers);
-            yield return new WaitForSeconds(Random.Range(.6f, 1.9f));
-            if (choiceMenu)
-            {
-                choiceMenu.GetComponent<TakeOverMenu>().DestroyMenu();
-            }
-        }
-
-
-
-        }
-        yield return null;
+            yield return null;
         }
     }
 
@@ -118,7 +118,7 @@ public class PerformActionState : BattleState
     {
         if (battleManager.IsEnemyTurn())
         {
-            foreach(BattleCharacter bc in battleManager.HeroPartyActors)
+            foreach (BattleCharacter bc in battleManager.HeroPartyActors)
             {
                 if (!bc.isActing && bc.IsTargetted())
                 {
@@ -136,8 +136,8 @@ public class PerformActionState : BattleState
             foreach (BattleCharacter bc in battleManager.HeroPartyActors)
             {
 
-                    bc.StopBlock();
-                
+                bc.StopBlock();
+
             }
         }
         base.OnBackReleased();

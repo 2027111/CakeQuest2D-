@@ -19,13 +19,13 @@ public class PartyModifier : MonoBehaviour
 
     public void AddToParty()
     {
-        if(characterObject != null)
+        if (characterObject != null)
         {
 
 
-        if (!player.heroParty.PartyMembers.Contains(characterObject))
-        {
-            player.heroParty.PartyMembers.Add(characterObject);
+            if (!player.heroParty.PartyMembers.Contains(characterObject))
+            {
+                player.heroParty.PartyMembers.Add(characterObject);
                 characterObject.InParty.SetRuntime();
                 player.heroParty.OnAddToParty?.Invoke();
             }
@@ -41,8 +41,8 @@ public class PartyModifier : MonoBehaviour
         {
 
             if (player.heroParty.PartyMembers.Contains(characterObject))
-        {
-            player.heroParty.PartyMembers.Remove(characterObject);
+            {
+                player.heroParty.PartyMembers.Remove(characterObject);
                 characterObject.InParty.ResetRuntime();
                 player.heroParty.OnAddToParty?.Invoke();
             }

@@ -26,7 +26,7 @@ public class QuestList : MonoBehaviour
 
         if (QuestManager.Singleton)
         {
-            foreach(QuestObject q in QuestManager.Singleton.GetQuests())
+            foreach (QuestObject q in QuestManager.Singleton.GetQuests())
             {
                 if (!q.RuntimeValue && q.QuestToggled)
                 {
@@ -42,7 +42,7 @@ public class QuestList : MonoBehaviour
 
         if (container.childCount > 0)
         {
-            if(Affiched != on)
+            if (Affiched != on)
             {
                 GetComponent<Animator>().SetTrigger(on ? "Appear" : "Disappear");
                 Affiched = on;

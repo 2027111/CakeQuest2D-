@@ -63,10 +63,10 @@ public class PlayerInfoStorage : MonoBehaviour
 
 
 
-            if (UICanvas.DialogueBoxIsActive())
-            {
-                UICanvas.ForceStopDialogue();
-            }
+        if (UICanvas.DialogueBoxIsActive())
+        {
+            UICanvas.ForceStopDialogue();
+        }
 
 
 
@@ -89,7 +89,7 @@ public class PlayerInfoStorage : MonoBehaviour
 
             }
         }
-        
+
     }
 
 
@@ -120,7 +120,7 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void SetNewRoom(RoomInfo newRoom)
     {
-        if(newRoom != InfoStorage.nextRoomInfo)
+        if (newRoom != InfoStorage.nextRoomInfo)
         {
             InfoStorage.nextRoomInfo.SetValue(newRoom);
             RoomTitleCard.ShowTitle(InfoStorage.nextRoomInfo.roomName);

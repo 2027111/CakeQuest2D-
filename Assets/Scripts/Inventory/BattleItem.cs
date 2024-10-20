@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [System.Serializable]
-[CreateAssetMenu(fileName = "New Battle Item", menuName ="Inventory/Items/Battle Items")]
+[CreateAssetMenu(fileName = "New Battle Item", menuName = "Inventory/Items/Battle Items")]
 public class BattleItem : InventoryItem
 {
 

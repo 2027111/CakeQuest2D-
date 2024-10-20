@@ -51,7 +51,7 @@ public class Blink : MonoBehaviour
             Color start = sr.color;
 
             float t = 0;
-            while(t < transitionTime)
+            while (t < transitionTime)
             {
                 sr.color = Color.Lerp(start, target, t / transitionTime);
                 t += Time.unscaledDeltaTime;

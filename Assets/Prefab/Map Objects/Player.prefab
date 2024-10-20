@@ -60,6 +60,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   inputManager: {fileID: 0}
   heroParty: {fileID: 11400000, guid: 4aac9192a920b464ebc2902086168dc8, type: 2}
+  Sprite: {fileID: 6328120428649999559}
 --- !u!114 &6328120429896446889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +437,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 6328120429896446894}
     m_Modifications:
+    - target: {fileID: 6230776189068451296, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6230776189570639188, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -484,12 +489,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Graphics
       objectReference: {fileID: 0}
+    - target: {fileID: 6230776189570639189, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230776189825833806, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152561353782809737, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
 --- !u!95 &3941844833393866871 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3971637294642104662, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+  m_PrefabInstance: {fileID: 119954442625773857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &6328120428649999559 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6230776189068451302, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
   m_PrefabInstance: {fileID: 119954442625773857}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6328120429556896885 stripped
@@ -509,9 +531,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 400018343892678139, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108027217340988796, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2856217135093215094, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918843546152835512, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8857625667424128823, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
       propertyPath: m_Pivot.x

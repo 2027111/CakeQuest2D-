@@ -16,7 +16,7 @@ public class ChangeSpriteAsset : MonoBehaviour
 
     public void OnControlsChanged(PlayerInput pi)
     {
-        if(pi.currentControlScheme == pi.defaultControlScheme)
+        if (pi.currentControlScheme == pi.defaultControlScheme)
         {
             currentSpriteAsset = keyboardSpriteAsset;
             Debug.Log("KeyBoard");

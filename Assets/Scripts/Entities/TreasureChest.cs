@@ -33,7 +33,7 @@ public class TreasureChest : NewDialogueStarterObject
     {
         isOpen = storedOpen.RuntimeValue;
         CheckOpen(true);
-        
+
 
     }
 
@@ -45,7 +45,7 @@ public class TreasureChest : NewDialogueStarterObject
 
             OnIsOpen?.Invoke();
             Interactable inter = GetComponent<Interactable>();
-            if (inter && OnlyOnce) 
+            if (inter && OnlyOnce)
             {
                 inter.Disable();
             }
@@ -56,45 +56,45 @@ public class TreasureChest : NewDialogueStarterObject
     public override void DialogueAction()
     {
 
-        if(CheckLines())
+        if (CheckLines())
         {
 
 
 
 
-        if (!started)
-        {
-            Dialogue newDialogue = new Dialogue(dialogue);
-            started = true;
-            if (locked)
+            if (!started)
             {
-                UnityAction callback = DialogueOver;
-                if (CheckRequirement())
+                Dialogue newDialogue = new Dialogue(dialogue);
+                started = true;
+                if (locked)
                 {
+                    UnityAction callback = DialogueOver;
+                    if (CheckRequirement())
+                    {
 
-                    newDialogue = new Dialogue(SuccessDialogue);
-               
-                    if (consumesRequirement)
+                        newDialogue = new Dialogue(SuccessDialogue);
+
+                        if (consumesRequirement)
                         {
                             Character.Player.RemoveFromInventory(lockRequirement, requirementAmount);
                         }
-                    Unlock();
-                    callback = RequirementMetEvent;
-                }
-                else
+                        Unlock();
+                        callback = RequirementMetEvent;
+                    }
+                    else
                     {
-                    newDialogue = new Dialogue(LockedDialogue);
-                }
-                newDialogue.SetSource(this);
-                newDialogue.OnOverEvent.RemoveAllListeners();
-                newDialogue.OnOverEvent.AddListener(callback);
+                        newDialogue = new Dialogue(LockedDialogue);
+                    }
+                    newDialogue.SetSource(this);
+                    newDialogue.OnOverEvent.RemoveAllListeners();
+                    newDialogue.OnOverEvent.AddListener(callback);
                     UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
 
-            }
-            else
-            {
-                RequirementMetEvent();
-            }
+                }
+                else
+                {
+                    RequirementMetEvent();
+                }
 
 
             }
@@ -142,5 +142,5 @@ public class TreasureChest : NewDialogueStarterObject
     }
 
 
-    
+
 }

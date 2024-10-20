@@ -39,7 +39,7 @@ public class GameSaveManager : MonoBehaviour
 
     [Header("Objects To Save")]
     public List<SavableObject> data = new List<SavableObject>();
-    public List<CharacterInventory> allInventories = new List<CharacterInventory>(); 
+    public List<CharacterInventory> allInventories = new List<CharacterInventory>();
     public List<CharacterObject> allCharacterObjects = new List<CharacterObject>();
     public List<Party> allParties = new List<Party>();
 
@@ -182,9 +182,9 @@ public class GameSaveManager : MonoBehaviour
             ReadableSaveData saveData = saves[saveFileIndex];
             yield return ImportStoredData(saveData.SaveDataWrapper);
 
-            foreach(SavableObject obj in data)
+            foreach (SavableObject obj in data)
             {
-                foreach(SavableObject saveObj in saveData.data)
+                foreach (SavableObject saveObj in saveData.data)
                 {
                     if (saveObj.Matches(obj))
                     {
@@ -252,21 +252,21 @@ public class GameSaveManager : MonoBehaviour
             NullValueHandling = NullValueHandling.Include
         };
 
-            var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(stringeddataWrapped, settings);
+        var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(stringeddataWrapped, settings);
 
-            if (saveData != null)
-            {
+        if (saveData != null)
+        {
 
-                // Set the lists from the deserialized data
-                SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
-                SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
-                SetPlayerData<Party>((saveData.AllParties), allParties);
-                yield return null;
-            }
-            else
-            {
-                Debug.LogError("Failed to deserialize data from save Data is null.");
-            }
+            // Set the lists from the deserialized data
+            SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
+            SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
+            SetPlayerData<Party>((saveData.AllParties), allParties);
+            yield return null;
+        }
+        else
+        {
+            Debug.LogError("Failed to deserialize data from save Data is null.");
+        }
 
     }
     public IEnumerator ImportStoredData(SaveDataWrapper saveData)
@@ -292,9 +292,9 @@ public class GameSaveManager : MonoBehaviour
 
     private void SetPlayerData<T>(List<T> loadedDataFiles, List<T> fileToApplyTo)
     {
-        foreach(T obj in fileToApplyTo)
+        foreach (T obj in fileToApplyTo)
         {
-            foreach (T data in loadedDataFiles) 
+            foreach (T data in loadedDataFiles)
             {
 
                 if ((obj as SavableObject).UID.Equals((data as SavableObject).UID))
@@ -405,7 +405,7 @@ public class GameSaveManager : MonoBehaviour
     {
         foreach (SavableObject obj in list)
         {
-           yield return ApplyToScriptableObjects(dtoList, obj);
+            yield return ApplyToScriptableObjects(dtoList, obj);
             yield return null;
         }
     }
@@ -454,11 +454,11 @@ public class GameSaveManager : MonoBehaviour
         List<SavableObject> returnList = new List<SavableObject>();
         List<SavableObject> dataList = GetListMatch(SaveFiles.save);
 
-        foreach(SavableObject savableObject in dataList)
+        foreach (SavableObject savableObject in dataList)
         {
             ScriptableObjectDTO dto = GetMatchingObject(dtoList, savableObject);
             SavableObject obj = dto.ReturnNewData(savableObject);
-            if(obj != null)
+            if (obj != null)
             {
                 returnList.Add(obj);
             }
@@ -545,14 +545,14 @@ public class GameSaveManager : MonoBehaviour
         if (Directory.Exists(saveFilePath))
         {
             List<string> files = new List<string>(Directory.GetFiles(saveFilePath, $"save_*_{version}.{extension}"));
-            foreach(string f in files)
+            foreach (string f in files)
             {
                 if (f.Split("_")[0].Contains("default"))
                 {
                     files.Remove(f);
                 }
             }
-        return files.Count;
+            return files.Count;
         }
         return -1;
     }
@@ -592,13 +592,13 @@ public class GameSaveManager : MonoBehaviour
             {
                 SaveDataJsonWrapper saveData = null;
                 yield return StartCoroutine(ReadFileCoroutine(file, result => saveData = JsonUtility.FromJson<SaveDataJsonWrapper>(result)));
-                
+
                 if (saveData != null)
                 {
                     saveDataWrapperList.Add(saveData);
                 }
 
-              
+
 
                 // Simulate asynchronous operation
                 yield return null;

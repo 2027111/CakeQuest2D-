@@ -33,8 +33,8 @@ public class CameraMovement : MonoBehaviour
         if (currentRoomInfo)
         {
 
-        targetPos.x = Mathf.Clamp(targetPos.x, currentRoomInfo.minCameraOffset.x, currentRoomInfo.maxCameraOffset.x);
-        targetPos.y = Mathf.Clamp(targetPos.y, currentRoomInfo.minCameraOffset.y, currentRoomInfo.maxCameraOffset.y);
+            targetPos.x = Mathf.Clamp(targetPos.x, currentRoomInfo.minCameraOffset.x, currentRoomInfo.maxCameraOffset.x);
+            targetPos.y = Mathf.Clamp(targetPos.y, currentRoomInfo.minCameraOffset.y, currentRoomInfo.maxCameraOffset.y);
         }
         return targetPos;
     }
@@ -74,5 +74,5 @@ public class CameraMovement : MonoBehaviour
         }
     }
 
-    
+
 }

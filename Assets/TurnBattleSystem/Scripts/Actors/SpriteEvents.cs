@@ -33,21 +33,33 @@ public class SpriteEvents : MonoBehaviour
         character.PlaySFX(walkSound);
     }
 
-    private void Update()
+     public void MakeEnemyContained()
     {
-
-        if (character != null)
-        { 
-            GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(character.transform.position.y * 100f) * -1;
+        if (character.currentCommand != null)
+        {
+            foreach (BattleCharacter bc in character.currentCommand.Target)
+            {
+                bc.transform.parent = character.EnemyContainer;
+            }
         }
     }
 
+    public void MakeEnemyFree()
+    {
+        if (character.currentCommand != null)
+        {
+            foreach (BattleCharacter bc in character.currentCommand.Target)
+            {
+                bc.transform.parent = null;
+            }
+        }
+    }
 
 
     public void SummonObjectOnTarget(int objectIndex)
     {
         Command c = character.currentCommand;
-        if(c is SkillCommand)
+        if (c is SkillCommand)
         {
 
             Skill skill = (c as SkillCommand).GetAttack();
@@ -56,36 +68,36 @@ public class SpriteEvents : MonoBehaviour
             if (prefab != null)
             {
 
-                    foreach(BattleCharacter bc in c.Target)
-                    {
-                        GameObject instantiatedObject = Instantiate(prefab, bc.transform.position, Quaternion.identity);
-                        BattleObjects battleObject = instantiatedObject.GetComponent<BattleObjects>();
+                foreach (BattleCharacter bc in c.Target)
+                {
+                    GameObject instantiatedObject = Instantiate(prefab, bc.transform.position, Quaternion.identity);
+                    BattleObjects battleObject = instantiatedObject.GetComponent<BattleObjects>();
 
-                        if (battleObject != null)
+                    if (battleObject != null)
+                    {
+                        if (c.Target.IndexOf(bc) == 0)
                         {
-                            if (c.Target.IndexOf(bc) == 0)
-                            {
-                                Stop();
-                                // Set the command on the Spell component
-                                battleObject.OnOver += Resume;
-                            }
-                            battleObject.SetTarget(bc);
-                            battleObject.SetCommand(c);
+                            Stop();
+                            // Set the command on the Spell component
+                            battleObject.OnOver += Resume;
                         }
-                        else
-                        {
-                            Debug.LogError("The instantiated object does not have a BattleObjects component.");
-                        }
+                        battleObject.SetTarget(bc);
+                        battleObject.SetCommand(c);
                     }
-            
+                    else
+                    {
+                        Debug.LogError("The instantiated object does not have a BattleObjects component.");
+                    }
+                }
+
             }
             else
             {
                 Debug.LogError($"Prefab with objectIndex '{objectIndex}' could not be found in Resources.");
             }
 
-            }
-       
+        }
+
     }
 
 
@@ -101,37 +113,37 @@ public class SpriteEvents : MonoBehaviour
             {
 
 
-                    foreach (BattleCharacter bc in c.Target)
+                foreach (BattleCharacter bc in c.Target)
+                {
+                    GameObject instantiatedObject = Instantiate(prefab, transform.position + Vector3.up, Quaternion.identity);
+                    BattleObjects battleObject = instantiatedObject.GetComponent<BattleObjects>();
+                    if (battleObject != null)
                     {
-                        GameObject instantiatedObject = Instantiate(prefab, transform.position + Vector3.up, Quaternion.identity);
-                        BattleObjects battleObject = instantiatedObject.GetComponent<BattleObjects>();
-                            if (battleObject != null)
-                            {
 
-                            if (c.Target.IndexOf(bc) == 0)
-                            {
-                                Stop();
-                                // Set the command on the Spell component
-                                battleObject.OnOver += Resume;
-                            }
-                            battleObject.SetTarget(bc);
-                            battleObject.SetCommand(c);
+                        if (c.Target.IndexOf(bc) == 0)
+                        {
+                            Stop();
+                            // Set the command on the Spell component
+                            battleObject.OnOver += Resume;
                         }
-                            else
-                            {
-                                Debug.LogError("The instantiated object does not have a BattleObjects component.");
-                            }
-                       
+                        battleObject.SetTarget(bc);
+                        battleObject.SetCommand(c);
+                    }
+                    else
+                    {
+                        Debug.LogError("The instantiated object does not have a BattleObjects component.");
                     }
 
                 }
-                else
-                {
-                    Debug.LogError($"Prefab with objectIndex '{objectIndex}' could not be found in Resources.");
-                }
 
             }
-        
+            else
+            {
+                Debug.LogError($"Prefab with objectIndex '{objectIndex}' could not be found in Resources.");
+            }
+
+        }
+
 
     }
     public void Stop()

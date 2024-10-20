@@ -27,7 +27,7 @@ public class ItemButton : ChoiceMenuButton
     public void Add()
     {
         itemAmount++;
-        itemAmountText.text ="x"+itemAmount.ToString();
+        itemAmountText.text = "x" + itemAmount.ToString();
     }
     public void SetItem(BattleItem item)
     {

@@ -35,7 +35,7 @@ public class ConditionManager : MonoBehaviour
 
     private void Start()
     {
-        foreach(ConditionEvents ev in conditionEvents)
+        foreach (ConditionEvents ev in conditionEvents)
         {
             if (ev.CheckCondition())
             {

@@ -10,7 +10,7 @@ public class IActionData : SavableObject
 
 
 
-    [JsonIgnore] public TargetType targetType ;
+    [JsonIgnore] public TargetType targetType;
     [JsonIgnore] public Friendliness friendliness = Friendliness.Friendly;
     [JsonIgnore] public TargetStateType targetStateType = TargetStateType.Alive;
     [JsonIgnore] public Element element = Element.Support;

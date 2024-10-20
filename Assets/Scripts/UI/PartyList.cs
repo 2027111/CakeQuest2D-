@@ -34,7 +34,7 @@ public class PartyList : MonoBehaviour
         cards.Clear();
         foreach (CharacterObject q in playerParty.PartyMembers)
         {
-                CreateIndicator(q);
+            CreateIndicator(q);
         }
         UpdateList();
         Appear(true);
@@ -43,7 +43,7 @@ public class PartyList : MonoBehaviour
 
     public void UpdateList()
     {
-        foreach(MemberCard card in cards)
+        foreach (MemberCard card in cards)
         {
             card.UpdateHealthBar();
         }

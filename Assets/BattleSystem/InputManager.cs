@@ -20,16 +20,16 @@ public class InputManager : Controller
     public void SetMove(InputAction.CallbackContext context)
     {
         Vector2 wasdInput = context.ReadValue<Vector2>().normalized;
-            if (context.started)
-            {
-                OnMovementPressed?.Invoke(wasdInput);
-            }
-            OnMovementHeld?.Invoke(wasdInput);
-        
+        if (context.started)
+        {
+            OnMovementPressed?.Invoke(wasdInput);
+        }
+        OnMovementHeld?.Invoke(wasdInput);
+
     }
     public void OnInputChange(PlayerInput playerInput)
     {
-        if(playerInput.currentControlScheme == "KeyboardControls")
+        if (playerInput.currentControlScheme == "KeyboardControls")
         {
             controlSettings = "keyboard";
         }
@@ -63,23 +63,23 @@ public class InputManager : Controller
         if (canInteract)
         {
 
-        if (context.performed)
-        {
-            OnSelectPressed?.Invoke();
-        }
-        if (context.canceled)
-        {
-            OnSelectReleased?.Invoke();
-        }
-        attack = context.action.triggered;
+            if (context.performed)
+            {
+                OnSelectPressed?.Invoke();
+            }
+            if (context.canceled)
+            {
+                OnSelectReleased?.Invoke();
+            }
+            attack = context.action.triggered;
         }
 
 
         if (context.performed)
         {
             OnSecretSelectPressed?.Invoke();
+        }
     }
-}
 
     public void OnReturn(InputAction.CallbackContext context)
     {

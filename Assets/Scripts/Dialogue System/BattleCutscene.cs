@@ -70,9 +70,9 @@ public class BattleCutscene : Cutscene
     {
         List<int> elementRecipe = new List<int>();
 
-        foreach(char e in weakness)
+        foreach (char e in weakness)
         {
-            if(int.TryParse(e.ToString(), out int ress))
+            if (int.TryParse(e.ToString(), out int ress))
             {
                 elementRecipe.Add(ress);
             }
@@ -94,7 +94,7 @@ public class BattleCutscene : Cutscene
 
             if (bd.CheckBattleCondition())
             {
-                b= bd;
+                b = bd;
             }
         }
         return b;

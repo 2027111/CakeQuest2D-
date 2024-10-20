@@ -53,7 +53,7 @@ public class BattleTimeline : Timeline
     public override void CutsceneOver()
     {
         base.CutsceneOver();
-        
+
     }
 
     public override void StartCinematic()
@@ -73,7 +73,7 @@ public class BattleTimeline : Timeline
         {
             if (storagePlay)
             {
-                if(storagePlay is BattleCutscene)
+                if (storagePlay is BattleCutscene)
                 {
                     if (((BattleCutscene)storagePlay).GetPlayableLine() != null)
                     {

@@ -30,7 +30,7 @@ public class LanguageDataHolder
         if (Data != null)
         {
             string jsonData = JsonConvert.SerializeObject(this, Formatting.Indented);
-            System.IO.File.WriteAllText(path+".json", jsonData);
+            System.IO.File.WriteAllText(path + ".json", jsonData);
             Debug.Log($"Data list saved to {path}");
         }
         else
@@ -53,7 +53,7 @@ public class LanguageData
     public Dictionary<string, string> GlobalColors;
     public List<GlobalColor> globalColors = new List<GlobalColor>();
     public static Language language = Language.Français;
-    public  Language localLanguage = Language.Français;
+    public Language localLanguage = Language.Français;
     public static Language defaultLanguage = Language.Français;
     private static LanguageData _singleton;
     public static LanguageData Singleton
@@ -83,7 +83,7 @@ public class LanguageData
     }
     public static bool Loaded()
     {
-        if(_singleton != null)
+        if (_singleton != null)
         {
             return _singleton.localLanguage == language;
         }
@@ -95,7 +95,7 @@ public class LanguageData
     {
         if (globalColors != null && globalColors.Count > 0)
         {
-            if(GlobalColors == null)
+            if (GlobalColors == null)
             {
                 GlobalColors = new Dictionary<string, string>();
             }
@@ -213,19 +213,20 @@ public class LanguageData
 
 
         LanguageData combinedData = new LanguageData();
-        try { 
-        string jsonFile = System.IO.File.ReadAllText(path);
-
-
-        if (jsonFile == null)
+        try
         {
-            Debug.LogError($"Loaded asset is not a TextAsset for {path}");
-        }
+            string jsonFile = System.IO.File.ReadAllText(path);
+
+
+            if (jsonFile == null)
+            {
+                Debug.LogError($"Loaded asset is not a TextAsset for {path}");
+            }
             LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile);
             if (data != null)
             {
 
-                if(filter != JsonDataType.None)
+                if (filter != JsonDataType.None)
                 {
 
                     List<JsonData> toRemove = new List<JsonData>();
@@ -237,7 +238,7 @@ public class LanguageData
                         {
 
                             toRemove.Add(j);
-                        
+
                         }
 
                     }
@@ -245,11 +246,11 @@ public class LanguageData
                     {
 
                         data.Data.Remove(j);
-                    
+
                     }
 
                 }
-             
+
 
 
                 if (data.Data != null)
@@ -262,13 +263,13 @@ public class LanguageData
                 }
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
 
             Debug.LogError($"No File at {path} : {e}");
         }
 
-       
+
 
 
         return combinedData;
@@ -287,21 +288,21 @@ public class LanguageData
         {
             if (jsonFile.name.EndsWith(languageSuffix))
             {
-                
 
-                    LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
-                    if (data != null)
+
+                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+                if (data != null)
+                {
+                    if (data.Data != null)
                     {
-                        if (data.Data != null)
-                        {
-                            combinedData.Data.AddRange(data.Data);
-                        }
-                        if (data.globalColors != null)
-                        {
-                            combinedData.globalColors.AddRange(data.globalColors);
-                        }
+                        combinedData.Data.AddRange(data.Data);
                     }
-                
+                    if (data.globalColors != null)
+                    {
+                        combinedData.globalColors.AddRange(data.globalColors);
+                    }
+                }
+
             }
             yield return null;
         }
@@ -314,7 +315,7 @@ public class LanguageData
     {
         string languageSuffix = GetLanguageSuffix();
 
-        ResourceRequest request= Resources.LoadAsync<TextAsset>($"translation/{languageSuffix}");
+        ResourceRequest request = Resources.LoadAsync<TextAsset>($"translation/{languageSuffix}");
         yield return request;
 
         if (request.asset == null)
@@ -333,20 +334,20 @@ public class LanguageData
         }
         LanguageData combinedData = new LanguageData();
 
-                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
-                if (data != null)
-                {
-                    if (data.Data != null)
-                    {
-                        combinedData.Data.AddRange(data.Data);
-                    }
-                    if (data.globalColors != null)
-                    {
-                        combinedData.globalColors.AddRange(data.globalColors);
-                    }
-                }
+        LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+        if (data != null)
+        {
+            if (data.Data != null)
+            {
+                combinedData.Data.AddRange(data.Data);
+            }
+            if (data.globalColors != null)
+            {
+                combinedData.globalColors.AddRange(data.globalColors);
+            }
+        }
 
-        
+
         Singleton = combinedData;
         Singleton.localLanguage = language;
         onComplete?.Invoke();
@@ -371,11 +372,11 @@ public class LanguageData
         {
             return new JsonData(id, "");
         }
-        if(Singleton.translationData == null)
+        if (Singleton.translationData == null)
         {
             return new JsonData(id, "");
         }
-        if(Singleton.translationData.TryGetValue(id, out JsonData value))
+        if (Singleton.translationData.TryGetValue(id, out JsonData value))
         {
             return value;
         }
@@ -458,14 +459,14 @@ public class JsonData
 
         return false;
     }
-        public string GetValueByKey(string key, bool nullable = true)
+    public string GetValueByKey(string key, bool nullable = true)
     {
 
         string returnValue = "";
         if (!nullable)
         {
             returnValue = $"{ dataId}.{ key}";
-            
+
         }
         if (string.IsNullOrEmpty(jsonData))
         {
@@ -475,48 +476,48 @@ public class JsonData
         {
 
 
-        try
-        {
-            // Deserialize the jsonData string into a SerializableDictionary
-            Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonData);
-
-            if (values.TryGetValue(key, out string value))
+            try
             {
-                // Replace <sprite name=something> with <sprite name=something_else>
-                string pattern = @"<sprite name=([\w\d_]+)>";
-                string replacedText = Regex.Replace(value, pattern, match =>
-                {
-                    string originalName = match.Groups[1].Value;
-                    string newName = $"{originalName}_{InputManager.controlSettings}"; // Example replacement
-                    return $"<sprite name={newName}>";
-                });
+                // Deserialize the jsonData string into a SerializableDictionary
+                Dictionary<string, string> values = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonData);
 
-                // Replace {colorName} placeholders with corresponding values from GlobalColors
-                pattern = @"\{color_([\w\d_]+)\}";
-                replacedText = Regex.Replace(replacedText, pattern, match =>
+                if (values.TryGetValue(key, out string value))
                 {
-                    string placeholder = match.Groups[1].Value;
-                    if (LanguageData.Singleton.GlobalColors.TryGetValue(placeholder, out string colorValue))
+                    // Replace <sprite name=something> with <sprite name=something_else>
+                    string pattern = @"<sprite name=([\w\d_]+)>";
+                    string replacedText = Regex.Replace(value, pattern, match =>
                     {
-                        return colorValue;
-                    }
-                    return match.Value;
-                });
-                returnValue = replacedText;
-            }
-            else
-            {
-                Debug.LogWarning($"Key '{key}' not found in JSON data.");
-                if (key == "line")
-                {
-                    returnValue = $"No Line Found with Key '{dataId} | {key}'";
-                }
-            }
+                        string originalName = match.Groups[1].Value;
+                        string newName = $"{originalName}_{InputManager.controlSettings}"; // Example replacement
+                    return $"<sprite name={newName}>";
+                    });
 
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"Error parsing JSON data: {e.Message}");
+                    // Replace {colorName} placeholders with corresponding values from GlobalColors
+                    pattern = @"\{color_([\w\d_]+)\}";
+                    replacedText = Regex.Replace(replacedText, pattern, match =>
+                    {
+                        string placeholder = match.Groups[1].Value;
+                        if (LanguageData.Singleton.GlobalColors.TryGetValue(placeholder, out string colorValue))
+                        {
+                            return colorValue;
+                        }
+                        return match.Value;
+                    });
+                    returnValue = replacedText;
+                }
+                else
+                {
+                    Debug.LogWarning($"Key '{key}' not found in JSON data.");
+                    if (key == "line")
+                    {
+                        returnValue = $"No Line Found with Key '{dataId} | {key}'";
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error parsing JSON data: {e.Message}");
 
             }
         }

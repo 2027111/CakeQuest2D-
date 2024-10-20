@@ -27,11 +27,11 @@ public class Movement : MonoBehaviour
     void Start()
     {
 
-   
+
 
 
         rb2D = GetComponent<Rigidbody2D>();
-        
+
     }
 
     public void SetInput(Vector2 direction)
@@ -74,8 +74,8 @@ public class Movement : MonoBehaviour
 
     public void SetPosition(Vector3 newPosition)
     {
-            transform.position = newPosition;
-        
+        transform.position = newPosition;
+
     }
 
 

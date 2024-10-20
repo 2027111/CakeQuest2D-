@@ -12,6 +12,7 @@ public class AttackInformation
     public Element element;
     public BattleCharacter source;
     public string ID;
+    public bool textEffectShown = false;
     public int RecipeIndex = 0;
     public Command command;
 
@@ -21,7 +22,7 @@ public class AttackInformation
 
         if (string.IsNullOrEmpty(this.ID))
         {
-            this.ID = Guid.NewGuid().ToString();
+            this.ID = currentCommand.commandID;
         }
         this.attack = actionData;
         if (attack)
@@ -45,7 +46,7 @@ public class AttackInformation
     public void HandleRecipe(BattleCharacter target)
     {
 
-        if(element != Element.None && element != Element.Support)
+        if (element != Element.None && element != Element.Support)
         {
             if (target.HandleRecipe(this))
             {

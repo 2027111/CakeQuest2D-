@@ -106,7 +106,7 @@ public class Entity : MonoBehaviour
             {
                 Health += amount;
             }
-            if(amount < 0)
+            if (amount < 0)
             {
                 if (!isDead)
                 {
@@ -115,7 +115,7 @@ public class Entity : MonoBehaviour
                     character.StopBlock();
                 }
             }
-            else if(amount > 0)
+            else if (amount > 0)
             {
                 if (isDead)
                 {
@@ -123,14 +123,14 @@ public class Entity : MonoBehaviour
                     character.Animator.Revive();
                 }
             }
-        } 
+        }
         if (character)
         {
             OnHealthChange?.Invoke(Health, character.GetReference().MaxHealth);
         }
     }
-    
-    
+
+
 
     public void AddToHealth(AttackInformation attackInfo)
     {
@@ -146,7 +146,7 @@ public class Entity : MonoBehaviour
 
 
 
-        
+
 
         if (attackInfo.element != Element.Support)
         {
@@ -168,10 +168,8 @@ public class Entity : MonoBehaviour
 
             if (lastAttack != null)
             {
-
-                if(attackInfo.attack == null|| attackInfo.command != lastAttack.command)
+                if (attackInfo.ID != lastAttack.ID)
                 {
-
                     attackInfo.HandleRecipe(character);
                 }
             }
@@ -181,8 +179,19 @@ public class Entity : MonoBehaviour
             }
 
         }
-
-        if(attackInfo.effect == ElementEffect.RecipeCompleted)
+        if (attackInfo.effect == ElementEffect.RecipeBoosted)
+        {
+            if (attackInfo.source.IsPlayerTeam())
+            {
+                if (attackInfo.source == BattleManager.Singleton.GetActor())
+                {
+                    StartCoroutine(Utils.SlowDown(3f, .1f));
+                    CamManager.PanToCharacter(attackInfo.source);
+                    attackInfo.source.CancelAttack();
+                }
+            }
+        }
+        if (attackInfo.effect == ElementEffect.RecipeCompleted)
         {
             GameObject obj = Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
             Vector3 rotation = Vector3.zero;
@@ -191,7 +200,10 @@ public class Entity : MonoBehaviour
                 rotation.z = 180;
             }
             obj.transform.rotation = Quaternion.Euler(rotation);
+
+            StartCoroutine(Utils.SlowDown(.8f, .5f));
         }
+
 
 
 
@@ -217,7 +229,7 @@ public class Entity : MonoBehaviour
                 {
                     GameObject obj = Instantiate(attackInfo.source.GetReference().GetHitEffect(), transform.position + Vector3.up, Quaternion.identity);
                     Vector3 rotation = Vector3.zero;
-                    if(character.IsFacing()  == -1)
+                    if (character.IsFacing() == -1)
                     {
                         rotation.z = 180;
                     }
@@ -300,7 +312,7 @@ public class Entity : MonoBehaviour
     public void LoadReference()
     {
         Health = character.GetReference().Health;
-        Mana =character.GetReference().Mana;
+        Mana = character.GetReference().Mana;
         isDead = character.GetReference().isDead;
 
         if (isDead)

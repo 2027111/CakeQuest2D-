@@ -38,11 +38,11 @@ RectTransform:
   - {fileID: 5915036037156633266}
   - {fileID: 5915036037335027267}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 13}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.89, y: 0.03}
+  m_AnchoredPosition: {x: -2.8900146, y: 0.030029297}
   m_SizeDelta: {x: 2, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &938557487470052139
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &938557487470052133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,6 +377,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 938557487470052138}
     m_Modifications:
+    - target: {fileID: 1264004375795214070, guid: ed21eec028d69ca42b76ac4f39ce44a6, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1264004375795214072, guid: ed21eec028d69ca42b76ac4f39ce44a6, type: 3}
       propertyPath: m_Name
       value: UpButton

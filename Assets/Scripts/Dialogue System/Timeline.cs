@@ -141,7 +141,7 @@ public class Timeline : MonoBehaviour
     {
         if (!CheckCondition())
         {
-                return false;
+            return false;
         }
         if (storagePlay)
         {
@@ -150,7 +150,8 @@ public class Timeline : MonoBehaviour
         return false;
     }
 
-    public void FadeTo() { 
+    public void FadeTo()
+    {
     }
     public void PlayCutscene()
     {

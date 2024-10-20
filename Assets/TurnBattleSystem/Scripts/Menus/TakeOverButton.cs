@@ -28,7 +28,7 @@ public class TakeOverButton : ChoiceMenuButton
     {
 
         PlayTakeOverClip();
-        
+
         battleCharacter.PlaySFX(confirmAudioClip);
     }
 

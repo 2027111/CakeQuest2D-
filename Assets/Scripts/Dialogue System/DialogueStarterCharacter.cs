@@ -11,7 +11,7 @@ public class DialogueStarterCharacter : NewDialogueStarterObject
 
 
 
-   
+
     public override void DialogueAction()
     {
 

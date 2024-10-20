@@ -48,7 +48,7 @@ public class CharacterObject : SavableObject
     [Space(20)]
     [JsonIgnore] public int recipeLength = 3;
 
-    
+
 
 
 
@@ -76,7 +76,7 @@ public class CharacterObject : SavableObject
                 yield return null;
             }
             Skill loadedSkill = request.asset as Skill;
-                Attacks.Add(loadedSkill);
+            Attacks.Add(loadedSkill);
             yield return null;
         }
         yield return null;

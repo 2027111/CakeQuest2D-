@@ -16,7 +16,8 @@ public class PauseMenuMover : MonoBehaviour
         if (newIndex >= transform.childCount)
         {
             newIndex = 0;
-        }else if (newIndex < 0)
+        }
+        else if (newIndex < 0)
         {
             newIndex = transform.childCount - 1;
         }
@@ -29,7 +30,7 @@ public class PauseMenuMover : MonoBehaviour
 
     public void TurnOffMenu()
     {
-        for(int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(i == index);
         }
@@ -40,7 +41,8 @@ public class PauseMenuMover : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             ChangeMenu(1);
-        } else if (Input.GetKeyDown(KeyCode.K))
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
         {
             ChangeMenu(-1);
         }

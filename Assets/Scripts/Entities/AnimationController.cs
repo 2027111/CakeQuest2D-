@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimationController : MonoBehaviour
 {
 
-    
+
     [SerializeField] Animator anim;
     private bool Animate = true;
     Movement pm;
@@ -53,17 +53,17 @@ public class AnimationController : MonoBehaviour
 
 
     public void LookAt(Vector2 direction)
+    {
+        if (Animate)
         {
-            if (Animate)
+
+            if (anim)
             {
-
-                if (anim)
-                {
-                    anim.SetFloat("HorizontalMov", direction.x);
-                    anim.SetFloat("VerticalMov", direction.y);
-                }
-
+                anim.SetFloat("HorizontalMov", direction.x);
+                anim.SetFloat("VerticalMov", direction.y);
             }
+
         }
+    }
 
 }

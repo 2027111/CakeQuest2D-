@@ -9,22 +9,21 @@ public class Utils
 
 
 
-    public static IEnumerator SlowDown(float duration = .1f, float timeFactor = .5f)
+    public static IEnumerator SlowDown(float duration, float timeFactor)
     {
 
         float t = 0;
         Time.timeScale = timeFactor;
-        while(t < duration)
+        while (t < duration)
         {
 
-            if(Time.timeScale == 1)
+            if (Time.timeScale == 1)
             {
                 t = duration;
             }
             t += Time.deltaTime / Time.timeScale;
             yield return null;
         }
-
 
         Time.timeScale = 1;
     }

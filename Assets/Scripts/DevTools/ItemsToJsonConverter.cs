@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 
-public class ItemsToJsonConverter: MonoBehaviour
+public class ItemsToJsonConverter : MonoBehaviour
 {
     public List<InventoryItem> items; // Assign skills in the Inspector
 

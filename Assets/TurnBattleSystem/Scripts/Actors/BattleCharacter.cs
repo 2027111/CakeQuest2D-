@@ -16,9 +16,10 @@ public class BattleCharacter : MonoBehaviour
     [SerializeField] CharacterObject currentCharacter;
     public CharacterState currentState;
     public BattleCharacter _target;
-
+    public Transform EnemyContainer;
 
     public bool isActing = false;
+    public bool isInAttackPos = false;
 
     public bool isBlocking = false;
     public bool isParrying = false;
@@ -36,12 +37,12 @@ public class BattleCharacter : MonoBehaviour
 
     public int recipeIndex = 0;
     public List<ElementalAttribute> recipe;
- 
+
 
     void Start()
     {
 
-        
+
         //speed = currentCharacter.Speed;
         Animator = GetComponent<AnimatorController>();
         Entity = GetComponent<Entity>();
@@ -69,15 +70,15 @@ public class BattleCharacter : MonoBehaviour
     }
     public bool HandleRecipe(AttackInformation attackInfo)
     {
-        if(recipe.Count > recipeIndex)
+        if (recipe.Count > recipeIndex)
         {
-            if(recipe[recipeIndex].element == attackInfo.element)
+            if (recipe[recipeIndex].element == attackInfo.element)
             {
                 recipe[recipeIndex].found = true;
                 recipeIndex++;
                 attackInfo.MatchedRecipe(recipeIndex);
 
-                if(recipeIndex == recipe.Count)
+                if (recipeIndex == recipe.Count)
                 {
                     attackInfo.effect = ElementEffect.RecipeCompleted;
                     SetRecipe();
@@ -101,7 +102,7 @@ public class BattleCharacter : MonoBehaviour
 
     public bool WillKokusen(Command command)//Lets know the current command if the current attack will be the last of a recipe.
     {
-        if(command is AttackCommand)
+        if (command is AttackCommand)
         {
             if (recipeIndex == recipe.Count - 1)
             {
@@ -117,7 +118,7 @@ public class BattleCharacter : MonoBehaviour
 
     public void RevealRecipe()//Reveals the entirety of the current Battle Characters recipe
     {
-        foreach(ElementalAttribute ee in recipe)
+        foreach (ElementalAttribute ee in recipe)
         {
             ee.found = true;
         }
@@ -153,7 +154,7 @@ public class BattleCharacter : MonoBehaviour
     public Command CreateCommand() //Creates a random command using the character references skill set.
     {
         float prob = Random.Range(0f, 100f);
-        if(prob > 50)
+        if (prob > 50)
         {
             return new AttackCommand();
         }
@@ -173,7 +174,7 @@ public class BattleCharacter : MonoBehaviour
 
     public int IsFacing()//Lets know which direction the battlecharacter is facing (-1 being left and 1 being right)
     {
-        return IsPlayerTeam()?-1:1;
+        return IsPlayerTeam() ? -1 : 1;
     }
 
     private Skill GetRandomAttack() //returns a random skill from the character reference.
@@ -181,17 +182,28 @@ public class BattleCharacter : MonoBehaviour
 
         List<Skill> returnAttacks = new List<Skill>();
         List<Skill> possibleAttacks = GetAttacks();
-        foreach(Skill attack in possibleAttacks){
+        foreach (Skill attack in possibleAttacks)
+        {
             if (BattleManager.Singleton.GetPossibleTarget(attack, this).Count > 0)
             {
                 returnAttacks.Add(attack);
             }
         }
-        if(returnAttacks.Count == 0)
+        if (returnAttacks.Count == 0)
         {
             return null;
         }
         return returnAttacks[Random.Range(0, returnAttacks.Count)];
+    }
+
+    public void CancelAttack()
+    {
+        Debug.Log("Cancelled Command");
+        if(currentCommand is AttackCommand)
+        {
+            //(currentCommand as AttackCommand).CancelCommand();
+        }
+
     }
 
     public List<Skill> GetAttacks() //returns everyskill of the current character reference.
@@ -260,9 +272,9 @@ public class BattleCharacter : MonoBehaviour
     }
     public Skill GetAttack(string v) //returns an attack with the name 
     {
-        foreach(Skill attack in GetAttacks())
+        foreach (Skill attack in GetAttacks())
         {
-            if(attack.ToString() == v)
+            if (attack.ToString() == v)
             {
                 return attack;
             }
@@ -304,7 +316,7 @@ public class BattleCharacter : MonoBehaviour
     }
     public void PlayVoiceLine(AudioClip audioClip)
     {
-        
+
         PlayAudioClip(voiceAudioSource, audioClip);
     }
 
@@ -321,7 +333,7 @@ public class BattleCharacter : MonoBehaviour
     public void SetReference(CharacterObject characterObject)
     {
         currentCharacter = characterObject;
-        ResetAnimatorController(); 
+        ResetAnimatorController();
     }
 
     public void Flip(int flipIndex)
@@ -332,7 +344,7 @@ public class BattleCharacter : MonoBehaviour
     public bool IsTargetted()
     {
         List<BattleCharacter> targets = BattleManager.Singleton.GetCurrentTarget();
-        return targets.Count > 0? targets.Contains(this):false;
+        return targets.Count > 0 ? targets.Contains(this) : false;
     }
 
 

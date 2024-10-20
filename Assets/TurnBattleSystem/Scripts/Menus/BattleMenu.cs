@@ -18,14 +18,15 @@ public class BattleMenu : ChoiceMenu
     {
         BattleManager.Singleton.ChangeState(new SwapingState());
     }
-   public void OpenSkillMenu()
+    public void OpenSkillMenu()
     {
 
         BattleManager.Singleton.ChangeState(new ChoosingSkillState());
     }
     public void OpenItemMenu()
     {
-        if (BattleManager.Singleton.GetPlayerItems().Count > 0) { 
+        if (BattleManager.Singleton.GetPlayerItems().Count > 0)
+        {
             BattleManager.Singleton.ChangeState(new ChoosingItemState());
         }
     }

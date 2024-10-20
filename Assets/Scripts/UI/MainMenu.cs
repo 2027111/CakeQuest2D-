@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Transform LoadMenuContainer;
     [SerializeField] string firstScene;
     [SerializeField] RoomInfo firstRoom;
-   
+
     [SerializeField] TMP_Dropdown languageDropdown;
     [SerializeField] List<UIMenu> Menus;
 
@@ -31,15 +31,17 @@ public class MainMenu : MonoBehaviour
             Destroy(UICanvas.Singleton.gameObject);
         }
 
-        GameSaveManager.Singleton.StartLoadingFiles(delegate { OpenMenu(0); 
+        GameSaveManager.Singleton.StartLoadingFiles(delegate
+        {
+            OpenMenu(0);
 
-        ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveFiles() > 0);
+            ContinueButton.gameObject.SetActive(GameSaveManager.Singleton.GetNumberOfSaveFiles() > 0);
         });
 
 
     }
-    
-   
+
+
 
     public void OpenLoadMenu()
     {
@@ -56,7 +58,7 @@ public class MainMenu : MonoBehaviour
             button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
             int index = i;
             button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
-            if(index == 0)
+            if (index == 0)
             {
                 button.GetComponent<Button>().Select();
             }
@@ -74,7 +76,7 @@ public class MainMenu : MonoBehaviour
 
     public void CloseAll()
     {
-        foreach(UIMenu g in Menus)
+        foreach (UIMenu g in Menus)
         {
             g.CloseMenu();
         }
@@ -105,7 +107,7 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
-        OnContinue?.Invoke(); 
+        OnContinue?.Invoke();
         GoToGame();
     }
 

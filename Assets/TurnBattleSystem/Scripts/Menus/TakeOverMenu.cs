@@ -11,7 +11,7 @@ public class TakeOverMenu : ChoiceMenu
 
     public void GiveTakeOvers(List<BattleCharacter> takeOvers, PerformActionState state)
     {
-        if(takeOvers.Count == 0)
+        if (takeOvers.Count == 0)
         {
             DestroyMenu();
         }
@@ -32,7 +32,7 @@ public class TakeOverMenu : ChoiceMenu
 
     public void DestroyMenu()
     {
-        foreach(GameObject button in buttons)
+        foreach (GameObject button in buttons)
         {
             button.GetComponent<TakeOverButton>().Over();
         }

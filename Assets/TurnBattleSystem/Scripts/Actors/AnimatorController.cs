@@ -70,25 +70,25 @@ public class AnimatorController : MonoBehaviour
 
     public AnimatorClipInfo GetCurrentAnim()
     {
-            if (anim == null)
-            {
-                Debug.LogWarning("Animator component is missing.");
-                return new AnimatorClipInfo();
-            }
-
-            AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
-
-            if (!stateInfo.IsName(""))
-            {
-                AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
-                if (clipInfo.Length > 0)
-                {
-                    return clipInfo[0];
-                }
-            }
-
-            Debug.LogWarning("No animation clips found or no animation is playing.");
+        if (anim == null)
+        {
+            Debug.LogWarning("Animator component is missing.");
             return new AnimatorClipInfo();
+        }
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (!stateInfo.IsName(""))
+        {
+            AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+            if (clipInfo.Length > 0)
+            {
+                return clipInfo[0];
+            }
+        }
+
+        Debug.LogWarning("No animation clips found or no animation is playing.");
+        return new AnimatorClipInfo();
     }
 
     public float GetCurrentAnimTime()
@@ -128,7 +128,7 @@ public class AnimatorController : MonoBehaviour
     public void Move(bool isMoving)
     {
         anim.speed = 1;
-        anim?.SetBool("moving",isMoving);
+        anim?.SetBool("moving", isMoving);
     }
 
     public RuntimeAnimatorController GetController()

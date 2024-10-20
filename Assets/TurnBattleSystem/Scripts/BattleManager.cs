@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour
 
     private List<GameObject> currentCursor = new List<GameObject>();
     public BattleTimeline timeline;
- 
+
 
     public BattleCharacter currentActor;
 
@@ -93,9 +93,9 @@ public class BattleManager : MonoBehaviour
     {
         List<BattleItem> battleItems = new List<BattleItem>();
 
-        foreach(InventoryItem item in playerInventory.myInventory)
+        foreach (InventoryItem item in playerInventory.myInventory)
         {
-            if(item is BattleItem)
+            if (item is BattleItem)
             {
                 battleItems.Add((BattleItem)item);
             }
@@ -107,12 +107,12 @@ public class BattleManager : MonoBehaviour
 
     public void SetControlText(string v)
     {
-            battleControlText.text = v;
+        battleControlText.text = v;
     }
     public void SetIndicationText(string v)
     {
-            battleIndicationText.text = v;
-        
+        battleIndicationText.text = v;
+
     }
 
 
@@ -146,10 +146,11 @@ public class BattleManager : MonoBehaviour
     {
         int firstTurn = turn;
         int nextturn;
-        for (nextturn = turn; nextturn <= Actors.Count; nextturn++){
+        for (nextturn = turn; nextturn <= Actors.Count; nextturn++)
+        {
 
 
-            if(nextturn < Actors.Count)
+            if (nextturn < Actors.Count)
             {
 
                 if (nextturn != firstTurn)
@@ -203,7 +204,7 @@ public class BattleManager : MonoBehaviour
         return GetPossibleTarget(GetActor().currentCommand);
     }
 
-    
+
     public List<BattleCharacter> GetPossibleTarget(Skill a, BattleCharacter Source)
     {
         if (a == null)
@@ -216,7 +217,7 @@ public class BattleManager : MonoBehaviour
     }
     public List<BattleCharacter> GetPossibleTarget(Command c)
     {
-        if (c  == null)
+        if (c == null)
         {
             return new List<BattleCharacter>();
         }
@@ -233,7 +234,7 @@ public class BattleManager : MonoBehaviour
             {
 
                 // Check if the command is friendly or not and add appropriate targets
-                if ((c.friendliness == Friendliness.Friendly && characterTeamIndex == sourceTeamIndex) || (c.friendliness == Friendliness.Non_Friendly && characterTeamIndex != sourceTeamIndex)||(c.friendliness == Friendliness.Neutral))
+                if ((c.friendliness == Friendliness.Friendly && characterTeamIndex == sourceTeamIndex) || (c.friendliness == Friendliness.Non_Friendly && characterTeamIndex != sourceTeamIndex) || (c.friendliness == Friendliness.Neutral))
                 {
                     possibleTargets.Add(character);
                 }
@@ -254,9 +255,9 @@ public class BattleManager : MonoBehaviour
 
     public BattleCharacter RandomActor(TeamIndex player)
     {
-        foreach(BattleCharacter b in Actors)
+        foreach (BattleCharacter b in Actors)
         {
-            if(b.GetTeam() == player)
+            if (b.GetTeam() == player)
             {
                 return b;
             }
@@ -277,16 +278,16 @@ public class BattleManager : MonoBehaviour
     {
         int index = vs[0];
 
-        if(index < EnemyPartyActors.Count)
+        if (index < EnemyPartyActors.Count)
         {
 
             List<ElementalAttribute> attributes = new List<ElementalAttribute>();
 
-                for (int i = 1; i < vs.Length; i++)
-                {
-                    ElementalAttribute newAttribute = new ElementalAttribute(vs[i], true);
-                    attributes.Add(newAttribute);
-                }
+            for (int i = 1; i < vs.Length; i++)
+            {
+                ElementalAttribute newAttribute = new ElementalAttribute(vs[i], true);
+                attributes.Add(newAttribute);
+            }
 
 
 
@@ -296,9 +297,9 @@ public class BattleManager : MonoBehaviour
                 BattleCharacter enemy = EnemyPartyActors[vs[0]];
                 enemy.SetRecipe(attributes);
             }
-            else if(index == -1)
+            else if (index == -1)
             {
-                foreach(BattleCharacter enemy in EnemyPartyActors)
+                foreach (BattleCharacter enemy in EnemyPartyActors)
                 {
 
                     enemy.SetRecipe(attributes);
@@ -352,7 +353,7 @@ public class BattleManager : MonoBehaviour
         {
             if (currentBattleInfo.battleInfo)
             {
-                if(currentBattleInfo.battleInfo.FightParty.Count > 0)
+                if (currentBattleInfo.battleInfo.FightParty.Count > 0)
                 {
 
                     EnemyParty.SetParty(currentBattleInfo.battleInfo.FightParty);
@@ -460,7 +461,7 @@ public class BattleManager : MonoBehaviour
 
     public void ChangeState(BattleState state)
     {
-      
+
         BattleState?.OnExit();
         BattleState = state;
         BattleState.OnEnter(this);
@@ -471,13 +472,13 @@ public class BattleManager : MonoBehaviour
     }
     private void SpawnPartyCards()
     {
-        foreach(BattleCharacter actor in Actors)
+        foreach (BattleCharacter actor in Actors)
         {
-            if(actor.GetTeam() == TeamIndex.Player)
+            if (actor.GetTeam() == TeamIndex.Player)
             {
                 GameObject PartyCard = Instantiate(CardUIPrefab, CardUIContainer);
                 PartyCard.GetComponent<PartyCard>().SetPlayerRef(actor);
-                
+
             }
             else
             {
@@ -489,7 +490,7 @@ public class BattleManager : MonoBehaviour
 
     public void ResetPartyCards()
     {
-        foreach(Transform child in CardUIContainer)
+        foreach (Transform child in CardUIContainer)
         {
             Destroy(child.gameObject);
         }
@@ -504,7 +505,7 @@ public class BattleManager : MonoBehaviour
     {
         if (resetCursors)
         {
-            foreach(GameObject cursor in currentCursor)
+            foreach (GameObject cursor in currentCursor)
             {
                 Destroy(cursor);
             }
@@ -512,7 +513,7 @@ public class BattleManager : MonoBehaviour
         }
         if (character)
         {
-            
+
             GameObject cursor = Instantiate(CursorPrefab, character.transform.position + (Vector3.up * 3.1f), Quaternion.identity, character.transform);
             cursor.GetComponent<Blink>().SetDefaultColor(TeamComponent.TeamColor(character.GetTeam()));
             currentCursor.Add(cursor);
@@ -543,10 +544,9 @@ public class BattleManager : MonoBehaviour
         }
 
 
-        layerOrder = currentParty.IndexOf(battleCharacter)%2;
+        layerOrder = currentParty.IndexOf(battleCharacter) % 2;
         basePosition += direction * currentParty.IndexOf(battleCharacter);
         basePosition += (Vector3.down / 2) * (layerOrder);
-        battleCharacter.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
 
 
         return basePosition;
@@ -556,7 +556,6 @@ public class BattleManager : MonoBehaviour
     {
         Vector2 Position = PlayerSpawnPoint.position;
         int FlipIndex = 1;
-        int layerOrder = 0;
         GameObject CharacterGameObject = Instantiate(BattlePrefab, Position, Quaternion.identity);
         BattleCharacter battleCharacterObject = CharacterGameObject.GetComponent<BattleCharacter>();
         battleCharacterObject.SetReference(characterObject);
@@ -568,12 +567,10 @@ public class BattleManager : MonoBehaviour
 
                 CharacterGameObject.GetComponent<Entity>().LoadReference();
                 HeroPartyActors.Add(battleCharacterObject);
-                layerOrder = HeroPartyActors.IndexOf(battleCharacterObject) % 2;
                 break;
             case TeamIndex.Enemy:
                 CharacterGameObject.GetComponent<Entity>().LoadReferenceRefreshed();
                 EnemyPartyActors.Add(battleCharacterObject);
-                layerOrder = EnemyPartyActors.IndexOf(battleCharacterObject) % 2;
                 FlipIndex = -1;
                 break;
 
@@ -583,7 +580,6 @@ public class BattleManager : MonoBehaviour
         battleCharacterObject.SetTeam(index);
         CharacterGameObject.name = characterObject.characterData.characterName + Actors.Count;
 
-        CharacterGameObject.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerOrder;
 
 
 
@@ -672,33 +668,33 @@ public class BattleManager : MonoBehaviour
     {
         foreach (BattleCharacter character in party)
         {
-                if (!character.Entity.isDead)
-                {
-                    return true;
-                }
-            
+            if (!character.Entity.isDead)
+            {
+                return true;
+            }
+
         }
         return false;
     }
 
-    public void FadeBackground(bool ToBlack, float fadeDuration = .1f)
+    public void FadeBackground(bool ToBlack, float fadeDuration = .1f, float waitforit = 0)
     {
-        StartCoroutine(FadeBackgroundTo(ToBlack, fadeDuration));
+        StartCoroutine(FadeBackgroundTo(ToBlack, fadeDuration, waitforit));
     }
 
-    public IEnumerator FadeBackgroundTo(bool ToBlack, float fadeDuration = .1f)
+    public IEnumerator FadeBackgroundTo(bool ToBlack, float fadeDuration = .1f, float waitforit = 0)
     {
         float target = ToBlack ? .8f : 0;
         float start = ToBlack ? 0 : .8f;
         float t = 0;
         SpriteRenderer sr = fadeBackground.GetComponent<SpriteRenderer>();
-        if(sr.color.a == target)
+        if (sr.color.a == target)
         {
 
             t = fadeDuration;
         }
         while (t < fadeDuration)
-            {
+        {
             float alpha = Mathf.Lerp(start, target, (t / fadeDuration));
             sr.color = new Color(0, 0, 0, alpha);
             t += Time.deltaTime;
@@ -706,6 +702,7 @@ public class BattleManager : MonoBehaviour
         }
 
         sr.color = new Color(0, 0, 0, target);
+
         yield return null;
     }
 
@@ -755,7 +752,7 @@ public class BattleManager : MonoBehaviour
     public void NextTurn()
     {
         turn = GetNextTurnIndex();
-        if(turn == 0)
+        if (turn == 0)
         {
             numberOfLoops++;
         }
@@ -781,24 +778,25 @@ public class BattleManager : MonoBehaviour
         }
         else
         {
-        if (GetActor().Entity.isDead)
-        {
-            GetActor().currentCommand = new DeadCommand();
-            GetActor().currentCommand.SetSource(GetActor());
-            ChangeState(new PerformActionState());
-        }else if (GetActor().IsPlayerTeam())
-        {
+            if (GetActor().Entity.isDead)
+            {
+                GetActor().currentCommand = new DeadCommand();
+                GetActor().currentCommand.SetSource(GetActor());
+                ChangeState(new PerformActionState());
+            }
+            else if (GetActor().IsPlayerTeam())
+            {
 
-            ChangeState(new ChoosingActionState());
-        }
-        else
-        {
-            GetActor().currentCommand = GetActor().CreateCommand();
-            GetActor().currentCommand.SetSource(GetActor());
-            GetActor().currentCommand.SetTarget(GetRandomTargets());
-            ChangeState(new PerformActionState());
+                ChangeState(new ChoosingActionState());
+            }
+            else
+            {
+                GetActor().currentCommand = GetActor().CreateCommand();
+                GetActor().currentCommand.SetSource(GetActor());
+                GetActor().currentCommand.SetTarget(GetRandomTargets());
+                ChangeState(new PerformActionState());
 
-        }
+            }
 
             if (!GetActor().IsPlayerTeam())
             {
@@ -820,7 +818,7 @@ public class BattleManager : MonoBehaviour
         {
             currentActor = Actors[Actors.IndexOf(bc)];
         }
-        
+
     }
 
     public void MoveToScene()

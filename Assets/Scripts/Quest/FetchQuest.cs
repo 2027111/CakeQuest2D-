@@ -22,10 +22,10 @@ public class FetchQuest : QuestObject
 
             if (characterInventory.CheckInventoryFor(requiredItems))
             {
-                    CompleteQuest();
+                CompleteQuest();
             }
             base.CheckConditions();
-        } 
+        }
     }
 
     public override string GetObjectiveProgress()
@@ -33,7 +33,7 @@ public class FetchQuest : QuestObject
         string returnValue = "";
         if (RuntimeValue)
         {
-            returnValue = "done"; 
+            returnValue = "done";
             string newDesc = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("done");
             if (newDesc != "E404")
             {

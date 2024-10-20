@@ -18,6 +18,8 @@ public class Character : MonoBehaviour
     public Party heroParty;
     private CharacterBehaviour previousBehaviour;
 
+    public SpriteRenderer Sprite;
+
 
 
     // Start is called before the first frame update
@@ -94,7 +96,7 @@ public class Character : MonoBehaviour
     {
         canGetInteract = interaction;
     }
- 
+
     public void AddToInventory(InventoryItem content, int amount = 1)
     {
         if (inventory)
@@ -113,7 +115,7 @@ public class Character : MonoBehaviour
     public int AmountObject(InventoryItem content)
     {
         return inventory.AmountObject(content);
-        
+
     }
     public bool RemoveFromInventory(InventoryItem content, int amount = 1)
     {
@@ -140,7 +142,7 @@ public class Character : MonoBehaviour
 
     public void LookUp()
     {
-        
+
 
         // Now you can use the lookDirection vector to orient the object
         LookToward(Vector2.up.normalized);

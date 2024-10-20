@@ -21,7 +21,7 @@ public class TextEffect : MonoBehaviour
             color = Color.red;
         }
 
-        if (attackInfo.GetAmount()> 0)
+        if (attackInfo.GetAmount() > 0)
         {
             color = Color.green;
         }
@@ -48,40 +48,39 @@ public class TextEffect : MonoBehaviour
                 if (attackInfo.source.currentCommand != null)
                 {
 
-                        if (attackInfo.effect != ElementEffect.Neutral)
+                    if (attackInfo.effect != ElementEffect.Neutral && attackInfo.textEffectShown == false)
+                    {
+                        Vector3 newposition = GetAspectTextPosition();
+                        string message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
+                        Color textColor = Color.white;
+                        switch (attackInfo.effect)
                         {
-                            Vector3 newposition = GetAspectTextPosition();
-                            string message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
-                            Color textColor = Color.white;
-                            switch (attackInfo.effect)
-                            {
-                                case ElementEffect.RecipeBoosted:
+                            case ElementEffect.RecipeBoosted:
 
-                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
-                                    textColor = Color.red;
-                                StartCoroutine(Utils.SlowDown(.8f, .5f));
+                                message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeStart");
+                                textColor = Color.red;
                                 break;
 
-                                case ElementEffect.RecipeFailed:
+                            case ElementEffect.RecipeFailed:
 
-                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeFailed");
+                                message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeFailed");
                                 textColor = Color.blue;
-                                    break;
-                                case ElementEffect.RecipeCompleted:
+                                break;
+                            case ElementEffect.RecipeCompleted:
 
-                                    message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeSuccess");
-                                StartCoroutine(Utils.SlowDown(1f, .2f));
-                                    textColor = Color.red;
-                                    break;
-                            }
-
-
-                            SpawnTextEffect(message, textColor, newposition, 2f);
-
+                                message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeSuccess");
+                                textColor = Color.red;
+                                break;
                         }
+
+
+                        SpawnTextEffect(message, textColor, newposition, 2f);
+                        attackInfo.textEffectShown = true;
+
                     }
-                    lastCommand = attackInfo.source.currentCommand;
-                
+                }
+                lastCommand = attackInfo.source.currentCommand;
+
             }
         }
 

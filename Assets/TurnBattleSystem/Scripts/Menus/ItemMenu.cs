@@ -16,7 +16,7 @@ public class ItemMenu : ChoiceMenu
         foreach (BattleItem obj in items)
         {
             bool isin = false;
-            foreach(GameObject but in buttons)
+            foreach (GameObject but in buttons)
             {
                 if (but.GetComponent<ItemButton>().IsItem(obj))
                 {

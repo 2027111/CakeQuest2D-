@@ -21,7 +21,7 @@ public class CharacterInventory : SavableObject
         base.ApplyData(tempCopy);
     }
 
-   
+
     public IEnumerator AddLoadedItemToInventory(List<InventoryItem> loadedInventory)
     {
         myInventory.Clear();
@@ -35,7 +35,7 @@ public class CharacterInventory : SavableObject
                 yield return null;
             }
             InventoryItem loadedItem = request.asset as InventoryItem;
-            AddToInventory(loadedItem, 1,  false);
+            AddToInventory(loadedItem, 1, false);
             yield return null;
         }
         yield return null;
@@ -65,17 +65,17 @@ public class CharacterInventory : SavableObject
 
     public void AddToInventory(InventoryItem content, int amount = 1, bool checkEvent = true)
     {
-            if (content.itemName == "pesso")
+        if (content.itemName == "pesso")
+        {
+            AddMoney(amount);
+        }
+        else
+        {
+            for (int i = 0; i < amount; i++)
             {
-                    AddMoney(amount);
+                myInventory.Add(content);
             }
-            else
-            {
-                for (int i = 0; i < amount; i++)
-                {
-                    myInventory.Add(content);
-                }
-            }
+        }
         if (checkEvent)
         {
             InventoryChangeEvent?.Invoke();
@@ -85,7 +85,7 @@ public class CharacterInventory : SavableObject
     public List<InventoryItem> ReturnUniqueInventory()
     {
         List<InventoryItem> temp = new List<InventoryItem>();
-        foreach(InventoryItem ii in myInventory)
+        foreach (InventoryItem ii in myInventory)
         {
             if (!temp.Contains(ii))
             {

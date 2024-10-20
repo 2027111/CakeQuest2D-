@@ -10,7 +10,12 @@ public class AttackCommand : Command
         Source.StartCoroutine(Execute());
     }
 
+    public void CancelCommand()
+    {
+        Debug.Log("Cancel");
+        Source.StopAllCoroutines();
 
+    }
     public virtual IEnumerator Execute()
     {
 
@@ -18,11 +23,10 @@ public class AttackCommand : Command
 
         if (IsPhysical() && !IsInAttackPosition())
         {
-            
+
             yield return Source.StartCoroutine(GoToEnemy());
-            yield return new WaitForSeconds(.6f);
+            yield return new WaitForSeconds(.8f);
         }
-        yield return new WaitForSeconds(.6f);
         if (WillKokusen())
         {
             if (IsPhysical())
@@ -36,18 +40,25 @@ public class AttackCommand : Command
         yield return Source.StartCoroutine(WaitForAnimationOver());
 
         yield return new WaitForSeconds(.6f);
+        Source.EnemyContainer.localPosition = new Vector3(0.625f, -0.25f, 0);
         CamManager.ResetView();
         BattleManager.Singleton.FadeBackground(false, .3f);
+        Debug.Log("Lol");
         if (IsPhysical() || IsInAttackPosition())
         {
             yield return Source.StartCoroutine(GoToOriginalPosition());
             yield return new WaitForSeconds(.6f);
+        }
+        foreach(BattleCharacter bc in Target)
+        {
+            yield return bc.StartCoroutine(GoToOriginalPosition(bc));
         }
         OnCommandOver();
         OnExecuted?.Invoke();
 
 
     }
+
 
     private bool IsInAttackPosition()
     {
@@ -89,18 +100,18 @@ public class AttackCommand : Command
     }
 
     public override void ActivateCommand(BattleCharacter _target)
-        {
-            CharacterObject characterObject = _target.GetReference();
-            ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
+    {
+        CharacterObject characterObject = _target.GetReference();
+        ElementEffect elementEffect = characterObject.GetElementEffect(Source.GetReference().AttackElement);
         if (attackInformation == null)
         {
             attackInformation = new AttackInformation(null, elementEffect, Source, BattleManager.Singleton.GetActor().currentCommand);
         }
         attackInformation.element = Source.GetReference().AttackElement;
-            _target?.Entity.AddToHealth(attackInformation);
-            CamManager.Shake(.2f, .05f);
-            base.ActivateCommand();
-        
-        }
+        _target?.Entity.AddToHealth(attackInformation);
+        CamManager.Shake(.2f, .05f);
+        base.ActivateCommand();
+
+    }
 
 }

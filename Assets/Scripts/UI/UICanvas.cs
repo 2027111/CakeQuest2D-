@@ -20,7 +20,7 @@ public class UICanvas : MonoBehaviour
                 {
                     GameObject canvasInstance = Instantiate(canvasPrefab);
                     Singleton = canvasInstance.GetComponent<UICanvas>();
-                   // Debug.Log("UICanvas Instantiated");
+                    // Debug.Log("UICanvas Instantiated");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ public class UICanvas : MonoBehaviour
 
     public static void SetVideoForPlayer(VideoClip clip)
     {
-            Singleton?.SetVideoClip(clip);
+        Singleton?.SetVideoClip(clip);
     }
 
     public void SetVideoClip(VideoClip clip)
@@ -90,12 +90,12 @@ public class UICanvas : MonoBehaviour
         if (!videoPlayer.isPlaying)
         {
             dialogueBox.DontGoNext();
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().ToggleCutsceneState();
-        videoPlayer.prepareCompleted += delegate
-        {
-            StartCoroutine(StartAnimatedCutscene());
-        };
-        videoPlayer.Prepare();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().ToggleCutsceneState();
+            videoPlayer.prepareCompleted += delegate
+            {
+                StartCoroutine(StartAnimatedCutscene());
+            };
+            videoPlayer.Prepare();
         }
 
 
@@ -103,7 +103,7 @@ public class UICanvas : MonoBehaviour
 
     public IEnumerator StartAnimatedCutscene()
     {
-        
+
         TurnBordersOn(false);
         yield return dialogueBox.WaitForResume();
 
@@ -216,11 +216,11 @@ public class UICanvas : MonoBehaviour
     private IEnumerator ShowVideo(bool showVideo)
     {
 
-            float target = showVideo ? 1 : 0;
-            float start = videoPlayer.targetCameraAlpha;
-        if(target != start)
+        float target = showVideo ? 1 : 0;
+        float start = videoPlayer.targetCameraAlpha;
+        if (target != start)
         {
-            
+
             float duration = 0;
             while (duration < .5f)
             {
@@ -238,12 +238,9 @@ public class UICanvas : MonoBehaviour
     {
         Singleton?.dialogueBox.StartDialogueDelayed(newDialogue, playerObject, originObject, state);
     }
-    public static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
+    public async static void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
-        if (!FadeScreen.fading)
-        {
-            Singleton?.dialogueBox.StartDialogue(dialogue, playerObject, originObject, state);
-        }
+        Singleton?.dialogueBox.StartDialogue(dialogue, playerObject, originObject, state);
     }
     public static void ForceStopDialogue()
     {

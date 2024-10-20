@@ -59,7 +59,7 @@ public abstract class BattleState
         string controls = LanguageData.GetDataById(LanguageData.CONTROLS).GetValueByKey(this.GetType().ToString());
 
         battleManager.SetControlText(controls);
-    } 
+    }
 
     public virtual void OnNavigate(Vector2 direction)
     {

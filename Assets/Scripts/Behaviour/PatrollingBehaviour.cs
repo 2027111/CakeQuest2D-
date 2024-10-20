@@ -26,7 +26,7 @@ public class PatrollingBehaviour : CharacterBehaviour
             }
             return;
         }
-            character.ChangeState(new NothingBehaviour());
+        character.ChangeState(new NothingBehaviour());
     }
 
     public override void Handle()
@@ -89,7 +89,7 @@ public class PatrollingBehaviour : CharacterBehaviour
         return direction;
     }
 
-public override void OnExit()
+    public override void OnExit()
     {
         movement.movementInput = Vector2.zero;
     }

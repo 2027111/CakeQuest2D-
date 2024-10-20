@@ -17,7 +17,7 @@ public class SceneTransition : MonoBehaviour
     public void TransitionScene()
     {
         UICanvas.CancelCurrentDialogue();
-        
+
         if (PlayerInfoStorage.InfoStorage)
         {
             PlayerInfoStorage.InfoStorage.sceneName = sceneToLoadName;

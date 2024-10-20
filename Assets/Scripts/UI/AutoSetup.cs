@@ -59,7 +59,7 @@ public class AutoSetup : MonoBehaviour
         for (int i = 0; i < languageNames.Length; i++)
         {
             dropdownOptions[i] = new TMP_Dropdown.OptionData(languageNames[i]);
-            
+
         }
 
         // Add the options to the dropdown
@@ -70,9 +70,9 @@ public class AutoSetup : MonoBehaviour
 
     public void SetDropDownValue()
     {
-            dropdown.SetValueWithoutNotify((int)LanguageData.language);
-            for(int i = 0; i < dropdown.options.Count;i++)
-            {
+        dropdown.SetValueWithoutNotify((int)LanguageData.language);
+        for (int i = 0; i < dropdown.options.Count; i++)
+        {
 
             if (i < sprites.Length)
             {

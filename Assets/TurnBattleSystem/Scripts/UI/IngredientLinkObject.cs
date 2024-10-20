@@ -28,7 +28,7 @@ public class IngredientLinkObject : MonoBehaviour
 
     public void SetIndex(int index)
     {
-        indexTextNumber.SetText($"{index+1}");
+        indexTextNumber.SetText($"{index + 1}");
     }
 
 

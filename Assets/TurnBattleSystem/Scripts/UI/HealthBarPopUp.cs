@@ -12,13 +12,13 @@ public class HealthBarPopUp : MonoBehaviour
 
     public void OnHealthChange(int currentAmount, int maxAmount)
     {
-        if(currentBar == null)
+        if (currentBar == null)
         {
             currentBar = Instantiate(healthBar, transform);
             currentBar.GetComponentInChildren<HealthBar>().OnFillAmountReached.AddListener(DestroyPopup);
         }
-            currentBar.GetComponentInChildren<HealthBar>().SetFillAmount(currentAmount, maxAmount);
-     
+        currentBar.GetComponentInChildren<HealthBar>().SetFillAmount(currentAmount, maxAmount);
+
 
 
     }

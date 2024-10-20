@@ -16,6 +16,9 @@ public class Command
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
 
+
+    public string commandID;
+
     public Vector3 GetTargetPosition()
     {
         if (Target.Count == 0)
@@ -27,7 +30,7 @@ public class Command
 
     public Command()
     {
-
+        this.commandID = Guid.NewGuid().ToString();
     }
     public virtual void ExecuteCommand()
     {
@@ -61,7 +64,7 @@ public class Command
     }
     public void SetSource(BattleCharacter _source)
     {
-            Source = _source;
+        Source = _source;
     }
 
     public virtual void SetTarget(List<BattleCharacter> _target)
@@ -72,13 +75,13 @@ public class Command
 
     public virtual bool WillKokusen()
     {
-           foreach(BattleCharacter t in Target)
+        foreach (BattleCharacter t in Target)
+        {
+            if (t.WillKokusen(this))
             {
-                if (t.WillKokusen(this))
-                {
-                    return true;
-                }
+                return true;
             }
+        }
         return false;
 
     }
@@ -91,39 +94,51 @@ public class Command
 
     public bool IsInAttackPosition(BattleCharacter bc)
     {
-
-        Vector3 currentPosition = bc.transform.position;
-        return Vector3.Distance(currentPosition, BattleManager.Singleton.GetPosition(bc)) > .05f;
+        return bc.isInAttackPos;
     }
     public IEnumerator GoToOriginalPosition(BattleCharacter bc)
     {
         Vector3 currentPosition = bc.transform.position;
         float t = 0;
         bc.Animator.Move(true);
+        if(Vector3.Distance(BattleManager.Singleton.GetPosition(bc), currentPosition) > .3f)
+        {
+
         while (t < .5f)
         {
 
             bc.transform.position = Vector3.Lerp(currentPosition, BattleManager.Singleton.GetPosition(bc), t / .5f);
             t += Time.deltaTime;
             yield return null;
+            }
         }
+        bc.isInAttackPos = false;
         bc.Animator.Move(false);
     }
     public IEnumerator GoToEnemy(BattleCharacter bc)
     {
-        Vector3 pos = bc.transform.position;
+        Vector3 startPos = bc.transform.position;
         float t = 0;
 
-        Source.Animator.Move(true);
+        // Déclencher l'animation de mouvement
+        bc.Animator.Move(true);
 
-        Vector3 diff = (Target[0].transform.position - bc.transform.position).normalized;
-        Vector3 targetPos = Target[0].transform.position;
+        // Calculer la différence de position entre l'EnemyContainer et le BattleCharacter
+        Vector3 containerOffset = bc.EnemyContainer.transform.position - bc.transform.position;
+
+        // Calculer la position cible pour le BattleCharacter en tenant compte de l'offset
+        Vector3 targetPos = Target[0].transform.position - containerOffset;
+
+        // Mouvement vers la position cible
         while (t < .5f)
         {
-            bc.transform.position = Vector3.Lerp(pos, targetPos - diff * 1.5f, t / .5f);
+            bc.transform.position = Vector3.Lerp(startPos, targetPos, t / .5f);
             t += Time.deltaTime;
             yield return null;
         }
+
+        // Position atteinte
+        bc.isInAttackPos = true;
         bc.Animator.Move(false);
     }
 

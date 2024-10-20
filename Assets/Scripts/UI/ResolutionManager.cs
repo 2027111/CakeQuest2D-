@@ -27,9 +27,9 @@ public class ResolutionManager : MonoBehaviour
         resolutionDropdown.ClearOptions();
         currentRefreshRate = Screen.currentResolution.refreshRate;
 
-        for(int i = 0; i  < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
-            if(resolutions[i].refreshRate == currentRefreshRate)
+            if (resolutions[i].refreshRate == currentRefreshRate)
             {
                 filteredResolutions.Add(resolutions[i]);
             }
@@ -37,11 +37,11 @@ public class ResolutionManager : MonoBehaviour
         GetCurrentResPreference();
         List<string> options = new List<string>();
 
-        for(int i = 0; i < filteredResolutions.Count; i++)
+        for (int i = 0; i < filteredResolutions.Count; i++)
         {
             string resolutionOption = filteredResolutions[i].width + " * " + filteredResolutions[i].height;
             options.Add(resolutionOption);
-            if(filteredResolutions[i].Equals(Screen.currentResolution))
+            if (filteredResolutions[i].Equals(Screen.currentResolution))
             {
                 currentResolutionIndex = i;
             }

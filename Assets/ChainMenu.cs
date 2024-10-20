@@ -14,7 +14,7 @@ public class ChainMenu : ChoiceMenu
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
 
@@ -23,7 +23,7 @@ public class ChainMenu : ChoiceMenu
         LeftButton.GetComponent<RecipeChainButton>().SetCommand(new SkillCommand(leftSkill));
         UpButton.GetComponent<RecipeChainButton>().SetCommand(new AttackCommand());
         RightButton.GetComponent<RecipeChainButton>().SetCommand(new SkillCommand(rightSkill));
-        foreach(GameObject button in buttons)
+        foreach (GameObject button in buttons)
         {
             button.GetComponent<RecipeChainButton>().OnSelected.AddListener(DestroyMenu);
         }
@@ -31,9 +31,10 @@ public class ChainMenu : ChoiceMenu
 
     public void DestroyMenu()
     {
-        
+
         Destroy(gameObject);
         Utils.ResetTimeScale();
+        BattleManager.Singleton?.FadeBackground(false);
     }
     public override void Navigate(Vector2 direction)
     {
@@ -65,6 +66,6 @@ public class ChainMenu : ChoiceMenu
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

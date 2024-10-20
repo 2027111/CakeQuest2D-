@@ -236,7 +236,7 @@
       "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"J'ai tout ce dont j'ai besoin?\"}"
     },
     {
-      "dataId": "Intro_Jimi _0046",
+      "dataId": "Intro_Jimi_0046",
       "type": 1,
       "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"???\",\"line\":\"Ouai. J'devrais être correcte.\"}"
     },

@@ -32,8 +32,8 @@ public class SwapCommand : AttackCommand
 
     public override IEnumerator Execute()
     {
-            yield return new WaitForSeconds(2f);
-            OnExecuted?.Invoke();
+        yield return new WaitForSeconds(2f);
+        OnExecuted?.Invoke();
 
     }
 

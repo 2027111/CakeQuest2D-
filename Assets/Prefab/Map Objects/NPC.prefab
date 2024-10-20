@@ -24,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104808405863958466}
-  m_LocalRotation: {x: -0, y: -0, z: 0.99999154, w: -0.0041110166}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2430433989948180658}
+  m_Father: {fileID: 8905397988316268901}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8411227383738137343
@@ -153,7 +153,7 @@ Transform:
   m_Children:
   - {fileID: 2238509909709850999}
   - {fileID: 134502415}
-  - {fileID: 1071516703772597120}
+  - {fileID: 8905397988316268901}
   - {fileID: 599362333297056024}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   inputManager: {fileID: 0}
   heroParty: {fileID: 0}
+  Sprite: {fileID: 2238509909874340293}
 --- !u!114 &2430433989948180661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +273,7 @@ MonoBehaviour:
   detectionLayerMask:
     serializedVersion: 2
     m_Bits: 32833
-  lightSource: {fileID: 1104808405863958466}
+  lightSource: {fileID: 8601637202572763817}
 --- !u!61 &8532248538276063809
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +287,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: 0, y: 0.6}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -297,7 +298,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0263314, y: 1.8338941}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &8532248538276063810
 MonoBehaviour:
@@ -521,6 +522,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditionEvents: []
+--- !u!1 &8601637202572763817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8905397988316268901}
+  m_Layer: 3
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8905397988316268901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8601637202572763817}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1071516703772597120}
+  m_Father: {fileID: 2430433989948180658}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &698536885928336410
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -577,6 +610,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContextClue
       objectReference: {fileID: 0}
+    - target: {fileID: 698536886062302230, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
@@ -602,6 +639,10 @@ PrefabInstance:
       propertyPath: m_SpriteLibraryAsset
       value: 
       objectReference: {fileID: 7108339969198208228, guid: b7ad5b40d6d6de148b6b2f105bf2898a, type: 3}
+    - target: {fileID: 6230776189068451296, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6230776189068451302, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -654,9 +695,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: EntityGraphics
       objectReference: {fileID: 0}
+    - target: {fileID: 6230776189570639189, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6230776189825833806, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7094337421483284735, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
       propertyPath: m_SpriteHash
       value: 952397182
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152561353782809737, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -664,6 +717,11 @@ PrefabInstance:
 --- !u!4 &2238509909709850999 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6230776189570639188, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
+  m_PrefabInstance: {fileID: 5289725194139823139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &2238509909874340293 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6230776189068451302, guid: f5216d75358722e44ac8047e3015c3d0, type: 3}
   m_PrefabInstance: {fileID: 5289725194139823139}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &9112741488096535925 stripped
@@ -683,9 +741,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 400018343892678139, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108027217340988796, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2856217135093215094, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918843546152835512, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8857625667424128823, guid: 60436a735c70eed48b09f0ff6551e47f, type: 3}
       propertyPath: m_Pivot.x

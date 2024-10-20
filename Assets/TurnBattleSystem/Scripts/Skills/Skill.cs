@@ -49,7 +49,7 @@ public class Skill : IActionData
     [JsonIgnore] public int manaCost = 14;
     [JsonIgnore] public GameObject[] spawnObjects;
 
-    
+
     public string GetName()
     {
         string name = skillId;
@@ -65,7 +65,7 @@ public class Skill : IActionData
     {
         string desc = Description;
         string newDesc = LanguageData.GetDataById("skill_" + skillId).GetValueByKey("skillDescription");
-        if(newDesc != "E404")
+        if (newDesc != "E404")
         {
             newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;

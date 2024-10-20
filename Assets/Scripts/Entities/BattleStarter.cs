@@ -11,7 +11,7 @@ public class BattleStarter : MonoBehaviour
 
 
 
-    public  void StartBattle()
+    public void StartBattle()
     {
         currentBattleInfo.SetInfos(ThisbattleInfo);
         PlayerInfoStorage.CurrentInfoStorage.GoToBattleScene();

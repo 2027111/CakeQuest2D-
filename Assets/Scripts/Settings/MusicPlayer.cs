@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-   
+
     private AudioSource audioSource;
     private bool _transitioning = false;
     public float volumeTransitionSpeed = 4f; // Speed at which volume changes
@@ -13,12 +13,12 @@ public class MusicPlayer : MonoBehaviour
     {
         get
         {
-            if(audioSource == null)
+            if (audioSource == null)
             {
                 audioSource = GetComponent<AudioSource>();
             }
             return audioSource;
-        } 
+        }
     }
     private static MusicPlayer _singleton;
     public static MusicPlayer Singleton
@@ -79,7 +79,7 @@ public class MusicPlayer : MonoBehaviour
             string fullPath = "Soundtrack/" + songName; // Assuming the path is relative to the Resources folder
 
             AudioClip Song = Resources.Load(fullPath) as AudioClip;
-            if(Song != null)
+            if (Song != null)
             {
                 PlaySong(Song, loops);
             }
@@ -108,38 +108,38 @@ public class MusicPlayer : MonoBehaviour
 
     private IEnumerator TransitioningSong(AudioClip song, bool loops = false)
     {
-        if(audioSource.clip != song)
+        if (audioSource.clip != song)
         {
 
-        while (_transitioning)
-        {
-            yield return null;
-        }
+            while (_transitioning)
+            {
+                yield return null;
+            }
 
-        _transitioning = true;
+            _transitioning = true;
 
-        // Gradually lower the volume
-        while (audioSource.volume > 0)
-        {
-            audioSource.volume -= volumeTransitionSpeed * Time.deltaTime;
-            yield return null;
-        }
+            // Gradually lower the volume
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= volumeTransitionSpeed * Time.deltaTime;
+                yield return null;
+            }
 
-        // Change the clip and play the new song
-        audioSource.Stop();
-        audioSource.clip = song;
-        audioSource.loop = loops;
-        audioSource.Play();
+            // Change the clip and play the new song
+            audioSource.Stop();
+            audioSource.clip = song;
+            audioSource.loop = loops;
+            audioSource.Play();
 
-        // Gradually raise the volume
-        while (audioSource.volume < 1)
-        {
-            audioSource.volume += volumeTransitionSpeed * Time.deltaTime;
-            yield return null;
-        }
+            // Gradually raise the volume
+            while (audioSource.volume < 1)
+            {
+                audioSource.volume += volumeTransitionSpeed * Time.deltaTime;
+                yield return null;
+            }
 
-        audioSource.volume = 1; // Ensure the volume is exactly 1
-        _transitioning = false;
+            audioSource.volume = 1; // Ensure the volume is exactly 1
+            _transitioning = false;
         }
     }
 

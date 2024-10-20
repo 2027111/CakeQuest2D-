@@ -37,7 +37,7 @@ public class SkillMenu : ChoiceMenu
         Command attackCommand = attack.GetCommandType();
         attackCommand.SetSource(BattleManager.Singleton.GetActor());
 
-        if (attack.manaCost > BattleManager.Singleton.GetActor().Entity.Mana  || BattleManager.Singleton.GetPossibleTarget(attackCommand).Count == 0)
+        if (attack.manaCost > BattleManager.Singleton.GetActor().Entity.Mana || BattleManager.Singleton.GetPossibleTarget(attackCommand).Count == 0)
         {
             SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
         }

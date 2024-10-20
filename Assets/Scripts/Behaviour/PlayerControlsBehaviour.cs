@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerControlsBehaviour : CharacterBehaviour
 {
 
-    
+
     public PlayerControlsBehaviour() : base()
     {
     }
@@ -15,14 +15,14 @@ public class PlayerControlsBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        if(character.inputManager == null || Timeline.IsInCutscene)
+        if (character.inputManager == null || Timeline.IsInCutscene)
         {
             player.ChangeState(new PatrollingBehaviour());
         }
         else
         {
             character.inputManager.CanInteract(true);
-            character.CanMove(true); 
+            character.CanMove(true);
             character.ActivateControls();
         }
         if (player.gameObject.CompareTag("Player"))

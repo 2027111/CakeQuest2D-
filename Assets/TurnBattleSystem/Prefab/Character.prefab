@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5807267927588301901}
   m_Father: {fileID: 3887754998874502467}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -187,13 +188,17 @@ MonoBehaviour:
   currentCharacter: {fileID: 0}
   currentState: 0
   _target: {fileID: 0}
+  EnemyContainer: {fileID: 5807267927588301901}
   isActing: 0
+  isInAttackPos: 0
   isBlocking: 0
   isParrying: 0
   sfxAudioSource: {fileID: 5624637632304755342}
   voiceAudioSource: {fileID: 5344256198825669568}
   Animator: {fileID: 8539224105758355332}
   Entity: {fileID: 6598031230574354759}
+  recipeIndex: 0
+  recipe: []
 --- !u!114 &8539224105758355332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,3 +449,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1749915935245130212, guid: 59e10a61b414b724b8d113b4aced2b18, type: 3}
   timeTillDest: 2.1
+--- !u!1 &4103013095952590527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5807267927588301901}
+  m_Layer: 9
+  m_Name: EnemyContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5807267927588301901
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4103013095952590527}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.625, y: -0.25, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3887754998104906756}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

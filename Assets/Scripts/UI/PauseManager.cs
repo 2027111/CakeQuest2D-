@@ -75,7 +75,7 @@ public class PauseManager : MonoBehaviour
     {
         for (int i = 0; i < menuPanels.Length; i++)
         {
-            menuPanels[i].position = i == currentIndex ? mainPanel.transform.position : mainPanel.transform.position    + new Vector3(1300, 0, 0);
+            menuPanels[i].position = i == currentIndex ? mainPanel.transform.position : mainPanel.transform.position + new Vector3(1300, 0, 0);
 
         }
     }

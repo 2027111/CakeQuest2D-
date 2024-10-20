@@ -19,11 +19,11 @@ public class ChoiceMenu : MonoBehaviour
 
     public void SetSelectedAs(GameObject choiceMenuButton)
     {
-        foreach(GameObject g in buttons)
+        foreach (GameObject g in buttons)
         {
             if (g.GetComponent<ChoiceMenuButton>())
             {
-                if(g.GetComponent<ChoiceMenuButton>() == choiceMenuButton)
+                if (g.GetComponent<ChoiceMenuButton>() == choiceMenuButton)
                 {
                     Select(g);
                 }
