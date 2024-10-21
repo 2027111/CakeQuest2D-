@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -51,6 +51,7 @@ public class SpriteEvents : MonoBehaviour
             foreach (BattleCharacter bc in character.currentCommand.Target)
             {
                 bc.transform.parent = null;
+                bc.transform.position = BattleManager.Singleton.GetPosition(bc);
             }
         }
     }

@@ -70,6 +70,7 @@ public class BattleCharacter : MonoBehaviour
     }
     public bool HandleRecipe(AttackInformation attackInfo)
     {
+        Debug.Log("Hmm");
         if (recipe.Count > recipeIndex)
         {
             if (recipe[recipeIndex].element == attackInfo.element)
@@ -154,22 +155,25 @@ public class BattleCharacter : MonoBehaviour
     public Command CreateCommand() //Creates a random command using the character references skill set.
     {
         float prob = Random.Range(0f, 100f);
+        Command comm;
         if (prob > 50)
         {
-            return new AttackCommand();
+            comm =  new AttackCommand();
         }
         else
         {
             Skill attack = GetRandomAttack();
             if (attack)
             {
-                return new SkillCommand(attack);
+                comm = new SkillCommand(attack);
             }
             else
             {
-                return new AttackCommand();
+                comm = new AttackCommand();
             }
         }
+        comm.SetNewId();
+        return comm;
     }
 
     public int IsFacing()//Lets know which direction the battlecharacter is facing (-1 being left and 1 being right)

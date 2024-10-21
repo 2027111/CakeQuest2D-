@@ -170,6 +170,7 @@ public class Entity : MonoBehaviour
             {
                 if (attackInfo.ID != lastAttack.ID)
                 {
+                    Debug.Log("Attacked differs");
                     attackInfo.HandleRecipe(character);
                 }
             }
@@ -179,18 +180,7 @@ public class Entity : MonoBehaviour
             }
 
         }
-        if (attackInfo.effect == ElementEffect.RecipeBoosted)
-        {
-            if (attackInfo.source.IsPlayerTeam())
-            {
-                if (attackInfo.source == BattleManager.Singleton.GetActor())
-                {
-                    StartCoroutine(Utils.SlowDown(3f, .1f));
-                    CamManager.PanToCharacter(attackInfo.source);
-                    attackInfo.source.CancelAttack();
-                }
-            }
-        }
+
         if (attackInfo.effect == ElementEffect.RecipeCompleted)
         {
             GameObject obj = Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
@@ -201,7 +191,7 @@ public class Entity : MonoBehaviour
             }
             obj.transform.rotation = Quaternion.Euler(rotation);
 
-            StartCoroutine(Utils.SlowDown(.8f, .5f));
+            StartCoroutine(Utils.SlowDown(1f, .5f));
         }
 
 
@@ -252,9 +242,30 @@ public class Entity : MonoBehaviour
         AddToHealth(attackInfo.GetAmount());
 
 
+
         lastAttack = attackInfo;
         // Invoke the damage taken event
         OnDamageTaken.Invoke(attackInfo);
+        if (!isDead)
+        {
+            if (attackInfo.effect == ElementEffect.RecipeBoosted)
+            {
+                if (attackInfo.source.IsPlayerTeam())
+                {
+                    if (attackInfo.source == BattleManager.Singleton.GetActor())
+                    {
+                        Command c = attackInfo.source.CreateCommand();
+                        c.SetSource(attackInfo.source);
+                        c.SetTarget(attackInfo.command.Target);
+                        c.SetNewId();
+                        //StartCoroutine(Utils.SlowDown(3f, .1f));
+                        attackInfo.command.nextCommand = c;
+                        CamManager.PanToCharacter(attackInfo.source);
+                        //attackInfo.source.CancelAttack();
+                    }
+                }
+            }
+        }
     }
 
     public void AddToMana(IActionData attack, BattleCharacter source = null)

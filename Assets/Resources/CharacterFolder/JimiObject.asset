@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UID: a402f39d484a5f24a855910f0b6fbd57
   characterData: {fileID: 11400000, guid: b5d3335479d751c45b5ddbd3ccb15ee0, type: 2}
-  Health: 200
+  Health: 190
   MaxHealth: 200
   Mana: 176
   MaxMana: 200

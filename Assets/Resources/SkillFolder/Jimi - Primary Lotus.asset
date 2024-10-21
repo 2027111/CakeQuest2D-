@@ -22,7 +22,7 @@ MonoBehaviour:
   SoundEffect: []
   fixedAmount: 0
   skillType: 0
-  skillId: Primary Lotus
+  skillId: primary_lotus
   Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: ad9531390fbb5f142ab6222acbf0c174, type: 2}
   voiceClipId: 

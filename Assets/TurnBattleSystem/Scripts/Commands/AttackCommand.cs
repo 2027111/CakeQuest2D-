@@ -35,15 +35,23 @@ public class AttackCommand : Command
             }
             GameObject.Instantiate(BattleManager.Singleton?.KOKUSENAURA, Source.transform.position + Vector3.up, Quaternion.identity);
             BattleManager.Singleton.FadeBackground(true);
-            Source.StartCoroutine(Utils.SlowDown(1f, .02f));
+            Source.StartCoroutine(Utils.SlowDown(1.5f, .02f));
         }
         yield return Source.StartCoroutine(WaitForAnimationOver());
-
         yield return new WaitForSeconds(.6f);
         Source.EnemyContainer.localPosition = new Vector3(0.625f, -0.25f, 0);
+        if (nextCommand != null)
+        {
+            nextCommand.OnExecuted += OnExecuted;
+            Source.currentCommand = nextCommand;
+            yield return Source.StartCoroutine(((AttackCommand)nextCommand).Execute());
+        }
+        else
+        {
+
+        yield return new WaitForSeconds(.6f);
         CamManager.ResetView();
         BattleManager.Singleton.FadeBackground(false, .3f);
-        Debug.Log("Lol");
         if (IsPhysical() || IsInAttackPosition())
         {
             yield return Source.StartCoroutine(GoToOriginalPosition());
@@ -56,6 +64,7 @@ public class AttackCommand : Command
         OnCommandOver();
         OnExecuted?.Invoke();
 
+        }
 
     }
 
