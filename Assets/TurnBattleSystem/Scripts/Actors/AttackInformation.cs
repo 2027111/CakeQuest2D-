@@ -11,6 +11,7 @@ public class AttackInformation
     public ElementEffect effect;
     public Element element;
     public BattleCharacter source;
+    public bool isFinalHit;
     public string ID;
     public bool textEffectShown = false;
     public int RecipeIndex = 0;

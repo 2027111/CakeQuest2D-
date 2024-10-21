@@ -433,6 +433,11 @@
             "dataId": "skill_egg_drill",
             "type": 4,
             "jsonData": "{\"skillName\":\"Perç'Oeuf\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
+        },
+        {
+            "dataId": "skill_primary_lotus",
+            "type": 4,
+            "jsonData": "{\"skillName\":\"Lotus Primaire\",\"skillDescription\":\"J'ai vu ça dans un animé!\"}"
         }
     ]
 }
