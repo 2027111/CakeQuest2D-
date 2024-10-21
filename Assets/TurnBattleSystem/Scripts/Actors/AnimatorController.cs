@@ -115,6 +115,31 @@ public class AnimatorController : MonoBehaviour
         Debug.LogWarning("No animation clips found or no animation is playing.");
         return 0;
     }
+    public float GetCurrentAnimRemainingTime(float timeScale =1)
+    {
+        if (anim == null)
+        {
+            Debug.LogWarning("Animator component is missing.");
+            return 0;
+        }
+
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        if (!stateInfo.IsName(""))
+        {
+            AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
+            if (clipInfo.Length > 0)
+            {
+                float normalizedTime = stateInfo.normalizedTime;
+                float clipLength = clipInfo[0].clip.length;
+                float currenttime = normalizedTime * clipLength;
+                return (clipLength - currenttime)/timeScale;
+            }
+        }
+
+        Debug.LogWarning("No animation clips found or no animation is playing.");
+        return 0;
+    }
 
 
     public void Revive()

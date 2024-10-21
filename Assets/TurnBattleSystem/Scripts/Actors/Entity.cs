@@ -254,12 +254,8 @@ public class Entity : MonoBehaviour
                 {
                     if (attackInfo.source == BattleManager.Singleton.GetActor())
                     {
-                        Command c = attackInfo.source.CreateCommand();
-                        c.SetSource(attackInfo.source);
-                        c.SetTarget(attackInfo.command.Target);
-                        c.SetNewId();
-                        //StartCoroutine(Utils.SlowDown(3f, .1f));
-                        attackInfo.command.nextCommand = c;
+                        attackInfo.command.OnRecipeMatched?.Invoke();
+                        //attackInfo.command.nextCommand = c;
                         CamManager.PanToCharacter(attackInfo.source);
                         //attackInfo.source.CancelAttack();
                     }

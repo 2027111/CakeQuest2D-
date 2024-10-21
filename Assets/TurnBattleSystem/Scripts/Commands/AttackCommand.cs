@@ -49,20 +49,21 @@ public class AttackCommand : Command
         else
         {
 
-        yield return new WaitForSeconds(.6f);
-        CamManager.ResetView();
-        BattleManager.Singleton.FadeBackground(false, .3f);
-        if (IsPhysical() || IsInAttackPosition())
-        {
-            yield return Source.StartCoroutine(GoToOriginalPosition());
             yield return new WaitForSeconds(.6f);
-        }
-        foreach(BattleCharacter bc in Target)
-        {
-            yield return bc.StartCoroutine(GoToOriginalPosition(bc));
-        }
-        OnCommandOver();
-        OnExecuted?.Invoke();
+            CamManager.ResetView();
+            BattleManager.Singleton.FadeBackground(false, .3f);
+            if (IsPhysical() || IsInAttackPosition())
+            {
+                yield return Source.StartCoroutine(GoToOriginalPosition());
+                yield return new WaitForSeconds(.6f);
+            }
+            foreach (BattleCharacter bc in Target)
+            {
+                yield return bc.StartCoroutine(GoToOriginalPosition(bc));
+            }
+            OnCommandOver();
+            OnExecuted?.Invoke();
+
 
         }
 

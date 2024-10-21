@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
 
 public class ChainMenu : ChoiceMenu
 {
@@ -11,13 +13,37 @@ public class ChainMenu : ChoiceMenu
     [SerializeField] GameObject DownButton;
     [SerializeField] GameObject LeftButton;
     [SerializeField] GameObject RightButton;
+    [SerializeField] TMP_Text Timer_Text;
+    float timer;
     // Start is called before the first frame update
     void Start()
     {
 
     }
+    public void SetTimer(float timer)
+    {
+        this.timer = timer;
+    }
+    public string GetTimerDisplay()
+    {
+        int minutes = Mathf.FloorToInt(timer+1 / 60);  // Get the total minutes
+        int seconds = Mathf.FloorToInt(timer+1 % 60);  // Get the remaining seconds
 
+        // Return formatted string as "MM:SS"
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        Timer_Text.text = GetTimerDisplay();
+        timer -= Time.unscaledDeltaTime;
+
+        if(timer <= 0)
+        {
+            DestroyMenu();
+        }
+    }
     public void GiveRandomAttacks(Skill leftSkill, Skill rightSkill)
     {
         LeftButton.GetComponent<RecipeChainButton>().SetCommand(new SkillCommand(leftSkill));
@@ -63,9 +89,5 @@ public class ChainMenu : ChoiceMenu
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

@@ -317,6 +317,11 @@ public class BattleManager : MonoBehaviour
 
     }
 
+    internal void RecipeMatchTimer(float v)
+    {
+        throw new System.NotImplementedException();
+    }
+
     private void Awake()
     {
         Singleton = this;

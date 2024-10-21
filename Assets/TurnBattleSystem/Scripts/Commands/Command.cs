@@ -17,6 +17,7 @@ public class Command
     public Command nextCommand;
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
+    public CommandeEventHandler OnRecipeMatched;
 
 
     public string commandID;
@@ -147,6 +148,11 @@ public class Command
         // Position atteinte
         bc.isInAttackPos = true;
         bc.Animator.Move(false);
+    }
+
+    public void OnMatched()
+    {
+
     }
 
     public virtual Element GetElement()

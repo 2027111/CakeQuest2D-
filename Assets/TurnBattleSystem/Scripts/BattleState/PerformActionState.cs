@@ -26,6 +26,7 @@ public class PerformActionState : BattleState
 
         performer.currentCommand.OnExecuted += delegate { performer.SetActing(false); };
         performer.currentCommand.OnExecuted += performer.ResetAnimatorController;
+        performer.currentCommand.OnRecipeMatched += delegate{ InstantiateMenu(performer); };
         performer.currentCommand.ExecuteCommand();
     }
 
@@ -33,11 +34,7 @@ public class PerformActionState : BattleState
 
     public override void Handle()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("Chain Engaged");
-            InstantiateMenu(performer);
-        }
+
     }
 
     public override void ShowControls()
@@ -149,8 +146,10 @@ public class PerformActionState : BattleState
     }
     public override void OnNavigate(Vector2 direction)
     {
-        choiceMenu?.GetComponent<ChoiceMenu>()?.Navigate(direction);
-           
+        if (choiceMenu)
+        {
+            choiceMenu?.GetComponent<ChoiceMenu>()?.Navigate(direction);
+        }
         base.OnNavigate(direction);
     }
 
@@ -195,6 +194,8 @@ public class PerformActionState : BattleState
         if (choiceMenuPrefab != null)
         {
             choiceMenu = GameObject.Instantiate(choiceMenuPrefab, character.transform.position + Vector3.up, Quaternion.identity);
+            performer.StartCoroutine(Utils.SlowDown(3, .01f));
+            choiceMenu.GetComponent<ChainMenu>().SetTimer(3);
         }
         else
         {

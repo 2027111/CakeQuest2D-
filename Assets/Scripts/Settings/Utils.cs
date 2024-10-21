@@ -11,17 +11,18 @@ public class Utils
 
     public static IEnumerator SlowDown(float duration, float timeFactor)
     {
-
+        ResetTimeScale();
+        yield return new WaitForSeconds(.01f);
         float t = 0;
         Time.timeScale = timeFactor;
         while (t < duration)
         {
-            Debug.Log("Time scale is " + timeFactor);
+            Debug.Log("Time scale is " + timeFactor + " for " + duration);
             if (Time.timeScale == 1)
             {
                 t = duration;
             }
-            t += Time.deltaTime / Time.timeScale;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
 
