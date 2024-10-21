@@ -9879,7 +9879,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9027514048236820045}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 3
   simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
@@ -10500,14 +10500,14 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 4
+    type: 10
     angle: 34.04
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0.03
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 90, z: 10}
+    m_Rotation: {x: 0, y: 0, z: 10}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
     m_MeshMaterialIndex: 0

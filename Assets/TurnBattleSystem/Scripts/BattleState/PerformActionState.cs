@@ -29,6 +29,17 @@ public class PerformActionState : BattleState
         performer.currentCommand.ExecuteCommand();
     }
 
+
+
+    public override void Handle()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Debug.Log("Chain Engaged");
+            InstantiateMenu(performer);
+        }
+    }
+
     public override void ShowControls()
     {
         if (battleManager.GetActor())
@@ -49,6 +60,8 @@ public class PerformActionState : BattleState
 
         if (performer.currentCommand.CanFocus())
         {
+
+
 
             List<BattleCharacter> takeOvers = new List<BattleCharacter>();
             if (!battleManager.IsForcedTurn())
@@ -89,6 +102,43 @@ public class PerformActionState : BattleState
         }
     }
 
+
+
+    IEnumerator OnRecipeHit()
+    {
+
+        if (performer.currentCommand.CanCombo())
+        {
+            if (performer.GetTeam() == TeamIndex.Player)
+            {
+
+                InstantiateMenu(performer);
+            }
+
+
+            performer.StartCoroutine(Utils.SlowDown(3, .1f));
+
+            while(Time.timeScale < 1)
+            {
+                if(performer != BattleManager.Singleton.GetActor())
+                {
+                    Object.Destroy(choiceMenu);
+                    Utils.ResetTimeScale();
+                }
+            }
+
+
+
+
+          
+
+
+             
+            }
+            yield return null;
+        
+    }
+
     public override void OnSelect()
     {
         if (choiceMenu)
@@ -99,18 +149,8 @@ public class PerformActionState : BattleState
     }
     public override void OnNavigate(Vector2 direction)
     {
-        if (choiceMenu)
-        {
-            if (direction.x > 0)
-            {
-                choiceMenu.GetComponent<ChoiceMenu>().NextButton();
-            }
-            else if (direction.x < 0)
-            {
-
-                choiceMenu.GetComponent<ChoiceMenu>().PreviousButton();
-            }
-        }
+        choiceMenu?.GetComponent<ChoiceMenu>()?.Navigate(direction);
+           
         base.OnNavigate(direction);
     }
 
@@ -147,6 +187,21 @@ public class PerformActionState : BattleState
         InstantiateMenu(battleManager?.GetActor());
 
         choiceMenu.GetComponent<TakeOverMenu>().GiveTakeOvers(battleCharacters, this);
+    }
+
+    public override void InstantiateMenu(BattleCharacter character)
+    {
+        GameObject choiceMenuPrefab = Resources.Load<GameObject>($"{BattleMenuPath}{MenuName}");
+        if (choiceMenuPrefab != null)
+        {
+            choiceMenu = GameObject.Instantiate(choiceMenuPrefab, character.transform.position + Vector3.up, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("ChoiceMenu prefab not found in Resources.");
+        }
+
+        OnMenuInstantiated();
     }
 
 

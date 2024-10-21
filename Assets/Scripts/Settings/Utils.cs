@@ -16,7 +16,7 @@ public class Utils
         Time.timeScale = timeFactor;
         while (t < duration)
         {
-
+            Debug.Log("Time scale is " + timeFactor);
             if (Time.timeScale == 1)
             {
                 t = duration;

@@ -13,6 +13,8 @@ public class Command
     public TargetStateType targetStateType = TargetStateType.Alive;
     public bool skippable = true;
     public bool canFocus = true;
+    public bool canCombo = true;
+    public Command nextCommand;
     public delegate void CommandeEventHandler();
     public CommandeEventHandler OnExecuted;
 
@@ -46,6 +48,11 @@ public class Command
     public bool CanFocus()
     {
         return canFocus;
+    }
+
+    public bool CanCombo()
+    {
+        return canCombo;
     }
 
     public virtual bool CanBeTarget(BattleCharacter _character)
@@ -152,4 +159,8 @@ public class Command
         yield return GoToEnemy(Source);
     }
 
+    public void SetNewId()
+    {
+        this.commandID = Guid.NewGuid().ToString();
+    }
 }
