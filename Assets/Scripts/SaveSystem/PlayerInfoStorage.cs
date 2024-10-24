@@ -95,7 +95,7 @@ public class PlayerInfoStorage : MonoBehaviour
 
     public void OnTransitionOver()
     {
-        Debug.Log("Forced Pos : " + InfoStorage.nextPosition);
+        //Debug.Log("Forced Pos : " + InfoStorage.nextPosition);
         character.SetPosition(InfoStorage.nextPosition);
         Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
         InfoStorage.forceNextChange = false;

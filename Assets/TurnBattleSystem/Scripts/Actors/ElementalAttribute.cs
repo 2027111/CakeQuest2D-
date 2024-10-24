@@ -41,7 +41,6 @@ public class ElementalAttribute
     public ElementalAttribute(int i, bool _found = false)
     {
         element = (Element)i;
-        Debug.Log(element);
         this.found = _found;
     }
 
@@ -51,11 +50,14 @@ public class ElementalAttribute
 
         foreach (Element element in System.Enum.GetValues(typeof(Element)))
         {
-            if (element != Element.None && element != Element.Support)
+           /* if (element != Element.None && element != Element.Support)
             {
                 validElements.Add(element);
-            }
+            }*/
+
         }
+        validElements.Add(Element.Slash);
+        validElements.Add(Element.Bash);
 
         Element randomElement = validElements[UnityEngine.Random.Range(0, validElements.Count)];
         return randomElement;

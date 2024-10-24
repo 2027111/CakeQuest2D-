@@ -203,7 +203,7 @@ public class Character : MonoBehaviour
         {
             state = previousBehaviour.GetType().ToString();
         }
-        Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
+       if(this == Player) Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
     }
     public CharacterBehaviour GetCurrentBehaviour()
     {
@@ -217,9 +217,12 @@ public class Character : MonoBehaviour
 
     public void TogglePlayableState()
     {
-        if (Player == this && !Timeline.IsInCutscene)
+        if (Player == this)
         {
-            ChangeState(new PlayerControlsBehaviour());
+            if (!Timeline.IsInCutscene)
+            {
+                ChangeState(new PlayerControlsBehaviour());
+            }
 
         }
         else

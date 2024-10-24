@@ -11,7 +11,6 @@ public class Entity : MonoBehaviour
     public int Speed = 50;
     public int Health = 50;
     public int Mana = 50;
-
     public int Focus = 0;
     public int MaxFocus = 10;
     public delegate void EventHandler(int health, int maxhealth);
@@ -170,8 +169,18 @@ public class Entity : MonoBehaviour
             {
                 if (attackInfo.ID != lastAttack.ID)
                 {
-                    Debug.Log("Attacked differs");
                     attackInfo.HandleRecipe(character);
+                }
+                else
+                {
+
+                    if (lastAttack.effect == ElementEffect.RecipeBoosted || lastAttack.effect == ElementEffect.RecipeCompleted)
+                    {
+                        attackInfo.effect = lastAttack.effect;
+                        attackInfo.RecipeIndex = lastAttack.RecipeIndex;
+                        attackInfo.HandleDamage();
+                        attackInfo.TriggersChain = false;
+                    }
                 }
             }
             else
@@ -179,17 +188,14 @@ public class Entity : MonoBehaviour
                 attackInfo.HandleRecipe(character);
             }
 
+            
+
         }
 
         if (attackInfo.effect == ElementEffect.RecipeCompleted)
         {
             GameObject obj = Instantiate(BattleManager.Singleton?.KOKUSEN, transform.position + Vector3.up, Quaternion.identity);
-            Vector3 rotation = Vector3.zero;
-            if (character.IsFacing() == -1)
-            {
-                rotation.z = 180;
-            }
-            obj.transform.rotation = Quaternion.Euler(rotation);
+            GameObject obj2 = Instantiate(BattleManager.Singleton?.KOKUSENSPEEDLINES, transform.position + Vector3.up, Quaternion.identity);
 
             StartCoroutine(Utils.SlowDown(1f, .5f));
         }
@@ -248,7 +254,7 @@ public class Entity : MonoBehaviour
         OnDamageTaken.Invoke(attackInfo);
         if (!isDead)
         {
-            if (attackInfo.effect == ElementEffect.RecipeBoosted)
+            if (attackInfo.effect == ElementEffect.RecipeBoosted && attackInfo.TriggersChain)
             {
                 if (attackInfo.source.IsPlayerTeam())
                 {

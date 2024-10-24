@@ -10,18 +10,34 @@ public class Party : SavableObject
 
     public List<CharacterObject> PartyMembers = new List<CharacterObject>();
     public UnityEvent OnAddToParty;
-    public override void ApplyData(SavableObject tempCopy)
+    public async override void ApplyData(SavableObject tempCopy)
     {
-        GameSaveManager.Singleton.StartCoroutine(AddLoadedCharactersToParty((tempCopy as Party).PartyMembers));
+        PartyMembers = new List<CharacterObject>();
+
+        AddCharactersToParty((tempCopy as Party).PartyMembers);
+        //GameSaveManager.Singleton.StartCoroutine(AddLoadedCharactersToParty((tempCopy as Party).PartyMembers));
         base.ApplyData(tempCopy);
     }
 
+    public void AddCharactersToParty(List<CharacterObject> loadedParty)
+    {
 
+        PartyMembers = new List<CharacterObject>();
+
+        foreach (CharacterObject item in loadedParty)
+        {
+            if(ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            {
+                PartyMembers.Add(value as CharacterObject);
+            }
+        }
+
+    }
 
     public IEnumerator AddLoadedCharactersToParty(List<CharacterObject> loadedParty)
     {
-        PartyMembers.Clear();
 
+        PartyMembers = new List<CharacterObject>();
 
         foreach (CharacterObject item in loadedParty)
         {
@@ -34,6 +50,8 @@ public class Party : SavableObject
             PartyMembers.Add(loadedChar);
             yield return null;
         }
+
+        Debug.Log("Current party " + name + " Has Member count : " + PartyMembers.Count);
         yield return null;
     }
 

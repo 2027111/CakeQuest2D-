@@ -70,7 +70,6 @@ public class BattleCharacter : MonoBehaviour
     }
     public bool HandleRecipe(AttackInformation attackInfo)
     {
-        Debug.Log("Hmm");
         if (recipe.Count > recipeIndex)
         {
             if (recipe[recipeIndex].element == attackInfo.element)
@@ -100,6 +99,17 @@ public class BattleCharacter : MonoBehaviour
 
     }
 
+    public void GiveNextCommand(Command command)
+    {
+        if (currentCommand != null)
+        {
+            if(currentCommand.nextCommand == null)
+            {
+                currentCommand.nextCommand = command;
+
+            }
+        }
+    }
 
     public bool WillKokusen(Command command)//Lets know the current command if the current attack will be the last of a recipe.
     {
@@ -181,7 +191,7 @@ public class BattleCharacter : MonoBehaviour
         return IsPlayerTeam() ? -1 : 1;
     }
 
-    private Skill GetRandomAttack() //returns a random skill from the character reference.
+    public Skill GetRandomAttack() //returns a random skill from the character reference.
     {
 
         List<Skill> returnAttacks = new List<Skill>();

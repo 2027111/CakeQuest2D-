@@ -171,6 +171,7 @@ MonoBehaviour:
   BattlePrefab: {fileID: 3887754998874502464, guid: bcc2b3dc2461fef449f4ecc8e00fe022, type: 3}
   CursorPrefab: {fileID: 1388597213317878411, guid: f9da7a3369190c5408a0b831bf4bacdc, type: 3}
   KOKUSEN: {fileID: 9027514048236820045, guid: effb650189dc5714e9e9801b1cfb3991, type: 3}
+  KOKUSENSPEEDLINES: {fileID: 7538904196564448644, guid: 6ff02475c54932b48916c64584f7705e, type: 3}
   KOKUSENAURA: {fileID: 100000, guid: 4a4e48bb192723f428b477fecf4df378, type: 3}
   currentBackground: {fileID: 1955192346}
   fadeBackground: {fileID: 1274599140}

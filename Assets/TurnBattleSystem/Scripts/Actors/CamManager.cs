@@ -8,7 +8,8 @@ public class CamManager : MonoBehaviour
     private Transform _cameraTransform;
     private Vector3 _originalPos;
     private Vector3 _originalCamPos;
-    [SerializeField] private float zoomDistance = -5f;
+   int defaultMask;
+   [SerializeField] private float zoomDistance = -5f;
 
     void Awake()
     {
@@ -19,6 +20,7 @@ public class CamManager : MonoBehaviour
             _cameraTransform = Camera.main.transform;
             _originalCamPos = _cameraTransform.localPosition;
             _originalPos = transform.localPosition;
+            defaultMask = Camera.main.cullingMask;
         }
         else
         {
@@ -26,6 +28,25 @@ public class CamManager : MonoBehaviour
         }
     }
 
+
+    private void Start()
+    {
+        ConsoleToGui.OnShowChange.AddListener(SetDebugVision);
+        SetDebugVision(ConsoleToGui.doShow);
+    }
+
+
+    public void SetDebugVision(bool show)
+    {
+        if (show) {
+
+            Camera.main.cullingMask = defaultMask | (1 << LayerMask.NameToLayer("Collision"));
+        }
+        else
+        {
+            Camera.main.cullingMask = defaultMask;
+        }
+    }
     public static void Shake(float duration, float magnitude)
     {
         if (_instance != null)

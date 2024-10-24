@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766730e090102734abd365b31bbfe345, type: 3}
   m_Name: Yankee's Wallet
   m_EditorClassIdentifier: 
-  UID: 41745908712ae1f47ba5366e2f98d023
+  UID: f6195b03fb092c344aee0fadc13130de
   targetType: 0
   friendliness: 0
   targetStateType: 0

@@ -38,11 +38,14 @@ public class AttackCommand : Command
             Source.StartCoroutine(Utils.SlowDown(1.5f, .02f));
         }
         yield return Source.StartCoroutine(WaitForAnimationOver());
-        yield return new WaitForSeconds(.6f);
+        //yield return new WaitForSeconds(.6f);
         Source.EnemyContainer.localPosition = new Vector3(0.625f, -0.25f, 0);
         if (nextCommand != null)
         {
             nextCommand.OnExecuted += OnExecuted;
+            nextCommand.OnRecipeMatched += OnRecipeMatched;
+            nextCommand.SetSource(Source);
+            nextCommand.SetTarget(Target);
             Source.currentCommand = nextCommand;
             yield return Source.StartCoroutine(((AttackCommand)nextCommand).Execute());
         }

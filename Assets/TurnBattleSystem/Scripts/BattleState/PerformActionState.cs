@@ -6,7 +6,7 @@ public class PerformActionState : BattleState
 {
     BattleCharacter performer;
 
-
+    int initialChainTimer = 5;
     public PerformActionState()
     {
         MenuName = "ChainMenu";
@@ -140,7 +140,10 @@ public class PerformActionState : BattleState
     {
         if (choiceMenu)
         {
-            choiceMenu.GetComponent<ChoiceMenu>().TriggerSelected();
+            if (choiceMenu.GetComponent<TakeOverMenu>())
+            {
+                choiceMenu.GetComponent<ChoiceMenu>().TriggerSelected();
+            }
         }
         base.OnSelect();
     }
@@ -183,9 +186,26 @@ public class PerformActionState : BattleState
     }
     public void InstantiateMenu(List<BattleCharacter> battleCharacters)
     {
-        InstantiateMenu(battleManager?.GetActor());
+        InstantiateTakeOverMenu(battleManager?.GetActor());
 
         choiceMenu.GetComponent<TakeOverMenu>().GiveTakeOvers(battleCharacters, this);
+    }
+
+    private void InstantiateTakeOverMenu(BattleCharacter battleCharacter)
+    {
+        GameObject choiceMenuPrefab = Resources.Load<GameObject>($"{BattleMenuPath}TakeOverMenu");
+        if (choiceMenuPrefab != null)
+        {
+            choiceMenu = GameObject.Instantiate(choiceMenuPrefab, battleCharacter.transform.position + Vector3.up, Quaternion.identity);
+            performer.StartCoroutine(Utils.SlowDown(3, .01f));
+
+        }
+        else
+        {
+            Debug.LogError("ChoiceMenu prefab not found in Resources.");
+        }
+
+        OnMenuInstantiated();
     }
 
     public override void InstantiateMenu(BattleCharacter character)
@@ -194,8 +214,14 @@ public class PerformActionState : BattleState
         if (choiceMenuPrefab != null)
         {
             choiceMenu = GameObject.Instantiate(choiceMenuPrefab, character.transform.position + Vector3.up, Quaternion.identity);
-            performer.StartCoroutine(Utils.SlowDown(3, .01f));
-            choiceMenu.GetComponent<ChainMenu>().SetTimer(3);
+            performer.StartCoroutine(Utils.SlowDown(initialChainTimer, .01f));
+            choiceMenu.GetComponent<ChainMenu>().GiveBattleCharacter(performer);
+            choiceMenu.GetComponent<ChainMenu>().SetTimer(initialChainTimer);
+            if(initialChainTimer > 1)
+            {
+                initialChainTimer--;
+            }
+
         }
         else
         {

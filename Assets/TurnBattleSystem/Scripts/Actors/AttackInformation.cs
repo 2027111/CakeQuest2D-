@@ -11,6 +11,7 @@ public class AttackInformation
     public ElementEffect effect;
     public Element element;
     public BattleCharacter source;
+    public bool TriggersChain = true;
     public bool isFinalHit;
     public string ID;
     public bool textEffectShown = false;
@@ -73,5 +74,17 @@ public class AttackInformation
         RecipeIndex = recipeIndex;
         effect = ElementEffect.RecipeBoosted;
 
+    }
+
+    public void HandleDamage()
+    {
+        if (effect == ElementEffect.RecipeCompleted)
+        {
+            amount *= RecipeIndex;
+        }
+        else
+        {
+            amount += (amount * .5f * RecipeIndex);
+        }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7667df9e1e36cc2499ecbee7852134e1, type: 3}
   m_Name: Jeremy - Scissor Throw
   m_EditorClassIdentifier: 
-  UID: e8a2eee11bd46b748b3684657e4b2b0d
+  UID: c6372ab6791747a44bd51381955ad3cb
   targetType: 1
   friendliness: 1
   targetStateType: 0

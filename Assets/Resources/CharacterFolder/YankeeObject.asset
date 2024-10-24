@@ -16,7 +16,7 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
   Health: 100
   MaxHealth: 100
-  Mana: 100
+  Mana: 86
   MaxMana: 100
   Speed: 0
   AttackDamage: 5
@@ -30,7 +30,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b23b175a78d6b5458322e3a6c9905d0, type: 3}
   Attacks:
   - {fileID: 11400000, guid: f52855296ba9e174daf048dbd622d234, type: 2}
-  - {fileID: 11400000, guid: 0a67cfedfe6f2c944a95df37b5d6ddae, type: 2}
   - {fileID: 11400000, guid: 5c86b4619725f4741b62498a22bf8c6a, type: 2}
   animationController: {fileID: 22100000, guid: bbaecce845f6a5845b2a58f6f636b165, type: 2}
   InParty: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}

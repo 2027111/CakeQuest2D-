@@ -46,6 +46,7 @@ public class BattleManager : MonoBehaviour
 
 
     public GameObject KOKUSEN;
+    public GameObject KOKUSENSPEEDLINES;
     public GameObject KOKUSENAURA;
 
 
@@ -487,7 +488,7 @@ public class BattleManager : MonoBehaviour
             }
             else
             {
-                actor.GetComponent<Entity>().OnHealthChange += actor.GetComponent<HealthBarPopUp>().OnHealthChange;
+               // actor.GetComponent<Entity>().OnHealthChange += actor.GetComponent<HealthBarPopUp>().OnHealthChange;
             }
         }
     }
@@ -702,7 +703,7 @@ public class BattleManager : MonoBehaviour
         {
             float alpha = Mathf.Lerp(start, target, (t / fadeDuration));
             sr.color = new Color(0, 0, 0, alpha);
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             yield return null;
         }
 

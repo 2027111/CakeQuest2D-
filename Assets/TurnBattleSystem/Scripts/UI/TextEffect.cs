@@ -45,7 +45,7 @@ public class TextEffect : MonoBehaviour
             if (attackInfo.source)
             {
 
-                if (attackInfo.source.currentCommand != null)
+                if (attackInfo.command != null && attackInfo.TriggersChain)
                 {
 
                     if (attackInfo.effect != ElementEffect.Neutral && attackInfo.textEffectShown == false)

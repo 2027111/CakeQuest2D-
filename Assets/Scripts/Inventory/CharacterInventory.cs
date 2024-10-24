@@ -16,11 +16,26 @@ public class CharacterInventory : SavableObject
 
     public override void ApplyData(SavableObject tempCopy)
     {
-        GameSaveManager.Singleton.StartCoroutine(AddLoadedItemToInventory((tempCopy as CharacterInventory).myInventory));
+        AddItemsToInventory(((tempCopy as CharacterInventory).myInventory));
+      //  GameSaveManager.Singleton.StartCoroutine(AddLoadedItemToInventory((tempCopy as CharacterInventory).myInventory));
         pessos = (tempCopy as CharacterInventory).pessos;
         base.ApplyData(tempCopy);
     }
 
+    public void AddItemsToInventory(List<InventoryItem> loadedInventory)
+    {
+
+        myInventory = new List<InventoryItem>();
+
+        foreach (InventoryItem item in loadedInventory)
+        {
+            if (ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            {
+                myInventory.Add(value as InventoryItem);
+            }
+        }
+
+    }
 
     public IEnumerator AddLoadedItemToInventory(List<InventoryItem> loadedInventory)
     {

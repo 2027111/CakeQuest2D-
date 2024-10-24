@@ -54,7 +54,9 @@ public class CharacterObject : SavableObject
 
     public override void ApplyData(SavableObject tempCopy)
     {
-        GameSaveManager.Singleton.StartCoroutine(AddLoadedSkillToMoveset((tempCopy as CharacterObject).Attacks));
+        AddSkillsToMoveset((tempCopy as CharacterObject).Attacks);
+
+        //GameSaveManager.Singleton.StartCoroutine(AddLoadedSkillToMoveset((tempCopy as CharacterObject).Attacks));
         Health = (tempCopy as CharacterObject).Health;
         MaxHealth = (tempCopy as CharacterObject).MaxHealth;
         Mana = (tempCopy as CharacterObject).Mana;
@@ -63,6 +65,21 @@ public class CharacterObject : SavableObject
         base.ApplyData(tempCopy);
     }
 
+
+    public void AddSkillsToMoveset(List<Skill> loadedSkills)
+    {
+
+        Attacks = new List<Skill>();
+
+        foreach (Skill item in loadedSkills)
+        {
+            if (ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            {
+                Attacks.Add(value as Skill);
+            }
+        }
+
+    }
 
     public IEnumerator AddLoadedSkillToMoveset(List<Skill> loadedSkills)
     {

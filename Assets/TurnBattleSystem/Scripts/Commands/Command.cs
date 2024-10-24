@@ -11,6 +11,9 @@ public class Command
     public List<BattleCharacter> Target;
     public Friendliness friendliness = Friendliness.Non_Friendly;
     public TargetStateType targetStateType = TargetStateType.Alive;
+
+
+
     public bool skippable = true;
     public bool canFocus = true;
     public bool canCombo = true;
@@ -157,7 +160,15 @@ public class Command
 
     public virtual Element GetElement()
     {
-        return Source.GetReference().AttackElement;
+        if (Source)
+        {
+            return Source.GetReference().AttackElement;
+        }
+        else
+        {
+            return BattleManager.Singleton.GetActor().GetReference().AttackElement;
+        }
+       
     }
 
     public IEnumerator GoToEnemy()

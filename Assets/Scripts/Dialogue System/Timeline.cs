@@ -29,7 +29,7 @@ public class Timeline : MonoBehaviour
     {
         if (CanPlayCutscene())
         {
-            Debug.Log("Playing Cutscene");
+           // Debug.Log("Playing Cutscene");
             storagePlay.dialogueIndex = 0;
 
             SetupRequirements();
@@ -54,7 +54,7 @@ public class Timeline : MonoBehaviour
 
     public virtual void StartDialogue()
     {
-        Debug.Log("Starting Dialogue");
+        //Debug.Log("Starting Dialogue");
         if (!started)
         {
             if (CanPlayCutscene())
@@ -90,14 +90,14 @@ public class Timeline : MonoBehaviour
     public virtual void DialogueOver()
     {
         started = false;
-        Debug.Log("Dialogue Over");
+        //Debug.Log("Dialogue Over");
         UnpauseCutscene();
     }
 
     public void UnpauseCutscene()
     {
         playableDirector?.Resume();
-        Debug.Log("Unpause");
+       // Debug.Log("Unpause");
     }
 
     public virtual void CutsceneOver()

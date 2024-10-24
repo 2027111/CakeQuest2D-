@@ -15,6 +15,15 @@ public class TextNamer : MonoBehaviour
 
 
         NameText.text = thisChara.name;
+
+        ConsoleToGui.OnShowChange.AddListener(ShowCanvas);
+        ShowCanvas(ConsoleToGui.doShow);
+    }
+
+
+    public void ShowCanvas(bool show)
+    {
+        gameObject.SetActive(show);
     }
 
     private void Update()

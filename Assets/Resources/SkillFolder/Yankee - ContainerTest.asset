@@ -26,7 +26,7 @@ MonoBehaviour:
   Description: Attack qui fait mal :)
   animationClip: {fileID: 7400000, guid: 243500a5295a9ba4c95fed18fabf0f76, type: 2}
   voiceClipId: 
-  baseDamage: 20
+  baseDamage: 191
   baseAccuracy: 80
   manaCost: 14
   spawnObjects: []
