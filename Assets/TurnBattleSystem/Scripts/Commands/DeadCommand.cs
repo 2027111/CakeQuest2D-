@@ -19,7 +19,7 @@ public class DeadCommand : Command
     public override void ExecuteCommand()
     {
         Source.StartCoroutine(Execute());
-        Debug.Log(Source.name + message);
+        //Debug.Log(Source.name + message);
     }
 
     public virtual IEnumerator Execute()

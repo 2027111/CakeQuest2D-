@@ -210,15 +210,7 @@ public class BattleCharacter : MonoBehaviour
         return returnAttacks[Random.Range(0, returnAttacks.Count)];
     }
 
-    public void CancelAttack()
-    {
-        Debug.Log("Cancelled Command");
-        if(currentCommand is AttackCommand)
-        {
-            //(currentCommand as AttackCommand).CancelCommand();
-        }
 
-    }
 
     public List<Skill> GetAttacks() //returns everyskill of the current character reference.
     {

@@ -10,12 +10,7 @@ public class AttackCommand : Command
         Source.StartCoroutine(Execute());
     }
 
-    public void CancelCommand()
-    {
-        Debug.Log("Cancel");
-        Source.StopAllCoroutines();
 
-    }
     public virtual IEnumerator Execute()
     {
 

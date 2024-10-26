@@ -51,7 +51,6 @@ public class Party : SavableObject
             yield return null;
         }
 
-        Debug.Log("Current party " + name + " Has Member count : " + PartyMembers.Count);
         yield return null;
     }
 

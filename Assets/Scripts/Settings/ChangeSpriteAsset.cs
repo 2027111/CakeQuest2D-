@@ -19,12 +19,10 @@ public class ChangeSpriteAsset : MonoBehaviour
         if (pi.currentControlScheme == pi.defaultControlScheme)
         {
             currentSpriteAsset = keyboardSpriteAsset;
-            Debug.Log("KeyBoard");
         }
         else
         {
             currentSpriteAsset = controllerSpriteAsset;
-            Debug.Log("Controller");
         }
     }
 }

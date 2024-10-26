@@ -203,7 +203,7 @@ public class Character : MonoBehaviour
         {
             state = previousBehaviour.GetType().ToString();
         }
-       if(this == Player) Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
+       if(this == Player && ConsoleToGui.doShow) Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
     }
     public CharacterBehaviour GetCurrentBehaviour()
     {

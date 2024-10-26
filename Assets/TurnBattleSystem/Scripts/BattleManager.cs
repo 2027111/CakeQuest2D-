@@ -617,12 +617,12 @@ public class BattleManager : MonoBehaviour
     public void OnBattleWon()
     {
         currentBattleInfo.ConfirmBattle();
-        Debug.Log("Battle Won");
+       // Debug.Log("Battle Won");
     }
 
     public void OnBattleLoss()
     {
-        Debug.Log("Battle Loss");
+       // Debug.Log("Battle Loss");
     }
     public void CheckTeams()
     {
