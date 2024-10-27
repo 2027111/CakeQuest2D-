@@ -15,12 +15,20 @@ public class AnalyzingTargetState : BattleState
         battleManager.SetCursor(null);
         battleManager.actorInfoPanel.Appear(true);
         possibleTarget = battleManager.Actors;
+
         if (possibleTarget.Count == 0)
         {
             battleManager.ChangeState(new ChoosingActionState());
         }
         else
         {
+            foreach(BattleCharacter bc in possibleTarget)
+            {
+                if (bc.Entity.isDead)
+                {
+                    possibleTarget.Remove(bc);
+                }
+            }
             Select(BattleManager.Singleton?.GetActor());
         }
 
