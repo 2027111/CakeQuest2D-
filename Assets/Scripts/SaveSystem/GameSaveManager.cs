@@ -325,6 +325,9 @@ public class GameSaveManager : MonoBehaviour
             AllParties = allParties
 
         };
+
+        
+        
         ReadableSaveData newData = new ReadableSaveData();
         newData.SaveDataWrapper = saveData;
         newData.data = GetListMatch(listName);
@@ -343,17 +346,6 @@ public class GameSaveManager : MonoBehaviour
             ObjectDataWrapperJson = saveDataString,
             SaveDataWrapperJson = wrapperjson
         };
-        if (currentLoadedData != null)
-        {
-            data.dataCreationDate = currentLoadedData.dataCreationDate;
-            // Calculate the total playTime in hours
-            data.playTime = (float)(currentLoadedData.playTime + (DateTime.Now - dateTime).TotalHours);
-        }
-        else
-        {
-            data.dataCreationDate = DateTime.Today;
-            data.playTime = 0;
-        }
         var json = JsonUtility.ToJson(data, true);
 
 
@@ -457,10 +449,13 @@ public class GameSaveManager : MonoBehaviour
         foreach (SavableObject savableObject in dataList)
         {
             ScriptableObjectDTO dto = GetMatchingObject(dtoList, savableObject);
-            SavableObject obj = dto.ReturnNewData(savableObject);
-            if (obj != null)
+            if(dto != null)
             {
-                returnList.Add(obj);
+                SavableObject obj = dto.ReturnNewData(savableObject);
+                if (obj != null)
+                {
+                    returnList.Add(obj);
+                }
             }
         }
 

@@ -66,6 +66,12 @@ public class TextEffect : MonoBehaviour
                                 message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeFailed");
                                 textColor = Color.blue;
                                 break;
+
+                            case ElementEffect.RecipeSuperFailed:
+
+                                message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeSuperFailed");
+                                textColor = Color.blue;
+                                break;
                             case ElementEffect.RecipeCompleted:
 
                                 message = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("recipeSuccess");

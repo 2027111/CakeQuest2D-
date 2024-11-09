@@ -34,10 +34,13 @@ public class BattleCharacter : MonoBehaviour
 
     public Entity Entity;
 
-
+    public int recipeFailedIndex = 0;
+    public int recipeFailsafe = 3;
+    public int turnsNotAttacked = 0;
     public int recipeIndex = 0;
     public List<ElementalAttribute> recipe;
 
+    public OptionManager OptionManager;
 
     void Start()
     {
@@ -59,10 +62,29 @@ public class BattleCharacter : MonoBehaviour
         length = Mathf.Clamp(length, 2, 999);
         for (int i = 0; i < length; i++)
         {
-            recipe.Add(new ElementalAttribute());
+            recipe.Add(new ElementalAttribute(GetPossibleIngredient()));
         }
         recipeIndex = 0;
     }
+
+    private Element GetPossibleIngredient()
+    {
+        List<Element> validElements = new List<Element>();
+
+        foreach (Element element in GetReference().IngredientWheel)
+        {
+            if (element != Element.None && element != Element.Support)
+            {
+                validElements.Add(element);
+            }
+
+        }
+
+        Element randomElement = validElements[UnityEngine.Random.Range(0, validElements.Count)];
+        return randomElement;
+
+    }
+
     public void SetRecipe(List<ElementalAttribute> attributes)
     {
         recipe = attributes;
@@ -89,8 +111,14 @@ public class BattleCharacter : MonoBehaviour
             {
                 if (recipeIndex != 0)
                 {
-                    recipeIndex = 0;
+                    ResetRecipe();
                     attackInfo.effect = ElementEffect.RecipeFailed;
+                    recipeFailedIndex++;
+                    if (recipeFailedIndex >= recipeFailsafe)
+                    {
+                        attackInfo.effect = ElementEffect.RecipeSuperFailed;
+                        SetRecipe();
+                    }
                 }
             }
         }
@@ -99,11 +127,28 @@ public class BattleCharacter : MonoBehaviour
 
     }
 
+    public void OnEveryTurn()
+    {
+        if (recipeIndex != 0)
+        {
+            if (turnsNotAttacked > 1 || GetTeam() != BattleManager.Singleton?.GetActor().GetTeam())
+            {
+                ResetRecipe();
+            }
+            turnsNotAttacked++;
+        }
+    }
+
+    public void ResetRecipe()
+    {
+        recipeIndex = 0;
+    }
+
     public void GiveNextCommand(Command command)
     {
         if (currentCommand != null)
         {
-            if(currentCommand.nextCommand == null)
+            if (currentCommand.nextCommand == null)
             {
                 currentCommand.nextCommand = command;
 
@@ -168,7 +213,7 @@ public class BattleCharacter : MonoBehaviour
         Command comm;
         if (prob > 50)
         {
-            comm =  new AttackCommand();
+            comm = new AttackCommand();
         }
         else
         {
@@ -364,5 +409,10 @@ public class BattleCharacter : MonoBehaviour
     {
         Animator.StopBlock();
         isBlocking = false;
+    }
+
+    public void SetOptions(int[] opt)
+    {
+        OptionManager.DisableMenus(opt);
     }
 }

@@ -48,6 +48,7 @@ public class UICanvas : MonoBehaviour
         return _singleton != null;
     }
 
+    public static bool showBorder = true;
     [SerializeField] UIBorder border;
     [SerializeField] QuestList questList;
     [SerializeField] PartyList partyList;
@@ -104,10 +105,10 @@ public class UICanvas : MonoBehaviour
     public IEnumerator StartAnimatedCutscene()
     {
 
-        TurnBordersOn(false);
+        ForceBordersOff();
         yield return dialogueBox.WaitForResume();
 
-        FadeScreen.Singleton.SetColor(Color.black);
+        FadeScreen.SetColor(Color.black);
         yield return FadeScreen.Singleton.StartFadeAnimation(true, .8f);
         yield return ShowVideo(true);
 
@@ -185,12 +186,11 @@ public class UICanvas : MonoBehaviour
 
         yield return FadeScreen.Singleton.StartFadeAnimation(true);
         yield return ShowVideo(false);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Character>().TogglePreviousState();
         yield return dialogueBox.Resume();
         MusicPlayer.Resume();
-        TurnBordersOn(true);
         videoPlayer.Stop();
         yield return FadeScreen.Singleton.StartFadeAnimation(false);
+        Character.Player?.TogglePreviousState();
     }
 
     public void EndVideo()
@@ -259,10 +259,38 @@ public class UICanvas : MonoBehaviour
     }
     public static void TurnBordersOn(bool on)
     {
-        Singleton?.border.Appear(on);
-        Singleton?.questList.Appear(on);
-        Singleton?.partyList.Appear(on);
+        Singleton?.BorderAppear(on);
     }
+
+    public static void ForceBordersOff()
+    {
+        Singleton?.border.Appear(false);
+        Singleton?.questList.Appear(false);
+        Singleton?.partyList.Appear(false);
+    }
+
+    public void BorderAppear(bool on)
+    {
+        showBorder = on;
+        StartCoroutine("ShowBorderDelayed", on);
+    }
+
+
+    public IEnumerator ShowBorderDelayed(bool on)
+    {
+        yield return new WaitForSeconds(.5f);
+        if(showBorder == on && Timeline.IsInCutscene != on)
+        {
+            if(on == false || Timeline.IsInCutscene == false)
+            {
+                Singleton?.border.Appear(on);
+                Singleton?.questList.Appear(on);
+                Singleton?.partyList.Appear(on);
+            }
+        }
+    }
+
+
 
     public static void UpdateQuestList()
     {

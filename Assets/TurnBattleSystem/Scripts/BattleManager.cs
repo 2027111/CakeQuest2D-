@@ -344,7 +344,7 @@ public class BattleManager : MonoBehaviour
     public void SetupBattle()
     {
         ClearStage();
-        UICanvas.TurnBordersOn(false);
+        UICanvas.ForceBordersOff();
         SetBattleParty();
         SpawnEveryMember(HeroParty, TeamIndex.Player);
         SpawnEveryMember(EnemyParty, TeamIndex.Enemy);
@@ -776,6 +776,36 @@ public class BattleManager : MonoBehaviour
     {
         StartNewTurn();
     }
+
+    public void DisableOptions(int[] options)
+    {
+
+
+        int index = options[0];
+
+        if (index < HeroPartyActors.Count)
+        {
+
+          
+
+
+
+
+            if (index >= 0)
+            {
+                BattleCharacter Hero = HeroPartyActors[options[0]];
+                Hero.SetOptions(options);
+            }
+            else if (index == -1)
+            {
+                foreach (BattleCharacter Hero in HeroPartyActors)
+                {
+
+                    Hero.SetOptions(options);
+                }
+            }
+        }
+    }
     public void StartNewTurn()
     {
         if (CheckCutscene())
@@ -790,18 +820,28 @@ public class BattleManager : MonoBehaviour
                 GetActor().currentCommand.SetSource(GetActor());
                 ChangeState(new PerformActionState());
             }
-            else if (GetActor().IsPlayerTeam())
-            {
-
-                ChangeState(new ChoosingActionState());
-            }
             else
             {
-                GetActor().currentCommand = GetActor().CreateCommand();
-                GetActor().currentCommand.SetSource(GetActor());
-                GetActor().currentCommand.SetTarget(GetRandomTargets());
-                ChangeState(new PerformActionState());
+                foreach(BattleCharacter bc in Actors)
+                {
+                    if(bc.Entity.isDead == false && bc.GetTeam() != GetActor().GetTeam())
+                    {
+                        bc.OnEveryTurn();
+                    }
+                }
+                if (GetActor().IsPlayerTeam())
+                {
 
+                    ChangeState(new ChoosingActionState());
+                }
+                else
+                {
+                    GetActor().currentCommand = GetActor().CreateCommand();
+                    GetActor().currentCommand.SetSource(GetActor());
+                    GetActor().currentCommand.SetTarget(GetRandomTargets());
+                    ChangeState(new PerformActionState());
+
+                }
             }
 
             if (!GetActor().IsPlayerTeam())

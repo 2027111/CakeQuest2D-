@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,32 @@ public class Party : SavableObject
         //GameSaveManager.Singleton.StartCoroutine(AddLoadedCharactersToParty((tempCopy as Party).PartyMembers));
         base.ApplyData(tempCopy);
     }
+
+    public override string GetJsonData()
+    {
+
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+
+        jsonObject["party"] = JArray.FromObject(GetStringifiedParty()); // Adding additional data
+
+        return jsonObject.ToString();
+
+
+
+    }
+
+
+    public List<string> GetStringifiedParty()
+    {
+        List<string> partyIds = new List<string>();
+        foreach(CharacterObject co in PartyMembers)
+        {
+            partyIds.Add(co.UID);
+        }
+        return partyIds;
+    }
+
 
     public void AddCharactersToParty(List<CharacterObject> loadedParty)
     {

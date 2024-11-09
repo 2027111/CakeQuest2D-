@@ -44,7 +44,8 @@ public class PlayerInfoStorage : MonoBehaviour
         {
             if (!FadeScreen.movingScene)
             {
-                FadeScreen.StartTransition(false, Color.black, .5f);
+                FadeScreen.SetColor(Color.black);
+                FadeScreen.StartTransition(false);
             }
         }
     }

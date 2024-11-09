@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,25 @@ public class Cutscene : BoolValue
         dialogueIndex = (tempCopy as Cutscene).dialogueIndex;
         base.ApplyData(tempCopy);
     }
+
+
+
+    public override string GetJsonData()
+    {
+
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+
+        jsonObject["repeats"] = repeats; // Adding additional data
+        jsonObject["dialogueIndex"] = dialogueIndex; // Adding additional data
+
+        return jsonObject.ToString();
+
+
+
+    }
+
+
     public virtual Dialogue GetNextLine()
     {
 

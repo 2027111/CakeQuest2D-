@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 540c7f276e93ea347bd5be0c7f87d0a9, type: 3}
+  m_Name: IsekaiedCutscene
+  m_EditorClassIdentifier: 
+  UID: 89c05f0cb2603a3469e512d2d30c4ba0
+  RuntimeValue: 1
+  repeats: 0
+  dialogueIndex: 0
+  dialogue:
+  - condition: []
+    dialogueLineIds:
+    - intro_void_jimi1
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
+    - intro_void_jimi2
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
+    - intro_void_aj0
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
+    - intro_void_aj1
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
+    - intro_void_jimi3
+    - intro_void_jimi4
+    - intro_void_jimi5
+    - intro_void_aj2
+    - intro_void_jimi6
+    - intro_void_aj3
+    - intro_void_jimi7
+    - intro_void_aj4
+    - intro_void_jimi8
+    - intro_void_aj5
+    - intro_void_aj6
+    - intro_void_jimi9
+    - intro_void_aj7
+    - intro_void_aj8
+    - intro_void_jimi10
+    - intro_void_aj9
+    - intro_void_jimi11
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  StartRoom: {fileID: 0}
+  CutsceneToPlay: {fileID: 11400000, guid: e44679817e8eb3641a887551fca76d28, type: 2}

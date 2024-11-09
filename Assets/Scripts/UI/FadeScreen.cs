@@ -17,7 +17,11 @@ public class FadeScreen : MonoBehaviour
     public static bool movingScene = false;
     private static FadeScreen _singleton;
 
+
+
+
     private float fadeTime = .5f;
+    private float WaitTime = 1f;
     public bool startFadeon = false;
     public static FadeScreen Singleton
     {
@@ -73,25 +77,32 @@ public class FadeScreen : MonoBehaviour
         {
 
             fadeOn = true;
-            StartTransition(false, Color.black, .5f, 1);
+            ResetTimes();
+            StartTransition(false);
         }
     }
     public static void MoveToScene(string sceneName, Color transitionColor, float fadeTime = -1)
     {
 
-        Singleton?.SetColor(transitionColor);
+        SetColor(transitionColor);
 
-        MoveToScene(sceneName, fadeTime);
+        MoveToScene(sceneName);
+    }
+
+    public static void ResetTimes()
+    {
+        Singleton.fadeTime = .5f;
+        Singleton.WaitTime = 1f;
+        Singleton.fadeScreen.color = Color.black;
+
     }
 
 
 
-    public static void MoveToScene(string sceneName, float fadeTime = -1)
+    public static void MoveToScene(string sceneName)
     {
         if (!movingScene)
         {
-
-            Singleton?.SetTransitionTime((fadeTime > 0 ? fadeTime : .3f));
             Singleton?.FadeToScene(sceneName);
         }
     }
@@ -109,18 +120,28 @@ public class FadeScreen : MonoBehaviour
         StartCoroutine(FadeCoroutine(sceneName));
     }
 
-    public static void StartTransition(bool on, Color color, float fadeTime = -1, float waitTime = 0)
+    public static void StartTransition(bool on)
     {
-        Singleton?.SetColor(color);
 
-        Singleton?.StartTransition(on, fadeTime, waitTime);
+        Singleton?.StartTransition(on);
 
 
     }
-
-    public void SetColor(Color color)
+    public static void SetTimes(float transitionFadeTime, float transitionTime)
     {
-        fadeScreen.color = color;
+        Singleton?.SetTransitionTime(transitionFadeTime);
+        Singleton?.SetTransitionWaitTime(transitionTime);
+
+    }
+
+    private void SetTransitionWaitTime(float transitionTime)
+    {
+        WaitTime = transitionTime;
+    }
+
+    public static void SetColor(Color color)
+    {
+        Singleton.fadeScreen.color = color;
     }
 
     public void SetTransitionTime(float time)
@@ -141,45 +162,11 @@ public class FadeScreen : MonoBehaviour
 
     public static void FakeMoveToScene()
     {
-        Singleton?.StartCoroutine(Singleton?.FakeCoroutine());
+        Singleton?.StartCoroutine(Singleton?.FadeCoroutine());
     }
 
 
-    public IEnumerator FakeCoroutine()
-    {
-
-
-        yield return new WaitForSeconds(.05f);
-        OnFadingStart?.Invoke();
-
-        Singleton.SetColor(Color.black);
-        Singleton.SetTransitionTime(fadeTime);
-        yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
-        yield return new WaitForSeconds(.05f);
-        OnFadingMid?.Invoke();
-        yield return new WaitForSecondsRealtime(fadeTime);
-
-        Singleton.SetColor(Color.black);
-        Singleton.SetTransitionTime(fadeTime);
-        yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
-        fadeOn = false;
-
-        yield return new WaitForSeconds(.05f);
-
-        OnFadingEnd?.Invoke();
-        yield return null;
-
-
-        OnFadingStart?.RemoveAllListeners();
-        OnFadingMid?.RemoveAllListeners();
-        OnFadingEnd?.RemoveAllListeners();
-
-
-
-
-
-    }
-    public IEnumerator FadeCoroutine(string scene)
+    public IEnumerator FadeCoroutine(string scene = null)
     {
 
 
@@ -189,24 +176,26 @@ public class FadeScreen : MonoBehaviour
 
         if (!FadeScreen.fading)
         {
-            Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
             yield return Singleton.StartCoroutine(StartFadeAnimation(true, fadeTime));
             fadeOn = true;
         }
         yield return new WaitForSeconds(.05f);
         OnFadingMid?.Invoke();
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-
-        while (!asyncOperation.isDone)
+        if(scene != null)
         {
-            yield return null;
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
+
+            while (!asyncOperation.isDone)
+            {
+                yield return null;
+            }
+            yield return new WaitForSecondsRealtime(WaitTime);
         }
-        yield return new WaitForSecondsRealtime(fadeTime);
+      
         if (!FadeScreen.fading)
         {
 
-            Singleton.SetColor(Color.black);
             Singleton.SetTransitionTime(fadeTime);
             yield return Singleton.StartCoroutine(StartFadeAnimation(false, fadeTime));
             fadeOn = false;
@@ -223,7 +212,7 @@ public class FadeScreen : MonoBehaviour
         OnFadingMid?.RemoveAllListeners();
         OnFadingEnd?.RemoveAllListeners();
 
-
+        ResetTimes();
 
 
 

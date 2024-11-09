@@ -23,6 +23,7 @@ public enum ElementEffect
     NonAffected,
     RecipeBoosted,
     RecipeFailed,
+    RecipeSuperFailed,
     RecipeCompleted,
     Blocked,
 }
@@ -38,6 +39,14 @@ public class ElementalAttribute
     {
         element = GetRandomElement();
     }
+
+    public ElementalAttribute(Element e)
+    {
+        element = e;
+        found = false;
+    }
+
+
     public ElementalAttribute(int i, bool _found = false)
     {
         element = (Element)i;
@@ -50,14 +59,12 @@ public class ElementalAttribute
 
         foreach (Element element in System.Enum.GetValues(typeof(Element)))
         {
-           /* if (element != Element.None && element != Element.Support)
+            if (element != Element.None && element != Element.Support)
             {
                 validElements.Add(element);
-            }*/
+            }
 
         }
-        validElements.Add(Element.Slash);
-        validElements.Add(Element.Bash);
 
         Element randomElement = validElements[UnityEngine.Random.Range(0, validElements.Count)];
         return randomElement;

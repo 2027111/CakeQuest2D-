@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using UnityEngine;
 
@@ -16,6 +17,35 @@ public class RoomInfo : SavableObject
         maxCameraOffset = (tempCopy as RoomInfo).maxCameraOffset;
         base.ApplyData(tempCopy);
     }
+
+
+
+    public override string GetJsonData()
+    {
+
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+        jsonObject["roomName"] = roomName;
+
+        // Convert Vector2 properties to JSON format
+        jsonObject["minCameraOffset"] = new JObject
+        {
+            ["x"] = minCameraOffset.x,
+            ["y"] = minCameraOffset.y
+        };
+
+        jsonObject["maxCameraOffset"] = new JObject
+        {
+            ["x"] = maxCameraOffset.x,
+            ["y"] = maxCameraOffset.y
+        };
+
+        return jsonObject.ToString();
+
+
+
+    }
+
 
     public static bool operator ==(RoomInfo c1, RoomInfo c2)
     {

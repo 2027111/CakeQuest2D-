@@ -1,5 +1,6 @@
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class CharacterObject : SavableObject
     [JsonIgnore] public int Speed;
     [JsonIgnore] public int AttackDamage;
     [JsonIgnore] public float parryWindow = .15f;
+    [Space(20)]
+    [JsonIgnore] public List<Element> IngredientWheel = new List<Element>();
 
     [Space(20)]
     public bool isDead;
@@ -49,8 +52,36 @@ public class CharacterObject : SavableObject
     [JsonIgnore] public int recipeLength = 3;
 
 
+    public override string GetJsonData()
+    {
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+        // Include all non-ignored properties
+        jsonObject["Health"] = Health;
+        jsonObject["MaxHealth"] = MaxHealth;
+        jsonObject["Mana"] = Mana;
+        jsonObject["MaxMana"] = MaxMana;
+        jsonObject["isDead"] = isDead;
+
+        // Handle Attacks list
+        jsonObject["Attacks"] = JArray.FromObject(GetStringifiedAttackList());
+
+        return jsonObject.ToString();
 
 
+
+    }
+
+    private List<string> GetStringifiedAttackList()
+    {
+        // Assuming each Skill has a method/property that returns its unique ID or name
+        List<string> attackIds = new List<string>();
+        foreach (Skill skill in Attacks)
+        {
+            attackIds.Add(skill.UID); // Replace with appropriate identifier for each Skill
+        }
+        return attackIds;
+    }
 
     public override void ApplyData(SavableObject tempCopy)
     {

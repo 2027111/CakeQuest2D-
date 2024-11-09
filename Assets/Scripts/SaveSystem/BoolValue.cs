@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,22 @@ public class BoolValue : SavableObject
     {
         RuntimeValue = false;
     }
+
+
+    public override string GetJsonData()
+    {
+
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+
+        jsonObject["RuntimeValue"] = RuntimeValue; // Adding additional data
+
+        return jsonObject.ToString();
+
+
+
+    }
+
 
 
     public override void ApplyData(SavableObject tempCopy)

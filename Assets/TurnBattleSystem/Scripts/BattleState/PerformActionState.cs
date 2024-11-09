@@ -265,6 +265,7 @@ public class PerformActionState : BattleState
         {
             battleManager.GetActor().currentCommand.OnExecuted -= PerformanceOver;
         }
+        battleManager.GetActor().OptionManager.ResetMenus();
         battleManager.GetActor().Animator.Thinking(false);
     }
 }

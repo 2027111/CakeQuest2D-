@@ -114,8 +114,8 @@ TextureImporter:
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,15 +128,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_1
+      name: jimi_temp_sprite_sheet_5
       rect:
         serializedVersion: 2
-        x: 48
+        x: 240
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,8 +156,8 @@ TextureImporter:
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,15 +170,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_3
+      name: jimi_temp_sprite_sheet_7
       rect:
         serializedVersion: 2
-        x: 144
+        x: 336
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,15 +191,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_4
+      name: jimi_temp_sprite_sheet_1
       rect:
         serializedVersion: 2
-        x: 192
+        x: 48
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,15 +212,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_5
+      name: jimi_temp_sprite_sheet_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 144
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,8 +240,8 @@ TextureImporter:
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,15 +254,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jimi_temp_sprite_sheet_7
+      name: jimi_temp_sprite_sheet_4
       rect:
         serializedVersion: 2
-        x: 336
+        x: 192
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,8 +282,8 @@ TextureImporter:
         y: 0
         width: 48
         height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.51, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -307,13 +307,13 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       jimi_temp_sprite_sheet_0: -998888167
-      jimi_temp_sprite_sheet_5: -1583252525
+      jimi_temp_sprite_sheet_5: 1552157994
       jimi_temp_sprite_sheet_2: -1393369936
-      jimi_temp_sprite_sheet_7: -728230365
-      jimi_temp_sprite_sheet_1: 1552157994
-      jimi_temp_sprite_sheet_3: -22173017
+      jimi_temp_sprite_sheet_7: -22173017
+      jimi_temp_sprite_sheet_1: -1093995762
+      jimi_temp_sprite_sheet_3: -1583252525
       jimi_temp_sprite_sheet_6: 809707463
-      jimi_temp_sprite_sheet_4: -1093995762
+      jimi_temp_sprite_sheet_4: -728230365
       jimi_temp_sprite_sheet_8: 1530624022
   spritePackingTag: 
   pSDRemoveMatte: 0

@@ -8,13 +8,19 @@ public class ChoiceMenuButton : MonoBehaviour
 {
     public UnityEvent OnSelected;
     public ChoiceMenu thisMenu;
+    public bool disabled;
 
 
     [SerializeField] Image BackgroundImage;
+
+    private void Start()
+    {
+      
+    }
     public void SelectFailed()
     {
         Debug.Log("Select failed");
-        StartCoroutine(DoShake(.3f, .5f));
+        StartCoroutine(DoShake(.3f, .1f));
 
     }
 

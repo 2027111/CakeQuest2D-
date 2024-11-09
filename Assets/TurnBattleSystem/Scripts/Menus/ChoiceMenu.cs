@@ -68,8 +68,14 @@ public class ChoiceMenu : MonoBehaviour
         if (!SelectedButton)
         {
             DefaultSelect();
+        }else if (SelectedButton.GetComponent<ChoiceMenuButton>().disabled)
+        {
+            SelectedButton.GetComponent<ChoiceMenuButton>().SelectFailed();
         }
-        SelectedButton.GetComponent<ChoiceMenuButton>()?.OnSelected?.Invoke();
+        else
+        {
+            SelectedButton.GetComponent<ChoiceMenuButton>()?.OnSelected?.Invoke();
+        }
     }
 
     public string GetSelectedOption()

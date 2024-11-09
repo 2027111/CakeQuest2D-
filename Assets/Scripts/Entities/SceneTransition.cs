@@ -13,6 +13,12 @@ public class SceneTransition : MonoBehaviour
     public Direction facing;
 
 
+    public bool CustomTransition = false;
+    public float transitionFadeTime = .2f;
+    public float transitionTime = 1f;
+    public Color transitionColor;
+
+
 
     public void TransitionScene()
     {
@@ -23,6 +29,15 @@ public class SceneTransition : MonoBehaviour
             PlayerInfoStorage.InfoStorage.sceneName = sceneToLoadName;
             PlayerInfoStorage.InfoStorage.nextPosition = playerPositionOnLoad;
             PlayerInfoStorage.InfoStorage.facing = facing;
+        }
+        if (CustomTransition)
+        {
+            FadeScreen.SetColor(transitionColor);
+            FadeScreen.SetTimes(transitionFadeTime, transitionTime);
+        }
+        else
+        {
+            FadeScreen.ResetTimes();
         }
         FadeScreen.AddOnMidFadeEvent(OnTransitionHalf);
 

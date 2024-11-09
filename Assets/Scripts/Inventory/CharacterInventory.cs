@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,6 +22,33 @@ public class CharacterInventory : SavableObject
         pessos = (tempCopy as CharacterInventory).pessos;
         base.ApplyData(tempCopy);
     }
+
+    public override string GetJsonData()
+    {
+
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+
+
+        jsonObject["myInventory"] = JArray.FromObject(GetStringifiedInventory()); // Adding additional data
+        jsonObject["pessos"] = pessos; // Adding additional data
+
+        return jsonObject.ToString();
+
+
+
+    }
+
+
+    public List<string> GetStringifiedInventory()
+    {
+        List<string> partyIds = new List<string>();
+        foreach (InventoryItem co in myInventory)
+        {
+            partyIds.Add(co.UID);
+        }
+        return partyIds;
+    }
+
 
     public void AddItemsToInventory(List<InventoryItem> loadedInventory)
     {

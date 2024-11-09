@@ -9,6 +9,5 @@ public class SaveDataJsonWrapper
 {
     public string SaveDataWrapperJson;
     public string ObjectDataWrapperJson;
-    public DateTime dataCreationDate;
     public float playTime = 0;
 }

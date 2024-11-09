@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,6 +19,16 @@ public class QuestObject : BoolValue
         QuestToggled = ((QuestObject)tempCopy).QuestToggled;
         base.ApplyData(tempCopy);
     }
+
+
+    public override string GetJsonData()
+    {
+        var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
+        // Include all non-ignored properties
+        jsonObject["QuestToggled"] = QuestToggled;
+        return jsonObject.ToString();
+    }
+
 
     public virtual void CheckConditions()
     {

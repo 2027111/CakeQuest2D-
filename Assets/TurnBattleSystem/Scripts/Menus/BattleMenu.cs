@@ -1,10 +1,25 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleMenu : ChoiceMenu
 {
+    private void Start()
+    {
 
+        DefaultSelect();
+        CheckDisabled();
+
+    }
+
+    private void CheckDisabled()
+    {
+        foreach(GameObject button in buttons)
+        {
+            button.GetComponent<BattleMenuButton>().disabled = BattleManager.Singleton.GetActor().OptionManager.GetDisability(buttons.IndexOf(button.gameObject));
+        }
+    }
 
     public void Guard()
     {

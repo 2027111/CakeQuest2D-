@@ -21,6 +21,7 @@ MonoBehaviour:
   Speed: 0
   AttackDamage: 5
   parryWindow: 0.15
+  IngredientWheel: 0100000002000000
   isDead: 0
   attackType: 2
   AttackElement: 2

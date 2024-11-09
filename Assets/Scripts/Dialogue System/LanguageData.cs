@@ -125,7 +125,10 @@ public class LanguageData
 
             foreach (var translation in Data)
             {
-                translationData.Add(translation.dataId, translation);
+                if (!translationData.ContainsKey(translation.dataId))
+                {
+                    translationData.Add(translation.dataId, translation);
+                }
             }
 
             // Optionally, you can log or debug the globalColors list

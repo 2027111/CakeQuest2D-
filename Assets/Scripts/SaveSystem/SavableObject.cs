@@ -1,4 +1,5 @@
 #if UNITY_EDITOR
+using Newtonsoft.Json.Linq;
 using System;
 using UnityEditor;
 #endif
@@ -18,6 +19,26 @@ public class SavableObject : ScriptableObject
         }
 #endif
     }
+
+
+
+
+    public virtual string GetJsonData()
+    {
+        var jsonObject = new JObject();
+        jsonObject["UID"] = UID;
+
+
+        return jsonObject.ToString();
+
+    }
+
+
+    public virtual void ApplyJsonData(string jsonData)
+    {
+        Debug.Log("Nothing to apply currently");
+    }
+
 
     public virtual void ApplyData(SavableObject tempCopy)
     {

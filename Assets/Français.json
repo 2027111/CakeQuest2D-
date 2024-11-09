@@ -304,6 +304,111 @@
       "dataId": "jimi_intro_question",
       "type": 1,
       "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_4\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Imagine etre stupide\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi1",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_6\",\r\n  \"talkerName\": \"???\",\r\n  \"line\": \"Ay! Bordel...\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi2",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"???\",\r\n  \"line\": \"Oh putain je suis mort. C'est sur. J'ai toujours cru que ça aurait été lors d'une attaque a l'école et que je sauverai tout le monde.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj0",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Jimi....\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj1",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Jimi....!\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi3",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Y'a quelqu'un?? Comment tu connais mon nom??\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi4",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Je pense que c'est bon. Soit je suis mort, Soit je suis fou.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi5",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Dire que je ne verrais jamais Super se faire adapter en anime...\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj2",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Mais Jimi ferme ta gueule merde. J'essaie de te dire un truc important.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi6",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"T'es pas une hallucination? T'es vraiment une voix off?\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj3",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Ouai, une voix off, on va dire ça. Bref,<waitSec=0.8> Jimi.<waitSec=0.8> Tu as détruit ton monde...\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi4",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Quoi?!<waitSec=0.8> Mais j'ai rien fait?<waitSec=0.8> Ok.<waitSec=0.8> Là Je suis sure c'est un rêve, c'est bon.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj4",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Alors t'as rien fait, hein?<waitSec=0.8> Et ton gâteau à 10000 degré celsius on en parle?.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi5",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Attend. Tu vas me dire mon gâteau à détruit l'univers?<waitSec=0.8> Genre..<waitSec=0.8> Un gâteau.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj5",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Écoutes moi.<waitSec=0.8> Rien n'est perdu encore.<waitSec=0.8> T'as de la chance.<waitSec=0.8> Ton gâteau a cuit, mais le puissance du four la fait imploser sur lui même.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj6",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"L'implosion l'a envoyé dans un autre monde...<waitSec=0.8> Le Casse Croute.<waitSec=0.8> Tu allais aussi être envoyé quelque part de différent,<waitSec=0.3> mais j'ai réussi à empêcher que tu en sois séparé.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi6",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Ok, donc si je suis, tu est une sorte d'être hors dimensionnel. Pourquoi t'as pas juste empéché le gateau d'exploser tout court.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj7",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Je ne suis pas capable d'intéragir avec ton monde à toi. Comme ton gateau à absorbé tout ton monde sauf toi, j'ai pu te sauver lorsque tu te faisait envoyÉ dans un autre univers.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj8",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"Écoute moi Jimi. J'ai besoin que tu aille dans cette autre monde et récupère le gâteau. C'est le seul moyen de le sauver\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi7",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Mais... Tu gagnes quoi la dedans. Qu'est ce qui me dit que c'est pas toi qui a juste détruit mon monde et que tu me mets ça sur le dos.\"\r\n}"
+    },
+    {
+      "dataId": "intro_void_aj9",
+      "type": 1,
+      "jsonData": "{\r\n  \"line\": \"*Soupir*... Ouai. T'as raison. J'ai tout fait. Aller dégage d'ici. \"\r\n}"
+    },
+    {
+      "dataId": "intro_void_jimi8",
+      "type": 1,
+      "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"ATTEND J'AI PAS FINI. COMMENT JE TROUVE LE GÄTEAU??\"\r\n}"
     }
   ]
 }

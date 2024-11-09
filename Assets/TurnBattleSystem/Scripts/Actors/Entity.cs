@@ -77,6 +77,10 @@ public class Entity : MonoBehaviour
     }
     public void AddToHealth(int amount)
     {
+        if(amount < 0)
+        {
+            character.turnsNotAttacked = 0;
+        }
         if (Health + amount <= 0)
         {
 

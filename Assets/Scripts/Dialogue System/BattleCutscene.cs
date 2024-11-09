@@ -86,6 +86,26 @@ public class BattleCutscene : Cutscene
         BattleManager.Singleton?.ForceRecipe(elementRecipe.ToArray());
 
     }
+    public void DisableOptions(string options)
+    {
+        List<int> DisabledOptions = new List<int>();
+
+        foreach (char e in options)
+        {
+            if (int.TryParse(e.ToString(), out int ress))
+            {
+                DisabledOptions.Add(ress);
+            }
+        }
+
+
+
+
+
+
+        BattleManager.Singleton?.DisableOptions(DisabledOptions.ToArray());
+
+    }
     public BattleDialogue GetPlayableLine()
     {
         BattleDialogue b = null;

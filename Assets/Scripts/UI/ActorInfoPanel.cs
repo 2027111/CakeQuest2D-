@@ -8,6 +8,7 @@ public class ActorInfoPanel : MonoBehaviour
     [SerializeField] HealthBarUI healthBarUI;
     [SerializeField] GameObject ingredientLinkPrefab;
     [SerializeField] Transform ingredientContainer;
+    [SerializeField] IngredientWheel ingredientWheel;
 
 
     BattleCharacter Actor;
@@ -47,6 +48,8 @@ public class ActorInfoPanel : MonoBehaviour
                 }
             }
         }
+
+        ingredientWheel.SetIngredientWheel(Actor.GetReference().IngredientWheel);
     }
 
     public void Appear(bool on)

@@ -44,7 +44,7 @@ public class MoviePlayer : MonoBehaviour
     {
 
 
-        FadeScreen.Singleton.SetColor(Color.black);
+        FadeScreen.SetColor(Color.black);
         yield return FadeScreen.Singleton.StartFadeAnimation(true);
         yield return ShowVideo(true);
 

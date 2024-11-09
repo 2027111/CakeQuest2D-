@@ -10,6 +10,12 @@ public class ObjectLibrary : MonoBehaviour
 
 
     public static Dictionary<string, SavableObject> Library = new Dictionary<string, SavableObject>();
+
+
+
+
+
+
     private void Awake()
     {
         if(Library.Count == 0)

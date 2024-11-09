@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 5624637632304755342}
   - component: {fileID: 5344256198825669568}
   - component: {fileID: 2576266796510390453}
+  - component: {fileID: 1812681811268808481}
   m_Layer: 9
   m_Name: Character
   m_TagString: Untagged
@@ -197,8 +198,12 @@ MonoBehaviour:
   voiceAudioSource: {fileID: 5344256198825669568}
   Animator: {fileID: 8539224105758355332}
   Entity: {fileID: 6598031230574354759}
+  recipeFailedIndex: 0
+  recipeFailsafe: 3
+  turnsNotAttacked: 0
   recipeIndex: 0
   recipe: []
+  OptionManager: {fileID: 1812681811268808481}
 --- !u!114 &8539224105758355332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +454,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1749915935245130212, guid: 59e10a61b414b724b8d113b4aced2b18, type: 3}
   timeTillDest: 2.1
+--- !u!114 &1812681811268808481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3887754998874502464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad2bc2dbec333e428e36ee9179387e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menus: 0000000000
 --- !u!1 &4103013095952590527
 GameObject:
   m_ObjectHideFlags: 0

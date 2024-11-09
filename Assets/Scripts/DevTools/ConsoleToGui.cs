@@ -23,7 +23,7 @@ public class ConsoleToGui : MonoBehaviour
                 Show(true);
                 cheatIndex = 0;
             }
-        }else if (Input.GetKeyDown(KeyCode.Escape))
+        }else if (Input.GetKeyDown(KeyCode.PageDown))
         {
 
             if (doShow)
