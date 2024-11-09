@@ -10,13 +10,7 @@ public class RoomInfo : SavableObject
     public Vector2 minCameraOffset;
     public Vector2 maxCameraOffset;
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
 
-        minCameraOffset = (tempCopy as RoomInfo).minCameraOffset;
-        maxCameraOffset = (tempCopy as RoomInfo).maxCameraOffset;
-        base.ApplyData(tempCopy);
-    }
 
 
 
@@ -28,13 +22,13 @@ public class RoomInfo : SavableObject
         jsonObject["roomName"] = roomName;
 
         // Convert Vector2 properties to JSON format
-        jsonObject["minCameraOffset"] = new JObject
+        jsonObject["minCO"] = new JObject
         {
             ["x"] = minCameraOffset.x,
             ["y"] = minCameraOffset.y
         };
 
-        jsonObject["maxCameraOffset"] = new JObject
+        jsonObject["maxCO"] = new JObject
         {
             ["x"] = maxCameraOffset.x,
             ["y"] = maxCameraOffset.y
@@ -45,6 +39,35 @@ public class RoomInfo : SavableObject
 
 
     }
+
+    public override void ApplyJsonData(string jsonData)
+    {
+        base.ApplyJsonData(jsonData); // Apply base class data first
+
+        // Parse the JSON data to a JObject
+        JObject jsonObject = JObject.Parse(jsonData);
+
+
+        // Apply minCameraOffset from JSON to the property
+        if (jsonObject["minCO"] != null)
+        {
+            minCameraOffset = new Vector2(
+                jsonObject["minCO"]["x"]?.Value<float>() ?? minCameraOffset.x,
+                jsonObject["minCO"]["y"]?.Value<float>() ?? minCameraOffset.y
+            );
+        }
+
+        // Apply maxCameraOffset from JSON to the property
+        if (jsonObject["maxCO"] != null)
+        {
+            maxCameraOffset = new Vector2(
+                jsonObject["maxCO"]["x"]?.Value<float>() ?? maxCameraOffset.x,
+                jsonObject["maxCO"]["y"]?.Value<float>() ?? maxCameraOffset.y
+            );
+        }
+    }
+
+
 
 
     public static bool operator ==(RoomInfo c1, RoomInfo c2)

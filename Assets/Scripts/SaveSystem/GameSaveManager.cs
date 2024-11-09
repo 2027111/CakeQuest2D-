@@ -1,8 +1,10 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,30 +14,56 @@ public enum SaveFiles
     save
 }
 
+
 [Serializable]
-public class ReadableSaveData
+public class JSONSaveDataWrapper
 {
-    public int saveIndex = 0;
-    public SaveDataWrapper SaveDataWrapper;
-    public List<SavableObject> data;
-    public float PlayTime;
+    public List<string> AllInventories = new List<string>();
+    public List<string> AllCharacterObjects = new List<string>();
+    public List<string> AllParties = new List<string>();
+    public List<string> Data = new List<string>();
+    public float playTime = 0;
 
-    public ReadableSaveData()
+    public int saveIndex;
+    public string GetAttribute(string attributeName)
     {
+        foreach (var jsonStr in Data)
+        {
+            try
+            {
+                // Parse the JSON string into a JObject
+                JObject jsonObj = JObject.Parse(jsonStr);
 
+                // Check if the object contains the given attribute name
+                if (jsonObj.ContainsKey(attributeName))
+                {
+                    // Return the value of the attribute
+                    return jsonObj[attributeName].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that occur during parsing (e.g., malformed JSON)
+                Debug.LogError($"Error parsing JSON: {ex.Message}");
+            }
+        }
+
+        // Return null if the attribute was not found
+        return null;
     }
+
 
 }
 
 public class GameSaveManager : MonoBehaviour
 {
     private static GameSaveManager _singleton;
-    SaveDataJsonWrapper currentLoadedData;
+    JSONSaveDataWrapper currentLoadedData;
     public DateTime dateTime;
 
 
     [Header("Read Save Files")]
-    public List<ReadableSaveData> saves = new List<ReadableSaveData>();
+    public List<JSONSaveDataWrapper> saves = new List<JSONSaveDataWrapper>();
 
     [Header("Objects To Save")]
     public List<SavableObject> data = new List<SavableObject>();
@@ -163,52 +191,18 @@ public class GameSaveManager : MonoBehaviour
     public IEnumerator LoadSaveFileCoroutine()
     {
         yield return StartCoroutine(LoadDefaultFileCoroutine(SaveFiles.save));
-        //yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
+        ////yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
         yield return StartCoroutine(LoadSavableObjects());
     }
 
-    private IEnumerator LoadSavableObjects()
-    {
 
-        if (GetNumberOfSaveFiles() <= saveFileIndex)
-        {
-            saveFileIndex = GetNumberOfSaveFiles();
-            currentLoadedData = null;
-            yield return SaveFileCoroutine();
-        }
-        else
-        {
-
-            ReadableSaveData saveData = saves[saveFileIndex];
-            yield return ImportStoredData(saveData.SaveDataWrapper);
-
-            foreach (SavableObject obj in data)
-            {
-                foreach (SavableObject saveObj in saveData.data)
-                {
-                    if (saveObj.Matches(obj))
-                    {
-                        obj.ApplyData(saveObj);
-                    }
-                }
-            }
-            yield return null;
-        }
-    }
 
     public IEnumerator LoadDefaultFileCoroutine(SaveFiles listName)
     {
-        List<SavableObject> list = GetListMatch(listName);
-        SaveDataJsonWrapper listWrapper = ReadDefaultSaveFile(listName);
+        JSONSaveDataWrapper listWrapper = ReadDefaultSaveFile(listName);
 
-        string saveObjectsData = listWrapper.ObjectDataWrapperJson;
-        ScriptableObjectListWrapper data = JsonUtility.FromJson<ScriptableObjectListWrapper>(saveObjectsData);
-        List<ScriptableObjectDTO> dtoList = data.objects;
-        if (dtoList != null)
-        {
-            yield return ApplyToScriptableObjects(dtoList, list);
-        }
-        yield return ImportStoredData(listWrapper.SaveDataWrapperJson);
+
+        yield return ImportStoredData(listWrapper);
     }
 
     public IEnumerator ExportStoredData()
@@ -244,7 +238,7 @@ public class GameSaveManager : MonoBehaviour
 
 
 
-    public IEnumerator ImportStoredData(string stringeddataWrapped)
+    public IEnumerator ImportStoredData(JSONSaveDataWrapper jSONSaveDataWrapper)
     {
         var settings = new JsonSerializerSettings
         {
@@ -252,15 +246,14 @@ public class GameSaveManager : MonoBehaviour
             NullValueHandling = NullValueHandling.Include
         };
 
-        var saveData = JsonConvert.DeserializeObject<SaveDataWrapper>(stringeddataWrapped, settings);
-
-        if (saveData != null)
+        if (jSONSaveDataWrapper != null)
         {
 
             // Set the lists from the deserialized data
-            SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
-            SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
-            SetPlayerData<Party>((saveData.AllParties), allParties);
+            SetPlayerData<CharacterInventory>((jSONSaveDataWrapper.AllInventories), allInventories);
+            SetPlayerData<CharacterObject>((jSONSaveDataWrapper.AllCharacterObjects), allCharacterObjects);
+            SetPlayerData<Party>((jSONSaveDataWrapper.AllParties), allParties);
+            SetPlayerData<SavableObject>((jSONSaveDataWrapper.Data), data);
             yield return null;
         }
         else
@@ -269,37 +262,51 @@ public class GameSaveManager : MonoBehaviour
         }
 
     }
-    public IEnumerator ImportStoredData(SaveDataWrapper saveData)
+
+
+    private IEnumerator LoadSavableObjects()
     {
-        if (saveData != null)
-        {
 
-            // Set the lists from the deserialized data
-            SetPlayerData<CharacterInventory>((saveData.AllInventories), allInventories);
-            SetPlayerData<CharacterObject>((saveData.AllCharacterObjects), allCharacterObjects);
-            SetPlayerData<Party>((saveData.AllParties), allParties);
-            yield return null;
+        if (GetNumberOfSaveFiles() <= saveFileIndex)
+        {
+            saveFileIndex = GetNumberOfSaveFiles();
+            currentLoadedData = null;
+            yield return SaveFileCoroutine();
         }
         else
         {
-            Debug.LogError("Failed to deserialize data from save Data is null.");
-        }
 
+            JSONSaveDataWrapper saveData = saves[saveFileIndex];
+            yield return ImportStoredData(saveData);
+
+            foreach (SavableObject obj in data)
+            {
+                foreach (string jsonSaveObj in saveData.Data)
+                {
+                    if (obj.Matches(jsonSaveObj))
+                    {
+
+                        obj.ApplyJsonData(jsonSaveObj);
+                    }
+                }
+            }
+            yield return null;
+        }
     }
 
 
 
 
-    private void SetPlayerData<T>(List<T> loadedDataFiles, List<T> fileToApplyTo)
+    private void SetPlayerData<T>(List<string> loadedDataFiles, List<T> fileToApplyTo)
     {
         foreach (T obj in fileToApplyTo)
         {
-            foreach (T data in loadedDataFiles)
+            foreach (string data in loadedDataFiles)
             {
 
-                if ((obj as SavableObject).UID.Equals((data as SavableObject).UID))
+                if ((obj as SavableObject).Matches(data))
                 {
-                    (obj as SavableObject).ApplyData(data as SavableObject);
+                    (obj as SavableObject).ApplyJsonData(data);
                 }
 
             }
@@ -307,50 +314,35 @@ public class GameSaveManager : MonoBehaviour
     }
 
 
-
     public IEnumerator SaveScriptablesAsync(SaveFiles listName)
     {
         var settings = new JsonSerializerSettings
         {
-            TypeNameHandling = TypeNameHandling.All,
             Formatting = Formatting.Indented,
             NullValueHandling = NullValueHandling.Ignore
         };
 
-        // Create an instance of SaveDataWrapper and populate it
-        var saveData = new SaveDataWrapper
-        {
-            AllInventories = allInventories,
-            AllCharacterObjects = allCharacterObjects,
-            AllParties = allParties
+        // Create dictionaries to store JSON data for each category
+        // Create dictionaries to store JSON data for each category
+        var saveDataDict = new Dictionary<string, List<string>>
+            {
+                { "AllInventories", allInventories.Select(obj => CleanJsonData(obj.GetJsonData())).ToList() },
+                { "AllCharacterObjects", allCharacterObjects.Select(obj => CleanJsonData(obj.GetJsonData())).ToList() },
+                { "AllParties", allParties.Select(obj => CleanJsonData(obj.GetJsonData())).ToList() },
+                { "Data", GetListMatch(listName).Select(obj => CleanJsonData(obj.GetJsonData())).ToList() }
+            };
 
-        };
 
-        
-        
-        ReadableSaveData newData = new ReadableSaveData();
-        newData.SaveDataWrapper = saveData;
-        newData.data = GetListMatch(listName);
-        if (saveFileIndex >= GetNumberOfSaveSlots())
-        {
-            saveFileIndex = GetNumberOfSaveSlots();
-            saves.Add(newData);
-        }
-        string wrapperjson = JsonConvert.SerializeObject(newData.SaveDataWrapper, settings);
-        List<SavableObject> list = newData.data;
+        // Convert the dictionary to JSON format
+        string saveDataJson = JsonConvert.SerializeObject(saveDataDict, settings);
+
+        // Define file path
         string filePath = GetNewFilePath(listName.ToString());
-        List<ScriptableObjectDTO> dtoList = GetCurrentDTOList(list);
-        string saveDataString = JsonUtility.ToJson(new ScriptableObjectListWrapper { objects = dtoList }, true);
-        SaveDataJsonWrapper data = new SaveDataJsonWrapper
-        {
-            ObjectDataWrapperJson = saveDataString,
-            SaveDataWrapperJson = wrapperjson
-        };
-        var json = JsonUtility.ToJson(data, true);
 
+        // Save JSON data to file asynchronously
+        var saveTask = Task.Run(() => File.WriteAllTextAsync(filePath, saveDataJson));
 
-        var saveTask = Task.Run(() => File.WriteAllTextAsync(filePath, json));
-
+        // Wait for the task to complete
         while (!saveTask.IsCompleted)
         {
             yield return null;
@@ -360,6 +352,21 @@ public class GameSaveManager : MonoBehaviour
         {
             Debug.LogError($"Error saving file: {saveTask.Exception}");
         }
+    }
+
+    // Helper method to clean JSON data
+    private string CleanJsonData(string jsonData)
+    {
+        // Trim leading/trailing whitespace
+        jsonData = jsonData.Trim();
+
+        // Replace carriage return/newline characters
+        jsonData = jsonData.Replace("\r\n", "").Replace("\n", "");
+
+        // Optionally, replace extra spaces with a single space if necessary
+        // jsonData = jsonData.Replace("  ", " ");  // Use this if you want to collapse multiple spaces
+
+        return jsonData;
     }
 
     private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
@@ -374,126 +381,40 @@ public class GameSaveManager : MonoBehaviour
         {
 
             List<SavableObject> list = GetListMatch(listName);
-            SaveDataJsonWrapper listWrapper = ReadSaveFile(listName);
+            JSONSaveDataWrapper listWrapper = ReadSaveFile(listName);
             currentLoadedData = listWrapper;
             dateTime = DateTime.Now;
-            string saveObjectsData = listWrapper.ObjectDataWrapperJson;
-            string saveData = listWrapper.SaveDataWrapperJson;
-            ScriptableObjectListWrapper data = JsonUtility.FromJson<ScriptableObjectListWrapper>(saveObjectsData);
-            List<ScriptableObjectDTO> dtoList = data.objects;
-            yield return ImportStoredData(listWrapper.SaveDataWrapperJson);
+            yield return ImportStoredData(listWrapper);
 
-            if (dtoList != null)
-            {
-                yield return ApplyToScriptableObjects(dtoList, list);
-            }
             yield return null;
         }
     }
 
 
-
-    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, List<SavableObject> list)
-    {
-        foreach (SavableObject obj in list)
-        {
-            yield return ApplyToScriptableObjects(dtoList, obj);
-            yield return null;
-        }
-    }
-
-    public IEnumerator ApplyToScriptableObjects(List<ScriptableObjectDTO> dtoList, SavableObject obj)
-    {
-        SavableObject yourObj = obj;
-        if (yourObj != null)
-        {
-            ScriptableObjectDTO scriptableObjectDTO = GetMatchingObject(dtoList, obj);
-            if (scriptableObjectDTO != null)
-            {
-                scriptableObjectDTO.ApplyData(yourObj);
-            }
-        }
-        yield return null;
-    }
-
-    public ScriptableObjectDTO GetMatchingObject(List<ScriptableObjectDTO> dtoList, SavableObject obj)
-    {
-        foreach (ScriptableObjectDTO sodto in dtoList)
-        {
-            if (sodto.typeName == obj.GetType().Name)
-            {
-                if (sodto.uid == obj.UID)
-                {
-                    return sodto;
-                }
-            }
-        }
-        foreach (ScriptableObjectDTO sodto in dtoList)
-        {
-            if (sodto.typeName == obj.GetType().Name)
-            {
-                if (sodto.objectName == obj.name)
-                {
-                    return sodto;
-                }
-            }
-        }
-        return null;
-    }
-
-    public List<SavableObject> GetNewSaveList(List<ScriptableObjectDTO> dtoList)
-    {
-        List<SavableObject> returnList = new List<SavableObject>();
-        List<SavableObject> dataList = GetListMatch(SaveFiles.save);
-
-        foreach (SavableObject savableObject in dataList)
-        {
-            ScriptableObjectDTO dto = GetMatchingObject(dtoList, savableObject);
-            if(dto != null)
-            {
-                SavableObject obj = dto.ReturnNewData(savableObject);
-                if (obj != null)
-                {
-                    returnList.Add(obj);
-                }
-            }
-        }
-
-        return returnList;
-
-
-    }
-    public List<ScriptableObjectDTO> GetCurrentDTOList(List<SavableObject> list)
-    {
-        List<ScriptableObjectDTO> dtoList = new List<ScriptableObjectDTO>();
-        for (int i = 0; i < list.Count; i++)
-        {
-            ScriptableObjectDTO scriptableObjectDTO = new ScriptableObjectDTO(list[i]);
-            dtoList.Add(scriptableObjectDTO);
-        }
-        return dtoList;
-    }
-
-
-    public SaveDataJsonWrapper ReadSaveFile(SaveFiles path)
+    public JSONSaveDataWrapper ReadSaveFile(SaveFiles path)
     {
         string filePath = GetNewFilePath(path.ToString());
         if (File.Exists(filePath))
         {
             var json = File.ReadAllText(filePath);
-            SaveDataJsonWrapper listWrapper = JsonUtility.FromJson<SaveDataJsonWrapper>(json);
+            JSONSaveDataWrapper listWrapper = JsonUtility.FromJson<JSONSaveDataWrapper>(json);
             return listWrapper;
         }
         return null;
     }
 
-    public SaveDataJsonWrapper ReadDefaultSaveFile(SaveFiles path)
+
+
+
+
+    public JSONSaveDataWrapper ReadDefaultSaveFile(SaveFiles path)
     {
         string filePath = GetDefaultFilePath(path.ToString());
         if (File.Exists(filePath))
         {
+            Debug.Log("Loaded Default File");
             var json = File.ReadAllText(filePath);
-            SaveDataJsonWrapper listWrapper = JsonUtility.FromJson<SaveDataJsonWrapper>(json);
+            JSONSaveDataWrapper listWrapper = JsonUtility.FromJson<JSONSaveDataWrapper>(json);
             return listWrapper;
         }
         return null;
@@ -569,11 +490,10 @@ public class GameSaveManager : MonoBehaviour
             callback();
         }));
     }
-
-    public IEnumerator LoadAllSaveFilesCoroutine(System.Action<List<ReadableSaveData>> onComplete)
+    public IEnumerator LoadAllSaveFilesCoroutine(System.Action<List<JSONSaveDataWrapper>> onComplete)
     {
         string saveFilePath = GetPath(SaveFiles.save.ToString());
-        List<ReadableSaveData> saveDataList = new List<ReadableSaveData>();
+        List<JSONSaveDataWrapper> saveDataList = new List<JSONSaveDataWrapper>();
 
         if (Directory.Exists(saveFilePath))
         {
@@ -582,55 +502,30 @@ public class GameSaveManager : MonoBehaviour
             // Remove "default" files
             files.RemoveAll(f => Path.GetFileName(f).Split('_')[0].Contains("default"));
 
-            List<SaveDataJsonWrapper> saveDataWrapperList = new List<SaveDataJsonWrapper>();
+            // Iterate through each file
             foreach (var file in files)
             {
-                SaveDataJsonWrapper saveData = null;
-                yield return StartCoroutine(ReadFileCoroutine(file, result => saveData = JsonUtility.FromJson<SaveDataJsonWrapper>(result)));
+                JSONSaveDataWrapper jsonSaveData = null;
 
-                if (saveData != null)
+                // Read the file asynchronously
+                yield return StartCoroutine(ReadFileCoroutine(file, result => jsonSaveData = JsonUtility.FromJson<JSONSaveDataWrapper>(result)));
+
+                if (jsonSaveData != null)
                 {
-                    saveDataWrapperList.Add(saveData);
+                    // Simply add to the list of JSONSaveDataWrapper
+                    saveDataList.Add(jsonSaveData);
                 }
-
-
 
                 // Simulate asynchronous operation
                 yield return null;
             }
 
-            foreach (SaveDataJsonWrapper save in saveDataWrapperList)
-            {
-                string saveObjectsData = save.ObjectDataWrapperJson;
-                string saveD = save.SaveDataWrapperJson;
-                ScriptableObjectListWrapper data = JsonUtility.FromJson<ScriptableObjectListWrapper>(saveObjectsData);
-                List<ScriptableObjectDTO> dtoList = data.objects;
-
-
-
-                List<SavableObject> savableObjects = GetNewSaveList(dtoList);
-                var settings = new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.All,
-                    NullValueHandling = NullValueHandling.Include
-                };
-
-                SaveDataWrapper wrapper = JsonConvert.DeserializeObject<SaveDataWrapper>(saveD, settings);
-                ReadableSaveData RSaveData = new ReadableSaveData();
-                RSaveData.SaveDataWrapper = wrapper;
-                RSaveData.data = savableObjects;
-                RSaveData.PlayTime = save.playTime;
-                RSaveData.saveIndex = GetNumberOfSaveSlots();
-                saveDataList.Add(RSaveData);
-
-
-            }
-
-
+            // Invoke the callback with the loaded save data
             onComplete?.Invoke(saveDataList);
         }
         else
         {
+            // If directory does not exist, invoke with an empty list
             onComplete?.Invoke(saveDataList);
         }
     }

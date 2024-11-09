@@ -15,13 +15,7 @@ public class CharacterInventory : SavableObject
 
 
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
-        AddItemsToInventory(((tempCopy as CharacterInventory).myInventory));
-      //  GameSaveManager.Singleton.StartCoroutine(AddLoadedItemToInventory((tempCopy as CharacterInventory).myInventory));
-        pessos = (tempCopy as CharacterInventory).pessos;
-        base.ApplyData(tempCopy);
-    }
+
 
     public override string GetJsonData()
     {
@@ -29,7 +23,7 @@ public class CharacterInventory : SavableObject
         var jsonObject = JObject.Parse(base.GetJsonData()); // Start with base class data
 
 
-        jsonObject["myInventory"] = JArray.FromObject(GetStringifiedInventory()); // Adding additional data
+        jsonObject["inventory"] = JArray.FromObject(GetStringifiedInventory()); // Adding additional data
         jsonObject["pessos"] = pessos; // Adding additional data
 
         return jsonObject.ToString();
@@ -37,6 +31,45 @@ public class CharacterInventory : SavableObject
 
 
     }
+
+    public override void ApplyJsonData(string jsonData)
+    {
+        base.ApplyJsonData(jsonData); // Apply base class data first
+
+        try
+        {
+            // Parse the JSON data to a JObject
+            JObject jsonObject = JObject.Parse(jsonData);
+
+            // Extract the party members' IDs from the JSON
+            if (jsonObject.ContainsKey("inventory"))
+            {
+                JArray partyArray = (JArray)jsonObject["inventory"];
+                if (partyArray != null)
+                {
+                    // Convert the array to a list of strings
+                    List<string> loadedParty = partyArray.ToObject<List<string>>();
+
+                    // Add characters to the party based on the loaded data
+                    AddItemsToInventory(loadedParty);
+                }
+                else
+                {
+                    Debug.LogWarning("Inventory array is null.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No 'inventory' key found in the JSON data.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Error applying JSON data: {ex.Message}");
+        }
+    }
+
+
 
 
     public List<string> GetStringifiedInventory()
@@ -50,14 +83,14 @@ public class CharacterInventory : SavableObject
     }
 
 
-    public void AddItemsToInventory(List<InventoryItem> loadedInventory)
+    public void AddItemsToInventory(List<string> loadedInventory)
     {
 
         myInventory = new List<InventoryItem>();
 
-        foreach (InventoryItem item in loadedInventory)
+        foreach (string item in loadedInventory)
         {
-            if (ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            if (ObjectLibrary.Library.TryGetValue(item, out SavableObject value))
             {
                 myInventory.Add(value as InventoryItem);
             }

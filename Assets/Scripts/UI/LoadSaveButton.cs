@@ -9,7 +9,7 @@ public class LoadSaveButton : MonoBehaviour
     [SerializeField] Image MiddleImage;
     [SerializeField] TMP_Text saveText;
     [SerializeField] TMP_Text locationText;
-    ReadableSaveData currentData;
+    JSONSaveDataWrapper currentData;
     public void Start()
     {
 
@@ -19,10 +19,10 @@ public class LoadSaveButton : MonoBehaviour
     public void SetSaveFileText()
     {
         saveText.SetText($"{currentData.saveIndex}");
-        PlayerStorage pis = ((PlayerStorage)currentData.data[0]);
-        RoomInfo currentRoom = ((RoomInfo)currentData.data[1]);
+        string sceneName = currentData.GetAttribute("sceneName");
+        string roomName = currentData.GetAttribute("roomName");
 
-        locationText.SetText(pis.sceneName + " | " + currentRoom.roomName);
+        locationText.SetText(sceneName + " | " + roomName);
     }
 
     public void OnSelect()
@@ -34,7 +34,7 @@ public class LoadSaveButton : MonoBehaviour
     {
         SFXPlayer.instance.PlayOnSelect();
     }
-    public void SetSaveFile(ReadableSaveData saveData)
+    public void SetSaveFile(JSONSaveDataWrapper saveData)
     {
         currentData = saveData;
         SetSaveFileText();

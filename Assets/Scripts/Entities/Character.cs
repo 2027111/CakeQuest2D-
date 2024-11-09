@@ -124,6 +124,21 @@ public class Character : MonoBehaviour
         return inventory.RemoveFromInventory(content, amount);
     }
 
+    public Direction GetFacing()
+    {
+        Vector2 vector = playerMovement.lookDirection;
+        if (vector.y > 0)
+            return Direction.Top;
+        else if (vector.y < 0)
+            return Direction.Bottom;
+        else if (vector.x > 0)
+            return Direction.Right;
+        else if (vector.x < 0)
+            return Direction.Left;
+        else
+            return Direction.Bottom;
+    }
+
     public void Run(bool running)
     {
         playerMovement.Run(running);

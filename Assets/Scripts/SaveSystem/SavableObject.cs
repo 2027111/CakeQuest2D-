@@ -26,6 +26,7 @@ public class SavableObject : ScriptableObject
     public virtual string GetJsonData()
     {
         var jsonObject = new JObject();
+        jsonObject["SaveObjectName"] = name;
         jsonObject["UID"] = UID;
 
 
@@ -36,24 +37,38 @@ public class SavableObject : ScriptableObject
 
     public virtual void ApplyJsonData(string jsonData)
     {
-        Debug.Log("Nothing to apply currently");
+        JsonUtility.FromJsonOverwrite(jsonData, this);
     }
 
 
-    public virtual void ApplyData(SavableObject tempCopy)
-    {
-    }
 
-    public bool Matches(SavableObject obj)
+    public bool Matches(string jsonObj)
     {
-        if (GetType().Name == obj.GetType().Name)
+        try
         {
-            if (UID == obj.UID)
+            // Parse the JSON string into a dynamic object
+            JObject json = JObject.Parse(jsonObj);
+
+            // Check if the JSON object contains the "UID" property
+            if (json.ContainsKey("UID"))
             {
-                return true;
+                // Get the UID from the JSON object and compare it with the current instance's UID
+                string jsonUID = json["UID"].ToString();
+
+                if (this.UID == jsonUID)
+                {
+                    return true;
+                }
             }
         }
+        catch (Exception ex)
+        {
+            // Handle any errors that occur during parsing or comparison
+            Debug.LogError($"Error while parsing JSON: {ex.Message}");
+        }
+
         return false;
     }
+
 
 }

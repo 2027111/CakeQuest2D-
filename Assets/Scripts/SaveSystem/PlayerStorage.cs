@@ -15,14 +15,7 @@ public class PlayerStorage : SavableObject
     public Direction facing;
     public bool forceNextChange = false;
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
 
-        sceneName = ((tempCopy as PlayerStorage).sceneName);
-        nextPosition = ((tempCopy as PlayerStorage).nextPosition);
-        facing = ((tempCopy as PlayerStorage).facing);
-        base.ApplyData(tempCopy);
-    }
 
     public override string GetJsonData()
     {
@@ -34,11 +27,53 @@ public class PlayerStorage : SavableObject
         jsonObject["facing"] = facing.ToString(); // Adding additional data
         jsonObject["forceNextChange"] = forceNextChange; // Adding additional data
 
+        jsonObject["nextPos"] = new JObject
+        {
+            ["x"] = nextPosition.x,
+            ["y"] = nextPosition.y
+        };
+
+     
         return jsonObject.ToString();
 
 
 
     }
+
+
+
+    public override void ApplyJsonData(string jsonData)
+    {
+        base.ApplyJsonData(jsonData); // Apply base class data first
+
+        // Parse the JSON data to a JObject
+        JObject jsonObject = JObject.Parse(jsonData);
+
+
+        // Apply minCameraOffset from JSON to the property
+        if (jsonObject["nextPos"] != null)
+        {
+            nextPosition = new Vector2(
+                jsonObject["nextPos"]["x"]?.Value<float>() ?? nextPosition.x,
+                jsonObject["nextPos"]["y"]?.Value<float>() ?? nextPosition.y
+            );
+        }
+
+        if (jsonObject["facing"] != null)
+        {
+            string facingStr = jsonObject["facing"].ToString();
+            if (Enum.TryParse(facingStr, out Direction direction))
+            {
+                facing = direction; // Apply direction
+            }
+            else
+            {
+                Debug.LogError($"Invalid direction string: {facingStr}");
+            }
+        }
+    }
+
+
 
 
 

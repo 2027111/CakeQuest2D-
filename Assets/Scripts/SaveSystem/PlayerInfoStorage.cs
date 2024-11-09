@@ -112,6 +112,7 @@ public class PlayerInfoStorage : MonoBehaviour
     {
         InfoStorage.sceneName = SceneManager.GetActiveScene().name;
         InfoStorage.nextPosition = transform.position;
+        InfoStorage.facing = character.GetFacing();
     }
 
     public void SetNewPosition(Vector2 newPos)

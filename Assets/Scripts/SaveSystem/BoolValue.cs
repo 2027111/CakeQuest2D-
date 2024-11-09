@@ -34,13 +34,4 @@ public class BoolValue : SavableObject
 
     }
 
-
-
-    public override void ApplyData(SavableObject tempCopy)
-    {
-
-        RuntimeValue = (tempCopy as BoolValue).RuntimeValue;
-        base.ApplyData(tempCopy);
-    }
-
 }

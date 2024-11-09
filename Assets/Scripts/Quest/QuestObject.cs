@@ -14,12 +14,6 @@ public class QuestObject : BoolValue
     [JsonIgnore] public QuestObject NextQuestObject;
     [JsonIgnore] public Dialogue OnQuestCompletedDialogue;
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
-        QuestToggled = ((QuestObject)tempCopy).QuestToggled;
-        base.ApplyData(tempCopy);
-    }
-
 
     public override string GetJsonData()
     {

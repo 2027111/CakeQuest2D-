@@ -11,14 +11,6 @@ public class Party : SavableObject
 
     public List<CharacterObject> PartyMembers = new List<CharacterObject>();
     public UnityEvent OnAddToParty;
-    public async override void ApplyData(SavableObject tempCopy)
-    {
-        PartyMembers = new List<CharacterObject>();
-
-        AddCharactersToParty((tempCopy as Party).PartyMembers);
-        //GameSaveManager.Singleton.StartCoroutine(AddLoadedCharactersToParty((tempCopy as Party).PartyMembers));
-        base.ApplyData(tempCopy);
-    }
 
     public override string GetJsonData()
     {
@@ -34,11 +26,10 @@ public class Party : SavableObject
 
     }
 
-
     public List<string> GetStringifiedParty()
     {
         List<string> partyIds = new List<string>();
-        foreach(CharacterObject co in PartyMembers)
+        foreach (CharacterObject co in PartyMembers)
         {
             partyIds.Add(co.UID);
         }
@@ -46,14 +37,52 @@ public class Party : SavableObject
     }
 
 
-    public void AddCharactersToParty(List<CharacterObject> loadedParty)
+    public override void ApplyJsonData(string jsonData)
+    {
+        base.ApplyJsonData(jsonData); // Apply base class data first
+
+        try
+        {
+            // Parse the JSON data to a JObject
+            JObject jsonObject = JObject.Parse(jsonData);
+
+            // Extract the party members' IDs from the JSON
+            if (jsonObject.ContainsKey("party"))
+            {
+                JArray partyArray = (JArray)jsonObject["party"];
+                if (partyArray != null)
+                {
+                    // Convert the array to a list of strings
+                    List<string> loadedParty = partyArray.ToObject<List<string>>();
+
+                    // Add characters to the party based on the loaded data
+                    AddCharactersToParty(loadedParty);
+                }
+                else
+                {
+                    Debug.LogWarning("'party' array is null.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No 'party' key found in the JSON data.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Error applying party JSON data: {ex.Message}");
+        }
+    }
+
+
+    public void AddCharactersToParty(List<string> loadedParty)
     {
 
         PartyMembers = new List<CharacterObject>();
 
-        foreach (CharacterObject item in loadedParty)
+        foreach (string item in loadedParty)
         {
-            if(ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            if(ObjectLibrary.Library.TryGetValue(item, out SavableObject value))
             {
                 PartyMembers.Add(value as CharacterObject);
             }
@@ -61,25 +90,6 @@ public class Party : SavableObject
 
     }
 
-    public IEnumerator AddLoadedCharactersToParty(List<CharacterObject> loadedParty)
-    {
-
-        PartyMembers = new List<CharacterObject>();
-
-        foreach (CharacterObject item in loadedParty)
-        {
-            ResourceRequest request = Resources.LoadAsync<CharacterObject>($"CharacterFolder/{item.name}");
-            while (!request.isDone)
-            {
-                yield return null;
-            }
-            CharacterObject loadedChar = request.asset as CharacterObject;
-            PartyMembers.Add(loadedChar);
-            yield return null;
-        }
-
-        yield return null;
-    }
 
     public void SetParty(List<CharacterObject> fightParty)
     {

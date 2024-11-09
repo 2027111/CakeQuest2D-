@@ -20,11 +20,6 @@ public class IActionData : SavableObject
 
 
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
-        base.ApplyData(tempCopy);
-    }
-
 
     public GameObject GetHitEffect()
     {

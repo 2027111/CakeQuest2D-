@@ -1,6 +1,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -64,7 +65,7 @@ public class CharacterObject : SavableObject
         jsonObject["isDead"] = isDead;
 
         // Handle Attacks list
-        jsonObject["Attacks"] = JArray.FromObject(GetStringifiedAttackList());
+        jsonObject["characterAttacks"] = JArray.FromObject(GetStringifiedAttackList());
 
         return jsonObject.ToString();
 
@@ -78,33 +79,62 @@ public class CharacterObject : SavableObject
         List<string> attackIds = new List<string>();
         foreach (Skill skill in Attacks)
         {
-            attackIds.Add(skill.UID); // Replace with appropriate identifier for each Skill
+            if(skill != null)
+            {
+                attackIds.Add(skill.UID); // Replace with appropriate identifier for each Skill
+            }
         }
         return attackIds;
     }
 
-    public override void ApplyData(SavableObject tempCopy)
-    {
-        AddSkillsToMoveset((tempCopy as CharacterObject).Attacks);
 
-        //GameSaveManager.Singleton.StartCoroutine(AddLoadedSkillToMoveset((tempCopy as CharacterObject).Attacks));
-        Health = (tempCopy as CharacterObject).Health;
-        MaxHealth = (tempCopy as CharacterObject).MaxHealth;
-        Mana = (tempCopy as CharacterObject).Mana;
-        MaxMana = (tempCopy as CharacterObject).MaxMana;
-        isDead = (tempCopy as CharacterObject).isDead;
-        base.ApplyData(tempCopy);
+    public override void ApplyJsonData(string jsonData)
+    {
+        base.ApplyJsonData(jsonData); // Apply base class data first
+
+        try
+        {
+            // Parse the JSON data to a JObject
+            JObject jsonObject = JObject.Parse(jsonData);
+
+            // Extract the character attack skills from the JSON
+            if (jsonObject.ContainsKey("characterAttacks"))
+            {
+                JArray partyArray = (JArray)jsonObject["characterAttacks"];
+                if (partyArray != null)
+                {
+                    // Convert the array to a list of strings
+                    List<string> loadedAttacks = partyArray.ToObject<List<string>>();
+
+                    // Add skills to the moveset based on the loaded data
+                    AddSkillsToMoveset(loadedAttacks);
+                }
+                else
+                {
+                    Debug.LogWarning("'characterAttacks' array is null.");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("No 'characterAttacks' key found in the JSON data.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"Error applying character attacks JSON data: {ex.Message}");
+        }
     }
 
 
-    public void AddSkillsToMoveset(List<Skill> loadedSkills)
+
+    public void AddSkillsToMoveset(List<string> loadedSkills)
     {
 
         Attacks = new List<Skill>();
 
-        foreach (Skill item in loadedSkills)
+        foreach (string item in loadedSkills)
         {
-            if (ObjectLibrary.Library.TryGetValue(item.UID, out SavableObject value))
+            if (ObjectLibrary.Library.TryGetValue(item, out SavableObject value))
             {
                 Attacks.Add(value as Skill);
             }
@@ -141,7 +171,7 @@ public class CharacterObject : SavableObject
     {
         if (HitEffect.Count > 0)
         {
-            return HitEffect[Random.Range(0, HitEffect.Count)];
+            return HitEffect[UnityEngine.Random.Range(0, HitEffect.Count)];
         }
         return null;
 
@@ -151,7 +181,7 @@ public class CharacterObject : SavableObject
     {
         if (SoundEffect.Count > 0)
         {
-            return SoundEffect[Random.Range(0, SoundEffect.Count)];
+            return SoundEffect[UnityEngine.Random.Range(0, SoundEffect.Count)];
         }
         return null;
 

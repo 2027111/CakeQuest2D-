@@ -15,13 +15,6 @@ public class Cutscene : BoolValue
     [JsonIgnore] public Dialogue[] dialogue;
     [JsonIgnore] public RoomInfo StartRoom;
     [JsonIgnore] public TimelineAsset CutsceneToPlay;
-    public override void ApplyData(SavableObject tempCopy)
-    {
-        repeats = (tempCopy as Cutscene).repeats;
-        dialogueIndex = (tempCopy as Cutscene).dialogueIndex;
-        base.ApplyData(tempCopy);
-    }
-
 
 
     public override string GetJsonData()
@@ -38,6 +31,9 @@ public class Cutscene : BoolValue
 
 
     }
+
+
+
 
 
     public virtual Dialogue GetNextLine()
