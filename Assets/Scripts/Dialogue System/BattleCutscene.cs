@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BattleCutscene : Cutscene
 {
-    [JsonIgnore] public BattleDialogue[] battleDialogue;
+    public BattleDialogue[] battleDialogue;
 
     public override Dialogue GetNextLine()
     {
@@ -59,6 +59,7 @@ public class BattleCutscene : Cutscene
 
 
         Dialogue returnValue = new BattleDialogue(battleDialogue[dialogueIndex]);
+        Debug.Log(returnValue.isNull());
         if (returnValue.isNull())
         {
             return null;

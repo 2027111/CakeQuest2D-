@@ -8,10 +8,10 @@ using UnityEngine.Timeline;
 [CreateAssetMenu]
 public class BattleInfo : BoolValue
 {
-    [JsonIgnore] public AudioClip BattleMusic;
-    [JsonIgnore] public Cutscene CutsceneForDialogue;
-    [JsonIgnore] public GameObject backgroundPrefab;
-    [JsonIgnore] public List<CharacterObject> FightParty;
+    public AudioClip BattleMusic;
+    public Cutscene CutsceneForDialogue;
+    public GameObject backgroundPrefab;
+    public List<CharacterObject> FightParty;
 
 
 

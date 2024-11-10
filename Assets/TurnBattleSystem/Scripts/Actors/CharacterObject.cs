@@ -13,7 +13,7 @@ public class CharacterObject : SavableObject
 {
 
 
-    [JsonIgnore] public CharacterData characterData;
+    public CharacterData characterData;
     [Space(20)]
     public int Health;
     public int MaxHealth;
@@ -21,36 +21,36 @@ public class CharacterObject : SavableObject
     public int Mana;
     public int MaxMana;
     [Space(20)]
-    [JsonIgnore] public int Speed;
-    [JsonIgnore] public int AttackDamage;
-    [JsonIgnore] public float parryWindow = .15f;
+    public int Speed;
+    public int AttackDamage;
+    public float parryWindow = .15f;
     [Space(20)]
-    [JsonIgnore] public List<Element> IngredientWheel = new List<Element>();
+    public List<Element> IngredientWheel = new List<Element>();
 
     [Space(20)]
     public bool isDead;
 
     [Space(20)]
-    [JsonIgnore] public SkillType attackType = SkillType.Physical;
+    public SkillType attackType = SkillType.Physical;
     [Space(20)]
-    [JsonIgnore] public Element AttackElement;
+    public Element AttackElement;
     [Space(20)]
 
-    [JsonIgnore] public List<GameObject> HitEffect;
-    [JsonIgnore] public List<AudioClip> SoundEffect;
+    public List<GameObject> HitEffect;
+    public List<AudioClip> SoundEffect;
 
     [Space(40)]
     public List<Skill> Attacks;
 
     [Space(20)]
-    [JsonIgnore] public AnimatorOverrideController animationController;
+    public AnimatorOverrideController animationController;
 
-    [JsonIgnore] public BoolValue InParty;
+    public BoolValue InParty;
 
 
 
     [Space(20)]
-    [JsonIgnore] public int recipeLength = 3;
+    public int recipeLength = 3;
 
 
     public override string GetJsonData()

@@ -245,6 +245,20 @@ public class BattleManager : MonoBehaviour
         return possibleTargets;
     }
 
+    public int ObservationTarget()
+    {
+        if (IsObserving())
+        {
+           return (BattleState as AnalyzingTargetState).GetEnemyTargetIndex();
+        }
+        return -1;
+    }
+
+    internal bool IsObserving()
+    {
+        return BattleState.GetType() == typeof(AnalyzingTargetState);
+    }
+
     public List<BattleCharacter> GetCurrentTarget()
     {
         if (GetActor().currentCommand != null)
@@ -768,7 +782,7 @@ public class BattleManager : MonoBehaviour
 
     }
 
-    private bool CheckCutscene()
+    public bool CheckCutscene()
     {
         return timeline.HasCutscene();
     }

@@ -44,7 +44,11 @@ public class AnalyzingTargetState : BattleState
         string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
         BattleManager.Singleton.SetIndicationText(character.name);
 
-    }
+        if (BattleManager.Singleton.CheckCutscene())
+        {
+            BattleManager.Singleton.timeline.StartCinematic();
+        }
+        }
 
 
     public override void Handle()
@@ -53,7 +57,7 @@ public class AnalyzingTargetState : BattleState
     }
     public override void OnSelect()
     {
-
+        
         if (battleManager.GetActor().Entity.HasMaxFocus() && target[0].GetTeam() == TeamIndex.Enemy)
         {
             target[0].RevealRecipe();
@@ -111,5 +115,16 @@ public class AnalyzingTargetState : BattleState
         base.OnExit();
     }
 
+    public int GetEnemyTargetIndex()
+    {
+        if (possibleTarget[targetIndex])
+        {
+            if (BattleManager.Singleton.EnemyPartyActors.Contains(possibleTarget[targetIndex]))
+            {
+                return BattleManager.Singleton.EnemyPartyActors.IndexOf(possibleTarget[targetIndex]);
+            }
+        }
+        return -1;
 
+    }
 }

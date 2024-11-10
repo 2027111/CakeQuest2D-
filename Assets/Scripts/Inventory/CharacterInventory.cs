@@ -11,7 +11,7 @@ public class CharacterInventory : SavableObject
 {
     public List<InventoryItem> myInventory = new List<InventoryItem>();
     public int pessos = 0;
-    [JsonIgnore] public UnityEvent InventoryChangeEvent;
+    public UnityEvent InventoryChangeEvent;
 
 
 

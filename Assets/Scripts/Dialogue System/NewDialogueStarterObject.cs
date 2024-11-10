@@ -166,7 +166,8 @@ public enum BattleCondition
     None,
     OnLoop,
     OnTurn,
-    OnEnemyTurn
+    OnEnemyTurn,
+    OnObserveEnemy,
 }
 
 [Serializable]
@@ -203,6 +204,16 @@ public class BattleDialogue : Dialogue
                 if (BattleManager.Singleton.GetEnemyTurnAmount() == conditionIndex && BattleManager.Singleton.IsEnemyTurn())
                 {
                     return true;
+                }
+                break;
+
+            case BattleCondition.OnObserveEnemy:
+                if (BattleManager.Singleton.IsObserving())
+                {
+                    if(BattleManager.Singleton.ObservationTarget() == conditionIndex)
+                    {
+                        return true;
+                    }
                 }
                 break;
             default:

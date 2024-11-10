@@ -9,8 +9,8 @@ public class FetchQuest : QuestObject
 
 
 
-    [JsonIgnore] public List<InventoryItem> requiredItems = new List<InventoryItem>();
-    [JsonIgnore] public CharacterInventory characterInventory;
+    public List<InventoryItem> requiredItems = new List<InventoryItem>();
+    public CharacterInventory characterInventory;
 
 
 

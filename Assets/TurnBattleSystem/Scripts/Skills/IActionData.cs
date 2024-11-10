@@ -10,13 +10,13 @@ public class IActionData : SavableObject
 
 
 
-    [JsonIgnore] public TargetType targetType;
-    [JsonIgnore] public Friendliness friendliness = Friendliness.Friendly;
-    [JsonIgnore] public TargetStateType targetStateType = TargetStateType.Alive;
-    [JsonIgnore] public Element element = Element.Support;
-    [JsonIgnore] public List<GameObject> HitEffect;
-    [JsonIgnore] public List<AudioClip> SoundEffect;
-    [JsonIgnore] public bool fixedAmount = false;
+    public TargetType targetType;
+    public Friendliness friendliness = Friendliness.Friendly;
+    public TargetStateType targetStateType = TargetStateType.Alive;
+    public Element element = Element.Support;
+    public List<GameObject> HitEffect;
+    public List<AudioClip> SoundEffect;
+    public bool fixedAmount = false;
 
 
 

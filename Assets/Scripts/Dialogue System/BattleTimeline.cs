@@ -12,6 +12,7 @@ public class BattleTimeline : Timeline
     {
         Dialogue ddialogue = storagePlay.GetNextLine();
         Dialogue dialogue = new Dialogue(ddialogue);
+        Debug.Log(ddialogue == null);
         dialogue.OnOverEvent.AddListener(ddialogue.SetPlayed);
         dialogue.OnOverEvent.AddListener(storagePlay.SetRuntime);
         dialogue.OnOverEvent.AddListener(DialogueOver);

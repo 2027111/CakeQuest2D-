@@ -12,9 +12,12 @@ public class Cutscene : BoolValue
 {
     public bool repeats = false;
     public int dialogueIndex = 0;
-    [JsonIgnore] public Dialogue[] dialogue;
-    [JsonIgnore] public RoomInfo StartRoom;
-    [JsonIgnore] public TimelineAsset CutsceneToPlay;
+    
+    public Dialogue[] dialogue;
+    
+    public RoomInfo StartRoom;
+    
+    public TimelineAsset CutsceneToPlay;
 
 
     public override string GetJsonData()
@@ -40,6 +43,7 @@ public class Cutscene : BoolValue
     {
 
         Dialogue returnValue = GetCurrentLine();
+        Debug.Log(returnValue == null);
         dialogueIndex++;
         return returnValue;
     }

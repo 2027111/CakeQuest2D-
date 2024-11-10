@@ -4,8 +4,8 @@
   ],
   "AllCharacterObjects": [
     "{  \"SaveObjectName\": \"Eyr Cott Object\",  \"UID\": \"7328a005a389c9343917d62a9e065c11\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}",
-    "{  \"SaveObjectName\": \"JimiObject\",  \"UID\": \"a402f39d484a5f24a855910f0b6fbd57\",  \"Health\": 200,  \"MaxHealth\": 200,  \"Mana\": 200,  \"MaxMana\": 200,  \"isDead\": false,  \"characterAttacks\": []}",
-    "{  \"SaveObjectName\": \"YankeeObject\",  \"UID\": \"4c83b2a75b75c43408098c0ecf8e9740\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}",
+    "{  \"SaveObjectName\": \"JimiObject\",  \"UID\": \"a402f39d484a5f24a855910f0b6fbd57\",  \"Health\": 200,  \"MaxHealth\": 200,  \"Mana\": 200,  \"MaxMana\": 200,  \"isDead\": false,  \"characterAttacks\": [    \"8e8d7959ff147ad45a36c25e7968b74b\"  ]}",
+    "{  \"SaveObjectName\": \"YankeeObject\",  \"UID\": \"4c83b2a75b75c43408098c0ecf8e9740\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": [    \"659393d480360f5498ef8dfcdf5e2a32\"  ]}",
     "{  \"SaveObjectName\": \"JeremyObject\",  \"UID\": \"41ee1a37819a3bb4e89fcc68983368d7\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}"
   ],
   "AllParties": [

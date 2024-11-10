@@ -11,8 +11,8 @@ public class QuestObject : BoolValue
     public string questId;
     public string questName;
     public bool QuestToggled = false;
-    [JsonIgnore] public QuestObject NextQuestObject;
-    [JsonIgnore] public Dialogue OnQuestCompletedDialogue;
+    public QuestObject NextQuestObject;
+    public Dialogue OnQuestCompletedDialogue;
 
 
     public override string GetJsonData()

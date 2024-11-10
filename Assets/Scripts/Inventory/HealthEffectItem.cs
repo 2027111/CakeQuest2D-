@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Healing Item", menuName = "Inventory/Items/Healing Items")]
 public class HealthEffectItem : BattleItem
 {
-    [JsonIgnore] public int healthEffectAmount = 12;
+    public int healthEffectAmount = 12;
     public override int GetAmount()
     {
         return healthEffectAmount;

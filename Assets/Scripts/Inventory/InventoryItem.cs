@@ -8,8 +8,9 @@ using UnityEngine.Events;
 public class InventoryItem : IActionData
 {
 
-    [JsonIgnore] public string itemName;
-    [JsonIgnore]
+    public string itemName;
+    
+    
     public string ItemName
     {
         get { return GetName(); }
@@ -18,10 +19,10 @@ public class InventoryItem : IActionData
 
 
     public string itemId;
-    [JsonIgnore] public string itemDescription;
-    [JsonIgnore] public Sprite itemSprite;
-    [JsonIgnore] public bool usable;
-    [JsonIgnore] public bool unique;
+    public string itemDescription;
+    public Sprite itemSprite;
+    public bool usable;
+    public bool unique;
 
     public string GetName()
     {

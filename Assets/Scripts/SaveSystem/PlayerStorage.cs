@@ -10,7 +10,7 @@ public class PlayerStorage : SavableObject
 {
     [Header("Runtime")]
     public string sceneName = "Main";
-    [JsonIgnore] public RoomInfo nextRoomInfo = null;
+    public RoomInfo nextRoomInfo = null;
     public Vector2 nextPosition = Vector2.zero;
     public Direction facing;
     public bool forceNextChange = false;

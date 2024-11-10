@@ -1,7 +1,7 @@
 {
-    "SFXVolume": -13,
-    "MusicVolume": -1,
-    "VoiceVolume": -10,
+    "SFXVolume": -10,
+    "MusicVolume": -10,
+    "VoiceVolume": 0,
     "fullScreen": true,
     "width": 1920,
     "height": 1080,

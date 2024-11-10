@@ -38,16 +38,16 @@ public class Skill : IActionData
 {
 
 
-    [JsonIgnore] public SkillType skillType = SkillType.Physical;
+    public SkillType skillType = SkillType.Physical;
     public string skillId;
-    [JsonIgnore] public string Description = "Attack qui fait mal :)";
-    [JsonIgnore] public AnimationClip animationClip;
-    [JsonIgnore] public string voiceClipId;
-    [JsonIgnore] public int baseDamage = -10; //Negative for damage, positive for healing
+    public string Description = "Attack qui fait mal :)";
+    public AnimationClip animationClip;
+    public string voiceClipId;
+    public int baseDamage = -10; //Negative for damage, positive for healing
     [Range(50, 100)]
-    [JsonIgnore] public int baseAccuracy = 80; //Negative for damage, positive for healing
-    [JsonIgnore] public int manaCost = 14;
-    [JsonIgnore] public GameObject[] spawnObjects;
+    public int baseAccuracy = 80; //Negative for damage, positive for healing
+    public int manaCost = 14;
+    public GameObject[] spawnObjects;
 
 
     public string GetName()
