@@ -36,6 +36,8 @@ public class BattleManager : MonoBehaviour
 
 
 
+    public bool isObserving = false;
+    public BattleCharacter observationTarget;
 
     public ActorInfoPanel actorInfoPanel;
 
@@ -247,13 +249,24 @@ public class BattleManager : MonoBehaviour
 
     public int ObservationTarget()
     {
-        if (IsObserving())
+        if (isObserving)
         {
-           return (BattleState as AnalyzingTargetState).GetEnemyTargetIndex();
+           return GetEnemyTargetIndex();
         }
         return -1;
     }
+    public int GetEnemyTargetIndex()
+    {
+        if (observationTarget != null)
+        {
+            if (EnemyPartyActors.Contains(observationTarget))
+            {
+                return EnemyPartyActors.IndexOf(observationTarget);
+            }
+        }
+        return -1;
 
+    }
     internal bool IsObserving()
     {
         return BattleState.GetType() == typeof(AnalyzingTargetState);
@@ -800,22 +813,25 @@ public class BattleManager : MonoBehaviour
         if (index < HeroPartyActors.Count)
         {
 
-          
 
 
 
+
+            List<int> op = new List<int>(options);
+            op.RemoveAt(0);
 
             if (index >= 0)
             {
                 BattleCharacter Hero = HeroPartyActors[options[0]];
-                Hero.SetOptions(options);
+                Hero.SetOptions(op.ToArray());
             }
             else if (index == -1)
             {
                 foreach (BattleCharacter Hero in HeroPartyActors)
                 {
-
-                    Hero.SetOptions(options);
+                    
+                Hero.SetOptions(op.ToArray());
+            
                 }
             }
         }

@@ -7,15 +7,16 @@ public class AnalyzingTargetState : BattleState
 {
     public List<BattleCharacter> target = new List<BattleCharacter>();
     public List<BattleCharacter> possibleTarget;
+    public bool WillCutscene = false;
     int targetIndex = 0;
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
-        Time.timeScale = 0f;
         battleManager.SetCursor(null);
         battleManager.actorInfoPanel.Appear(true);
         possibleTarget = battleManager.Actors;
-
+        battleManager.isObserving = true;
+        WillCutscene = false;
         if (possibleTarget.Count == 0)
         {
             battleManager.ChangeState(new ChoosingActionState());
@@ -43,9 +44,10 @@ public class AnalyzingTargetState : BattleState
         battleManager.actorInfoPanel.SetActor(character);
         string t = LanguageData.GetDataById(LanguageData.INDICATION).GetValueByKey("targetOne");
         BattleManager.Singleton.SetIndicationText(character.name);
-
+        battleManager.observationTarget = character;
         if (BattleManager.Singleton.CheckCutscene())
         {
+            WillCutscene = true;
             BattleManager.Singleton.timeline.StartCinematic();
         }
         }
@@ -110,8 +112,12 @@ public class AnalyzingTargetState : BattleState
 
     public override void OnExit()
     {
-        battleManager.actorInfoPanel.Appear(false);
-        Time.timeScale = 1;
+        if (!WillCutscene)
+        {
+            battleManager.isObserving = false;
+            battleManager.actorInfoPanel.Appear(false);
+            battleManager.observationTarget = null;
+        }
         base.OnExit();
     }
 

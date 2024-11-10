@@ -13,6 +13,9 @@ public class ChoosingActionState : BattleState
     public override void OnEnter(BattleManager _battleManager)
     {
         base.OnEnter(_battleManager);
+        battleManager.actorInfoPanel.Appear(false);
+        battleManager.isObserving = false;
+        CamManager.ResetView();
         battleManager.GetActor().currentCommand = null;
         battleManager.GetActor().Animator.Thinking(true);
         battleManager.SetCursor(battleManager.GetActor());

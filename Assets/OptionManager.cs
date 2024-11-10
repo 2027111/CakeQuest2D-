@@ -11,6 +11,7 @@ public class OptionManager : MonoBehaviour
     }
     public void DisableMenus(int[] vs)
     {
+        ResetMenus();
         foreach(int i in vs)
         {
             menus[i] = false;

@@ -208,7 +208,7 @@ public class BattleDialogue : Dialogue
                 break;
 
             case BattleCondition.OnObserveEnemy:
-                if (BattleManager.Singleton.IsObserving())
+                if (BattleManager.Singleton.isObserving)
                 {
                     if(BattleManager.Singleton.ObservationTarget() == conditionIndex)
                     {
