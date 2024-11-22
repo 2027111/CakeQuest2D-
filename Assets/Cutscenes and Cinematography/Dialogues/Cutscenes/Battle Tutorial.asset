@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Battle Tutorial
   m_EditorClassIdentifier: 
   UID: 960d1819756087f4c8d5343fc97ca64a
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
   dialogueIndex: 1
   dialogue: []
@@ -83,7 +83,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 0123
+            m_StringArgument: 00123
             m_BoolArgument: 0
           m_CallState: 2
     technicalCondition: 1
@@ -91,9 +91,9 @@ MonoBehaviour:
     played: 1
   - condition: []
     dialogueLineIds:
-    - Tuto_Yankee_008
-    - Tuto_Yankee_009
-    - Tuto_Yankee_010
+    - Tuto_Yankee_0101
+    - Tuto_Yankee_0102
+    - Tuto_Yankee_0103
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -115,4 +115,4 @@ MonoBehaviour:
           m_CallState: 2
     technicalCondition: 4
     conditionIndex: 0
-    played: 0
+    played: 1

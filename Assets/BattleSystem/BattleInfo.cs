@@ -23,4 +23,10 @@ public class BattleInfo : BoolValue
         this.FightParty = replacement.FightParty;
         this.backgroundPrefab = replacement.backgroundPrefab;
     }
+
+    public override void SetRuntime()
+    {
+        Debug.Log("Set Runtime");
+        base.SetRuntime();
+    }
 }

@@ -644,15 +644,16 @@ public class BattleManager : MonoBehaviour
     public void OnBattleWon()
     {
         currentBattleInfo.ConfirmBattle();
-       // Debug.Log("Battle Won");
+        Debug.Log("Battle Won");
     }
 
     public void OnBattleLoss()
     {
-       // Debug.Log("Battle Loss");
+        Debug.Log("Battle Loss");
     }
     public void CheckTeams()
     {
+        Debug.Log("Check Teams");
         if (!CheckTeamAlive(EnemyPartyActors))
         {
             EndBattle(true);
@@ -765,6 +766,7 @@ public class BattleManager : MonoBehaviour
         {
             OnBattleLoss();
         }
+        Debug.Log(" BAttle Won : " + battleWon);
 
 
         Time.timeScale = 1f;

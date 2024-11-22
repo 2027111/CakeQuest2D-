@@ -43,7 +43,6 @@ public class Cutscene : BoolValue
     {
 
         Dialogue returnValue = GetCurrentLine();
-        Debug.Log(returnValue == null);
         dialogueIndex++;
         return returnValue;
     }

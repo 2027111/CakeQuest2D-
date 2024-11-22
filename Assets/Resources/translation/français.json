@@ -267,7 +267,27 @@
         {
             "dataId": "Tuto_Yankee_010",
             "type": 1,
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mais une fois la recette complété, la recette sera réinitialisé de manière aléatoire. Tu devras donc porté attention au combat et trouver la recette toi-même. Cependant, si ta barre de focus est rempli, tu pourras analyser l'adversaire pour afficher sa recette avec la loupe.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je vais revéller sa recette pour nous. Observes Eyr Cott!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_0101",
+            "type": 1,
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vois cette sorte de roue avec des symboles? Il s'agit de la <color={color_success}>Roue Alimentaire</color> de Eyr Cott!\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_0102",
+            "type": 1,
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Elle montre les types d'ingrédients possibles pour toute les recettes de l'adversaire.\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_0103",
+            "type": 1,
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"La chaines de symbole au dessus représente la recette ou <color={color_success}>La Chaine Alimentaire.</color>\"}"
+        },
+        {
+            "dataId": "Tuto_Yankee_0104",
+            "type": 1,
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Suis la à l'aide des tes attaques et de tes compétences.\"}"
         },
         {
             "dataId": "Tuto_Yankee_011",

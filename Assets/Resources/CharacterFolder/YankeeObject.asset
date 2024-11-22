@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UID: 4c83b2a75b75c43408098c0ecf8e9740
   characterData: {fileID: 11400000, guid: a75fb0627fe6b4547b0220228a765c2b, type: 2}
-  Health: 100
+  Health: 90
   MaxHealth: 100
   Mana: 100
   MaxMana: 100
@@ -24,7 +24,7 @@ MonoBehaviour:
   IngredientWheel: 020000000300000006000000
   isDead: 0
   attackType: 0
-  AttackElement: 2
+  AttackElement: 1
   HitEffect:
   - {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
   SoundEffect:
@@ -33,4 +33,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f52855296ba9e174daf048dbd622d234, type: 2}
   animationController: {fileID: 22100000, guid: bbaecce845f6a5845b2a58f6f636b165, type: 2}
   InParty: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
-  recipeLength: 3
+  recipeLength: 5

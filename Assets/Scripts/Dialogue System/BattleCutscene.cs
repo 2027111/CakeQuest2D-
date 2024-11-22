@@ -59,7 +59,6 @@ public class BattleCutscene : Cutscene
 
 
         Dialogue returnValue = new BattleDialogue(battleDialogue[dialogueIndex]);
-        Debug.Log(returnValue.isNull());
         if (returnValue.isNull())
         {
             return null;
