@@ -53,6 +53,75 @@ public class JSONSaveDataWrapper
     }
 
 
+    public bool GetRuntimeOfIdObject(string id)
+    {
+        foreach (var jsonStr in Data)
+        {
+            try
+            {
+                // Parse the JSON string into a JObject
+                JObject jsonObj = JObject.Parse(jsonStr);
+
+                // Check if the object contains the given attribute name
+                if (jsonObj.ContainsKey("UID"))
+                {
+                    // Return the value of the attribute
+                    if (jsonObj["UID"].ToString() == id)
+                    {
+                        if (jsonObj.ContainsKey("RuntimeValue"))
+                        {
+                            if (Boolean.TryParse(jsonObj["RuntimeValue"]?.ToString(), out bool value))
+                            {
+                                return value;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that occur during parsing (e.g., malformed JSON)
+                Debug.LogError($"Error parsing JSON: {ex.Message}");
+            }
+        }
+
+        // Return null if the attribute was not found
+        return false;
+    }
+
+    public string GetAttributeOfIdObject(string id, string attributeName)
+    {
+        foreach (var jsonStr in Data)
+        {
+            try
+            {
+                // Parse the JSON string into a JObject
+                JObject jsonObj = JObject.Parse(jsonStr);
+
+                // Check if the object contains the given attribute name
+                if (jsonObj.ContainsKey("UID"))
+                {
+                    // Return the value of the attribute
+                    if (jsonObj["UID"].ToString() == id)
+                    {
+                        if (jsonObj.ContainsKey(attributeName))
+                        {
+                            jsonObj[attributeName]?.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors that occur during parsing (e.g., malformed JSON)
+                Debug.LogError($"Error parsing JSON: {ex.Message}");
+            }
+        }
+
+        // Return null if the attribute was not found
+        return null;
+    }
+
 }
 
 public class GameSaveManager : MonoBehaviour

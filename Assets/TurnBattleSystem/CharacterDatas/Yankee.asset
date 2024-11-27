@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Yankee
   portraits:
-  - {fileID: 21300000, guid: 3db81e2e8145b1c4fae8fd1393fdd76d, type: 3}
+  - {fileID: -340601026, guid: fc448af39dcd79f45bd296ddf05fec41, type: 3}
   HealthName: "Vitalit\xE9"
   ManaName: Shampoing

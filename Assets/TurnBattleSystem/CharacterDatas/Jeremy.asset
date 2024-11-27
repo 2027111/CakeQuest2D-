@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jeremy
   portraits:
-  - {fileID: 21300000, guid: f067c299bb03b4847982598f34fb08ad, type: 3}
+  - {fileID: -1195994009, guid: fc448af39dcd79f45bd296ddf05fec41, type: 3}
   HealthName: Chevelure
   ManaName: Batterie de Razoir

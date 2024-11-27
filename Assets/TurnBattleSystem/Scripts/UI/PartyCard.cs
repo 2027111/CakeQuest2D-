@@ -10,8 +10,8 @@ public class PartyCard : MonoBehaviour
     [SerializeField] TextMeshProUGUI usernametext;
     BattleCharacter characterReference;
     [SerializeField] Image portraitImage;
-    [SerializeField] HealthBar healthBar;
-    [SerializeField] HealthBar manaBar;
+    [SerializeField] NewHealthBar healthBar;
+    [SerializeField] NewHealthBar manaBar;
     [SerializeField] HealthBar focusBar;
 
     public void SetPlayerRef(BattleCharacter character)

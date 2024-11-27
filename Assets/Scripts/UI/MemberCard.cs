@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MemberCard : MonoBehaviour
 {
 
-    [SerializeField] HealthBar healthBar;
+    [SerializeField] NewHealthBar healthBar;
     [SerializeField] Image portrait;
     [SerializeField] CharacterObject characterObject;
 

@@ -13,12 +13,54 @@ public class LoadSaveButton : MonoBehaviour
     [SerializeField] TMP_Text locationText;
     [SerializeField] TMP_Text progressText;
     [SerializeField] Image progressBar;
+    [SerializeField] Image sugarCake;
+    [SerializeField] Image sourCake;
+    [SerializeField] Image bitterCake;
+    [SerializeField] Image saltyCake;
+
+
+
+
+    [SerializeField] SavableObject sugarCakeSaveObject;
+    [SerializeField] SavableObject sourCakeSaveObject;
+    [SerializeField] SavableObject bitterCakeSaveObject;
+    [SerializeField] SavableObject saltyCakeSaveObject;
+
+
+    [SerializeField] SavableObject PlayerStorageSaveObject;
+
     JSONSaveDataWrapper currentData;
+
+
     public void Start()
     {
-
+        // Example use of SetCake in Start to set initial states
+        SetCakes();
     }
 
+    public void SetCakes()
+    {
+        // Set all cake images to pure black
+        SetCake(sugarCake, currentData.GetAttributeOfIdObject(sugarCakeSaveObject.UID, "RuntimeValue"));
+        SetCake(sourCake, currentData.GetAttributeOfIdObject(sourCakeSaveObject.UID, "RuntimeValue"));
+        SetCake(bitterCake, currentData.GetAttributeOfIdObject(bitterCakeSaveObject.UID, "RuntimeValue"));
+        SetCake(saltyCake, currentData.GetAttributeOfIdObject(saltyCakeSaveObject.UID, "RuntimeValue"));
+    }
+
+    public void SetCake(Image cake, string unlockedText)
+    {
+        // Set the image color based on the unlocked state
+
+        bool unlocked = false;
+
+
+        if (Boolean.TryParse(unlockedText, out bool value))
+        {
+            unlocked = value;
+        }
+        if (cake != null)
+            cake.color = unlocked ? Color.white : Color.black;
+    }
 
     public float GetProgress()
     {

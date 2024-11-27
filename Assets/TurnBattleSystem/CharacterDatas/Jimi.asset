@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jimi
   portraits:
-  - {fileID: 21300000, guid: d018bc64f29e3c140a9cb10f83db9d9f, type: 3}
+  - {fileID: -1106520361, guid: fc448af39dcd79f45bd296ddf05fec41, type: 3}
   HealthName: "Vitalit\xE9"
   ManaName: Shampoing

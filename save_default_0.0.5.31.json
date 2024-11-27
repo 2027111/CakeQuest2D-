@@ -29,12 +29,16 @@
     "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"FirstBattleWon\",  \"UID\": \"241c2449bbdc1d045af9df0ffa71b246\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Tutorial\",  \"UID\": \"98cd78d15977a4143b35067944b9ac22\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"b5da0d4f7fd1cbf4bb8f3417c312b94a\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"c91860032cf703a4b8e4e99a4741d4a9\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"JimiInParty\",  \"UID\": \"854776fce5812684aa77cd10031b9f58\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"BarGuard1\",  \"UID\": \"ef694d6bb510934439a5441663b495d9\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"ec4a620fac00da94e9fff09d4fdf3d8d\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": true,  \"QuestToggled\": false}",
-    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}"
+    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"3825d0269498bc744b5f802c77fbc9c2\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": false,  \"QuestToggled\": false}",
+    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"e0ca06728a9800a40b5c755307f066e8\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Salty Cake\",  \"UID\": \"677c3d2af8f7e4b4190d9162cecbc883\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sour Cake\",  \"UID\": \"b180805b17d0c4d4c8d8142c9c00d835\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sugar Cake\",  \"UID\": \"9a235975f130604489394d646ee8a409\",  \"RuntimeValue\": false}"
   ]
 }

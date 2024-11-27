@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Eyr Cott
   portraits:
-  - {fileID: 21300000, guid: 30537bd79dbcc98499a8801ea490b100, type: 3}
+  - {fileID: -1695787638, guid: fc448af39dcd79f45bd296ddf05fec41, type: 3}
   HealthName: Badasserie
   ManaName: Munitions

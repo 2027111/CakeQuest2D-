@@ -334,6 +334,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   thisMenu: {fileID: 0}
+  disabled: 0
   BackgroundImage: {fileID: 3263808207037743501}
   logoPath: Sprites/logo_element_
   storedSkill: {fileID: 0}
@@ -562,7 +563,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 009f924435e71954396cf2522638a8fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4a9f9fadf35b194095acbeb8460aed6, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -571,4 +572,4 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
