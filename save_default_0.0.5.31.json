@@ -1,6 +1,6 @@
 {
   "AllInventories": [
-    "{  \"SaveObjectName\": \"PlayerInventory\",  \"UID\": \"381c74390e9664647ba32510270b594c\",  \"inventory\": [],  \"pessos\": 0}"
+    "{  \"SaveObjectName\": \"PlayerInventory\",  \"UID\": \"381c74390e9664647ba32510270b594c\",  \"inventory\": [ ],  \"pessos\": 0}"
   ],
   "AllCharacterObjects": [
     "{  \"SaveObjectName\": \"Eyr Cott Object\",  \"UID\": \"7328a005a389c9343917d62a9e065c11\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}",
@@ -12,8 +12,8 @@
     "{  \"SaveObjectName\": \"HeroParty\",  \"UID\": \"4fcbdc8de328d2840961cf7a0f3d9146\",  \"party\": [    \"a402f39d484a5f24a855910f0b6fbd57\"  ]}"
   ],
   "Data": [
-    "{  \"SaveObjectName\": \"PlayerInfoStorage\",  \"UID\": \"db957330a22537842927a3fade1be913\",  \"sceneName\": \"MaisonJimi\",  \"facing\": \"Bottom\",  \"forceNextChange\": false,  \"nextPos\": {    \"x\": -0.212131947,    \"y\": -0.8535533  }}",
-    "{  \"SaveObjectName\": \"CurrentRoom\",  \"UID\": \"5c4dcdbb802a7f0408c4487859f6c302\",  \"roomName\": \"Jimi's Room\",  \"minCO\": {    \"x\": 0.0,    \"y\": 0.0  },  \"maxCO\": {    \"x\": 0.0,    \"y\": 0.0  }}",
+    "{  \"SaveObjectName\": \"PlayerInfoStorage\",  \"UID\": \"db957330a22537842927a3fade1be913\",  \"sceneName\": \"Plaine Caramel\",  \"facing\": \"Bottom\",  \"forceNextChange\": false,  \"nextPos\": {    \"x\": -13.06015,    \"y\": -10.4291115  }}",
+    "{  \"SaveObjectName\": \"CurrentRoom\",  \"UID\": \"5c4dcdbb802a7f0408c4487859f6c302\",  \"roomName\": \"Grande Plaine\",  \"minCO\": {    \"x\": -17.0,    \"y\": -16.0  },  \"maxCO\": {    \"x\": 20.0,    \"y\": 20.0  }}",
     "{  \"SaveObjectName\": \"Battle Tutorial\",  \"UID\": \"960d1819756087f4c8d5343fc97ca64a\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"IntroCutscene\",  \"UID\": \"28f9f4732b803074fba519bf7e6ac594\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"SGT Cutscene\",  \"UID\": \"454d2391fa20f8240975dde6ec24e7ce\",  \"RuntimeValue\": false,  \"repeats\": true,  \"dialogueIndex\": 0}",
@@ -29,16 +29,16 @@
     "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"FirstBattleWon\",  \"UID\": \"241c2449bbdc1d045af9df0ffa71b246\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Tutorial\",  \"UID\": \"98cd78d15977a4143b35067944b9ac22\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"c91860032cf703a4b8e4e99a4741d4a9\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"92c0be1e0a529f745972a4845efebc3b\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"JimiInParty\",  \"UID\": \"854776fce5812684aa77cd10031b9f58\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"BarGuard1\",  \"UID\": \"ef694d6bb510934439a5441663b495d9\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"3825d0269498bc744b5f802c77fbc9c2\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": false,  \"QuestToggled\": false}",
-    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
-    "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"e0ca06728a9800a40b5c755307f066e8\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"Salty Cake\",  \"UID\": \"677c3d2af8f7e4b4190d9162cecbc883\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"Sour Cake\",  \"UID\": \"b180805b17d0c4d4c8d8142c9c00d835\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"Sugar Cake\",  \"UID\": \"9a235975f130604489394d646ee8a409\",  \"RuntimeValue\": false}"
+    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"e7992c761e0d80148a02091db2197327\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": true,  \"QuestToggled\": false}",
+    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"cbfd3c6979c641f459856fc3a06b417c\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Salty Cake\",  \"UID\": \"0da152d816f469344806b3ad21c8b32f\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sour Cake\",  \"UID\": \"00de87c5d5593e4439715e8343edd9a1\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sugar Cake\",  \"UID\": \"2de4343182a093a44a2401a4f7601ea2\",  \"RuntimeValue\": false}"
   ]
 }

@@ -175,6 +175,7 @@ public class BattleDialogue : Dialogue
 {
     public BattleCondition technicalCondition;
     public int conditionIndex;
+    public bool requiresPrevious = false;
     public bool played = false;
 
     public bool CheckBattleCondition()
@@ -184,6 +185,7 @@ public class BattleDialogue : Dialogue
         {
             return false;
         }
+
         switch (technicalCondition)
         {
             case BattleCondition.None:

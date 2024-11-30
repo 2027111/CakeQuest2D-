@@ -97,16 +97,17 @@ public class JSONSaveDataWrapper
             {
                 // Parse the JSON string into a JObject
                 JObject jsonObj = JObject.Parse(jsonStr);
-
                 // Check if the object contains the given attribute name
                 if (jsonObj.ContainsKey("UID"))
                 {
                     // Return the value of the attribute
                     if (jsonObj["UID"].ToString() == id)
                     {
+
+
                         if (jsonObj.ContainsKey(attributeName))
                         {
-                            jsonObj[attributeName]?.ToString();
+                            return jsonObj[attributeName]?.ToString();
                         }
                     }
                 }

@@ -8,16 +8,14 @@ using UnityEngine.UI;
 
 public class LoadSaveButton : MonoBehaviour
 {
-    [SerializeField] Image MiddleImage;
     [SerializeField] TMP_Text saveText;
     [SerializeField] TMP_Text locationText;
     [SerializeField] TMP_Text progressText;
-    [SerializeField] Image progressBar;
     [SerializeField] Image sugarCake;
     [SerializeField] Image sourCake;
     [SerializeField] Image bitterCake;
     [SerializeField] Image saltyCake;
-
+    [SerializeField] Slider ProgressSlider;
 
 
 
@@ -49,6 +47,7 @@ public class LoadSaveButton : MonoBehaviour
 
     public void SetCake(Image cake, string unlockedText)
     {
+
         // Set the image color based on the unlocked state
 
         bool unlocked = false;
@@ -105,7 +104,7 @@ public class LoadSaveButton : MonoBehaviour
         string sceneName = currentData.GetAttribute("sceneName");
         string roomName = currentData.GetAttribute("roomName");
         int percentage = (int)GetProgress();
-        progressBar.fillAmount = percentage/100f;
+        ProgressSlider.value = percentage / 100f;
         progressText.text = percentage + "%";
         locationText.SetText(sceneName + " | " + roomName);
     }

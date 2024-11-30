@@ -8,12 +8,13 @@ public class UIBorder : MonoBehaviour
 
     public float disappearScale = 1.2f; // Set the desired scale when disappearing
     public float timeToScale = .30f; // Duration to scale
+    public bool Affiched = false;
 
-    public void Appear(bool appear)
-    {
-        StopCoroutine("ChangeUIScale");
-        StartCoroutine(ChangeUIScale(appear));
-    }
+    //public void Appear(bool appear)
+    //{
+    //    StopCoroutine("ChangeUIScale");
+    //    StartCoroutine(ChangeUIScale(appear));
+    //}
 
     public IEnumerator ChangeUIScale(bool appear)
     {
@@ -33,4 +34,12 @@ public class UIBorder : MonoBehaviour
     }
 
 
+    public void Appear(bool on)
+    {
+            if (Affiched != on)
+            {
+                GetComponent<Animator>().SetTrigger(on ? "Appear" : "Disappear");
+                Affiched = on;
+            }
+    }
 }

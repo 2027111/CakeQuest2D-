@@ -18,7 +18,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Transform LoadMenuContainer;
     [SerializeField] string firstScene;
     [SerializeField] RoomInfo firstRoom;
-
+    public bool Loading = false;
     [SerializeField] TMP_Dropdown languageDropdown;
     [SerializeField] List<UIMenu> Menus;
 
@@ -41,7 +41,10 @@ public class MainMenu : MonoBehaviour
 
     }
 
-
+    public void DisableButtons()
+    {
+        Loading = true;
+    }
 
     public void OpenLoadMenu()
     {
@@ -113,8 +116,12 @@ public class MainMenu : MonoBehaviour
 
     public IEnumerator StartGameRoutine()
     {
-        yield return StartCoroutine(GameSaveManager.Singleton.LoadSaveFileCoroutine());
-        GoToGame();
+        if (!Loading)
+        {
+            DisableButtons();
+            yield return StartCoroutine(GameSaveManager.Singleton.LoadSaveFileCoroutine());
+            GoToGame();
+        }
     }
     public void GoToGame()
     {

@@ -109,12 +109,27 @@ public class BattleCutscene : Cutscene
     public BattleDialogue GetPlayableLine()
     {
         BattleDialogue b = null;
-        foreach (BattleDialogue bd in battleDialogue)
+        for (int i = 0; i < battleDialogue.Length; i++)
         {
-
+            BattleDialogue bd = battleDialogue[i];
+            
             if (bd.CheckBattleCondition())
             {
                 b = bd;
+                if (i > 0)
+                {
+                    if (b.requiresPrevious)
+                    {
+                        for (int j = i - 1; j >= 0; j--)
+                        {
+                            if (!battleDialogue[j].played)
+                            {
+                                return null;
+                            }
+                        }
+                    }
+
+                }
             }
         }
         return b;

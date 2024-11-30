@@ -35,6 +35,7 @@ MonoBehaviour:
         m_Calls: []
     technicalCondition: 1
     conditionIndex: 0
+    requiresPrevious: 0
     played: 1
   - condition: []
     dialogueLineIds:
@@ -49,6 +50,7 @@ MonoBehaviour:
         m_Calls: []
     technicalCondition: 3
     conditionIndex: 0
+    requiresPrevious: 0
     played: 1
   - condition: []
     dialogueLineIds:
@@ -88,6 +90,7 @@ MonoBehaviour:
           m_CallState: 2
     technicalCondition: 1
     conditionIndex: 1
+    requiresPrevious: 0
     played: 1
   - condition: []
     dialogueLineIds:
@@ -115,4 +118,5 @@ MonoBehaviour:
           m_CallState: 2
     technicalCondition: 4
     conditionIndex: 0
+    requiresPrevious: 1
     played: 1
