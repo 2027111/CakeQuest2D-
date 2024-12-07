@@ -32,7 +32,25 @@ MonoBehaviour:
     - Scene3_PlainesCaramel_006
     - Scene3_PlainesCaramel_007
     - Scene3_PlainesCaramel_008
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
     - Scene3_PlainesCaramel_009
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
     - Scene3_PlainesCaramel_010
     choices: []
     OnOverEvent:
@@ -92,5 +110,5 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-  StartRoom: {fileID: 0}
-  CutsceneToPlay: {fileID: 0}
+  StartRoom: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
+  CutsceneToPlay: {fileID: 11400000, guid: d27d69b0b97dbed478f79f7406f767e9, type: 2}

@@ -48,7 +48,7 @@ public class LineInfo
         this.lineId = lineId;
         this.line = LanguageData.GetDataById(lineId).GetValueByKey("line");
         this.talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkerName");
-        this.skipAtEnd = LanguageData.GetDataById(lineId).GetValueByKey("skipatend") == "true";
+        this.skipAtEnd = line.Contains("<skipLine>");
         this.portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
         if (bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result))
         {
@@ -206,9 +206,9 @@ public class DialogueBox : MonoBehaviour
         currentState = state;
 
         DialogueContent newDialogue = null;
-        if (dialogue.dialogueLineIds != null )
+        if (dialogue.dialogueLineIds != null)
         {
-            if(dialogue.dialogueLineIds.Length != 0)
+            if (dialogue.dialogueLineIds.Length != 0)
             {
                 newDialogue = new DialogueContent(dialogue);
             }
@@ -283,7 +283,7 @@ public class DialogueBox : MonoBehaviour
                 }
             }
         }
-       
+
     }
 
     public IEnumerator SetPortrait(string portraitPath)
@@ -323,10 +323,12 @@ public class DialogueBox : MonoBehaviour
 
     private void SetupLine(LineInfo lineInfo, bool playVoiceLine = true)
     {
+        Debug.Log("Setup Line");
         string portraitPath = lineInfo.portraitPath;
         string talkerName = lineInfo.talkerName;
 
 
+        Debug.Log($"Portrait : {portraitPath} | TalkerName : {talkerName}");
 
         StartCoroutine(SetPortrait(portraitPath));
 
@@ -527,9 +529,8 @@ public class DialogueBox : MonoBehaviour
 
                         if (CurrentLine() != null)
                         {
-                                NextLine();
+                            NextLine();
 
-                            
                         }
                         else
                         {
@@ -686,24 +687,23 @@ public class DialogueBox : MonoBehaviour
 
 
 
-
-
-
             if (setTextCoroutine != null)
-            {
-                StopCoroutine(setTextCoroutine);
-                setTextCoroutine = null;
-                SetDialogueText(lineInfo);
-                dialogueIndex++;
-            }
-            else
             {
                 if (!lineInfo.skipAtEnd)
                 {
-                    voiceClipSource.Stop();
-                    SetupLine(lineInfo);
-                    setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
+                    StopCoroutine(setTextCoroutine);
+                    setTextCoroutine = null;
+                    SetDialogueText(lineInfo);
+                    dialogueIndex++;
                 }
+
+            }
+            else
+            {
+                voiceClipSource.Stop();
+                SetupLine(lineInfo);
+                setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
+
             }
         }
     }
@@ -873,11 +873,11 @@ public class DialogueBox : MonoBehaviour
                 dialogueText.SetText(line);
             }
             dialogueText.SetText(line);
-            bool skippingLine = info.skipAtEnd;
+            //bool skippingLine = info.skipAtEnd;
             Debug.Log(CurrentLine().dataId);
             dialogueIndex++;
             bool wasAutomatic = false;
-            if (automaticDialogue || skippingLine)
+            if (automaticDialogue || info.skipAtEnd)
             {
                 wasAutomatic = true;
                 if (info.voiced)
@@ -891,11 +891,11 @@ public class DialogueBox : MonoBehaviour
                 }
                 else
                 {
-
-                    if (!skippingLine)
+                    if (!info.skipAtEnd)
                     {
-                        yield return new WaitForSeconds(1f);
+                        yield return new WaitForSeconds(2f);
                     }
+
                 }
 
 
@@ -903,17 +903,11 @@ public class DialogueBox : MonoBehaviour
 
             setTextCoroutine = null;
 
-            if (skippingLine)
+            if ((automaticDialogue && wasAutomatic && dialogueIndex == index + 1) || info.skipAtEnd)
             {
                 Interact();
             }
-            else
-            {
-                if (automaticDialogue && wasAutomatic && dialogueIndex == index + 1)
-                {
-                    Interact();
-                }
-            }
+
 
         }
     }
