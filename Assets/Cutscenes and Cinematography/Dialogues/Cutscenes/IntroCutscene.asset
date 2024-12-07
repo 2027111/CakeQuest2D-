@@ -21,8 +21,7 @@ MonoBehaviour:
     - boolValue: {fileID: 0}
       wantedResult: 1
     dialogueLineIds:
-    - Intro_Jimi_000
-    - Intro_Jimi_001
+    - Scene1_Maison_Jimi_001
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -34,9 +33,8 @@ MonoBehaviour:
     - boolValue: {fileID: 0}
       wantedResult: 1
     dialogueLineIds:
-    - Intro_Jimi_002
-    - Intro_Jimi_003
-    - Intro_Jimi_0031
+    - Scene1_Maison_Jimi_002
+    - Scene1_Maison_Jimi_003
     choices: []
     OnOverEvent:
       m_PersistentCalls:

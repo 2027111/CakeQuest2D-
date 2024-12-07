@@ -261,7 +261,6 @@ public class GameSaveManager : MonoBehaviour
     public IEnumerator LoadSaveFileCoroutine()
     {
         yield return StartCoroutine(LoadDefaultFileCoroutine(SaveFiles.save));
-        ////yield return StartCoroutine(LoadScriptablesCoroutine(SaveFiles.save));
         yield return StartCoroutine(LoadSavableObjects());
     }
 
@@ -273,36 +272,6 @@ public class GameSaveManager : MonoBehaviour
 
 
         yield return ImportStoredData(listWrapper);
-    }
-
-    public IEnumerator ExportStoredData()
-    {
-        var settings = new JsonSerializerSettings
-        {
-            TypeNameHandling = TypeNameHandling.All,
-            Formatting = Formatting.Indented,
-            NullValueHandling = NullValueHandling.Ignore
-        };
-
-        // Create an instance of SaveDataWrapper and populate it
-        var saveData = new SaveDataWrapper
-        {
-            AllInventories = allInventories,
-            AllCharacterObjects = allCharacterObjects,
-            AllParties = allParties
-        };
-
-        string json = JsonConvert.SerializeObject(saveData, settings);
-
-
-
-
-        var saveTask = Task.Run(() => File.WriteAllTextAsync(GetNewFilePath("playerData"), json));
-        while (!saveTask.IsCompleted)
-        {
-            yield return null;
-        }
-        yield return null;
     }
 
 
@@ -437,27 +406,6 @@ public class GameSaveManager : MonoBehaviour
         // jsonData = jsonData.Replace("  ", " ");  // Use this if you want to collapse multiple spaces
 
         return jsonData;
-    }
-
-    private IEnumerator LoadScriptablesCoroutine(SaveFiles listName)
-    {
-        if (GetNumberOfSaveFiles() == saveFileIndex)
-        {
-
-            currentLoadedData = null;
-            yield return SaveFileCoroutine();
-        }
-        else
-        {
-
-            List<SavableObject> list = GetListMatch(listName);
-            JSONSaveDataWrapper listWrapper = ReadSaveFile(listName);
-            currentLoadedData = listWrapper;
-            dateTime = DateTime.Now;
-            yield return ImportStoredData(listWrapper);
-
-            yield return null;
-        }
     }
 
 

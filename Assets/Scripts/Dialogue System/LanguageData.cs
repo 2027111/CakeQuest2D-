@@ -212,8 +212,7 @@ public class LanguageData
     }
     public static LanguageData LoadLocalData(string path, JsonDataType filter = JsonDataType.None)
     {
-        string languageSuffix = GetLanguageSuffix();
-
+        
 
         LanguageData combinedData = new LanguageData();
         try
@@ -237,7 +236,7 @@ public class LanguageData
                     foreach (JsonData j in data.Data)
                     {
 
-                        if (j.type != filter)
+                        if (j.ContainsKey("line"))
                         {
 
                             toRemove.Add(j);
@@ -411,21 +410,18 @@ public enum JsonDataType
 public class JsonData
 {
     public string dataId;
-    public JsonDataType type;
     public string jsonData;
 
 
     public JsonData(string id, string data)
     {
         this.dataId = id;
-        this.type = JsonDataType.Misc;
         this.jsonData = data;
     }
 
     public JsonData(string id, JsonDataType t, string data)
     {
         this.dataId = id;
-        this.type = t;
         this.jsonData = data;
     }
     public bool ContainsKey(string key)
@@ -468,7 +464,7 @@ public class JsonData
         string returnValue = "";
         if (!nullable)
         {
-            returnValue = $"{ dataId}.{ key}";
+            returnValue = $"{dataId}.{key}";
 
         }
         if (string.IsNullOrEmpty(jsonData))

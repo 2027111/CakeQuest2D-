@@ -36,16 +36,21 @@ public class AnimationController : MonoBehaviour
     {
         if (Animate)
         {
-
             if (anim)
             {
-                isMoving = pm.GetInput().magnitude > animationDeadZone;
-                anim.SetBool("IsMoving", isMoving);
+                bool _isMoving = pm.GetInput().magnitude > animationDeadZone;
+                if (_isMoving != isMoving)
+                {
+                    isMoving = _isMoving;
+                    anim.SetBool("IsMoving", isMoving);
+                   
+                }
                 if (isMoving)
                 {
                     anim.SetFloat("HorizontalMov", pm.GetInput().x);
                     anim.SetFloat("VerticalMov", pm.GetInput().y);
                 }
+
             }
         }
 

@@ -41,123 +41,107 @@
         },
         {
             "dataId": "Misc_Chest_Locked",
-            "type": 1,
             "jsonData": "{\"line\":\"Le coffre est verouillé... Il faudrait {requirementAmount} {lockRequirement.ItemName} pour l'ouvrir.\"}"
         },
         {
             "dataId": "Misc_Chest_Opened",
-            "type": 1,
             "jsonData": "{\"line\":\"Vous avez trouvé {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Item_Received",
-            "type": 1,
             "jsonData": "{\"line\":\"Vous avez obtenus {amount} <color={color_item}>{content.ItemName}</color>!!\"}"
         },
         {
             "dataId": "Misc_Chest_Unlocked",
-            "type": 1,
             "jsonData": "{\"line\":\"Vous avez les {requirementAmount} {lockRequirement.ItemName} nécéssaire pour l'ouvrir! Le coffre s'ouvre!!\"}"
         },
         {
             "dataId": "Misc_Temp",
-            "type": 1,
             "jsonData": "{\"line\":\"Lancer Video?!\"}"
         },
         {
             "dataId": "Misc_Panneau_PC_000",
-            "type": 1,
             "jsonData": "{\"line\":\"Si tu lis ça, t'es gay!\",\"side\":\"right\"}"
         },
         {
             "dataId": "Misc_Combat_Launch_Test",
-            "type": 1,
             "jsonData": "{\"line\":\"Lancement du combat\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_000",
-            "type": 1,
             "jsonData": "{\"line\":\"HEY?! QU'EST-CE QUE VOUS FAITES ICI?!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_001",
-            "type": 1,
             "jsonData": "{\"line\":\"VOUS ÊTES BANNI D'ICI, DEHORS!\"}"
         },
         {
             "dataId": "Misc_Caught_Guard_Jimi_000",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"Jimi\",\"line\":\"Merde! Il m'a attrapé.... Je pourrai techniquement me le faire... Mais....\"}"
         },
         {
             "dataId": "Misc_Heal_Question",
-            "type": 1,
             "jsonData": "{\"line\":\"Laissez-moi vous soigner.\"}"
         },
         {
             "dataId": "Misc_Heal_Confirmation",
-            "type": 1,
             "jsonData": "{\"line\":\"Votre équipe a été entièrement soignée.\"}"
         },
         {
             "dataId": "Misc_Fight_Question",
-            "type": 1,
             "jsonData": "{\"line\":\"Voulez-vous combattre?\"}"
         },
         {
             "dataId": "Misc_No",
-            "type": 1,
             "jsonData": "{\"line\":\"Non.\"}"
         },
         {
             "dataId": "Misc_Yes",
-            "type": 1,
             "jsonData": "{\"line\":\"Oui.\"}"
         },
         {
             "dataId": "Jimi",
-            "type": 2,
             "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":\"Portraits/Jimi/po_jimi_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Ingrédients\"}"
         },
         {
             "dataId": "Yankee",
-            "type": 2,
             "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":\"Portraits/Yankee/po_yankee_neutral_1\",\"HealthName\":\"Vitalité\",\"ManaName\":\"Shampoing\"}"
         },
         {
             "dataId": "item_huile_bouillante",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Bouteille d'huile bouillante\",\"itemDescription\":\"De l'huile bouilante. La lancé sur un enemie fera {healthEffectAmount} points de dégats\"}"
         },
         {
             "dataId": "item_biscuit_chocolat",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Biscuit au chocolat\",\"itemDescription\":\"Un biscuit au chocolat (Miam!) Soigne {healthEffectAmount} points de vie.\"}"
         },
         {
             "dataId": "item_egg",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Oeuf\",\"itemDescription\":\"Un oeuf. Yep. Rien de plus.\"}"
         },
         {
             "dataId": "item_small_honey_bottle",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Petite bouteille de miel\",\"itemDescription\":\"Une bouteille de miel qui revitalise {manaEffectAmount} points de Mana à celui qui en bois.\"}"
         },
         {
             "dataId": "item_flour",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Farine\",\"itemDescription\":\"Un sac en carton rempli de farine.\"}"
         },
         {
             "dataId": "item_cook_book",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Livre de Cuisine\",\"itemDescription\":\"Un livre de recette, permet d'identifier la recette d'un ennemi instantanément.\"}"
         },
         {
             "dataId": "item_cake_mix",
-            "type": 3,
             "jsonData": "{\"itemName\":\"Pate à Gateau\",\"itemDescription\":\"Une boite en carton rempli de poudre brunâtre. Miam.\"}"
+        },
+        {
+            "dataId": "item_milk_carton",
+            "jsonData": "{\"itemName\":\"Carton de Lait\",\"itemDescription\":\"Un carton de bon lait frait soignant {healthEffectAmount} points de vie.\"}"
+        },
+        {
+            "dataId": "item_sugar_pot",
+            "jsonData": "{\"itemName\":\"Pot de Sucre\",\"itemDescription\":\"Ne pas consummer en grande quantité.\"}"
         },
         {
             "dataId": "quest_intro_fetch_ingredients",
@@ -170,403 +154,567 @@
             "jsonData": "{\"questName\":\"Préparer un Gâteau\",\"questDescription\":\"Dirigez-vous vers le four afin de vous préparer un gâteau..\"}"
         },
         {
+            "dataId": "Interaction_Jimi_Figurine_001",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"... J'ai vraiment gaspillé 1 448 pessos pour ça...\"}"
+        },
+        {
+            "dataId": "Interaction_Jimi_Figurine_002",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Nan en vrai c'est trop stylé. Ça valait le coup.\"}"
+        },
+        {
+            "dataId": "Interaction_Jimi_Figurine_003",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"J'devrais arrêter d'y toucher.\"}"
+        },
+        {
+            "dataId": "Interaction_Jimi_Frame_001",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"...\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_001",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Qu’est-ce que j’ai faim….. Est-ce qu’il reste du gâteau?\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_angry\",\"talkerName\":\"Jimi\",\"line\":\"Papa a encore tout bouffé ce gros porc.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_003",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Bon, pas le choix, je vais devoir en refaire. Il devrait rester des ingrédients en bas.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_004",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Bon, ça devrait faire l’affaire.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_005",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Cuire à 180 degrés pour 30 minutes… J’ai vraiment pas le temps pour ces conneries.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_006",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"D’après mes calculs, si je le cuis à 324 000 degrés, il sera cuit en une seconde.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_007",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Je suis vraiment un génie.\"}"
+        },
+        {
+            "dataId": "Scene1_Maison_Jimi_008",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Oh non… Papa va me tuer.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_001",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Jimi… Réveille-toi.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_002",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Réveille-toi Jimi.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_003",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"…\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_004",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Ngh… Encore 5 minutes.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_005",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Jimi…\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_006",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"….\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_007",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"OH RÉVEILLE-TOI!\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_008",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Quoiiiiii?!\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_009",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Oh, c’est quoi ce bordel?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_010",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Écoute-moi Jimi… T’as vraiment fait une grosse connerie.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_011",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Comment ça?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_012",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Mais vraiment une ÉNORME connerie.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_013",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"J’ai fait quoi?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_014",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Genre si y’avait un record du monde du plus gros débile, tu serais numéro un.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_015",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"…\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_016",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Franchement, je sais pas comment tu fais pour te regarder dans le miroi-\", \"skipatend\":\"true\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_017",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Oh c’est bon! Dis-moi ce que j’ai fait ou je retourne dormir.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_0180",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"J’avoue, j’abuse… Allons droit au but.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_0181",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"T’as détruit le monde. Et c’est à toi de le sauver.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_019",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"…Ouais nan, j’ai pas le temps pour ça.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_020",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"(S’endort)\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_021",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"…\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_022",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Tu veux pas ton gâteau en fait?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_023",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Gâteau?! Où ça?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_024",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Calme-toi. Je sais où il est.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_025",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Bon bah super, rends-le-moi alors.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_026",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"J’aimerais bien, mais je peux pas trop.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_027",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Pourquoi?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_028",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Ton gâteau est dans un autre monde. Sans lui, ton monde est perdu.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_029",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Attends répète, j’ai pas compris.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_030",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Ton gâteau est dans un autre monde. Et si tu le récup-\", \"skipatend\":\"true\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_031",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Hein?\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_032",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"TON GÂTEAU EST DANS UN AUTRE MONDE-\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_033",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Mon gâteau? Attends recommence depuis le début.\", \"skipatend\":\"true\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_034",
+            "jsonData": "{\"talkerName\":\"Voix mystérieuse\",\"line\":\"Vas-y, dégage.\"}"
+        },
+        {
+            "dataId": "Scene2_Limbo_035",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"NON ATTENDS!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_001",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Qu’est-ce que je fais à la plage?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_002",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Il parlait d’un autre monde… Mais j’ai pas l’impression d’avoir quitté le Mexique.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_003",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"Prends ça! Et file-moi ton portefeuille au passage, loser.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_004",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Un vol en plein jour...? Ouais, je suis toujours au Mexique.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_005",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"…Hein?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_006",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"Les gens de ta race me dégoûtent…\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_007",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Mais arrête! Je t’ai rien fait.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_008",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"C’est pas tous les jours que tu tombes sur un cowboy qui attaque un œuf, mais si y’a du racisme c’est que je suis sur Terre.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_009",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"On devrait emprisonner les gens comme toi dans le gâteau.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_010",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Le gâteau??\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_011",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"Pas si vite demi-portion. J’espère que tu viens pas défendre ce… Cette espèce de… Ce sale...\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_012",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Vraiment? Tu vas dire ce genre de chose en 20-\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_013",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"CHAUVE?!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_014",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"… Chauve?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_015",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Mec…\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_016",
+            "jsonData": "{\"talkerName\":\"Eyr Cott\",\"line\":\"Merci pour le pognon, vermine. J’t’invite à le récupérer si tu peux.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_017",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"ATTENDS T’AS PARLÉ D’UN GÂTEAU!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_018",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Merde. Comment c’est aussi rapide un cowboy.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_019",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Merci d’avoir essayé de m’aider… Mais t’en fais pas, ça m’arrive tous les jours ce genre de chose.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_020",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Ouais ouais… Il a parlé d’un gâteau. Tu sais de quoi il parle?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_021",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Le gâteau? Bah oui, tout le monde le connaît. T’es pas du coin?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_022",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Pas vraiment. On est dans quel pays?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_023",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Sucredorge.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_024",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"C’est où? Aux États-Unis?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_025",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Les États-Unis?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_026",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"… Oh putain… Je suis vraiment dans un autre monde.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_027",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Euh… Je sais pas trop de quoi tu parles, mais si tu cherches le gâteau, je peux t’y amener.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_028",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Vraiment?!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_029",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"À une condition. Aide-moi à me venger de cette enflure de cowboy.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_030",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Bon, OK… Mais ça a intérêt à être rapide. Je meurs de faim.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_031",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"C’est quoi ton nom d’ailleurs?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_032",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Jimi, et toi?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_033",
+            "jsonData": "{\"talkerName\":\"Yankee\",\"line\":\"Alors… Je suis Yankee.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_034",
+            "jsonData": "{\"talkerName\":\"Jimi\",\"line\":\"Super, on y va.\"}"
+        },
+        {
             "dataId": "EyrCott_pc_0",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Fait gaffe ou jte fume... jrigole pas cow boy...\"}"
         },
         {
             "dataId": "EyrCott_pc_1",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je suis le plus grand tireur de tout le colorado\"}"
         },
         {
             "dataId": "EyrCott_pc_2",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_neutral_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je ne te rendrais jamais ton portefeuille trouduc\"}"
         },
         {
             "dataId": "EyrCott_pc_3",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Bordel j'ai mal\"}"
         },
         {
             "dataId": "EyrCott_pcc_0",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Mais- Il est oû le  maltezer???\"}"
         },
         {
             "dataId": "EyrCott_pcc_1",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Je ne t'affronterai que quand il aura pris ces couilles et sera venu me défier lui-même.\"}"
         },
         {
             "dataId": "EyrCott_pc_4",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Maintenant, vous connaissez mon plus grand secret...\"}"
         },
         {
             "dataId": "EyrCott_pc_5",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Tien, reprends le ton porte-feuille de mes deux.\"}"
         },
         {
             "dataId": "EyrCott_pc_6",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Moi, j'me casse d'ici.\"}"
         },
         {
             "dataId": "Tuto_Yankee_000",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu sais comment te battre n'est-ce pas?\"}"
         },
         {
             "dataId": "Tuto_Yankee_001",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilises <sprite name=move> pour naviguer et prend ta décision avec <sprite name=select>.\"}"
         },
         {
             "dataId": "Tuto_Yankee_002",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu as le choix entre attaquer, utiliser une compétence et changer de position. Vasy! Essaye!\"}"
         },
         {
             "dataId": "Tuto_Yankee_003",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu te demandes, je n'ai pas besoin d'attendre la fin de ton tours pour attaquer. On peut lui sauter dessus.\"}"
         },
         {
             "dataId": "Tuto_Yankee_004",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Cependant si tu élimines ma cible avant que je l'attaque, je ne pourrai pas changer de cible et j'aurai gaspillé un tour.\"}"
         },
         {
             "dataId": "Tuto_Yankee_005",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
         },
         {
             "dataId": "Tuto_Yankee_006",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Fais gaffe à ton adversaire. Tu n'es pas obligé de prendre le coup. Tu peux bloquer avec <sprite name=cancel> et prendre uniquement la moitié des dégats!\"}"
         },
         {
             "dataId": "Tuto_Yankee_007",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"De plus, si tu bloque au bon moment, tu peux nullifier les dégats de l'attaque et t'en sortir indemne!\"}"
         },
         {
             "dataId": "Tuto_Yankee_008",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Utilise la loupe pour observé l'ennemie, chaque combattant commence le combat avec une recette.!\"}"
         },
         {
             "dataId": "Tuto_Yankee_009",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu suis la recette, chaque étape rendra ton attaque encore plus fort!\"}"
         },
         {
             "dataId": "Tuto_Yankee_010",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je vais revéller sa recette pour nous. Observes Eyr Cott!\"}"
         },
         {
             "dataId": "Tuto_Yankee_0101",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vois cette sorte de roue avec des symboles? Il s'agit de la <color={color_success}>Roue Alimentaire</color> de Eyr Cott!\"}"
         },
         {
             "dataId": "Tuto_Yankee_0102",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Elle montre les types d'ingrédients possibles pour toute les recettes de l'adversaire.\"}"
         },
         {
             "dataId": "Tuto_Yankee_0103",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"La chaines de symbole au dessus représente la recette ou <color={color_success}>La Chaine Alimentaire.</color>\"}"
         },
         {
             "dataId": "Tuto_Yankee_0104",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Suis la à l'aide des tes attaques et de tes compétences.\"}"
         },
         {
             "dataId": "Tuto_Yankee_011",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mai- \n Mais t'es chauve aussi???!\"}"
         },
         {
             "dataId": "Misc_Yankee_Join",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Laisse-moi te rejoindre!\"}"
         },
         {
             "dataId": "Misc_Yankee_Jcowboy",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vas devoir affronter ce cow-boy...\"}"
         },
         {
             "dataId": "Misc_Yankee_Leave",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
         },
         {
             "dataId": "Intro_Jimi_000",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Bordel... <waitSec=0.8>j'ai méga faimmmmm!\",\"voiced\":\"true\"}"
         },
         {
             "dataId": "Intro_Jimi_001",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"J'ai besoin de manger la vérité... J'pense il reste du gateau non?\",\"voiced\":\"true\"}"
         },
         {
             "dataId": "Intro_Jimi_002",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_6\",\"talkerName\":\"???\",\"line\":\"Merde... J'vais devoir en faire moi même.\",\"voiced\":\"true\"}"
         },
         {
             "dataId": "Intro_Jimi_003",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"C'est pas grave. Il devrait rester des ingrédients.\",\"voiced\":\"true\"}"
         },
         {
             "dataId": "Intro_Jimi_0031",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
         },
         {
             "dataId": "Intro_Jimi_004",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"C'est bon! Direction le four!.\"}"
         },
         {
             "dataId": "Intro_Jimi_0042",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"C'est bon, J'ai tout se qu'il me faut! Direction le <color={color_success}>four</color>!.\"}"
         },
         {
             "dataId": "Intro_Jimi_0045",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"J'ai tout ce dont j'ai besoin?\"}"
         },
         {
             "dataId": "Intro_Jimi_0046",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"???\",\"line\":\"Ouai. J'devrais être correcte.\"}"
         },
         {
             "dataId": "Intro_Jimi_0047",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"Non.. Il me manque quelque chose...\"}"
         },
         {
             "dataId": "Intro_Jimi_005",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"Hmm... 300°F pour 10 minutes...\"}"
         },
         {
             "dataId": "Intro_Jimi_006",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Papa me dit toujours de respecter la recette, mais...\n Je pourrais le cuir à 30000°F pendant 1 seconde pour avoir mon gateau le plus tôt possible.\"}"
         },
         {
             "dataId": "Intro_Jimi_007",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Ow?! Qu'est-ce que..?!\"}"
         },
         {
             "dataId": "Intro_Jimi_008",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_4\",\"talkerName\":\"???\",\"line\":\"Papa va me tuerrrrrr... Il faut que j'appelle de l'aide...\"}"
         },
         {
             "dataId": "Intro_Jimi_SGT",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_3\",\"talkerName\":\"???\",\"line\":\"Il est 3h du mat, rien n'est ouvert à cette heure-ci. De plus, je devrais avoir les ingrédients ici de toute manière.\"}"
         },
         {
             "dataId": "Misc_Jimi_000",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"???\",\"line\":\"je ne devrais pas aller là-bas...\"}"
         },
         {
             "dataId": "Misc_Jimi_001",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Ah! Bien sure!\"}"
         },
         {
             "dataId": "Misc_Jimi_002",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Non merci. J'apprécie!\"}"
         },
         {
             "dataId": "Misc_Jimi_003",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"Ah! Je relève le défi!\"}"
         },
         {
             "dataId": "jimi_intro_question",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_4\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Imagine etre stupide\"\r\n}"
+            "jsonData": "{\"portraitPath\": \"Portraits/Jimi/portrait_jimi_4\",\"talkerName\": \"Jimi\",\"line\": \"Imagine etre stupide\"\r\n}"
         },
-        {
-            "dataId": "intro_void_jimi1",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_6\",\r\n  \"talkerName\": \"???\",\r\n  \"line\": \"Ay! Bordel...\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi2",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"???\",\r\n  \"line\": \"Oh putain je suis mort. C'est sur. J'ai toujours cru que ça aurait été lors d'une attaque a l'école et que je sauverai tout le monde.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj0",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Jimi....\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj1",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Jimi....!\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi3",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Y'a quelqu'un?? Comment tu connais mon nom??\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi4",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Je pense que c'est bon. Soit je suis mort, Soit je suis fou.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi5",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Dire que je ne verrais jamais Super se faire adapter en anime...\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj2",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Mais Jimi ferme ta gueule merde. J'essaie de te dire un truc important.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi6",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"T'es pas une hallucination? T'es vraiment une voix off?\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj3",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Ouai, une voix off, on va dire ça. Bref,<waitSec=0.8> Jimi.<waitSec=0.8> Tu as détruit ton monde...\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi7",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Quoi?!<waitSec=0.8> Mais j'ai rien fait?<waitSec=0.8> Ok.<waitSec=0.8> Là Je suis sure c'est un rêve, c'est bon.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj4",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Alors t'as rien fait, hein?<waitSec=0.8> Et ton gâteau à 10000 degré celsius on en parle?.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi8",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Attend. Tu vas me dire mon gâteau à détruit l'univers?<waitSec=0.8> Genre..<waitSec=0.8> Un gâteau.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj5",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Écoutes moi.<waitSec=0.8> Rien n'est perdu encore.<waitSec=0.8> T'as de la chance.<waitSec=0.8> Ton gâteau a cuit, mais la puissance du four la fait imploser sur lui même.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj6",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"L'implosion l'a envoyé dans un autre monde...<waitSec=0.8> Le Casse Croute.<waitSec=0.8> Tu allais aussi être envoyé quelque part de différent,<waitSec=0.3> mais j'ai réussi à empêcher que tu en sois séparé.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi9",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Ok, donc si je suis, tu est une sorte d'être hors dimensionnel. Pourquoi t'as pas juste empéché le gateau d'exploser tout court.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj7",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Je ne suis pas capable d'intéragir avec ton monde à toi. Comme ton gateau à absorbé tout ton monde sauf toi, j'ai pu te sauver lorsque tu te faisait envoyé dans un autre univers.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj8",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"Écoute moi Jimi. J'ai besoin que tu aille dans cette autre monde et récupère le gâteau. C'est le seul moyen de le sauver\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi10",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"Mais... Tu gagnes quoi la dedans. Qu'est ce qui me dit que c'est pas toi qui a juste détruit mon monde et que tu me mets ça sur le dos.\"\r\n}"
-        },
-        {
-            "dataId": "intro_void_aj9",
-            "type": 1,
-            "jsonData": "{\r\n  \"line\": \"*Soupir*... Ouai. T'as raison. J'ai tout fait. Aller dégage d'ici. \"\r\n}"
-        },
-        {
-            "dataId": "intro_void_jimi11",
-            "type": 1,
-            "jsonData": "{\r\n  \"portraitPath\": \"Portraits/Jimi/portrait_jimi_3\",\r\n  \"talkerName\": \"Jimi\",\r\n  \"line\": \"ATTEND J'AI PAS FINI. COMMENT JE TROUVE LE GÄTEAU??\"\r\n}"
-        },
-        {
+{
             "dataId": "Misc_Jimi_004",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"J'ai pas le temps.\"}"
         },
         {
             "dataId": "Tuto_Jimi_008",
-            "type": 1,
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
         },
         {
             "dataId": "skill_spinning_kick",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Coup de Pied Tourné\",\"skillDescription\":\"Un coup de pied amplifié par la force centrifuge.\"}"
         },
         {
             "dataId": "skill_low_heal",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Premier Soins\",\"skillDescription\":\"Un sort de soin de bas niveau\"}"
         },
         {
             "dataId": "skill_overhead_smash",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Fracas Aérien\",\"skillDescription\":\"Un coup amplifié par la gravité\"}"
         },
         {
             "dataId": "skill_ressurection",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Résurrection\",\"skillDescription\":\"Un sort pouvant réanimé les alliés évanouis\"}"
         },
         {
             "dataId": "skill_salad_rain",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Pluie de Salade\",\"skillDescription\":\"Invoque une pluie de légumes salés\"}"
         },
         {
             "dataId": "skill_slice_dice",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Coupe et Découpe\",\"skillDescription\":\"Un enchainement d'attaques tranchantes\"}"
         },
         {
             "dataId": "skill_super_kick",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Super Coup de pied\",\"skillDescription\":\"Un enchainement de coup de pied\"}"
         },
         {
             "dataId": "skill_egg_drill",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Perç'Oeuf\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
         },
         {
             "dataId": "skill_primary_lotus",
-            "type": 4,
             "jsonData": "{\"skillName\":\"Lotus Primaire\",\"skillDescription\":\"J'ai vu ça dans un animé!\"}"
         }
     ]

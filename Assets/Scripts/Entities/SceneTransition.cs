@@ -46,6 +46,34 @@ public class SceneTransition : MonoBehaviour
         PlayerInfoStorage.CurrentInfoStorage.MoveToScene();
     }
 
+    public void FadeTo()
+    {
+        if (CustomTransition)
+        {
+            FadeScreen.SetColor(transitionColor);
+            FadeScreen.SetTimes(transitionFadeTime, transitionTime);
+        }
+        else
+        {
+            FadeScreen.ResetTimes();
+        }
+        StartCoroutine(FadeScreen.Singleton.StartFadeAnimation(true, .1f));
+    }
+
+
+    public void Flash()
+    {
+        if (CustomTransition)
+        {
+            FadeScreen.SetColor(transitionColor);
+            FadeScreen.SetTimes(transitionFadeTime, transitionTime);
+        }
+        else
+        {
+            FadeScreen.ResetTimes();
+        }
+        StartCoroutine(FadeScreen.Singleton.StartFlashAnimation(.1f));
+    }
 
     public IEnumerator ClearRessources()
     {

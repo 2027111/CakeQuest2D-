@@ -13,16 +13,13 @@ MonoBehaviour:
   m_Name: IntroCooking Cutscene
   m_EditorClassIdentifier: 
   UID: cc5e26914c5c6e346948f02a9bde52fa
-  RuntimeValue: 1
+  RuntimeValue: 0
   repeats: 0
   dialogueIndex: 0
   dialogue:
-  - condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
+  - condition: []
     dialogueLineIds:
-    - Intro_Jimi_005
-    - Intro_Jimi_006
+    - Scene1_Maison_Jimi_005
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -30,13 +27,9 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
-  - condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
+  - condition: []
     dialogueLineIds:
-    - Intro_Jimi_007
-    - Intro_Jimi_008
+    - Scene1_Maison_Jimi_006
     choices: []
     OnOverEvent:
       m_PersistentCalls:
@@ -44,6 +37,25 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}
+  - condition: []
+    dialogueLineIds:
+    - Scene1_Maison_Jimi_007
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - condition: []
+    dialogueLineIds:
+    - Scene1_Maison_Jimi_008
+    choices: []
+    OnOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    OnInstantOverEvent:
+      m_PersistentCalls:
+        m_Calls: []
   StartRoom: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 35b4a3ff5dc69d64f972fcf988e6114c, type: 2}

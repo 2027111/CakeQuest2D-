@@ -12,6 +12,7 @@ public class BoolValue : SavableObject
 
     public virtual void SetRuntime()
     {
+        Debug.Log("Set Runtime");
         RuntimeValue = true;
     }
     public virtual void ResetRuntime()

@@ -681,7 +681,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    m_NormalColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
     m_HighlightedColor: {r: 1, g: 0.69411767, b: 0.8039216, a: 1}
     m_PressedColor: {r: 0.7169812, g: 0.36863655, b: 0.49581, a: 1}
     m_SelectedColor: {r: 1, g: 0.5058824, b: 0.6862745, a: 1}
@@ -4595,7 +4595,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    m_NormalColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
     m_HighlightedColor: {r: 1, g: 0.69411767, b: 0.8039216, a: 1}
     m_PressedColor: {r: 0.7169812, g: 0.36863655, b: 0.49581, a: 1}
     m_SelectedColor: {r: 1, g: 0.5058824, b: 0.6862745, a: 1}
@@ -4751,7 +4751,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151590711}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1870.5344}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4759,10 +4759,10 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2.170044, y: -1.5599976}
+  m_SizeDelta: {x: 845.3125, y: 506.25}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1151590713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5221,7 +5221,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    m_NormalColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
     m_HighlightedColor: {r: 1, g: 0.69411767, b: 0.8039216, a: 1}
     m_PressedColor: {r: 0.7169812, g: 0.36863655, b: 0.49581, a: 1}
     m_SelectedColor: {r: 1, g: 0.5058824, b: 0.6862745, a: 1}
@@ -5713,6 +5713,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea4268724d65ab848a5e660add3ec04e, type: 2}
   - {fileID: 11400000, guid: 43230d6f8a1a5ad4e94614831cefe6de, type: 2}
   - {fileID: 11400000, guid: 90777677ead7b2440a61c69da4b72456, type: 2}
+  - {fileID: 11400000, guid: 8b77faa1a9796d645884db3c0d7e292b, type: 2}
+  - {fileID: 11400000, guid: 8805986b372f41e4d90bfde114de1616, type: 2}
 --- !u!1 &1358609001
 GameObject:
   m_ObjectHideFlags: 0
@@ -9242,7 +9244,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23921569}
+    m_NormalColor: {r: 0.78, g: 0.78, b: 0.78, a: 1}
     m_HighlightedColor: {r: 1, g: 0.69411767, b: 0.8039216, a: 1}
     m_PressedColor: {r: 0.7169812, g: 0.36863655, b: 0.49581, a: 1}
     m_SelectedColor: {r: 1, g: 0.5058824, b: 0.6862745, a: 1}
@@ -10203,7 +10205,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: data.Array.size
-      value: 28
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: data.Array.data[0]
@@ -10317,6 +10319,26 @@ PrefabInstance:
       propertyPath: data.Array.data[27]
       value: 
       objectReference: {fileID: 11400000, guid: 05696ddc312497e4aac2b6c6ee4e7cbe, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[28]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a4be2deef505974f9a3862c9d3784a2, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[29]
+      value: 
+      objectReference: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[30]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[31]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3304577a21e7a8241ad5f86b2f40ddd1, type: 2}
+    - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
+      propertyPath: data.Array.data[32]
+      value: 
+      objectReference: {fileID: 11400000, guid: ca899355d08a1e645a9115f3b902f194, type: 2}
     - target: {fileID: 2410642290145792046, guid: dc07e107067ee484bb764e5a57f5de8c, type: 3}
       propertyPath: tempData.Array.size
       value: 2

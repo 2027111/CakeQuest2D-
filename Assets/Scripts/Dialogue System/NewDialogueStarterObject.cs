@@ -101,6 +101,10 @@ public class Dialogue
         {
             return true;
         }
+        else if (dialogueLineIds.Length == 0 && HasOnePossibleChoice())
+        {
+            return false;
+        }
         else
         {
             foreach (string l in dialogueLineIds)
@@ -133,6 +137,12 @@ public class Dialogue
             return null;
         }
         return returnChocies.ToArray();
+    }
+
+    public bool HasOnePossibleChoice()
+    {
+
+       return GetUsableChoices().Length == 1;
     }
 }
 
@@ -253,25 +263,18 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public virtual void DialogueAction()
     {
-        if (dialogue.dialogueLineIds.Length > 0)
-        {
-            if (!started)
-            {
-                started = true;
-                DialogueRequest();
-            }
-        }
-        else
-        {
-            OnDialogueOverEvent.Invoke();
-        }
+        DialogueRequest();
     }
     public virtual void DialogueRequest()
     {
         if (CheckLines())
         {
-            Dialogue newDialogue = new Dialogue(dialogue);
-            UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
+            if (!started)
+            {
+                started = true;
+                Dialogue newDialogue = new Dialogue(dialogue);
+                UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
+            }
         }
         else
         {
@@ -281,12 +284,15 @@ public class NewDialogueStarterObject : MonoBehaviour
 
     public bool CheckLines()
     {
+        Debug.Log("Checking Lines");
         if (dialogue.isNull())
         {
+            Debug.Log("Dialogue is NUll?");
             return false;
         }
         else
         {
+            Debug.Log("Dialogue is not NUll");
             return dialogue.ConditionRespected();
         }
     }

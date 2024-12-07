@@ -39,6 +39,7 @@ public class LineInfo
     public string line;
     public string talkerName;
     public string portraitPath;
+    public bool skipAtEnd;
     public bool voiced = false;
     public AudioClip audioClip;
 
@@ -47,6 +48,7 @@ public class LineInfo
         this.lineId = lineId;
         this.line = LanguageData.GetDataById(lineId).GetValueByKey("line");
         this.talkerName = LanguageData.GetDataById(lineId).GetValueByKey("talkerName");
+        this.skipAtEnd = LanguageData.GetDataById(lineId).GetValueByKey("skipatend") == "true";
         this.portraitPath = LanguageData.GetDataById(lineId).GetValueByKey("portraitPath");
         if (bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result))
         {
@@ -202,12 +204,33 @@ public class DialogueBox : MonoBehaviour
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
         }
         currentState = state;
-        DialogueContent newDialogue = new DialogueContent(dialogue);
 
-        if (dialogue.dialogueLineIds != null)
+        DialogueContent newDialogue = null;
+        if (dialogue.dialogueLineIds != null )
+        {
+            if(dialogue.dialogueLineIds.Length != 0)
+            {
+                newDialogue = new DialogueContent(dialogue);
+            }
+        }
+        else
         {
 
-            if (dialogue.dialogueLineIds.Length > 0)
+            if (dialogue.choices.Length != 0)
+            {
+
+                if (dialogue.HasOnePossibleChoice())
+                {
+                    newDialogue = new DialogueContent(new Dialogue(dialogue.GetUsableChoices()[0]));
+
+                }
+            }
+        }
+
+
+        if (newDialogue != null)
+        {
+            if (newDialogue.dialogue.dialogueLineIds.Length > 0)
             {
 
                 if (active)
@@ -260,6 +283,7 @@ public class DialogueBox : MonoBehaviour
                 }
             }
         }
+       
     }
 
     public IEnumerator SetPortrait(string portraitPath)
@@ -503,8 +527,9 @@ public class DialogueBox : MonoBehaviour
 
                         if (CurrentLine() != null)
                         {
+                                NextLine();
 
-                            NextLine();
+                            
                         }
                         else
                         {
@@ -673,9 +698,12 @@ public class DialogueBox : MonoBehaviour
             }
             else
             {
-                voiceClipSource.Stop();
-                SetupLine(lineInfo);
-                setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
+                if (!lineInfo.skipAtEnd)
+                {
+                    voiceClipSource.Stop();
+                    SetupLine(lineInfo);
+                    setTextCoroutine = StartCoroutine(GraduallySetText(lineInfo));
+                }
             }
         }
     }
@@ -845,9 +873,11 @@ public class DialogueBox : MonoBehaviour
                 dialogueText.SetText(line);
             }
             dialogueText.SetText(line);
+            bool skippingLine = info.skipAtEnd;
+            Debug.Log(CurrentLine().dataId);
             dialogueIndex++;
             bool wasAutomatic = false;
-            if (automaticDialogue)
+            if (automaticDialogue || skippingLine)
             {
                 wasAutomatic = true;
                 if (info.voiced)
@@ -862,17 +892,29 @@ public class DialogueBox : MonoBehaviour
                 else
                 {
 
-                    yield return new WaitForSeconds(.75f);
+                    if (!skippingLine)
+                    {
+                        yield return new WaitForSeconds(1f);
+                    }
                 }
 
 
             }
 
             setTextCoroutine = null;
-            if (automaticDialogue && wasAutomatic && dialogueIndex == index + 1)
+
+            if (skippingLine)
             {
                 Interact();
             }
+            else
+            {
+                if (automaticDialogue && wasAutomatic && dialogueIndex == index + 1)
+                {
+                    Interact();
+                }
+            }
+
         }
     }
 

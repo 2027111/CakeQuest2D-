@@ -241,9 +241,38 @@ public class FadeScreen : MonoBehaviour
         }
         SetAlphaTarget(target);
         fading = false;
-        startFadeon = false;
 
 
+        yield return null;
+    }
+    public IEnumerator StartFlashAnimation(float fadeTime = .8f, float fadeDuration = .2f, float waitTime = 0)
+    {
+        float time = 0f;
+        float start = 0;
+        float target = 1;
+        SetAlphaTarget(start);
+        fading = true;
+        yield return new WaitForSeconds(waitTime);
+        while (time < fadeTime)
+        {
+            time += Time.deltaTime;
+            group.alpha = Mathf.Lerp(start, target, time / fadeTime);
+            yield return null;
+        }
+        SetAlphaTarget(target);
+        yield return new WaitForSeconds(fadeDuration);
+
+        time = 0f;
+        while (time < fadeTime)
+        {
+            time += Time.deltaTime;
+            group.alpha = Mathf.Lerp(target, start, time / fadeTime);
+            yield return null;
+        }
+
+        SetAlphaTarget(start);
+
+        fading = false;
         yield return null;
     }
 

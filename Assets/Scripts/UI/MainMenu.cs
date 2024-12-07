@@ -48,24 +48,30 @@ public class MainMenu : MonoBehaviour
 
     public void OpenLoadMenu()
     {
+
+
         OpenMenu(1);
-        foreach (Transform t in LoadMenuContainer)
+        GameSaveManager.Singleton.StartLoadingFiles(delegate
         {
-            Destroy(t.gameObject);
-        }
-        int amount = GameSaveManager.Singleton.GetNumberOfSaveSlots();
-        for (int i = 0; i < amount; i++)
-        {
-            GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer);
-            GameSaveManager.Singleton.saves[i].saveIndex = i;
-            button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
-            int index = i;
-            button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
-            if (index == 0)
+            foreach (Transform t in LoadMenuContainer)
             {
-                button.GetComponent<Button>().Select();
+                Destroy(t.gameObject);
             }
-        }
+            int amount = GameSaveManager.Singleton.GetNumberOfSaveSlots();
+            for (int i = 0; i < amount; i++)
+            {
+                GameObject button = Instantiate(LoadFileButtonPrefab, LoadMenuContainer);
+                GameSaveManager.Singleton.saves[i].saveIndex = i;
+                button.GetComponent<LoadSaveButton>().SetSaveFile(GameSaveManager.Singleton.saves[i]);
+                int index = i;
+                button.GetComponent<Button>().onClick.AddListener(delegate { LoadGame(index); });
+                if (index == 0)
+                {
+                    button.GetComponent<Button>().Select();
+                }
+            }
+        });
+        
     }
 
 

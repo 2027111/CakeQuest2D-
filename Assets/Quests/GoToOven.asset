@@ -16,7 +16,7 @@ MonoBehaviour:
   RuntimeValue: 0
   questId: go_to_oven
   questName: Find Oven
-  QuestToggled: 0
+  QuestToggled: 1
   NextQuestObject: {fileID: 0}
   OnQuestCompletedDialogue:
     condition: []
@@ -28,4 +28,3 @@ MonoBehaviour:
     OnInstantOverEvent:
       m_PersistentCalls:
         m_Calls: []
-    source: {fileID: 0}

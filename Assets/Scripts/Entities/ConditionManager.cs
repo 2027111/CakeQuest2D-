@@ -32,8 +32,7 @@ public class ConditionManager : MonoBehaviour
     public ConditionEvents[] conditionEvents;
 
 
-
-    private void Start()
+    public void OnStart()
     {
         foreach (ConditionEvents ev in conditionEvents)
         {
@@ -46,5 +45,10 @@ public class ConditionManager : MonoBehaviour
                 ev.onConditionFalseEvent?.Invoke();
             }
         }
+    }
+
+    private void Start()
+    {
+        OnStart();
     }
 }

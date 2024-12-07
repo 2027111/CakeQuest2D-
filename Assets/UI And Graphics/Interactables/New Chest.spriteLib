@@ -56,9 +56,9 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: Entry
       m_Hash: 719368820
-      m_Sprite: {fileID: -1627411236, guid: 97a229cea79642e4cabcb40588133ff8, type: 3}
+      m_Sprite: {fileID: -809023486, guid: 97a229cea79642e4cabcb40588133ff8, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -1627411236, guid: 97a229cea79642e4cabcb40588133ff8, type: 3}
+      m_SpriteOverride: {fileID: -809023486, guid: 97a229cea79642e4cabcb40588133ff8, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: 

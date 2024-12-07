@@ -10,6 +10,9 @@ public class Timeline : MonoBehaviour
 
     public static bool IsInCutscene = false;
 
+    public double currentLoopPointStart;
+    public double currentLoopPointEnd;
+    public bool loopingSection = false;
 
     public ConditionObject[] condition;
     public Cutscene storagePlay;
@@ -21,7 +24,18 @@ public class Timeline : MonoBehaviour
     {
         if (Automatic)
         {
-            StartCinematic();
+            if (FadeScreen.fading || FadeScreen.fadeOn)
+            {
+
+                StartCinematic();
+                StartLoopSection(.001f);
+                FadeScreen.Singleton.OnFadingEnd.AddListener(StopLoopSection);
+            }
+            else
+            {
+                StartCinematic();
+            }
+           
         }
     }
 
@@ -63,7 +77,9 @@ public class Timeline : MonoBehaviour
                 {
 
                     started = true;
-                    playableDirector.Pause();
+
+                    StartLoopSection(.1f);
+                    //playableDirector.Pause();
                     DialogueRequest();
                 }
                 else
@@ -74,6 +90,53 @@ public class Timeline : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (loopingSection)
+        {
+            if (playableDirector != null && playableDirector.time >= currentLoopPointEnd)
+            {
+                playableDirector.time = currentLoopPointStart;
+                playableDirector.Evaluate();
+                playableDirector.Play();
+            }
+        }
+    }
+
+    public virtual void StartDialogue(float loopTime)
+    {
+        //Debug.Log("Starting Dialogue");
+        if (!started)
+        {
+            if (CanPlayCutscene())
+            {
+                if (storagePlay.GetCurrentLine() != null)
+                {
+
+                    started = true;
+                    StartLoopSection(loopTime);
+                    //playableDirector.Pause();
+                    DialogueRequest();
+                }
+                else
+                {
+                    DialogueOver();
+                }
+            }
+        }
+    }
+    public void StartLoopSection(float loopTime)
+    {
+        currentLoopPointStart = playableDirector.time + .01f;
+        currentLoopPointEnd = playableDirector.time + .01f + loopTime;
+        loopingSection = true;
+       
+    }
+
+    public void StopLoopSection()
+    {
+        loopingSection = false;
+    }
 
     public void SetCutscene(Cutscene cutscene)
     {
@@ -91,7 +154,8 @@ public class Timeline : MonoBehaviour
     {
         started = false;
         //Debug.Log("Dialogue Over");
-        UnpauseCutscene();
+        StopLoopSection();
+       // UnpauseCutscene();
     }
 
     public void UnpauseCutscene()
@@ -152,6 +216,15 @@ public class Timeline : MonoBehaviour
 
     public void FadeTo()
     {
+        FadeScreen.SetColor(Color.white);
+        StartCoroutine(FadeScreen.Singleton.StartFadeAnimation(true, .1f));
+    }
+
+
+    public void Flash()
+    {
+        FadeScreen.SetColor(Color.white);
+        StartCoroutine(FadeScreen.Singleton.StartFlashAnimation(.1f));
     }
     public void PlayCutscene()
     {
