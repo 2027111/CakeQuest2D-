@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ConditionEvents
 {
-    public ConditionObject[] condition;
+    public ConditionResultObject[] condition;
     public UnityEvent onConditionTrueEvent;
     public UnityEvent onConditionFalseEvent;
 
@@ -14,7 +14,7 @@ public class ConditionEvents
 
     public bool CheckCondition()
     {
-        foreach (ConditionObject con in condition)
+        foreach (ConditionResultObject con in condition)
         {
             if (con != null)
             {

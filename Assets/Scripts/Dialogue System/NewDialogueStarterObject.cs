@@ -15,7 +15,7 @@ public class Dialogue
 
 
 
-    public ConditionObject[] condition;
+    public ConditionResultObject[] condition;
 
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
@@ -82,7 +82,7 @@ public class Dialogue
 
     public bool ConditionRespected()
     {
-        foreach (ConditionObject c in condition)
+        foreach (ConditionResultObject c in condition)
         {
             if (!c.CheckCondition())
             {
@@ -150,7 +150,7 @@ public class Dialogue
 public class ChoiceDialogue
 {
 
-    public ConditionObject[] condition;
+    public ConditionResultObject[] condition;
     public string choicesLineIds;
     public string[] dialogueLineIds;
     public ChoiceDialogue[] choices;
@@ -158,7 +158,7 @@ public class ChoiceDialogue
     public UnityEvent OnInstantOverEvent;
     public bool ConditionRespected()
     {
-        foreach (ConditionObject c in condition)
+        foreach (ConditionResultObject c in condition)
         {
             if (!c.CheckCondition())
             {

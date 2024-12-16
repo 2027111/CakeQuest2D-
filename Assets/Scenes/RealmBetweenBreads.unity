@@ -404,8 +404,6 @@ PlayableDirector:
     value: {fileID: 1800461113}
   - key: {fileID: -1224486746486720233, guid: e44679817e8eb3641a887551fca76d28, type: 2}
     value: {fileID: 43242881}
-  - key: {fileID: -6831229050573902885, guid: e44679817e8eb3641a887551fca76d28, type: 2}
-    value: {fileID: 1800461110}
   - key: {fileID: 6143577420624658367, guid: e44679817e8eb3641a887551fca76d28, type: 2}
     value: {fileID: 1800461111}
   m_ExposedReferences:
@@ -1191,17 +1189,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
---- !u!114 &1800461110 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1800461125, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}
-  m_PrefabInstance: {fileID: 1800461109}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800461112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &1800461111 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1800461113, guid: 39ac7e0228a8a5547b5c76091875b8ac, type: 3}

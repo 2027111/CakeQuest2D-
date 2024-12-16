@@ -15,7 +15,7 @@ MonoBehaviour:
   UID: 960d1819756087f4c8d5343fc97ca64a
   RuntimeValue: 1
   repeats: 0
-  dialogueIndex: 1
+  dialogueIndex: 0
   dialogue: []
   StartRoom: {fileID: 0}
   CutsceneToPlay: {fileID: 0}

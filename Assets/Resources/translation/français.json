@@ -371,7 +371,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_007",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Mais arrête! Je t’ai rien fait.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mais arrête! Je t’ai rien fait.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_008",
@@ -403,7 +403,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_015",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Mec…\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Mec…\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_016",
@@ -419,7 +419,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_019",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Merci d’avoir essayé de m’aider… Mais t’en fais pas, ça m’arrive tous les jours ce genre de chose.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Merci d’avoir essayé de m’aider… Mais t’en fais pas, ça m’arrive tous les jours ce genre de chose.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_020",
@@ -427,7 +427,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_021",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Le gâteau? Bah oui, tout le monde le connaît. T’es pas du coin?\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Le gâteau? Bah oui, tout le monde le connaît. T’es pas du coin?\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_022",
@@ -435,7 +435,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_023",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Sucredorge.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Sucredorge.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_024",
@@ -443,7 +443,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_025",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Les États-Unis?\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Les États-Unis?\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_026",
@@ -451,7 +451,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_027",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Euh… Je sais pas trop de quoi tu parles, mais si tu cherches le gâteau, je peux t’y amener.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Euh… Je sais pas trop de quoi tu parles, mais si tu cherches le gâteau, je peux t’y amener.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_028",
@@ -459,7 +459,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_029",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"À une condition. Aide-moi à me venger de cette enflure de cowboy.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"À une condition. Aide-moi à me venger de cette enflure de cowboy.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_030",
@@ -467,7 +467,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_031",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"C’est quoi ton nom d’ailleurs?\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"C’est quoi ton nom d’ailleurs?\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_032",
@@ -475,7 +475,7 @@
         },
         {
             "dataId": "Scene3_PlainesCaramel_033",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\"\"line\":\"Alors… Je suis Yankee.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Alors… Je suis Yankee.\"}"
         },
         {
             "dataId": "Scene3_PlainesCaramel_034",
@@ -673,7 +673,7 @@
             "dataId": "jimi_intro_question",
             "jsonData": "{\"portraitPath\": \"Portraits/Jimi/portrait_jimi_4\",\"talkerName\": \"Jimi\",\"line\": \"Imagine etre stupide\"\r\n}"
         },
-{
+        {
             "dataId": "Misc_Jimi_004",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\",\"talkerName\":\"Jimi\",\"line\":\"J'ai pas le temps.\"}"
         },

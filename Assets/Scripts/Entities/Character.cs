@@ -17,9 +17,10 @@ public class Character : MonoBehaviour
     public Controller inputManager;
     public Party heroParty;
     private CharacterBehaviour previousBehaviour;
-
     public SpriteRenderer Sprite;
 
+    [Header("Components to Enable/Disable")]
+    [SerializeField] private List<Component> componentsToToggle;
 
 
     // Start is called before the first frame update
@@ -38,6 +39,36 @@ public class Character : MonoBehaviour
         FadeScreen.AddOnEndFadeEvent(TogglePlayableState);
 
 
+    }
+
+    public void DisableCharacter()
+    {
+        foreach (var component in componentsToToggle)
+        {
+            if (component is Behaviour behaviour)
+            {
+                behaviour.enabled = false;
+            }
+            else if (component is Renderer renderer)
+            {
+                renderer.enabled = false;
+            }
+        }
+    }
+
+    public void EnableCharacter()
+    {
+        foreach (var component in componentsToToggle)
+        {
+            if (component is Behaviour behaviour)
+            {
+                behaviour.enabled = true;
+            }
+            else if (component is Renderer renderer)
+            {
+                renderer.enabled = true;
+            }
+        }
     }
 
 
@@ -155,35 +186,7 @@ public class Character : MonoBehaviour
         LookToward((target.transform.position - transform.position).normalized);
     }
 
-    public void LookUp()
-    {
 
-
-        // Now you can use the lookDirection vector to orient the object
-        LookToward(Vector2.up.normalized);
-    }
-
-    public void LookDown()
-    {
-
-
-        // Now you can use the lookDirection vector to orient the object
-        LookToward(Vector2.down.normalized);
-    }
-    public void LookRight()
-    {
-
-
-        // Now you can use the lookDirection vector to orient the object
-        LookToward(Vector2.right.normalized);
-    }
-    public void LookLeft()
-    {
-
-
-        // Now you can use the lookDirection vector to orient the object
-        LookToward(Vector2.left.normalized);
-    }
 
     public void SetPosition(Vector3 newPosition)
     {
@@ -218,7 +221,7 @@ public class Character : MonoBehaviour
         {
             state = previousBehaviour.GetType().ToString();
         }
-       if(this == Player && ConsoleToGui.doShow) Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
+        if (this == Player && ConsoleToGui.doShow) Debug.Log($"{name}  State changed : {state} replaced by {GetCurrentBehaviour()}", this);
     }
     public CharacterBehaviour GetCurrentBehaviour()
     {
@@ -234,10 +237,8 @@ public class Character : MonoBehaviour
     {
         if (Player == this)
         {
-            if (!Timeline.IsInCutscene)
-            {
                 ChangeState(new PlayerControlsBehaviour());
-            }
+            
 
         }
         else

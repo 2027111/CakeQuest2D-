@@ -18,6 +18,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
         if (character.inputManager == null || Timeline.IsInCutscene)
         {
             player.ChangeState(new PatrollingBehaviour());
+            return;
         }
         else
         {

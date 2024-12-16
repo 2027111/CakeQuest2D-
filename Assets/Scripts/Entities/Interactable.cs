@@ -110,7 +110,7 @@ public class Interactable : MonoBehaviour
     {
         if (InteractionIndicator)
         {
-            InteractionIndicator?.SetActive(on);
+            InteractionIndicator?.GetComponent<ContextClue>().PopIn(on);
         }
     }
 

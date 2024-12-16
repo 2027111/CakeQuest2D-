@@ -323,12 +323,8 @@ public class DialogueBox : MonoBehaviour
 
     private void SetupLine(LineInfo lineInfo, bool playVoiceLine = true)
     {
-        Debug.Log("Setup Line");
         string portraitPath = lineInfo.portraitPath;
         string talkerName = lineInfo.talkerName;
-
-
-        Debug.Log($"Portrait : {portraitPath} | TalkerName : {talkerName}");
 
         StartCoroutine(SetPortrait(portraitPath));
 
@@ -691,6 +687,7 @@ public class DialogueBox : MonoBehaviour
             {
                 if (!lineInfo.skipAtEnd)
                 {
+                    Debug.Log("Linke SKipped WHREN???");
                     StopCoroutine(setTextCoroutine);
                     setTextCoroutine = null;
                     SetDialogueText(lineInfo);
@@ -873,8 +870,6 @@ public class DialogueBox : MonoBehaviour
                 dialogueText.SetText(line);
             }
             dialogueText.SetText(line);
-            //bool skippingLine = info.skipAtEnd;
-            Debug.Log(CurrentLine().dataId);
             dialogueIndex++;
             bool wasAutomatic = false;
             if (automaticDialogue || info.skipAtEnd)

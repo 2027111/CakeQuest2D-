@@ -14,7 +14,7 @@ public class Timeline : MonoBehaviour
     public double currentLoopPointEnd;
     public bool loopingSection = false;
 
-    public ConditionObject[] condition;
+    public ConditionResultObject[] condition;
     public Cutscene storagePlay;
     public bool started = false;
     public PlayableDirector playableDirector;
@@ -27,9 +27,7 @@ public class Timeline : MonoBehaviour
             if (FadeScreen.fading || FadeScreen.fadeOn)
             {
 
-                StartCinematic();
-                StartLoopSection(.001f);
-                FadeScreen.Singleton.OnFadingEnd.AddListener(StopLoopSection);
+                StartCinematic(true);
             }
             else
             {
@@ -39,15 +37,20 @@ public class Timeline : MonoBehaviour
         }
     }
 
-    public virtual void StartCinematic()
+    public virtual void StartCinematic(bool delayed = false)
     {
         if (CanPlayCutscene())
         {
-           // Debug.Log("Playing Cutscene");
+            // Debug.Log("Playing Cutscene");
             storagePlay.dialogueIndex = 0;
-
+            Character.Player?.ToggleCutsceneState();
             SetupRequirements();
+            if (delayed)
+            {
 
+                StartLoopSection(.001f);
+                FadeScreen.Singleton.OnFadingEnd.AddListener(StopLoopSection);
+            }
             playableDirector.Play();
             IsInCutscene = true;
         }
@@ -192,7 +195,7 @@ public class Timeline : MonoBehaviour
 
     public bool CheckCondition()
     {
-        foreach (ConditionObject c in condition)
+        foreach (ConditionResultObject c in condition)
         {
             if (!c.CheckCondition())
             {

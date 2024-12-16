@@ -56,7 +56,7 @@ public class BattleTimeline : Timeline
 
     }
 
-    public override void StartCinematic()
+    public override void StartCinematic(bool delayed = false)
     {
         if (CanPlayCutscene())
         {
@@ -66,6 +66,10 @@ public class BattleTimeline : Timeline
             IsInCutscene = true;
         }
     }
+
+
+
+
 
     public bool HasCutscene()
     {

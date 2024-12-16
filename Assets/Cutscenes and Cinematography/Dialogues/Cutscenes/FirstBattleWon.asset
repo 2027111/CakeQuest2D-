@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstBattleWon
   m_EditorClassIdentifier: 
   UID: 241c2449bbdc1d045af9df0ffa71b246
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
   dialogueIndex: 0
   dialogue:

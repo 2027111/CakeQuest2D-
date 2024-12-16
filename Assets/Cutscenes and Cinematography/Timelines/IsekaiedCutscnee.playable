@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 23.60000000000005
+  m_Time: 24.43333333333339
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 254c4a5d48ac08e4ba9459f2c328b769, type: 2}
@@ -96,31 +96,6 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: ed3e2cd05dbc7be4f9b27e02331d2ca3, type: 2}
---- !u!114 &-6831229050573902885
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46e36075dd1c124a8422c228e75e1fb, type: 3}
-  m_Name: Signal Track (1)
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 0
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: -6701602395533479834}
-  m_Children: []
-  m_Clips: []
-  m_Markers:
-    m_Objects:
-    - {fileID: 8429017591888174920}
-    - {fileID: -6636791227245260567}
 --- !u!114 &-6701602395533479834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,26 +119,9 @@ MonoBehaviour:
   - {fileID: -5845231086543812583}
   - {fileID: 6143577420624658367}
   - {fileID: -1224486746486720233}
-  - {fileID: -6831229050573902885}
   m_Clips: []
   m_Markers:
     m_Objects: []
---- !u!114 &-6636791227245260567
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
-  m_Name: Signal Emitter
-  m_EditorClassIdentifier: 
-  m_Time: 0
-  m_Retroactive: 0
-  m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: d7b68a4ccee99ff40a02df31c1ef8ee7, type: 2}
 --- !u!74 &-6501013772642303741
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -604,7 +562,7 @@ MonoBehaviour:
     m_Start: 15.25
     m_ClipIn: 0.15000000000000036
     m_Asset: {fileID: 4053235920407145117}
-    m_Duration: 8.350000000000051
+    m_Duration: 9.18333333333339
     m_TimeScale: 1
     m_ParentTrack: {fileID: -5845231086543812583}
     m_EaseInDuration: 0
@@ -924,6 +882,22 @@ MonoBehaviour:
   m_Loop: 0
   m_Version: 1
   m_Rotation: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &-1627432968873787471
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 23.65
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: ed3e2cd05dbc7be4f9b27e02331d2ca3, type: 2}
 --- !u!114 &-1224486746486720233
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -966,6 +940,7 @@ MonoBehaviour:
     - {fileID: 1844110875996270777}
     - {fileID: 4336042285684966725}
     - {fileID: 7907506177047474516}
+    - {fileID: -1627432968873787471}
 --- !u!74 &-1194939805640615900
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -1742,22 +1717,6 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: ed3e2cd05dbc7be4f9b27e02331d2ca3, type: 2}
---- !u!114 &8429017591888174920
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
-  m_Name: Signal Emitter
-  m_EditorClassIdentifier: 
-  m_Time: 23.60000000000005
-  m_Retroactive: 0
-  m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: 254c4a5d48ac08e4ba9459f2c328b769, type: 2}
 --- !u!114 &9077027359513861399
 MonoBehaviour:
   m_ObjectHideFlags: 1

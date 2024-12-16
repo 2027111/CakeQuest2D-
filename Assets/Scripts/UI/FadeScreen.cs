@@ -202,7 +202,7 @@ public class FadeScreen : MonoBehaviour
         }
 
         yield return new WaitForSeconds(.05f);
-
+        Debug.Log("OnFadingEnd?");
         OnFadingEnd?.Invoke();
         movingScene = false;
         yield return null;
@@ -241,8 +241,7 @@ public class FadeScreen : MonoBehaviour
         }
         SetAlphaTarget(target);
         fading = false;
-
-
+        startFadeon = false;
         yield return null;
     }
     public IEnumerator StartFlashAnimation(float fadeTime = .8f, float fadeDuration = .2f, float waitTime = 0)
@@ -309,6 +308,7 @@ public class FadeScreen : MonoBehaviour
         }
         else
         {
+            Debug.Log(action.Method.Name);
             Singleton?.OnFadingEnd.AddListener(actionU);
         }
     }

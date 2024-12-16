@@ -13,10 +13,7 @@ public class OverworldTimeline : Timeline
 
         base.Start();
     }
-    public override void StartCinematic()
-    {
-        base.StartCinematic();
-    }
+
     public override void SetupRequirements()
     {
 

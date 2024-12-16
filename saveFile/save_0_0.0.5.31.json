@@ -9,14 +9,14 @@
     "{  \"SaveObjectName\": \"JeremyObject\",  \"UID\": \"41ee1a37819a3bb4e89fcc68983368d7\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}"
   ],
   "AllParties": [
-    "{  \"SaveObjectName\": \"HeroParty\",  \"UID\": \"4fcbdc8de328d2840961cf7a0f3d9146\",  \"party\": [    \"a402f39d484a5f24a855910f0b6fbd57\"  ]}"
+    "{  \"SaveObjectName\": \"HeroParty\",  \"UID\": \"4fcbdc8de328d2840961cf7a0f3d9146\",  \"party\": [    \"a402f39d484a5f24a855910f0b6fbd57\",    \"4c83b2a75b75c43408098c0ecf8e9740\"  ]}"
   ],
   "Data": [
-    "{  \"SaveObjectName\": \"PlayerInfoStorage\",  \"UID\": \"db957330a22537842927a3fade1be913\",  \"sceneName\": \"MaisonJimi\",  \"facing\": \"Bottom\",  \"forceNextChange\": false,  \"nextPos\": {    \"x\": 15.9018955,    \"y\": -2.94500065  }}",
-    "{  \"SaveObjectName\": \"CurrentRoom\",  \"UID\": \"5c4dcdbb802a7f0408c4487859f6c302\",  \"roomName\": \"kitchen\",  \"minCO\": {    \"x\": 6.0,    \"y\": 0.0  },  \"maxCO\": {    \"x\": 11.0,    \"y\": 0.0  }}",
+    "{  \"SaveObjectName\": \"PlayerInfoStorage\",  \"UID\": \"db957330a22537842927a3fade1be913\",  \"sceneName\": \"Plaine Caramel\",  \"facing\": \"Bottom\",  \"forceNextChange\": false,  \"nextPos\": {    \"x\": 8.194857,    \"y\": -12.9840031  }}",
+    "{  \"SaveObjectName\": \"CurrentRoom\",  \"UID\": \"5c4dcdbb802a7f0408c4487859f6c302\",  \"roomName\": \"Grande Plaine\",  \"minCO\": {    \"x\": -17.0,    \"y\": -16.0  },  \"maxCO\": {    \"x\": 20.0,    \"y\": 20.0  }}",
     "{  \"SaveObjectName\": \"Battle Tutorial\",  \"UID\": \"960d1819756087f4c8d5343fc97ca64a\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"IntroCutscene\",  \"UID\": \"28f9f4732b803074fba519bf7e6ac594\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}",
-    "{  \"SaveObjectName\": \"SGT Cutscene\",  \"UID\": \"454d2391fa20f8240975dde6ec24e7ce\",  \"RuntimeValue\": false,  \"repeats\": true,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"SGT Cutscene\",  \"UID\": \"454d2391fa20f8240975dde6ec24e7ce\",  \"RuntimeValue\": true,  \"repeats\": true,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"plaine_caramel_ChestAA\",  \"UID\": \"ed186bab97246ca42b31b957b75ba989\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"plaine_caramel_ChestAB\",  \"UID\": \"751c2dcadbfd91f46b416a63bf19d340\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"plaine_caramel_ChestAC\",  \"UID\": \"351171d059cfd3642bdbcf04d056f6b2\",  \"RuntimeValue\": false}",
@@ -26,16 +26,16 @@
     "{  \"SaveObjectName\": \"jimi_maison_ChestAD\",  \"UID\": \"6d42469a57cae5b4687573106f35c055\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"jimi_maison_ChestAE\",  \"UID\": \"b10d6c41cf74f1941a7d58caa06c08c1\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"Intro Quest\",  \"UID\": \"357fa63766d8fb64d9d797ba2cde4194\",  \"RuntimeValue\": true,  \"QuestToggled\": false}",
-    "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"FirstBattleWon\",  \"UID\": \"241c2449bbdc1d045af9df0ffa71b246\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Tutorial\",  \"UID\": \"98cd78d15977a4143b35067944b9ac22\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"c820e358b982e8e4e9940a45c735c902\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"829b3fe16a553a64a87cdac259afad4e\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"JimiInParty\",  \"UID\": \"854776fce5812684aa77cd10031b9f58\",  \"RuntimeValue\": true}",
-    "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"BarGuard1\",  \"UID\": \"ef694d6bb510934439a5441663b495d9\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"ae9078f64e718864798d250d4d8f6721\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": false,  \"QuestToggled\": true}",
-    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"0db877f61bfd75c49afb8e7d84bc79e3\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": true,  \"QuestToggled\": false}",
+    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"cbfd3c6979c641f459856fc3a06b417c\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"Salty Cake\",  \"UID\": \"0da152d816f469344806b3ad21c8b32f\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"Sour Cake\",  \"UID\": \"00de87c5d5593e4439715e8343edd9a1\",  \"RuntimeValue\": false}",
@@ -43,7 +43,7 @@
     "{  \"SaveObjectName\": \"FrameDown\",  \"UID\": \"dc028d5705fb4774fa4cc8cd54293011\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"GokuInteractedOnce\",  \"UID\": \"5c2dbf3b845569448b9d1d9e94f78b5c\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"GokuInteractedTwice\",  \"UID\": \"6dc7fffe02230784e8679572cb63caa9\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"GoUpTheBeach\",  \"UID\": \"6d070e091a9fe78468f7cf9029ede491\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
-    "{  \"SaveObjectName\": \"WashedOnTheShore\",  \"UID\": \"804e3bce60904d94fb76a685e8d57708\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}"
+    "{  \"SaveObjectName\": \"GoUpTheBeach\",  \"UID\": \"6d070e091a9fe78468f7cf9029ede491\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}",
+    "{  \"SaveObjectName\": \"WashedOnTheShore\",  \"UID\": \"804e3bce60904d94fb76a685e8d57708\",  \"RuntimeValue\": true,  \"repeats\": false,  \"dialogueIndex\": 0}"
   ]
 }
