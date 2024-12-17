@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SerializableDictionary<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
+public class SerializableDictionaries<TKey, TValue> : IEnumerable<KeyValuePair<TKey, TValue>>
 {
     [SerializeField]
     private List<TKey> keys = new List<TKey>();

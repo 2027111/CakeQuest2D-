@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: DoYouBussSirGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: DoYouBussSir
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: bdd0bfa3-826f-48c1-a65d-6127c9ced21a
+    <Name>k__BackingField: DoYouBuss
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Test_000
+    - Test_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Misc_Yes
+      <NodeID>k__BackingField: 6ac8e291-c59c-4e39-994f-82ce8ddeafe0
+    - <Text>k__BackingField: Misc_No
+      <NodeID>k__BackingField: 73118853-c2d3-4e13-af0e-2e7985fc6203
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 384, y: 292}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 6ac8e291-c59c-4e39-994f-82ce8ddeafe0
+    <Name>k__BackingField: IBuss
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Test_002
+    - Test_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1019, y: 68}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: 05696ddc312497e4aac2b6c6ee4e7cbe, type: 2}
+      wantedResult: 1
+    <ID>k__BackingField: 73118853-c2d3-4e13-af0e-2e7985fc6203
+    <Name>k__BackingField: IDonBuss
+    <EventIndex>k__BackingField: 4
+    <Text>k__BackingField:
+    - Test_004
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1001, y: 471}
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - DoYouBuss
+  - IBuss
+  - IDonBuss
+  <OldGroupedNodeNames>k__BackingField:
+    m_keys: []

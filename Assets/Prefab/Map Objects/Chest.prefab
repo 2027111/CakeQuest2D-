@@ -130,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -156,7 +156,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -177,33 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97652d9f72f839943ac55987b7756a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue:
-    condition: []
-    dialogueLineIds:
-    - Misc_Chest_Opened
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7993561500512630954}
-          m_TargetAssemblyTypeName: TreasureChest, Assembly-CSharp
-          m_MethodName: DialogueOver
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  Dialogue: {fileID: 11400000, guid: db495b5f6087a7e438ef4a63cae0397c, type: 2}
+  DialogueEvents: []
   started: 0
-  OnDialogueOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
   content: {fileID: 11400000, guid: 5c0a05bafb9a06a41b11f1ffec68afc4, type: 2}
   amount: 1
   OnlyOnce: 1
@@ -212,64 +188,8 @@ MonoBehaviour:
   lockRequirement: {fileID: 0}
   requirementAmount: 0
   consumesRequirement: 0
-  LockedDialogue:
-    condition: []
-    dialogueLineIds:
-    - Misc_Chest_Locked
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  SuccessDialogue:
-    condition: []
-    dialogueLineIds:
-    - Misc_Chest_Unlocked
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7993561500512630955}
-          m_TargetAssemblyTypeName: Interactable, Assembly-CSharp
-          m_MethodName: Disable
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 4164658357484488122}
-          m_TargetAssemblyTypeName: TurnOnAndOff, Assembly-CSharp
-          m_MethodName: Turn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: TurnOnAndOff, Assembly-CSharp
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  LockedDialogue: {fileID: 11400000, guid: f1e6dc4189c88c54199af1d0875af6a2, type: 2}
+  SuccessDialogue: {fileID: 11400000, guid: ba30a71be0508d84d8cd00f0f7040afd, type: 2}
   storedOpen: {fileID: 11400000, guid: 3c4fbf3ec1fe8fd47a6b63826282419a, type: 2}
   OnIsOpen:
     m_PersistentCalls:

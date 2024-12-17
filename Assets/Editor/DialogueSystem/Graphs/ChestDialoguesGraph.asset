@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: ChestDialoguesGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: ChestDialogues
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: e39fccaf-a91c-48c1-be40-e316a647216d
+    <Name>k__BackingField: ChestDialogues
+    <Position>k__BackingField: {x: 523, y: -307.00003}
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 6f144362-a59a-462c-a3ca-253663f93dc4
+    <Name>k__BackingField: ChestLocked
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Chest_Locked
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: e39fccaf-a91c-48c1-be40-e316a647216d
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 548, y: 342}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 30f50126-d94f-401c-ad6c-92f00b07d9a4
+    <Name>k__BackingField: ChestOpened
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Chest_Opened
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: e39fccaf-a91c-48c1-be40-e316a647216d
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 548, y: 48}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: bb7b672f-af1a-42d3-8f05-79a56c30372f
+    <Name>k__BackingField: ChestUnlocked
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Chest_Unlocked
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: e39fccaf-a91c-48c1-be40-e316a647216d
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 548, y: -248}
+  <OldGroupNames>k__BackingField:
+  - ChestDialogues
+  <OldUngroupedNodeNames>k__BackingField: []
+  <OldGroupedNodeNames>k__BackingField:
+    m_keys:
+    - ChestDialogues

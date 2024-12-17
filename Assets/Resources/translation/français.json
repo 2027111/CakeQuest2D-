@@ -590,8 +590,12 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vas devoir affronter ce cow-boy...\"}"
         },
         {
-            "dataId": "Misc_Yankee_Leave",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
+            "dataId": "Misc_Yankee_JoinedTeam",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Parfait! Allons-y.\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_RefusedJoining",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Ah. Ok. Dis moi si tu change d'avis mec.\"}"
         },
         {
             "dataId": "Intro_Jimi_000",
@@ -680,6 +684,26 @@
         {
             "dataId": "Tuto_Jimi_008",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+        },
+        {
+            "dataId": "Test_000",
+            "jsonData": "{\"talkerName\":\"Weird Black Guy\",\"line\":\"Hello Sir!\"}"
+        },
+        {
+            "dataId": "Test_001",
+            "jsonData": "{\"talkerName\":\"Weird Black Guy\",\"line\":\"Do You Buss?\"}"
+        },
+        {
+            "dataId": "Test_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Bien sure que je Buss. C'est moi le goon master.\"}"
+        },
+        {
+            "dataId": "Test_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Aller dap me up Amir\"}"
+        },
+        {
+            "dataId": "Test_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Buss?\"}"
         },
         {
             "dataId": "skill_spinning_kick",

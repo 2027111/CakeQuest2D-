@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccbf18e99f3110449d7c88cb78477c7, type: 3}
+  m_Name: Buss
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Buss
+  <DialogueGroups>k__BackingField:
+    m_keys: []
+  <UnGroupedDialogues>k__BackingField:
+  - {fileID: 11400000, guid: 5c9de436781e15f48a66e58cb28bc04b, type: 2}
+  - {fileID: 11400000, guid: 0f7a2c0e2e5a6914eb86cae4a59c93af, type: 2}
+  - {fileID: 11400000, guid: 4ab55d586e0e8944fba1be630d24c0c2, type: 2}

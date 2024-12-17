@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FirstBattleWon
   m_EditorClassIdentifier: 
   UID: 241c2449bbdc1d045af9df0ffa71b246
-  RuntimeValue: 1
+  RuntimeValue: 0
   repeats: 0
   dialogueIndex: 0
   dialogue:
@@ -26,6 +26,8 @@ MonoBehaviour:
     - EyrCott_pc_5
     - EyrCott_pc_6
     choices: []
+    DialogueChoices: []
+    EventIndex: 
     OnOverEvent:
       m_PersistentCalls:
         m_Calls: []
