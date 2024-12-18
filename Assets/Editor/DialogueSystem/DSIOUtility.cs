@@ -95,7 +95,7 @@ public static class DSIOUtility
             node.ID = nodeData.ID;
             node.Choices = choices;
             node.Text = nodeData.Text;
-            node.Conditions = nodeData.Conditions;
+            node.Conditions = CloneNodeConditions(nodeData.Conditions);
             node.selectedEventCaller = nodeData.EventIndex;
 
             node.Draw();
@@ -234,7 +234,7 @@ public static class DSIOUtility
         else
         {
             dialogue = CreateAsset<DSDialogueSO>($"{containerFolderPath}/Global/Dialogues", node.DialogueName);
-            dialogueContainer.UnGroupedDialogues.Add(dialogue);
+            dialogueContainer.UngroupedDialogues.Add(dialogue);
         }
 
         dialogue.Initialize(
@@ -251,7 +251,7 @@ public static class DSIOUtility
         List<DSChoiceSaveData> choices = CloneNodeChoices(node.Choices);
         DSNodeSaveData nodeData = new DSNodeSaveData()
         {
-            Conditions = node.Conditions,
+            Conditions = CloneNodeConditions(node.Conditions),
             ID = node.ID,
             Name = node.DialogueName,
             Choices = choices,
@@ -283,6 +283,22 @@ public static class DSIOUtility
         return choices;
     }
 
+    private static List<ConditionResultObject> CloneNodeConditions(List<ConditionResultObject> nodeConditions)
+    {
+        List<ConditionResultObject> conditions = new List<ConditionResultObject>();
+
+        foreach (ConditionResultObject condition in nodeConditions)
+        {
+            ConditionResultObject conditionData = new ConditionResultObject();
+            conditionData.boolValue = condition.boolValue;
+            conditionData.wantedResult = condition.wantedResult;
+          
+        conditions.Add(conditionData);
+        }
+
+        return conditions;
+    }
+
     private static void SaveGroups(DSGraphSaveDataSO graphData, DSDialogueContainerSO dialogueContainer)
     {
         List<string> groupNames = new List<string>();
@@ -310,7 +326,7 @@ public static class DSIOUtility
         graphData.OldGroupNames = new List<string>(currentGroupNames);
     }
 
-    private static void RemoveFolder(string fullPath)
+    public static void RemoveFolder(string fullPath)
     {
         FileUtil.DeleteFileOrDirectory($"{fullPath}/");
         FileUtil.DeleteFileOrDirectory($"{fullPath}.meta");
@@ -328,7 +344,7 @@ public static class DSIOUtility
         SaveAsset(dialogueGroup);
     }
 
-    private static void SaveAsset(UnityEngine.Object asset)
+    public static void SaveAsset(UnityEngine.Object asset)
     {
         EditorUtility.SetDirty(asset);
         AssetDatabase.SaveAssets();
@@ -349,7 +365,7 @@ public static class DSIOUtility
 
     }
 
-    private static T CreateAsset<T>(string path, string assetName) where T : ScriptableObject
+    public static T CreateAsset<T>(string path, string assetName) where T : ScriptableObject
     {
         string fullPath = $"{path}/{assetName}.asset";
         T asset = LoadAsset<T>(path,assetName);
@@ -362,16 +378,16 @@ public static class DSIOUtility
         return asset;
     }
 
-    private static T LoadAsset<T>(string path, string assetName) where T : ScriptableObject
+    public static T LoadAsset<T>(string path, string assetName) where T : ScriptableObject
     {
         return AssetDatabase.LoadAssetAtPath<T>($"{path}/{assetName}.asset");
     }
 
-    private static void RemoveAsset(string path, string assetName)
+    public static void RemoveAsset(string path, string assetName)
     {
         AssetDatabase.DeleteAsset($"{path}/{assetName}.asset");
     }
-    private static List<DSDialogueChoiceData> ConvertNodeChoicesToDialogueChoices(List<DSChoiceSaveData> nodeChoices)
+    public static List<DSDialogueChoiceData> ConvertNodeChoicesToDialogueChoices(List<DSChoiceSaveData> nodeChoices)
     {
         List<DSDialogueChoiceData> dialogueChoices = new List<DSDialogueChoiceData>();
         foreach (DSChoiceSaveData nodeChoice in nodeChoices)
@@ -388,7 +404,7 @@ public static class DSIOUtility
     }
 
 
-    private static void GetElementsFromGraphView()
+    public static void GetElementsFromGraphView()
     {
         graphView.graphElements.ForEach(graphElement =>
         {
@@ -421,7 +437,7 @@ public static class DSIOUtility
         CreateFolder($"{containerFolderPath}/Global", "Dialogues");
     }
 
-    private static void CreateFolder(string path, string folderName)
+    public static void CreateFolder(string path, string folderName)
     {
 
         if (AssetDatabase.IsValidFolder($"{path}/{folderName}"))

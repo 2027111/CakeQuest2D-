@@ -181,12 +181,7 @@ public class DialogueBox : MonoBehaviour
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
             
         }
-
-        UnityAction action = GetEventFromIndex(dialogue.EventIndex);
-        if (action != null)
-        {
-            OnDialogueOverAction.Enqueue(action);
-        }
+        AddOnOverEvents(dialogue);
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
@@ -204,14 +199,20 @@ public class DialogueBox : MonoBehaviour
 
     }
 
-    private UnityAction GetEventFromIndex(string eventIndex)
+    private UnityAction GetEventFromIndex(string eventIndex, DialogueEventType type = DialogueEventType.OnOver)
     {
-        
+        if(currentDialogueEventList != null)
+        {
+
         foreach(DialogueEvent dialogueEvent in currentDialogueEventList)
         {
             if (dialogueEvent.IndexValue == eventIndex)
             {
-                return dialogueEvent.EventAction.Invoke;
+                    if(dialogueEvent.EventType == type)
+                    {
+                        return dialogueEvent.EventAction.Invoke;
+                    }
+            }
             }
         }
         return null;
@@ -227,11 +228,8 @@ public class DialogueBox : MonoBehaviour
 
         }
         currentDialogueEventList = dialogue.DialogueEvents;
-        UnityAction action = GetEventFromIndex(dialogue.EventIndex);
-        if (action != null)
-        {
-            OnDialogueOverAction.Enqueue(action);
-        }
+        AddOnOverEvents(dialogue);
+
         currentState = state;
 
         DialogueContent newDialogue = null;
@@ -313,6 +311,25 @@ public class DialogueBox : MonoBehaviour
             }
         }
 
+    }
+
+    private void AddOnOverEvents(Dialogue dialogue)
+    {
+        UnityAction action = GetEventFromIndex(dialogue.EventIndex);
+        if (action != null)
+        {
+            Debug.Log($"Added {action.Method.Name}");
+            OnDialogueOverAction.Enqueue(action);
+        }
+    }
+
+    private void TriggerInstantOverEvents(Dialogue dialogue)
+    {
+        UnityAction action = GetEventFromIndex(dialogue.EventIndex, DialogueEventType.Instant);
+        if (action != null)
+        {
+            action.Invoke();
+        }
     }
 
     public IEnumerator SetPortrait(string portraitPath)
@@ -403,11 +420,7 @@ public class DialogueBox : MonoBehaviour
         choiceBox.SetActive(false);
         Dialogue dialogue = new Dialogue(choice.NextDialogue);
         OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke);
-        UnityAction action = GetEventFromIndex(dialogue.EventIndex);
-        if (action != null)
-        {
-            OnDialogueOverAction.Enqueue(action);
-        }
+        AddOnOverEvents(dialogue);
 
         if (currentDialogue.dialogue != null)
         {
@@ -523,15 +536,7 @@ public class DialogueBox : MonoBehaviour
 
                     if (currentDialogue != null)
                     {
-                        if (currentDialogue.dialogue.OnInstantOverEvent != null)
-                        {
-                            currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
-
-                            if (currentDialogue != null)
-                            {
-                                currentDialogue.dialogue.OnInstantOverEvent = null;
-                            }
-                        }
+                        TriggerInstantOverEvents(currentDialogue.dialogue);
                     }
 
                     if (dontGoNext)
@@ -547,9 +552,7 @@ public class DialogueBox : MonoBehaviour
 
                         ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
 
-                        Debug.Log(choices);
                         DSDialogueChoiceData[] choicesList = currentDialogue.dialogue.GetUsableChoicesList();
-                        Debug.Log(choicesList);
                         if (choices != null)
                         {
                             if (choices.Length == 1)
@@ -771,7 +774,7 @@ public class DialogueBox : MonoBehaviour
 
             if (dialogue.source != null)
             {
-                lineInfo.line = NewDialogueStarterObject.GetFormattedLines(dialogue.source, lineInfo.line);
+                lineInfo.line = BranchingDialogueStarterObject.GetFormattedLines(dialogue.source, lineInfo.line);
 
             }
 

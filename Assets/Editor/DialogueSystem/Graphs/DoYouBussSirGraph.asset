@@ -45,7 +45,7 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 1019, y: 68}
   - <Conditions>k__BackingField:
     - boolValue: {fileID: 11400000, guid: 05696ddc312497e4aac2b6c6ee4e7cbe, type: 2}
-      wantedResult: 1
+      wantedResult: 0
     <ID>k__BackingField: 73118853-c2d3-4e13-af0e-2e7985fc6203
     <Name>k__BackingField: IDonBuss
     <EventIndex>k__BackingField: 4
@@ -63,4 +63,4 @@ MonoBehaviour:
   - IBuss
   - IDonBuss
   <OldGroupedNodeNames>k__BackingField:
-    m_keys: []
+    list: []

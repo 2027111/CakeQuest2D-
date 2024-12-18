@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: FigurineInteractionGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: FigurineInteraction
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <Name>k__BackingField: FigurineInteraction
+    <Position>k__BackingField: {x: 381, y: -106}
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 6dfa01c1-a034-4c32-9c97-03942212532a
+    <Name>k__BackingField: StartingGokuNode
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField: []
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: first
+      <NodeID>k__BackingField: ac4e128e-2049-4e78-9bc0-5ddff0d79f22
+    - <Text>k__BackingField: second
+      <NodeID>k__BackingField: 002666a1-bd00-4207-9269-020e1e5fb498
+    - <Text>k__BackingField: third
+      <NodeID>k__BackingField: 3f5ede26-d2c1-4085-9527-6d6c0a80af0b
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 406, y: 400}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 0
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 0
+    <ID>k__BackingField: ac4e128e-2049-4e78-9bc0-5ddff0d79f22
+    <Name>k__BackingField: InteractedFirstTime
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 894, y: -47}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 1
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 0
+    <ID>k__BackingField: 002666a1-bd00-4207-9269-020e1e5fb498
+    <Name>k__BackingField: InteractedTwice
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_002
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 894, y: 210}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 1
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 1
+    <ID>k__BackingField: 3f5ede26-d2c1-4085-9527-6d6c0a80af0b
+    <Name>k__BackingField: InteractedThrice
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 894, y: 472}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: d61a3e07-daa1-443b-ba6f-45f3d0cbd1c5
+    <Name>k__BackingField: JimiSilent
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Interaction_Jimi_Frame_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 406, y: 1055}
+  <OldGroupNames>k__BackingField:
+  - FigurineInteraction
+  <OldUngroupedNodeNames>k__BackingField:
+  - JimiSilent
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: FigurineInteraction
+      Value:
+      - StartingGokuNode
+      - InteractedFirstTime
+      - InteractedTwice
+      - InteractedThrice

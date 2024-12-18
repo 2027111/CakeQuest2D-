@@ -67,7 +67,7 @@ public class Skill : IActionData
         string newDesc = LanguageData.GetDataById("skill_" + skillId).GetValueByKey("skillDescription");
         if (newDesc != "E404")
         {
-            newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
+            newDesc = BranchingDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;
         }
         return desc;

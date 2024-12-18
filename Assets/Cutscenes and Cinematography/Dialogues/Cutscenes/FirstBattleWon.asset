@@ -13,26 +13,10 @@ MonoBehaviour:
   m_Name: FirstBattleWon
   m_EditorClassIdentifier: 
   UID: 241c2449bbdc1d045af9df0ffa71b246
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
   dialogueIndex: 0
-  dialogue:
-  - condition: []
-    dialogueLineIds:
-    - EyrCott_pc_3
-    - Tuto_Yankee_011
-    - EyrCott_pc_4
-    - Tuto_Jimi_008
-    - EyrCott_pc_5
-    - EyrCott_pc_6
-    choices: []
-    DialogueChoices: []
-    EventIndex: 
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  Dialogues: {fileID: 11400000, guid: 4a89676f3474b8648ae50d25cc149d16, type: 2}
+  DialogueGroup: {fileID: 11400000, guid: d7c4b8624cd59fe4080a1807862b08b8, type: 2}
   StartRoom: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 8893d989e8b20664c928fde8517909ea, type: 2}

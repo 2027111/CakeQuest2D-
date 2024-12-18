@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: InitialDialogue
-  <EventIndex>k__BackingField: 
+  <EventIndex>k__BackingField: None
   <Text>k__BackingField:
   - Misc_Panneau_PC_000
   <Choices>k__BackingField:

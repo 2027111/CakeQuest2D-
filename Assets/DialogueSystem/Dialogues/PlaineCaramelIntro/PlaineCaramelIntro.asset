@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccbf18e99f3110449d7c88cb78477c7, type: 3}
+  m_Name: PlaineCaramelIntro
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: PlaineCaramelIntro
+  <DialogueGroups>k__BackingField:
+    list:
+    - Key: {fileID: 11400000, guid: 8d805156a295eda41965e693860eea54, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 4784a1b37fc73eb4eb703817972d9c1c, type: 2}
+      - {fileID: 11400000, guid: 07c541a266fc29f468f07694840890ad, type: 2}
+      - {fileID: 11400000, guid: 9967b1622042fc447a556c0911e971ba, type: 2}
+      - {fileID: 11400000, guid: 279a0166d8d1f004d93bcf618e9982f7, type: 2}
+    - Key: {fileID: 11400000, guid: d10ac6a9b3f2f0e478c1f16286f3959d, type: 2}
+      Value:
+      - {fileID: 11400000, guid: eaa61d76fa54f7d45a7791e86319d158, type: 2}
+      - {fileID: 11400000, guid: 537ff26751aa28444a2a52df53ac02b6, type: 2}
+      - {fileID: 11400000, guid: caf3acc39cf5beb40973eb5f6441f7cf, type: 2}
+      - {fileID: 11400000, guid: 1bc0bb99b108c3845a575f3c71308cbd, type: 2}
+      - {fileID: 11400000, guid: 9c90a4a259ee0ae4fb58cdb6fa420eae, type: 2}
+      - {fileID: 11400000, guid: 5435510aa7792064086279a2e2ffcb7b, type: 2}
+      - {fileID: 11400000, guid: a795a5e85188a0e4a92819de86044615, type: 2}
+      - {fileID: 11400000, guid: ae9be8c6deccc684493f14ee34561c19, type: 2}
+      - {fileID: 11400000, guid: 3d27dee6bfbbc784092bee4bd40da9de, type: 2}
+    - Key: {fileID: 11400000, guid: d7c4b8624cd59fe4080a1807862b08b8, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 4bde4d7cff604ab46a0d2e5813a773a7, type: 2}
+  <UngroupedDialogues>k__BackingField: []

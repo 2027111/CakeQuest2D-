@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: MaisonJimiCutscenesGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: MaisonJimiCutscenes
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
+    <Name>k__BackingField: IntroCutscene
+    <Position>k__BackingField: {x: 260, y: 201}
+  - <ID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
+    <Name>k__BackingField: OvenCutscene
+    <Position>k__BackingField: {x: 260, y: 602}
+  - <ID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
+    <Name>k__BackingField: OvenCheck
+    <Position>k__BackingField: {x: -139, y: 1008}
+  - <ID>k__BackingField: c5201f56-4450-4d6e-8295-60d6962edb40
+    <Name>k__BackingField: DONOTGOTHERE
+    <Position>k__BackingField: {x: 850.0001, y: 1019.00006}
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: f7147c28-af40-4ef0-93f3-be63873dbdcd
+    <Name>k__BackingField: IntroCutsceneInitial
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: dccb9241-de3a-4177-a0fd-ee41cae02e74
+    <GroupID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 285, y: 260}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: dccb9241-de3a-4177-a0fd-ee41cae02e74
+    <Name>k__BackingField: IntroCutscene2
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_002
+    - Scene1_Maison_Jimi_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 734, y: 260}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: b56ffc29-437e-4a76-8069-74455bb1e402
+    <Name>k__BackingField: OvenCheck
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Intro_Jimi_0045
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: QuestFiilled
+      <NodeID>k__BackingField: 3505e752-a7d5-4e6a-a7eb-153a1e27f0fe
+    - <Text>k__BackingField: QuestNotFilled
+      <NodeID>k__BackingField: b101adeb-2fc6-42b6-aff5-b7f702cd9533
+    <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -114, y: 1142}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+      wantedResult: 1
+    <ID>k__BackingField: 3505e752-a7d5-4e6a-a7eb-153a1e27f0fe
+    <Name>k__BackingField: OvenQuestSucceed
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Intro_Jimi_0046
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 336, y: 1067}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
+      wantedResult: 0
+    <ID>k__BackingField: b101adeb-2fc6-42b6-aff5-b7f702cd9533
+    <Name>k__BackingField: OvenQuestNotCompleted
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Intro_Jimi_0047
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 336, y: 1446}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 81efbadd-711b-4ea9-8b0f-72d1d2e3ff62
+    <Name>k__BackingField: OvenCutscene3
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_008
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1506, y: 661}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 86bcb588-bb2d-41e5-b56f-21ecc312d67f
+    <Name>k__BackingField: OvenCutscene2
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_007
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 81efbadd-711b-4ea9-8b0f-72d1d2e3ff62
+    <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1065, y: 661}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 3cc6ac0b-e5b6-42cc-ae96-938e54f5509a
+    <Name>k__BackingField: OvenCutscene
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_005
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: fc5af136-1e72-4b80-b640-1e52bad33953
+    <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 285, y: 661}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: fc5af136-1e72-4b80-b640-1e52bad33953
+    <Name>k__BackingField: OvenCutscene1
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_006
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 86bcb588-bb2d-41e5-b56f-21ecc312d67f
+    <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 668, y: 661}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: a3345363-0c0a-4077-8f56-dae7ac8fb86d
+    <Name>k__BackingField: QuestSuccess
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene1_Maison_Jimi_004
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -135, y: 656}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: a58171e6-bd5a-4bfd-a476-642ce0a2c6f1
+    <Name>k__BackingField: DONTGOTHERE
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Intro_Jimi_SGT
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: c5201f56-4450-4d6e-8295-60d6962edb40
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 875, y: 1078}
+  <OldGroupNames>k__BackingField:
+  - IntroCutscene
+  - OvenCutscene
+  - OvenCheck
+  - DONOTGOTHERE
+  <OldUngroupedNodeNames>k__BackingField:
+  - QuestSuccess
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: IntroCutscene
+      Value:
+      - IntroCutsceneInitial
+      - IntroCutscene2
+    - Key: OvenCheck
+      Value:
+      - OvenCheck
+      - OvenQuestSucceed
+      - OvenQuestNotCompleted
+    - Key: OvenCutscene
+      Value:
+      - OvenCutscene3
+      - OvenCutscene2
+      - OvenCutscene
+      - OvenCutscene1
+    - Key: DONOTGOTHERE
+      Value:
+      - DONTGOTHERE

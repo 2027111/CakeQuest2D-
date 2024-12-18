@@ -23,4 +23,10 @@ public class ConditionResultObject
         }
         return boolValue.RuntimeValue == wantedResult;
     }
+
+
+    public ConditionResultObject()
+    {
+
+    }
 }

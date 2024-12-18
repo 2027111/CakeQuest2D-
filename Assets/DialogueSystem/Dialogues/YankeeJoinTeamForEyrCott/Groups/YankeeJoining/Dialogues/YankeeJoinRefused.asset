@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: YankeeJoinRefused
-  <EventIndex>k__BackingField: 
+  <EventIndex>k__BackingField: None
   <Text>k__BackingField:
   - Misc_Yankee_RefusedJoining
   <Choices>k__BackingField:

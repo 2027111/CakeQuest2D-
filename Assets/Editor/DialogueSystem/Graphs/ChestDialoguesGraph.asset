@@ -16,7 +16,7 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: e39fccaf-a91c-48c1-be40-e316a647216d
     <Name>k__BackingField: ChestDialogues
-    <Position>k__BackingField: {x: 523, y: -307.00003}
+    <Position>k__BackingField: {x: 523, y: -307}
   <Nodes>k__BackingField:
   - <Conditions>k__BackingField: []
     <ID>k__BackingField: 6f144362-a59a-462c-a3ca-253663f93dc4
@@ -58,5 +58,9 @@ MonoBehaviour:
   - ChestDialogues
   <OldUngroupedNodeNames>k__BackingField: []
   <OldGroupedNodeNames>k__BackingField:
-    m_keys:
-    - ChestDialogues
+    list:
+    - Key: ChestDialogues
+      Value:
+      - ChestLocked
+      - ChestOpened
+      - ChestUnlocked

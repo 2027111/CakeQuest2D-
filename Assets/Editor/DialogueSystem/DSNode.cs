@@ -33,6 +33,7 @@ public class DSNode : Node
     public virtual void Initialize(string nodeName, DialogueSystemGraphView dsGraphView, Vector2 position)
     {
         ID = Guid.NewGuid().ToString();
+        Text = new List<string> { "Line" };
         graphView = dsGraphView;
         DialogueName = nodeName;
         Choices = new List<DSChoiceSaveData>();
@@ -48,19 +49,40 @@ public class DSNode : Node
         DisconnectInputPorts());
         evt.menu.AppendAction("Disconnect Output Ports", actionEvent =>
         DisconnectOutputPorts());
+
+        evt.menu.AppendAction("Duplicate", actionEvent =>
+        {
+            DuplicateNode();
+        });
         base.BuildContextualMenu(evt);
     }
 
 
+    public void DuplicateNode(bool changeName = true)
+    {
+        // Clone the current node
+        string newName = DialogueName + (changeName ? "2" : "");
+        DSNode duplicateNode = graphView.CreateNode(newName, DialogueType, GetPosition().position + Vector2.right * 200 + Vector2.down * 200, false); // Create an instance of the same type
+        duplicateNode.Text = new List<string>(Text);
+        duplicateNode.Choices = new List<DSChoiceSaveData>(Choices);
+        duplicateNode.Conditions = new List<ConditionResultObject>(Conditions);
+        duplicateNode.DialogueType = DialogueType;
+        duplicateNode.selectedEventCaller = selectedEventCaller;
+
+        duplicateNode.Draw();
+        graphView.AddElement(duplicateNode); // Add the duplicate to the graph view or container
+
+        if (Group != null)
+        {
+            Group.AddElement(duplicateNode);
+        }
+    }
 
     public virtual void Draw()
     {
-
-
         TextField dialogueNameTextField = DSElementUtility.CreateTextField(DialogueName, null, callback =>
         {
             TextField target = (TextField)callback.target;
-
             target.value = callback.newValue.RemoveWhitespaces().RemoveSpecialCharacters();
             if (string.IsNullOrEmpty(target.value))
             {
@@ -75,36 +97,21 @@ public class DSNode : Node
                 {
                     --graphView.NameErrorsAmount;
                 }
-
             }
             if (Group == null)
             {
                 graphView.RemovedUngroupedNode(this);
-
-
-
                 DialogueName = target.value;
-
-
                 graphView.AddUngroupedNode(this);
                 return;
-
             }
 
             DSGroup currentGroup = Group;
-
             graphView.RemoveGroupedNode(this, Group);
-
-
-
             DialogueName = callback.newValue;
-
-
             graphView.AddGroupedNode(this, currentGroup);
         });
 
-
-        // Add Button to add new text fields
         Button addTextButton = new Button(() =>
         {
             Text.Add(string.Empty); // Add empty entry
@@ -118,25 +125,40 @@ public class DSNode : Node
 
         dialogueNameTextField.AddClasses("ds-node__text-field", "ds-node__filename-text-field", "ds-node__text-field__hidden");
         titleContainer.Insert(0, dialogueNameTextField);
+
         Port inputPort = InstantiatePort(Orientation.Horizontal, UnityEditor.Experimental.GraphView.Direction.Input, Port.Capacity.Multi, typeof(bool));
         inputPort.portName = "Dialogue Connection";
-
         inputContainer.Add(inputPort);
 
         VisualElement customDataContainer = new VisualElement();
-
         customDataContainer.AddClasses("ds-node__custom-data-container");
-
 
         // Text Foldout for list of texts
         textFoldout = DSElementUtility.CreateFoldout("Dialogue Text");
         AddTextListUI();
         customDataContainer.Add(textFoldout);
 
-        // Conditions Foldout
+        // Conditions Foldout (initially hidden)
         conditionFoldout = DSElementUtility.CreateFoldout("Conditions");
+        conditionFoldout.style.display = Conditions.Count>0?DisplayStyle.Flex:DisplayStyle.None; // Hide initially
         AddConditionListUI();
+
+        Button addConditionButton = new Button(() =>
+        {
+            ConditionResultObject newCondition = new ConditionResultObject();
+            Conditions.Add(newCondition);
+            AddConditionElementUI(newCondition);
+
+            // Make the condition foldout visible and expanded when a condition is added
+            conditionFoldout.style.display = DisplayStyle.Flex;
+            conditionFoldout.value = true; // Expand the foldout
+        })
+        {
+            text = "Add Condition"
+        };
+
         customDataContainer.Add(conditionFoldout);
+        mainContainer.Insert(1, addConditionButton);
 
         // Event Caller Dropdown
         VisualElement eventCallerContainer = new VisualElement();
@@ -146,9 +168,9 @@ public class DSNode : Node
 
         extensionContainer.Add(customDataContainer);
 
-
         RefreshExpandedState();
     }
+
     private void AddTextListUI()
     {
         // Clear existing foldout
@@ -164,14 +186,23 @@ public class DSNode : Node
 
     private void AddTextElementUI(int index)
     {
+        // Create a container for the text field and button
         VisualElement textContainer = new VisualElement();
-        textContainer.AddClasses("ds-node__text-container");
+        textContainer.AddToClassList("ds-node__text-container");
+
+        // Apply flexbox styling for horizontal layout
+        textContainer.style.flexDirection = FlexDirection.Row;
+        textContainer.style.alignItems = Align.Center;
+        textContainer.style.justifyContent = Justify.FlexStart;
 
         // Text Field for dialogue text
-        TextField textField = new TextField($"Text {index + 1}")
+        TextField textField = new TextField()
         {
             value = Text[index]
         };
+        textField.AddToClassList("ds-node__text-field");
+        textField.style.flexGrow = 1; // Allow the text field to grow and occupy remaining space
+        textField.style.minWidth = Length.Percent(80); // Reserve space for the button (20% for the button)
         textField.RegisterValueChangedCallback(evt =>
         {
             Text[index] = evt.newValue;
@@ -188,32 +219,22 @@ public class DSNode : Node
             text = "X"
         };
         removeButton.AddToClassList("ds-node__button");
+        removeButton.style.flexShrink = 0; // Prevent the button from shrinking
 
-        // Add to container
+        // Add elements to the container
         textContainer.Add(textField);
         textContainer.Add(removeButton);
 
-        // Add to foldout
+        // Add the container to the foldout
         textFoldout.Add(textContainer);
     }
+
     private void AddConditionListUI()
     {
         foreach (ConditionResultObject condition in Conditions)
         {
             AddConditionElementUI(condition);
         }
-
-        Button addConditionButton = new Button(() =>
-        {
-            ConditionResultObject newCondition = new ConditionResultObject();
-            Conditions.Add(newCondition);
-            AddConditionElementUI(newCondition);
-        })
-        {
-            text = "Add Condition"
-        };
-
-        conditionFoldout.Add(addConditionButton);
     }
 
     private void AddConditionElementUI(ConditionResultObject condition)
@@ -250,6 +271,7 @@ public class DSNode : Node
             // Remove the condition from the list and update the UI
             Conditions.Remove(condition);
             conditionFoldout.Remove(conditionContainer);
+            conditionFoldout.style.display = Conditions.Count > 0 ? DisplayStyle.Flex : DisplayStyle.None;
         })
         {
             text = "Remove"

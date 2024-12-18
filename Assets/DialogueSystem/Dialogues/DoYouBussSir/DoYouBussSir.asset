@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: DoYouBussSir
   <DialogueGroups>k__BackingField:
-    m_keys: []
-  <UnGroupedDialogues>k__BackingField:
+    list: []
+  <UngroupedDialogues>k__BackingField:
   - {fileID: 11400000, guid: b27c9f68bec1cf24fb7657c95703dd43, type: 2}
   - {fileID: 11400000, guid: 1a957aec57ea6fa429ce0400c2eeb427, type: 2}
   - {fileID: 11400000, guid: 5d3fe70fd0b71c54d8138aa8744029c6, type: 2}

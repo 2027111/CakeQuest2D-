@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: AcceptFight
-  <EventIndex>k__BackingField: 
+  <EventIndex>k__BackingField: 6
   <Text>k__BackingField:
   - Misc_Jimi_003
   <Choices>k__BackingField:

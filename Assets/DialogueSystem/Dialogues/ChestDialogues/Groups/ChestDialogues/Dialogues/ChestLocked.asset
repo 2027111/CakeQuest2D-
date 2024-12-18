@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: ChestLocked
-  <EventIndex>k__BackingField: 
+  <EventIndex>k__BackingField: None
   <Text>k__BackingField:
   - Misc_Chest_Locked
   <Choices>k__BackingField:

@@ -16,31 +16,7 @@ MonoBehaviour:
   RuntimeValue: 1
   repeats: 0
   dialogueIndex: 0
-  dialogue:
-  - condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
-    dialogueLineIds:
-    - Scene1_Maison_Jimi_001
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
-    dialogueLineIds:
-    - Scene1_Maison_Jimi_002
-    - Scene1_Maison_Jimi_003
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  Dialogues: {fileID: 11400000, guid: 06ee8e221df916840ba3a6289c2668ae, type: 2}
+  DialogueGroup: {fileID: 11400000, guid: 44302384e03f6db4c91722a5fdeda02f, type: 2}
   StartRoom: {fileID: 11400000, guid: 86d3430e1506d2b45b281683efbc37fc, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 2ce920f1f688a9d45a2b6d2f5be62cf7, type: 2}

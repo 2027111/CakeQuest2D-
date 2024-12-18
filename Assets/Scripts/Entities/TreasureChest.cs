@@ -29,6 +29,11 @@ public class TreasureChest : BranchingDialogueStarterObject
     public UnityEvent OnIsOpen;
 
 
+
+    [SerializeField] private int selectedSuccessDialogueIndex = 0;
+    [SerializeField] private int selectedLockedDialogueIndex = 0;
+
+
     private void Start()
     {
         isOpen = storedOpen.RuntimeValue;
@@ -64,7 +69,7 @@ public class TreasureChest : BranchingDialogueStarterObject
 
             if (!started)
             {
-                Dialogue newDialogue = new Dialogue(Dialogue, DialogueEvents, DialogueAction);
+                Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, DialogueAction);
                 started = true;
                 if (locked)
                 {
@@ -126,7 +131,7 @@ public class TreasureChest : BranchingDialogueStarterObject
         storedOpen.RuntimeValue = true;
         Character.Player.AddToInventory(content, amount);
         CheckOpen();
-        Dialogue newDialogue = new Dialogue(Dialogue, DialogueEvents, DialogueAction); ;
+        Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, DialogueAction); ;
         newDialogue.SetSource(this);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);

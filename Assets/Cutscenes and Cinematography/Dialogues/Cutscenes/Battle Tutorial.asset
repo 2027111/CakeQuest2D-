@@ -15,108 +15,78 @@ MonoBehaviour:
   UID: 960d1819756087f4c8d5343fc97ca64a
   RuntimeValue: 1
   repeats: 0
-  dialogueIndex: 0
-  dialogue: []
+  dialogueIndex: 1
+  Dialogues: []
   StartRoom: {fileID: 0}
   CutsceneToPlay: {fileID: 0}
   battleDialogue:
-  - condition: []
-    dialogueLineIds:
-    - Tuto_Yankee_000
-    - Tuto_Yankee_001
-    - Tuto_Yankee_002
-    - Tuto_Yankee_005
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  - dialogue: {fileID: 11400000, guid: 0b7a74f9539ca9e4eba2f32b140ca3e7, type: 2}
+    DialogueEvents: []
     technicalCondition: 1
     conditionIndex: 0
     requiresPrevious: 0
     played: 1
-  - condition: []
-    dialogueLineIds:
-    - Tuto_Yankee_006
-    - Tuto_Yankee_007
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  - dialogue: {fileID: 11400000, guid: 20712cde0d55c7b4ca04d093b55a2beb, type: 2}
+    DialogueEvents: []
     technicalCondition: 3
     conditionIndex: 0
     requiresPrevious: 0
     played: 1
-  - condition: []
-    dialogueLineIds:
-    - Tuto_Yankee_008
-    - Tuto_Yankee_009
-    - Tuto_Yankee_010
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11400000}
-          m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
-          m_MethodName: ForceWeakness
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 0121
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 11400000}
-          m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
-          m_MethodName: DisableOptions
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 00123
-            m_BoolArgument: 0
-          m_CallState: 2
+  - dialogue: {fileID: 11400000, guid: 6c0db9befd6dabf42925c11930019fe3, type: 2}
+    DialogueEvents:
+    - indexValue: 0
+      eventAction:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 11400000}
+            m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
+            m_MethodName: DisableOptions
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 00123
+              m_BoolArgument: 0
+            m_CallState: 2
+      EventType: 0
     technicalCondition: 1
     conditionIndex: 1
     requiresPrevious: 0
     played: 1
-  - condition: []
-    dialogueLineIds:
-    - Tuto_Yankee_0101
-    - Tuto_Yankee_0102
-    - Tuto_Yankee_0103
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11400000}
-          m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
-          m_MethodName: DisableOptions
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 0
-            m_BoolArgument: 0
-          m_CallState: 2
+  - dialogue: {fileID: 11400000, guid: 2f0341dadb327a042907d9b86b289568, type: 2}
+    DialogueEvents:
+    - indexValue: 1
+      eventAction:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 11400000}
+            m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
+            m_MethodName: DisableOptions
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 0
+              m_BoolArgument: 0
+            m_CallState: 2
+          - m_Target: {fileID: 11400000}
+            m_TargetAssemblyTypeName: BattleCutscene, Assembly-CSharp
+            m_MethodName: ForceWeakness
+            m_Mode: 5
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 0121
+              m_BoolArgument: 0
+            m_CallState: 2
+      EventType: 0
     technicalCondition: 4
     conditionIndex: 0
-    requiresPrevious: 1
+    requiresPrevious: 0
     played: 1

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6619528642139895877}
   - component: {fileID: 6619528642139895882}
   - component: {fileID: 1275180393}
-  - component: {fileID: 6619528640985814400}
+  - component: {fileID: 2486042967023749224}
   m_Layer: 0
   m_Name: Sign Object
   m_TagString: Untagged
@@ -156,8 +156,8 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BranchingDialogueStarterCharacter, Assembly-CSharp
+      - m_Target: {fileID: 2486042967023749224}
+        m_TargetAssemblyTypeName: BranchingDialogueStarterObject, Assembly-CSharp
         m_MethodName: DialogueAction
         m_Mode: 1
         m_Arguments:
@@ -175,7 +175,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionIndicator: {fileID: 1873240008405508662}
---- !u!114 &6619528640985814400
+--- !u!114 &2486042967023749224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,12 +184,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 6619528642139895883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e276fc17a5bf53d429f66a33b92e9aed, type: 3}
+  m_Script: {fileID: 11500000, guid: 37d19f34f23c41040b71d6c01f3a90e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
   DialogueEvents: []
   started: 0
+  dialogueContainer: {fileID: 11400000, guid: 6d153f7d5edf83d498528045c4224ee8, type: 2}
+  dialogueGroup: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
+  groupedDialogues: 0
+  startingDialoguesOnly: 0
+  selectedDialogueGroupIndex: 0
+  selectedDialogueIndex: 0
 --- !u!1001 &1175059364521649696
 PrefabInstance:
   m_ObjectHideFlags: 0

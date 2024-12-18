@@ -16,7 +16,7 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
     <Name>k__BackingField: EyrCottProvocation
-    <Position>k__BackingField: {x: 236.99995, y: 36.999996}
+    <Position>k__BackingField: {x: 237, y: 37}
   <Nodes>k__BackingField:
   - <Conditions>k__BackingField: []
     <ID>k__BackingField: 647cd411-2958-4f7c-b3ec-7c842c8e1f62
@@ -46,10 +46,9 @@ MonoBehaviour:
     - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
       wantedResult: 1
     <ID>k__BackingField: 85eee37b-ec2f-4fc8-ac52-a2dd8e73245f
-    <Name>k__BackingField: YankeeInParty
+    <Name>k__BackingField: FightRequestQuestion
     <EventIndex>k__BackingField: None
     <Text>k__BackingField:
-    - EyrCott_pc_2
     - Misc_Fight_Question
     <Choices>k__BackingField:
     - <Text>k__BackingField: Misc_Yes
@@ -70,10 +69,22 @@ MonoBehaviour:
     - <Text>k__BackingField: yhere
       <NodeID>k__BackingField: 4db15d14-cfaf-408d-9d8e-d1641233771c
     - <Text>k__BackingField: ynohere
-      <NodeID>k__BackingField: 85eee37b-ec2f-4fc8-ac52-a2dd8e73245f
+      <NodeID>k__BackingField: f34d5cb9-b57d-4281-9f2b-c40e5cec57dd
     <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
     <DialogueType>k__BackingField: 1
     <Position>k__BackingField: {x: 262, y: 251}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: f34d5cb9-b57d-4281-9f2b-c40e5cec57dd
+    <Name>k__BackingField: YankeeInParty
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - EyrCott_pc_2
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 85eee37b-ec2f-4fc8-ac52-a2dd8e73245f
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 426, y: 625}
   - <Conditions>k__BackingField:
     - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
       wantedResult: 0
@@ -93,5 +104,12 @@ MonoBehaviour:
   - EyrCottProvocation
   <OldUngroupedNodeNames>k__BackingField: []
   <OldGroupedNodeNames>k__BackingField:
-    m_keys:
-    - EyrCottProvocation
+    list:
+    - Key: EyrCottProvocation
+      Value:
+      - AcceptFight
+      - RefuseFight
+      - FightRequestQuestion
+      - EyrCottProvoc
+      - YankeeInParty
+      - YankeeNotInPartyCurrently

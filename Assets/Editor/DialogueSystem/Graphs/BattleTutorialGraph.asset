@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: BattleTutorialGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: BattleTutorial
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <Name>k__BackingField: BattleTutorial
+    <Position>k__BackingField: {x: 386, y: 227}
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: f1c16dca-732f-403e-ba4a-72b04052bda5
+    <Name>k__BackingField: FirstTurn
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Tuto_Yankee_000
+    - Tuto_Yankee_001
+    - Tuto_Yankee_002
+    - Tuto_Yankee_005
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 411, y: 286}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: ef956185-1f00-44e3-9565-70cb6f1469a3
+    <Name>k__BackingField: EnemyFirstTurn
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Tuto_Yankee_006
+    - Tuto_Yankee_007
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 759, y: 325}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 3a45b66a-98cf-488a-905a-d9f3383d8570
+    <Name>k__BackingField: OnObserved
+    <EventIndex>k__BackingField: 1
+    <Text>k__BackingField:
+    - Tuto_Yankee_0101
+    - Tuto_Yankee_0102
+    - Tuto_Yankee_0103
+    - Tuto_Yankee_0104
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 411, y: 777}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: e66403d6-e0d8-492b-8681-0fceb9b9355a
+    <Name>k__BackingField: ForceObserve
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Tuto_Yankee_008
+    - Tuto_Yankee_009
+    - Tuto_Yankee_010
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 759, y: 777}
+  <OldGroupNames>k__BackingField:
+  - BattleTutorial
+  <OldUngroupedNodeNames>k__BackingField: []
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: BattleTutorial
+      Value:
+      - FirstTurn
+      - EnemyFirstTurn
+      - OnObserved
+      - ForceObserve

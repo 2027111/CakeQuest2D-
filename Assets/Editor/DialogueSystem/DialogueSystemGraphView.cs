@@ -16,6 +16,7 @@ public class DialogueSystemGraphView : GraphView
     private SerializableDictionary<string, DSGroupErrorData> groups;
     private SerializableDictionary<Group, SerializableDictionary<string, DSNodeErrorData>> groupedNodes;
 
+    private MiniMap miniMap;
     private int nameErrorsAmount;
     public int NameErrorsAmount
     {
@@ -50,15 +51,69 @@ public class DialogueSystemGraphView : GraphView
         AddManipulators();
         AddGridBackground();
         AddSearchWindow();
-
+        AddMiniMap();
         OnGroupRenamed();
         OnElementsDeleted();
         OnGroupElementsAdded();
         OnGroupElementsRemoved();
         OnGraphViewChanges();
 
+        AddKeyboardShortcuts();
         AddStyles();
+        AddMiniMapStyles();
 
+    }
+    public void AddKeyboardShortcuts()
+    {
+        // Bind Ctrl+D to duplicate selected nodes
+        RegisterCallback<KeyDownEvent>(evt =>
+        {
+            if (evt.ctrlKey && evt.keyCode == KeyCode.D)
+            {
+                DuplicateSelectedNodes(); // Duplicate all selected DSNodes
+            }
+        });
+    }
+
+    private void DuplicateSelectedNodes()
+    {
+        // Iterate through selected elements and duplicate the DSNodes
+        foreach (GraphElement element in selection)
+        {
+            if (element is DSNode node)
+            {
+                node.DuplicateNode(); // Call the method to duplicate each selected node
+            }
+        }
+    }
+
+    public void ToggleMiniMap()
+    {
+        miniMap.visible = !miniMap.visible;
+    }
+
+    private void AddMiniMapStyles()
+    {
+        StyleColor backgroundColor = new StyleColor(new Color32(29, 29, 30, 255));
+        StyleColor borderColor = new StyleColor(new Color32(51, 51, 51, 255));
+
+        miniMap.style.backgroundColor = backgroundColor;
+        miniMap.style.borderTopColor = borderColor;
+        miniMap.style.borderRightColor = borderColor;
+        miniMap.style.borderBottomColor = borderColor;
+        miniMap.style.borderLeftColor = borderColor;
+    }
+
+    private void AddMiniMap()
+    {
+        miniMap = new MiniMap()
+        {
+            anchored = true
+        };
+
+        miniMap.SetPosition(new Rect(15, 50, 200, 180));
+        Add(miniMap);
+        miniMap.visible = false;
     }
 
     private void AddSearchWindow()

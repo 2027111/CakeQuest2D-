@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: IBuss
-  <EventIndex>k__BackingField: 
+  <EventIndex>k__BackingField: None
   <Text>k__BackingField:
   - Test_002
   - Test_003

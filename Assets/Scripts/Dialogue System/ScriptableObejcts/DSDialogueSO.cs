@@ -23,7 +23,7 @@ public class DSDialogueSO : ScriptableObject
         DialogueType = dialogueType;
         IsStartingDialogue = isStartingDialogue;
         Conditions = conditions;
-        EventIndex = EventIndex;
+        EventIndex = eventIndex;
     }
 
 

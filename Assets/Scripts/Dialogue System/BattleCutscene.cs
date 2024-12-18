@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BattleCutscene : Cutscene
 {
-    public BattleDialogue[] battleDialogue;
+    public BattleDialogueHolder[] battleDialogue;
 
     public override Dialogue GetNextLine()
     {
@@ -18,7 +18,7 @@ public class BattleCutscene : Cutscene
     }
     public override void SetRuntime()
     {
-        foreach (BattleDialogue d in battleDialogue)
+        foreach (BattleDialogueHolder d in battleDialogue)
         {
             if (!d.played)
             {
@@ -31,7 +31,7 @@ public class BattleCutscene : Cutscene
 
     public override void ForceRuntime()
     {
-        foreach (BattleDialogue d in battleDialogue)
+        foreach (BattleDialogueHolder d in battleDialogue)
         {
             if (!d.played)
             {
@@ -42,7 +42,7 @@ public class BattleCutscene : Cutscene
     }
     public override void ResetPlayed()
     {
-        foreach (BattleDialogue d in battleDialogue)
+        foreach (BattleDialogueHolder d in battleDialogue)
         {
             d.played = false;
         }
@@ -108,21 +108,21 @@ public class BattleCutscene : Cutscene
     }
     public BattleDialogue GetPlayableLine()
     {
-        BattleDialogue b = null;
-        for (int i = 0; i < battleDialogue.Length; i++)
+        BattleDialogue battleDialogue = null;
+        for (int i = 0; i < this.battleDialogue.Length; i++)
         {
-            BattleDialogue bd = battleDialogue[i];
+            BattleDialogueHolder battleDialogueHolder = this.battleDialogue[i];
             
-            if (bd.CheckBattleCondition())
+            if (battleDialogueHolder.CheckBattleCondition())
             {
-                b = bd;
+                battleDialogue = new BattleDialogue(battleDialogueHolder); ;
                 if (i > 0)
                 {
-                    if (b.requiresPrevious)
+                    if (battleDialogueHolder.requiresPrevious)
                     {
                         for (int j = i - 1; j >= 0; j--)
                         {
-                            if (!battleDialogue[j].played)
+                            if (!battleDialogueHolder.played)
                             {
                                 return null;
                             }
@@ -132,6 +132,6 @@ public class BattleCutscene : Cutscene
                 }
             }
         }
-        return b;
+        return battleDialogue;
     }
 }

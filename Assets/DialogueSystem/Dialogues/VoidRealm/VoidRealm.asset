@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccbf18e99f3110449d7c88cb78477c7, type: 3}
+  m_Name: VoidRealm
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: VoidRealm
+  <DialogueGroups>k__BackingField:
+    list:
+    - Key: {fileID: 11400000, guid: 0e3d85b278d078b408a9a7c5fffaef31, type: 2}
+      Value:
+      - {fileID: 11400000, guid: dede2150b096a2c4b9784cecd7fb0608, type: 2}
+      - {fileID: 11400000, guid: 5660051876805e543b4a56d2a6c52c46, type: 2}
+      - {fileID: 11400000, guid: 5df12668e922f934b8d776a74a82d15a, type: 2}
+      - {fileID: 11400000, guid: 2dece2fd2a088a64c9840d26fff5da83, type: 2}
+      - {fileID: 11400000, guid: 9b7755a724a9950449fc2ade19af1c09, type: 2}
+      - {fileID: 11400000, guid: 3a49585a3a9db77499060703fa7a1235, type: 2}
+      - {fileID: 11400000, guid: 5e3985e0bda7f4a4791ac668da0a4085, type: 2}
+      - {fileID: 11400000, guid: a06cbc2977ba9464aa967c98e69a1f7f, type: 2}
+      - {fileID: 11400000, guid: 381a068de645e9d4db4a7d2fd68aa91b, type: 2}
+      - {fileID: 11400000, guid: d5ca9f036a6143749a86466106ef2794, type: 2}
+      - {fileID: 11400000, guid: 27df7db4d41fd0f4c81bcbf5d641f3a9, type: 2}
+      - {fileID: 11400000, guid: 25505d68d0fec0c4e832895b5debedd7, type: 2}
+      - {fileID: 11400000, guid: 1f696b9d42cfbe548956641808790cc0, type: 2}
+      - {fileID: 11400000, guid: 1607463cd5ae4da4e9a1a143c2dc8436, type: 2}
+      - {fileID: 11400000, guid: 75b095753b2f9e94e990db955e05d634, type: 2}
+      - {fileID: 11400000, guid: 036bc216520310442bd5d9b01b39f326, type: 2}
+      - {fileID: 11400000, guid: ae3a8de4a234c0d4fba3ca312b89a056, type: 2}
+      - {fileID: 11400000, guid: d537102587afb4d4d9fe7e4a0a1d501c, type: 2}
+      - {fileID: 11400000, guid: 8f99cef14e8af7143b19ba40a318da4d, type: 2}
+      - {fileID: 11400000, guid: 232392dba127c1a45b7fecb313d096bd, type: 2}
+      - {fileID: 11400000, guid: 305f28aac3861e74a9d6926d442030dd, type: 2}
+      - {fileID: 11400000, guid: d986f5805f7095244922bf3ec5c015f1, type: 2}
+      - {fileID: 11400000, guid: 23014f16aab08364a85624e74196b735, type: 2}
+  <UngroupedDialogues>k__BackingField: []

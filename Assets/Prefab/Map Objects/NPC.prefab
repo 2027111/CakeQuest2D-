@@ -431,9 +431,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e276fc17a5bf53d429f66a33b92e9aed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
   DialogueEvents: []
   started: 0
+  dialogueContainer: {fileID: 11400000, guid: 6d153f7d5edf83d498528045c4224ee8, type: 2}
+  dialogueGroup: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
+  groupedDialogues: 0
+  startingDialoguesOnly: 1
+  selectedDialogueGroupIndex: 0
+  selectedDialogueIndex: 0
 --- !u!1 &8601637202572763817
 GameObject:
   m_ObjectHideFlags: 0

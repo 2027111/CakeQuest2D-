@@ -13,7 +13,7 @@ public class Dialogue
 
 
     [Inspectable]public ConditionResultObject[] condition;
-    public DialogueEvent[] DialogueEvents { get; private set; }
+    public DialogueEvent[] DialogueEvents { get; set; }
 
     [Inspectable] public string[] dialogueLineIds;
     [Inspectable] public ChoiceDialogue[] choices;
@@ -29,9 +29,7 @@ public class Dialogue
         this.source = source;
     }
 
-    public virtual void SetPlayed()
-    {
-    }
+   
     public Dialogue(Dialogue dialogue)
     {
 
@@ -189,4 +187,6 @@ public class Dialogue
 
         return GetUsableChoices().Length == 1;
     }
+
+
 }

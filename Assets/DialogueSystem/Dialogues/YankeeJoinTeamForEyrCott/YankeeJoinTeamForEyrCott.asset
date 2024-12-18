@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <FileName>k__BackingField: YankeeJoinTeamForEyrCott
   <DialogueGroups>k__BackingField:
-    m_keys:
-    - {fileID: 11400000, guid: ba067ebfcd2a54c46930ebf45402e42e, type: 2}
-  <UnGroupedDialogues>k__BackingField: []
+    list:
+    - Key: {fileID: 11400000, guid: ba067ebfcd2a54c46930ebf45402e42e, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 97eb788f086214046a94a80f3ed1cc59, type: 2}
+      - {fileID: 11400000, guid: 725ae6e7fba934b4b8a1ff9bb52f71fc, type: 2}
+      - {fileID: 11400000, guid: 8774ba72157a1f746966b80a292e9cb5, type: 2}
+  <UngroupedDialogues>k__BackingField: []

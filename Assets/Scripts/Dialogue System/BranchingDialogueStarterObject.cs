@@ -8,9 +8,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using System;
 
-
 #if UNITY_EDITOR
+using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine;
 
 [CustomPropertyDrawer(typeof(DialogueEvent))]
 public class DialogueEventDrawer : PropertyDrawer
@@ -35,16 +36,19 @@ public class DialogueEventDrawer : PropertyDrawer
             int currentIndex = options.IndexOf(indexValueProperty.stringValue);
             if (currentIndex == -1) currentIndex = 0; // Default to "None" if not found
 
-            // Dropdown rect
+            // Dropdown rect for indexValue
             Rect dropdownRect = new Rect(position.x, position.y + EditorGUIUtility.singleLineHeight + 2, position.width, EditorGUIUtility.singleLineHeight);
-
-            // Show dropdown and update value
             int selectedIndex = EditorGUI.Popup(dropdownRect, "Index Value", currentIndex, options.ToArray());
             indexValueProperty.stringValue = options[selectedIndex];
 
+            // Dropdown for EventType (enum)
+            SerializedProperty eventTypeProperty = property.FindPropertyRelative("EventType");
+            Rect enumRect = new Rect(position.x, dropdownRect.y + EditorGUIUtility.singleLineHeight + 2, position.width, EditorGUIUtility.singleLineHeight);
+            EditorGUI.PropertyField(enumRect, eventTypeProperty);
+
             // UnityEvent field
             SerializedProperty eventProperty = property.FindPropertyRelative("eventAction");
-            Rect eventRect = new Rect(position.x, position.y + 2 * (EditorGUIUtility.singleLineHeight + 2), position.width, EditorGUI.GetPropertyHeight(eventProperty));
+            Rect eventRect = new Rect(position.x, enumRect.y + EditorGUIUtility.singleLineHeight + 4, position.width, EditorGUI.GetPropertyHeight(eventProperty));
             EditorGUI.PropertyField(eventRect, eventProperty);
 
             EditorGUI.indentLevel--;
@@ -59,7 +63,8 @@ public class DialogueEventDrawer : PropertyDrawer
 
         if (property.isExpanded)
         {
-            height += EditorGUIUtility.singleLineHeight + 2; // Dropdown height
+            height += EditorGUIUtility.singleLineHeight + 2; // Dropdown height (indexValue)
+            height += EditorGUIUtility.singleLineHeight + 2; // Dropdown height (EventType)
             height += EditorGUI.GetPropertyHeight(property.FindPropertyRelative("eventAction")) + 4; // UnityEvent height
         }
 
@@ -73,6 +78,7 @@ public class DialogueEvent
 {
     [SerializeField] private string indexValue = "None"; // Dropdown index value
     [SerializeField] private UnityEvent eventAction; // UnityEvent
+    [SerializeField] public DialogueEventType EventType = DialogueEventType.OnOver; // Enum for event type
 
     // Property for the indexValue
     public string IndexValue
@@ -80,7 +86,6 @@ public class DialogueEvent
         get => indexValue;
         set => indexValue = value;
     }
-
     public UnityEvent EventAction => eventAction; // Expose UnityEvent
 
     // Custom inspector for the dropdown
@@ -95,13 +100,31 @@ public class DialogueEvent
     }
 }
 
+// Enum for Dialogue Event Types
+public enum DialogueEventType
+{
+    Instant,
+    OnOver
+}
+
 
 public class BranchingDialogueStarterObject : MonoBehaviour
 {
-    public DSDialogueSO Dialogue;
     public DialogueEvent[] DialogueEvents;
     public bool started = false;
 
+
+
+    [SerializeField] private DSDialogueContainerSO dialogueContainer;
+    [SerializeField] private DSDialogueGroupSO dialogueGroup;
+    [SerializeField] protected DSDialogueSO dialogue;
+
+    [SerializeField] private bool groupedDialogues;
+    [SerializeField] private bool startingDialoguesOnly;
+
+
+    [SerializeField] private int selectedDialogueGroupIndex = 0;
+    [SerializeField] private int selectedDialogueIndex = 0;
 
 
 
@@ -121,7 +144,8 @@ public class BranchingDialogueStarterObject : MonoBehaviour
             if (!started)
             {
                 started = true;
-                Dialogue newDialogue = new Dialogue(Dialogue, DialogueEvents, new UnityAction(DialogueOver));
+                Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, new UnityAction(DialogueOver));
+                Debug.Log(newDialogue.DialogueEvents.Length);
                 UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
             }
         }
@@ -133,13 +157,13 @@ public class BranchingDialogueStarterObject : MonoBehaviour
 
     public bool CheckLines()
     {
-        if (Dialogue.isNull())
+        if (dialogue.isNull())
         {
             return false;
         }
         else
         {
-            return Dialogue.ConditionRespected();
+            return dialogue.ConditionRespected();
         }
     }
     public void CancelDialogue()

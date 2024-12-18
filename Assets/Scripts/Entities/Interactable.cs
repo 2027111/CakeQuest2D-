@@ -105,6 +105,18 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        if (player != null)
+        {
+            player.GetComponent<Character>().SetInteraction(true);
+            ManageInteraction(player, false);
+            ManageContactEvent(contactEndEvent);
+            ContextClue(false);
+
+            player = null;
+        }
+    }
 
     public void ContextClue(bool on)
     {

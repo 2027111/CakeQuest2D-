@@ -21,7 +21,7 @@ MonoBehaviour:
   - <Conditions>k__BackingField: []
     <ID>k__BackingField: 4ed84fc1-8cea-49e5-821e-f05204ba4da0
     <Name>k__BackingField: YankeeJoinAccept
-    <EventIndex>k__BackingField: 4
+    <EventIndex>k__BackingField: 8
     <Text>k__BackingField:
     - Misc_Yankee_JoinedTeam
     <Choices>k__BackingField:
@@ -61,5 +61,9 @@ MonoBehaviour:
   - YankeeJoining
   <OldUngroupedNodeNames>k__BackingField: []
   <OldGroupedNodeNames>k__BackingField:
-    m_keys:
-    - YankeeJoining
+    list:
+    - Key: YankeeJoining
+      Value:
+      - YankeeJoinAccept
+      - YankeeJoinRefused
+      - YankeeJoin

@@ -42,7 +42,7 @@ public class InventoryItem : IActionData
         string newDesc = LanguageData.GetDataById("item_" + itemId).GetValueByKey("itemDescription");
         if (newDesc != "E404")
         {
-            newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
+            newDesc = BranchingDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;
         }
         return desc;
