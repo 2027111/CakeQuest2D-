@@ -1,0 +1,339 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: VoidRealmGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: VoidRealm
+  <Groups>k__BackingField:
+  - <ID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <Name>k__BackingField: ExplanationVoid
+    <Position>k__BackingField: {x: -49.99994, y: 167}
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 9440b083-3406-40f6-85f7-3fbaf381ec0f
+    <Name>k__BackingField: Void1
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_002
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 1258cbdd-0cd1-4379-a76f-587a58e3f55d
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 344, y: 226}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: dba551da-a550-4d64-9f30-b325b1f34f16
+    <Name>k__BackingField: VoidInitial
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 9440b083-3406-40f6-85f7-3fbaf381ec0f
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2, y: 226}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 1258cbdd-0cd1-4379-a76f-587a58e3f55d
+    <Name>k__BackingField: Void2
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 8e9eebf8-8f58-44fc-8578-d31b87be3f62
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 681, y: 226}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 8e9eebf8-8f58-44fc-8578-d31b87be3f62
+    <Name>k__BackingField: Void3
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_004
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 46c9a2c0-0f97-47a2-8791-9d856eec1221
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1027, y: 226}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 46c9a2c0-0f97-47a2-8791-9d856eec1221
+    <Name>k__BackingField: Void4
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_005
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 74442a88-fcca-4fad-93fb-0f96c964bd53
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 2, y: 590}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 1949bedb-e7cd-4e8e-9a37-f3214f475b51
+    <Name>k__BackingField: Void7
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_008
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 4a827ab0-ca57-43be-8f40-298d9579fa3b
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1027, y: 590}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 8cda3e78-d050-4152-ba57-6a2291dd2b3b
+    <Name>k__BackingField: Void6
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_007
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 1949bedb-e7cd-4e8e-9a37-f3214f475b51
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 681, y: 590}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 74442a88-fcca-4fad-93fb-0f96c964bd53
+    <Name>k__BackingField: Void5
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_006
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 8cda3e78-d050-4152-ba57-6a2291dd2b3b
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 344, y: 590}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 19d49092-a72b-4792-a31e-168af35b00d7
+    <Name>k__BackingField: Void9
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_011
+    - Scene2_Limbo_012
+    - Scene2_Limbo_013
+    - Scene2_Limbo_014
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 63291946-e593-4178-9cb9-81e740ceafe2
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 346, y: 956}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 63291946-e593-4178-9cb9-81e740ceafe2
+    <Name>k__BackingField: Void10
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_015
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 4bd864c2-9a75-4310-a960-c1ba0ab1f6a5
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 681, y: 956}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 4bd864c2-9a75-4310-a960-c1ba0ab1f6a5
+    <Name>k__BackingField: Void11
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_016
+    - Scene2_Limbo_017
+    - Scene2_Limbo_0180
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: a38f0777-978a-422e-8f8a-ad72cf57286f
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1027, y: 941}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: a38f0777-978a-422e-8f8a-ad72cf57286f
+    <Name>k__BackingField: Void12
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_0181
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: c7e7a764-0035-4435-af0a-c01c2a272362
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -3, y: 1506}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: c7e7a764-0035-4435-af0a-c01c2a272362
+    <Name>k__BackingField: Void13
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_019
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: ec7df3ea-2f5b-42f4-8bef-de94a106ffe2
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 346, y: 1506}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: ec7df3ea-2f5b-42f4-8bef-de94a106ffe2
+    <Name>k__BackingField: Void14
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_020
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: c0046b29-c16a-43bf-9e1e-5a2652e37ead
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 681, y: 1506}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: c0046b29-c16a-43bf-9e1e-5a2652e37ead
+    <Name>k__BackingField: Void15
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_021
+    - Scene2_Limbo_022
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1027, y: 1506}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 64371650-23e0-4ac2-ad9b-f9ff6d52f08d
+    <Name>k__BackingField: Void16
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_023
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 762a1c1a-fdce-4b9b-bf60-25b96e3eacdb
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -3, y: 1914}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 762a1c1a-fdce-4b9b-bf60-25b96e3eacdb
+    <Name>k__BackingField: Void17
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_024
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: a2888abd-a581-450c-8e46-221a57cc86eb
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 344, y: 1914}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: a2888abd-a581-450c-8e46-221a57cc86eb
+    <Name>k__BackingField: Void18
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_025
+    - Scene2_Limbo_026
+    - Scene2_Limbo_027
+    - Scene2_Limbo_028
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 39612994-5ba2-44a4-9639-405b277e1bc4
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 681, y: 1914}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 39612994-5ba2-44a4-9639-405b277e1bc4
+    <Name>k__BackingField: Void19
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_029
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 1716846a-ebe4-4010-a5f5-f2c7011eb058
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1026, y: 1914}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 1716846a-ebe4-4010-a5f5-f2c7011eb058
+    <Name>k__BackingField: Void20
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_030
+    - Scene2_Limbo_031
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: cf6efdd2-c799-4da9-863f-0e38bf63cea1
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -3, y: 2369}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: cf6efdd2-c799-4da9-863f-0e38bf63cea1
+    <Name>k__BackingField: Void21
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_032
+    - Scene2_Limbo_033
+    - Scene2_Limbo_034
+    - Scene2_Limbo_035
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 344, y: 2369}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 4a827ab0-ca57-43be-8f40-298d9579fa3b
+    <Name>k__BackingField: Void8
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_009
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 38111689-b672-4763-9608-ad8832487d47
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -25, y: 882}
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: 38111689-b672-4763-9608-ad8832487d47
+    <Name>k__BackingField: Void85
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene2_Limbo_010
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 19d49092-a72b-4792-a31e-168af35b00d7
+    <GroupID>k__BackingField: 6c27a337-8981-4e71-bdcd-849b2b470982
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -23, y: 1172}
+  <OldGroupNames>k__BackingField:
+  - ExplanationVoid
+  <OldUngroupedNodeNames>k__BackingField: []
+  <OldGroupedNodeNames>k__BackingField:
+    list:
+    - Key: ExplanationVoid
+      Value:
+      - Void1
+      - VoidInitial
+      - Void2
+      - Void3
+      - Void4
+      - Void7
+      - Void6
+      - Void5
+      - Void9
+      - Void10
+      - Void11
+      - Void12
+      - Void13
+      - Void14
+      - Void15
+      - Void16
+      - Void17
+      - Void18
+      - Void19
+      - Void20
+      - Void21
+      - Void8
+      - Void85

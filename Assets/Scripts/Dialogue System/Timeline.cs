@@ -42,14 +42,14 @@ public class Timeline : MonoBehaviour
         if (CanPlayCutscene())
         {
             // Debug.Log("Playing Cutscene");
-            storagePlay.dialogueIndex = 0;
+            storagePlay.ResetPlayed();
             Character.Player?.ToggleCutsceneState();
             SetupRequirements();
             if (delayed)
             {
 
                 StartLoopSection(.001f);
-                FadeScreen.Singleton.OnFadingEnd.AddListener(StopLoopSection);
+                FadeScreen.AddOnEndFadeEvent(StopLoopSection);
             }
             playableDirector.Play();
             IsInCutscene = true;

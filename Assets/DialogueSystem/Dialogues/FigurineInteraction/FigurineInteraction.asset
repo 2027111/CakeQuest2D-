@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccbf18e99f3110449d7c88cb78477c7, type: 3}
+  m_Name: FigurineInteraction
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: FigurineInteraction
+  <DialogueGroups>k__BackingField:
+    list:
+    - Key: {fileID: 11400000, guid: 360d27aadd97e2a4fa94d3e83f05d5c1, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 84fe09f390d4ce043974de304759dd79, type: 2}
+      - {fileID: 11400000, guid: 6af9ad55dd4c5ef42be6a6cfc799996c, type: 2}
+      - {fileID: 11400000, guid: 4c7677c1972f76341ac472b8dbee1bbc, type: 2}
+      - {fileID: 11400000, guid: 32207c60eca690e4b8308ce1022bee4f, type: 2}
+  <UngroupedDialogues>k__BackingField:
+  - {fileID: 11400000, guid: f431466dde6eeed469cdb686842deae5, type: 2}

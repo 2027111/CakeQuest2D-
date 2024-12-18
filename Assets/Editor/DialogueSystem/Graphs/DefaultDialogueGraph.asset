@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5cf3b81f75bbce4eb49cf1bf5aa40a3, type: 3}
+  m_Name: DefaultDialogueGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: DefaultDialogue
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <Conditions>k__BackingField: []
+    <ID>k__BackingField: a587ed67-72e7-4522-bbaa-00dc2f08457c
+    <Name>k__BackingField: InitialDialogue
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Panneau_PC_000
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 522, y: 224}
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - InitialDialogue
+  <OldGroupedNodeNames>k__BackingField:
+    list: []

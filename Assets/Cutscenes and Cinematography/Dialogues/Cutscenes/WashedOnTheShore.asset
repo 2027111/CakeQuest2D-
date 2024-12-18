@@ -13,49 +13,10 @@ MonoBehaviour:
   m_Name: WashedOnTheShore
   m_EditorClassIdentifier: 
   UID: 804e3bce60904d94fb76a685e8d57708
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
   dialogueIndex: 0
-  dialogue:
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_001
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_002
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_003
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_004
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  Dialogues: {fileID: 11400000, guid: 4a89676f3474b8648ae50d25cc149d16, type: 2}
+  DialogueGroup: {fileID: 11400000, guid: 8d805156a295eda41965e693860eea54, type: 2}
   StartRoom: {fileID: 11400000, guid: b09de2b974bfedf48a6884ef9121e77b, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 26982e0fd5c439c499a0d78caa3d7446, type: 2}

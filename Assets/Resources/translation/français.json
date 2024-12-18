@@ -183,7 +183,7 @@
         },
         {
             "dataId": "Scene1_Maison_Jimi_004",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Bon, ça devrait faire l’affaire.\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Bon, ça devrait faire l’affaire. Direction le <color={color_success}>four</color>!.\"}"
         },
         {
             "dataId": "Scene1_Maison_Jimi_005",
@@ -530,14 +530,6 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu as le choix entre attaquer, utiliser une compétence et changer de position. Vasy! Essaye!\"}"
         },
         {
-            "dataId": "Tuto_Yankee_003",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Si tu te demandes, je n'ai pas besoin d'attendre la fin de ton tours pour attaquer. On peut lui sauter dessus.\"}"
-        },
-        {
-            "dataId": "Tuto_Yankee_004",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Cependant si tu élimines ma cible avant que je l'attaque, je ne pourrai pas changer de cible et j'aurai gaspillé un tour.\"}"
-        },
-        {
             "dataId": "Tuto_Yankee_005",
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Je te laisse prendre les décisions, je te suis! T'as l'air musclé, donc je pense que tu sais ce que tu fais.\"}"
         },
@@ -590,8 +582,12 @@
             "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu vas devoir affronter ce cow-boy...\"}"
         },
         {
-            "dataId": "Misc_Yankee_Leave",
-            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Tu veux que je quitte ton équipe?\"}"
+            "dataId": "Misc_Yankee_JoinedTeam",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Parfait! Allons-y.\"}"
+        },
+        {
+            "dataId": "Misc_Yankee_RefusedJoining",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Ah. Ok. Dis moi si tu change d'avis mec.\"}"
         },
         {
             "dataId": "Intro_Jimi_000",
@@ -611,7 +607,7 @@
         },
         {
             "dataId": "Intro_Jimi_0031",
-            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, de l'huile et de la pate à gateau..\"}"
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_5\",\"talkerName\":\"???\",\"line\":\"Il me faut juste des oeufs, de la farine, du sucre, du lait et de la pate à gateau..\"}"
         },
         {
             "dataId": "Intro_Jimi_004",
@@ -680,6 +676,26 @@
         {
             "dataId": "Tuto_Jimi_008",
             "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Les frères, c'est juste une calvitie...\"}"
+        },
+        {
+            "dataId": "Test_000",
+            "jsonData": "{\"talkerName\":\"Weird Black Guy\",\"line\":\"Hello Sir!\"}"
+        },
+        {
+            "dataId": "Test_001",
+            "jsonData": "{\"talkerName\":\"Weird Black Guy\",\"line\":\"Do You Buss?\"}"
+        },
+        {
+            "dataId": "Test_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Bien sure que je Buss. C'est moi le goon master.\"}"
+        },
+        {
+            "dataId": "Test_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Aller dap me up Amir\"}"
+        },
+        {
+            "dataId": "Test_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/portrait_jimi_2\",\"talkerName\":\"Jimi\",\"line\":\"Buss?\"}"
         },
         {
             "dataId": "skill_spinning_kick",

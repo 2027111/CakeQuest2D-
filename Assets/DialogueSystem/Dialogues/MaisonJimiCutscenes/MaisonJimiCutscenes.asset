@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ccbf18e99f3110449d7c88cb78477c7, type: 3}
+  m_Name: MaisonJimiCutscenes
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: MaisonJimiCutscenes
+  <DialogueGroups>k__BackingField:
+    list:
+    - Key: {fileID: 11400000, guid: 44302384e03f6db4c91722a5fdeda02f, type: 2}
+      Value:
+      - {fileID: 11400000, guid: c117a294a74a8e14aa986e3585129976, type: 2}
+      - {fileID: 11400000, guid: d045988b19f89aa49a92ce41e875a90c, type: 2}
+    - Key: {fileID: 11400000, guid: 32ab52a2378493f46aab189f4de03172, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 9dcb26c5bcf4f2143ae7462d1cc56275, type: 2}
+      - {fileID: 11400000, guid: bfc5a9e13ee13dd4f87b33261cc6bae9, type: 2}
+      - {fileID: 11400000, guid: 6487a647ddedcf64992d933a69e383c5, type: 2}
+      - {fileID: 11400000, guid: 9b81c49bd434b974db1913658349111c, type: 2}
+    - Key: {fileID: 11400000, guid: 54c82d30ecf26b0408066451c1bfae46, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 69f77928610f03d4cb056a55a5256374, type: 2}
+      - {fileID: 11400000, guid: a5dde2896acd5434e8be833130cbd188, type: 2}
+      - {fileID: 11400000, guid: 6a7b4b8c918cb9a48b8fefb7dbdabb6f, type: 2}
+    - Key: {fileID: 11400000, guid: 9c19fe93643ffed40b9dfc3b7a75219c, type: 2}
+      Value:
+      - {fileID: 11400000, guid: eca6e623b5f706a4e9c1237c519b1b5e, type: 2}
+  <UngroupedDialogues>k__BackingField:
+  - {fileID: 11400000, guid: c9ac2673ddb9bbb49b26e1fe38a6933c, type: 2}

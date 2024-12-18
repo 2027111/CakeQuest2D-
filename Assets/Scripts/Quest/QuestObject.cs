@@ -12,7 +12,7 @@ public class QuestObject : BoolValue
     public string questName;
     public bool QuestToggled = false;
     public QuestObject NextQuestObject;
-    public Dialogue OnQuestCompletedDialogue;
+    public DSDialogueSO OnQuestCompletedDialogue;
 
 
     public override string GetJsonData()
@@ -65,14 +65,21 @@ public class QuestObject : BoolValue
 
     public bool CheckLines()
     {
-        if (OnQuestCompletedDialogue.isNull())
+        if (OnQuestCompletedDialogue != null)
         {
-            return false;
+
+            if (OnQuestCompletedDialogue.isNull())
+            {
+                return false;
+            }
+            else
+            {
+                return OnQuestCompletedDialogue.ConditionRespected();
+            }
         }
-        else
-        {
-            return OnQuestCompletedDialogue.ConditionRespected();
-        }
+
+
+        return false;
     }
 
 
@@ -93,7 +100,7 @@ public class QuestObject : BoolValue
         string newDesc = LanguageData.GetDataById("quest_" + questId).GetValueByKey("questDescription");
         if (newDesc != "E404")
         {
-            newDesc = NewDialogueStarterObject.GetFormattedLines(this, newDesc);
+            newDesc = BranchingDialogueStarterObject.GetFormattedLines(this, newDesc);
             return newDesc;
         }
         return desc;

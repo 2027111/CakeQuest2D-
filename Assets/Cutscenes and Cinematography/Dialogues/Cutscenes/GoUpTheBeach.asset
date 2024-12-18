@@ -13,102 +13,10 @@ MonoBehaviour:
   m_Name: GoUpTheBeach
   m_EditorClassIdentifier: 
   UID: 6d070e091a9fe78468f7cf9029ede491
-  RuntimeValue: 0
+  RuntimeValue: 1
   repeats: 0
   dialogueIndex: 0
-  dialogue:
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_005
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_006
-    - Scene3_PlainesCaramel_007
-    - Scene3_PlainesCaramel_008
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_009
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_010
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_011
-    - Scene3_PlainesCaramel_012
-    - Scene3_PlainesCaramel_013
-    - Scene3_PlainesCaramel_014
-    - Scene3_PlainesCaramel_015
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_016
-    - Scene3_PlainesCaramel_017
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - condition: []
-    dialogueLineIds:
-    - Scene3_PlainesCaramel_018
-    - Scene3_PlainesCaramel_019
-    - Scene3_PlainesCaramel_020
-    - Scene3_PlainesCaramel_021
-    - Scene3_PlainesCaramel_022
-    - Scene3_PlainesCaramel_023
-    - Scene3_PlainesCaramel_024
-    - Scene3_PlainesCaramel_025
-    - Scene3_PlainesCaramel_026
-    - Scene3_PlainesCaramel_027
-    - Scene3_PlainesCaramel_028
-    - Scene3_PlainesCaramel_029
-    - Scene3_PlainesCaramel_030
-    - Scene3_PlainesCaramel_031
-    - Scene3_PlainesCaramel_032
-    - Scene3_PlainesCaramel_033
-    - Scene3_PlainesCaramel_034
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  Dialogues: {fileID: 11400000, guid: 4a89676f3474b8648ae50d25cc149d16, type: 2}
+  DialogueGroup: {fileID: 11400000, guid: d10ac6a9b3f2f0e478c1f16286f3959d, type: 2}
   StartRoom: {fileID: 11400000, guid: ab961bd299709b444820cf6c03da1b6e, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: d27d69b0b97dbed478f79f7406f767e9, type: 2}

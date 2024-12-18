@@ -18,17 +18,7 @@ MonoBehaviour:
   questName: Find the cake ingredients
   QuestToggled: 0
   NextQuestObject: {fileID: 11400000, guid: bae4e404899d48d49b2c8180f3a1ccdb, type: 2}
-  OnQuestCompletedDialogue:
-    condition: []
-    dialogueLineIds:
-    - Scene1_Maison_Jimi_004
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
+  OnQuestCompletedDialogue: {fileID: 11400000, guid: 3715ee249c2d27744bd87312fcd7be19, type: 2}
   requiredItems:
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}
   - {fileID: 11400000, guid: 0862bcabe6ffe084bb843c780c60d53f, type: 2}

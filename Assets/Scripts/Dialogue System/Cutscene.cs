@@ -12,8 +12,10 @@ public class Cutscene : BoolValue
 {
     public bool repeats = false;
     public int dialogueIndex = 0;
-    
-    public Dialogue[] dialogue;
+
+    private DSDialogueSO currentDialogueSO;
+    public DSDialogueContainerSO Dialogues;
+    public DSDialogueGroupSO DialogueGroup;
     
     public RoomInfo StartRoom;
     
@@ -43,6 +45,7 @@ public class Cutscene : BoolValue
     {
 
         Dialogue returnValue = GetCurrentLine();
+        currentDialogueSO = currentDialogueSO.Choices[0].NextDialogue;
         dialogueIndex++;
         return returnValue;
     }
@@ -55,14 +58,14 @@ public class Cutscene : BoolValue
 
     public virtual Dialogue GetCurrentLine()
     {
-        if (dialogueIndex >= dialogue.Length)
+        if (dialogueIndex >= Dialogues.DialogueGroups[DialogueGroup].Count)
         {
             return null;
         }
 
 
 
-        Dialogue returnValue = new Dialogue(dialogue[dialogueIndex]);
+        Dialogue returnValue = new Dialogue(currentDialogueSO);
         if (returnValue.isNull())
         {
             return null;
@@ -73,6 +76,7 @@ public class Cutscene : BoolValue
 
     public virtual void ResetPlayed()
     {
-        dialogueIndex = 0;
+            currentDialogueSO = Dialogues.GetStartingDialogue(DialogueGroup);
+           dialogueIndex = 0;
     }
 }

@@ -7,11 +7,13 @@ using UnityEngine;
 
 
 
-[System.Serializable]
+using Unity.VisualScripting;
+
+[Serializable, Inspectable]
 public class ConditionResultObject
 {
-    public BoolValue boolValue;
-    public bool wantedResult = true;
+    [Inspectable] public BoolValue boolValue;
+    [Inspectable] public bool wantedResult = true;
 
     public bool CheckCondition()
     {
@@ -20,5 +22,11 @@ public class ConditionResultObject
             return true;
         }
         return boolValue.RuntimeValue == wantedResult;
+    }
+
+
+    public ConditionResultObject()
+    {
+
     }
 }

@@ -105,6 +105,7 @@ public class DialogueBox : MonoBehaviour
     bool automaticDialogue = false;
     bool active;
     DialogueContent currentDialogue;
+    DialogueEvent[] currentDialogueEventList;
     List<DialogueContent> dialogueWaitingLine = new List<DialogueContent>();
     int dialogueIndex = 0; //which line to currently display in the current dialogue object
     bool dontGoNext = false;
@@ -174,10 +175,13 @@ public class DialogueBox : MonoBehaviour
     }
     public void StartDialogueDelayed(Dialogue dialogue, GameObject playerObject, GameObject originObject, GameState state)
     {
+        currentDialogueEventList = dialogue.DialogueEvents;
         if (dialogue.OnOverEvent != null)
         {
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+            
         }
+        AddOnOverEvents(dialogue);
         currentState = state;
         DialogueContent newDialogue = new DialogueContent(dialogue);
 
@@ -195,6 +199,25 @@ public class DialogueBox : MonoBehaviour
 
     }
 
+    private UnityAction GetEventFromIndex(string eventIndex, DialogueEventType type = DialogueEventType.OnOver)
+    {
+        if(currentDialogueEventList != null)
+        {
+
+        foreach(DialogueEvent dialogueEvent in currentDialogueEventList)
+        {
+            if (dialogueEvent.IndexValue == eventIndex)
+            {
+                    if(dialogueEvent.EventType == type)
+                    {
+                        return dialogueEvent.EventAction.Invoke;
+                    }
+            }
+            }
+        }
+        return null;
+    }
+
     public void StartDialogue(Dialogue dialogue, GameObject playerObject = null, GameObject originObject = null, GameState state = GameState.Overworld)
     {
 
@@ -202,7 +225,11 @@ public class DialogueBox : MonoBehaviour
         if (dialogue.OnOverEvent != null)
         {
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
+
         }
+        currentDialogueEventList = dialogue.DialogueEvents;
+        AddOnOverEvents(dialogue);
+
         currentState = state;
 
         DialogueContent newDialogue = null;
@@ -286,6 +313,25 @@ public class DialogueBox : MonoBehaviour
 
     }
 
+    private void AddOnOverEvents(Dialogue dialogue)
+    {
+        UnityAction action = GetEventFromIndex(dialogue.EventIndex);
+        if (action != null)
+        {
+            Debug.Log($"Added {action.Method.Name}");
+            OnDialogueOverAction.Enqueue(action);
+        }
+    }
+
+    private void TriggerInstantOverEvents(Dialogue dialogue)
+    {
+        UnityAction action = GetEventFromIndex(dialogue.EventIndex, DialogueEventType.Instant);
+        if (action != null)
+        {
+            action.Invoke();
+        }
+    }
+
     public IEnumerator SetPortrait(string portraitPath)
     {
 
@@ -366,6 +412,25 @@ public class DialogueBox : MonoBehaviour
         }
 
     }
+    public void DoChoice(DSDialogueChoiceData choice)
+    {
+
+        //currentDialogue.choice = false;
+        ClearChoiceBox();
+        choiceBox.SetActive(false);
+        Dialogue dialogue = new Dialogue(choice.NextDialogue);
+        OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke);
+        AddOnOverEvents(dialogue);
+
+        if (currentDialogue.dialogue != null)
+        {
+
+            dialogueWaitingLine.Insert(0, new DialogueContent(dialogue));
+        }
+
+        AddNavigateEventToPlayer(false);
+        StartNextDialogueWaiting();
+    }
     public void DoChoice(ChoiceDialogue choice)
     {
 
@@ -384,7 +449,30 @@ public class DialogueBox : MonoBehaviour
         StartNextDialogueWaiting();
     }
 
+    private void FillChoiceBox(DSDialogueChoiceData[] choices)
+    {
 
+        ClearChoiceBox();
+        AddInteractEventToPlayer(false);
+        AddNavigateEventToPlayer(true);
+        choiceBox.SetActive(true);
+        for (int i = 0; i < choices.Length; i++)
+        {
+            int number = i;
+            DSDialogueChoiceData choice = choices[number];
+            ChoiceMenuButton obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<ChoiceMenuButton>();
+            LineInfo choiceLine = new LineInfo(choices[i].Text);
+            obj.GetComponent<TMP_Text>().text = choiceLine.line;
+            obj.OnSelected.AddListener(delegate { DoChoice(choice); });
+            obj.SetMenu(choiceBox.GetComponent<ChoiceMenu>());
+            choiceBox.GetComponent<ChoiceMenu>().AddButton(obj);
+            // obj.Select();
+
+
+
+        }
+        choiceBox.GetComponent<ChoiceMenu>().DefaultSelect();
+    }
 
     private void FillChoiceBox(ChoiceDialogue[] choices)
     {
@@ -448,15 +536,7 @@ public class DialogueBox : MonoBehaviour
 
                     if (currentDialogue != null)
                     {
-                        if (currentDialogue.dialogue.OnInstantOverEvent != null)
-                        {
-                            currentDialogue.dialogue.OnInstantOverEvent?.Invoke();
-
-                            if (currentDialogue != null)
-                            {
-                                currentDialogue.dialogue.OnInstantOverEvent = null;
-                            }
-                        }
+                        TriggerInstantOverEvents(currentDialogue.dialogue);
                     }
 
                     if (dontGoNext)
@@ -472,8 +552,7 @@ public class DialogueBox : MonoBehaviour
 
                         ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
 
-
-
+                        DSDialogueChoiceData[] choicesList = currentDialogue.dialogue.GetUsableChoicesList();
                         if (choices != null)
                         {
                             if (choices.Length == 1)
@@ -489,6 +568,24 @@ public class DialogueBox : MonoBehaviour
                             {
 
                                 FillChoiceBox(choices);
+                                choiceBox.SetActive(true);
+                                return;
+                            }
+                        }else if (choicesList != null)
+                        {
+                            if (choicesList.Length == 1)
+                            {
+                                if (choicesList[0].NextDialogue.ConditionRespected())
+                                {
+                                    dialogueWaitingLine.Insert(0, new DialogueContent(new Dialogue(choicesList[0].NextDialogue)));
+                                    StartNextDialogueWaiting();
+                                    return;
+                                }
+                            }
+                            else
+                            {
+
+                                FillChoiceBox(choicesList);
                                 choiceBox.SetActive(true);
                                 return;
                             }
@@ -677,7 +774,7 @@ public class DialogueBox : MonoBehaviour
 
             if (dialogue.source != null)
             {
-                lineInfo.line = NewDialogueStarterObject.GetFormattedLines(dialogue.source, lineInfo.line);
+                lineInfo.line = BranchingDialogueStarterObject.GetFormattedLines(dialogue.source, lineInfo.line);
 
             }
 

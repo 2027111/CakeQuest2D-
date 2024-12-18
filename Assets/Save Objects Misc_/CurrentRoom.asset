@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CurrentRoom
   m_EditorClassIdentifier: 
   UID: 5c4dcdbb802a7f0408c4487859f6c302
-  roomName: Baie D'Hudson
-  minCameraOffset: {x: -64, y: -16}
-  maxCameraOffset: {x: -37, y: 30}
+  roomName: NoWhere
+  minCameraOffset: {x: 10, y: -26}
+  maxCameraOffset: {x: 10, y: -26}

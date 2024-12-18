@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class TreasureChest : NewDialogueStarterObject
+public class TreasureChest : BranchingDialogueStarterObject
 {
 
 
@@ -21,12 +21,17 @@ public class TreasureChest : NewDialogueStarterObject
     public InventoryItem lockRequirement;
     public int requirementAmount = 1;
     public bool consumesRequirement;
-    public Dialogue LockedDialogue;
-    public Dialogue SuccessDialogue;
+    public DSDialogueSO LockedDialogue;
+    public DSDialogueSO SuccessDialogue;
     public BoolValue storedOpen;
 
 
     public UnityEvent OnIsOpen;
+
+
+
+    [SerializeField] private int selectedSuccessDialogueIndex = 0;
+    [SerializeField] private int selectedLockedDialogueIndex = 0;
 
 
     private void Start()
@@ -64,7 +69,7 @@ public class TreasureChest : NewDialogueStarterObject
 
             if (!started)
             {
-                Dialogue newDialogue = new Dialogue(dialogue);
+                Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, DialogueAction);
                 started = true;
                 if (locked)
                 {
@@ -72,7 +77,7 @@ public class TreasureChest : NewDialogueStarterObject
                     if (CheckRequirement())
                     {
 
-                        newDialogue = new Dialogue(SuccessDialogue);
+                        newDialogue = new Dialogue(SuccessDialogue, DialogueEvents, DialogueAction);
 
                         if (consumesRequirement)
                         {
@@ -83,7 +88,7 @@ public class TreasureChest : NewDialogueStarterObject
                     }
                     else
                     {
-                        newDialogue = new Dialogue(LockedDialogue);
+                        newDialogue = new Dialogue(LockedDialogue, DialogueEvents, DialogueAction);
                     }
                     newDialogue.SetSource(this);
                     newDialogue.OnOverEvent.RemoveAllListeners();
@@ -126,7 +131,7 @@ public class TreasureChest : NewDialogueStarterObject
         storedOpen.RuntimeValue = true;
         Character.Player.AddToInventory(content, amount);
         CheckOpen();
-        Dialogue newDialogue = new Dialogue(dialogue);
+        Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, DialogueAction); ;
         newDialogue.SetSource(this);
         newDialogue.OnOverEvent.RemoveAllListeners();
         newDialogue.OnOverEvent.AddListener(DialogueOver);

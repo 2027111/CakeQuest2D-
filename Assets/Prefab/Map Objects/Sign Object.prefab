@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6619528642139895876}
   - component: {fileID: 6619528642139895877}
   - component: {fileID: 6619528642139895882}
-  - component: {fileID: -7201900825938326245}
   - component: {fileID: 1275180393}
+  - component: {fileID: 2486042967023749224}
   m_Layer: 0
   m_Name: Sign Object
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 1873240008405508661}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6619528642139895876
 SpriteRenderer:
@@ -141,47 +141,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002}
   m_EdgeRadius: 0
---- !u!114 &-7201900825938326245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619528642139895883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 283f4797ce51db24b97f1b9c5cb8011d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    condition:
-    - boolValue: {fileID: 0}
-      wantedResult: 1
-    dialogueLineIds:
-    - Misc_Panneau_PC_000
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: -7201900825938326245}
-          m_TargetAssemblyTypeName: NewDialogueStarterObject, Assembly-CSharp
-          m_MethodName: DialogueOver
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  started: 0
-  OnDialogueOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1275180393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +156,8 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -7201900825938326245}
-        m_TargetAssemblyTypeName: NewDialogueStarterObject, Assembly-CSharp
+      - m_Target: {fileID: 2486042967023749224}
+        m_TargetAssemblyTypeName: BranchingDialogueStarterObject, Assembly-CSharp
         m_MethodName: DialogueAction
         m_Mode: 1
         m_Arguments:
@@ -216,6 +175,27 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionIndicator: {fileID: 1873240008405508662}
+--- !u!114 &2486042967023749224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619528642139895883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37d19f34f23c41040b71d6c01f3a90e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueEvents: []
+  started: 0
+  dialogueContainer: {fileID: 11400000, guid: 6d153f7d5edf83d498528045c4224ee8, type: 2}
+  dialogueGroup: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
+  groupedDialogues: 0
+  startingDialoguesOnly: 0
+  selectedDialogueGroupIndex: 0
+  selectedDialogueIndex: 0
 --- !u!1001 &1175059364521649696
 PrefabInstance:
   m_ObjectHideFlags: 0

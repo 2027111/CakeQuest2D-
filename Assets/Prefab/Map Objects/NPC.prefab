@@ -128,10 +128,10 @@ GameObject:
   - component: {fileID: 6328120429759160977}
   - component: {fileID: 8532248538276063809}
   - component: {fileID: 8532248538276063810}
-  - component: {fileID: 8532248538276063811}
   - component: {fileID: 6393111097336211545}
   - component: {fileID: 6728774882749222358}
   - component: {fileID: 7802787928765662709}
+  - component: {fileID: 7151259976058981845}
   m_Layer: 3
   m_Name: NPC
   m_TagString: NPC
@@ -156,7 +156,7 @@ Transform:
   - {fileID: 8905397988316268901}
   - {fileID: 599362333297056024}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8695336453385115700
 MonoBehaviour:
@@ -182,6 +182,7 @@ MonoBehaviour:
   - {fileID: 8532248538276063809}
   - {fileID: 2238509909874340293}
   - {fileID: 6397632752502982462}
+  - {fileID: 134502414}
 --- !u!114 &2430433989948180661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,8 +322,8 @@ MonoBehaviour:
   interactionEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8532248538276063811}
-        m_TargetAssemblyTypeName: DialogueStarterCharacter, Assembly-CSharp
+      - m_Target: {fileID: 7151259976058981845}
+        m_TargetAssemblyTypeName: BranchingDialogueStarterCharacter, Assembly-CSharp
         m_MethodName: DialogueAction
         m_Mode: 1
         m_Arguments:
@@ -340,32 +341,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionIndicator: {fileID: 134502412}
---- !u!114 &8532248538276063811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2430433989948180660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef0d689027eca5c4a8e0e9b1712d0e3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    condition: []
-    dialogueLineIds: []
-    choices: []
-    OnOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    OnInstantOverEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  started: 0
-  OnDialogueOverEvent:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!95 &6393111097336211545
 Animator:
   serializedVersion: 4
@@ -444,6 +419,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditionEvents: []
+--- !u!114 &7151259976058981845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2430433989948180660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e276fc17a5bf53d429f66a33b92e9aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueEvents: []
+  started: 0
+  dialogueContainer: {fileID: 11400000, guid: 6d153f7d5edf83d498528045c4224ee8, type: 2}
+  dialogueGroup: {fileID: 0}
+  dialogue: {fileID: 11400000, guid: 0d636122f52779d4fbed03a1da3b72af, type: 2}
+  groupedDialogues: 0
+  startingDialoguesOnly: 1
+  selectedDialogueGroupIndex: 0
+  selectedDialogueIndex: 0
 --- !u!1 &8601637202572763817
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +542,11 @@ PrefabInstance:
 --- !u!1 &134502412 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 698536886062302230, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
+  m_PrefabInstance: {fileID: 698536885928336410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &134502414 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 698536886062302228, guid: 7f44e32ad36719c469f77995b9448d69, type: 3}
   m_PrefabInstance: {fileID: 698536885928336410}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &134502415 stripped

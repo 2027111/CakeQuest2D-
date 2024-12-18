@@ -8,7 +8,7 @@ public class TranslationMenu : MonoBehaviour
 {
     public bool resetOnAwake = false;
 
-    [SerializeField] SerializableDictionary<string, List<TMP_Text>> TextObjects = new SerializableDictionary<string, List<TMP_Text>>();
+    [SerializeField] SerializableDictionaries<string, List<TMP_Text>> TextObjects = new SerializableDictionaries<string, List<TMP_Text>>();
 
     private void Awake()
     {
