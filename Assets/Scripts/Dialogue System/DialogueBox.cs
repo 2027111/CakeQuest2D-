@@ -243,12 +243,17 @@ public class DialogueBox : MonoBehaviour
         else
         {
 
-            if (dialogue.choices.Length != 0)
+            if (dialogue.DialogueChoices.Length != 0)
             {
 
                 if (dialogue.HasOnePossibleChoice())
                 {
-                    newDialogue = new DialogueContent(new Dialogue(dialogue.GetUsableChoices()[0]));
+                    
+
+                    Dialogue choicedialogue = new Dialogue(dialogue.GetUsableChoicesList()[0].NextDialogue);
+                    OnDialogueOverAction.Enqueue(choicedialogue.OnOverEvent.Invoke);
+                    AddOnOverEvents(choicedialogue);
+                    newDialogue = new DialogueContent(choicedialogue);
 
                 }
             }

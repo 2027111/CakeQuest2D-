@@ -17,8 +17,10 @@ MonoBehaviour:
     wantedResult: 0
   - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
     wantedResult: 0
+  - boolValue: {fileID: 11400000, guid: 314ab5a703074ef4c88be5d5ee524ed4, type: 2}
+    wantedResult: 0
   <DialogueName>k__BackingField: InteractedFirstTime
-  <EventIndex>k__BackingField: None
+  <EventIndex>k__BackingField: 0
   <Text>k__BackingField:
   - Interaction_Jimi_Figurine_001
   <Choices>k__BackingField:

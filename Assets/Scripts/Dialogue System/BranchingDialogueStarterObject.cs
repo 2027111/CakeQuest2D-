@@ -127,7 +127,10 @@ public class BranchingDialogueStarterObject : MonoBehaviour
     [SerializeField] private int selectedDialogueIndex = 0;
 
 
-
+    private void Start()
+    {
+        started = false;
+    }
     public void PlayVideo()
     {
         UICanvas.PlayVideoRec();

@@ -16,7 +16,12 @@ MonoBehaviour:
   RuntimeValue: 1
   repeats: 1
   dialogueIndex: 0
-  Dialogues: {fileID: 11400000, guid: 06ee8e221df916840ba3a6289c2668ae, type: 2}
-  DialogueGroup: {fileID: 11400000, guid: 54c82d30ecf26b0408066451c1bfae46, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 06ee8e221df916840ba3a6289c2668ae, type: 2}
+  dialogueGroup: {fileID: 11400000, guid: 9c19fe93643ffed40b9dfc3b7a75219c, type: 2}
+  dialogue: {fileID: 11400000, guid: eca6e623b5f706a4e9c1237c519b1b5e, type: 2}
+  groupedDialogues: 1
+  startingDialoguesOnly: 1
+  selectedDialogueGroupIndex: 3
+  selectedDialogueIndex: 0
   StartRoom: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
   CutsceneToPlay: {fileID: 11400000, guid: 9e569440e856ce2438cf68526920c9a6, type: 2}

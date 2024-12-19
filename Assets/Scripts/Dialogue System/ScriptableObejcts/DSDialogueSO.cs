@@ -78,6 +78,6 @@ public class DSDialogueSO : ScriptableObject
 
     public bool HasOnePossibleChoice()
     {
-        return GetUsableChoices().Length == 1;
+        return GetUsableChoices()?.Length == 1;
     }
 }

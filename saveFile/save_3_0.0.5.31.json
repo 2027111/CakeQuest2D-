@@ -29,11 +29,11 @@
     "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"FirstBattleWon\",  \"UID\": \"241c2449bbdc1d045af9df0ffa71b246\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Tutorial\",  \"UID\": \"98cd78d15977a4143b35067944b9ac22\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"829b3fe16a553a64a87cdac259afad4e\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"20586e8786fefda4fbfee685f18978a5\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"JimiInParty\",  \"UID\": \"854776fce5812684aa77cd10031b9f58\",  \"RuntimeValue\": true}",
     "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"BarGuard1\",  \"UID\": \"ef694d6bb510934439a5441663b495d9\",  \"RuntimeValue\": false}",
-    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"f957e3bca4a462d44a734364fd1aac90\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"7308d2b9e087e604c95c656527d1d838\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": false,  \"QuestToggled\": false}",
     "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"cbfd3c6979c641f459856fc3a06b417c\",  \"RuntimeValue\": false}",
@@ -43,6 +43,7 @@
     "{  \"SaveObjectName\": \"FrameDown\",  \"UID\": \"dc028d5705fb4774fa4cc8cd54293011\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"GokuInteractedOnce\",  \"UID\": \"5c2dbf3b845569448b9d1d9e94f78b5c\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"GokuInteractedTwice\",  \"UID\": \"6dc7fffe02230784e8679572cb63caa9\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GokuInteractedThrice\",  \"UID\": \"6dc7fffe02230784e8679572cb63caa9\",  \"RuntimeValue\": false}",
     "{  \"SaveObjectName\": \"GoUpTheBeach\",  \"UID\": \"6d070e091a9fe78468f7cf9029ede491\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}",
     "{  \"SaveObjectName\": \"WashedOnTheShore\",  \"UID\": \"804e3bce60904d94fb76a685e8d57708\",  \"RuntimeValue\": false,  \"repeats\": false,  \"dialogueIndex\": 0}"
   ]

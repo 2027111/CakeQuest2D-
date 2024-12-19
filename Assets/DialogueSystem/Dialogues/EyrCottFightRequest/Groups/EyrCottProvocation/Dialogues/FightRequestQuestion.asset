@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654dc48a13bfa3441a7a268e8fc205ec, type: 3}
   m_Name: FightRequestQuestion
   m_EditorClassIdentifier: 
-  <Conditions>k__BackingField:
-  - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
-    wantedResult: 1
+  <Conditions>k__BackingField: []
   <DialogueName>k__BackingField: FightRequestQuestion
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:

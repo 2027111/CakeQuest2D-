@@ -14,9 +14,19 @@ public class Cutscene : BoolValue
     public int dialogueIndex = 0;
 
     private DSDialogueSO currentDialogueSO;
-    public DSDialogueContainerSO Dialogues;
-    public DSDialogueGroupSO DialogueGroup;
-    
+
+
+    [SerializeField] private DSDialogueContainerSO dialogueContainer;
+    [SerializeField] private DSDialogueGroupSO dialogueGroup;
+    [SerializeField] protected DSDialogueSO dialogue;
+
+    [SerializeField] private bool groupedDialogues;
+    [SerializeField] private bool startingDialoguesOnly;
+
+
+    [SerializeField] private int selectedDialogueGroupIndex = 0;
+    [SerializeField] private int selectedDialogueIndex = 0;
+
     public RoomInfo StartRoom;
     
     public TimelineAsset CutsceneToPlay;
@@ -58,7 +68,7 @@ public class Cutscene : BoolValue
 
     public virtual Dialogue GetCurrentLine()
     {
-        if (dialogueIndex >= Dialogues.DialogueGroups[DialogueGroup].Count)
+        if (dialogueIndex >= dialogueContainer.DialogueGroups[dialogueGroup].Count)
         {
             return null;
         }
@@ -76,7 +86,8 @@ public class Cutscene : BoolValue
 
     public virtual void ResetPlayed()
     {
-            currentDialogueSO = Dialogues.GetStartingDialogue(DialogueGroup);
+            currentDialogueSO = dialogue;
            dialogueIndex = 0;
     }
 }
+

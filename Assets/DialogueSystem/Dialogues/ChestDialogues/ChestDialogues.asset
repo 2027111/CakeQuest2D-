@@ -20,4 +20,10 @@ MonoBehaviour:
       - {fileID: 11400000, guid: f1e6dc4189c88c54199af1d0875af6a2, type: 2}
       - {fileID: 11400000, guid: db495b5f6087a7e438ef4a63cae0397c, type: 2}
       - {fileID: 11400000, guid: ba30a71be0508d84d8cd00f0f7040afd, type: 2}
-  <UngroupedDialogues>k__BackingField: []
+    - Key: {fileID: 11400000, guid: dad623b87eae86a45b7498b1d4c89c7e, type: 2}
+      Value:
+      - {fileID: 11400000, guid: 4c84826cb5235974aaa69ccf83161e34, type: 2}
+      - {fileID: 11400000, guid: ab90e1da8cef27342b7a929138027c0d, type: 2}
+      - {fileID: 11400000, guid: 81461f7e82ff28b40aded311ad2e0910, type: 2}
+  <UngroupedDialogues>k__BackingField:
+  - {fileID: 11400000, guid: a361213a0fd2a2a4084439aabdd145fa, type: 2}

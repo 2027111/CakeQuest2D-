@@ -55,7 +55,16 @@ public class Dialogue
         if (dialogue != null)
         {
             this.dialogueLineIds = dialogue.Text.ToArray();
+            if(this.dialogueLineIds.Length == 0)
+            {
+                this.dialogueLineIds = null;
+            }
             this.DialogueChoices = dialogue.Choices.ToArray();
+
+            if (this.DialogueChoices.Length == 0)
+            {
+                this.DialogueChoices = null;
+            }
             this.condition = dialogue.Conditions.ToArray();
             this.EventIndex = dialogue.EventIndex;
             this.DialogueEvents = events;
@@ -185,7 +194,7 @@ public class Dialogue
     public bool HasOnePossibleChoice()
     {
 
-        return GetUsableChoices().Length == 1;
+        return GetUsableChoicesList().Length == 1;
     }
 
 
