@@ -147,7 +147,7 @@ public class Timeline : MonoBehaviour
     }
     public virtual void DialogueRequest()
     {
-        Dialogue dialogue = new Dialogue(storagePlay.GetNextLine());
+        Dialogue dialogue = storagePlay.GetNextLine();
         dialogue.OnOverEvent.AddListener(DialogueOver);
         //Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetNonPersistentEventCount());
         UICanvas.StartDialogue(dialogue, null, null);
@@ -156,9 +156,9 @@ public class Timeline : MonoBehaviour
     public virtual void DialogueOver()
     {
         started = false;
-        //Debug.Log("Dialogue Over");
         StopLoopSection();
-       // UnpauseCutscene();
+        //Debug.Log("Dialogue Over");
+        // UnpauseCutscene();
     }
 
     public void UnpauseCutscene()
@@ -169,7 +169,7 @@ public class Timeline : MonoBehaviour
 
     public virtual void CutsceneOver()
     {
-        storagePlay.dialogueIndex = 0;
+        storagePlay.ResetPlayed();
         if (storagePlay)
         {
             if (!storagePlay.repeats)

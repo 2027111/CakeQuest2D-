@@ -32,7 +32,7 @@ public class ChoiceDialogue
 }
 
 
-public enum BattleCondition
+public enum BattleConditionType
 {
     None,
     OnLoop,

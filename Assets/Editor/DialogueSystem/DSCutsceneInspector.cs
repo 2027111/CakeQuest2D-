@@ -123,6 +123,12 @@ public class DSCutsceneInspector : Editor
 
     private void DrawCutsceneFields()
     {
+        // Check if the target object is of type BattleCutscene
+        if (target is BattleCutscene)
+        {
+            return; // Do not draw anything for BattleCutscene objects
+        }
+
         DSInspectorUtility.DrawHeader("Cutscene Configuration");
         repeatsProperty.DrawPropertyField();
         startRoomProperty.DrawPropertyField();
@@ -131,16 +137,16 @@ public class DSCutsceneInspector : Editor
     }
     private void DrawDialogueEventsArea()
     {
-        DSInspectorUtility.DrawHeader("Dialogue Events");
 
         SerializedProperty dialogueEventsProperty = serializedObject.FindProperty("DialogueEvents");
 
         if (dialogueEventsProperty != null)
         {
+            DSInspectorUtility.DrawHeader("Dialogue Events");
             EditorGUILayout.PropertyField(dialogueEventsProperty, true); // Draw the DialogueEvents array
+            DSInspectorUtility.DrawSpace();
         }
 
-        DSInspectorUtility.DrawSpace();
     }
 
 

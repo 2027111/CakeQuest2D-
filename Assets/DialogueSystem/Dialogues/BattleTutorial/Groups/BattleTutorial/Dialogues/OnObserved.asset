@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: OnObserved
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField:
+  - technicalCondition: 4
+    conditionIndex: 0
+    requiresPrevious: 1
+    played: 0
   <DialogueName>k__BackingField: OnObserved
   <EventIndex>k__BackingField: 1
   <Text>k__BackingField:
@@ -24,4 +29,4 @@ MonoBehaviour:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 0}
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

@@ -7,15 +7,18 @@ public class DSDialogueSO : ScriptableObject
 {
 
     [field: SerializeField] public List<ConditionResultObject> Conditions { get; set; }
+    [field: SerializeField] public List<BattleCondition> BattleConditionParams { get; set; } // List of conditions
+
     [field: SerializeField] public string DialogueName { get; set; }
     [field: SerializeField] public string EventIndex { get; set; }
     [field: SerializeField] [field: TextArea()] public List<string> Text { get; set; }
     [field: SerializeField] public List<DSDialogueChoiceData> Choices { get; set; }
+
     [field: SerializeField] public DSDialogueType DialogueType { get; set; }
     [field: SerializeField] public bool IsStartingDialogue { get; set; }
 
 
-    public void Initialize(string dialogueName, List<string> text, List<DSDialogueChoiceData> choices, DSDialogueType dialogueType, bool isStartingDialogue, List<ConditionResultObject> conditions, string eventIndex)
+    public void Initialize(string dialogueName, List<string> text, List<DSDialogueChoiceData> choices, DSDialogueType dialogueType, bool isStartingDialogue, List<ConditionResultObject> conditions, List<BattleCondition> battleConditionParams, string eventIndex)
     {
         DialogueName = dialogueName;
         Text = text;
@@ -23,9 +26,18 @@ public class DSDialogueSO : ScriptableObject
         DialogueType = dialogueType;
         IsStartingDialogue = isStartingDialogue;
         Conditions = conditions;
+        BattleConditionParams = battleConditionParams;
+        SetRequirePrevious();
         EventIndex = eventIndex;
     }
 
+    private void SetRequirePrevious()
+    {
+        if (BattleConditionParams != null)
+        {
+            BattleConditionParams[0].requiresPrevious = !IsStartingDialogue;
+        }
+    }
 
     public bool ConditionRespected()
     {

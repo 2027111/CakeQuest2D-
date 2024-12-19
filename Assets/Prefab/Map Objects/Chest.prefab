@@ -179,9 +179,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvents: []
   started: 0
-  dialogueContainer: {fileID: 11400000, guid: d39a7d0d4e281f3429d2a4fb1ed1dda0, type: 2}
-  dialogueGroup: {fileID: 11400000, guid: 45deae7241edad548938bfd86357610d, type: 2}
-  dialogue: {fileID: 11400000, guid: db495b5f6087a7e438ef4a63cae0397c, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 69ce57023adc98548a1af8ddb33e4a0b, type: 2}
+  dialogueGroup: {fileID: 11400000, guid: 73a502a9428d0994897a537b6ef37723, type: 2}
+  dialogue: {fileID: 11400000, guid: 3a6d9d5db389efa47afc324f06143240, type: 2}
   groupedDialogues: 1
   startingDialoguesOnly: 0
   selectedDialogueGroupIndex: 0
@@ -194,8 +194,8 @@ MonoBehaviour:
   lockRequirement: {fileID: 0}
   requirementAmount: 0
   consumesRequirement: 0
-  LockedDialogue: {fileID: 11400000, guid: f1e6dc4189c88c54199af1d0875af6a2, type: 2}
-  SuccessDialogue: {fileID: 11400000, guid: ba30a71be0508d84d8cd00f0f7040afd, type: 2}
+  LockedDialogue: {fileID: 11400000, guid: 74939be943a164f459f1d71220a3c524, type: 2}
+  SuccessDialogue: {fileID: 11400000, guid: 96528e26d095b37438868fa686303f92, type: 2}
   storedOpen: {fileID: 11400000, guid: 3c4fbf3ec1fe8fd47a6b63826282419a, type: 2}
   OnIsOpen:
     m_PersistentCalls:

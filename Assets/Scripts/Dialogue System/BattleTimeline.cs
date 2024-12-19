@@ -10,8 +10,10 @@ public class BattleTimeline : Timeline
 
     public override void DialogueRequest()
     {
-        BattleDialogue dialogue = (BattleDialogue) storagePlay.GetNextLine();
+        Dialogue dialogue = storagePlay.GetNextLine();
+        storagePlay.PlayedCurrentLine();
         dialogue.OnOverEvent.AddListener(storagePlay.SetRuntime);
+        dialogue.OnOverEvent.AddListener(dialogue.SetNextPlayed);
         dialogue.OnOverEvent.AddListener(DialogueOver);
         UICanvas.StartDialogue(dialogue, null, null, GameState.BattleScene);
     }
@@ -58,7 +60,6 @@ public class BattleTimeline : Timeline
     {
         if (CanPlayCutscene())
         {
-            storagePlay.dialogueIndex = 0;
             BattleManager.Singleton.StartingDialogue();
 
             IsInCutscene = true;

@@ -189,9 +189,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvents: []
   started: 0
-  dialogueContainer: {fileID: 11400000, guid: d39a7d0d4e281f3429d2a4fb1ed1dda0, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 69ce57023adc98548a1af8ddb33e4a0b, type: 2}
   dialogueGroup: {fileID: 0}
-  dialogue: {fileID: 11400000, guid: a361213a0fd2a2a4084439aabdd145fa, type: 2}
+  dialogue: {fileID: 11400000, guid: 4341f95d91082764e835b62e042b1f27, type: 2}
   groupedDialogues: 0
   startingDialoguesOnly: 0
   selectedDialogueGroupIndex: 0

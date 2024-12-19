@@ -179,7 +179,7 @@ public class DialogueBox : MonoBehaviour
         if (dialogue.OnOverEvent != null)
         {
             OnDialogueOverAction.Enqueue(dialogue.OnOverEvent.Invoke); // Push the Invoke method of UnityAction
-            
+
         }
         AddOnOverEvents(dialogue);
         currentState = state;
@@ -201,18 +201,18 @@ public class DialogueBox : MonoBehaviour
 
     private UnityAction GetEventFromIndex(string eventIndex, DialogueEventType type = DialogueEventType.OnOver)
     {
-        if(currentDialogueEventList != null)
+        if (currentDialogueEventList != null)
         {
 
-        foreach(DialogueEvent dialogueEvent in currentDialogueEventList)
-        {
-            if (dialogueEvent.IndexValue == eventIndex)
+            foreach (DialogueEvent dialogueEvent in currentDialogueEventList)
             {
-                    if(dialogueEvent.EventType == type)
+                if (dialogueEvent.IndexValue == eventIndex)
+                {
+                    if (dialogueEvent.EventType == type)
                     {
                         return dialogueEvent.EventAction.Invoke;
                     }
-            }
+                }
             }
         }
         return null;
@@ -248,7 +248,7 @@ public class DialogueBox : MonoBehaviour
 
                 if (dialogue.HasOnePossibleChoice())
                 {
-                    
+
 
                     Dialogue choicedialogue = new Dialogue(dialogue.GetUsableChoicesList()[0].NextDialogue);
                     OnDialogueOverAction.Enqueue(choicedialogue.OnOverEvent.Invoke);
@@ -436,23 +436,7 @@ public class DialogueBox : MonoBehaviour
         AddNavigateEventToPlayer(false);
         StartNextDialogueWaiting();
     }
-    public void DoChoice(ChoiceDialogue choice)
-    {
 
-        //currentDialogue.choice = false;
-        ClearChoiceBox();
-        choiceBox.SetActive(false);
-
-        OnDialogueOverAction.Enqueue(choice.OnOverEvent.Invoke);
-        if (currentDialogue.dialogue != null)
-        {
-
-            dialogueWaitingLine.Insert(0, new DialogueContent(new Dialogue(choice)));
-        }
-
-        AddNavigateEventToPlayer(false);
-        StartNextDialogueWaiting();
-    }
 
     private void FillChoiceBox(DSDialogueChoiceData[] choices)
     {
@@ -477,35 +461,6 @@ public class DialogueBox : MonoBehaviour
 
         }
         choiceBox.GetComponent<ChoiceMenu>().DefaultSelect();
-    }
-
-    private void FillChoiceBox(ChoiceDialogue[] choices)
-    {
-
-        ClearChoiceBox();
-        AddInteractEventToPlayer(false);
-        AddNavigateEventToPlayer(true);
-        choiceBox.SetActive(true);
-        for (int i = 0; i < choices.Length; i++)
-        {
-            int number = i;
-            ChoiceDialogue choice = choices[number];
-            ChoiceMenuButton obj = Instantiate(choicePrefab, choiceBox.transform).GetComponent<ChoiceMenuButton>();
-            LineInfo choiceLine = new LineInfo(choices[i].choicesLineIds);
-            obj.GetComponent<TMP_Text>().text = choiceLine.line;
-            obj.OnSelected.AddListener(delegate { DoChoice(choice); });
-            obj.SetMenu(choiceBox.GetComponent<ChoiceMenu>());
-            choiceBox.GetComponent<ChoiceMenu>().AddButton(obj);
-            // obj.Select();
-
-
-
-        }
-        choiceBox.GetComponent<ChoiceMenu>().DefaultSelect();
-    }
-
-    public void DebugTest()
-    {
     }
 
     public void FlipPortrait()
@@ -555,28 +510,8 @@ public class DialogueBox : MonoBehaviour
 
 
 
-                        ChoiceDialogue[] choices = currentDialogue.dialogue.GetUsableChoices();
-
                         DSDialogueChoiceData[] choicesList = currentDialogue.dialogue.GetUsableChoicesList();
-                        if (choices != null)
-                        {
-                            if (choices.Length == 1)
-                            {
-                                if (choices[0].ConditionRespected())
-                                {
-                                    dialogueWaitingLine.Insert(0, new DialogueContent(new Dialogue(choices[0])));
-                                    StartNextDialogueWaiting();
-                                    return;
-                                }
-                            }
-                            else
-                            {
-
-                                FillChoiceBox(choices);
-                                choiceBox.SetActive(true);
-                                return;
-                            }
-                        }else if (choicesList != null)
+                        if (choicesList != null)
                         {
                             if (choicesList.Length == 1)
                             {

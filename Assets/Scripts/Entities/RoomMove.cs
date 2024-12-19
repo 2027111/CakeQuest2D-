@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum Direction
 {
@@ -11,11 +12,20 @@ public enum Direction
     Bottom
 }
 
+
+[Serializable]
+public class RoomMoveEvent
+{
+    public bool ForRoom1;
+    public UnityEvent Events;
+
+}
 public class RoomMove : MonoBehaviour
 {
     [SerializeField] RoomInfo room1;
     [SerializeField] RoomInfo room2;
     public Direction Room1ToRoom2 = Direction.Right;
+    public List<RoomMoveEvent> roomMoveEvents = new List<RoomMoveEvent>();
 
     public void MoveToNextRoom()
     {
@@ -31,6 +41,13 @@ public class RoomMove : MonoBehaviour
         else if (moveDirection == GetOppositeDirection(Room1ToRoom2))
         {
             MovePlayer(room2, moveDirection);
+        }
+        foreach(RoomMoveEvent roomMoveEvent in roomMoveEvents)
+        {
+            if(roomMoveEvent.ForRoom1 == (moveDirection == Room1ToRoom2))
+            {
+                roomMoveEvent.Events?.Invoke();
+            }
         }
 
     }

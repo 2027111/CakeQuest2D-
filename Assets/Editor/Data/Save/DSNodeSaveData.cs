@@ -9,6 +9,7 @@ using UnityEngine;
 public class DSNodeSaveData
 {
     [field: SerializeField] public List<ConditionResultObject> Conditions { get; set; }
+    [field: SerializeField] public List<BattleCondition> BattleConditionParams { get; set; }
     [field: SerializeField] public string ID { get; set; }
     [field: SerializeField] public string Name { get; set; }
     [field: SerializeField] public string EventIndex { get; set; }

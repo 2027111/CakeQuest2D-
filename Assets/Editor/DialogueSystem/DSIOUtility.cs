@@ -96,6 +96,7 @@ public static class DSIOUtility
             node.Choices = choices;
             node.Text = nodeData.Text;
             node.Conditions = CloneNodeConditions(nodeData.Conditions);
+            node.BattleConditionParams = CloneBattleConditionParameters(nodeData.BattleConditionParams);
             node.selectedEventCaller = nodeData.EventIndex;
 
             node.Draw();
@@ -238,7 +239,7 @@ public static class DSIOUtility
         }
 
         dialogue.Initialize(
-            node.DialogueName, node.Text, ConvertNodeChoicesToDialogueChoices(node.Choices), node.DialogueType, node.IsStartingNode(), node.Conditions, node.selectedEventCaller
+            node.DialogueName, node.Text, ConvertNodeChoicesToDialogueChoices(node.Choices), node.DialogueType, node.IsStartingNode(), node.Conditions,CloneBattleConditionParameters(node.BattleConditionParams), node.selectedEventCaller
             );
 
         createdDialogue.Add(node.ID, dialogue);
@@ -246,12 +247,30 @@ public static class DSIOUtility
     }
 
 
+    private static List<BattleCondition> CloneBattleConditionParameters(List<BattleCondition> parameters)
+    {
+        if(parameters== null || parameters.Count == 0)
+        {
+            return null;
+        }
+        List<BattleCondition> conditions = new List<BattleCondition>();
+
+        foreach (BattleCondition condition in parameters)
+        {
+            BattleCondition conditionData = new BattleCondition(condition);
+            conditions.Add(conditionData);
+        }
+
+        return conditions;
+    }
+
     private static void SaveNodeToGraph(DSNode node, DSGraphSaveDataSO graphData)
     {
         List<DSChoiceSaveData> choices = CloneNodeChoices(node.Choices);
         DSNodeSaveData nodeData = new DSNodeSaveData()
         {
             Conditions = CloneNodeConditions(node.Conditions),
+            BattleConditionParams = CloneBattleConditionParameters(node.BattleConditionParams),
             ID = node.ID,
             Name = node.DialogueName,
             Choices = choices,

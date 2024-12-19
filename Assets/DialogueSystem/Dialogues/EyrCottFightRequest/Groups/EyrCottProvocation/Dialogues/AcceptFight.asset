@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AcceptFight
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: AcceptFight
   <EventIndex>k__BackingField: 6
   <Text>k__BackingField:

@@ -7,20 +7,19 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BattleCutscene : Cutscene
 {
-    public BattleDialogueHolder[] battleDialogue;
 
+    public DialogueEvent[] DialogueEvents;
     public override Dialogue GetNextLine()
     {
-
-        Dialogue returnValue = GetPlayableLine();
-        dialogueIndex++;
+        currentDialogueSO = GetPlayableLine();
+        Dialogue returnValue = new Dialogue(currentDialogueSO, DialogueEvents); 
         return returnValue;
     }
     public override void SetRuntime()
     {
-        foreach (BattleDialogueHolder d in battleDialogue)
+        foreach (DSDialogueSO d in dialogueContainer.DialogueGroups[dialogueGroup])
         {
-            if (!d.played)
+            if (d.BattleConditionParams[0].played != true)
             {
                 return;
             }
@@ -31,40 +30,29 @@ public class BattleCutscene : Cutscene
 
     public override void ForceRuntime()
     {
-        foreach (BattleDialogueHolder d in battleDialogue)
+        foreach (DSDialogueSO d in dialogueContainer.DialogueGroups[dialogueGroup])
         {
-            if (!d.played)
+            if(d.BattleConditionParams != null)
             {
-                d.played = true;
+                d.BattleConditionParams[0].played = true;
             }
         }
         SetRuntime();
     }
     public override void ResetPlayed()
     {
-        foreach (BattleDialogueHolder d in battleDialogue)
+        base.ResetPlayed();
+
+        foreach (DSDialogueSO d in dialogueContainer.DialogueGroups[dialogueGroup])
         {
-            d.played = false;
+            if (d.BattleConditionParams != null)
+            {
+                d.BattleConditionParams[0].played = false;
+                d.BattleConditionParams[0].requiresPrevious = !d.IsStartingDialogue;
+            }
         }
     }
 
-
-    public override Dialogue GetCurrentLine()
-    {
-        if (dialogueIndex >= battleDialogue.Length)
-        {
-            return null;
-        }
-
-
-
-        Dialogue returnValue = new BattleDialogue(battleDialogue[dialogueIndex]);
-        if (returnValue.isNull())
-        {
-            return null;
-        }
-        return returnValue;
-    }
 
     public void ForceWeakness(string weakness)
     {
@@ -106,32 +94,29 @@ public class BattleCutscene : Cutscene
         BattleManager.Singleton?.DisableOptions(DisabledOptions.ToArray());
 
     }
-    public BattleDialogue GetPlayableLine()
+    public DSDialogueSO GetPlayableLine()
     {
-        BattleDialogue battleDialogue = null;
-        for (int i = 0; i < this.battleDialogue.Length; i++)
+        for (int i = 0; i < this.dialogueContainer.DialogueGroups[dialogueGroup].Count; i++)
         {
-            BattleDialogueHolder battleDialogueHolder = this.battleDialogue[i];
-            
-            if (battleDialogueHolder.CheckBattleCondition())
+            DSDialogueSO battleDialogueHolder = this.dialogueContainer.DialogueGroups[dialogueGroup][i];
+            if(battleDialogueHolder.BattleConditionParams == null)
             {
-                battleDialogue = new BattleDialogue(battleDialogueHolder); ;
+                continue;
+            }
+            if (battleDialogueHolder.BattleConditionParams[0].CheckBattleCondition())
+            {
                 if (i > 0)
                 {
-                    if (battleDialogueHolder.requiresPrevious)
+                    if (battleDialogueHolder.BattleConditionParams[0].requiresPrevious)
                     {
-                        for (int j = i - 1; j >= 0; j--)
-                        {
-                            if (!battleDialogueHolder.played)
-                            {
                                 return null;
-                            }
-                        }
                     }
 
                 }
+
+                return battleDialogueHolder;
             }
         }
-        return battleDialogue;
+        return null;
     }
 }

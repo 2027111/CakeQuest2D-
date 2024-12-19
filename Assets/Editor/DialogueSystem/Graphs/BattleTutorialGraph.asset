@@ -19,6 +19,10 @@ MonoBehaviour:
     <Position>k__BackingField: {x: 386, y: 227}
   <Nodes>k__BackingField:
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField:
+    - technicalCondition: 1
+      conditionIndex: 0
+      requiresPrevious: 0
     <ID>k__BackingField: f1c16dca-732f-403e-ba4a-72b04052bda5
     <Name>k__BackingField: FirstTurn
     <EventIndex>k__BackingField: None
@@ -29,11 +33,15 @@ MonoBehaviour:
     - Tuto_Yankee_005
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: ef956185-1f00-44e3-9565-70cb6f1469a3
     <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 411, y: 286}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField:
+    - technicalCondition: 3
+      conditionIndex: 0
+      requiresPrevious: 0
     <ID>k__BackingField: ef956185-1f00-44e3-9565-70cb6f1469a3
     <Name>k__BackingField: EnemyFirstTurn
     <EventIndex>k__BackingField: None
@@ -42,11 +50,33 @@ MonoBehaviour:
     - Tuto_Yankee_007
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: e66403d6-e0d8-492b-8681-0fceb9b9355a
     <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
     <DialogueType>k__BackingField: 0
     <Position>k__BackingField: {x: 759, y: 325}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField:
+    - technicalCondition: 1
+      conditionIndex: 1
+      requiresPrevious: 0
+    <ID>k__BackingField: e66403d6-e0d8-492b-8681-0fceb9b9355a
+    <Name>k__BackingField: ForceObserve
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Tuto_Yankee_008
+    - Tuto_Yankee_009
+    - Tuto_Yankee_010
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 3a45b66a-98cf-488a-905a-d9f3383d8570
+    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 411, y: 781}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField:
+    - technicalCondition: 4
+      conditionIndex: 0
+      requiresPrevious: 0
     <ID>k__BackingField: 3a45b66a-98cf-488a-905a-d9f3383d8570
     <Name>k__BackingField: OnObserved
     <EventIndex>k__BackingField: 1
@@ -60,21 +90,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 411, y: 777}
-  - <Conditions>k__BackingField: []
-    <ID>k__BackingField: e66403d6-e0d8-492b-8681-0fceb9b9355a
-    <Name>k__BackingField: ForceObserve
-    <EventIndex>k__BackingField: 0
-    <Text>k__BackingField:
-    - Tuto_Yankee_008
-    - Tuto_Yankee_009
-    - Tuto_Yankee_010
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
-    <GroupID>k__BackingField: d9daec18-abbe-4d45-a026-ca01cc8f7da0
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 759, y: 777}
+    <Position>k__BackingField: {x: 749, y: 747}
   <OldGroupNames>k__BackingField:
   - BattleTutorial
   <OldUngroupedNodeNames>k__BackingField: []
@@ -84,5 +100,5 @@ MonoBehaviour:
       Value:
       - FirstTurn
       - EnemyFirstTurn
-      - OnObserved
       - ForceObserve
+      - OnObserved

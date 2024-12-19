@@ -11,7 +11,9 @@ public class DSNode : Node
 {
 
 
-    [SerializeField] public List<ConditionResultObject> Conditions = new List<ConditionResultObject>(); // List of conditions
+    public List<ConditionResultObject> Conditions = new List<ConditionResultObject>(); // List of conditions
+
+    public List<BattleCondition> BattleConditionParams { get; set; } // List of conditions
 
     public string ID { get; set; }
     public string DialogueName { get; set; }
@@ -26,6 +28,7 @@ public class DSNode : Node
 
     Foldout textFoldout;
     Foldout conditionFoldout;
+    Foldout battleConditionFoldout;
 
     public string selectedEventCaller = "None"; // Default dropdown value
     private DropdownField eventCallerDropdown;   // Reference to the dropdown
@@ -36,6 +39,7 @@ public class DSNode : Node
         Text = new List<string> { "Line" };
         graphView = dsGraphView;
         DialogueName = nodeName;
+        BattleConditionParams = null;
         Choices = new List<DSChoiceSaveData>();
         SetPosition(new Rect(position, Vector2.zero));
         mainContainer.AddToClassList("ds-node__main-container");
@@ -54,9 +58,35 @@ public class DSNode : Node
         {
             DuplicateNode();
         });
+
+
+        evt.menu.AppendAction("Set As Battle Dialogue", actionEvent =>
+        {
+            ToggleBattleCondition();
+        });
         base.BuildContextualMenu(evt);
     }
 
+    private void ToggleBattleCondition()
+    { 
+        if(BattleConditionParams == null)
+        {
+            BattleConditionParams = new List<BattleCondition>();
+            BattleConditionParams.Add(new BattleCondition());
+            AddBattleConditionElementUI();
+            battleConditionFoldout.style.display = DisplayStyle.Flex; // Show the foldout
+            battleConditionFoldout.value = true; // Expand it
+        }
+        else
+        {
+            BattleConditionParams = null;
+            battleConditionFoldout.RemoveAt(0);
+            battleConditionFoldout.style.display = BattleConditionParams != null ? DisplayStyle.Flex : DisplayStyle.None; // Hide initially
+
+        }
+
+
+    }
 
     public void DuplicateNode(bool changeName = true)
     {
@@ -139,6 +169,11 @@ public class DSNode : Node
         customDataContainer.Add(textFoldout);
 
         // Conditions Foldout (initially hidden)
+        battleConditionFoldout = DSElementUtility.CreateFoldout("Battle Conditions");
+        battleConditionFoldout.style.display = BattleConditionParams != null ? DisplayStyle.Flex : DisplayStyle.None; // Hide initially
+        AddBattleConditionElementUI();
+
+
         conditionFoldout = DSElementUtility.CreateFoldout("Conditions");
         conditionFoldout.style.display = Conditions.Count>0?DisplayStyle.Flex:DisplayStyle.None; // Hide initially
         AddConditionListUI();
@@ -158,6 +193,7 @@ public class DSNode : Node
         };
 
         customDataContainer.Add(conditionFoldout);
+        customDataContainer.Add(battleConditionFoldout);
         mainContainer.Insert(1, addConditionButton);
 
         // Event Caller Dropdown
@@ -169,6 +205,61 @@ public class DSNode : Node
         extensionContainer.Add(customDataContainer);
 
         RefreshExpandedState();
+    }
+
+    private void AddBattleConditionElementUI()
+    {
+        if(BattleConditionParams == null)
+        {
+            return;
+        }
+        BattleCondition BattleConditionParam = BattleConditionParams[0];
+        VisualElement conditionContainer = new VisualElement();
+        conditionContainer.AddClasses("ds-node__condition-container");
+
+        // ObjectField for BoolValue
+        EnumField battleConditionType = new EnumField("Battle Condition Type", BattleConditionType.None)
+        {
+            value = BattleConditionParam.technicalCondition
+        };
+
+        battleConditionType.RegisterValueChangedCallback(evt =>
+        {
+            BattleConditionParam.technicalCondition = (BattleConditionType)evt.newValue;
+        });
+        IntegerField battleConditionIndex = new IntegerField("Condition Index")
+        {
+            value = BattleConditionParam.conditionIndex
+        };
+
+        battleConditionIndex.RegisterValueChangedCallback(evt =>
+        {
+            BattleConditionParam.conditionIndex = (int)evt.newValue;
+        });
+
+
+
+
+        // Remove Button
+        Button removeButton = new Button(() =>
+        {
+            // Remove the condition from the list and update the UI
+            BattleConditionParams = null;
+            battleConditionFoldout.Remove(conditionContainer);
+            battleConditionFoldout.style.display = BattleConditionParams != null ? DisplayStyle.Flex : DisplayStyle.None; // Hide initially
+        })
+        {
+            text = "Remove"
+        };
+        removeButton.AddToClassList("ds-node__condition-remove-button");
+
+        // Add elements to the condition container
+        conditionContainer.Add(battleConditionType);
+        conditionContainer.Add(battleConditionIndex);
+        conditionContainer.Add(removeButton);
+
+        // Add condition container to the foldout
+        battleConditionFoldout.Add(conditionContainer);
     }
 
     private void AddTextListUI()

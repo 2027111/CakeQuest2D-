@@ -11,13 +11,13 @@ using UnityEngine.Timeline;
 public class Cutscene : BoolValue
 {
     public bool repeats = false;
-    public int dialogueIndex = 0;
 
-    private DSDialogueSO currentDialogueSO;
+    protected DSDialogueSO currentDialogueSO;
 
 
-    [SerializeField] private DSDialogueContainerSO dialogueContainer;
-    [SerializeField] private DSDialogueGroupSO dialogueGroup;
+
+    [SerializeField] protected DSDialogueContainerSO dialogueContainer;
+    [SerializeField] protected DSDialogueGroupSO dialogueGroup;
     [SerializeField] protected DSDialogueSO dialogue;
 
     [SerializeField] private bool groupedDialogues;
@@ -39,7 +39,6 @@ public class Cutscene : BoolValue
 
 
         jsonObject["repeats"] = repeats; // Adding additional data
-        jsonObject["dialogueIndex"] = dialogueIndex; // Adding additional data
 
         return jsonObject.ToString();
 
@@ -47,8 +46,14 @@ public class Cutscene : BoolValue
 
     }
 
-
-
+    public void PlayedCurrentLine()
+    {
+        Debug.Log("Played current line " + currentDialogueSO.name);
+        if(currentDialogueSO.BattleConditionParams != null)
+        {
+            currentDialogueSO.BattleConditionParams[0].played = true;
+        }
+    }
 
 
     public virtual Dialogue GetNextLine()
@@ -56,7 +61,6 @@ public class Cutscene : BoolValue
 
         Dialogue returnValue = GetCurrentLine();
         currentDialogueSO = currentDialogueSO.Choices[0].NextDialogue;
-        dialogueIndex++;
         return returnValue;
     }
 
@@ -68,10 +72,6 @@ public class Cutscene : BoolValue
 
     public virtual Dialogue GetCurrentLine()
     {
-        if (dialogueIndex >= dialogueContainer.DialogueGroups[dialogueGroup].Count)
-        {
-            return null;
-        }
 
 
 
@@ -87,7 +87,6 @@ public class Cutscene : BoolValue
     public virtual void ResetPlayed()
     {
             currentDialogueSO = dialogue;
-           dialogueIndex = 0;
     }
 }
 

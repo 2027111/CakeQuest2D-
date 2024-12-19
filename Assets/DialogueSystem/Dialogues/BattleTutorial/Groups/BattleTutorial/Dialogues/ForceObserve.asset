@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: ForceObserve
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField:
+  - technicalCondition: 1
+    conditionIndex: 1
+    requiresPrevious: 0
+    played: 1
   <DialogueName>k__BackingField: ForceObserve
   <EventIndex>k__BackingField: 0
   <Text>k__BackingField:
@@ -21,6 +26,6 @@ MonoBehaviour:
   - Tuto_Yankee_010
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 2f0341dadb327a042907d9b86b289568, type: 2}
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

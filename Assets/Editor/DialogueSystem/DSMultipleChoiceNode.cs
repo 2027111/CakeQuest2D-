@@ -16,6 +16,7 @@ public class DSMultipleChoiceNode : DSNode
             Text = "New Choice"
         };
         Choices.Add(choiceData);
+
     }
     private Port CreateChoicePort(object userData)
     {
@@ -24,6 +25,8 @@ public class DSMultipleChoiceNode : DSNode
         choicePort.userData = userData;
 
         DSChoiceSaveData choiceData = (DSChoiceSaveData)userData;
+        choicePort.portColor = Color.yellow;   // Change the port connection color to blue
+
 
         Button deleteChoiceButton = DSElementUtility.CreateButton("X", () =>
         {

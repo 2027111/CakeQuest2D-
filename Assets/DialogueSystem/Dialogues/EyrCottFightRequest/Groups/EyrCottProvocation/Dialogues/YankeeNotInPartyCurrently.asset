@@ -15,6 +15,7 @@ MonoBehaviour:
   <Conditions>k__BackingField:
   - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
     wantedResult: 0
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: YankeeNotInPartyCurrently
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:

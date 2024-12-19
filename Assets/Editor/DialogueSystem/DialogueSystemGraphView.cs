@@ -6,8 +6,51 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class DialogueSystemGraphView : GraphView
 {
+
+    [Serializable]
+    private class DSNodeDataWrapper
+    {
+        public List<DSNodeData> Nodes;
+
+        public DSNodeDataWrapper(List<DSNode> nodes)
+        {
+            Nodes = new List<DSNodeData>();
+            foreach (var node in nodes)
+            {
+                Nodes.Add(new DSNodeData(node));
+            }
+        }
+    }
+
+    [Serializable]
+    private class DSNodeData
+    {
+        public string DialogueName;
+        public List<DSChoiceSaveData> Choices;
+        public List<string> Text;
+        public DSDialogueType DialogueType;
+        public Vector2 Position;
+
+        public DSNodeData(DSNode node)
+        {
+            DialogueName = node.DialogueName;
+            DialogueType = node.DialogueType;
+            Text = node.Text;
+            Choices = node.Choices;
+            foreach(DSChoiceSaveData saveData in Choices)
+            {
+                saveData.NodeID = "";
+            }
+            Position = node.GetPosition().position;
+        }
+    }
+
+
+
+
 
     private DSSearchWindow searchWindow;
     private DialogueSystemEditorWindow editorWindow;
@@ -71,6 +114,13 @@ public class DialogueSystemGraphView : GraphView
             if (evt.ctrlKey && evt.keyCode == KeyCode.D)
             {
                 DuplicateSelectedNodes(); // Duplicate all selected DSNodes
+            }else if (evt.ctrlKey && evt.keyCode == KeyCode.C) // Copy
+            {
+                CopySelectedNodes();
+            }
+            else if (evt.ctrlKey && evt.keyCode == KeyCode.V) // Paste
+            {
+                PasteCopiedNodes();
             }
         });
     }
@@ -598,6 +648,46 @@ public class DialogueSystemGraphView : GraphView
 
 
 
+    }
+
+
+    private string copiedData;
+
+    private void CopySelectedNodes()
+    {
+        List<DSNode> selectedNodes = new List<DSNode>();
+
+        foreach (var element in selection)
+        {
+            if (element is DSNode node)
+            {
+                selectedNodes.Add(node);
+            }
+        }
+
+        if (selectedNodes.Count == 0) return;
+
+        // Serialize the selected nodes
+        copiedData = JsonUtility.ToJson(new DSNodeDataWrapper(selectedNodes));
+    }
+
+
+    private void PasteCopiedNodes()
+    {
+        if (string.IsNullOrEmpty(copiedData)) return;
+
+        DSNodeDataWrapper nodeDataWrapper = JsonUtility.FromJson<DSNodeDataWrapper>(copiedData);
+        if (nodeDataWrapper == null || nodeDataWrapper.Nodes == null) return;
+
+        Vector2 pasteOffset = new Vector2(50, 50); // Offset for pasted nodes
+        foreach (var nodeData in nodeDataWrapper.Nodes)
+        {
+            DSNode newNode = CreateNode(nodeData.DialogueName, nodeData.DialogueType, nodeData.Position + pasteOffset, false);
+            newNode.Choices = nodeData.Choices;
+            newNode.Text = nodeData.Text;
+            AddElement(newNode);
+            newNode.Draw();
+        }
     }
 
     public Vector2 GetLocalMousePosition(Vector2 mousePosition, bool isSearchWindow = false)

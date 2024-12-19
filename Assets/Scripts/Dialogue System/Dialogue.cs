@@ -12,12 +12,14 @@ public class Dialogue
 
 
 
-    [Inspectable]public ConditionResultObject[] condition;
+    [Inspectable] public ConditionResultObject[] condition;
     public DialogueEvent[] DialogueEvents { get; set; }
 
     [Inspectable] public string[] dialogueLineIds;
     [Inspectable] public ChoiceDialogue[] choices;
     [Inspectable] public DSDialogueChoiceData[] DialogueChoices;
+
+    [Inspectable] public DSDialogueType DialogueType;
     [Inspectable] public string EventIndex;
     [Inspectable] public UnityEvent OnOverEvent;
     [Inspectable] public UnityEvent OnInstantOverEvent;
@@ -29,7 +31,7 @@ public class Dialogue
         this.source = source;
     }
 
-   
+
     public Dialogue(Dialogue dialogue)
     {
 
@@ -45,6 +47,7 @@ public class Dialogue
             }
             this.condition = dialogue.condition;
             this.OnOverEvent = dialogue.OnOverEvent;
+            this.DialogueType = dialogue.DialogueType;
             this.OnInstantOverEvent = dialogue.OnInstantOverEvent;
             this.source = dialogue.source;
         }
@@ -55,7 +58,7 @@ public class Dialogue
         if (dialogue != null)
         {
             this.dialogueLineIds = dialogue.Text.ToArray();
-            if(this.dialogueLineIds.Length == 0)
+            if (this.dialogueLineIds.Length == 0)
             {
                 this.dialogueLineIds = null;
             }
@@ -67,9 +70,10 @@ public class Dialogue
             }
             this.condition = dialogue.Conditions.ToArray();
             this.EventIndex = dialogue.EventIndex;
+            this.DialogueType = dialogue.DialogueType;
             this.DialogueEvents = events;
             this.OnOverEvent = new UnityEvent();
-            if(dialogueOverCallback != null)
+            if (dialogueOverCallback != null)
             {
                 this.OnOverEvent.AddListener(dialogueOverCallback);
             }
@@ -77,32 +81,24 @@ public class Dialogue
     }
 
 
-    public Dialogue(string singleLine)
+    public void SetNextPlayed()
     {
-
-        if (!string.IsNullOrEmpty(singleLine))
+        if (DialogueChoices != null)
         {
-            this.dialogueLineIds = new string[1];
-            this.dialogueLineIds[0] = singleLine;
-            this.choices = null;
-            this.condition = null;
-            this.OnOverEvent = new UnityEvent();
-            this.OnInstantOverEvent = new UnityEvent();
+            foreach (DSDialogueChoiceData choiceData in DialogueChoices)
+            {
+                if (choiceData.NextDialogue)
+                {
+                    if (choiceData.NextDialogue.BattleConditionParams != null)
+                    {
+                        if (choiceData.NextDialogue.BattleConditionParams[0].requiresPrevious == true)
+                        {
+                            choiceData.NextDialogue.BattleConditionParams[0].requiresPrevious = false;
+                        }
+                    }
+                }
+            }
         }
-    }
-    public Dialogue(ChoiceDialogue dialogue)
-    {
-        if (dialogue.dialogueLineIds.Length > 0)
-        {
-            this.dialogueLineIds = dialogue.dialogueLineIds;
-        }
-        if (dialogue.choices.Length > 0)
-        {
-            this.choices = dialogue.choices;
-        }
-        this.condition = dialogue.condition;
-        this.OnOverEvent = dialogue.OnOverEvent;
-        this.OnInstantOverEvent = dialogue.OnInstantOverEvent;
     }
 
 
@@ -145,29 +141,13 @@ public class Dialogue
         return false;
     }
 
-    public ChoiceDialogue[] GetUsableChoices()
-    {
-        List<ChoiceDialogue> returnChocies = new List<ChoiceDialogue>();
-        if (choices == null)
-        {
-            return null;
-        }
-        foreach (ChoiceDialogue c in choices)
-        {
-            if (c.ConditionRespected())
-            {
-                returnChocies.Add(c);
-            }
-        }
-        if (returnChocies.Count == 0)
-        {
-            return null;
-        }
-        return returnChocies.ToArray();
-    }
 
     public DSDialogueChoiceData[] GetUsableChoicesList()
     {
+        if (DialogueType == DSDialogueType.SingleChoice)
+        {
+            return null;
+        }
         List<DSDialogueChoiceData> returnChocies = new List<DSDialogueChoiceData>();
         if (DialogueChoices == null)
         {
@@ -175,7 +155,7 @@ public class Dialogue
         }
         foreach (DSDialogueChoiceData c in DialogueChoices)
         {
-            if(c.NextDialogue == null)
+            if (c.NextDialogue == null)
             {
                 return null;
             }
@@ -194,7 +174,7 @@ public class Dialogue
     public bool HasOnePossibleChoice()
     {
 
-        return GetUsableChoicesList().Length == 1;
+        return GetUsableChoicesList()?.Length == 1;
     }
 
 

@@ -156,7 +156,7 @@ Transform:
   - {fileID: 8905397988316268901}
   - {fileID: 599362333297056024}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8695336453385115700
 MonoBehaviour:
@@ -433,9 +433,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvents: []
   started: 0
-  dialogueContainer: {fileID: 11400000, guid: d39a7d0d4e281f3429d2a4fb1ed1dda0, type: 2}
+  dialogueContainer: {fileID: 11400000, guid: 69ce57023adc98548a1af8ddb33e4a0b, type: 2}
   dialogueGroup: {fileID: 11400000, guid: 45deae7241edad548938bfd86357610d, type: 2}
-  dialogue: {fileID: 11400000, guid: a361213a0fd2a2a4084439aabdd145fa, type: 2}
+  dialogue: {fileID: 11400000, guid: 4341f95d91082764e835b62e042b1f27, type: 2}
   groupedDialogues: 0
   startingDialoguesOnly: 1
   selectedDialogueGroupIndex: 0
