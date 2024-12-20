@@ -15,6 +15,7 @@ MonoBehaviour:
   <Conditions>k__BackingField:
   - boolValue: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
     wantedResult: 0
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: OvenQuestNotCompleted
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:

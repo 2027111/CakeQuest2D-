@@ -34,6 +34,52 @@ public static class DSIOUtility
         loadedGroups = new Dictionary<string, DSGroup>();
         loadedNodes = new Dictionary<string, DSNode>();
     }
+    public static void Delete(Action callback = null)
+    {
+        // Load the graph asset
+        string path = "Assets/Editor/DialogueSystem/Graphs";
+        DSGraphSaveDataSO graphData = LoadAsset<DSGraphSaveDataSO>(path, graphFileName+"Graph");
+
+        if (graphData == null)
+        {
+            EditorUtility.DisplayDialog(
+                "Could not Load File",
+                "The file at the following path could not be found: \n\n" +
+                $"Assets/Editor/DialogueSystem/Graphs/{graphFileName} \n\n" +
+                "Make sure you chose the correct file and it's placed in the folder path mentioned above.",
+                "Okay."
+            );
+            return;
+        }
+
+        if(!EditorUtility.DisplayDialog(
+            $"Delete {graphFileName}?",
+
+                "Are you sure you want to delete the file at the following path: \n\n" +
+                $"Assets/Editor/DialogueSystem/Graphs/{graphFileName}?",
+                "Yes",
+                "Cancel"
+            ))
+        {
+            return;
+        }
+
+        RemoveAsset(path, graphFileName + "Graph");
+
+        // Delete the ScriptableObject folder
+        string scriptableObjectFolderPath = containerFolderPath;
+        if (AssetDatabase.IsValidFolder(scriptableObjectFolderPath))
+        {
+            RemoveFolder(scriptableObjectFolderPath);
+        }
+
+        // Notify the user
+        EditorUtility.DisplayDialog("Delete Successful", "The graph and associated folder have been deleted.", "OK");
+
+        AssetDatabase.Refresh();
+        if (callback != null) { callback(); }
+    }
+
 
     public static void Load()
     {
@@ -85,6 +131,7 @@ public static class DSIOUtility
             }
         }
     }
+
 
     private static void LoadNodes(List<DSNodeSaveData> nodes)
     {

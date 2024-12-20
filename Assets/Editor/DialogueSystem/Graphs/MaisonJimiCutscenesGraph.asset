@@ -16,18 +16,22 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
     <Name>k__BackingField: IntroCutscene
-    <Position>k__BackingField: {x: 260, y: 201}
+    <Position>k__BackingField: {x: -1000, y: -23}
   - <ID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
     <Name>k__BackingField: OvenCutscene
-    <Position>k__BackingField: {x: 260, y: 602}
+    <Position>k__BackingField: {x: -1000, y: 378}
   - <ID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
     <Name>k__BackingField: OvenCheck
-    <Position>k__BackingField: {x: -139, y: 1008}
+    <Position>k__BackingField: {x: -1399, y: 784}
   - <ID>k__BackingField: c5201f56-4450-4d6e-8295-60d6962edb40
     <Name>k__BackingField: DONOTGOTHERE
-    <Position>k__BackingField: {x: 850.0001, y: 1019.00006}
+    <Position>k__BackingField: {x: -410, y: 795}
+  - <ID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <Name>k__BackingField: FigurineInteraction
+    <Position>k__BackingField: {x: 717, y: -234}
   <Nodes>k__BackingField:
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: f7147c28-af40-4ef0-93f3-be63873dbdcd
     <Name>k__BackingField: IntroCutsceneInitial
     <EventIndex>k__BackingField: None
@@ -38,8 +42,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: dccb9241-de3a-4177-a0fd-ee41cae02e74
     <GroupID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 285, y: 260}
+    <Position>k__BackingField: {x: -975, y: 36}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: dccb9241-de3a-4177-a0fd-ee41cae02e74
     <Name>k__BackingField: IntroCutscene2
     <EventIndex>k__BackingField: None
@@ -51,8 +56,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 54e53b65-ff1f-4c97-af15-150c18e7c212
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 734, y: 260}
+    <Position>k__BackingField: {x: -526, y: 36}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: b56ffc29-437e-4a76-8069-74455bb1e402
     <Name>k__BackingField: OvenCheck
     <EventIndex>k__BackingField: None
@@ -65,10 +71,11 @@ MonoBehaviour:
       <NodeID>k__BackingField: b101adeb-2fc6-42b6-aff5-b7f702cd9533
     <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
     <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: -114, y: 1142}
+    <Position>k__BackingField: {x: -1374, y: 918}
   - <Conditions>k__BackingField:
     - boolValue: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
       wantedResult: 1
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 3505e752-a7d5-4e6a-a7eb-153a1e27f0fe
     <Name>k__BackingField: OvenQuestSucceed
     <EventIndex>k__BackingField: 0
@@ -79,10 +86,11 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 336, y: 1067}
+    <Position>k__BackingField: {x: -924, y: 843}
   - <Conditions>k__BackingField:
     - boolValue: {fileID: 11400000, guid: 3218805e2869dce49a53dd9e813341da, type: 2}
       wantedResult: 0
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: b101adeb-2fc6-42b6-aff5-b7f702cd9533
     <Name>k__BackingField: OvenQuestNotCompleted
     <EventIndex>k__BackingField: None
@@ -93,8 +101,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 6fdd5afd-2db2-4954-b7da-226740021935
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 336, y: 1446}
+    <Position>k__BackingField: {x: -924, y: 1222}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 81efbadd-711b-4ea9-8b0f-72d1d2e3ff62
     <Name>k__BackingField: OvenCutscene3
     <EventIndex>k__BackingField: None
@@ -105,8 +114,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1506, y: 661}
+    <Position>k__BackingField: {x: 246, y: 437}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 86bcb588-bb2d-41e5-b56f-21ecc312d67f
     <Name>k__BackingField: OvenCutscene2
     <EventIndex>k__BackingField: None
@@ -117,8 +127,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 81efbadd-711b-4ea9-8b0f-72d1d2e3ff62
     <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1065, y: 661}
+    <Position>k__BackingField: {x: -195, y: 437}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 3cc6ac0b-e5b6-42cc-ae96-938e54f5509a
     <Name>k__BackingField: OvenCutscene
     <EventIndex>k__BackingField: None
@@ -129,8 +140,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: fc5af136-1e72-4b80-b640-1e52bad33953
     <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 285, y: 661}
+    <Position>k__BackingField: {x: -975, y: 437}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: fc5af136-1e72-4b80-b640-1e52bad33953
     <Name>k__BackingField: OvenCutscene1
     <EventIndex>k__BackingField: None
@@ -141,8 +153,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 86bcb588-bb2d-41e5-b56f-21ecc312d67f
     <GroupID>k__BackingField: 55320555-3660-43f0-90fa-40a4884f3ab6
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 668, y: 661}
+    <Position>k__BackingField: {x: -592, y: 437}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: a3345363-0c0a-4077-8f56-dae7ac8fb86d
     <Name>k__BackingField: QuestSuccess
     <EventIndex>k__BackingField: None
@@ -153,8 +166,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: -135, y: 656}
+    <Position>k__BackingField: {x: -1395, y: 432}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: a58171e6-bd5a-4bfd-a476-642ce0a2c6f1
     <Name>k__BackingField: DONTGOTHERE
     <EventIndex>k__BackingField: None
@@ -165,14 +179,102 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: c5201f56-4450-4d6e-8295-60d6962edb40
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 875, y: 1078}
+    <Position>k__BackingField: {x: -385, y: 854}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 6dfa01c1-a034-4c32-9c97-03942212532a
+    <Name>k__BackingField: StartingGokuNode
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField: []
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: first
+      <NodeID>k__BackingField: ac4e128e-2049-4e78-9bc0-5ddff0d79f22
+    - <Text>k__BackingField: second
+      <NodeID>k__BackingField: 002666a1-bd00-4207-9269-020e1e5fb498
+    - <Text>k__BackingField: third
+      <NodeID>k__BackingField: 3f5ede26-d2c1-4085-9527-6d6c0a80af0b
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 742, y: 116}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 0
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 0
+    - boolValue: {fileID: 11400000, guid: 314ab5a703074ef4c88be5d5ee524ed4, type: 2}
+      wantedResult: 0
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: ac4e128e-2049-4e78-9bc0-5ddff0d79f22
+    <Name>k__BackingField: InteractedFirstTime
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1206, y: -175}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 1
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 0
+    - boolValue: {fileID: 11400000, guid: 314ab5a703074ef4c88be5d5ee524ed4, type: 2}
+      wantedResult: 0
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 002666a1-bd00-4207-9269-020e1e5fb498
+    <Name>k__BackingField: InteractedTwice
+    <EventIndex>k__BackingField: 1
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_002
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1754, y: 162}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: f2beaf71acb719d478036d36ad461a1b, type: 2}
+      wantedResult: 1
+    - boolValue: {fileID: 11400000, guid: 3bfb6094f882b364da38ded73352e7fe, type: 2}
+      wantedResult: 1
+    - boolValue: {fileID: 11400000, guid: 314ab5a703074ef4c88be5d5ee524ed4, type: 2}
+      wantedResult: 0
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 3f5ede26-d2c1-4085-9527-6d6c0a80af0b
+    <Name>k__BackingField: InteractedThrice
+    <EventIndex>k__BackingField: 2
+    <Text>k__BackingField:
+    - Interaction_Jimi_Figurine_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 47f2dc41-538d-4318-9f1c-432e869a8d99
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1206, y: 384}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: d61a3e07-daa1-443b-ba6f-45f3d0cbd1c5
+    <Name>k__BackingField: JimiSilent
+    <EventIndex>k__BackingField: 0
+    <Text>k__BackingField:
+    - Interaction_Jimi_Frame_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1842, y: 918}
   <OldGroupNames>k__BackingField:
   - IntroCutscene
   - OvenCutscene
   - OvenCheck
   - DONOTGOTHERE
+  - FigurineInteraction
   <OldUngroupedNodeNames>k__BackingField:
   - QuestSuccess
+  - JimiSilent
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: IntroCutscene
@@ -193,3 +295,9 @@ MonoBehaviour:
     - Key: DONOTGOTHERE
       Value:
       - DONTGOTHERE
+    - Key: FigurineInteraction
+      Value:
+      - StartingGokuNode
+      - InteractedFirstTime
+      - InteractedTwice
+      - InteractedThrice

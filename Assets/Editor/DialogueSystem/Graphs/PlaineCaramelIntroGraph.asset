@@ -16,39 +16,22 @@ MonoBehaviour:
   <Groups>k__BackingField:
   - <ID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
     <Name>k__BackingField: ArrivedOnShore
-    <Position>k__BackingField: {x: 100, y: -301}
+    <Position>k__BackingField: {x: -1188, y: -245}
   - <ID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <Name>k__BackingField: MeetYankeeAndEyr
-    <Position>k__BackingField: {x: 100, y: 169}
+    <Position>k__BackingField: {x: -1188, y: 225}
   - <ID>k__BackingField: 3de409ef-3feb-4ed4-b1ef-8d10b7f0bc06
     <Name>k__BackingField: EyrCottPostFight
-    <Position>k__BackingField: {x: 97, y: 1117}
+    <Position>k__BackingField: {x: -1191, y: 1173}
+  - <ID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <Name>k__BackingField: EyrCottProvocation
+    <Position>k__BackingField: {x: -719, y: 1101}
+  - <ID>k__BackingField: 3b0a52be-0e10-46c6-9949-4697cde7220f
+    <Name>k__BackingField: YankeeJoining
+    <Position>k__BackingField: {x: 677, y: 1106}
   <Nodes>k__BackingField:
   - <Conditions>k__BackingField: []
-    <ID>k__BackingField: 23127569-fb1e-4ff3-9790-4205b6d175e4
-    <Name>k__BackingField: ArrivedOnShoreInitial
-    <EventIndex>k__BackingField: None
-    <Text>k__BackingField:
-    - Scene3_PlainesCaramel_001
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 6777c428-ed22-4e9f-8914-fdc1782e297b
-    <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 125, y: -242}
-  - <Conditions>k__BackingField: []
-    <ID>k__BackingField: 6777c428-ed22-4e9f-8914-fdc1782e297b
-    <Name>k__BackingField: ArrivedOnShore1
-    <EventIndex>k__BackingField: None
-    <Text>k__BackingField:
-    - Scene3_PlainesCaramel_002
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: fa91fe87-2350-48e2-ad1c-bf0812074666
-    <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
-    <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 636, y: -242}
-  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: fa91fe87-2350-48e2-ad1c-bf0812074666
     <Name>k__BackingField: ArrivedOnShore2
     <EventIndex>k__BackingField: None
@@ -59,8 +42,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: d26ec95c-6474-4600-b0ce-ae541063b9b0
     <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1121, y: -242}
+    <Position>k__BackingField: {x: -167, y: -186}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: d26ec95c-6474-4600-b0ce-ae541063b9b0
     <Name>k__BackingField: ArrivedOnShore3
     <EventIndex>k__BackingField: None
@@ -71,8 +55,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1601, y: -242}
+    <Position>k__BackingField: {x: 313, y: -186}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 3b0bb0af-9437-4b18-82c4-e69e7db7ea4d
     <Name>k__BackingField: SeeYankEyrInitial
     <EventIndex>k__BackingField: None
@@ -83,8 +68,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: bdcb1215-e580-4d1a-8a9c-af0138cb475b
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 125, y: 228}
+    <Position>k__BackingField: {x: -1163, y: 284}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: bdcb1215-e580-4d1a-8a9c-af0138cb475b
     <Name>k__BackingField: SeeYankEyr2
     <EventIndex>k__BackingField: None
@@ -97,8 +83,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 13da9eb9-4972-42ff-8711-2ac94caced09
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 636, y: 228}
+    <Position>k__BackingField: {x: -652, y: 284}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 00bc36a2-c16e-402a-a9f3-fc094dfd01ef
     <Name>k__BackingField: SeeYankEyr5
     <EventIndex>k__BackingField: None
@@ -109,8 +96,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: beead91a-a10f-4937-a1fa-51d418b588d6
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 127, y: 669}
+    <Position>k__BackingField: {x: -1161, y: 725}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: beead91a-a10f-4937-a1fa-51d418b588d6
     <Name>k__BackingField: SeeYankEyr6
     <EventIndex>k__BackingField: None
@@ -122,8 +110,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 369b519a-63bc-49f2-8f66-dfd7d52c534e
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 614, y: 669}
+    <Position>k__BackingField: {x: -674, y: 725}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 369b519a-63bc-49f2-8f66-dfd7d52c534e
     <Name>k__BackingField: SeeYankEyr7
     <EventIndex>k__BackingField: None
@@ -135,8 +124,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 4f02257e-1cc6-4f9e-b817-ff10baf4279b
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1095, y: 669}
+    <Position>k__BackingField: {x: -193, y: 725}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 4f02257e-1cc6-4f9e-b817-ff10baf4279b
     <Name>k__BackingField: SeeYankEyr8
     <EventIndex>k__BackingField: None
@@ -147,8 +137,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 973d3af2-3827-410a-83ea-733c8e96cf1f
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1544, y: 669}
+    <Position>k__BackingField: {x: 256, y: 725}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 973d3af2-3827-410a-83ea-733c8e96cf1f
     <Name>k__BackingField: SeeYankEyr9
     <EventIndex>k__BackingField: None
@@ -159,8 +150,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1951, y: 669}
+    <Position>k__BackingField: {x: 663, y: 725}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 13da9eb9-4972-42ff-8711-2ac94caced09
     <Name>k__BackingField: SeeYankEyr3
     <EventIndex>k__BackingField: None
@@ -171,8 +163,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 1f2d10be-fed8-4b34-9877-00d4ba53cf23
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1095, y: 228}
+    <Position>k__BackingField: {x: -193, y: 284}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: 1f2d10be-fed8-4b34-9877-00d4ba53cf23
     <Name>k__BackingField: SeeYankEyr4
     <EventIndex>k__BackingField: None
@@ -183,8 +176,9 @@ MonoBehaviour:
       <NodeID>k__BackingField: 00bc36a2-c16e-402a-a9f3-fc094dfd01ef
     <GroupID>k__BackingField: 00d00b97-b64a-4895-b49e-c9c5d6b6f0d9
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 1544, y: 228}
+    <Position>k__BackingField: {x: 256, y: 284}
   - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
     <ID>k__BackingField: b4b8c2a1-8ca5-44ad-a978-b522cbc7fb78
     <Name>k__BackingField: TutoBattleWon
     <EventIndex>k__BackingField: None
@@ -200,20 +194,178 @@ MonoBehaviour:
       <NodeID>k__BackingField: 
     <GroupID>k__BackingField: 3de409ef-3feb-4ed4-b1ef-8d10b7f0bc06
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 122, y: 1176}
+    <Position>k__BackingField: {x: -1166, y: 1232}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 23127569-fb1e-4ff3-9790-4205b6d175e4
+    <Name>k__BackingField: ArrivedOnShoreInitial
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene3_PlainesCaramel_001
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 6777c428-ed22-4e9f-8914-fdc1782e297b
+    <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -1163, y: -186}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 6777c428-ed22-4e9f-8914-fdc1782e297b
+    <Name>k__BackingField: ArrivedOnShore1
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Scene3_PlainesCaramel_002
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: fa91fe87-2350-48e2-ad1c-bf0812074666
+    <GroupID>k__BackingField: 7112a2e6-2123-41a2-ba38-6b20d4db41d4
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -652, y: -186}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 647cd411-2958-4f7c-b3ec-7c842c8e1f62
+    <Name>k__BackingField: AcceptFight
+    <EventIndex>k__BackingField: 6
+    <Text>k__BackingField:
+    - Misc_Jimi_003
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 332, y: 1315}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 23537d29-d357-43d7-a89b-4590386ac19a
+    <Name>k__BackingField: RefuseFight
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Jimi_004
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 332, y: 1679}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 36de06ce-36c5-49e7-b01f-0a7e0a4445dd
+    <Name>k__BackingField: EyrCottProvoc
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - EyrCott_pc_0
+    - EyrCott_pc_1
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: yhere
+      <NodeID>k__BackingField: 4db15d14-cfaf-408d-9d8e-d1641233771c
+    - <Text>k__BackingField: ynohere
+      <NodeID>k__BackingField: 1fdcb57c-240f-49b8-a3d5-5bfff479bd50
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -694, y: 1315}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
+      wantedResult: 0
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 4db15d14-cfaf-408d-9d8e-d1641233771c
+    <Name>k__BackingField: YankeeNotInPartyCurrently
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - EyrCott_pcc_0
+    - EyrCott_pcc_1
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: -222, y: 1160}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 85eee37b-ec2f-4fc8-ac52-a2dd8e73245f
+    <Name>k__BackingField: FightRequestQuestion
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Fight_Question
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Misc_Yes
+      <NodeID>k__BackingField: 647cd411-2958-4f7c-b3ec-7c842c8e1f62
+    - <Text>k__BackingField: Misc_No
+      <NodeID>k__BackingField: 23537d29-d357-43d7-a89b-4590386ac19a
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 10, y: 1679}
+  - <Conditions>k__BackingField:
+    - boolValue: {fileID: 11400000, guid: d8753cc2c8a56954785179f9dec22a7f, type: 2}
+      wantedResult: 1
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 1fdcb57c-240f-49b8-a3d5-5bfff479bd50
+    <Name>k__BackingField: YankeeInParty
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - EyrCott_pc_2
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 85eee37b-ec2f-4fc8-ac52-a2dd8e73245f
+    <GroupID>k__BackingField: c2986de6-f379-4a15-b60d-f26597169c8f
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: -392, y: 1651}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 4ed84fc1-8cea-49e5-821e-f05204ba4da0
+    <Name>k__BackingField: YankeeJoinAccept
+    <EventIndex>k__BackingField: 8
+    <Text>k__BackingField:
+    - Misc_Yankee_JoinedTeam
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 3b0a52be-0e10-46c6-9949-4697cde7220f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1147, y: 1165}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 225ae628-badb-47b4-9141-63e6a8921b1d
+    <Name>k__BackingField: YankeeJoinRefused
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Yankee_RefusedJoining
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 3b0a52be-0e10-46c6-9949-4697cde7220f
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 1231, y: 1514}
+  - <Conditions>k__BackingField: []
+    <BattleConditionParams>k__BackingField: []
+    <ID>k__BackingField: 3fdfe597-a0ac-417a-8650-caa744cf82f8
+    <Name>k__BackingField: YankeeJoin
+    <EventIndex>k__BackingField: None
+    <Text>k__BackingField:
+    - Misc_Yankee_Jcowboy
+    - Misc_Yankee_Join
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Misc_Yes
+      <NodeID>k__BackingField: 4ed84fc1-8cea-49e5-821e-f05204ba4da0
+    - <Text>k__BackingField: Misc_No
+      <NodeID>k__BackingField: 225ae628-badb-47b4-9141-63e6a8921b1d
+    <GroupID>k__BackingField: 3b0a52be-0e10-46c6-9949-4697cde7220f
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 702, y: 1323}
   <OldGroupNames>k__BackingField:
   - ArrivedOnShore
   - MeetYankeeAndEyr
   - EyrCottPostFight
+  - EyrCottProvocation
+  - YankeeJoining
   <OldUngroupedNodeNames>k__BackingField: []
   <OldGroupedNodeNames>k__BackingField:
     list:
     - Key: ArrivedOnShore
       Value:
-      - ArrivedOnShoreInitial
-      - ArrivedOnShore1
       - ArrivedOnShore2
       - ArrivedOnShore3
+      - ArrivedOnShoreInitial
+      - ArrivedOnShore1
     - Key: MeetYankeeAndEyr
       Value:
       - SeeYankEyrInitial
@@ -228,3 +380,16 @@ MonoBehaviour:
     - Key: EyrCottPostFight
       Value:
       - TutoBattleWon
+    - Key: EyrCottProvocation
+      Value:
+      - AcceptFight
+      - RefuseFight
+      - EyrCottProvoc
+      - YankeeNotInPartyCurrently
+      - FightRequestQuestion
+      - YankeeInParty
+    - Key: YankeeJoining
+      Value:
+      - YankeeJoinAccept
+      - YankeeJoinRefused
+      - YankeeJoin
