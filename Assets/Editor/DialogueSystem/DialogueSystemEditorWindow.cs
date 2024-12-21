@@ -88,7 +88,7 @@ public class DialogueSystemEditorWindow : EditorWindow
         icon.image = AssetDatabase.LoadAssetAtPath<Texture2D>($"Assets/Editor/Icons/{iconName}");
         icon.style.width = 20;  // Set the width of the icon
         icon.style.height = 20; // Set the height of the icon
-        icon.style.marginRight = 8; // Add some space between the icon and the text
+        icon.style.marginRight = 10; // Add some space between the icon and the text
 
         // Create a label for the text
         Label label = new Label(button.text);
