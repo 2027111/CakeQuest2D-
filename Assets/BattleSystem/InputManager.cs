@@ -49,10 +49,12 @@ public class InputManager : Controller
     {
         if (context.performed)
         {
+            JumpIsPressed = true;
             OnJumpPressed?.Invoke();
         }
         if (context.canceled)
         {
+            JumpIsPressed = false ;
             OnJumpRelease?.Invoke();
         }
         jump = context.action.triggered;
@@ -65,10 +67,12 @@ public class InputManager : Controller
 
             if (context.performed)
             {
+                SelectIsPressed = true;
                 OnSelectPressed?.Invoke();
             }
             if (context.canceled)
             {
+                SelectIsPressed = false;
                 OnSelectReleased?.Invoke();
             }
             attack = context.action.triggered;
@@ -85,10 +89,12 @@ public class InputManager : Controller
     {
         if (context.performed)
         {
+            ReturnIsPressed = true;
             OnReturnPressed?.Invoke();
         }
         if (context.canceled)
         {
+            ReturnIsPressed = false;
             OnReturnReleased?.Invoke();
         }
         attack = context.action.triggered;
@@ -98,7 +104,13 @@ public class InputManager : Controller
         // Check if the interaction is a press (button down)
         if (callback.started)
         {
+            PauseIsPressed = true;
             OnPausedPressed?.Invoke();
+        }
+        if (callback.canceled)
+        {
+            PauseIsPressed = false;
+            OnPausedReleased?.Invoke();
         }
     }
 

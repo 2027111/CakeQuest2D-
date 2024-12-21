@@ -427,12 +427,18 @@ public class GameSaveManager : MonoBehaviour
 
     public JSONSaveDataWrapper ReadDefaultSaveFile(SaveFiles path)
     {
-        string filePath = GetDefaultFilePath(path.ToString());
-        if (File.Exists(filePath))
+
+
+        string defaultPath = "default_save_file";
+
+
+
+        TextAsset jsonFile = Resources.Load<TextAsset>($"{defaultPath}");
+
+        if(jsonFile != null)
         {
             Debug.Log("Loaded Default File");
-            var json = File.ReadAllText(filePath);
-            JSONSaveDataWrapper listWrapper = JsonUtility.FromJson<JSONSaveDataWrapper>(json);
+            JSONSaveDataWrapper listWrapper = JsonUtility.FromJson<JSONSaveDataWrapper>(jsonFile.text);
             return listWrapper;
         }
         return null;

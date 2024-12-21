@@ -15,7 +15,6 @@ MonoBehaviour:
   UID: 89c05f0cb2603a3469e512d2d30c4ba0
   RuntimeValue: 0
   repeats: 0
-  dialogueIndex: 0
   dialogueContainer: {fileID: 11400000, guid: 209129c5037f14f4fb60d1276eb06a27, type: 2}
   dialogueGroup: {fileID: 11400000, guid: 0e3d85b278d078b408a9a7c5fffaef31, type: 2}
   dialogue: {fileID: 11400000, guid: 5660051876805e543b4a56d2a6c52c46, type: 2}

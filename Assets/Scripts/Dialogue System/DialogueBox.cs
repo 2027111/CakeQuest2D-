@@ -170,7 +170,6 @@ public class DialogueBox : MonoBehaviour
     {
         Debug.Log("Cancel Dialogue");
         ForceStop();
-        StartCoroutine(ShowDialogueBoxAlpha(false));
 
     }
     public void StartDialogueDelayed(Dialogue dialogue, GameObject playerObject, GameObject originObject, GameState state)
@@ -277,7 +276,7 @@ public class DialogueBox : MonoBehaviour
                     string lineId = newDialogue.dialogue.dialogueLineIds[0];
                     LineInfo lineInfo = new LineInfo(lineId);
                     SetupLine(lineInfo, false);
-                    StartCoroutine(ShowDialogueBoxAlpha(true));
+                    showBoxCoroutine = StartCoroutine(ShowDialogueBoxAlpha(true));
 
                     if (playerObject == null)
                     {
@@ -544,7 +543,7 @@ public class DialogueBox : MonoBehaviour
 
                         voiceClipSource?.Stop();
                         EndDialogue();
-                        StartCoroutine(ShowDialogueBoxAlpha(false));
+                        showBoxCoroutine = StartCoroutine(ShowDialogueBoxAlpha(false));
 
 
 
@@ -568,7 +567,7 @@ public class DialogueBox : MonoBehaviour
                         else
                         {
                             EndDialogue();
-                            StartCoroutine(ShowDialogueBoxAlpha(false));
+                            showBoxCoroutine = StartCoroutine(ShowDialogueBoxAlpha(false));
 
                         }
                     }
@@ -790,19 +789,36 @@ public class DialogueBox : MonoBehaviour
 
     public void ForceStop()
     {
+
+        if (showBoxCoroutine != null)
+        {
+            StopCoroutine(showBoxCoroutine);
+        }
+        if(setTextCoroutine != null)
+        {
+            StopCoroutine(setTextCoroutine);
+        }
         EndDialogue();
         ClearChoiceBox();
         ResetBox();
         isShowing = false;
         group.alpha = 0;
+
+
+
+        StartCoroutine(ShowDialogueBoxAlpha(false, true));
     }
 
-    IEnumerator MakeBoxAppear(bool show)
+    IEnumerator MakeBoxAppear(bool show, bool instant = false)
     {
 
         float target = show ? 1 : 0;
         float start = group.alpha;
         float duration = 0;
+        if (instant)
+        {
+            duration = apparitionTime;
+        }
         while (duration < apparitionTime)
         {
             group.alpha = Mathf.Lerp(start, target, duration / apparitionTime);
@@ -814,7 +830,7 @@ public class DialogueBox : MonoBehaviour
 
         yield return new WaitForSeconds(apparitionTime);
     }
-    IEnumerator ShowDialogueBoxAlpha(bool show)
+    IEnumerator ShowDialogueBoxAlpha(bool show, bool instant = false)
     {
         ClearChoiceBox();
 
@@ -835,7 +851,7 @@ public class DialogueBox : MonoBehaviour
                 }
 
             }
-            yield return MakeBoxAppear(show);
+            yield return MakeBoxAppear(show, instant);
 
             if (isShowing)
             {
@@ -850,6 +866,7 @@ public class DialogueBox : MonoBehaviour
             }
             yield return new WaitForSeconds(.02f);
         }
+        showBoxCoroutine = null;
     }
 
     IEnumerator GraduallySetText(LineInfo info)

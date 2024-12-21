@@ -20,6 +20,7 @@ public class OverworldTimeline : Timeline
         if (storagePlay.StartRoom != null)
         {
             PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(storagePlay.StartRoom);
+            
         }
 
         playableDirector.playableAsset = storagePlay.CutsceneToPlay;
@@ -37,6 +38,12 @@ public class OverworldTimeline : Timeline
     public override void CutsceneOver()
     {
         base.CutsceneOver();
+
+
+        if (storagePlay.EndRoom != null)
+        {
+            PlayerInfoStorage.CurrentInfoStorage.SetNewRoom(storagePlay.EndRoom, true);
+        }
         Character.Player.GetComponent<Character>().ChangeState(new PlayerControlsBehaviour());
         OnCutsceneOver?.Invoke();
     }

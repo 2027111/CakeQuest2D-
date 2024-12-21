@@ -15,13 +15,13 @@ MonoBehaviour:
   UID: cc5e26914c5c6e346948f02a9bde52fa
   RuntimeValue: 0
   repeats: 0
-  dialogueIndex: 0
   dialogueContainer: {fileID: 11400000, guid: 06ee8e221df916840ba3a6289c2668ae, type: 2}
   dialogueGroup: {fileID: 11400000, guid: 32ab52a2378493f46aab189f4de03172, type: 2}
   dialogue: {fileID: 11400000, guid: 6487a647ddedcf64992d933a69e383c5, type: 2}
   groupedDialogues: 1
   startingDialoguesOnly: 1
-  selectedDialogueGroupIndex: 0
+  selectedDialogueGroupIndex: 1
   selectedDialogueIndex: 0
   StartRoom: {fileID: 11400000, guid: 00037c06d2ef9654385cc377a131ea57, type: 2}
+  EndRoom: {fileID: 0}
   CutsceneToPlay: {fileID: 11400000, guid: 35b4a3ff5dc69d64f972fcf988e6114c, type: 2}

@@ -28,7 +28,14 @@ public abstract class Controller : MonoBehaviour
     public EventHandler OnSecretSelectPressed;
 
     public EventHandler OnPausedPressed;
+    public EventHandler OnPausedReleased;
 
+
+
+    public bool JumpIsPressed;
+    public bool ReturnIsPressed;
+    public bool SelectIsPressed;
+    public bool PauseIsPressed;
 
 
     public delegate void MovementHandler(Vector2 movement);

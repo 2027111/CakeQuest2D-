@@ -120,12 +120,16 @@ public class PlayerInfoStorage : MonoBehaviour
         InfoStorage.nextPosition = newPos;
     }
 
-    public void SetNewRoom(RoomInfo newRoom)
+    public void SetNewRoom(RoomInfo newRoom, bool forced = false)
     {
         if (newRoom != InfoStorage.nextRoomInfo)
         {
             InfoStorage.nextRoomInfo.SetValue(newRoom);
             RoomTitleCard.ShowTitle(InfoStorage.nextRoomInfo.roomName);
+            if (forced)
+            {
+                Camera.main.GetComponentInParent<CameraMovement>().ForceToTarget();
+            }
         }
     }
 

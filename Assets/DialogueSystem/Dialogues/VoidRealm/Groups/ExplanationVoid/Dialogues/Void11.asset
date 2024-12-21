@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Void11
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: Void11
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:

@@ -28,6 +28,7 @@ public class Cutscene : BoolValue
     [SerializeField] private int selectedDialogueIndex = 0;
 
     public RoomInfo StartRoom;
+    public RoomInfo EndRoom;
     
     public TimelineAsset CutsceneToPlay;
 
@@ -49,7 +50,7 @@ public class Cutscene : BoolValue
     public void PlayedCurrentLine()
     {
         Debug.Log("Played current line " + currentDialogueSO.name);
-        if(currentDialogueSO.BattleConditionParams != null)
+        if(currentDialogueSO?.BattleConditionParams != null)
         {
             currentDialogueSO.BattleConditionParams[0].played = true;
         }
@@ -60,7 +61,7 @@ public class Cutscene : BoolValue
     {
 
         Dialogue returnValue = GetCurrentLine();
-        currentDialogueSO = currentDialogueSO.Choices[0].NextDialogue;
+        currentDialogueSO = currentDialogueSO?.Choices[0].NextDialogue;
         return returnValue;
     }
 
@@ -87,6 +88,10 @@ public class Cutscene : BoolValue
     public virtual void ResetPlayed()
     {
             currentDialogueSO = dialogue;
+    }
+    public virtual void MakeUnPlayable()
+    {
+        currentDialogueSO = null;
     }
 }
 

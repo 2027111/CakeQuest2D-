@@ -24,6 +24,7 @@ public class DSCutsceneInspector : Editor
 
     private SerializedProperty repeatsProperty;
     private SerializedProperty startRoomProperty;
+    private SerializedProperty endRoomProperty;
     private SerializedProperty cutsceneToPlayProperty;
 
     // Inherited from BoolValue
@@ -41,6 +42,7 @@ public class DSCutsceneInspector : Editor
 
         repeatsProperty = serializedObject.FindProperty("repeats");
         startRoomProperty = serializedObject.FindProperty("StartRoom");
+        endRoomProperty = serializedObject.FindProperty("EndRoom");
         cutsceneToPlayProperty = serializedObject.FindProperty("CutsceneToPlay");
 
         runtimeValueProperty = serializedObject.FindProperty("RuntimeValue");
@@ -132,6 +134,7 @@ public class DSCutsceneInspector : Editor
         DSInspectorUtility.DrawHeader("Cutscene Configuration");
         repeatsProperty.DrawPropertyField();
         startRoomProperty.DrawPropertyField();
+        endRoomProperty.DrawPropertyField();
         cutsceneToPlayProperty.DrawPropertyField();
         DSInspectorUtility.DrawSpace();
     }

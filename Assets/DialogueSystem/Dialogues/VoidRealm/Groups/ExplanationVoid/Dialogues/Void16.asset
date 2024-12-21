@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Void16
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: Void16
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:
@@ -21,4 +22,4 @@ MonoBehaviour:
   - <Text>k__BackingField: Next Dialogue
     <NextDialogue>k__BackingField: {fileID: 11400000, guid: ae3a8de4a234c0d4fba3ca312b89a056, type: 2}
   <DialogueType>k__BackingField: 0
-  <IsStartingDialogue>k__BackingField: 1
+  <IsStartingDialogue>k__BackingField: 0

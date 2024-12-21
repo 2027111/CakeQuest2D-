@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Void15
   m_EditorClassIdentifier: 
   <Conditions>k__BackingField: []
+  <BattleConditionParams>k__BackingField: []
   <DialogueName>k__BackingField: Void15
   <EventIndex>k__BackingField: None
   <Text>k__BackingField:
@@ -20,6 +21,6 @@ MonoBehaviour:
   - Scene2_Limbo_022
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 0}
+    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 036bc216520310442bd5d9b01b39f326, type: 2}
   <DialogueType>k__BackingField: 0
   <IsStartingDialogue>k__BackingField: 0

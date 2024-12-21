@@ -6,6 +6,8 @@ public class PlayerControlsBehaviour : CharacterBehaviour
 {
 
 
+
+
     public PlayerControlsBehaviour() : base()
     {
     }
@@ -25,6 +27,8 @@ public class PlayerControlsBehaviour : CharacterBehaviour
             character.inputManager.CanInteract(true);
             character.CanMove(true);
             character.ActivateControls();
+            NothingBehaviour.skipTimer = 0;
+            UICanvas.SetSkipPanel(0);
         }
         if (player.gameObject.CompareTag("Player"))
         {

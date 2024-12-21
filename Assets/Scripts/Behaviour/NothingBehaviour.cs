@@ -6,6 +6,8 @@ public class NothingBehaviour : CharacterBehaviour
 {
 
 
+    public static float skipTimer = 0;
+    private static float skipTimerMax = 1f;
 
     public NothingBehaviour() : base()
     {
@@ -26,9 +28,43 @@ public class NothingBehaviour : CharacterBehaviour
 
     public override void Handle()
     {
+        if (Timeline.IsInCutscene)
+        {
 
+        if (character == Character.Player)
+            {
+
+                HandleSkipButton();
+            }
+        }
     }
 
+    public void HandleSkipButton()
+    {
+        if (character.inputManager.PauseIsPressed)
+        {
+            UICanvas.SetSkipPanel(skipTimer / skipTimerMax);
+            skipTimer += Time.deltaTime;
+            if (skipTimer > skipTimerMax)
+            {
+                Timeline.SkipCurrentCutscene();
+                skipTimer = 0;
+            }
+        }
+        else
+        {
+            if (skipTimer > 0)
+            {
+                UICanvas.SetSkipPanel(skipTimer / skipTimerMax);
+                skipTimer -= Time.deltaTime;
+            }
+            else
+            {
+                UICanvas.SetSkipPanel(0);
+                skipTimer = 0;
+            }
+        }
+    }
 
     public override void OnExit()
     {

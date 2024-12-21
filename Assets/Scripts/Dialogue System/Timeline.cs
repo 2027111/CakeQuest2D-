@@ -9,7 +9,7 @@ public class Timeline : MonoBehaviour
 {
 
     public static bool IsInCutscene = false;
-
+    public static Timeline CurrentlyPlayingTimeline;
     public double currentLoopPointStart;
     public double currentLoopPointEnd;
     public bool loopingSection = false;
@@ -53,8 +53,22 @@ public class Timeline : MonoBehaviour
             }
             playableDirector.Play();
             IsInCutscene = true;
+            CurrentlyPlayingTimeline = this;
         }
 
+    }
+
+    public static void SkipCurrentCutscene()
+    {
+        CurrentlyPlayingTimeline.SkipCutscene();
+    }
+
+    private void SkipCutscene()
+    {
+        storagePlay.MakeUnPlayable();
+        UICanvas.CancelCurrentDialogue();
+        playableDirector.time = playableDirector.playableAsset.duration - .001f;
+        StopLoopSection();
     }
 
     public virtual void SetupRequirements()
@@ -178,7 +192,7 @@ public class Timeline : MonoBehaviour
                 storagePlay.RuntimeValue = true;
             }
         }
-
+        CurrentlyPlayingTimeline = null;
         IsInCutscene = false;
     }
     public void StopReplay()
