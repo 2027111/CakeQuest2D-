@@ -310,7 +310,7 @@ public class GameSaveManager : MonoBehaviour
         {
             saveFileIndex = GetNumberOfSaveFiles();
             currentLoadedData = null;
-            yield return SaveFileCoroutine();
+            //yield return SaveFileCoroutine();
         }
         else
         {

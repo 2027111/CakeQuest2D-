@@ -16,7 +16,6 @@ public class AutoSetup : MonoBehaviour
         dropdown = GetComponent<TMP_Dropdown>();
 
         LoadSpriteSheet();
-        InitDropdown();
     }
     void LoadSpriteSheet()
     {
@@ -27,6 +26,8 @@ public class AutoSetup : MonoBehaviour
         {
             Debug.LogError("Failed to load sprite sheet: " + spriteSheetName);
         }
+
+        InitDropdown();
     }
 
     Sprite GetSpriteByIndex(int index)
@@ -60,25 +61,42 @@ public class AutoSetup : MonoBehaviour
         {
             dropdownOptions[i] = new TMP_Dropdown.OptionData(languageNames[i]);
 
+
+            if (i < sprites.Length)
+            {
+                dropdownOptions[i].image = GetSpriteByIndex(i);
+            }
+
         }
 
         // Add the options to the dropdown
         dropdown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
 
         //languageDropdown.onValueChanged.AddListener(GameSaveManager.Singleton.OnLanguageDropdownValueChanged);
+
+
+        if (LanguageData.Loaded())
+        {
+            int initialValue = (int)LanguageData.GetLanguage();
+            dropdown.SetValueWithoutNotify(initialValue);
+            UpdateCaptionImage(initialValue);
+        }
+    }
+
+    private void UpdateCaptionImage(int selectedIndex)
+    {
+        // Update the caption image based on the selected option
+        if (dropdown.captionImage != null && selectedIndex >= 0 && selectedIndex < sprites.Length)
+        {
+            dropdown.captionImage.sprite = GetSpriteByIndex(selectedIndex);
+        }
     }
 
     public void SetDropDownValue()
     {
-        dropdown.SetValueWithoutNotify((int)LanguageData.language);
-        for (int i = 0; i < dropdown.options.Count; i++)
-        {
-
-            if (i < sprites.Length)
-            {
-                dropdown.options[i].image = GetSpriteByIndex(i);
-            }
-        }
+        int value = (int)LanguageData.language;
+        dropdown.SetValueWithoutNotify(value);
+        UpdateCaptionImage(value);
     }
 
     public void OnLanguageChanges(int option)

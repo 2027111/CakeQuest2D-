@@ -652,12 +652,14 @@ public class DialogueBox : MonoBehaviour
         Controller battleCharacterComponent = Player.GetComponent<Controller>();
         if (addOrRemove)
         {
+            Debug.Log("Navigate on");
             battleCharacterComponent.OnMovementPressed += NavigateMenu;
             battleCharacterComponent.OnSelectPressed += choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
 
         }
         else
         {
+            Debug.Log("Navigate off");
             battleCharacterComponent.OnMovementPressed -= NavigateMenu;
             battleCharacterComponent.OnSelectPressed -= choiceBox.GetComponent<ChoiceMenu>().TriggerSelected;
 
@@ -666,6 +668,7 @@ public class DialogueBox : MonoBehaviour
 
     public void NavigateMenu(Vector2 direction)
     {
+        Debug.Log("Navigating");
         ChoiceMenu menu = choiceBox.GetComponent<ChoiceMenu>();
         if (menu != null)
         {
@@ -859,7 +862,7 @@ public class DialogueBox : MonoBehaviour
                 {
                     if (!LanguageData.Loaded())
                     {
-                        yield return StartCoroutine(LanguageData.LoadJsonAsync());
+                        yield return StartCoroutine(LanguageData.LoadAllJsonAsync());
                     }
                     NextLine();
                 }

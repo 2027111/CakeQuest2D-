@@ -1,0 +1,50 @@
+{
+  "AllInventories": [
+    "{  \"SaveObjectName\": \"PlayerInventory\",  \"UID\": \"381c74390e9664647ba32510270b594c\",  \"inventory\": [],  \"pessos\": 0}"
+  ],
+  "AllCharacterObjects": [
+    "{  \"SaveObjectName\": \"Eyr Cott Object\",  \"UID\": \"7328a005a389c9343917d62a9e065c11\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}",
+    "{  \"SaveObjectName\": \"JimiObject\",  \"UID\": \"a402f39d484a5f24a855910f0b6fbd57\",  \"Health\": 200,  \"MaxHealth\": 200,  \"Mana\": 200,  \"MaxMana\": 200,  \"isDead\": false,  \"characterAttacks\": [    \"8e8d7959ff147ad45a36c25e7968b74b\"  ]}",
+    "{  \"SaveObjectName\": \"YankeeObject\",  \"UID\": \"4c83b2a75b75c43408098c0ecf8e9740\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": [    \"659393d480360f5498ef8dfcdf5e2a32\"  ]}",
+    "{  \"SaveObjectName\": \"JeremyObject\",  \"UID\": \"41ee1a37819a3bb4e89fcc68983368d7\",  \"Health\": 100,  \"MaxHealth\": 100,  \"Mana\": 100,  \"MaxMana\": 100,  \"isDead\": false,  \"characterAttacks\": []}"
+  ],
+  "AllParties": [
+    "{  \"SaveObjectName\": \"HeroParty\",  \"UID\": \"4fcbdc8de328d2840961cf7a0f3d9146\",  \"party\": [    \"a402f39d484a5f24a855910f0b6fbd57\"  ]}"
+  ],
+  "Data": [
+    "{  \"SaveObjectName\": \"PlayerInfoStorage\",  \"UID\": \"db957330a22537842927a3fade1be913\",  \"sceneName\": \"MaisonJimi\",  \"facing\": \"Bottom\",  \"forceNextChange\": false,  \"nextPos\": {    \"x\": -14.0,    \"y\": 10.25  }}",
+    "{  \"SaveObjectName\": \"CurrentRoom\",  \"UID\": \"5c4dcdbb802a7f0408c4487859f6c302\",  \"roomName\": \"room\",  \"minCO\": {    \"x\": -7.0,    \"y\": 11.0  },  \"maxCO\": {    \"x\": -7.0,    \"y\": 11.0  }}",
+    "{  \"SaveObjectName\": \"Battle Tutorial\",  \"UID\": \"960d1819756087f4c8d5343fc97ca64a\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"IntroCutscene\",  \"UID\": \"28f9f4732b803074fba519bf7e6ac594\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"SGT Cutscene\",  \"UID\": \"454d2391fa20f8240975dde6ec24e7ce\",  \"RuntimeValue\": false,  \"repeats\": true}",
+    "{  \"SaveObjectName\": \"plaine_caramel_ChestAA\",  \"UID\": \"ed186bab97246ca42b31b957b75ba989\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"plaine_caramel_ChestAB\",  \"UID\": \"751c2dcadbfd91f46b416a63bf19d340\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"plaine_caramel_ChestAC\",  \"UID\": \"351171d059cfd3642bdbcf04d056f6b2\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"jimi_maison_ChestAA\",  \"UID\": \"bb9468841dd52c74ca4ddcf1b90c666b\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"jimi_maison_ChestAB\",  \"UID\": \"13caf2124e7019d49bef6fcae0d75985\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"jimi_maison_ChestAC\",  \"UID\": \"9627b09857d2008479ca554f81bf1e9c\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"jimi_maison_ChestAD\",  \"UID\": \"6d42469a57cae5b4687573106f35c055\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"jimi_maison_ChestAE\",  \"UID\": \"b10d6c41cf74f1941a7d58caa06c08c1\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Intro Quest\",  \"UID\": \"357fa63766d8fb64d9d797ba2cde4194\",  \"RuntimeValue\": false,  \"QuestToggled\": false}",
+    "{  \"SaveObjectName\": \"IntroCooking Cutscene\",  \"UID\": \"cc5e26914c5c6e346948f02a9bde52fa\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"FirstBattleWon\",  \"UID\": \"241c2449bbdc1d045af9df0ffa71b246\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"Tutorial\",  \"UID\": \"98cd78d15977a4143b35067944b9ac22\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JeremyInParty\",  \"UID\": \"faffa34fc0a76e140bfcdbdd0be307a0\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"JimiInParty\",  \"UID\": \"854776fce5812684aa77cd10031b9f58\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"YankeeInParty\",  \"UID\": \"8a178a2248486b541820168a3b3566fc\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"BarGuard1\",  \"UID\": \"ef694d6bb510934439a5441663b495d9\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"bar_caramel_chestAA\",  \"UID\": \"1960cf24645067245a29515972b41540\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GoToOven\",  \"UID\": \"8fc905196edcbb943a98b21412ac020f\",  \"RuntimeValue\": false,  \"QuestToggled\": false}",
+    "{  \"SaveObjectName\": \"IsekaiedCutscene\",  \"UID\": \"89c05f0cb2603a3469e512d2d30c4ba0\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"Bitter Cake\",  \"UID\": \"cbfd3c6979c641f459856fc3a06b417c\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Salty Cake\",  \"UID\": \"0da152d816f469344806b3ad21c8b32f\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sour Cake\",  \"UID\": \"00de87c5d5593e4439715e8343edd9a1\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"Sugar Cake\",  \"UID\": \"2de4343182a093a44a2401a4f7601ea2\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"FrameDown\",  \"UID\": \"dc028d5705fb4774fa4cc8cd54293011\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GokuInteractedOnce\",  \"UID\": \"5c2dbf3b845569448b9d1d9e94f78b5c\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GokuInteractedTwice\",  \"UID\": \"6dc7fffe02230784e8679572cb63caa9\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GokuInteractedThrice\",  \"UID\": \"6dc7fffe02230784e8679572cb63caa9\",  \"RuntimeValue\": false}",
+    "{  \"SaveObjectName\": \"GoUpTheBeach\",  \"UID\": \"6d070e091a9fe78468f7cf9029ede491\",  \"RuntimeValue\": false,  \"repeats\": false}",
+    "{  \"SaveObjectName\": \"WashedOnTheShore\",  \"UID\": \"804e3bce60904d94fb76a685e8d57708\",  \"RuntimeValue\": false,  \"repeats\": false}"
+  ]
+}

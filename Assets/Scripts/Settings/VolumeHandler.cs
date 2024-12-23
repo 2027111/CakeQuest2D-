@@ -45,7 +45,12 @@ public class VolumeHandler : MonoBehaviour
     public void SetVolume(float volume)
     {
         contextMixer.SetFloat("Volume", volume);
-        volumeText.SetText(((int)volume + 50).ToString());
+
+        float value = volume + 50f;
+        value /= (contextSlider.maxValue - contextSlider.minValue);
+        value *= 100;
+        value = (int)value;
+        volumeText.SetText($"{(int)value}%");
         if (SFX)
         {
             SetSFXPreference((int)volume);

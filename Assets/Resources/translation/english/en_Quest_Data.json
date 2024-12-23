@@ -1,0 +1,12 @@
+{
+    "Data": [
+        {
+            "dataId": "quest_intro_fetch_ingredients",
+            "jsonData": "{\"questName\":\"The Cake\",\"questDescription\":\"Find the necessary ingredients to prepare a cake.\"}"
+        },
+        {
+            "dataId": "quest_go_to_oven",
+            "jsonData": "{\"questName\":\"Prepare a Cake\",\"questDescription\":\"Go to the oven to prepare a cake.\"}"
+        }
+    ]
+}

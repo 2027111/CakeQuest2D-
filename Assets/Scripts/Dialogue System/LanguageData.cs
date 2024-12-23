@@ -102,7 +102,11 @@ public class LanguageData
 
             foreach (var color in globalColors)
             {
-                GlobalColors.Add(color.key, color.value);
+                if (!GlobalColors.ContainsKey(color.key))
+                {
+
+                    GlobalColors.Add(color.key, color.value);
+                }
             }
 
             // Optionally, you can log or debug the globalColors list
@@ -280,37 +284,81 @@ public class LanguageData
     public static IEnumerator LoadAllJsonAsync(Action onComplete = null)
     {
         string languageSuffix = GetLanguageSuffix();
+        string languageFolder = $"translation/{languageSuffix}";
+        string colorFolder = $"translation/Global_Colors";
 
 
-        TextAsset[] jsonFiles = Resources.LoadAll<TextAsset>("translation");
+        TextAsset[] files = Resources.LoadAll<TextAsset>(languageFolder);
 
 
-        LanguageData combinedData = new LanguageData();
-        foreach (var jsonFile in jsonFiles)
+        if (files == null || files.Length == 0)
         {
-            if (jsonFile.name.EndsWith(languageSuffix))
+            Debug.LogError($"No files found in Resources/{languageFolder}");
+            onComplete?.Invoke();
+        }
+        LanguageData combinedData = new LanguageData();
+        foreach (TextAsset file in files)
+        {
+            if (file is TextAsset textAsset)
+            {
+                try
+                {
+
+                    LanguageData data = JsonUtility.FromJson<LanguageData>(file.text);
+                    if (data != null)
+                    {
+                        if (data.Data != null)
+                        {
+                            combinedData.Data.AddRange(data.Data);
+                        }
+                        if (data.globalColors != null)
+                        {
+                            combinedData.globalColors.AddRange(data.globalColors);
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error parsing file {textAsset.name}: {e.Message}");
+                    Debug.LogError($"{file.text}");
+                }
+            }
+            yield return null;
+        }
+
+        ResourceRequest request =  Resources.LoadAsync<TextAsset>(colorFolder);
+
+        while (!request.isDone)
+        {
+            yield return null;
+        }
+
+        TextAsset Colorfile = ((TextAsset)request.asset);
+        if (Colorfile is TextAsset colorFileAsset)
+        {
+            try
             {
 
-
-                LanguageData data = JsonUtility.FromJson<LanguageData>(jsonFile.text);
+                LanguageData data = JsonUtility.FromJson<LanguageData>(colorFileAsset.text);
                 if (data != null)
                 {
-                    if (data.Data != null)
-                    {
-                        combinedData.Data.AddRange(data.Data);
-                    }
                     if (data.globalColors != null)
                     {
                         combinedData.globalColors.AddRange(data.globalColors);
                     }
                 }
-
             }
-            yield return null;
+            catch (Exception e)
+            {
+                Debug.LogError($"Error parsing file {colorFileAsset.name}: {e.Message}");
+            }
         }
+
+        combinedData.SetGlobalDictionary();
         Singleton = combinedData;
-        onComplete?.Invoke();
         OnLanguageLoaded?.Invoke();
+        onComplete?.Invoke();
+        Singleton.localLanguage = language;
     }
 
     public static IEnumerator LoadJsonAsync(Action onComplete = null)

@@ -12,8 +12,19 @@ public class QuestObject : BoolValue
     public string questName;
     public bool QuestToggled = false;
     public QuestObject NextQuestObject;
-    public DSDialogueSO OnQuestCompletedDialogue;
 
+
+
+    [SerializeField] protected DSDialogueContainerSO dialogueContainer;
+    [SerializeField] protected DSDialogueGroupSO dialogueGroup;
+    [SerializeField] protected DSDialogueSO dialogue;
+
+    [SerializeField] private bool groupedDialogues;
+    [SerializeField] private bool startingDialoguesOnly;
+
+
+    [SerializeField] private int selectedDialogueGroupIndex = 0;
+    [SerializeField] private int selectedDialogueIndex = 0;
 
     public override string GetJsonData()
     {
@@ -36,7 +47,7 @@ public class QuestObject : BoolValue
     }
     public virtual void DialogueRequest()
     {
-        Dialogue newDialogue = new Dialogue(OnQuestCompletedDialogue);
+        Dialogue newDialogue = new Dialogue(dialogue);
         newDialogue.OnOverEvent.AddListener(DialogueOver);
         UICanvas.StartDialogueDelayed(newDialogue, Character.Player.gameObject);
     }
@@ -65,16 +76,16 @@ public class QuestObject : BoolValue
 
     public bool CheckLines()
     {
-        if (OnQuestCompletedDialogue != null)
+        if (dialogue != null)
         {
 
-            if (OnQuestCompletedDialogue.isNull())
+            if (dialogue.isNull())
             {
                 return false;
             }
             else
             {
-                return OnQuestCompletedDialogue.ConditionRespected();
+                return dialogue.ConditionRespected();
             }
         }
 

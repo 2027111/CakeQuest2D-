@@ -14,6 +14,7 @@ public class InteractingBehaviour : NothingBehaviour
     {
         base.OnEnter(player);
         character.inputManager.CanInteract(true);
+        character.inputManager.CanMove(true);
     }
 
 

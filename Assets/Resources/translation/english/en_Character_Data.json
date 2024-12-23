@@ -1,0 +1,12 @@
+{
+    "Data": [
+        {
+            "dataId": "Jimi",
+            "jsonData": "{\"characterName\":\"Jimi\",\"portraits\":\"Portraits/Jimi/po_jimi_neutral_1\",\"HealthName\":\"Vitality\",\"ManaName\":\"Ingredients\"}"
+        },
+        {
+            "dataId": "Yankee",
+            "jsonData": "{\"characterName\":\"Yankee\",\"portraits\":\"Portraits/Yankee/po_yankee_neutral_1\",\"HealthName\":\"Vitality\",\"ManaName\":\"Shampoo\"}"
+        }
+    ]
+}

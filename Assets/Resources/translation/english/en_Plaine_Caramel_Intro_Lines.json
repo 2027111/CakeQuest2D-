@@ -1,0 +1,140 @@
+{
+    "Data": [
+        {
+            "dataId": "Scene3_PlainesCaramel_001",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"What am I doing at the beach?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_002",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"He was talking about another world... But I don’t feel like I’ve left Mexico.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_003",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Take that! And give me your wallet, loser.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_004",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"A robbery in broad daylight...? Yeah, I’m still in Mexico.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_005",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"…Huh?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_006",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"People of your race disgust me...\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_007",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"But stop! I didn’t do anything.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_008",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"It’s not every day you come across a cowboy attacking an egg, but if there’s racism, I’m on Earth.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_009",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"We should lock people like you in the cake.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_010",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"The cake??\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_011",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Not so fast half-pint. I hope you’re not here to defend this... This species of... This filthy...\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_012",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Really? You’re going to say that kind of thing in the year 20-<skipLine>\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_013",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"BALDY?!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_014",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"...Baldy?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_015",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Dude…\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_016",
+            "jsonData": "{\"portraitPath\":\"Portraits/EyrCott/po_eyrcott_bald_1\",\"talkerName\":\"Eyr Cott\",\"line\":\"Thanks for the money, scum. I invite you to try and get it back if you can.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_017",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"WAIT, YOU TALKED ABOUT A CAKE!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_018",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Damn. How is a cowboy this fast.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_019",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Thanks for trying to help me... But don’t worry, this happens to me every day.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_020",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Yeah, yeah… He talked about a cake. Do you know what he’s talking about?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_021",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"The cake? Well yeah, everyone knows about it. You’re not from around here?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_022",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Not really. What country are we in?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_023",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Sucredorge.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_024",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Where’s that? In the United States?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_025",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"The United States?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_026",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"…Oh shit... I’m really in another world.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_027",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"Uh… I’m not sure what you’re talking about, but if you’re looking for the cake, I can take you there.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_028",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Really?!\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_029",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"On one condition. Help me get revenge on that cowboy bastard.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_030",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Fine, OK… But it better be quick. I’m starving.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_031",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"What’s your name, by the way?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_032",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Jimi, and you?\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_033",
+            "jsonData": "{\"portraitPath\":\"Portraits/Yankee/po_yankee_neutral_1\",\"talkerName\":\"Yankee\",\"line\":\"So… I’m Yankee.\"}"
+        },
+        {
+            "dataId": "Scene3_PlainesCaramel_034",
+            "jsonData": "{\"portraitPath\":\"Portraits/Jimi/po_jimi_neutral_1\", \"talkerName\":\"Jimi\",\"line\":\"Great, let’s go.\"}"
+        }
+    ]
+}

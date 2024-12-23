@@ -103,6 +103,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -112,7 +124,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 95.333336
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,9 +143,9 @@ TextureImporter:
       name: Flags_1
       rect:
         serializedVersion: 2
-        x: 95
+        x: 96
         y: 0
-        width: 95.333336
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -144,27 +156,6 @@ TextureImporter:
       bones: []
       spriteID: b9efd9907921e8c4f87612826292e2f1
       internalID: -308722979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Flags_2
-      rect:
-        serializedVersion: 2
-        x: 190
-        y: 0
-        width: 95.333336
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59f609abed38a514e95b75b824b8b558
-      internalID: -868544197
       vertices: []
       indices: 
       edges: []
@@ -182,7 +173,6 @@ TextureImporter:
     nameFileIdTable:
       Flags_1: -308722979
       Flags_0: 824718169
-      Flags_2: -868544197
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 

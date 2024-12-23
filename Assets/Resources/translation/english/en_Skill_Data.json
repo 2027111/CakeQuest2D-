@@ -1,0 +1,40 @@
+{
+    "Data": [
+        {
+            "dataId": "skill_spinning_kick",
+            "jsonData": "{\"skillName\":\"Spinning Kick\",\"skillDescription\":\"A kick amplified by centrifugal force.\"}"
+        },
+        {
+            "dataId": "skill_low_heal",
+            "jsonData": "{\"skillName\":\"First Aid\",\"skillDescription\":\"A low-level healing spell.\"}"
+        },
+        {
+            "dataId": "skill_overhead_smash",
+            "jsonData": "{\"skillName\":\"Overhead Smash\",\"skillDescription\":\"A blow amplified by gravity.\"}"
+        },
+        {
+            "dataId": "skill_ressurection",
+            "jsonData": "{\"skillName\":\"Resurrection\",\"skillDescription\":\"A spell that can revive fallen allies.\"}"
+        },
+        {
+            "dataId": "skill_salad_rain",
+            "jsonData": "{\"skillName\":\"Salad Rain\",\"skillDescription\":\"Summons a rain of salty vegetables.\"}"
+        },
+        {
+            "dataId": "skill_slice_dice",
+            "jsonData": "{\"skillName\":\"Slice and Dice\",\"skillDescription\":\"A series of sharp attacks.\"}"
+        },
+        {
+            "dataId": "skill_super_kick",
+            "jsonData": "{\"skillName\":\"Super Kick\",\"skillDescription\":\"A series of kicks.\"}"
+        },
+        {
+            "dataId": "skill_egg_drill",
+            "jsonData": "{\"skillName\":\"Egg Drill\",\"skillDescription\":\"Spin and pierce your opponent at Hyper Speed!\"}"
+        },
+        {
+            "dataId": "skill_primary_lotus",
+            "jsonData": "{\"skillName\":\"Primary Lotus\",\"skillDescription\":\"I saw this in an anime!\"}"
+        }
+    ]
+}

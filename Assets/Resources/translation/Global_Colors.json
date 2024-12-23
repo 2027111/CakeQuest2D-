@@ -1,0 +1,19 @@
+{
+    "globalColors": [
+        {
+            "key": "item",
+            "value": "#7DE7D7"
+        },
+        {
+            "key": "warning",
+            "value": "#FF0000"
+        },
+        {
+            "key": "success",
+            "value": "#00FF00"
+        }
+    ],
+    
+    "Data": []
+
+}

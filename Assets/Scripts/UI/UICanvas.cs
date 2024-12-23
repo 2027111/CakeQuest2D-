@@ -56,8 +56,7 @@ public class UICanvas : MonoBehaviour
     [SerializeField] DialogueBox dialogueBox;
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject VideoPauseMenu;
-    [SerializeField] GameObject SkipPanel;
-    [SerializeField] Image SkipFill    ;
+    [SerializeField] SkipPanel SkipPanel;
 
     void Awake()
     {
@@ -74,17 +73,8 @@ public class UICanvas : MonoBehaviour
     }
     public static void SetSkipPanel(float ratio)
     {
-        if(ratio > 0)
-        {
-            if(Singleton.SkipPanel.activeSelf == false) { Singleton.SkipPanel.SetActive(true); }
-            Singleton.SkipFill.fillAmount = ratio;
-
-        }
-        else
-        {
-            Singleton.SkipPanel.SetActive(false);
-            Singleton.SkipFill.fillAmount = ratio;
-        }
+        Singleton.SkipPanel?.SetSkipPanel(ratio);
+        
     }
     public static void SetVideoForPlayer(VideoClip clip)
     {

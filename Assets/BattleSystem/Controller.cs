@@ -17,6 +17,13 @@ public abstract class Controller : MonoBehaviour
 
     public delegate void EventHandler();
 
+
+    public delegate void MovementHandler(Vector2 movement);
+    public MovementHandler OnMovementPressed;
+    public MovementHandler OnMovementHeld;
+    public MovementHandler OnMovementStopped;
+
+
     public EventHandler OnJumpPressed;
     public EventHandler OnJumpRelease;
     public EventHandler OnReturnPressed;
@@ -31,16 +38,12 @@ public abstract class Controller : MonoBehaviour
     public EventHandler OnPausedReleased;
 
 
-
+    public Vector2 movement;
     public bool JumpIsPressed;
     public bool ReturnIsPressed;
     public bool SelectIsPressed;
     public bool PauseIsPressed;
 
-
-    public delegate void MovementHandler(Vector2 movement);
-    public MovementHandler OnMovementPressed;
-    public MovementHandler OnMovementHeld;
 
     public void CanInteract(bool _canInteract)
     {

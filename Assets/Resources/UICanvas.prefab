@@ -1428,8 +1428,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 683195659870482511}
   videoPlayer: {fileID: 2471761775494460334}
   VideoPauseMenu: {fileID: 6663831690974652598}
-  SkipPanel: {fileID: 3308535558646804792}
-  SkipFill: {fileID: 5376313882884038284}
+  SkipPanel: {fileID: 6126931915037237723}
 --- !u!1 &683195660694413647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,13 +2175,16 @@ GameObject:
   - component: {fileID: 5250203574740941208}
   - component: {fileID: 7008309060238115604}
   - component: {fileID: 4652430507092629206}
+  - component: {fileID: 4128261920118380466}
+  - component: {fileID: 6126931915037237723}
+  - component: {fileID: 7591989473171131081}
   m_Layer: 5
   m_Name: SkipPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5250203574740941208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2243,6 +2245,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &4128261920118380466
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308535558646804792}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &6126931915037237723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308535558646804792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f02713a1637af64e863132bbf12e278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillBar: {fileID: 5376313882884038284}
+  canvasGroup: {fileID: 4128261920118380466}
+--- !u!114 &7591989473171131081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3308535558646804792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2436b86302d132b4faf6277d14606ff4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetOnAwake: 0
+  TextObjects:
+    keys:
+    - skip
+    values:
+    - Value: []
 --- !u!1 &3775792765771657128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2390,7 +2436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Skipping
+  m_text: skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}
   m_sharedMaterial: {fileID: -3861959055436998224, guid: 848a93eb17b28644b8b2f71f64a4294c, type: 2}

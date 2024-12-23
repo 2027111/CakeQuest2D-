@@ -1,0 +1,24 @@
+{
+    "Data": [
+        {
+            "dataId": "MenuTranslations",
+            "jsonData": "{\"newGame\":\"New Game\",\"continueGame\":\"Continue\",\"leaveGame\":\"Leave\",\"settings\":\"Settings\",\"quest\":\"Quests\",\"saveFile\":\"Save\",\"party\":\"Party\",\"inventory\":\"Inventory\",\"pause\":\"Pause\",\"use\":\"Use\",\"returnToTitle\":\"Return to Main Menu\",\"resume\":\"Resume\",\"save\":\"Save\",\"recipe\":\"Recipe\",\"sfx\":\"Sound Effects\",\"music\":\"Music\",\"voices\":\"Voices\",\"language\":\"Language\",\"close\":\"Close\",\"fullScreen\":\"Full Screen\",\"resolution\":\"Resolution\",\"cancel\":\"Cancel\",\"skip\":\"Skip\"}"
+        },
+        {
+            "dataId": "Indications",
+            "jsonData": "{\"attack\":\"Attack your enemies directly!\",\"observe\":\"Observe your enemies!\",\"skill\":\"Cook your enemies with your skills!\",\"done\":\"Completed!\",\"item\":\"Use items to support your team!\",\"swap\":\"Swap positions with an ally!\",\"resist\":\"Resisted\",\"weak\":\"Weak\",\"blocked\":\"Blocked\",\"miss\":\"Missed\",\"null\":\"Canceled\",\"targetOne\":\"Target \",\"targetAllEnemy\":\"Target all enemies\",\"targetAllFriend\":\"Target all allies\",\"recipeStart\":\"Keep cooking\",\"recipeFailed\":\"Wrong ingredient...\",\"recipeSuperFailed\":\"Recipe reset.\",\"recipeSuccess\":\"5-Star Meal!!!\",\"automaticDialogueOn\":\"Auto.\",\"automaticDialogueOff\":\"Non-Auto.\"}"
+        },
+        {
+            "dataId": "element",
+            "jsonData": "{\"Slash\":\"Slashing\",\"Bash\":\"Bashing\",\"Sweet\":\"Sweet\",\"Sour\":\"Sour\",\"Bitter\":\"Bitter\",\"Salty\":\"Salty\",\"Support\":\"Support\"}"
+        },
+        {
+            "dataId": "ControlScheme",
+            "jsonData": "{\"BattleState\":\"<sprite name=move> Move | <sprite name=select> Select | <sprite name=cancel> Return\",\"ChoosingActionState\":\"<sprite name=move> Move | <sprite name=select> Select Action\",\"AnalyzingTargetState\":\"<sprite name=move> Change Target to Observe\",\"ChoosingItemState\":\"<sprite name=move> Move | <sprite name=select> Select Item | <sprite name=cancel> Return\",\"ChoosingSkillState\":\"<sprite name=move> Move | <sprite name=select> Select Skill | <sprite name=cancel> Return\",\"ChoosingTargetState\":\"<sprite name=move> Change Target | <sprite name=select> Confirm Target(s) | <sprite name=cancel> Return\",\"CutsceneState\":\"<sprite name=select> Next\",\"NothingState\":\" ... \",\"PerformActionState\":\"<sprite name=cancel> Block\",\"SwapingState\":\"\"}"
+        },
+        {
+            "dataId": "Locations",
+            "jsonData": "{\"kitchen\":\"Kitchen\",\"dining_hall\":\"Dining Hall\",\"room\":\"Room\"}"
+        }
+    ]
+}
