@@ -54,21 +54,17 @@ public class LineInfo
         {
             voiced = result;
         }
-    }
 
 
 
-    public LineInfo(string lineId, string line, string talkerName, string portraitPath)
-    {
-        this.lineId = lineId;
-        this.line = line;
-        this.talkerName = talkerName;
-        this.portraitPath = portraitPath;
-        if (bool.TryParse(LanguageData.GetDataById(lineId).GetValueByKey("voiced"), out bool result))
+        if (string.IsNullOrEmpty(line))
         {
-            voiced = result;
+            line = $"{lineId} ID is missing";
         }
     }
+
+
+
 }
 
 

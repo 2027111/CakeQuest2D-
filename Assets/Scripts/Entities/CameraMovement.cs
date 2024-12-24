@@ -55,7 +55,7 @@ public class CameraMovement : MonoBehaviour
         Vector3 targetPos = GetCamPosition();
         if (transform.position != targetPos)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, smoothing);
+            transform.position = Vector3.Lerp(transform.position, targetPos, smoothing * Time.deltaTime);
         }
     }
 

@@ -71,7 +71,10 @@ public class Character : MonoBehaviour
         }
     }
 
-
+    public void SetPosition(Vector2 newPosition)
+    {
+        transform.position = newPosition;
+    }
     public void ActivateControls(bool on = true)
     {
         if (on)
