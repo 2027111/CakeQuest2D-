@@ -117,12 +117,10 @@ public class Timeline : MonoBehaviour
 
                     //playableDirector.Pause();
                     DialogueRequest();
-                }
-                else
-                {
-                    DialogueOver();
+                    return;
                 }
             }
+                DialogueOver();
         }
     }
 
