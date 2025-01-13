@@ -89,6 +89,7 @@ public class Timeline : MonoBehaviour
         UICanvas.CancelCurrentDialogue();
         playableDirector.time = playableDirector.playableAsset.duration - .001f;
         EndLoop();
+        EndPause();
     }
 
     public virtual void SetupRequirements()
