@@ -17,7 +17,7 @@ public class PlayerControlsBehaviour : CharacterBehaviour
     public override void OnEnter(Character player)
     {
         base.OnEnter(player);
-        if (character.inputManager == null || Timeline.IsInCutscene)
+        if (character.inputManager == null || Timeline.IsInCutscene || (FadeScreen.movingScene))
         {
             player.ChangeState(new PatrollingBehaviour());
             return;

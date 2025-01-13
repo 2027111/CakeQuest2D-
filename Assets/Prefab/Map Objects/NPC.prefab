@@ -341,6 +341,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionIndicator: {fileID: 134502412}
+  ActionIndicatorKey: 2
 --- !u!95 &6393111097336211545
 Animator:
   serializedVersion: 4

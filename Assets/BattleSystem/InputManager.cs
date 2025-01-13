@@ -20,24 +20,59 @@ public class InputManager : Controller
     public void SetMove(InputAction.CallbackContext context)
     {
         Vector2 wasdInput = context.ReadValue<Vector2>().normalized;
-        if(wasdInput == Vector2.zero)
-        {
-            if(movement != Vector2.zero)
-            {
 
-                OnMovementStopped?.Invoke(wasdInput);
+        // Round wasdInput to the closest cardinal or diagonal direction
+        Vector2 roundedInput = RoundToCardinalDiagonal(wasdInput);
+        Vector2 cardinalInput = RoundToCardinal(wasdInput);
+
+        // Only update if movement is different from the previous movement
+        if (roundedInput == Vector2.zero)
+        {
+            if (movement != Vector2.zero)
+            {
+                OnMovementStopped?.Invoke(roundedInput);
             }
         }
         else
         {
-            if (movement == Vector2.zero)
+            if (movement == Vector2.zero || RoundToCardinal(movement) != cardinalInput)
             {
-                OnMovementPressed?.Invoke(wasdInput);
+                OnMovementPressed?.Invoke(cardinalInput);
             }
         }
-        OnMovementHeld?.Invoke(wasdInput);
 
+        if (movement != roundedInput)
+        {
+            movement = roundedInput;
+            OnMovementHeld?.Invoke(roundedInput);
+        }
     }
+
+    private Vector2 RoundToCardinalDiagonal(Vector2 input)
+    {
+        if (input == Vector2.zero)
+            return Vector2.zero;
+
+        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+        angle = Mathf.Round(angle / 45f) * 45f; // Round to the nearest 45 degrees
+
+        float radians = angle * Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)).normalized;
+    }
+
+    private Vector2 RoundToCardinal(Vector2 input)
+    {
+        if (input == Vector2.zero)
+            return Vector2.zero;
+
+        float angle = Mathf.Atan2(input.y, input.x) * Mathf.Rad2Deg;
+        angle = Mathf.Round(angle / 90f) * 90f; // Round to the nearest 90 degrees (cardinal directions only)
+
+        float radians = angle * Mathf.Deg2Rad;
+        return new Vector2(Mathf.Cos(radians), Mathf.Sin(radians)).normalized;
+    }
+
+
     public void OnInputChange(PlayerInput playerInput)
     {
         if (playerInput.currentControlScheme == "KeyboardControls")

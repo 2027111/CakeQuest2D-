@@ -248,6 +248,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   InteractionIndicator: {fileID: 2201667981512531906}
+  ActionIndicatorKey: 1
 --- !u!114 &7993561500217237385
 MonoBehaviour:
   m_ObjectHideFlags: 0

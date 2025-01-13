@@ -14,6 +14,9 @@ public class FadeScreen : MonoBehaviour
 
     public static bool fading = false;
     public static bool fadeOn = false;
+    public static bool isFadingOn;
+    public static bool isFadingOff;
+    public static bool transitioningScene;
     public static bool movingScene = false;
     private static FadeScreen _singleton;
 
@@ -168,7 +171,7 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator FadeCoroutine(string scene = null)
     {
-
+        transitioningScene = true;
 
         movingScene = true;
         yield return new WaitForSeconds(.05f);
@@ -203,8 +206,8 @@ public class FadeScreen : MonoBehaviour
 
         yield return new WaitForSeconds(.05f);
         Debug.Log("OnFadingEnd?");
-        OnFadingEnd?.Invoke();
         movingScene = false;
+        OnFadingEnd?.Invoke();
         yield return null;
 
 
@@ -216,6 +219,7 @@ public class FadeScreen : MonoBehaviour
 
 
 
+        transitioningScene = false;
     }
 
     public void SetAlphaTarget(float target)
@@ -231,6 +235,16 @@ public class FadeScreen : MonoBehaviour
         float start = on ? 0 : 1;
         float target = on ? 1 : 0;
         SetAlphaTarget(start);
+        if(target == 1)
+        {
+            isFadingOn = true;
+            isFadingOff = false;
+        }
+        else
+        {
+            isFadingOn = false;
+            isFadingOff = true;
+        }
         fading = true;
         yield return new WaitForSeconds(waitTime);
         while (time < fadeTime)
@@ -240,6 +254,7 @@ public class FadeScreen : MonoBehaviour
             yield return null;
         }
         SetAlphaTarget(target);
+        isFadingOff = false;
         fading = false;
         startFadeon = false;
         yield return null;

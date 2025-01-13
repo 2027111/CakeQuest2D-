@@ -10,9 +10,7 @@ public class Timeline : MonoBehaviour
 
     public static bool IsInCutscene = false;
     public static Timeline CurrentlyPlayingTimeline;
-    public double currentLoopPointStart;
-    public double currentLoopPointEnd;
-    public bool loopingSection = false;
+    Tuple<float, float> loop;
 
     public ConditionResultObject[] condition;
     public Cutscene storagePlay;
@@ -20,6 +18,10 @@ public class Timeline : MonoBehaviour
     public PlayableDirector playableDirector;
     public UnityEvent OnCutsceneOver;
     public bool Automatic;
+
+
+
+
     protected void Start()
     {
         if (Automatic)
@@ -37,6 +39,12 @@ public class Timeline : MonoBehaviour
         }
     }
 
+    public void StartDialoguePause()
+    {
+        Pause();
+        StartDialogue();
+    }
+
     public virtual void StartCinematic(bool delayed = false)
     {
         if (CanPlayCutscene())
@@ -47,15 +55,27 @@ public class Timeline : MonoBehaviour
             SetupRequirements();
             if (delayed)
             {
-
-                StartLoopSection(.001f);
-                FadeScreen.AddOnEndFadeEvent(StopLoopSection);
+                StartLoop(0f, 0.01f);
+                FadeScreen.AddOnEndFadeEvent(EndLoop);
             }
             playableDirector.Play();
             IsInCutscene = true;
             CurrentlyPlayingTimeline = this;
         }
 
+    }
+
+    public void StartDialogueLoop(float start, float end, bool withOffset = true)
+    {
+        StartLoop(start, end, withOffset);
+        StartDialogue();
+    }
+
+    public void StartLoop(float start, float end, bool withOffset = true)
+    {
+        start = withOffset ? start : start + (float)playableDirector.time;
+        end = withOffset ? end : end + (float)playableDirector.time;
+        loop = new Tuple<float, float>(start, end);
     }
 
     public static void SkipCurrentCutscene()
@@ -68,7 +88,7 @@ public class Timeline : MonoBehaviour
         storagePlay.MakeUnPlayable();
         UICanvas.CancelCurrentDialogue();
         playableDirector.time = playableDirector.playableAsset.duration - .001f;
-        StopLoopSection();
+        EndLoop();
     }
 
     public virtual void SetupRequirements()
@@ -95,7 +115,6 @@ public class Timeline : MonoBehaviour
 
                     started = true;
 
-                    StartLoopSection(.1f);
                     //playableDirector.Pause();
                     DialogueRequest();
                 }
@@ -109,51 +128,22 @@ public class Timeline : MonoBehaviour
 
     private void Update()
     {
-        if (loopingSection)
-        {
-            if (playableDirector != null && playableDirector.time >= currentLoopPointEnd)
-            {
-                playableDirector.time = currentLoopPointStart;
-                playableDirector.Evaluate();
-                playableDirector.Play();
-            }
-        }
-    }
-
-    public virtual void StartDialogue(float loopTime)
-    {
-        //Debug.Log("Starting Dialogue");
-        if (!started)
-        {
-            if (CanPlayCutscene())
-            {
-                if (storagePlay.GetCurrentLine() != null)
+                if (loop != null && playableDirector.time > loop.Item2)
                 {
-
-                    started = true;
-                    StartLoopSection(loopTime);
-                    //playableDirector.Pause();
-                    DialogueRequest();
+                    playableDirector.time = loop.Item1;
+                    playableDirector.Evaluate();
+                    playableDirector.Play();
                 }
-                else
-                {
-                    DialogueOver();
-                }
-            }
-        }
-    }
-    public void StartLoopSection(float loopTime)
-    {
-        currentLoopPointStart = playableDirector.time + .01f;
-        currentLoopPointEnd = playableDirector.time + .01f + loopTime;
-        loopingSection = true;
-       
     }
 
-    public void StopLoopSection()
+
+
+
+    public void Pause()
     {
-        loopingSection = false;
+        playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(0);
     }
+
 
     public void SetCutscene(Cutscene cutscene)
     {
@@ -166,13 +156,26 @@ public class Timeline : MonoBehaviour
         //Debug.Log("Requesting Dialogue : " + dialogue.OnOverEvent.GetNonPersistentEventCount());
         UICanvas.StartDialogue(dialogue, null, null);
     }
+    public void EndLoop()
+    {
+        loop = null;
+    }
 
     public virtual void DialogueOver()
     {
         started = false;
-        StopLoopSection();
+        EndLoop();
+        EndPause();
         //Debug.Log("Dialogue Over");
         // UnpauseCutscene();
+    }
+
+    private void EndPause()
+    {
+        if(playableDirector.playableGraph.GetRootPlayable(0).GetSpeed() == 0)
+        {
+            playableDirector.playableGraph.GetRootPlayable(0).SetSpeed(1);
+        }
     }
 
     public void UnpauseCutscene()

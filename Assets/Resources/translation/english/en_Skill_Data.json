@@ -2,39 +2,39 @@
     "Data": [
         {
             "dataId": "skill_spinning_kick",
-            "jsonData": "{\"skillName\":\"Spinning Kick\",\"skillDescription\":\"A kick amplified by centrifugal force.\"}"
+            "jsonData": "{\"skillName\":\"Spinning Kick\",\"skillDescription\":\"Un coup de pied amplifié par la force centrifuge.\"}"
         },
         {
             "dataId": "skill_low_heal",
-            "jsonData": "{\"skillName\":\"First Aid\",\"skillDescription\":\"A low-level healing spell.\"}"
+            "jsonData": "{\"skillName\":\"Low Heal\",\"skillDescription\":\"Un sort de soin de bas niveau\"}"
         },
         {
             "dataId": "skill_overhead_smash",
-            "jsonData": "{\"skillName\":\"Overhead Smash\",\"skillDescription\":\"A blow amplified by gravity.\"}"
+            "jsonData": "{\"skillName\":\"Overhead Smash\",\"skillDescription\":\"Un coup amplifié par la gravité\"}"
         },
         {
             "dataId": "skill_ressurection",
-            "jsonData": "{\"skillName\":\"Resurrection\",\"skillDescription\":\"A spell that can revive fallen allies.\"}"
+            "jsonData": "{\"skillName\":\"Resurrection\",\"skillDescription\":\"Un sort pouvant réanimé les alliés évanouis\"}"
         },
         {
             "dataId": "skill_salad_rain",
-            "jsonData": "{\"skillName\":\"Salad Rain\",\"skillDescription\":\"Summons a rain of salty vegetables.\"}"
+            "jsonData": "{\"skillName\":\"Salad Rain\",\"skillDescription\":\"Invoque une pluie de légumes salés\"}"
         },
         {
             "dataId": "skill_slice_dice",
-            "jsonData": "{\"skillName\":\"Slice and Dice\",\"skillDescription\":\"A series of sharp attacks.\"}"
+            "jsonData": "{\"skillName\":\"Slice and Dice\",\"skillDescription\":\"Un enchainement d'attaques tranchantes\"}"
         },
         {
             "dataId": "skill_super_kick",
-            "jsonData": "{\"skillName\":\"Super Kick\",\"skillDescription\":\"A series of kicks.\"}"
+            "jsonData": "{\"skillName\":\"Super Kick\",\"skillDescription\":\"Un enchainement de coup de pied\"}"
         },
         {
             "dataId": "skill_egg_drill",
-            "jsonData": "{\"skillName\":\"Egg Drill\",\"skillDescription\":\"Spin and pierce your opponent at Hyper Speed!\"}"
+            "jsonData": "{\"skillName\":\"Egg Drill\",\"skillDescription\":\"Tourne et perce ton adversaire à Hyper Vitesse!\"}"
         },
         {
             "dataId": "skill_primary_lotus",
-            "jsonData": "{\"skillName\":\"Primary Lotus\",\"skillDescription\":\"I saw this in an anime!\"}"
+            "jsonData": "{\"skillName\":\"Primary Lotus\",\"skillDescription\":\"J'ai vu ça dans un animé!\"}"
         }
     ]
 }

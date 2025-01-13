@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SingleFight
   m_EditorClassIdentifier: 
   UID: 8d572879fe45b9540a8958ffe1e21e38
-  RuntimeValue: 0
-  BattleMusic: {fileID: 8300000, guid: 489e288ae2cbda74aa7e8011ced72aa6, type: 3}
+  RuntimeValue: 1
+  BattleMusic: {fileID: 8300000, guid: 50e936e3ac017e647b90f2cbd289ebd5, type: 3}
   CutsceneForDialogue: {fileID: 0}
   backgroundPrefab: {fileID: 8407348522836946457, guid: 946a82bd42e46da4f942b0efe52aa37c, type: 3}
   FightParty:
-  - {fileID: 11400000, guid: 0f29c282958ebcd4981fb3f1e352410e, type: 2}
+  - {fileID: 11400000, guid: 656f3ef0023843a43ac087159d5a5a71, type: 2}

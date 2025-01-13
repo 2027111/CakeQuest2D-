@@ -372,6 +372,7 @@ public class BattleManager : MonoBehaviour
     {
         ClearStage();
         UICanvas.ForceBordersOff();
+        
         SetBattleParty();
         SpawnEveryMember(HeroParty, TeamIndex.Player);
         SpawnEveryMember(EnemyParty, TeamIndex.Enemy);

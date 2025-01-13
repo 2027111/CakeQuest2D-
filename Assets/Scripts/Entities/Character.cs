@@ -240,7 +240,7 @@ public class Character : MonoBehaviour
     {
         if (Player == this)
         {
-                ChangeState(new PlayerControlsBehaviour());
+           ChangeState(new PlayerControlsBehaviour());
             
 
         }

@@ -148,7 +148,7 @@ public class BranchingDialogueStarterObject : MonoBehaviour
             {
                 started = true;
                 Dialogue newDialogue = new Dialogue(dialogue, DialogueEvents, new UnityAction(DialogueOver));
-                Debug.Log(newDialogue.DialogueEvents.Length);
+                
                 UICanvas.StartDialogue(newDialogue, Character.Player.gameObject, gameObject);
             }
         }
@@ -177,8 +177,8 @@ public class BranchingDialogueStarterObject : MonoBehaviour
     public virtual void DialogueOver()
     {
         started = false;
-        Character.Player.ChangeState(new PlayerControlsBehaviour());
-
+        Character.Player.TogglePlayableState();
+        GetComponent<Interactable>()?.RestoreIndication(true);
     }
 
 

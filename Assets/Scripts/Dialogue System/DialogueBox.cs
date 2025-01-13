@@ -605,12 +605,16 @@ public class DialogueBox : MonoBehaviour
 
     public void AddInteractEventToPlayer(bool addOrRemove)
     {
+        Controller battleCharacterComponent = Player?.GetComponent<Controller>();
+        if(battleCharacterComponent == null)
+        {
+            return;
+        }
+        bool contains = battleCharacterComponent.AttackContains(Interact);
         if (addOrRemove)
         {
-            Controller battleCharacterComponent = Player.GetComponent<Controller>();
 
-            bool contains = battleCharacterComponent.AttackContains(Interact);
-            if (battleCharacterComponent != null && !contains)
+            if (!contains)
             {
                 battleCharacterComponent.OnSelectPressed += Interact;
                 battleCharacterComponent.OnReturnPressed += ToggleAuto;
@@ -619,9 +623,7 @@ public class DialogueBox : MonoBehaviour
         }
         else
         {
-            Controller battleCharacterComponent = Player.GetComponent<Controller>();
-            bool contains = battleCharacterComponent.AttackContains(Interact);
-            if (battleCharacterComponent != null && contains)
+            if (contains)
             {
                 battleCharacterComponent.OnSelectPressed -= Interact;
                 battleCharacterComponent.OnReturnPressed -= ToggleAuto;

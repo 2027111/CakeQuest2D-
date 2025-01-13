@@ -2,11 +2,11 @@
     "Data": [
         {
             "dataId": "quest_intro_fetch_ingredients",
-            "jsonData": "{\"questName\":\"The Cake\",\"questDescription\":\"Find the necessary ingredients to prepare a cake.\"}"
+            "jsonData": "{\"questName\":\"Le Gateau\",\"questDescription\":\"Trouves les ingrédients nécéssaires, afin de préparer un gateau.\"}"
         },
         {
             "dataId": "quest_go_to_oven",
-            "jsonData": "{\"questName\":\"Prepare a Cake\",\"questDescription\":\"Go to the oven to prepare a cake.\"}"
+            "jsonData": "{\"questName\":\"Préparer un Gâteau\",\"questDescription\":\"Dirigez-vous vers le four afin de vous préparer un gâteau..\"}"
         }
     ]
 }

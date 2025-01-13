@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+public enum ActionIndicatorType
+{
+    interact,
+    open,
+    talk
+}
 public class Interactable : MonoBehaviour
 {
 
@@ -15,7 +20,7 @@ public class Interactable : MonoBehaviour
     GameObject player;
 
     [SerializeField] GameObject InteractionIndicator;
-
+    public ActionIndicatorType ActionIndicatorKey = ActionIndicatorType.interact;
 
     private void Start()
     {
@@ -24,6 +29,7 @@ public class Interactable : MonoBehaviour
 
     public void InteractionInvoke()
     {
+        RestoreIndication(false);
         interactionEvent?.Invoke();
     }
 
@@ -47,7 +53,6 @@ public class Interactable : MonoBehaviour
                     {
                         player.GetComponent<Character>().SetInteraction(false);
                         ManageInteraction(player, true);
-                        ContextClue(true);
                     }
                     else
                     {
@@ -59,13 +64,23 @@ public class Interactable : MonoBehaviour
         }
     }
 
+    public void RestoreIndication(bool restore)
+    {
+            if(player != null)
+            {
+                ContextClue(restore);
+                UICanvas.Singleton.SetActionIndicatorUI(restore, ActionIndicatorKey.ToString());
+            }
+       
+    }
+
     public void ManageInteraction(GameObject character, bool add)
     {
         if (interactionEvent.GetPersistentEventCount() > 0)
         {
+            RestoreIndication(add);
             if (add)
             {
-
                 player.GetComponent<Controller>().OnSelectPressed += InteractionInvoke;
             }
             else

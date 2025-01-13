@@ -56,6 +56,9 @@ public class UICanvas : MonoBehaviour
     [SerializeField] DialogueBox dialogueBox;
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject VideoPauseMenu;
+    [SerializeField] ActionIndicatorUI actionIndicator;
+
+
     [SerializeField] SkipPanel SkipPanel;
 
     void Awake()
@@ -70,6 +73,7 @@ public class UICanvas : MonoBehaviour
             Destroy(this.gameObject);
         }
         SetSkipPanel(0);
+        SetActionIndicatorUI(false);
     }
     public static void SetSkipPanel(float ratio)
     {
@@ -79,6 +83,10 @@ public class UICanvas : MonoBehaviour
     public static void SetVideoForPlayer(VideoClip clip)
     {
         Singleton?.SetVideoClip(clip);
+    }
+    public void SetActionIndicatorUI(bool show, string indicationText = "interact")
+    {
+        actionIndicator?.AppearIndicator(show, indicationText);
     }
 
     public void SetVideoClip(VideoClip clip)
@@ -274,6 +282,7 @@ public class UICanvas : MonoBehaviour
         Singleton?.border.Appear(false);
         Singleton?.questList.Appear(false);
         Singleton?.partyList.Appear(false);
+        Singleton?.SetActionIndicatorUI(false);
     }
 
     public void BorderAppear(bool on)

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  smoothing: 1
+  smoothing: 3
   currentRoomInfo: {fileID: 11400000, guid: e969ce37378d2e9408cf44393fc84fb0, type: 2}
 --- !u!1 &3996458649187170344
 GameObject:

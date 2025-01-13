@@ -78,7 +78,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  spriteSheet: {fileID: 2800000, guid: e2c8270b4bec9b144a5b00f66439c9c6, type: 3}
+  spriteSheet: {fileID: 2800000, guid: a4d2c5a6155ffae429d4bd11f9e6bcda, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534
@@ -119,16 +119,16 @@ MonoBehaviour:
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
-      m_Width: 400
-      m_Height: 100
+      m_Width: 600
+      m_Height: 200
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 400
+      m_HorizontalBearingY: 160
+      m_HorizontalAdvance: 625
     m_GlyphRect:
       m_X: 0
       m_Y: 0
-      m_Width: 400
-      m_Height: 100
+      m_Width: 48
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -138,13 +138,13 @@ MonoBehaviour:
       m_Width: 100
       m_Height: 100
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 100
+      m_HorizontalBearingY: 80
+      m_HorizontalAdvance: 125
     m_GlyphRect:
-      m_X: 400
+      m_X: 48
       m_Y: 0
-      m_Width: 100
-      m_Height: 100
+      m_Width: 16
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -154,29 +154,29 @@ MonoBehaviour:
       m_Width: 100
       m_Height: 100
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 100
+      m_HorizontalBearingY: 80
+      m_HorizontalAdvance: 125
     m_GlyphRect:
-      m_X: 500
+      m_X: 64
       m_Y: 0
-      m_Width: 100
-      m_Height: 100
+      m_Width: 16
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: -273741729, guid: e2c8270b4bec9b144a5b00f66439c9c6, type: 3}
   - m_Index: 3
     m_Metrics:
-      m_Width: 200
-      m_Height: 100
+      m_Width: 600
+      m_Height: 200
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 200
+      m_HorizontalBearingY: 180
+      m_HorizontalAdvance: 625
     m_GlyphRect:
-      m_X: 600
-      m_Y: 0
-      m_Width: 200
-      m_Height: 100
+      m_X: 0
+      m_Y: 16
+      m_Width: 48
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -186,13 +186,13 @@ MonoBehaviour:
       m_Width: 100
       m_Height: 100
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 100
+      m_HorizontalBearingY: 80
+      m_HorizontalAdvance: 125
     m_GlyphRect:
-      m_X: 800
-      m_Y: 0
-      m_Width: 100
-      m_Height: 100
+      m_X: 48
+      m_Y: 16
+      m_Width: 16
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -202,13 +202,13 @@ MonoBehaviour:
       m_Width: 100
       m_Height: 100
       m_HorizontalBearingX: 0
-      m_HorizontalBearingY: 100
-      m_HorizontalAdvance: 100
+      m_HorizontalBearingY: 80
+      m_HorizontalAdvance: 125
     m_GlyphRect:
-      m_X: 900
-      m_Y: 0
-      m_Width: 100
-      m_Height: 100
+      m_X: 64
+      m_Y: 16
+      m_Width: 16
+      m_Height: 16
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0

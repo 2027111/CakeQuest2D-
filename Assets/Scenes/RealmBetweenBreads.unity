@@ -297,9 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7938efb33a46dd41898c16c894cdaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLoopPointStart: 0
-  currentLoopPointEnd: 0
-  loopingSection: 0
   condition: []
   storagePlay: {fileID: 11400000, guid: 15f08d416ffa84344bb4363582882c16, type: 2}
   started: 0
@@ -338,19 +335,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 254c4a5d48ac08e4ba9459f2c328b769, type: 2}
     m_Events:
     - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 43242880}
-          m_TargetAssemblyTypeName: WrittenTimeline, Assembly-CSharp
-          m_MethodName: StartDialogue
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 43242880}

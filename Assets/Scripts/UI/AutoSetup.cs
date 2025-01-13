@@ -17,7 +17,7 @@ public class AutoSetup : MonoBehaviour
 
         LoadSpriteSheet();
     }
-    void LoadSpriteSheet()
+    public void LoadSpriteSheet()
     {
         // Load all sprites from the sprite sheet
         sprites = Resources.LoadAll<Sprite>(spriteSheetName);
@@ -73,14 +73,17 @@ public class AutoSetup : MonoBehaviour
         dropdown.AddOptions(new System.Collections.Generic.List<TMP_Dropdown.OptionData>(dropdownOptions));
 
         //languageDropdown.onValueChanged.AddListener(GameSaveManager.Singleton.OnLanguageDropdownValueChanged);
-
-
+        int initialValue = 0;
         if (LanguageData.Loaded())
         {
-            int initialValue = (int)LanguageData.GetLanguage();
-            dropdown.SetValueWithoutNotify(initialValue);
-            UpdateCaptionImage(initialValue);
+            initialValue = (int)LanguageData.GetLanguage();
         }
+        else
+        {
+            initialValue = (int)GamePreference.Language;
+        }
+        dropdown.SetValueWithoutNotify(initialValue);
+        UpdateCaptionImage(initialValue);
     }
 
     private void UpdateCaptionImage(int selectedIndex)

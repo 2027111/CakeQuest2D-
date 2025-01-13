@@ -168,6 +168,7 @@ public class GameSaveManager : MonoBehaviour
 
     public UnityEvent OnLanguageChanged;
     public UnityEvent OnSaveFileLoaded;
+    public UnityEvent OnGamePreferenceLoaded;
 
     private void Awake()
     {

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ae358c1207b2c4c918450214e54f7d, type: 3}
+  m_Name: RandomEnemyTest
+  m_EditorClassIdentifier: 
+  UID: 41ee1a37819a3bb4e89fcc68983368d7
+  characterData: {fileID: 11400000, guid: 44396e416c2474546b575af983db4e3d, type: 2}
+  Health: 1000
+  MaxHealth: 1000
+  Mana: 1000
+  MaxMana: 1000
+  Speed: 0
+  AttackDamage: 15
+  parryWindow: 0.15
+  IngredientWheel: 0100000002000000
+  isDead: 0
+  attackType: 0
+  AttackElement: 1
+  HitEffect:
+  - {fileID: 888444077320411739, guid: 0c2509361b13505428ce788b7f846686, type: 3}
+  SoundEffect:
+  - {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
+  Attacks:
+  - {fileID: 11400000, guid: 30b8f02918380654080540028eb4d1a8, type: 2}
+  animationController: {fileID: 22100000, guid: 035f6f042f8a6d9448ab30c9196270b5, type: 2}
+  InParty: {fileID: 11400000, guid: 0a08317485fc643459f7857a604bbb66, type: 2}
+  recipeLength: 3

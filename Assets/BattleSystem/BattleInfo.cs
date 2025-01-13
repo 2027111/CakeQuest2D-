@@ -26,7 +26,6 @@ public class BattleInfo : BoolValue
 
     public override void SetRuntime()
     {
-        Debug.Log("Set Runtime");
         base.SetRuntime();
     }
 }
