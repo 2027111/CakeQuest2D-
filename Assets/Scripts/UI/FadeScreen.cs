@@ -64,7 +64,6 @@ public class FadeScreen : MonoBehaviour
     }
 
 
-
     public UnityEvent OnFadingStart;
     public UnityEvent OnFadingMid;
     public UnityEvent OnFadingEnd;
@@ -258,6 +257,17 @@ public class FadeScreen : MonoBehaviour
         fading = false;
         startFadeon = false;
         yield return null;
+    }
+
+    public static void Flash(float fadeTime, float duration)
+    {
+        Singleton?.TriggerFlash(fadeTime, duration);
+    }
+
+
+    public void TriggerFlash(float fadeTime, float duration)
+    {
+        StartCoroutine(StartFlashAnimation(fadeTime, duration, 0));
     }
     public IEnumerator StartFlashAnimation(float fadeTime = .8f, float fadeDuration = .2f, float waitTime = 0)
     {

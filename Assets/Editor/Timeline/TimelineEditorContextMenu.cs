@@ -103,7 +103,7 @@ public class TimelineEditorContextMenu : Editor
     {
         // Add a DialogueLoopPlayableAsset to this track
         DialogueLoopPlayableAsset dialogueLoopPlayableAsset = ScriptableObject.CreateInstance<DialogueLoopPlayableAsset>();
-        dialogueLoopPlayableAsset.pauseMethod = CutscenePauseMethod.Loop; // Set the desired pause method (Loop)
+        dialogueLoopPlayableAsset.pauseMethod = CutsceneEventMethod.Loop; // Set the desired pause method (Loop)
 
         // Check if the track exists, and if not, create it
         if (dialogueLoopTrack == null)

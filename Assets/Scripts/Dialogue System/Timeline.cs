@@ -11,6 +11,7 @@ public class Timeline : MonoBehaviour
     public static bool IsInCutscene = false;
     public static Timeline CurrentlyPlayingTimeline;
     Tuple<float, float> loop;
+    Tuple<float, float> shakingTimeStamp;
 
     public ConditionResultObject[] condition;
     public Cutscene storagePlay;
@@ -63,6 +64,14 @@ public class Timeline : MonoBehaviour
             CurrentlyPlayingTimeline = this;
         }
 
+    }
+
+    public void StartCamShake(float start, float end, bool withOffset = true)
+    {
+        start = withOffset ? start : start + (float)playableDirector.time;
+        end = withOffset ? end : end + (float)playableDirector.time;
+        shakingTimeStamp = new Tuple<float, float>(start, end);
+        CamManager.Shake(-1, .15f);
     }
 
     public void StartDialogueLoop(float start, float end, bool withOffset = true)
@@ -132,6 +141,12 @@ public class Timeline : MonoBehaviour
                     playableDirector.time = loop.Item1;
                     playableDirector.Evaluate();
                     playableDirector.Play();
+                }
+
+                if(shakingTimeStamp != null && playableDirector.time > shakingTimeStamp.Item2)
+                {
+                    CamManager.StopShake();
+                    shakingTimeStamp = null;
                 }
     }
 

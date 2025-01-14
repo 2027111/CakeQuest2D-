@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class DialogueLoopPlayableAsset : PlayableAsset
 {
-    public CutscenePauseMethod pauseMethod = CutscenePauseMethod.Loop;
+    public CutsceneEventMethod pauseMethod = CutsceneEventMethod.Loop;
     public override Playable CreatePlayable(PlayableGraph graph, GameObject owner)
     {
         var playable = ScriptPlayable<DialogueLoopPlayableBehaviour>.Create(graph);
@@ -16,8 +16,10 @@ public class DialogueLoopPlayableAsset : PlayableAsset
 }
  
 [System.Serializable]
-public enum CutscenePauseMethod
+public enum CutsceneEventMethod
 {
     Loop,
-    Pause
+    Pause,
+    CamShake,
+    Flash,
 }

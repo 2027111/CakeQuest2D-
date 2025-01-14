@@ -42,6 +42,12 @@ public class CameraMovement : MonoBehaviour
     {
 
     }
+
+    public void StartShaking(float duration)
+    {
+
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {

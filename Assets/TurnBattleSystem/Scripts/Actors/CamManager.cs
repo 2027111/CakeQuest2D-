@@ -62,11 +62,11 @@ public class CamManager : MonoBehaviour
     {
         ShakeCam(-1, .15f);
     }
-
-    public void StopShake()
+    public static void StopShake()
     {
         _instance.StopCoroutine("DoShake");
     }
+
     private IEnumerator DoShake(float duration, float magnitude)
     {
         float elapsed = 0.0f;
